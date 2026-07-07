@@ -1,0 +1,21 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="1" y="1" width="30" height="30" rx="6" fill="#0A0A0F"/>
+  <rect x="6" y="6" width="20" height="20" rx="3" fill="#0D0D14" stroke="#76FF03" stroke-width="1.2"/>
+  <rect x="7.5" y="7.5" width="17" height="17" rx="2" fill="url(#fg)"/>
+  <defs>
+    <pattern id="fg" width="2.5" height="2.5" patternUnits="userSpaceOnUse">
+      <rect width="2.5" height="2.5" fill="#0D0D14"/>
+      <rect x="0.3" y="0.3" width="1.9" height="1.9" rx="0.3" fill="none" stroke="#76FF03" stroke-width="0.2" opacity="0.15"/>
+    </pattern>
+  </defs>
+  <rect x="6" y="6" width="20" height="20" rx="3" fill="none" stroke="#76FF03" stroke-width="0.3" opacity="0.2"/>
+  <text x="16" y="21" text-anchor="middle" fill="#76FF03" font-family="sans-serif" font-weight="900" font-size="14" letter-spacing="-0.5">
+    <tspan fill="#76FF03">S</tspan>
+    <tspan fill="#00E5FF">C</tspan>
+  </text>
+  <text x="16" y="10" text-anchor="middle" fill="#76FF03" font-family="monospace" font-weight="700" font-size="2.8" opacity="0.3">SERVCHIP</text>
+  <circle cx="9" cy="9" r="1.2" fill="#00E5FF" opacity="0.7"/>
+  <circle cx="23" cy="9" r="1.2" fill="#00E5FF" opacity="0.7"/>
+  <circle cx="9" cy="23" r="1.2" fill="#00E5FF" opacity="0.7"/>
+  <circle cx="23" cy="23" r="1.2" fill="#00E5FF" opacity="0.7"/>
+</svg>
