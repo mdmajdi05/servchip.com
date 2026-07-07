@@ -119,19 +119,17 @@ export function MegaMenu({ label, columns, variant = "default", featured }: Mega
 
       <AnimatePresence>
         {open && (
-          <motion.div
-            key={`${label}-mega`}
-            variants={menuVariants}
-            initial="hidden"
-            animate="visible"
-            exit="exit"
-            className={cn(
-              "absolute top-full left-1/2 -translate-x-1/2 mt-2 overflow-hidden z-[100]",
-              variant === "minimal" ? "w-[880px]" : "w-[700px]"
-            )}
-          >
-            {variant === "minimal" ? (
-              <div className="rounded-2xl border border-primary/15 bg-surface shadow-2xl shadow-black/50 p-6">
+          variant === "minimal" ? (
+            <motion.div
+              key={`${label}-mega`}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.2 }}
+              className="absolute left-1/2 -translate-x-1/2 top-full w-[min(880px,calc(100vw-2rem))] mt-px"
+              onMouseEnter={() => setOpen(true)}
+            >
+              <div className="rounded-b-2xl border border-primary/15 border-t-0 bg-surface shadow-2xl shadow-black/50 p-6">
                 <div className="grid grid-cols-3 gap-6">
                   {columns.map((col) => (
                     <div key={col.title} className="space-y-1">
@@ -139,9 +137,7 @@ export function MegaMenu({ label, columns, variant = "default", featured }: Mega
                         {col.title}
                       </h4>
                       {col.links.map((item) => {
-                        const Icon = item.icon
-                          ? (LucideIcons as unknown as Record<string, LucideIcons.LucideIcon>)[item.icon] || Circle
-                          : null;
+                        const Icon = (LucideIcons as unknown as Record<string, LucideIcons.LucideIcon>)[item.icon] || Circle;
                         return (
                           <Link
                             key={item.label}
@@ -149,9 +145,7 @@ export function MegaMenu({ label, columns, variant = "default", featured }: Mega
                             onClick={() => setOpen(false)}
                             className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm text-text-muted hover:text-text hover:bg-primary/[0.05] transition-all group"
                           >
-                            {Icon && (
-                              <Icon className="w-4 h-4 text-text-dim group-hover:text-primary transition-colors shrink-0" />
-                            )}
+                            <Icon className="w-4 h-4 text-text-dim group-hover:text-primary transition-colors shrink-0" />
                             <span className="flex-1">{item.label}</span>
                             <ChevronRight className="w-3.5 h-3.5 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" />
                           </Link>
@@ -176,7 +170,16 @@ export function MegaMenu({ label, columns, variant = "default", featured }: Mega
                   </div>
                 )}
               </div>
-            ) : (
+            </motion.div>
+          ) : (
+            <motion.div
+              key={`${label}-mega`}
+              variants={menuVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              className="absolute top-full left-1/2 -translate-x-1/2 mt-2 w-[700px] overflow-hidden z-[100]"
+            >
               <>
                 <div className="absolute inset-0 bg-bg-dark rounded-2xl border border-border shadow-2xl shadow-primary/8" />
                 <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.02] to-transparent rounded-2xl" />
@@ -243,8 +246,8 @@ export function MegaMenu({ label, columns, variant = "default", featured }: Mega
                   </Link>
                 </div>
               </>
-            )}
-          </motion.div>
+            </motion.div>
+          )
         )}
       </AnimatePresence>
     </div>
