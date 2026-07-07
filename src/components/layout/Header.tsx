@@ -4,22 +4,73 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, X, User, ExternalLink, ChevronDown, Sparkles } from "lucide-react";
+import {
+  Search,
+  X,
+  User,
+  ExternalLink,
+  ChevronDown,
+  Sparkles,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
+import { SITE } from "@/lib/constants";
 import { MegaMenu } from "./MegaMenu";
 import { SearchModal } from "@/components/interactive/SearchModal";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { ColorPicker } from "@/components/ui/ColorPicker";
 import { AnimatedLogo } from "@/components/ui/AnimatedLogo";
 
-const CHIP_COLUMNS = [
+interface NavLink {
+  label: string;
+  href: string;
+  description?: string;
+  badge?: string;
+}
+
+interface NavColumn {
+  title: string;
+  links: NavLink[];
+}
+
+interface MegaNavItem {
+  label: string;
+  columns: NavColumn[];
+  href?: never;
+}
+
+interface SimpleNavItem {
+  label: string;
+  href: string;
+  columns?: never;
+}
+
+type NavItem = MegaNavItem | SimpleNavItem;
+
+const CHIP_COLUMNS: NavColumn[] = [
   {
     title: "Architecture",
     links: [
-      { label: "Blackwell Series", href: "/products?arch=blackwell", description: "Next-gen AI & HPC", badge: "New" },
-      { label: "Hopper Series", href: "/products?arch=hopper", description: "Enterprise AI training" },
-      { label: "Ada Lovelace", href: "/products?arch=ada", description: "Professional graphics" },
-      { label: "Ampere Series", href: "/products?arch=ampere", description: "Proven performance" },
+      {
+        label: "Blackwell Series",
+        href: "/products?arch=blackwell",
+        description: "Next-gen AI & HPC",
+        badge: "New",
+      },
+      {
+        label: "Hopper Series",
+        href: "/products?arch=hopper",
+        description: "Enterprise AI training",
+      },
+      {
+        label: "Ada Lovelace",
+        href: "/products?arch=ada",
+        description: "Professional graphics",
+      },
+      {
+        label: "Ampere Series",
+        href: "/products?arch=ampere",
+        description: "Proven performance",
+      },
     ],
   },
   {
@@ -54,16 +105,31 @@ const CATEGORY_COLUMNS = [
   {
     title: "Computing",
     links: [
-      { label: "Data Center GPUs", href: "/categories/data-center-gpus", description: "Enterprise AI & HPC" },
-      { label: "AI Accelerators", href: "/categories/ai-accelerators", description: "Specialized AI processing" },
-      { label: "HPC & Grace", href: "/categories/hpc-grace", description: "Supercomputing" },
+      {
+        label: "Data Center GPUs",
+        href: "/categories/data-center-gpus",
+        description: "Enterprise AI & HPC",
+      },
+      {
+        label: "AI Accelerators",
+        href: "/categories/ai-accelerators",
+        description: "Specialized AI processing",
+      },
+      {
+        label: "HPC & Grace",
+        href: "/categories/hpc-grace",
+        description: "Supercomputing",
+      },
     ],
   },
   {
     title: "Professional",
     links: [
       { label: "Professional RTX", href: "/categories/professional-rtx" },
-      { label: "Cloud & Virtualization", href: "/categories/cloud-virtualization" },
+      {
+        label: "Cloud & Virtualization",
+        href: "/categories/cloud-virtualization",
+      },
       { label: "Edge AI & Embedded", href: "/categories/edge-ai-embedded" },
     ],
   },
@@ -72,14 +138,15 @@ const CATEGORY_COLUMNS = [
     links: [
       { label: "Automotive", href: "/categories/automotive" },
       { label: "Networking", href: "/categories/networking" },
-      { label: "Healthcare & Life Sci", href: "/categories/healthcare-life-sci" },
+      {
+        label: "Healthcare & Life Sci",
+        href: "/categories/healthcare-life-sci",
+      },
     ],
   },
   {
     title: "Gaming",
-    links: [
-      { label: "Gaming & GeForce", href: "/categories/gaming-geforce" },
-    ],
+    links: [{ label: "Gaming & GeForce", href: "/categories/gaming-geforce" }],
   },
 ];
 
@@ -87,16 +154,37 @@ const TECHNOLOGY_COLUMNS = [
   {
     title: "Architectures",
     links: [
-      { label: "Hopper Architecture", href: "/products?arch=hopper", description: "AI training & HPC" },
-      { label: "Blackwell Platform", href: "/products?arch=blackwell", description: "Next-gen AI scale", badge: "New" },
-      { label: "Ada Lovelace", href: "/products?arch=ada", description: "Professional graphics" },
-      { label: "Grace Hopper", href: "/products?series=gh200", description: "Supercomputing" },
+      {
+        label: "Hopper Architecture",
+        href: "/products?arch=hopper",
+        description: "AI training & HPC",
+      },
+      {
+        label: "Blackwell Platform",
+        href: "/products?arch=blackwell",
+        description: "Next-gen AI scale",
+        badge: "New",
+      },
+      {
+        label: "Ada Lovelace",
+        href: "/products?arch=ada",
+        description: "Professional graphics",
+      },
+      {
+        label: "Grace Hopper",
+        href: "/products?series=gh200",
+        description: "Supercomputing",
+      },
     ],
   },
   {
     title: "Tools",
     links: [
-      { label: "Comparison Tool", href: "/comparison", description: "Side-by-side chip specs" },
+      {
+        label: "Comparison Tool",
+        href: "/comparison",
+        description: "Side-by-side chip specs",
+      },
     ],
   },
 ];
@@ -105,25 +193,61 @@ const SERVICES_COLUMNS = [
   {
     title: "Custom Sourcing",
     links: [
-      { label: "Hardware Procurement", href: "/services/procurement", description: "Global sourcing for NVIDIA chips" },
-      { label: "Bulk & Wholesale", href: "/services/bulk", description: "Volume pricing for enterprises" },
-      { label: "Hard-to-Find Parts", href: "/services/hard-to-find", description: "Legacy &稀缺 chip sourcing" },
+      {
+        label: "Hardware Procurement",
+        href: "/services/procurement",
+        description: "Global sourcing for NVIDIA chips",
+      },
+      {
+        label: "Bulk & Wholesale",
+        href: "/services/bulk",
+        description: "Volume pricing for enterprises",
+      },
+      {
+        label: "Hard-to-Find Parts",
+        href: "/services/hard-to-find",
+        description: "Legacy &稀缺 chip sourcing",
+      },
     ],
   },
   {
     title: "Support",
     links: [
-      { label: "Technical Support", href: "/support", description: "Expert setup & troubleshooting" },
-      { label: "Warranty & RMA", href: "/support/warranty", description: "Hassle-free returns & replacements" },
-      { label: "Integration Help", href: "/support/integration", description: "Deployment & infrastructure" },
+      {
+        label: "Technical Support",
+        href: "/support",
+        description: "Expert setup & troubleshooting",
+      },
+      {
+        label: "Warranty & RMA",
+        href: "/support/warranty",
+        description: "Hassle-free returns & replacements",
+      },
+      {
+        label: "Integration Help",
+        href: "/support/integration",
+        description: "Deployment & infrastructure",
+      },
     ],
   },
   {
     title: "Consulting",
     links: [
-      { label: "AI Infrastructure", href: "/consulting/ai-infra", description: "End-to-end AI stack design" },
-      { label: "Data Center Planning", href: "/consulting/datacenter", description: "Scalable GPU cluster architecture" },
-      { label: "HPC Optimization", href: "/consulting/hpc", description: "Maximize workload performance" },
+      {
+        label: "AI Infrastructure",
+        href: "/consulting/ai-infra",
+        description: "End-to-end AI stack design",
+      },
+      {
+        label: "Data Center Planning",
+        href: "/consulting/datacenter",
+        description: "Scalable GPU cluster architecture",
+      },
+      {
+        label: "HPC Optimization",
+        href: "/consulting/hpc",
+        description: "Maximize workload performance",
+      },
     ],
   },
 ];
@@ -147,7 +271,7 @@ const RESOURCE_COLUMNS = [
   },
 ];
 
-const NAV_MEGA = [
+const NAV_MEGA: MegaNavItem[] = [
   { label: "Chips", columns: CHIP_COLUMNS },
   { label: "Categories", columns: CATEGORY_COLUMNS },
   { label: "Technology", columns: TECHNOLOGY_COLUMNS },
@@ -155,31 +279,39 @@ const NAV_MEGA = [
   { label: "Resources", columns: RESOURCE_COLUMNS },
 ];
 
-const NAV_SIMPLE = [
+const NAV_SIMPLE: SimpleNavItem[] = [
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
 
-function NavLink({ href, label, isActive }: { href: string; label: string; isActive: boolean }) {
+function NavLink({
+  href,
+  label,
+  isActive,
+}: {
+  href: string;
+  label: string;
+  isActive: boolean;
+}) {
   return (
     <Link
       href={href}
       className={cn(
         "relative px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 group",
-        isActive
-          ? "text-primary"
-          : "text-text-muted hover:text-text"
+        isActive ? "text-primary" : "text-text-muted hover:text-text",
       )}
     >
       <span className="relative">
         {label}
-        <span className={cn(
-          "absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full transition-transform duration-300 origin-left",
-          isActive
-            ? "bg-primary scale-x-100"
-            : "bg-gradient-to-r from-primary to-secondary scale-x-0 group-hover:scale-x-100"
-        )} />
+        <span
+          className={cn(
+            "absolute -bottom-0.5 left-0 right-0 h-[2px] rounded-full transition-transform duration-300 origin-left",
+            isActive
+              ? "bg-primary scale-x-100"
+              : "bg-gradient-to-r from-primary to-secondary scale-x-0 group-hover:scale-x-100",
+          )}
+        />
       </span>
     </Link>
   );
@@ -201,12 +333,15 @@ export function Header() {
   }, []);
 
   useEffect(() => {
-    setMobileOpen(false);
+    const id = setTimeout(() => setMobileOpen(false), 0);
+    return () => clearTimeout(id);
   }, [pathname]);
 
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
-    return () => { document.body.style.overflow = ""; };
+    return () => {
+      document.body.style.overflow = "";
+    };
   }, [mobileOpen]);
 
   function isActive(href: string) {
@@ -221,7 +356,7 @@ export function Header() {
           "fixed top-0 lg:top-8 left-0 right-0 z-50 h-[72px] flex items-center justify-between px-4 sm:px-6 transition-all duration-300",
           scrolled
             ? "bg-surface/95 backdrop-blur-xl border-b border-primary/10 shadow-xl shadow-black/5"
-            : "bg-surface border-b border-border/50"
+            : "bg-surface border-b border-border/50",
         )}
       >
         {/* Logo */}
@@ -231,12 +366,25 @@ export function Header() {
 
         {/* Desktop Nav */}
         <nav className="hidden lg:flex items-center gap-0.5">
-          <NavLink href="/" label="Home" isActive={isActive("/") && pathname === "/"} />
+          <NavLink
+            href="/"
+            label="Home"
+            isActive={isActive("/") && pathname === "/"}
+          />
           {NAV_MEGA.map((item) => (
-            <MegaMenu key={item.label} label={item.label} columns={item.columns} />
+            <MegaMenu
+              key={item.label}
+              label={item.label}
+              columns={item.columns}
+            />
           ))}
           {NAV_SIMPLE.map((link) => (
-            <NavLink key={link.href} href={link.href} label={link.label} isActive={isActive(link.href)} />
+            <NavLink
+              key={link.href}
+              href={link.href}
+              label={link.label}
+              isActive={isActive(link.href)}
+            />
           ))}
         </nav>
 
@@ -271,14 +419,29 @@ export function Header() {
             onClick={() => setMobileOpen((v) => !v)}
             className={cn(
               "lg:hidden flex flex-col gap-[5px] p-2 rounded-lg transition-colors hover:bg-primary/[0.04]",
-              mobileOpen && "active"
+              mobileOpen && "active",
             )}
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
           >
-            <span className={cn("block w-6 h-[2px] bg-text rounded-sm transition-all duration-300", mobileOpen && "translate-y-[7px] rotate-45")} />
-            <span className={cn("block w-6 h-[2px] bg-text rounded-sm transition-all duration-300", mobileOpen && "opacity-0")} />
-            <span className={cn("block w-6 h-[2px] bg-text rounded-sm transition-all duration-300", mobileOpen && "-translate-y-[7px] -rotate-45")} />
+            <span
+              className={cn(
+                "block w-6 h-[2px] bg-text rounded-sm transition-all duration-300",
+                mobileOpen && "translate-y-[7px] rotate-45",
+              )}
+            />
+            <span
+              className={cn(
+                "block w-6 h-[2px] bg-text rounded-sm transition-all duration-300",
+                mobileOpen && "opacity-0",
+              )}
+            />
+            <span
+              className={cn(
+                "block w-6 h-[2px] bg-text rounded-sm transition-all duration-300",
+                mobileOpen && "-translate-y-[7px] -rotate-45",
+              )}
+            />
           </button>
         </div>
       </header>
@@ -302,34 +465,123 @@ export function Header() {
       <div
         className={cn(
           "fixed top-0 right-0 z-[60] w-full max-w-[400px] h-screen bg-surface border-l border-border overflow-y-auto transition-all duration-500 lg:hidden",
-          mobileOpen ? "right-0" : "-right-full"
+          mobileOpen ? "right-0" : "-right-full",
         )}
       >
         <div className="flex flex-col min-h-screen">
           {/* Header with gradient */}
           <div className="sticky top-0 z-10 bg-gradient-to-b from-surface via-surface to-surface/95 backdrop-blur-xl border-b border-border/50 p-6">
             <div className="flex items-center justify-between">
-              <Link href="/" className="flex items-center gap-3 font-extrabold text-xl tracking-tight">
+              <Link
+                href="/"
+                className="flex items-center gap-3 font-extrabold text-xl tracking-tight"
+              >
                 <div className="w-[30px] h-[30px] relative">
-                  <svg className="absolute inset-0 w-full h-full" viewBox="0 0 100 100">
+                  <svg
+                    className="absolute inset-0 w-full h-full"
+                    viewBox="0 0 100 100"
+                  >
                     <defs>
-                      <pattern id="mg" width="6" height="6" patternUnits="userSpaceOnUse">
+                      <pattern
+                        id="mg"
+                        width="6"
+                        height="6"
+                        patternUnits="userSpaceOnUse"
+                      >
                         <rect width="6" height="6" fill="#0D0D14" />
-                        <rect x="0.5" y="0.5" width="5" height="5" rx="0.8" fill="none" stroke="#76FF03" strokeWidth="0.4" opacity="0.12" />
+                        <rect
+                          x="0.5"
+                          y="0.5"
+                          width="5"
+                          height="5"
+                          rx="0.8"
+                          fill="none"
+                          stroke="#76FF03"
+                          strokeWidth="0.4"
+                          opacity="0.12"
+                        />
                       </pattern>
                     </defs>
-                    <rect x="2" y="2" width="96" height="96" rx="16" fill="#0A0A0F" />
-                    <rect x="20" y="20" width="60" height="60" rx="6" fill="#0D0D14" stroke="#76FF03" strokeWidth="3" />
-                    <rect x="25" y="25" width="50" height="50" rx="4" fill="url(#mg)" />
-                    <text x="50" y="65" textAnchor="middle" fill="#76FF03" fontFamily="sans-serif" fontWeight="900" fontSize="38" letterSpacing="-1.5">
+                    <rect
+                      x="2"
+                      y="2"
+                      width="96"
+                      height="96"
+                      rx="16"
+                      fill="#0A0A0F"
+                    />
+                    <rect
+                      x="20"
+                      y="20"
+                      width="60"
+                      height="60"
+                      rx="6"
+                      fill="#0D0D14"
+                      stroke="#76FF03"
+                      strokeWidth="3"
+                    />
+                    <rect
+                      x="25"
+                      y="25"
+                      width="50"
+                      height="50"
+                      rx="4"
+                      fill="url(#mg)"
+                    />
+                    <text
+                      x="50"
+                      y="65"
+                      textAnchor="middle"
+                      fill="#76FF03"
+                      fontFamily="sans-serif"
+                      fontWeight="900"
+                      fontSize="38"
+                      letterSpacing="-1.5"
+                    >
                       <tspan fill="#76FF03">S</tspan>
                       <tspan fill="#00E5FF">C</tspan>
                     </text>
-                    <text x="50" y="32" textAnchor="middle" fill="#76FF03" fontFamily="monospace" fontWeight="700" fontSize="7" opacity="0.35" letterSpacing="1.5">SERVCHIP</text>
-                    <circle cx="26" cy="26" r="3" fill="#00E5FF" opacity="0.7" />
-                    <circle cx="74" cy="26" r="3" fill="#00E5FF" opacity="0.7" />
-                    <circle cx="26" cy="74" r="3" fill="#00E5FF" opacity="0.7" />
-                    <circle cx="74" cy="74" r="3" fill="#00E5FF" opacity="0.7" />
+                    <text
+                      x="50"
+                      y="32"
+                      textAnchor="middle"
+                      fill="#76FF03"
+                      fontFamily="monospace"
+                      fontWeight="700"
+                      fontSize="7"
+                      opacity="0.35"
+                      letterSpacing="1.5"
+                    >
+                      SERVCHIP
+                    </text>
+                    <circle
+                      cx="26"
+                      cy="26"
+                      r="3"
+                      fill="#00E5FF"
+                      opacity="0.7"
+                    />
+                    <circle
+                      cx="74"
+                      cy="26"
+                      r="3"
+                      fill="#00E5FF"
+                      opacity="0.7"
+                    />
+                    <circle
+                      cx="26"
+                      cy="74"
+                      r="3"
+                      fill="#00E5FF"
+                      opacity="0.7"
+                    />
+                    <circle
+                      cx="74"
+                      cy="74"
+                      r="3"
+                      fill="#00E5FF"
+                      opacity="0.7"
+                    />
                   </svg>
                 </div>
                 <div className="flex flex-col leading-none">
@@ -341,7 +593,11 @@ export function Header() {
                   </span>
                 </div>
               </Link>
-              <button onClick={() => setMobileOpen(false)} className="text-text-muted hover:text-text hover:bg-primary/[0.04] p-2 rounded-lg transition-all" aria-label="Close menu">
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="text-text-muted hover:text-text hover:bg-primary/[0.04] p-2 rounded-lg transition-all"
+                aria-label="Close menu"
+              >
                 <X className="w-5 h-5" />
               </button>
             </div>
@@ -354,7 +610,9 @@ export function Header() {
               onClick={() => setMobileOpen(false)}
               className={cn(
                 "flex items-center gap-2 py-3.5 text-base font-medium border-b border-border/50 transition-colors group",
-                pathname === "/" ? "text-primary" : "text-text-muted hover:text-text"
+                pathname === "/"
+                  ? "text-primary"
+                  : "text-text-muted hover:text-text",
               )}
             >
               <span className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
@@ -362,73 +620,96 @@ export function Header() {
             </Link>
 
             {/* Mega nav items with dropdown */}
-            {[...NAV_MEGA, ...NAV_SIMPLE.map(l => ({ ...l, columns: [] }))].map((item) => (
-              <div key={item.label}>
-                {"columns" in item && item.columns.length > 0 ? (
-                  <>
-                    <button
-                      onClick={() => setMobileDropdown(mobileDropdown === item.label ? null : item.label)}
-                      className="flex items-center justify-between w-full py-3.5 text-base font-medium border-b border-border/50 text-text-muted hover:text-text transition-colors group"
-                    >
-                      <span className="flex items-center gap-2">
-                        <span className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
-                        {item.label}
-                      </span>
-                      <ChevronDown className={cn("w-4 h-4 transition-transform duration-300", mobileDropdown === item.label && "rotate-180")} />
-                    </button>
-                    <AnimatePresence>
-                      {mobileDropdown === item.label && (
-                        <motion.div
-                          key={`${item.label}-mobile`}
-                          initial={{ opacity: 0, height: 0 }}
-                          animate={{ opacity: 1, height: "auto" }}
-                          exit={{ opacity: 0, height: 0 }}
-                          className="overflow-hidden"
-                        >
-                          <div className="pl-5 py-2 space-y-1 bg-primary/[0.02] rounded-lg my-1">
-                            {(item as any).columns.map((col: any) => (
-                              <div key={col.title} className="py-2">
-                                <h4 className="text-[10px] font-semibold uppercase tracking-wider text-primary/60 px-3 mb-2">
-                                  {col.title}
-                                </h4>
-                                {col.links.map((link: any) => (
-                                  <Link
-                                    key={link.label}
-                                    href={link.href}
-                                    onClick={() => setMobileOpen(false)}
-                                    className="flex items-center gap-2 text-sm text-text-muted hover:text-text py-2 px-3 rounded-lg hover:bg-primary/[0.04] transition-all"
-                                  >
-                                    <span className="w-1 h-1 rounded-full bg-primary/20" />
-                                    {link.label}
-                                    {link.badge && (
-                                      <span className="text-[8px] font-bold uppercase text-primary bg-primary/10 px-1 py-0.5 rounded">
-                                        {link.badge}
-                                      </span>
-                                    )}
-                                  </Link>
-                                ))}
-                              </div>
-                            ))}
-                          </div>
-                        </motion.div>
+            {(
+              [
+                ...NAV_MEGA,
+                ...NAV_SIMPLE.map((l) => ({
+                  ...l,
+                  columns: [] as NavColumn[],
+                })),
+              ] as NavItem[]
+            ).map((item) => {
+              const mega = item as MegaNavItem;
+              const simple = item as SimpleNavItem;
+              return (
+                <div key={item.label}>
+                  {mega.columns && mega.columns.length > 0 ? (
+                    <>
+                      <button
+                        onClick={() =>
+                          setMobileDropdown(
+                            mobileDropdown === item.label ? null : item.label,
+                          )
+                        }
+                        className="flex items-center justify-between w-full py-3.5 text-base font-medium border-b border-border/50 text-text-muted hover:text-text transition-colors group"
+                      >
+                        <span className="flex items-center gap-2">
+                          <span className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
+                          {item.label}
+                        </span>
+                        <ChevronDown
+                          className={cn(
+                            "w-4 h-4 transition-transform duration-300",
+                            mobileDropdown === item.label && "rotate-180",
+                          )}
+                        />
+                      </button>
+                      <AnimatePresence>
+                        {mobileDropdown === item.label && (
+                          <motion.div
+                            key={`${item.label}-mobile`}
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: "auto" }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="pl-5 py-2 space-y-1 bg-primary/[0.02] rounded-lg my-1">
+                              {mega.columns.map((col) => (
+                                <div key={col.title} className="py-2">
+                                  <h4 className="text-[10px] font-semibold uppercase tracking-wider text-primary/60 px-3 mb-2">
+                                    {col.title}
+                                  </h4>
+                                  {col.links.map((link) => (
+                                    <Link
+                                      key={link.label}
+                                      href={link.href}
+                                      onClick={() => setMobileOpen(false)}
+                                      className="flex items-center gap-2 text-sm text-text-muted hover:text-text py-2 px-3 rounded-lg hover:bg-primary/[0.04] transition-all"
+                                    >
+                                      <span className="w-1 h-1 rounded-full bg-primary/20" />
+                                      {link.label}
+                                      {link.badge && (
+                                        <span className="text-[8px] font-bold uppercase text-primary bg-primary/10 px-1 py-0.5 rounded">
+                                          {link.badge}
+                                        </span>
+                                      )}
+                                    </Link>
+                                  ))}
+                                </div>
+                              ))}
+                            </div>
+                          </motion.div>
+                        )}
+                      </AnimatePresence>
+                    </>
+                  ) : (
+                    <Link
+                      href={simple.href}
+                      onClick={() => setMobileOpen(false)}
+                      className={cn(
+                        "flex items-center gap-2 py-3.5 text-base font-medium border-b border-border/50 transition-colors group",
+                        simple.href && isActive(simple.href)
+                          ? "text-primary"
+                          : "text-text-muted hover:text-text",
                       )}
-                    </AnimatePresence>
-                  </>
-                ) : (
-                  <Link
-                    href={("href" in item) ? (item as any).href : "#"}
-                    onClick={() => setMobileOpen(false)}
-                    className={cn(
-                      "flex items-center gap-2 py-3.5 text-base font-medium border-b border-border/50 transition-colors group",
-                      ("href" in item) && isActive((item as any).href) ? "text-primary" : "text-text-muted hover:text-text"
-                    )}
-                  >
-                    <span className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
-                    {item.label}
-                  </Link>
-                )}
-              </div>
-            ))}
+                    >
+                      <span className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-colors" />
+                      {item.label}
+                    </Link>
+                  )}
+                </div>
+              );
+            })}
 
             {/* Mobile CTA */}
             <div className="mt-6 space-y-3">
@@ -453,10 +734,36 @@ export function Header() {
             {/* Contact info */}
             <div className="mt-6 pt-4 border-t border-border/50 text-sm text-text-muted space-y-2">
               <div className="flex items-center gap-2">
-                <span className="text-primary/60">📞</span> +91-XXXXXXXXXX
+                <span className="text-primary/60">📞</span>{" "}
+                <a
+                  href="tel:+917982498712"
+                  className="hover:text-primary transition-colors"
+                >
+                  +91 7982498712
+                </a>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-primary/60">✉️</span> sales@servchip.com
+                <span className="text-primary/60">✉️</span>{" "}
+                <a
+                  href="mailto:sales@servchip.com"
+                  className="hover:text-primary transition-colors"
+                >
+                  sales@servchip.com
+                </a>
+              </div>
+              <div className="flex items-start gap-2 text-xs">
+                <span className="text-primary/60 mt-0.5">📍</span>
+                <span>
+                  <strong className="text-text-muted">India:</strong>{" "}
+                  {SITE.addresses.india}
+                </span>
+              </div>
+              <div className="flex items-start gap-2 text-xs">
+                <span className="text-primary/60 mt-0.5">📍</span>
+                <span>
+                  <strong className="text-text-muted">UAE:</strong>{" "}
+                  {SITE.addresses.uae}
+                </span>
               </div>
             </div>
           </div>

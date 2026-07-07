@@ -1,6 +1,13 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, useCallback, useRef } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+  useCallback,
+  useRef,
+} from "react";
 
 interface ColorTheme {
   id: string;
@@ -132,16 +139,6 @@ export function ColorProvider({ children }: { children: React.ReactNode }) {
   const [color, setColorState] = useState<string>("green");
   const initialized = useRef(false);
 
-  useEffect(() => {
-    if (initialized.current) return;
-    initialized.current = true;
-    const stored = localStorage.getItem("servchip-color");
-    if (stored && colorThemes.some((t) => t.id === stored)) {
-      applyColor(stored);
-      setColorState(stored);
-    }
-  }, []);
-
   const applyColor = useCallback((colorId: string) => {
     const theme = colorThemes.find((t) => t.id === colorId);
     if (!theme) return;
@@ -158,19 +155,32 @@ export function ColorProvider({ children }: { children: React.ReactNode }) {
     root.setProperty("--hero-secondary", theme.secondary);
     root.setProperty(
       "--gradient-cta",
-      `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%)`
+      `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%)`,
     );
 
     document.documentElement.setAttribute("data-color", colorId);
     localStorage.setItem("servchip-color", colorId);
   }, []);
 
+  useEffect(() => {
+    if (initialized.current) return;
+    initialized.current = true;
+    const stored = localStorage.getItem("servchip-color");
+    if (stored && colorThemes.some((t) => t.id === stored)) {
+      const id = setTimeout(() => {
+        applyColor(stored);
+        setColorState(stored);
+      }, 0);
+      return () => clearTimeout(id);
+    }
+  }, [applyColor]);
+
   const setColor = useCallback(
     (colorId: string) => {
       applyColor(colorId);
       setColorState(colorId);
     },
-    [applyColor]
+    [applyColor],
   );
 
   const getCurrentTheme = useCallback(() => {
@@ -178,7 +188,9 @@ export function ColorProvider({ children }: { children: React.ReactNode }) {
   }, [color]);
 
   return (
-    <ColorContext.Provider value={{ color, setColor, colorThemes, getCurrentTheme }}>
+    <ColorContext.Provider
+      value={{ color, setColor, colorThemes, getCurrentTheme }}
+    >
       {children}
     </ColorContext.Provider>
   );

@@ -2,8 +2,17 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Globe, ExternalLink, MessageCircle, Code2, Mail, Send } from "lucide-react";
+import {
+  Globe,
+  ExternalLink,
+  MessageCircle,
+  Code2,
+  Mail,
+  Send,
+  MapPin,
+} from "lucide-react";
 import { AnimatedLogo } from "@/components/ui/AnimatedLogo";
+import { SITE } from "@/lib/constants";
 
 const FOOTER_LINKS = [
   {
@@ -46,10 +55,15 @@ export function Footer() {
           {/* Brand */}
           <div className="col-span-2 md:col-span-1">
             <Link href="/" className="mb-4 inline-block">
-              <AnimatedLogo size={32} showText textClassName="text-text font-bold text-sm tracking-tight" />
+              <AnimatedLogo
+                size={32}
+                showText
+                textClassName="text-text font-bold text-sm tracking-tight"
+              />
             </Link>
             <p className="text-text-dim text-xs leading-relaxed mb-4">
-              Authorized distributor of authentic NVIDIA chips and computing solutions for AI, HPC, and enterprise workloads worldwide.
+              Authorized distributor of authentic NVIDIA chips and computing
+              solutions for AI, HPC, and enterprise workloads worldwide.
             </p>
             <div className="flex gap-2">
               {[Globe, ExternalLink, MessageCircle, Code2].map((Icon, i) => (
@@ -63,9 +77,28 @@ export function Footer() {
                 </a>
               ))}
             </div>
+            {/* Addresses */}
+            <div className="mt-4 space-y-2">
+              <div className="flex items-start gap-1.5 text-xs text-text-dim">
+                <MapPin className="w-3 h-3 mt-0.5 shrink-0 text-primary/60" />
+                <span>
+                  <strong className="text-text-muted">India:</strong>{" "}
+                  {SITE.addresses.india}
+                </span>
+              </div>
+              <div className="flex items-start gap-1.5 text-xs text-text-dim">
+                <MapPin className="w-3 h-3 mt-0.5 shrink-0 text-primary/60" />
+                <span>
+                  <strong className="text-text-muted">UAE:</strong>{" "}
+                  {SITE.addresses.uae}
+                </span>
+              </div>
+            </div>
             {/* Newsletter */}
             <div className="mt-5">
-              <h5 className="text-[10px] font-semibold uppercase tracking-wider text-text-dim mb-2">Stay Updated</h5>
+              <h5 className="text-[10px] font-semibold uppercase tracking-wider text-text-dim mb-2">
+                Stay Updated
+              </h5>
               <NewsletterForm />
             </div>
           </div>
@@ -73,7 +106,9 @@ export function Footer() {
           {/* Link Columns */}
           {FOOTER_LINKS.map((col) => (
             <div key={col.title}>
-              <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-4">{col.title}</h4>
+              <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-4">
+                {col.title}
+              </h4>
               <ul className="space-y-2.5">
                 {col.links.map((link) => (
                   <li key={link.href}>
@@ -93,12 +128,20 @@ export function Footer() {
         {/* Bottom */}
         <div className="border-t border-border mt-12 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-text-dim">
-            &copy; {new Date().getFullYear()} Servchip Inc. All rights reserved. NVIDIA is a registered trademark of NVIDIA Corporation.
+            &copy; {new Date().getFullYear()} Servchip Inc. All rights reserved.
+            NVIDIA is a registered trademark of NVIDIA Corporation.
           </p>
           <div className="flex items-center gap-4 text-xs text-text-dim">
-            <Link href="/privacy" className="hover:text-text transition-colors">Privacy</Link>
-            <Link href="/terms" className="hover:text-text transition-colors">Terms</Link>
-            <a href="mailto:sales@servchip.com" className="hover:text-primary transition-colors flex items-center gap-1">
+            <Link href="/privacy" className="hover:text-text transition-colors">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-text transition-colors">
+              Terms
+            </Link>
+            <a
+              href="mailto:sales@servchip.com"
+              className="hover:text-primary transition-colors flex items-center gap-1"
+            >
               <Mail className="w-3 h-3" /> Contact
             </a>
           </div>
@@ -110,7 +153,9 @@ export function Footer() {
 
 function NewsletterForm() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
   const [message, setMessage] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
@@ -139,9 +184,7 @@ function NewsletterForm() {
   }
 
   if (status === "success") {
-    return (
-      <p className="text-xs text-primary font-medium">{message}</p>
-    );
+    return <p className="text-xs text-primary font-medium">{message}</p>;
   }
 
   return (
@@ -162,7 +205,9 @@ function NewsletterForm() {
         <Send className="w-3.5 h-3.5" />
       </button>
       {status === "error" && (
-        <p className="text-xs text-error mt-1 absolute bottom-0 left-0">{message}</p>
+        <p className="text-xs text-error mt-1 absolute bottom-0 left-0">
+          {message}
+        </p>
       )}
     </form>
   );

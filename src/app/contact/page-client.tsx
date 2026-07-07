@@ -6,11 +6,23 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { Mail, Phone, MapPin, Send, CheckCircle, Loader2 } from "lucide-react";
 import Link from "next/link";
+import { SITE } from "@/lib/constants";
 
 const CONTACT_INFO = [
-  { icon: Mail, label: "Email", value: "sales@servchip.com", href: "mailto:sales@servchip.com" },
-  { icon: Phone, label: "Phone", value: "+1 (800) 555-1234", href: "tel:+18005551234" },
-  { icon: MapPin, label: "Office", value: "Austin, TX 78701, USA" },
+  {
+    icon: Mail,
+    label: "Email",
+    value: "sales@servchip.com",
+    href: "mailto:sales@servchip.com",
+  },
+  {
+    icon: Phone,
+    label: "Phone",
+    value: "+91 7982498712",
+    href: "tel:+917982498712",
+  },
+  { icon: MapPin, label: "India Office", value: SITE.addresses.india },
+  { icon: MapPin, label: "UAE Office", value: SITE.addresses.uae },
 ];
 
 const TOPICS = [
@@ -70,13 +82,20 @@ export default function ContactPage() {
                     <item.icon className="w-5 h-5 text-primary" />
                   </div>
                   <div>
-                    <div className="text-xs text-text-dim mb-0.5">{item.label}</div>
+                    <div className="text-xs text-text-dim mb-0.5">
+                      {item.label}
+                    </div>
                     {item.href ? (
-                      <a href={item.href} className="text-sm text-text hover:text-primary transition-colors font-medium">
+                      <a
+                        href={item.href}
+                        className="text-sm text-text hover:text-primary transition-colors font-medium"
+                      >
                         {item.value}
                       </a>
                     ) : (
-                      <div className="text-sm text-text font-medium">{item.value}</div>
+                      <div className="text-sm text-text font-medium">
+                        {item.value}
+                      </div>
                     )}
                   </div>
                 </div>
@@ -84,10 +103,13 @@ export default function ContactPage() {
             </div>
 
             <div className="bg-surface border border-border rounded-xl p-5">
-              <h3 className="text-sm font-bold text-text mb-2">Response Time</h3>
+              <h3 className="text-sm font-bold text-text mb-2">
+                Response Time
+              </h3>
               <p className="text-text-muted text-xs leading-relaxed">
-                Our team typically responds within 2-4 hours during business hours (Mon-Fri, 9AM-6PM CST).
-                For urgent inquiries, please call our support line.
+                Our team typically responds within 2-4 hours during business
+                hours (Mon-Fri, 9AM-6PM CST). For urgent inquiries, please call
+                our support line.
               </p>
             </div>
 
@@ -126,16 +148,35 @@ export default function ContactPage() {
                 <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-4">
                   <CheckCircle className="w-8 h-8 text-primary" />
                 </div>
-                <h3 className="text-xl font-bold text-text mb-2">Message Sent!</h3>
+                <h3 className="text-xl font-bold text-text mb-2">
+                  Message Sent!
+                </h3>
                 <p className="text-text-muted text-sm mb-6 max-w-sm mx-auto">
-                  Thank you for reaching out. Our team will get back to you within 24 hours.
+                  Thank you for reaching out. Our team will get back to you
+                  within 24 hours.
                 </p>
-                <Button variant="outline" onClick={() => { setFormState("idle"); setForm({ name: "", email: "", company: "", phone: "", topic: "General Inquiry", message: "" }); }}>
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setFormState("idle");
+                    setForm({
+                      name: "",
+                      email: "",
+                      company: "",
+                      phone: "",
+                      topic: "General Inquiry",
+                      message: "",
+                    });
+                  }}
+                >
                   Send Another Message
                 </Button>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit} className="bg-surface border border-border rounded-2xl p-6 space-y-5">
+              <form
+                onSubmit={handleSubmit}
+                className="bg-surface border border-border rounded-2xl p-6 space-y-5"
+              >
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-medium text-text-dim mb-1.5">
@@ -145,7 +186,9 @@ export default function ContactPage() {
                       type="text"
                       required
                       value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, name: e.target.value })
+                      }
                       placeholder="John Doe"
                       className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-colors"
                     />
@@ -158,7 +201,9 @@ export default function ContactPage() {
                       type="email"
                       required
                       value={form.email}
-                      onChange={(e) => setForm({ ...form, email: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, email: e.target.value })
+                      }
                       placeholder="john@company.com"
                       className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-colors"
                     />
@@ -167,21 +212,29 @@ export default function ContactPage() {
 
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-medium text-text-dim mb-1.5">Company</label>
+                    <label className="block text-xs font-medium text-text-dim mb-1.5">
+                      Company
+                    </label>
                     <input
                       type="text"
                       value={form.company}
-                      onChange={(e) => setForm({ ...form, company: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, company: e.target.value })
+                      }
                       placeholder="Acme Corp"
                       className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-colors"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-medium text-text-dim mb-1.5">Phone</label>
+                    <label className="block text-xs font-medium text-text-dim mb-1.5">
+                      Phone
+                    </label>
                     <input
                       type="tel"
                       value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
+                      onChange={(e) =>
+                        setForm({ ...form, phone: e.target.value })
+                      }
                       placeholder="+1 (555) 000-0000"
                       className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-colors"
                     />
@@ -189,14 +242,20 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-medium text-text-dim mb-1.5">Topic</label>
+                  <label className="block text-xs font-medium text-text-dim mb-1.5">
+                    Topic
+                  </label>
                   <select
                     value={form.topic}
-                    onChange={(e) => setForm({ ...form, topic: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, topic: e.target.value })
+                    }
                     className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text outline-none focus:border-primary/50 transition-colors"
                   >
                     {TOPICS.map((t) => (
-                      <option key={t} value={t}>{t}</option>
+                      <option key={t} value={t}>
+                        {t}
+                      </option>
                     ))}
                   </select>
                 </div>
@@ -209,7 +268,9 @@ export default function ContactPage() {
                     required
                     rows={4}
                     value={form.message}
-                    onChange={(e) => setForm({ ...form, message: e.target.value })}
+                    onChange={(e) =>
+                      setForm({ ...form, message: e.target.value })
+                    }
                     placeholder="Tell us about your project or requirements..."
                     className="w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 transition-colors resize-none"
                   />
@@ -221,7 +282,13 @@ export default function ContactPage() {
                   size="lg"
                   fullWidth
                   disabled={formState === "submitting"}
-                  icon={formState === "submitting" ? <Loader2 className="w-4 h-4 animate-spin" /> : <Send className="w-4 h-4" />}
+                  icon={
+                    formState === "submitting" ? (
+                      <Loader2 className="w-4 h-4 animate-spin" />
+                    ) : (
+                      <Send className="w-4 h-4" />
+                    )
+                  }
                 >
                   {formState === "submitting" ? "Sending..." : "Send Message"}
                 </Button>

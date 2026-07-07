@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
+
 import { QueryProvider } from "@/providers/QueryProvider";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { ColorProvider } from "@/providers/ColorProvider";
@@ -26,7 +28,8 @@ export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
     template: "%s | Servchip — Authorized NVIDIA Distributor",
-    default: "Servchip — Authorized NVIDIA Chip Distributor & Technology Partner",
+    default:
+      "Servchip — Authorized NVIDIA Chip Distributor & Technology Partner",
   },
   description:
     "Premium distributor of authentic NVIDIA chips — H100, H200, B200, RTX 6000 Ada, AI accelerators, networking & more. Global delivery, enterprise support.",
@@ -102,7 +105,7 @@ export default function RootLayout({
               foundingDate: "2018",
               contactPoint: {
                 "@type": "ContactPoint",
-                telephone: "+1-555-0123",
+                telephone: "+91 7982498712",
                 contactType: "sales",
                 email: "sales@servchip.com",
                 availableLanguage: ["English"],
@@ -126,14 +129,17 @@ export default function RootLayout({
                 "@type": "SearchAction",
                 target: {
                   "@type": "EntryPoint",
-                  urlTemplate: "https://servchip.com/products?q={search_term_string}",
+                  urlTemplate:
+                    "https://servchip.com/products?q={search_term_string}",
                 },
                 "query-input": "required name=search_term_string",
               },
             }),
           }}
         />
-        <script
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
@@ -147,7 +153,9 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} ${jetbrainsMono.variable} font-sans bg-bg-body text-text antialiased`}>
+      <body
+        className={`${inter.variable} ${jetbrainsMono.variable} font-sans bg-bg-body text-text antialiased`}
+      >
         <ThemeProvider>
           <ColorProvider>
             <QueryProvider>
