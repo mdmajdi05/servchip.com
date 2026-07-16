@@ -1,3 +1,9 @@
+export interface BlogSection {
+  heading: string;
+  paragraphs: string[];
+  bullets?: string[];
+}
+
 export interface BlogPost {
   id: string;
   title: string;
@@ -23,6 +29,9 @@ export interface BlogPost {
     canonicalUrl?: string;
     robots?: "index, follow" | "noindex, nofollow";
   };
+  sections?: BlogSection[];
+  relatedProductIds?: string[];
+  relatedPostIds?: string[];
 }
 
 export interface BlogCategory {

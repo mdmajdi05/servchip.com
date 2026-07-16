@@ -3,6 +3,12 @@ import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "@/data/blog";
 import PageClient from "./page-client";
 
+export function generateStaticParams() {
+  return BLOG_POSTS.filter((p) => p.isPublished).map((post) => ({
+    slug: post.slug,
+  }));
+}
+
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
