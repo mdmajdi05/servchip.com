@@ -12,9 +12,7 @@ export const AMPERE_CPUS: ChipProduct[] = [
     categoryId: "ampere-server",
     parentCategoryId: "server-cpus",
     categoryName: "Server CPUs",
-    images: [
-      "https://www.networkworld.com/wp-content/uploads/2025/03/3585322-0-22005200-1743054370-Nvidia-page.jpg",
-    ],
+    images: ["/images/ai-chip-1.jpg"],
     description:
       "192-core cloud-native Arm server processor with DDR5 and PCIe 5.0 for hyperscale data centers.",
     longDescription:

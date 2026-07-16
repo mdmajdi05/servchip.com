@@ -12,9 +12,7 @@ export const QUALCOMM_DC: ChipProduct[] = [
     categoryId: "qualcomm-dc",
     parentCategoryId: "server-cpus",
     categoryName: "Server CPUs",
-    images: [
-      "https://www.networkworld.com/wp-content/uploads/2025/03/3585322-0-22005200-1743054370-Nvidia-page.jpg",
-    ],
+    images: ["/images/ai-chip-1.jpg"],
     description:
       "Qualcomm's emerging data center CPU based on Oryon architecture for cloud workloads.",
     longDescription:

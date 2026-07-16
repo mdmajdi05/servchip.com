@@ -11,9 +11,7 @@ export const SK_HYNIX_MEMORY: MemoryProduct[] = [
     categoryId: "memory-hbm",
     parentCategoryId: "ai-memory",
     categoryName: "AI Memory",
-    images: [
-      "https://nicheprojects.com.au/wp-content/uploads/2024/01/How-To-Keep-Your-Server-Room-In-A-Tip-Top-Condition.jpg",
-    ],
+    images: ["/images/server-room-1.jpg"],
     description:
       "Industry-leading HBM3E memory with 1.18 TB/s bandwidth per stack for AI accelerators.",
     longDescription:
@@ -59,9 +57,7 @@ export const SAMSUNG_MEMORY: MemoryProduct[] = [
     categoryId: "memory-hbm",
     parentCategoryId: "ai-memory",
     categoryName: "AI Memory",
-    images: [
-      "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    ],
+    images: ["/images/server-room-2.jpg"],
     description:
       "Samsung HBM3E with 1.2 TB/s bandwidth for next-generation AI processors.",
     longDescription:
@@ -104,9 +100,7 @@ export const SAMSUNG_MEMORY: MemoryProduct[] = [
     categoryId: "memory-ddr5",
     parentCategoryId: "ai-memory",
     categoryName: "DDR5 Memory",
-    images: [
-      "https://datacenters.microsoft.com/tour/assets/images/meta/server.jpg",
-    ],
+    images: ["/images/server-room-3.jpg"],
     description:
       "Enterprise DDR5 RDIMM for server platforms with up to 5600 Mbps speed.",
     longDescription:
@@ -152,9 +146,7 @@ export const MICRON_MEMORY: MemoryProduct[] = [
     categoryId: "memory-hbm",
     parentCategoryId: "ai-memory",
     categoryName: "AI Memory",
-    images: [
-      "https://www.racksolutions.com/news//app/uploads/blog_datacenter_2_22-e1708629161331.png",
-    ],
+    images: ["/images/server-room-4.png"],
     description:
       "Micron HBM3E with industry-leading 1.2+ TB/s bandwidth for AI and HPC.",
     longDescription:
@@ -197,9 +189,7 @@ export const MICRON_MEMORY: MemoryProduct[] = [
     categoryId: "memory-ddr5",
     parentCategoryId: "ai-memory",
     categoryName: "DDR5 Memory",
-    images: [
-      "https://www.techfinitive.com/wp-content/uploads/2023/02/what-is-a-server-jpg.webp",
-    ],
+    images: ["/images/server-room-5.jpg"],
     description: "Enterprise DDR5 RDIMM for next-generation server platforms.",
     longDescription:
       "Micron DDR5 RDIMM provides enterprise-grade memory performance and reliability for data center servers. With speeds up to 5600 MT/s and capacities from 16GB to 128GB, it supports the most demanding virtualization, database, and AI workloads with industry-leading power efficiency.",
@@ -244,9 +234,7 @@ export const MEMORY_MODULES: MemoryProduct[] = [
     categoryId: "memory-ddr5",
     parentCategoryId: "ai-memory",
     categoryName: "DDR5 Memory",
-    images: [
-      "https://nicheprojects.com.au/wp-content/uploads/2024/01/How-To-Keep-Your-Server-Room-In-A-Tip-Top-Condition.jpg",
-    ],
+    images: ["/images/server-room-1.jpg"],
     description:
       "Next-generation multiplexed rank DIMM for 8800+ MT/s server memory performance.",
     longDescription:
@@ -289,9 +277,7 @@ export const MEMORY_MODULES: MemoryProduct[] = [
     categoryId: "memory-cxl",
     parentCategoryId: "ai-memory",
     categoryName: "CXL Memory",
-    images: [
-      "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    ],
+    images: ["/images/server-room-2.jpg"],
     description:
       "CXL-attached memory module for memory expansion beyond traditional DIMM slots.",
     longDescription:

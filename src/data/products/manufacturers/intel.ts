@@ -12,9 +12,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: [
-      "https://www.networkworld.com/wp-content/uploads/2025/03/3585322-0-22005200-1743054370-Nvidia-page.jpg",
-    ],
+    images: ["/images/ai-chip-1.jpg"],
     description:
       "Intel Xeon 6900 Series processors deliver up to 128 performance cores with Granite Rapids architecture for the most demanding enterprise workloads.",
     longDescription:
@@ -76,7 +74,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["https://img.digitimes.com/newsshow/20230531pd215_files/2_b.jpg"],
+    images: ["/images/ai-chip-2.jpg"],
     description:
       "Intel Xeon 6700 Series processors combine Granite Rapids performance cores with balanced efficiency for scalable enterprise computing.",
     longDescription:
@@ -138,9 +136,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-max",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon Max",
-    images: [
-      "https://diplo-media.s3.eu-central-1.amazonaws.com/2024/06/amd-launches-new-ai-chips-to-take-on-leader-nvidia-1024x585.jpg",
-    ],
+    images: ["/images/ai-chip-3.jpg"],
     description:
       "Intel Xeon Max 9480 integrates 64 GB of HBM2e memory on-package for memory-bandwidth-intensive HPC and AI workloads.",
     longDescription:
@@ -200,9 +196,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: [
-      "https://bizfortune.com/story_image_upload/article/businessfortune-new-nvidia-ai-chips-face-issue-with-overheating-servers-report.webp",
-    ],
+    images: ["/images/ai-chip-4.webp"],
     description:
       "Intel Xeon 6980P is a flagship 128-core Granite Rapids processor designed for ultra-dense data center compute.",
     longDescription:
@@ -263,9 +257,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-4",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 4",
-    images: [
-      "https://thesun.my/wp-content/uploads/2026/01/AMD-unveils-AI-server-powers-OpenAI-with-latest-chips.jpg",
-    ],
+    images: ["/images/ai-chip-5.jpg"],
     description:
       "Intel Xeon 8490H offers 60 Sapphire Rapids cores with built-in AMX AI acceleration for enterprise and cloud workloads.",
     longDescription:
@@ -329,9 +321,7 @@ export const INTEL_GAUDI: ChipProduct[] = [
     categoryId: "intel-gaudi-3",
     parentCategoryId: "intel-gaudi",
     categoryName: "Intel Gaudi 3",
-    images: [
-      "https://www.networkworld.com/wp-content/uploads/2025/03/3585322-0-22005200-1743054370-Nvidia-page.jpg",
-    ],
+    images: ["/images/ai-chip-1.jpg"],
     description:
       "Intel Gaudi 3 AI accelerator delivers 144 GB HBM2e memory and 600W TDP for large-scale AI training and inference.",
     longDescription:
@@ -392,7 +382,7 @@ export const INTEL_GAUDI: ChipProduct[] = [
     categoryId: "intel-gaudi-2",
     parentCategoryId: "intel-gaudi",
     categoryName: "Intel Gaudi 2",
-    images: ["https://img.digitimes.com/newsshow/20230531pd215_files/2_b.jpg"],
+    images: ["/images/ai-chip-2.jpg"],
     description:
       "Intel Gaudi 2 AI accelerator with 96 GB HBM2e delivers efficient deep-learning training and inference at scale.",
     longDescription:
@@ -456,9 +446,7 @@ export const INTEL_ARC: ChipProduct[] = [
     categoryId: "intel-arc-pro",
     parentCategoryId: "intel-gaudi",
     categoryName: "Intel Arc Pro",
-    images: [
-      "https://diplo-media.s3.eu-central-1.amazonaws.com/2024/06/amd-launches-new-ai-chips-to-take-on-leader-nvidia-1024x585.jpg",
-    ],
+    images: ["/images/ai-chip-3.jpg"],
     description:
       "Intel Arc A770 GPU with 16 GB GDDR6 delivers workstation-class graphics and compute for professional visualization and entry-level AI.",
     longDescription:
@@ -519,9 +507,7 @@ export const INTEL_ARC: ChipProduct[] = [
     categoryId: "intel-arc-pro",
     parentCategoryId: "intel-gaudi",
     categoryName: "Intel Arc Pro",
-    images: [
-      "https://bizfortune.com/story_image_upload/article/businessfortune-new-nvidia-ai-chips-face-issue-with-overheating-servers-report.webp",
-    ],
+    images: ["/images/ai-chip-4.webp"],
     description:
       "Intel Arc Pro A60 with 12 GB GDDR6 delivers reliable professional graphics for certified ISV workflows and multi-display deployments.",
     longDescription:
@@ -584,9 +570,7 @@ export const INTEL_NETWORKING: NetworkingProduct[] = [
     categoryId: "intel-networking",
     parentCategoryId: "networking",
     categoryName: "Intel Networking",
-    images: [
-      "https://thesun.my/wp-content/uploads/2026/01/AMD-unveils-AI-server-powers-OpenAI-with-latest-chips.jpg",
-    ],
+    images: ["/images/ai-chip-5.jpg"],
     description:
       "Intel Ethernet E810 network adapter delivers 100 GbE throughput with PCIe 4.0 for high-performance data center and enterprise networking.",
     longDescription:

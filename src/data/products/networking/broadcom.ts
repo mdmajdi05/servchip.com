@@ -11,9 +11,7 @@ export const BROADCOM_NETWORKING: NetworkingProduct[] = [
     categoryId: "broadcom-ethernet",
     parentCategoryId: "networking",
     categoryName: "Ethernet Switches",
-    images: [
-      "https://nicheprojects.com.au/wp-content/uploads/2024/01/How-To-Keep-Your-Server-Room-In-A-Tip-Top-Condition.jpg",
-    ],
+    images: ["/images/server-room-1.jpg"],
     description:
       "World's highest-bandwidth Ethernet switch with 51.2 Tbps switching capacity for AI and HPC data center fabrics.",
     longDescription:
@@ -55,9 +53,7 @@ export const BROADCOM_NETWORKING: NetworkingProduct[] = [
     categoryId: "broadcom-ethernet",
     parentCategoryId: "networking",
     categoryName: "Ethernet Switches",
-    images: [
-      "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    ],
+    images: ["/images/server-room-2.jpg"],
     description:
       "AI-optimized Ethernet switch with in-network computing for distributed AI training workloads.",
     longDescription:

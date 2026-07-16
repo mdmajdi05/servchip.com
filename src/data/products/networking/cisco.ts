@@ -11,9 +11,7 @@ export const CISCO_NETWORKING: NetworkingProduct[] = [
     categoryId: "cisco-silicon-one",
     parentCategoryId: "networking",
     categoryName: "Networking Silicon",
-    images: [
-      "https://nicheprojects.com.au/wp-content/uploads/2024/01/How-To-Keep-Your-Server-Room-In-A-Tip-Top-Condition.jpg",
-    ],
+    images: ["/images/server-room-1.jpg"],
     description:
       "Unified programmable network processor for routing and switching at 25.6 Tbps.",
     longDescription:

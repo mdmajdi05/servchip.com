@@ -11,9 +11,7 @@ export const MARVELL_NETWORKING: NetworkingProduct[] = [
     categoryId: "marvell-ethernet",
     parentCategoryId: "networking",
     categoryName: "Ethernet Switches",
-    images: [
-      "https://nicheprojects.com.au/wp-content/uploads/2024/01/How-To-Keep-Your-Server-Room-In-A-Tip-Top-Condition.jpg",
-    ],
+    images: ["/images/server-room-1.jpg"],
     description:
       "51.2 Tbps Ethernet switch with industry-leading power efficiency for cloud and AI data centers.",
     longDescription:

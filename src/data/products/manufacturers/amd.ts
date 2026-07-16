@@ -12,9 +12,7 @@ export const AMD_INSTINCT_GPUS: ChipProduct[] = [
     categoryId: "amd-instinct-mi350",
     parentCategoryId: "amd-instinct",
     categoryName: "AMD Instinct Accelerators",
-    images: [
-      "https://www.networkworld.com/wp-content/uploads/2025/03/3585322-0-22005200-1743054370-Nvidia-page.jpg",
-    ],
+    images: ["/images/ai-chip-1.jpg"],
     description:
       "Flagship AI accelerator with 288GB HBM3e memory and CDNA 4 architecture for large-scale training and inference.",
     longDescription:
@@ -66,7 +64,7 @@ export const AMD_INSTINCT_GPUS: ChipProduct[] = [
     categoryId: "amd-instinct-mi325",
     parentCategoryId: "amd-instinct",
     categoryName: "AMD Instinct Accelerators",
-    images: ["https://img.digitimes.com/newsshow/20230531pd215_files/2_b.jpg"],
+    images: ["/images/ai-chip-2.jpg"],
     description:
       "High-capacity AI accelerator with 288GB HBM3 memory for large model training and inference.",
     longDescription:
@@ -118,9 +116,7 @@ export const AMD_INSTINCT_GPUS: ChipProduct[] = [
     categoryId: "amd-instinct-mi300",
     parentCategoryId: "amd-instinct",
     categoryName: "AMD Instinct Accelerators",
-    images: [
-      "https://diplo-media.s3.eu-central-1.amazonaws.com/2024/06/amd-launches-new-ai-chips-to-take-on-leader-nvidia-1024x585.jpg",
-    ],
+    images: ["/images/ai-chip-3.jpg"],
     description:
       "Purpose-built AI accelerator with 192GB HBM3 memory, 5.2 TB/s bandwidth, and 750W TDP for HPC and AI.",
     longDescription:
@@ -172,9 +168,7 @@ export const AMD_INSTINCT_GPUS: ChipProduct[] = [
     categoryId: "amd-instinct-mi300",
     parentCategoryId: "amd-instinct",
     categoryName: "AMD Instinct Accelerators",
-    images: [
-      "https://bizfortune.com/story_image_upload/article/businessfortune-new-nvidia-ai-chips-face-issue-with-overheating-servers-report.webp",
-    ],
+    images: ["/images/ai-chip-4.webp"],
     description:
       "Revolutionary APU combining Zen 4 CPU cores and CDNA 3 GPU compute with 128GB unified HBM3 memory.",
     longDescription:
@@ -229,9 +223,7 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
     categoryId: "amd-epyc-9005",
     parentCategoryId: "server-cpus",
     categoryName: "AMD EPYC Processors",
-    images: [
-      "https://thesun.my/wp-content/uploads/2026/01/AMD-unveils-AI-server-powers-OpenAI-with-latest-chips.jpg",
-    ],
+    images: ["/images/ai-chip-5.jpg"],
     description:
       "128-core flagship server processor with Zen 5 architecture, 500W TDP, and SP5 socket for maximum data center performance.",
     longDescription:
@@ -283,9 +275,7 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
     categoryId: "amd-epyc-9005",
     parentCategoryId: "server-cpus",
     categoryName: "AMD EPYC Processors",
-    images: [
-      "https://www.networkworld.com/wp-content/uploads/2025/03/3585322-0-22005200-1743054370-Nvidia-page.jpg",
-    ],
+    images: ["/images/ai-chip-1.jpg"],
     description:
       "96-core Zen 5 server processor delivering exceptional throughput for enterprise and cloud workloads.",
     longDescription:
@@ -337,7 +327,7 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
     categoryId: "amd-epyc-9004",
     parentCategoryId: "server-cpus",
     categoryName: "AMD EPYC Processors",
-    images: ["https://img.digitimes.com/newsshow/20230531pd215_files/2_b.jpg"],
+    images: ["/images/ai-chip-2.jpg"],
     description:
       "96-core Zen 4 server processor with 360W TDP for enterprise data centers and cloud infrastructure.",
     longDescription:
@@ -392,9 +382,7 @@ export const AMD_RADEON_PRO: ChipProduct[] = [
     categoryId: "amd-pro-w7000",
     parentCategoryId: "amd-radeon-pro",
     categoryName: "Radeon Pro",
-    images: [
-      "https://diplo-media.s3.eu-central-1.amazonaws.com/2024/06/amd-launches-new-ai-chips-to-take-on-leader-nvidia-1024x585.jpg",
-    ],
+    images: ["/images/ai-chip-3.jpg"],
     description:
       "Flagship workstation GPU with 48GB GDDR6 ECC for professional AI, rendering, and visualization.",
     longDescription:
@@ -455,9 +443,7 @@ export const AMD_INSTINCT_MI250: ChipProduct[] = [
     categoryId: "amd-instinct-mi250",
     parentCategoryId: "amd-instinct",
     categoryName: "AMD Instinct Accelerators",
-    images: [
-      "https://bizfortune.com/story_image_upload/article/businessfortune-new-nvidia-ai-chips-face-issue-with-overheating-servers-report.webp",
-    ],
+    images: ["/images/ai-chip-4.webp"],
     description:
       "HPC-optimized accelerator with 128GB HBM2e memory for scientific computing and simulation workloads.",
     longDescription:
@@ -513,9 +499,7 @@ export const AMD_PENSANDO: ChipProduct[] = [
     categoryId: "amd-pensando",
     parentCategoryId: "networking",
     categoryName: "AMD Pensando",
-    images: [
-      "https://thesun.my/wp-content/uploads/2026/01/AMD-unveils-AI-server-powers-OpenAI-with-latest-chips.jpg",
-    ],
+    images: ["/images/ai-chip-5.jpg"],
     description:
       "P4-programmable data processing unit with 200Gbps throughput for infrastructure acceleration.",
     longDescription:

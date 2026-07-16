@@ -11,9 +11,7 @@ export const SAMSUNG_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: [
-      "https://nicheprojects.com.au/wp-content/uploads/2024/01/How-To-Keep-Your-Server-Room-In-A-Tip-Top-Condition.jpg",
-    ],
+    images: ["/images/server-room-1.jpg"],
     description:
       "PCIe Gen5 enterprise SSD with 13 GB/s sequential read for data center workloads.",
     longDescription:
@@ -57,9 +55,7 @@ export const SAMSUNG_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: [
-      "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    ],
+    images: ["/images/server-room-2.jpg"],
     description:
       "PCIe Gen5 mainstream enterprise SSD with balanced performance and power efficiency.",
     longDescription:
@@ -106,9 +102,7 @@ export const MICRON_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: [
-      "https://datacenters.microsoft.com/tour/assets/images/meta/server.jpg",
-    ],
+    images: ["/images/server-room-3.jpg"],
     description:
       "PCIe Gen5 data center SSD with up to 14 GB/s read for AI and HPC workloads.",
     longDescription:
@@ -155,9 +149,7 @@ export const SOLIDIGM_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: [
-      "https://www.racksolutions.com/news//app/uploads/blog_datacenter_2_22-e1708629161331.png",
-    ],
+    images: ["/images/server-room-4.png"],
     description:
       "High-capacity PCIe Gen5 NVMe SSD for AI data pipelines and content delivery.",
     longDescription:
@@ -204,9 +196,7 @@ export const KIOXIA_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: [
-      "https://www.techfinitive.com/wp-content/uploads/2023/02/what-is-a-server-jpg.webp",
-    ],
+    images: ["/images/server-room-5.jpg"],
     description:
       "PCIe Gen5 enterprise NVMe SSD with BiCS FLASH for data center workloads.",
     longDescription:
@@ -253,9 +243,7 @@ export const WD_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: [
-      "https://nicheprojects.com.au/wp-content/uploads/2024/01/How-To-Keep-Your-Server-Room-In-A-Tip-Top-Condition.jpg",
-    ],
+    images: ["/images/server-room-1.jpg"],
     description:
       "PCIe Gen4 enterprise NVMe SSD optimized for read-intensive cloud workloads.",
     longDescription:
@@ -302,9 +290,7 @@ export const SEAGATE_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: [
-      "https://images.unsplash.com/photo-1695668548342-c0c1ad479aee?fm=jpg&q=60&w=3000&auto=format&fit=crop",
-    ],
+    images: ["/images/server-room-2.jpg"],
     description:
       "PCIe Gen4 NVMe SSD with advanced security for enterprise storage.",
     longDescription:

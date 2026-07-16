@@ -12,9 +12,7 @@ export const AMAZON_AI_CHIPS: ChipProduct[] = [
     categoryId: "amazon-ai",
     parentCategoryId: "amazon-ai",
     categoryName: "AI Accelerators",
-    images: [
-      "https://www.networkworld.com/wp-content/uploads/2025/03/3585322-0-22005200-1743054370-Nvidia-page.jpg",
-    ],
+    images: ["/images/ai-chip-1.jpg"],
     description:
       "Amazon's 2nd-generation AI training chip for EC2 Trn2 instances with ultra-high performance.",
     longDescription:
@@ -66,7 +64,7 @@ export const AMAZON_AI_CHIPS: ChipProduct[] = [
     categoryId: "amazon-ai",
     parentCategoryId: "amazon-ai",
     categoryName: "AI Accelerators",
-    images: ["https://img.digitimes.com/newsshow/20230531pd215_files/2_b.jpg"],
+    images: ["/images/ai-chip-2.jpg"],
     description:
       "AWS's 2nd-generation AI inference chip for cost-effective, low-latency model deployment.",
     longDescription:
