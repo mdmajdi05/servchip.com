@@ -166,13 +166,15 @@ export function ColorProvider({ children }: { children: React.ReactNode }) {
     if (initialized.current) return;
     initialized.current = true;
     const stored = localStorage.getItem("servchip-color");
-    if (stored && colorThemes.some((t) => t.id === stored)) {
-      const id = setTimeout(() => {
+    const id = setTimeout(() => {
+      if (stored && colorThemes.some((t) => t.id === stored)) {
         applyColor(stored);
         setColorState(stored);
-      }, 0);
-      return () => clearTimeout(id);
-    }
+      } else {
+        applyColor("cyan");
+      }
+    }, 0);
+    return () => clearTimeout(id);
   }, [applyColor]);
 
   const setColor = useCallback(

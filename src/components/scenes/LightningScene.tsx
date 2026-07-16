@@ -33,11 +33,18 @@ for (let i = 0; i < 20; i++) {
     path: `M ${x1} ${y1} L ${x2} ${y2}`,
     delay: Math.random() * 4,
     dur: 1 + Math.random() * 2,
-    color: i % 2 === 0 ? "#76FF03" : "#00E5FF",
+    color: i % 2 === 0 ? "#00BCD4" : "#00E5FF",
   });
 }
 
-const LIGHTNING_ARCS: { cx: number; cy: number; rx: number; ry: number; delay: number; dur: number }[] = [];
+const LIGHTNING_ARCS: {
+  cx: number;
+  cy: number;
+  rx: number;
+  ry: number;
+  delay: number;
+  dur: number;
+}[] = [];
 for (let i = 0; i < 4; i++) {
   LIGHTNING_ARCS.push({
     cx: 30 + Math.random() * 40,
@@ -50,7 +57,6 @@ for (let i = 0; i < 4; i++) {
 }
 
 export function LightningScene() {
-
   return (
     <div className="w-full h-full relative overflow-hidden font-mono">
       {/* Grid overlay */}
@@ -58,15 +64,19 @@ export function LightningScene() {
         className="absolute inset-0 z-0"
         style={{
           backgroundImage: `
-            linear-gradient(rgba(118,255,3,0.04) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(118,255,3,0.04) 1px, transparent 1px)
+            linear-gradient(rgba(0,188,212,0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(0,188,212,0.04) 1px, transparent 1px)
           `,
           backgroundSize: "24px 24px, 24px 24px",
         }}
       />
 
       {/* SVG layer */}
-      <svg className="absolute inset-0 w-full h-full z-10" viewBox="0 0 100 100" preserveAspectRatio="xMidYMid meet">
+      <svg
+        className="absolute inset-0 w-full h-full z-10"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="xMidYMid meet"
+      >
         <defs>
           <filter id="glow">
             <feGaussianBlur stdDeviation="0.5" result="blur" />
@@ -83,7 +93,7 @@ export function LightningScene() {
             key={`t${i}`}
             d={d}
             fill="none"
-            stroke={i % 3 === 1 ? "#00E5FF" : "#76FF03"}
+            stroke={i % 3 === 1 ? "#00E5FF" : "#00BCD4"}
             strokeWidth="0.3"
             opacity={0.12 + (i % 5) * 0.025}
             style={{
@@ -115,15 +125,41 @@ export function LightningScene() {
 
         {/* Corner nodes */}
         {[
-          [92, 92], [8, 92], [92, 8], [8, 8],
+          [92, 92],
+          [8, 92],
+          [92, 8],
+          [8, 8],
         ].map(([cx, cy], i) => (
           <g key={`cn${i}`}>
-            <circle cx={cx} cy={cy} r="1.8" fill="none" stroke="#00E5FF" strokeWidth="0.4" opacity="0.5">
-              <animate attributeName="r" values="1.8;2.5;1.8" dur={`${2 + i * 0.3}s`} repeatCount="indefinite" />
-              <animate attributeName="opacity" values="0.5;1;0.5" dur={`${2 + i * 0.3}s`} repeatCount="indefinite" />
+            <circle
+              cx={cx}
+              cy={cy}
+              r="1.8"
+              fill="none"
+              stroke="#00E5FF"
+              strokeWidth="0.4"
+              opacity="0.5"
+            >
+              <animate
+                attributeName="r"
+                values="1.8;2.5;1.8"
+                dur={`${2 + i * 0.3}s`}
+                repeatCount="indefinite"
+              />
+              <animate
+                attributeName="opacity"
+                values="0.5;1;0.5"
+                dur={`${2 + i * 0.3}s`}
+                repeatCount="indefinite"
+              />
             </circle>
             <circle cx={cx} cy={cy} r="0.6" fill="#00E5FF" opacity="0.8">
-              <animate attributeName="opacity" values="0.8;0.3;0.8" dur={`${1.5 + i * 0.2}s`} repeatCount="indefinite" />
+              <animate
+                attributeName="opacity"
+                values="0.8;0.3;0.8"
+                dur={`${1.5 + i * 0.2}s`}
+                repeatCount="indefinite"
+              />
             </circle>
           </g>
         ))}
@@ -137,7 +173,7 @@ export function LightningScene() {
             rx={arc.rx}
             ry={arc.ry}
             fill="none"
-            stroke="#76FF03"
+            stroke="#00BCD4"
             strokeWidth="0.3"
             opacity="0"
           >
@@ -168,12 +204,13 @@ export function LightningScene() {
           className="absolute inset-[3px] rounded"
           style={{
             background: `
-              linear-gradient(rgba(118,255,3,0.07) 1px, transparent 1px),
-              linear-gradient(90deg, rgba(118,255,3,0.07) 1px, transparent 1px)
+              linear-gradient(rgba(0,188,212,0.07) 1px, transparent 1px),
+              linear-gradient(90deg, rgba(0,188,212,0.07) 1px, transparent 1px)
             `,
             backgroundSize: "5px 5px, 5px 5px",
-            border: "1px solid rgba(118,255,3,0.15)",
-            boxShadow: "inset 0 0 15px rgba(118,255,3,0.04), 0 0 20px rgba(118,255,3,0.05)",
+            border: "1px solid rgba(0,188,212,0.15)",
+            boxShadow:
+              "inset 0 0 15px rgba(0,188,212,0.04), 0 0 20px rgba(0,188,212,0.05)",
           }}
         />
 
@@ -186,7 +223,12 @@ export function LightningScene() {
         </div>
         <div
           className="absolute text-[5px] tracking-widest text-secondary opacity-40 animate-pulse"
-          style={{ right: 3, bottom: 2, animationDuration: "3s", animationDelay: "1s" }}
+          style={{
+            right: 3,
+            bottom: 2,
+            animationDuration: "3s",
+            animationDelay: "1s",
+          }}
         >
           CHIP
         </div>
@@ -201,8 +243,8 @@ export function LightningScene() {
             width: 8,
             height: 8,
             borderRadius: "50%",
-            backgroundColor: "#76FF03",
-            boxShadow: "0 0 6px #76FF03, 0 0 20px rgba(118,255,3,0.2)",
+            backgroundColor: "#00BCD4",
+            boxShadow: "0 0 6px #00BCD4, 0 0 20px rgba(0,188,212,0.2)",
             animationDuration: "2.5s",
           }}
         />
@@ -215,7 +257,8 @@ export function LightningScene() {
             width: 14,
             height: 14,
             borderRadius: "50%",
-            background: "radial-gradient(circle, rgba(118,255,3,0.15) 0%, transparent 70%)",
+            background:
+              "radial-gradient(circle, rgba(0,188,212,0.15) 0%, transparent 70%)",
           }}
         />
       </div>

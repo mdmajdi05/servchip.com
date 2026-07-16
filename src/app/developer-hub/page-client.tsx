@@ -303,7 +303,7 @@ export default function DeveloperHubPage() {
                               __html: line
                                 .replace(
                                   /(".*?")/g,
-                                  '<span style="color:#76FF03">$1</span>',
+                                  '<span style="color:#00BCD4">$1</span>',
                                 )
                                 .replace(
                                   /\b(const|await|fetch|console|log)\b/g,

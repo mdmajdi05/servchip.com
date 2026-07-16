@@ -55,33 +55,93 @@ const PRODUCT_COLUMNS: NavColumn[] = [
     title: "AI Accelerators",
     href: "/categories/ai-gpus-accelerators",
     links: [
-      { label: "NVIDIA", href: "/manufacturers/nvidia", description: "H100, H200, B200, GB200" },
-      { label: "AMD", href: "/manufacturers/amd", description: "Instinct MI300X, MI325X, MI350X" },
-      { label: "Intel", href: "/manufacturers/intel", description: "Gaudi 2, Gaudi 3" },
-      { label: "Google", href: "/manufacturers/google", description: "TPU v6, TPU v7" },
-      { label: "Amazon", href: "/manufacturers/amazon", description: "Trainium 2, Inferentia 2" },
+      {
+        label: "NVIDIA",
+        href: "/manufacturers/nvidia",
+        description: "H100, H200, B200, GB200",
+      },
+      {
+        label: "AMD",
+        href: "/manufacturers/amd",
+        description: "Instinct MI300X, MI325X, MI350X",
+      },
+      {
+        label: "Intel",
+        href: "/manufacturers/intel",
+        description: "Gaudi 2, Gaudi 3",
+      },
+      {
+        label: "Google",
+        href: "/manufacturers/google",
+        description: "TPU v6, TPU v7",
+      },
+      {
+        label: "Amazon",
+        href: "/manufacturers/amazon",
+        description: "Trainium 2, Inferentia 2",
+      },
     ],
   },
   {
     title: "Server CPUs",
     href: "/categories/server-cpus",
     links: [
-      { label: "AMD EPYC", href: "/manufacturers/amd", description: "EPYC 9005 Turin" },
-      { label: "Intel Xeon", href: "/manufacturers/intel", description: "Xeon 6 Granite Rapids" },
-      { label: "Ampere", href: "/manufacturers/ampere", description: "AmpereOne ARM" },
-      { label: "Qualcomm", href: "/manufacturers/qualcomm", description: "DC server CPUs" },
-      { label: "NVIDIA Grace", href: "/manufacturers/nvidia", description: "ARM superchip" },
+      {
+        label: "AMD EPYC",
+        href: "/manufacturers/amd",
+        description: "EPYC 9005 Turin",
+      },
+      {
+        label: "Intel Xeon",
+        href: "/manufacturers/intel",
+        description: "Xeon 6 Granite Rapids",
+      },
+      {
+        label: "Ampere",
+        href: "/manufacturers/ampere",
+        description: "AmpereOne ARM",
+      },
+      {
+        label: "Qualcomm",
+        href: "/manufacturers/qualcomm",
+        description: "DC server CPUs",
+      },
+      {
+        label: "NVIDIA Grace",
+        href: "/manufacturers/nvidia",
+        description: "ARM superchip",
+      },
     ],
   },
   {
     title: "AI Servers",
     href: "/categories/ai-servers-platforms",
     links: [
-      { label: "Dell", href: "/manufacturers/dell-technologies", description: "PowerEdge XE9680" },
-      { label: "HPE", href: "/manufacturers/hewlett-packard-enterprise", description: "Cray XD670" },
-      { label: "Supermicro", href: "/manufacturers/supermicro", description: "AS-8125GS" },
-      { label: "Lenovo", href: "/manufacturers/lenovo", description: "ThinkSystem SR780A" },
-      { label: "Gigabyte", href: "/manufacturers/gigabyte", description: "G593" },
+      {
+        label: "Dell",
+        href: "/manufacturers/dell-technologies",
+        description: "PowerEdge XE9680",
+      },
+      {
+        label: "HPE",
+        href: "/manufacturers/hewlett-packard-enterprise",
+        description: "Cray XD670",
+      },
+      {
+        label: "Supermicro",
+        href: "/manufacturers/supermicro",
+        description: "AS-8125GS",
+      },
+      {
+        label: "Lenovo",
+        href: "/manufacturers/lenovo",
+        description: "ThinkSystem SR780A",
+      },
+      {
+        label: "Gigabyte",
+        href: "/manufacturers/gigabyte",
+        description: "G593",
+      },
       { label: "ASUS", href: "/manufacturers/asus", description: "ESC N8" },
       { label: "Inspur", href: "/manufacturers/inspur", description: "NF5688" },
       { label: "Quanta", href: "/manufacturers/quanta" },
@@ -93,22 +153,58 @@ const PRODUCT_COLUMNS: NavColumn[] = [
     title: "Networking",
     href: "/categories/networking-interconnects",
     links: [
-      { label: "Broadcom", href: "/manufacturers/broadcom", description: "Tomahawk 6" },
-      { label: "Marvell", href: "/manufacturers/marvell", description: "Teralynx 10" },
-      { label: "Cisco", href: "/manufacturers/cisco", description: "Silicon One" },
+      {
+        label: "Broadcom",
+        href: "/manufacturers/broadcom",
+        description: "Tomahawk 6",
+      },
+      {
+        label: "Marvell",
+        href: "/manufacturers/marvell",
+        description: "Teralynx 10",
+      },
+      {
+        label: "Cisco",
+        href: "/manufacturers/cisco",
+        description: "Silicon One",
+      },
     ],
   },
   {
     title: "Memory & Storage",
     href: "/categories/ai-memory-hbm",
     links: [
-      { label: "SK hynix", href: "/manufacturers/sk-hynix", description: "HBM3E" },
-      { label: "Samsung", href: "/manufacturers/samsung", description: "HBM3E, DDR5, SSD" },
-      { label: "Micron", href: "/manufacturers/micron", description: "HBM3E, DDR5, SSD" },
-      { label: "Solidigm", href: "/manufacturers/solidigm", description: "D7-P5810" },
+      {
+        label: "SK hynix",
+        href: "/manufacturers/sk-hynix",
+        description: "HBM3E",
+      },
+      {
+        label: "Samsung",
+        href: "/manufacturers/samsung",
+        description: "HBM3E, DDR5, SSD",
+      },
+      {
+        label: "Micron",
+        href: "/manufacturers/micron",
+        description: "HBM3E, DDR5, SSD",
+      },
+      {
+        label: "Solidigm",
+        href: "/manufacturers/solidigm",
+        description: "D7-P5810",
+      },
       { label: "Kioxia", href: "/manufacturers/kioxia", description: "CM7-V3" },
-      { label: "Western Digital", href: "/manufacturers/western-digital", description: "Ultrastar SSD" },
-      { label: "Seagate", href: "/manufacturers/seagate", description: "Nytro 3530" },
+      {
+        label: "Western Digital",
+        href: "/manufacturers/western-digital",
+        description: "Ultrastar SSD",
+      },
+      {
+        label: "Seagate",
+        href: "/manufacturers/seagate",
+        description: "Nytro 3530",
+      },
     ],
   },
 ];
@@ -117,26 +213,66 @@ const CATEGORY_COLUMNS = [
   {
     title: "Computing",
     links: [
-      { label: "NVIDIA Data Center GPUs", href: "/categories/nvidia-data-center-gpus", description: "H100, H200, B200, GB200, L40S" },
-      { label: "AMD Instinct Accelerators", href: "/categories/amd-instinct-accelerators", description: "MI300X, MI325X, MI350X" },
-      { label: "Intel Gaudi AI", href: "/categories/intel-gaudi-ai-accelerators", description: "Gaudi 2, Gaudi 3" },
-      { label: "Google TPU", href: "/categories/google-tpu-accelerators", description: "TPU v6, TPU v7" },
-      { label: "Amazon AI Chips", href: "/categories/amazon-ai-chips", description: "Trainium 2, Inferentia 2" },
+      {
+        label: "NVIDIA Data Center GPUs",
+        href: "/categories/nvidia-data-center-gpus",
+        description: "H100, H200, B200, GB200, L40S",
+      },
+      {
+        label: "AMD Instinct Accelerators",
+        href: "/categories/amd-instinct-accelerators",
+        description: "MI300X, MI325X, MI350X",
+      },
+      {
+        label: "Intel Gaudi AI",
+        href: "/categories/intel-gaudi-ai-accelerators",
+        description: "Gaudi 2, Gaudi 3",
+      },
+      {
+        label: "Google TPU",
+        href: "/categories/google-tpu-accelerators",
+        description: "TPU v6, TPU v7",
+      },
+      {
+        label: "Amazon AI Chips",
+        href: "/categories/amazon-ai-chips",
+        description: "Trainium 2, Inferentia 2",
+      },
     ],
   },
   {
     title: "Infrastructure",
     links: [
-      { label: "Server CPUs", href: "/categories/server-cpus", description: "AMD EPYC, Intel Xeon, Ampere" },
-      { label: "AI Servers & Platforms", href: "/categories/ai-servers-platforms", description: "Dell, HPE, Supermicro, Lenovo" },
-      { label: "Networking", href: "/categories/networking-interconnects", description: "Broadcom, Marvell, Cisco" },
+      {
+        label: "Server CPUs",
+        href: "/categories/server-cpus",
+        description: "AMD EPYC, Intel Xeon, Ampere",
+      },
+      {
+        label: "AI Servers & Platforms",
+        href: "/categories/ai-servers-platforms",
+        description: "Dell, HPE, Supermicro, Lenovo",
+      },
+      {
+        label: "Networking",
+        href: "/categories/networking-interconnects",
+        description: "Broadcom, Marvell, Cisco",
+      },
     ],
   },
   {
     title: "Components",
     links: [
-      { label: "AI Memory & HBM", href: "/categories/ai-memory-hbm", description: "HBM3E, DDR5, MRDIMM, CXL" },
-      { label: "Enterprise Storage", href: "/categories/enterprise-storage", description: "NVMe SSDs for data centers" },
+      {
+        label: "AI Memory & HBM",
+        href: "/categories/ai-memory-hbm",
+        description: "HBM3E, DDR5, MRDIMM, CXL",
+      },
+      {
+        label: "Enterprise Storage",
+        href: "/categories/enterprise-storage",
+        description: "NVMe SSDs for data centers",
+      },
     ],
   },
   {
@@ -356,7 +492,10 @@ export function Header() {
           <div
             className="hidden lg:block flex-1 relative"
             onMouseLeave={() => {
-              menuCloseTimer.current = setTimeout(() => setActiveMenu(null), 100);
+              menuCloseTimer.current = setTimeout(
+                () => setActiveMenu(null),
+                100,
+              );
             }}
           >
             <nav className="flex items-center justify-center gap-0.5">
@@ -370,7 +509,8 @@ export function Header() {
                   key={item.label}
                   className="relative"
                   onMouseEnter={() => {
-                    if (menuCloseTimer.current) clearTimeout(menuCloseTimer.current);
+                    if (menuCloseTimer.current)
+                      clearTimeout(menuCloseTimer.current);
                     setActiveMenu(item.label);
                   }}
                 >
@@ -423,7 +563,8 @@ export function Header() {
                   className="absolute left-0 right-0 top-full mt-0 flex justify-center"
                   onClick={() => setActiveMenu(null)}
                   onMouseEnter={() => {
-                    if (menuCloseTimer.current) clearTimeout(menuCloseTimer.current);
+                    if (menuCloseTimer.current)
+                      clearTimeout(menuCloseTimer.current);
                   }}
                 >
                   <div
@@ -558,7 +699,7 @@ export function Header() {
                           height="5"
                           rx="0.8"
                           fill="none"
-                          stroke="#76FF03"
+                          stroke="#00BCD4"
                           strokeWidth="0.4"
                           opacity="0.12"
                         />
@@ -579,7 +720,7 @@ export function Header() {
                       height="60"
                       rx="6"
                       fill="#0D0D14"
-                      stroke="#76FF03"
+                      stroke="#00BCD4"
                       strokeWidth="3"
                     />
                     <rect
@@ -594,20 +735,20 @@ export function Header() {
                       x="50"
                       y="65"
                       textAnchor="middle"
-                      fill="#76FF03"
+                      fill="#00BCD4"
                       fontFamily="sans-serif"
                       fontWeight="900"
                       fontSize="38"
                       letterSpacing="-1.5"
                     >
-                      <tspan fill="#76FF03">S</tspan>
+                      <tspan fill="#00BCD4">S</tspan>
                       <tspan fill="#00E5FF">C</tspan>
                     </text>
                     <text
                       x="50"
                       y="32"
                       textAnchor="middle"
-                      fill="#76FF03"
+                      fill="#00BCD4"
                       fontFamily="monospace"
                       fontWeight="700"
                       fontSize="7"

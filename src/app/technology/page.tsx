@@ -28,7 +28,7 @@ const ARCHITECTURE_TIMELINE = [
     description:
       "The most powerful GPU ever built. Dual-die design with 10 TB/s interconnect, 384GB HBM3e, and native FP4 precision for trillion-parameter AI.",
     chips: ["B200", "GB200"],
-    color: "#76FF03",
+    color: "#00BCD4",
     icon: Cpu,
     features: [
       "FP4 Tensor Cores",
@@ -331,8 +331,12 @@ export default function TechnologyPage() {
                       <Check className="w-3 h-3 text-primary" />
                     </div>
                     <div>
-                      <span className="text-sm font-bold text-text">{feature.title}</span>
-                      <p className="text-xs text-text-muted mt-0.5">{feature.desc}</p>
+                      <span className="text-sm font-bold text-text">
+                        {feature.title}
+                      </span>
+                      <p className="text-xs text-text-muted mt-0.5">
+                        {feature.desc}
+                      </p>
                     </div>
                   </motion.li>
                 ))}
@@ -542,8 +546,12 @@ export default function TechnologyPage() {
                     <Check className="w-3 h-3 text-primary" />
                   </span>
                   <div>
-                    <span className="text-sm font-bold text-text">{feature.title}</span>
-                    <p className="text-xs text-text-muted mt-0.5">{feature.desc}</p>
+                    <span className="text-sm font-bold text-text">
+                      {feature.title}
+                    </span>
+                    <p className="text-xs text-text-muted mt-0.5">
+                      {feature.desc}
+                    </p>
                   </div>
                 </div>
               ))}

@@ -9,11 +9,11 @@
   --surface: #ffffff;
   --surface-2: #f8f9fc;
   --surface-3: #edeef5;
-  --primary: #76ff03;
-  --primary-dark: #5ad000;
-  --primary-glow: rgba(118, 255, 3, 0.4);
-  --primary-subtle: rgba(118, 255, 3, 0.08);
-  --primary-subtle-2: rgba(118, 255, 3, 0.15);
+  --primary: #00bcd4;
+  --primary-dark: #00838f;
+  --primary-glow: rgba(0, 188, 212, 0.4);
+  --primary-subtle: rgba(0, 188, 212, 0.08);
+  --primary-subtle-2: rgba(0, 188, 212, 0.15);
   --secondary: #0088b0;
   --accent: #7b2fbe;
   --text: #16162c;
@@ -32,13 +32,13 @@
     #f4f5f9 100%
   );
   --gradient-card: linear-gradient(145deg, #ffffff 0%, #f7f8fa 100%);
-  --gradient-cta: linear-gradient(135deg, #76ff03 0%, #0088b0 100%);
-  --hero-primary: #76ff03;
+  --gradient-cta: linear-gradient(135deg, #00bcd4 0%, #0088b0 100%);
+  --hero-primary: #00bcd4;
   --hero-secondary: #00e5ff;
 
   /* Grid / circuit pattern */
-  --grid-line: rgba(118, 255, 3, 0.12);
-  --grid-dot: rgba(118, 255, 3, 0.16);
+  --grid-line: rgba(0, 188, 212, 0.12);
+  --grid-dot: rgba(0, 188, 212, 0.16);
   --hero-from: #f5f5f8;
   --hero-to: #d4edc9;
 }
@@ -52,11 +52,11 @@
   --surface: #12121a;
   --surface-2: #1a1a2e;
   --surface-3: #22223a;
-  --primary: #76ff03;
-  --primary-dark: #5ad000;
-  --primary-glow: rgba(118, 255, 3, 0.4);
-  --primary-subtle: rgba(118, 255, 3, 0.08);
-  --primary-subtle-2: rgba(118, 255, 3, 0.15);
+  --primary: #00bcd4;
+  --primary-dark: #00838f;
+  --primary-glow: rgba(0, 188, 212, 0.4);
+  --primary-subtle: rgba(0, 188, 212, 0.08);
+  --primary-subtle-2: rgba(0, 188, 212, 0.15);
   --secondary: #00e5ff;
   --accent: #aa00ff;
   --text: #ffffff;
@@ -75,13 +75,13 @@
     #0a0a12 100%
   );
   --gradient-card: linear-gradient(145deg, #12121a 0%, #1a1a2e 100%);
-  --gradient-cta: linear-gradient(135deg, #76ff03 0%, #00e5ff 100%);
-  --hero-primary: #76ff03;
+  --gradient-cta: linear-gradient(135deg, #00bcd4 0%, #00e5ff 100%);
+  --hero-primary: #00bcd4;
   --hero-secondary: #00e5ff;
 
   /* Grid / circuit pattern */
-  --grid-line: rgba(118, 255, 3, 0.06);
-  --grid-dot: rgba(118, 255, 3, 0.1);
+  --grid-line: rgba(0, 188, 212, 0.06);
+  --grid-dot: rgba(0, 188, 212, 0.1);
   --hero-from: #0a0a0f;
   --hero-to: #0d0d2e;
 }
