@@ -20,10 +20,9 @@ const statusStyles: Record<
 
 interface Props {
   mem: MemoryProduct;
-  index?: number;
 }
 
-export function MemoryCard({ mem, index = 0 }: Props) {
+export function MemoryCard({ mem }: Props) {
   const status = statusStyles[mem.status];
 
   return (

@@ -5,7 +5,6 @@ import dynamic from "next/dynamic";
 import Link from "next/link";
 import {
   ArrowRight,
-  Check,
   Cpu,
   Zap,
   HardDrive,
@@ -23,7 +22,12 @@ const LIGHTNING_SCENE = dynamic(
     import("@/components/scenes/LightningScene").then(
       (mod) => mod.LightningScene,
     ),
-  { ssr: false },
+  {
+    ssr: false,
+    loading: () => (
+      <div className="w-full h-[300px] bg-bg-dark rounded-xl animate-pulse" />
+    ),
+  },
 );
 
 const ICON_MAP: Record<string, typeof Cpu> = {

@@ -11,9 +11,6 @@ import {
   Package,
   Headphones,
   Cpu,
-  Building2,
-  Handshake,
-  Warehouse,
   ClipboardCheck,
 } from "lucide-react";
 

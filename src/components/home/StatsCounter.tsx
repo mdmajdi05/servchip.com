@@ -2,7 +2,24 @@
 
 import { useRef, useEffect, useState } from "react";
 import { useInView } from "framer-motion";
-import * as Icons from "lucide-react";
+import {
+  Cpu,
+  Building2,
+  Handshake,
+  Globe,
+  ShieldCheck,
+  Headphones,
+  Circle,
+} from "lucide-react";
+
+const ICON_MAP: Record<string, typeof Cpu> = {
+  Cpu,
+  Building2,
+  Handshake,
+  Globe,
+  ShieldCheck,
+  Headphones,
+};
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { STATS } from "@/data/home";
 import { useCountUp } from "@/hooks/useCountUp";
@@ -18,9 +35,7 @@ function StatCard({
 }) {
   const decimals = "decimals" in stat ? stat.decimals : 0;
   const value = useCountUp(stat.value, 2000, start, decimals);
-  const Icon =
-    (Icons as unknown as Record<string, Icons.LucideIcon>)[stat.icon] ||
-    Icons.Circle;
+  const Icon = ICON_MAP[stat.icon] || Circle;
 
   return (
     <div className="relative group">

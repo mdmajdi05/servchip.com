@@ -2,7 +2,6 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
-import * as Icons from "lucide-react";
 import {
   ArrowRight,
   Building2,
@@ -15,7 +14,21 @@ import {
   Shield,
   Boxes,
   CheckCircle2,
+  Circle,
 } from "lucide-react";
+
+const ICON_MAP: Record<string, typeof Building2> = {
+  Building2,
+  FlaskConical,
+  Rocket,
+  HeartPulse,
+  Car,
+  Landmark,
+  GraduationCap,
+  Shield,
+  Boxes,
+  CheckCircle2,
+};
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -249,10 +262,7 @@ export default function SolutionsPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {SOLUTIONS_INLINE.map((sol, i) => {
-              const Icon =
-                (Icons as unknown as Record<string, Icons.LucideIcon>)[
-                  sol.icon
-                ] || Icons.Circle;
+              const Icon = ICON_MAP[sol.icon] || Circle;
               return (
                 <div
                   key={sol.title}

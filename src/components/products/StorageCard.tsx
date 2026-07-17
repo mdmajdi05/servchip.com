@@ -20,10 +20,9 @@ const statusStyles: Record<
 
 interface Props {
   st: StorageProduct;
-  index?: number;
 }
 
-export function StorageCard({ st, index = 0 }: Props) {
+export function StorageCard({ st }: Props) {
   const status = statusStyles[st.status];
 
   return (

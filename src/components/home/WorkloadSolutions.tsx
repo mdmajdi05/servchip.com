@@ -49,7 +49,6 @@ const WORKLOADS = [
 
 export function WorkloadSolutions() {
   const [activeTab, setActiveTab] = useState(WORKLOADS[0].id);
-  const activeWorkload = WORKLOADS.find((w) => w.id === activeTab)!;
   const products = getProductsByUseCase(activeTab).slice(0, 6);
 
   return (

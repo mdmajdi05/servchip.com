@@ -1,0 +1,860 @@
+
+> frontend@0.1.0 dev
+> next dev
+
+⚠ Port 3000 is in use by process 11880, using available port 3001 instead.
+▲ Next.js 16.2.10 (Turbopack)
+- Local:         http://localhost:3001
+- Network:       http://192.168.1.56:3001
+✓ Ready in 3.5s
+
+⨯ ./src/app/page.tsx:6:16
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  [90m 4 |[0m [36mimport[0m { [33mClientLogos[0m } [36mfrom[0m [32m"@/components/home/ClientLogos"[0m;
+  [90m 5 |[0m
+[31m[1m>[0m [90m 6 |[0m [36mconst[0m [33mHero3D[0m = dynamic(
+  [90m   |[0m                [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m 7 |[0m   () => [36mimport[0m([32m"@/components/home/Hero3D"[0m).then((m) => m.[33mHero3D[0m),
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m 8 |[0m   {
+  [90m   |[0m [31m[1m^^^[0m
+[31m[1m>[0m [90m 9 |[0m     ssr: [36mfalse[0m,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m10 |[0m     loading: () => (
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m11 |[0m       <section
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m12 |[0m         className=[32m"relative min-h-screen flex items-center justify-center"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m13 |[0m         style={{ backgroundColor: [32m"#070B15"[0m }}
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m14 |[0m       >
+  [90m   |[0m [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m15 |[0m         <div className=[32m"w-12 h-12 border-2 border-primary/30 border-t-primary rounded-full...[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m16 |[0m       </section>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m17 |[0m     ),
+  [90m   |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m18 |[0m   },
+  [90m   |[0m [31m[1m^^^^[0m
+[31m[1m>[0m [90m19 |[0m );
+  [90m   |[0m [31m[1m^[0m
+  [90m20 |[0m [36mconst[0m [33mBrandSpotlight[0m = dynamic(
+  [90m21 |[0m   () =>
+  [90m22 |[0m     [36mimport[0m([32m"@/components/home/BrandSpotlight"[0m).then((m) => m.[33mBrandSpotlight[0m),
+
+Ecmascript file had an error
+
+
+
+./src/app/page.tsx:20:24
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  [90m18 |[0m   },
+  [90m19 |[0m );
+[31m[1m>[0m [90m20 |[0m [36mconst[0m [33mBrandSpotlight[0m = dynamic(
+  [90m   |[0m                        [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m21 |[0m   () =>
+  [90m   |[0m [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m22 |[0m     [36mimport[0m([32m"@/components/home/BrandSpotlight"[0m).then((m) => m.[33mBrandSpotlight[0m),
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m23 |[0m   {
+  [90m   |[0m [31m[1m^^^[0m
+[31m[1m>[0m [90m24 |[0m     ssr: [36mfalse[0m,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m25 |[0m     loading: () => (
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m26 |[0m       <div className=[32m"py-20 bg-gradient-to-b from-bg-dark to-surface"[0m>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m27 |[0m         <div className=[32m"max-w-7xl mx-auto px-4 space-y-8"[0m>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m28 |[0m           <div className=[32m"h-8 w-48 bg-surface-2 rounded mx-auto"[0m />
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m29 |[0m           <div className=[32m"h-4 w-72 bg-surface-2 rounded mx-auto mb-12"[0m />
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m30 |[0m         </div>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m31 |[0m       </div>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m32 |[0m     ),
+  [90m   |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m33 |[0m   },
+  [90m   |[0m [31m[1m^^^^[0m
+[31m[1m>[0m [90m34 |[0m );
+  [90m   |[0m [31m[1m^[0m
+  [90m35 |[0m [36mconst[0m [33mStatsCounter[0m = dynamic(
+  [90m36 |[0m   () => [36mimport[0m([32m"@/components/home/StatsCounter"[0m).then((m) => m.[33mStatsCounter[0m),
+  [90m37 |[0m   {
+
+Ecmascript file had an error
+
+
+
+./src/app/page.tsx:35:22
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  [90m33 |[0m   },
+  [90m34 |[0m );
+[31m[1m>[0m [90m35 |[0m [36mconst[0m [33mStatsCounter[0m = dynamic(
+  [90m   |[0m                      [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m36 |[0m   () => [36mimport[0m([32m"@/components/home/StatsCounter"[0m).then((m) => m.[33mStatsCounter[0m),
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m37 |[0m   {
+  [90m   |[0m [31m[1m^^^[0m
+[31m[1m>[0m [90m38 |[0m     ssr: [36mfalse[0m,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m39 |[0m     loading: () => (
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m40 |[0m       <div className=[32m"py-16 bg-surface"[0m>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m41 |[0m         <div className=[32m"max-w-7xl mx-auto px-4 flex justify-center gap-12"[0m>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m42 |[0m           {[[35m1[0m, [35m2[0m, [35m3[0m, [35m4[0m].map((i) => (
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m43 |[0m             <div
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m44 |[0m               key={i}
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m45 |[0m               className=[32m"h-16 w-24 bg-surface-2 rounded animate-pulse"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m46 |[0m             />
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m47 |[0m           ))}
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m48 |[0m         </div>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m49 |[0m       </div>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m50 |[0m     ),
+  [90m   |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m51 |[0m   },
+  [90m   |[0m [31m[1m^^^^[0m
+[31m[1m>[0m [90m52 |[0m );
+  [90m   |[0m [31m[1m^[0m
+  [90m53 |[0m [36mconst[0m [33mCategoriesGrid[0m = dynamic(
+  [90m54 |[0m   () =>
+  [90m55 |[0m     [36mimport[0m([32m"@/components/home/CategoriesGrid"[0m).then((m) => m.[33mCategoriesGrid[0m),
+
+Ecmascript file had an error
+
+
+
+./src/app/page.tsx:53:24
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  [90m51 |[0m   },
+  [90m52 |[0m );
+[31m[1m>[0m [90m53 |[0m [36mconst[0m [33mCategoriesGrid[0m = dynamic(
+  [90m   |[0m                        [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m54 |[0m   () =>
+  [90m   |[0m [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m55 |[0m     [36mimport[0m([32m"@/components/home/CategoriesGrid"[0m).then((m) => m.[33mCategoriesGrid[0m),
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m56 |[0m   {
+  [90m   |[0m [31m[1m^^^[0m
+[31m[1m>[0m [90m57 |[0m     ssr: [36mfalse[0m,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m58 |[0m     loading: () => (
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m59 |[0m       <div className=[32m"py-20 bg-bg-body"[0m>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m60 |[0m         <div className=[32m"max-w-7xl mx-auto px-4 grid grid-cols-2 md:grid-cols-4 gap-4"[0m>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m61 |[0m           {[33mArray[0m.[36mfrom[0m({ length: [35m8[0m }).map((_, i) => (
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m62 |[0m             <div key={i} className=[32m"h-32 bg-surface rounded-xl animate-pulse"[0m />
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m63 |[0m           ))}
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m64 |[0m         </div>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m65 |[0m       </div>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m66 |[0m     ),
+  [90m   |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m67 |[0m   },
+  [90m   |[0m [31m[1m^^^^[0m
+[31m[1m>[0m [90m68 |[0m );
+  [90m   |[0m [31m[1m^[0m
+  [90m69 |[0m [36mconst[0m [33mWorkloadSolutions[0m = dynamic(
+  [90m70 |[0m   () =>
+  [90m71 |[0m     [36mimport[0m([32m"@/components/home/WorkloadSolutions"[0m).then(
+
+Ecmascript file had an error
+
+
+
+./src/app/page.tsx:69:27
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  [90m67 |[0m   },
+  [90m68 |[0m );
+[31m[1m>[0m [90m69 |[0m [36mconst[0m [33mWorkloadSolutions[0m = dynamic(
+  [90m   |[0m                           [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m70 |[0m   () =>
+  [90m   |[0m [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m71 |[0m     [36mimport[0m([32m"@/components/home/WorkloadSolutions"[0m).then(
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m72 |[0m       (m) => m.[33mWorkloadSolutions[0m,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m73 |[0m     ),
+  [90m   |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m74 |[0m   {
+  [90m   |[0m [31m[1m^^^[0m
+[31m[1m>[0m [90m75 |[0m     ssr: [36mfalse[0m,
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m76 |[0m     loading: () => (
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m77 |[0m       <div className=[32m"py-20 bg-surface"[0m>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m78 |[0m         <div className=[32m"max-w-7xl mx-auto px-4 space-y-6"[0m>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m79 |[0m           <div className=[32m"h-8 w-56 bg-surface-2 rounded"[0m />
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m80 |[0m           <div className=[32m"grid md:grid-cols-3 gap-6"[0m>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m81 |[0m             {[[35m1[0m, [35m2[0m, [35m3[0m].map((i) => (
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m82 |[0m               <div
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m83 |[0m                 key={i}
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m84 |[0m                 className=[32m"h-48 bg-surface-2 rounded-xl animate-pulse"[0m
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m85 |[0m               />
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m86 |[0m             ))}
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m87 |[0m           </div>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m88 |[0m         </div>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m89 |[0m       </div>
+  [90m   |[0m [31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m90 |[0m     ),
+  [90m   |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m91 |[0m   },
+  [90m   |[0m [31m[1m^^^^[0m
+[31m[1m>[0m [90m92 |[0m );
+  [90m   |[0m [31m[1m^[0m
+  [90m93 |[0m [36mconst[0m [33mServicesShowcase[0m = dynamic(
+  [90m94 |[0m   () =>
+  [90m95 |[0m     [36mimport[0m([32m"@/components/home/ServicesShowcase"[0m).then(
+
+Ecmascript file had an error
+
+
+
+./src/app/page.tsx:93:26
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  [90m 91 |[0m   },
+  [90m 92 |[0m );
+[31m[1m>[0m [90m 93 |[0m [36mconst[0m [33mServicesShowcase[0m = dynamic(
+  [90m    |[0m                          [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m 94 |[0m   () =>
+  [90m    |[0m [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m 95 |[0m     [36mimport[0m([32m"@/components/home/ServicesShowcase"[0m).then(
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m 96 |[0m       (m) => m.[33mServicesShowcase[0m,
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m 97 |[0m     ),
+  [90m    |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m 98 |[0m   {
+  [90m    |[0m [31m[1m^^^[0m
+[31m[1m>[0m [90m 99 |[0m     ssr: [36mfalse[0m,
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m100 |[0m     loading: () => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m101 |[0m       <div className=[32m"py-20 bg-bg-dark"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m102 |[0m         <div className=[32m"max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-8"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m103 |[0m           {[[35m1[0m, [35m2[0m].map((i) => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m104 |[0m             <div key={i} className=[32m"h-64 bg-surface rounded-xl animate-pulse"[0m />
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m105 |[0m           ))}
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m106 |[0m         </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m107 |[0m       </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m108 |[0m     ),
+  [90m    |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m109 |[0m   },
+  [90m    |[0m [31m[1m^^^^[0m
+[31m[1m>[0m [90m110 |[0m );
+  [90m    |[0m [31m[1m^[0m
+  [90m111 |[0m [36mconst[0m [33mFeaturedChips[0m = dynamic(
+  [90m112 |[0m   () => [36mimport[0m([32m"@/components/home/FeaturedChips"[0m).then((m) => m.[33mFeaturedChips[0m),
+  [90m113 |[0m   {
+
+Ecmascript file had an error
+
+
+
+./src/app/page.tsx:111:23
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  [90m109 |[0m   },
+  [90m110 |[0m );
+[31m[1m>[0m [90m111 |[0m [36mconst[0m [33mFeaturedChips[0m = dynamic(
+  [90m    |[0m                       [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m112 |[0m   () => [36mimport[0m([32m"@/components/home/FeaturedChips"[0m).then((m) => m.[33mFeaturedChips[0m),
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m113 |[0m   {
+  [90m    |[0m [31m[1m^^^[0m
+[31m[1m>[0m [90m114 |[0m     ssr: [36mfalse[0m,
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m115 |[0m     loading: () => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m116 |[0m       <div className=[32m"py-20 bg-surface"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m117 |[0m         <div className=[32m"max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-6"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m118 |[0m           {[33mArray[0m.[36mfrom[0m({ length: [35m6[0m }).map((_, i) => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m119 |[0m             <div
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m120 |[0m               key={i}
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m121 |[0m               className=[32m"h-64 bg-surface-2 rounded-xl animate-pulse"[0m
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m122 |[0m             />
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m123 |[0m           ))}
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m124 |[0m         </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m125 |[0m       </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m126 |[0m     ),
+  [90m    |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m127 |[0m   },
+  [90m    |[0m [31m[1m^^^^[0m
+[31m[1m>[0m [90m128 |[0m );
+  [90m    |[0m [31m[1m^[0m
+  [90m129 |[0m [36mconst[0m [33mTechnology[0m = dynamic(
+  [90m130 |[0m   () => [36mimport[0m([32m"@/components/home/Technology"[0m).then((m) => m.[33mTechnology[0m),
+  [90m131 |[0m   {
+
+Ecmascript file had an error
+
+
+
+./src/app/page.tsx:129:20
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  [90m127 |[0m   },
+  [90m128 |[0m );
+[31m[1m>[0m [90m129 |[0m [36mconst[0m [33mTechnology[0m = dynamic(
+  [90m    |[0m                    [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m130 |[0m   () => [36mimport[0m([32m"@/components/home/Technology"[0m).then((m) => m.[33mTechnology[0m),
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m131 |[0m   {
+  [90m    |[0m [31m[1m^^^[0m
+[31m[1m>[0m [90m132 |[0m     ssr: [36mfalse[0m,
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m133 |[0m     loading: () => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m134 |[0m       <div className=[32m"py-20 bg-bg-body"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m135 |[0m         <div className=[32m"max-w-7xl mx-auto px-4"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m136 |[0m           <div className=[32m"h-48 bg-surface rounded-xl animate-pulse"[0m />
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m137 |[0m         </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m138 |[0m       </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m139 |[0m     ),
+  [90m    |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m140 |[0m   },
+  [90m    |[0m [31m[1m^^^^[0m
+[31m[1m>[0m [90m141 |[0m );
+  [90m    |[0m [31m[1m^[0m
+  [90m142 |[0m [36mconst[0m [33mWhyServchip[0m = dynamic(
+  [90m143 |[0m   () => [36mimport[0m([32m"@/components/home/WhyServchip"[0m).then((m) => m.[33mWhyServchip[0m),
+  [90m144 |[0m   {
+
+Ecmascript file had an error
+
+
+
+./src/app/page.tsx:142:21
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  [90m140 |[0m   },
+  [90m141 |[0m );
+[31m[1m>[0m [90m142 |[0m [36mconst[0m [33mWhyServchip[0m = dynamic(
+  [90m    |[0m                     [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m143 |[0m   () => [36mimport[0m([32m"@/components/home/WhyServchip"[0m).then((m) => m.[33mWhyServchip[0m),
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m144 |[0m   {
+  [90m    |[0m [31m[1m^^^[0m
+[31m[1m>[0m [90m145 |[0m     ssr: [36mfalse[0m,
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m146 |[0m     loading: () => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m147 |[0m       <div className=[32m"py-20 bg-surface"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m148 |[0m         <div className=[32m"max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-6"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m149 |[0m           {[[35m1[0m, [35m2[0m, [35m3[0m].map((i) => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m150 |[0m             <div
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m151 |[0m               key={i}
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m152 |[0m               className=[32m"h-40 bg-surface-2 rounded-xl animate-pulse"[0m
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m153 |[0m             />
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m154 |[0m           ))}
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m155 |[0m         </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m156 |[0m       </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m157 |[0m     ),
+  [90m    |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m158 |[0m   },
+  [90m    |[0m [31m[1m^^^^[0m
+[31m[1m>[0m [90m159 |[0m );
+  [90m    |[0m [31m[1m^[0m
+  [90m160 |[0m [36mconst[0m [33mComparisonPreview[0m = dynamic(
+  [90m161 |[0m   () =>
+  [90m162 |[0m     [36mimport[0m([32m"@/components/home/ComparisonPreview"[0m).then(
+
+Ecmascript file had an error
+
+
+
+./src/app/page.tsx:160:27
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  [90m158 |[0m   },
+  [90m159 |[0m );
+[31m[1m>[0m [90m160 |[0m [36mconst[0m [33mComparisonPreview[0m = dynamic(
+  [90m    |[0m                           [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m161 |[0m   () =>
+  [90m    |[0m [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m162 |[0m     [36mimport[0m([32m"@/components/home/ComparisonPreview"[0m).then(
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m163 |[0m       (m) => m.[33mComparisonPreview[0m,
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m164 |[0m     ),
+  [90m    |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m165 |[0m   {
+  [90m    |[0m [31m[1m^^^[0m
+[31m[1m>[0m [90m166 |[0m     ssr: [36mfalse[0m,
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m167 |[0m     loading: () => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m168 |[0m       <div className=[32m"py-20 bg-bg-dark"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m169 |[0m         <div className=[32m"max-w-7xl mx-auto px-4"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m170 |[0m           <div className=[32m"h-64 bg-surface rounded-xl animate-pulse"[0m />
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m171 |[0m         </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m172 |[0m       </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m173 |[0m     ),
+  [90m    |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m174 |[0m   },
+  [90m    |[0m [31m[1m^^^^[0m
+[31m[1m>[0m [90m175 |[0m );
+  [90m    |[0m [31m[1m^[0m
+  [90m176 |[0m [36mconst[0m [33mHowItWorks[0m = dynamic(
+  [90m177 |[0m   () => [36mimport[0m([32m"@/components/home/HowItWorks"[0m).then((m) => m.[33mHowItWorks[0m),
+  [90m178 |[0m   {
+
+Ecmascript file had an error
+
+
+
+./src/app/page.tsx:176:20
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  [90m174 |[0m   },
+  [90m175 |[0m );
+[31m[1m>[0m [90m176 |[0m [36mconst[0m [33mHowItWorks[0m = dynamic(
+  [90m    |[0m                    [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m177 |[0m   () => [36mimport[0m([32m"@/components/home/HowItWorks"[0m).then((m) => m.[33mHowItWorks[0m),
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m178 |[0m   {
+  [90m    |[0m [31m[1m^^^[0m
+[31m[1m>[0m [90m179 |[0m     ssr: [36mfalse[0m,
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m180 |[0m     loading: () => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m181 |[0m       <div className=[32m"py-20 bg-surface"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m182 |[0m         <div className=[32m"max-w-7xl mx-auto px-4 grid md:grid-cols-4 gap-6"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m183 |[0m           {[[35m1[0m, [35m2[0m, [35m3[0m, [35m4[0m].map((i) => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m184 |[0m             <div
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m185 |[0m               key={i}
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m186 |[0m               className=[32m"h-32 bg-surface-2 rounded-xl animate-pulse"[0m
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m187 |[0m             />
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m188 |[0m           ))}
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m189 |[0m         </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m190 |[0m       </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m191 |[0m     ),
+  [90m    |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m192 |[0m   },
+  [90m    |[0m [31m[1m^^^^[0m
+[31m[1m>[0m [90m193 |[0m );
+  [90m    |[0m [31m[1m^[0m
+  [90m194 |[0m [36mconst[0m [33mSuccessStories[0m = dynamic(
+  [90m195 |[0m   () =>
+  [90m196 |[0m     [36mimport[0m([32m"@/components/home/SuccessStories"[0m).then((m) => m.[33mSuccessStories[0m),
+
+Ecmascript file had an error
+
+
+
+./src/app/page.tsx:194:24
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  [90m192 |[0m   },
+  [90m193 |[0m );
+[31m[1m>[0m [90m194 |[0m [36mconst[0m [33mSuccessStories[0m = dynamic(
+  [90m    |[0m                        [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m195 |[0m   () =>
+  [90m    |[0m [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m196 |[0m     [36mimport[0m([32m"@/components/home/SuccessStories"[0m).then((m) => m.[33mSuccessStories[0m),
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m197 |[0m   {
+  [90m    |[0m [31m[1m^^^[0m
+[31m[1m>[0m [90m198 |[0m     ssr: [36mfalse[0m,
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m199 |[0m     loading: () => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m200 |[0m       <div className=[32m"py-20 bg-bg-body"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m201 |[0m         <div className=[32m"max-w-7xl mx-auto px-4 grid md:grid-cols-2 gap-6"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m202 |[0m           {[[35m1[0m, [35m2[0m].map((i) => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m203 |[0m             <div key={i} className=[32m"h-48 bg-surface rounded-xl animate-pulse"[0m />
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m204 |[0m           ))}
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m205 |[0m         </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m206 |[0m       </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m207 |[0m     ),
+  [90m    |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m208 |[0m   },
+  [90m    |[0m [31m[1m^^^^[0m
+[31m[1m>[0m [90m209 |[0m );
+  [90m    |[0m [31m[1m^[0m
+  [90m210 |[0m [36mconst[0m [33mFAQAccordion[0m = dynamic(
+  [90m211 |[0m   () => [36mimport[0m([32m"@/components/home/FAQAccordion"[0m).then((m) => m.[33mFAQAccordion[0m),
+  [90m212 |[0m   {
+
+Ecmascript file had an error
+
+
+
+./src/app/page.tsx:210:22
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  [90m208 |[0m   },
+  [90m209 |[0m );
+[31m[1m>[0m [90m210 |[0m [36mconst[0m [33mFAQAccordion[0m = dynamic(
+  [90m    |[0m                      [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m211 |[0m   () => [36mimport[0m([32m"@/components/home/FAQAccordion"[0m).then((m) => m.[33mFAQAccordion[0m),
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m212 |[0m   {
+  [90m    |[0m [31m[1m^^^[0m
+[31m[1m>[0m [90m213 |[0m     ssr: [36mfalse[0m,
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m214 |[0m     loading: () => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m215 |[0m       <div className=[32m"py-20 bg-surface"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m216 |[0m         <div className=[32m"max-w-3xl mx-auto px-4 space-y-3"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m217 |[0m           {[33mArray[0m.[36mfrom[0m({ length: [35m5[0m }).map((_, i) => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m218 |[0m             <div
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m219 |[0m               key={i}
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m220 |[0m               className=[32m"h-14 bg-surface-2 rounded-xl animate-pulse"[0m
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m221 |[0m             />
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m222 |[0m           ))}
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m223 |[0m         </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m224 |[0m       </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m225 |[0m     ),
+  [90m    |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m226 |[0m   },
+  [90m    |[0m [31m[1m^^^^[0m
+[31m[1m>[0m [90m227 |[0m );
+  [90m    |[0m [31m[1m^[0m
+  [90m228 |[0m [36mconst[0m [33mLatestInsights[0m = dynamic(
+  [90m229 |[0m   () =>
+  [90m230 |[0m     [36mimport[0m([32m"@/components/home/LatestInsights"[0m).then((m) => m.[33mLatestInsights[0m),
+
+Ecmascript file had an error
+
+
+
+./src/app/page.tsx:228:24
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  [90m226 |[0m   },
+  [90m227 |[0m );
+[31m[1m>[0m [90m228 |[0m [36mconst[0m [33mLatestInsights[0m = dynamic(
+  [90m    |[0m                        [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m229 |[0m   () =>
+  [90m    |[0m [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m230 |[0m     [36mimport[0m([32m"@/components/home/LatestInsights"[0m).then((m) => m.[33mLatestInsights[0m),
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m231 |[0m   {
+  [90m    |[0m [31m[1m^^^[0m
+[31m[1m>[0m [90m232 |[0m     ssr: [36mfalse[0m,
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m233 |[0m     loading: () => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m234 |[0m       <div className=[32m"py-20 bg-bg-dark"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m235 |[0m         <div className=[32m"max-w-7xl mx-auto px-4 grid md:grid-cols-3 gap-6"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m236 |[0m           {[[35m1[0m, [35m2[0m, [35m3[0m].map((i) => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m237 |[0m             <div key={i} className=[32m"h-64 bg-surface rounded-xl animate-pulse"[0m />
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m238 |[0m           ))}
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m239 |[0m         </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m240 |[0m       </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m241 |[0m     ),
+  [90m    |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m242 |[0m   },
+  [90m    |[0m [31m[1m^^^^[0m
+[31m[1m>[0m [90m243 |[0m );
+  [90m    |[0m [31m[1m^[0m
+  [90m244 |[0m [36mconst[0m [33mFinalCTA[0m = dynamic(
+  [90m245 |[0m   () => [36mimport[0m([32m"@/components/home/FinalCTA"[0m).then((m) => m.[33mFinalCTA[0m),
+  [90m246 |[0m   {
+
+Ecmascript file had an error
+
+
+
+./src/app/page.tsx:244:18
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  [90m242 |[0m   },
+  [90m243 |[0m );
+[31m[1m>[0m [90m244 |[0m [36mconst[0m [33mFinalCTA[0m = dynamic(
+  [90m    |[0m                  [31m[1m^^^^^^^[0m
+[31m[1m>[0m [90m245 |[0m   () => [36mimport[0m([32m"@/components/home/FinalCTA"[0m).then((m) => m.[33mFinalCTA[0m),
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m246 |[0m   {
+  [90m    |[0m [31m[1m^^^[0m
+[31m[1m>[0m [90m247 |[0m     ssr: [36mfalse[0m,
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m248 |[0m     loading: () => (
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m249 |[0m       <div className=[32m"py-20 bg-bg-dark"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m250 |[0m         <div className=[32m"max-w-3xl mx-auto px-4 text-center"[0m>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m251 |[0m           <div className=[32m"h-10 w-64 bg-surface-2 rounded mx-auto mb-4 animate-pulse"[0m />
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m252 |[0m           <div className=[32m"h-4 w-96 bg-surface-2 rounded mx-auto animate-pulse"[0m />
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m253 |[0m         </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m254 |[0m       </div>
+  [90m    |[0m [31m[1m^^^^^^^^^^^^[0m
+[31m[1m>[0m [90m255 |[0m     ),
+  [90m    |[0m [31m[1m^^^^^^[0m
+[31m[1m>[0m [90m256 |[0m   },
+  [90m    |[0m [31m[1m^^^^[0m
+[31m[1m>[0m [90m257 |[0m );
+  [90m    |[0m [31m[1m^[0m
+  [90m258 |[0m
+  [90m259 |[0m [36mexport[0m [36mconst[0m metadata: [33mMetadata[0m = {
+  [90m260 |[0m   title: [32m"Servchip — Enterprise Chip Distributor for AI, HPC & Data Centers"[0m,
+
+Ecmascript file had an error
+
+
+ GET / 500 in 7.5s (next.js: 3.6s, application-code: 3.9s)
+○ Compiling /products ...
+ GET /about 500 in 767ms (next.js: 522ms, application-code: 245ms)
+ GET /contact 500 in 1180ms (next.js: 988ms, application-code: 192ms)
+✓ Finished writing to filesystem cache in 12.0s
+ GET /blog 500 in 1649ms (next.js: 1483ms, application-code: 166ms)
+✓ Finished filesystem cache database compaction in 32.9s
+ GET /rfq 500 in 1101ms (next.js: 899ms, application-code: 202ms)
+✓ Finished filesystem cache database compaction in 36.6s
+✓ Finished writing to filesystem cache in 29.7s
+○ Compiling /[...not-found] ...
+[browser] Encountered a script tag while rendering React component. Scripts inside React components are never executed when rendering on the client. Consider using template tag instead (https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template). 
+    at completeWork (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:6945:102)
+    at runWithFiberInDEV (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:965:74)
+    at completeUnitOfWork (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9622:23)
+    at performUnitOfWork (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9557:28)
+    at workLoopSync (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9449:40)
+    at renderRootSync (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9433:13)
+    at performWorkOnRoot (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9098:47)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_1amofcm._.js:2647:64) (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:6945:102)
+[browser] Uncaught Error: Hydration failed because the server rendered HTML didn't match the client. As a result this tree will be regenerated on the client. This can happen if a SSR-ed Client Component used:
+
+- A server/client branch `if (typeof window !== 'undefined')`.
+- Variable input such as `Date.now()` or `Math.random()` which changes each time it's called.
+- Date formatting in a user's locale which doesn't match the server.
+- External changing data without sending a snapshot of it along with the HTML.
+- Invalid HTML tag nesting.
+
+It can also happen if the client has a browser extension installed which messes with the HTML before React loaded.
+
+https://react.dev/link/hydration-mismatch
+
+  ...
+    <ErrorBoundary errorComponent={function ErrorPage} errorStyles={<SegmentViewNode>} errorScripts={[...]}>
+      <ErrorBoundaryHandler pathname="/" errorComponent={function ErrorPage} errorStyles={<SegmentViewNode>} ...>
+        <LoadingBoundary name="/" loading={null}>
+          <HTTPAccessFallbackBoundary notFound={<SegmentViewNode>} forbidden={undefined} unauthorized={undefined}>
+            <HTTPAccessFallbackErrorBoundary pathname="/" notFound={<SegmentViewNode>} forbidden={undefined} ...>
+              <RedirectBoundary>
+                <RedirectErrorBoundary router={{...}}>
+                  <InnerLayoutRouter url="/" tree={[...]} params={{}} cacheNode={{rsc:<Fragment>, ...}} ...>
+                    <SegmentViewNode type="page" pagePath="page.tsx">
+                      <SegmentTrieNode>
+                      <HomePage>
+                        <Hero3D>
+                          <section className="relative m..." style={{...}}>
+                            <style>
+                            <HeroBgSlider>
+                            <div>
+                            <div>
+                            <div>
+                            <div>
+                            <FloatingOrbs>
+                            <ParticleField>
++                             <canvas
++                               ref={{current:null}}
++                               className="absolute inset-0 w-full h-full pointer-events-none"
++                             >
+-                             <div
+-                               className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba..."
+-                             >
+                            ...
+                        ...
+                    ...
+                  ...
+
+    at <unknown> (https://react.dev/link/hydration-mismatch)
+    at throwOnHydrationMismatch (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:3318:56)
+    at beginWork (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:6758:918)
+    at runWithFiberInDEV (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:965:74)
+    at performUnitOfWork (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9555:97)
+    at workLoopConcurrentByScheduler (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9551:58)
+    at renderRootConcurrent (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9534:71)
+    at performWorkOnRoot (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:9061:150)
+    at performWorkOnRootViaSchedulerTask (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_react-dom_096_9a-._.js:10255:9)
+    at MessagePort.performWorkUntilDeadline (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_compiled_1amofcm._.js:2647:64)
+    at canvas (<anonymous>)
+    at ParticleField (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/src_14ix9be._.js:839:214)
+    at Hero3D (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/src_14ix9be._.js:1004:228)
+    at HomePage (about://React/Server/C:%5CUsers%5Cmd%20majdi%5CDesktop%5Cnegbuy%5Cservchip%5Cfrontend%5C.next%5Cdev%5Cserver%5Cchunks%5Cssr%5C%5Broot-of-the-server%5D__0dg1y1r._.js?11:698:264)
+[browser] ./src/app/page.tsx:244:18
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  242 |   },
+  243 | );
+> 244 | const FinalCTA = dynamic(
+      |                  ^^^^^^^
+> 245 |   () => import("@/components/home/FinalCTA").then((m) => m.FinalCTA),
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 246 |   {
+      | ^^^
+> 247 |     ssr: false,
+      | ^^^^^^^^^^^^^^^
+> 248 |     loading: () => (
+      | ^^^^^^^^^^^^^^^^^^^^
+> 249 |       <div className="py-20 bg-bg-dark">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 250 |         <div className="max-w-3xl mx-auto px-4 text-center">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 251 |           <div className="h-10 w-64 bg-surface-2 rounded mx-auto mb-4 animate-pulse" />
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 252 |           <div className="h-4 w-96 bg-surface-2 rounded mx-auto animate-pulse" />
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 253 |         </div>
+      | ^^^^^^^^^^^^^^
+> 254 |       </div>
+      | ^^^^^^^^^^^^
+> 255 |     ),
+      | ^^^^^^
+> 256 |   },
+      | ^^^^
+> 257 | );
+      | ^
+  258 |
+  259 | export const metadata: Metadata = {
+  260 |   title: "Servchip — Enterprise Chip Distributor for AI, HPC & Data Centers",
+
+Ecmascript file had an error 
+    at handleErrors (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_client_0r5nbpw._.js:13951:21)
+    at processMessage (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_client_0r5nbpw._.js:14014:21)
+    at WebSocket.handleMessage (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_client_0r5nbpw._.js:13458:52) (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_client_0r5nbpw._.js:13951:21)
+ GET /images/logos/skhynix.svg 500 in 20.2s (next.js: 18.8s, application-code: 1368ms)
+[browser] ./src/app/page.tsx:244:18
+`ssr: false` is not allowed with `next/dynamic` in Server Components. Please move it into a Client Component.
+  242 |   },
+  243 | );
+> 244 | const FinalCTA = dynamic(
+      |                  ^^^^^^^
+> 245 |   () => import("@/components/home/FinalCTA").then((m) => m.FinalCTA),
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 246 |   {
+      | ^^^
+> 247 |     ssr: false,
+      | ^^^^^^^^^^^^^^^
+> 248 |     loading: () => (
+      | ^^^^^^^^^^^^^^^^^^^^
+> 249 |       <div className="py-20 bg-bg-dark">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 250 |         <div className="max-w-3xl mx-auto px-4 text-center">
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 251 |           <div className="h-10 w-64 bg-surface-2 rounded mx-auto mb-4 animate-pulse" />
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 252 |           <div className="h-4 w-96 bg-surface-2 rounded mx-auto animate-pulse" />
+      | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+> 253 |         </div>
+      | ^^^^^^^^^^^^^^
+> 254 |       </div>
+      | ^^^^^^^^^^^^
+> 255 |     ),
+      | ^^^^^^
+> 256 |   },
+      | ^^^^
+> 257 | );
+      | ^
+  258 |
+  259 | export const metadata: Metadata = {
+  260 |   title: "Servchip — Enterprise Chip Distributor for AI, HPC & Data Centers",
+
+Ecmascript file had an error 
+    at handleErrors (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_client_0r5nbpw._.js:13951:21)
+    at processMessage (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_client_0r5nbpw._.js:14014:21)
+    at WebSocket.handleMessage (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_client_0r5nbpw._.js:13458:52) (file://C:/Users/md majdi/Desktop/negbuy/servchip/frontend/.next/dev/static/chunks/node_modules_next_dist_client_0r5nbpw._.js:13951:21)
+✓ Finished filesystem cache database compaction in 56s
+✓ Finished filesystem cache database compaction in 32.2s
+✓ Compiled in 6.6s
+✓ Compiled in 3s
+✓ Compiled in 2.6s

@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import * as Icons from "lucide-react";
 import {
   ArrowRight,
   ArrowLeft,
@@ -10,7 +9,30 @@ import {
   Zap,
   Sparkles,
   RotateCcw,
+  Brain,
+  Server,
+  BarChart3,
+  Radio,
+  HeartPulse,
+  Car,
+  Monitor,
+  Gamepad2,
+  Bot,
+  Circle,
 } from "lucide-react";
+
+const ICON_MAP: Record<string, typeof Brain> = {
+  Brain,
+  Zap,
+  Server,
+  BarChart3,
+  Radio,
+  HeartPulse,
+  Car,
+  Monitor,
+  Gamepad2,
+  Bot,
+};
 import { useRouter } from "next/navigation";
 import { Button } from "@/components/ui/Button";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -237,10 +259,7 @@ export default function ConfiguratorPage() {
                   </p>
                   <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                     {USE_CASES.map((uc) => {
-                      const Icon =
-                        (Icons as unknown as Record<string, Icons.LucideIcon>)[
-                          uc.icon
-                        ] || Icons.Circle;
+                      const Icon = ICON_MAP[uc.icon] || Circle;
                       const selected = useCase === uc.id;
                       return (
                         <button

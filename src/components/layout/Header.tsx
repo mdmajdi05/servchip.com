@@ -293,17 +293,17 @@ const SERVICES_COLUMNS = [
     links: [
       {
         label: "Hardware Procurement",
-        href: "/services/procurement",
+        href: "/services",
         description: "Global sourcing for enterprise chips",
       },
       {
         label: "Bulk & Wholesale",
-        href: "/services/bulk",
+        href: "/services",
         description: "Volume pricing for enterprises",
       },
       {
         label: "Hard-to-Find Parts",
-        href: "/services/hard-to-find",
+        href: "/services",
         description: "Legacy & scarce chip sourcing",
       },
     ],
@@ -313,17 +313,17 @@ const SERVICES_COLUMNS = [
     links: [
       {
         label: "Technical Support",
-        href: "/support",
+        href: "/contact",
         description: "Expert setup & troubleshooting",
       },
       {
         label: "Warranty & RMA",
-        href: "/support/warranty",
+        href: "/contact",
         description: "Hassle-free returns & replacements",
       },
       {
         label: "Integration Help",
-        href: "/support/integration",
+        href: "/contact",
         description: "Deployment & infrastructure",
       },
     ],
@@ -333,17 +333,17 @@ const SERVICES_COLUMNS = [
     links: [
       {
         label: "AI Infrastructure",
-        href: "/consulting/ai-infra",
+        href: "/services",
         description: "End-to-end AI stack design",
       },
       {
         label: "Data Center Planning",
-        href: "/consulting/datacenter",
+        href: "/services",
         description: "Scalable cluster architecture",
       },
       {
         label: "HPC Optimization",
-        href: "/consulting/hpc",
+        href: "/services",
         description: "Maximize workload performance",
       },
     ],

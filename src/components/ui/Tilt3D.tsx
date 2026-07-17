@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState, type ReactNode } from "react";
+import { useRef, useSyncExternalStore, type ReactNode } from "react";
 import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 
 interface Tilt3DProps {
@@ -16,10 +16,15 @@ interface Tilt3DProps {
 
 export function Tilt3D({ children, options = {}, className }: Tilt3DProps) {
   const { glare = true, scale = 1.02, speed = 15, maxAngle = 15 } = options;
-  const [isTouch] = useState(() => {
-    if (typeof window === "undefined") return true;
-    return !window.matchMedia("(hover: hover) and (pointer: fine)").matches;
-  });
+  const isTouch = useSyncExternalStore(
+    (cb) => {
+      const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
+      mq.addEventListener("change", cb);
+      return () => mq.removeEventListener("change", cb);
+    },
+    () => !window.matchMedia("(hover: hover) and (pointer: fine)").matches,
+    () => true,
+  );
   const ref = useRef<HTMLDivElement>(null);
 
   const x = useMotionValue(0.5);
