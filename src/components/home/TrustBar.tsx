@@ -1,7 +1,7 @@
 "use client";
 
 import { TRUST_BAR_ITEMS } from "@/data/home";
-import { getManufacturerColor } from "@/data/manufacturer-colors";
+import { getManufacturerTextColor } from "@/data/manufacturer-colors";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 
 const MANUFACTURER_NAMES = new Set([
@@ -35,7 +35,7 @@ export function TrustBar() {
         >
           {[...TRUST_BAR_ITEMS, ...TRUST_BAR_ITEMS].map((item, i) => {
             const isMfr = MANUFACTURER_NAMES.has(item.text);
-            const color = getManufacturerColor(item.text);
+            const color = getManufacturerTextColor(item.text);
             return (
               <div
                 key={`trust-${i}`}

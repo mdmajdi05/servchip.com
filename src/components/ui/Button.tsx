@@ -27,7 +27,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       disabled,
       ...props
     },
-    ref
+    ref,
   ) => {
     return (
       <button
@@ -44,13 +44,13 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
               variant === "ghost",
           },
           {
-            "px-3 py-1.5 text-xs": size === "sm",
-            "px-4 py-2 text-sm": size === "md",
+            "px-3 py-2.5 text-xs min-h-[44px]": size === "sm",
+            "px-4 py-2.5 text-sm min-h-[44px]": size === "md",
             "px-6 py-3 text-base": size === "lg",
             "px-8 py-4 text-lg": size === "xl",
           },
           fullWidth && "w-full",
-          className
+          className,
         )}
         {...props}
       >
@@ -63,7 +63,7 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         {icon && iconPosition === "right" && icon}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = "Button";

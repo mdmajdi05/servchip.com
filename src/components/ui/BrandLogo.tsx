@@ -1,5 +1,8 @@
 import Image from "next/image";
-import { MANUFACTURER_COLORS } from "@/data/manufacturer-colors";
+import {
+  MANUFACTURER_COLORS,
+  getManufacturerTextColor,
+} from "@/data/manufacturer-colors";
 
 interface BrandLogoProps {
   name: string;
@@ -67,6 +70,7 @@ export function BrandLogo({
   }
 
   const color = MANUFACTURER_COLORS[name] || "#6B7280";
+  const textColor = getManufacturerTextColor(name);
   const initials = name
     .split(/[\s-]+/)
     .map((w) => w[0])
@@ -80,7 +84,10 @@ export function BrandLogo({
         className="flex items-center justify-center rounded-lg shrink-0"
         style={{ backgroundColor: `${color}22` }}
       >
-        <span style={{ color }} className="text-[10px] font-black font-mono">
+        <span
+          style={{ color: textColor }}
+          className="text-[10px] font-black font-mono"
+        >
           {initials}
         </span>
       </div>
@@ -92,7 +99,10 @@ export function BrandLogo({
       className={`${className} flex items-center justify-center rounded-lg shrink-0`}
       style={{ backgroundColor: `${color}15` }}
     >
-      <span style={{ color }} className="text-xs font-bold font-mono">
+      <span
+        style={{ color: textColor }}
+        className="text-xs font-bold font-mono"
+      >
         {initials}
       </span>
     </div>

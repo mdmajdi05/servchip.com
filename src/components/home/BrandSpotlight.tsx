@@ -8,7 +8,10 @@ import Image from "next/image";
 import { ArrowRight, Cpu } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CHIPS } from "@/data/chips";
-import { MANUFACTURER_COLORS } from "@/data/manufacturer-colors";
+import {
+  MANUFACTURER_COLORS,
+  getManufacturerTextColor,
+} from "@/data/manufacturer-colors";
 
 // Group chips by manufacturer for the showcase
 const ENTERPRISE_ROWS = [
@@ -32,7 +35,7 @@ const ENTERPRISE_ROWS = [
     manufacturer: "Intel",
     chips: ["intel-gaudi-3", "intel-xeon-6980p", "intel-xeon-8490h"],
     image:
-      "https://images.unsplash.com/photo-1555618561-5b0e7a3f7b9a?w=600&q=80",
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
     desc: "Gaudi AI accelerators and Xeon processors for enterprise AI and data center workloads.",
     badge: "AI & Xeon",
   },
@@ -62,6 +65,7 @@ export function BrandSpotlight() {
         <div className="space-y-16">
           {ENTERPRISE_ROWS.map((row, index) => {
             const color = MANUFACTURER_COLORS[row.manufacturer] || "#76B900";
+            const textColor = getManufacturerTextColor(row.manufacturer);
             const isReversed = index % 2 === 1;
             const imgFailed = failedImages.has(row.manufacturer);
             const rowChips = getChipsForRow(row.chips);
@@ -100,7 +104,10 @@ export function BrandSpotlight() {
                     <div className="absolute bottom-4 left-4">
                       <span
                         className="text-xs font-bold px-3 py-1 rounded-full"
-                        style={{ backgroundColor: `${color}22`, color }}
+                        style={{
+                          backgroundColor: `${color}22`,
+                          color: textColor,
+                        }}
                       >
                         {row.manufacturer}
                       </span>
@@ -116,7 +123,7 @@ export function BrandSpotlight() {
                     </h3>
                     <span
                       className="text-xs font-bold px-3 py-1 rounded-full border"
-                      style={{ borderColor: color, color }}
+                      style={{ borderColor: textColor, color: textColor }}
                     >
                       {row.chips.length} Products
                     </span>
@@ -146,7 +153,10 @@ export function BrandSpotlight() {
                           <Link
                             href={`/products/${chip.slug}`}
                             className="text-xs font-semibold px-3 py-1.5 rounded-lg transition-all hover:scale-105 shrink-0"
-                            style={{ backgroundColor: `${color}22`, color }}
+                            style={{
+                              backgroundColor: `${color}22`,
+                              color: textColor,
+                            }}
                           >
                             Details
                           </Link>
@@ -159,7 +169,7 @@ export function BrandSpotlight() {
                     <Link
                       href={`/manufacturers/${row.manufacturer.toLowerCase()}`}
                       className="inline-flex items-center gap-1.5 text-sm font-semibold px-5 py-2.5 rounded-xl text-white transition-all duration-300 hover:scale-105"
-                      style={{ backgroundColor: color }}
+                      style={{ backgroundColor: textColor }}
                     >
                       View All {row.manufacturer} Products{" "}
                       <ArrowRight className="w-3.5 h-3.5" />

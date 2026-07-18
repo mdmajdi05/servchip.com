@@ -517,7 +517,7 @@ export const INSIGHT_POSTS: InsightPost[] = [
     category: "Comparison",
     slug: "h100-vs-mi300x-vs-gaudi3-comparison",
     image:
-      "https://images.unsplash.com/photo-1555618561-5b0e7a3f7b9a?w=400&h=250&fit=crop",
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=250&fit=crop",
   },
   {
     title:

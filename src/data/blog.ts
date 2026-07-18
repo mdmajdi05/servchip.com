@@ -134,7 +134,7 @@ export const BLOG_POSTS: BlogPost[] = [
       "Detailed comparison of the three leading AI accelerators — NVIDIA H100, AMD MI300X, and Intel Gaudi 3 — for training, inference, and HPC workloads.",
     content: "",
     featuredImage:
-      "https://images.unsplash.com/photo-1555618561-5b0e7a3f7b9a?w=800&h=450&fit=crop",
+      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=800&h=450&fit=crop",
     category: cat("comparison"),
     tags: [
       tag("ai-training"),

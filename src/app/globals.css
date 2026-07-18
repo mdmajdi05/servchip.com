@@ -117,11 +117,6 @@
 /* ============================================================
    RESET & BASE
    ============================================================ */
-html {
-  scrollbar-color: var(--border) transparent;
-  scrollbar-width: thin;
-}
-
 body {
   background: var(--bg-body);
   color: var(--text);

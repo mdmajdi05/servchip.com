@@ -181,9 +181,9 @@ const LOGOS = [
   { src: "/images/logos/marvell.svg", label: "Marvell" },
   { src: "/images/logos/samsung.svg", label: "Samsung" },
   { src: "/images/logos/micron.svg", label: "Micron" },
-  { src: "/images/logos/skhynix.svg", label: "SK hynix" },
+  { src: "/images/logos/sk-hynix.svg", label: "SK hynix" },
   { src: "/images/logos/kioxia.svg", label: "Kioxia" },
-  { src: "/images/logos/westerndigital.svg", label: "Western Digital" },
+  { src: "/images/logos/wdc.svg", label: "Western Digital" },
   { src: "/images/logos/seagate.svg", label: "Seagate" },
   { src: "/images/logos/dell.svg", label: "Dell" },
   { src: "/images/logos/hpe.svg", label: "HPE" },
@@ -280,7 +280,7 @@ export function Hero3D() {
             initial={{ opacity: 0, y: 15 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35 }}
-            className="text-slate-300 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto"
+            className="text-slate-300 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto min-h-[3.5rem]"
           >
             <span className="text-primary/60 mr-2 font-mono text-sm">&gt;</span>
             {displayText}
