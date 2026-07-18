@@ -53,7 +53,7 @@ function HeroBgSlider() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    DC_IMAGES.forEach((url) => {
+    DC_IMAGES.slice(1).forEach((url) => {
       const img = new Image();
       img.src = url;
     });

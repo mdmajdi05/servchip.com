@@ -337,9 +337,9 @@ export default function TechnologyPage() {
                 className="rounded-xl border border-border bg-surface p-5 card-hover"
               >
                 <card.icon className="w-7 h-7 text-primary mb-3" />
-                <h4 className="text-sm font-bold text-text mb-1">
+                <h3 className="text-sm font-bold text-text mb-1">
                   {card.title}
-                </h4>
+                </h3>
                 <p className="text-xs text-text-muted mb-3 leading-relaxed">
                   {card.description}
                 </p>
