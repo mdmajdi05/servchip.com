@@ -2,9 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import {
-  Mail, Send, MapPin, ChevronRight,
-} from "lucide-react";
+import { Mail, Send, MapPin, ChevronRight } from "lucide-react";
 import { AnimatedLogo } from "@/components/ui/AnimatedLogo";
 import { MANUFACTURERS } from "@/data/manufacturers";
 import { getManufacturerColor } from "@/data/manufacturer-colors";
@@ -51,14 +49,33 @@ function InstagramIcon({ className }: { className?: string }) {
 }
 
 const SOCIAL_LINKS = [
-  { name: "Facebook", href: "https://facebook.com/servchip", icon: FacebookIcon },
-  { name: "Twitter / X", href: "https://twitter.com/servchip", icon: TwitterIcon },
-  { name: "LinkedIn", href: "https://linkedin.com/company/servchip", icon: LinkedInIcon },
+  {
+    name: "Facebook",
+    href: "https://facebook.com/servchip",
+    icon: FacebookIcon,
+  },
+  {
+    name: "Twitter / X",
+    href: "https://twitter.com/servchip",
+    icon: TwitterIcon,
+  },
+  {
+    name: "LinkedIn",
+    href: "https://linkedin.com/company/servchip",
+    icon: LinkedInIcon,
+  },
   { name: "YouTube", href: "https://youtube.com/@servchip", icon: YouTubeIcon },
-  { name: "Instagram", href: "https://instagram.com/servchip", icon: InstagramIcon },
+  {
+    name: "Instagram",
+    href: "https://instagram.com/servchip",
+    icon: InstagramIcon,
+  },
 ];
 
-const FOOTER_LINKS: { title: string; links: { label: string; href: string; color?: string }[] }[] = [
+const FOOTER_LINKS: {
+  title: string;
+  links: { label: string; href: string; color?: string }[];
+}[] = [
   {
     title: "Products",
     links: [
@@ -72,7 +89,7 @@ const FOOTER_LINKS: { title: string; links: { label: string; href: string; color
   },
   {
     title: "Manufacturers",
-    links: MANUFACTURERS.slice(0, 8).map(m => ({
+    links: MANUFACTURERS.slice(0, 8).map((m) => ({
       label: m.name,
       href: `/manufacturers/${m.slug}`,
       color: getManufacturerColor(m.name),
@@ -81,10 +98,11 @@ const FOOTER_LINKS: { title: string; links: { label: string; href: string; color
   {
     title: "Resources",
     links: [
+      { label: "Solutions", href: "/solutions" },
       { label: "Technology", href: "/technology" },
       { label: "Blog", href: "/blog" },
+      { label: "Developer Hub", href: "/developer-hub" },
       { label: "Services", href: "/services" },
-      { label: "RFQ", href: "/rfq" },
     ],
   },
   {
@@ -120,10 +138,16 @@ export function Footer() {
           {/* Brand (2 cols) */}
           <div className="col-span-2">
             <Link href="/" className="mb-4 inline-block">
-              <AnimatedLogo size={32} showText textClassName="text-text font-bold text-sm tracking-tight" />
+              <AnimatedLogo
+                size={32}
+                showText
+                textClassName="text-text font-bold text-sm tracking-tight"
+              />
             </Link>
             <p className="text-text-dim text-xs leading-relaxed mb-5 max-w-xs">
-              Authorized distributor of authentic enterprise chips, servers, and data center hardware.
+              ISO 9001 certified enterprise chip distributor — authorized
+              partner for NVIDIA, AMD, Intel, and 27+ manufacturers. Buy AI
+              chips, semiconductor procurement & data center hardware globally.
             </p>
 
             {/* Social icons */}
@@ -149,11 +173,17 @@ export function Footer() {
             <div className="space-y-2.5">
               <div className="flex items-start gap-2 text-xs text-text-dim">
                 <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0 text-primary/60" />
-                <span><strong className="text-text-muted">India:</strong> {SITE.addresses.india}</span>
+                <span>
+                  <strong className="text-text-muted">India:</strong>{" "}
+                  {SITE.addresses.india}
+                </span>
               </div>
               <div className="flex items-start gap-2 text-xs text-text-dim">
                 <MapPin className="w-3.5 h-3.5 mt-0.5 shrink-0 text-primary/60" />
-                <span><strong className="text-text-muted">UAE:</strong> {SITE.addresses.uae}</span>
+                <span>
+                  <strong className="text-text-muted">UAE:</strong>{" "}
+                  {SITE.addresses.uae}
+                </span>
               </div>
               <a
                 href="mailto:sales@servchip.com"
@@ -202,7 +232,9 @@ export function Footer() {
         <div className="mt-12 pt-8 border-t border-border/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>
             <h4 className="text-sm font-bold text-text mb-1">Stay Updated</h4>
-            <p className="text-xs text-text-dim">Get the latest products and industry insights.</p>
+            <p className="text-xs text-text-dim">
+              Get the latest products and industry insights.
+            </p>
           </div>
           <NewsletterForm />
         </div>
@@ -213,9 +245,16 @@ export function Footer() {
             &copy; {new Date().getFullYear()} Servchip Inc. All rights reserved.
           </p>
           <div className="flex items-center gap-4">
-            <Link href="/privacy" className="hover:text-text transition-colors">Privacy</Link>
-            <Link href="/terms" className="hover:text-text transition-colors">Terms</Link>
-            <a href="mailto:sales@servchip.com" className="hover:text-primary transition-colors flex items-center gap-1">
+            <Link href="/privacy" className="hover:text-text transition-colors">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-text transition-colors">
+              Terms
+            </Link>
+            <a
+              href="mailto:sales@servchip.com"
+              className="hover:text-primary transition-colors flex items-center gap-1"
+            >
               <Mail className="w-3 h-3" /> Contact
             </a>
           </div>
@@ -227,7 +266,9 @@ export function Footer() {
 
 function NewsletterForm() {
   const [email, setEmail] = useState("");
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
   const [message, setMessage] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
@@ -262,18 +303,23 @@ function NewsletterForm() {
   return (
     <form onSubmit={handleSubmit} className="flex gap-2">
       <input
-        type="email" value={email} onChange={(e) => setEmail(e.target.value)}
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
         placeholder="your@email.com"
         className="w-56 px-3 py-2 text-sm bg-surface border border-border rounded-lg text-text placeholder:text-text-dim focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-all"
         required
       />
       <button
-        type="submit" disabled={status === "loading"}
+        type="submit"
+        disabled={status === "loading"}
         className="px-4 py-2 bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:shadow-lg hover:shadow-primary/30 transition-all disabled:opacity-50"
       >
         <Send className="w-4 h-4" />
       </button>
-      {status === "error" && <p className="text-xs text-error mt-1">{message}</p>}
+      {status === "error" && (
+        <p className="text-xs text-error mt-1">{message}</p>
+      )}
     </form>
   );
 }

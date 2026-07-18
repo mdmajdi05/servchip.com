@@ -328,7 +328,7 @@ export default function SolutionsPage() {
               Solutions by Industry
             </h2>
             <p className="text-base md:text-lg text-text-muted max-w-2xl mx-auto mt-3">
-              Eight specialized verticals, each backed by NVIDIA-certified
+              Eight specialized verticals, each backed by certified multi-vendor
               engineering expertise and proven reference architectures.
             </p>
           </div>
@@ -481,9 +481,9 @@ export default function SolutionsPage() {
                 Let us architect your solution
               </h3>
               <p className="text-sm text-text-muted max-w-2xl">
-                Our NVIDIA-certified engineers will design a complete reference
-                architecture tailored to your industry and workload — at no
-                cost.
+                Our multi-vendor certified engineers will design a complete
+                reference architecture tailored to your industry and workload —
+                at no cost.
               </p>
             </div>
             <div className="flex gap-3 shrink-0">

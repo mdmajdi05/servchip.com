@@ -1,6 +1,12 @@
 ﻿import type { Metadata } from "next";
 import { SITE } from "@/lib/constants";
-import { OG_IMAGE, OG_WIDTH, OG_HEIGHT, breadcrumbSchema } from "@/lib/seo";
+import {
+  OG_IMAGE,
+  OG_WIDTH,
+  OG_HEIGHT,
+  breadcrumbSchema,
+  jsonLd,
+} from "@/lib/seo";
 import PageClient from "./page-client";
 
 export const metadata: Metadata = {
@@ -45,6 +51,22 @@ export default function Page() {
           { name: "Home", url: "/" },
           { name: "About", url: "/about" },
         ])}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd({
+          "@type": "AboutPage",
+          name: "About Servchip — Enterprise Chip Distributor",
+          url: `${SITE.url}/about`,
+          mainEntity: {
+            "@type": "Organization",
+            name: "Servchip Inc.",
+            url: SITE.url,
+            foundingDate: "2018",
+            description:
+              "ISO 9001 certified enterprise chip distributor supplying NVIDIA, AMD, Intel, and 27+ manufacturers. Semiconductor procurement partner for 500+ enterprises across 150+ countries.",
+          },
+        })}
       />
       <PageClient />
     </>

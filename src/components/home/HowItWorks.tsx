@@ -12,7 +12,7 @@ export function HowItWorks() {
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           label="How It Works"
-          title="Get Your Chips in 3 Simple Steps"
+          title="Buy Enterprise Chips in 3 Simple Steps"
           align="center"
         />
 

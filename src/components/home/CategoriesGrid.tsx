@@ -32,8 +32,8 @@ export function CategoriesGrid() {
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           label="Categories"
-          title="Browse by Chip Category"
-          subtitle="Find the perfect chip for your workload from our extensive catalog"
+          title="Enterprise AI Chips, GPUs & Server Hardware Categories"
+          subtitle="Browse authentic NVIDIA, AMD & Intel products across AI accelerators, server CPUs, networking, memory & storage"
           align="center"
         />
 

@@ -61,8 +61,8 @@ export function ServicesShowcase() {
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <SectionHeading
           label="Our Services"
-          title="End-to-End Enterprise Support"
-          subtitle="From sourcing to deployment — comprehensive services backed by decades of multi-vendor expertise"
+          title="Enterprise Chip Sourcing & Semiconductor Procurement Services"
+          subtitle="From AI accelerator sourcing to data center deployment — comprehensive services backed by multi-vendor expertise"
           align="center"
         />
 

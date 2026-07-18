@@ -124,8 +124,8 @@ export function WorkloadSolutions() {
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           label="By Workload"
-          title="Find the Right Hardware for Your Workload"
-          subtitle="Browse products optimized for your specific use case — from AI training to edge computing"
+          title="Enterprise AI Chips Matched to Your Workload"
+          subtitle="Browse NVIDIA, AMD & Intel products optimized for AI training, inference, HPC, data center & edge computing"
           align="center"
         />
 

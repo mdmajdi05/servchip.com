@@ -10,7 +10,7 @@ export function WhyServchip() {
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           label="Why Servchip"
-          title="The Trusted Source for Enterprise Chip Solutions"
+          title="Why Enterprises Choose Servchip for Semiconductor Procurement"
           align="center"
         />
 

@@ -1,7 +1,13 @@
 import type { Metadata } from "next";
 import { HomeSections } from "@/components/home/HomeSections";
 import { SITE } from "@/lib/constants";
-import { OG_IMAGE, OG_WIDTH, OG_HEIGHT, faqSchema } from "@/lib/seo";
+import {
+  OG_IMAGE,
+  OG_WIDTH,
+  OG_HEIGHT,
+  faqSchema,
+  breadcrumbSchema,
+} from "@/lib/seo";
 
 export const metadata: Metadata = {
   title: `${SITE.name} — Enterprise Chip Distributor for AI, HPC & Data Centers`,
@@ -85,6 +91,10 @@ const HOME_FAQS = [
 export default function HomePage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={breadcrumbSchema([{ name: "Home", url: "/" }])}
+      />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={faqSchema(HOME_FAQS)}

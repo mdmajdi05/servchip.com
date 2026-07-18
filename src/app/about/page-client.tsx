@@ -15,10 +15,10 @@ import {
 } from "lucide-react";
 
 const STATS = [
-  { value: "200+", label: "Enterprise Clients" },
-  { value: "5,000+", label: "Chips Delivered" },
-  { value: "150+", label: "Countries Served" },
-  { value: "99.9%", label: "Client Satisfaction" },
+  { value: "10,000+", label: "Enterprise Chips Supplied" },
+  { value: "500+", label: "Enterprise Clients Worldwide" },
+  { value: "27+", label: "Manufacturer Partnerships" },
+  { value: "99.9%", label: "Authenticity Rate" },
 ];
 
 const VALUES = [
@@ -90,13 +90,17 @@ export default function AboutPage() {
               Enterprise Chip Distributor — Est. 2018
             </div>
             <h1 className="text-4xl md:text-5xl font-black text-text mb-4 tracking-tight">
-              Powering Innovation with{" "}
-              <span className="gradient-text">Authentic Hardware</span>
+              Enterprise Chip Distributor &{" "}
+              <span className="gradient-text">
+                Semiconductor Procurement Partner
+              </span>
             </h1>
             <p className="text-text-muted text-base md:text-lg max-w-2xl mx-auto">
               Servchip is the trusted bridge between the world&apos;s leading
               chip manufacturers and the enterprises, researchers, and
-              innovators who need their technology most.
+              innovators who need their technology most. We are an ISO 9001
+              certified enterprise chip distributor supplying NVIDIA, AMD, and
+              Intel hardware worldwide.
             </p>
           </motion.div>
         </div>
@@ -127,19 +131,21 @@ export default function AboutPage() {
             <div>
               <SectionHeading
                 label="Our Mission"
-                title="Democratizing Access to World-Class Computing"
+                title="Democratizing Access to Enterprise AI Chips & Computing"
               />
               <p className="text-text-muted text-sm leading-relaxed mb-4">
                 Founded in 2018, Servchip was built on a simple belief: every
                 organization should have access to authentic, enterprise-grade
                 computing solutions from all leading manufacturers without the
-                complexity and risk of traditional hardware procurement.
+                complexity and risk of traditional semiconductor procurement.
               </p>
               <p className="text-text-muted text-sm leading-relaxed mb-6">
-                Today, we serve over 200 enterprise clients across 150+
+                Today, we serve over 500 enterprise clients across 150+
                 countries, delivering everything from single GPU shipments to
-                full data center deployments with white-glove support and
-                complete traceability.
+                full data center deployments. As an authorized distribution
+                partner for NVIDIA, AMD, Intel, and 27+ manufacturers, we are
+                the go-to source for buy AI chips, HBM memory, data center GPUs,
+                and enterprise server hardware with white-glove support.
               </p>
               <div className="flex items-center gap-2 text-sm">
                 <Target className="w-4 h-4 text-primary" />
@@ -236,8 +242,9 @@ export default function AboutPage() {
             Ready to Work with Us?
           </h2>
           <p className="text-text-muted text-sm mb-8 max-w-xl mx-auto">
-            Whether you need a single GPU or a full data center deployment, our
-            team is ready to help. Get a quote within 24 hours.
+            Whether you need a single NVIDIA H100, AMD MI300X, or a full data
+            center deployment, our multi-vendor certified team is ready to help.
+            Get a semiconductor procurement quote within 24 hours.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link href="/rfq">

@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     "workload-based chip recommendation",
   ],
   alternates: { canonical: `${SITE.url}/configurator` },
+  robots: { index: false, follow: true },
   openGraph: {
     title: "Chip Configurator | Servchip — Find the Right AI Accelerator",
     description:

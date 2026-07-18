@@ -49,6 +49,9 @@ export function organizationSchema() {
     sameAs: [
       "https://www.linkedin.com/company/servchip",
       "https://twitter.com/servchip",
+      "https://facebook.com/servchip",
+      "https://youtube.com/@servchip",
+      "https://instagram.com/servchip",
     ],
   });
 }
