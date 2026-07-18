@@ -31,7 +31,7 @@ export function MemoryCard({ mem, index: _index }: Props) {
     <div>
       <Tilt3D>
         <div className="bg-surface border border-primary/40 rounded-xl p-5 hover:border-primary hover:shadow-lg hover:shadow-primary/10 transition-all duration-300">
-          <div className="w-full h-48 bg-gradient-to-br from-surface-2 to-bg-dark rounded-lg border border-border mb-4 flex items-center justify-center overflow-hidden">
+          <div className="relative w-full h-48 bg-gradient-to-br from-surface-2 to-bg-dark rounded-lg border border-border mb-4 flex items-center justify-center overflow-hidden">
             {mem.images && mem.images.length > 0 ? (
               <Image
                 src={mem.images[0]}
