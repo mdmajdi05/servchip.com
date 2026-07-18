@@ -1,6 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { SITE } from "@/lib/constants";
-import { OG_IMAGE, OG_WIDTH, OG_HEIGHT } from "@/lib/seo";
+import { breadcrumbSchema, OG_IMAGE, OG_WIDTH, OG_HEIGHT } from "@/lib/seo";
 import PageClient from "./page-client";
 
 export const metadata: Metadata = {
@@ -22,8 +22,26 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Privacy Policy | Servchip",
+    description:
+      "How Servchip collects, uses, and protects your personal data.",
+    images: [OG_IMAGE],
+  },
 };
 
 export default function Page() {
-  return <PageClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={breadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Privacy Policy", url: "/privacy" },
+        ])}
+      />
+      <PageClient />
+    </>
+  );
 }

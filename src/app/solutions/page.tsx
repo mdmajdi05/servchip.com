@@ -40,6 +40,14 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Enterprise AI & HPC Solutions | Servchip — Data Center GPU Distributor",
+    description:
+      "Multi-vendor enterprise solutions for AI training, HPC, and data center workloads featuring NVIDIA, AMD, and Intel hardware.",
+    images: [OG_IMAGE],
+  },
 };
 
 const SOLUTIONS = [

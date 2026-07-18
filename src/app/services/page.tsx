@@ -40,6 +40,14 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Enterprise Chip Services | Servchip — Semiconductor Procurement & Integration",
+    description:
+      "Custom semiconductor procurement, system integration, AI infrastructure consulting, and enterprise hardware support from an ISO 9001 certified chip distributor.",
+    images: [OG_IMAGE],
+  },
 };
 
 const SERVICES = [

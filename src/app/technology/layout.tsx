@@ -33,6 +33,14 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Technology Portfolio | Servchip — Enterprise AI Hardware Distributor",
+    description:
+      "Multi-vendor chip architecture expertise across NVIDIA, AMD, Intel for enterprise AI, HPC & data center workloads.",
+    images: [OG_IMAGE],
+  },
 };
 
 export default function TechnologyLayout({

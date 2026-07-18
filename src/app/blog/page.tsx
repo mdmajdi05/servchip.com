@@ -33,6 +33,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Blog | Servchip — Enterprise Chip Distributor",
+    description:
+      "Expert guides on AI chip architectures, comparisons & enterprise deployment best practices.",
+    images: [OG_IMAGE],
+  },
 };
 
 export default function Page() {

@@ -63,6 +63,12 @@ export async function generateMetadata(props: {
             },
           ],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${product.name} — Servchip`,
+      description: product.description,
+      images: [product.images?.[0] || OG_IMAGE],
+    },
   };
 }
 

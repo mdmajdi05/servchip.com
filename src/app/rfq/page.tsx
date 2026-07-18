@@ -32,6 +32,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Request a Quote | Servchip — Enterprise Chip Distributor",
+    description:
+      "Get enterprise chip pricing. NVIDIA, AMD, Intel hardware. Volume discounts & 24-hour quotes.",
+    images: [OG_IMAGE],
+  },
 };
 
 export default function Page() {

@@ -10,6 +10,7 @@ export async function generateMetadata(props: {
   const { slug } = await props.params;
   const cat = CATEGORIES.find((c) => c.slug === slug);
   if (!cat) return {};
+  const catName = cat.name;
   return {
     title: `${cat.name} — Buy Enterprise ${cat.name} | Servchip Semiconductor Procurement`,
     description: `${cat.description} Buy authentic ${cat.name} from an ISO 9001 certified enterprise chip distributor. AI accelerator & semiconductor procurement with global shipping.`,
@@ -34,10 +35,20 @@ export async function generateMetadata(props: {
         },
       ],
     },
+    twitter: {
+      card: "summary_large_image",
+      title: `${cat.name} | Servchip — Enterprise Chip Distributor`,
+      description: `Buy ${cat.name} from an ISO 9001 certified distributor.`,
+      images: [OG_IMAGE],
+    },
   };
 }
 
-export default function Page() {
+export default async function Page(props: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await props.params;
+  const cat = CATEGORIES.find((c) => c.slug === slug);
   return (
     <>
       <script
@@ -45,6 +56,7 @@ export default function Page() {
         dangerouslySetInnerHTML={breadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Categories", url: "/categories" },
+          ...(cat ? [{ name: cat.name, url: `/categories/${slug}` }] : []),
         ])}
       />
       <PageClient />

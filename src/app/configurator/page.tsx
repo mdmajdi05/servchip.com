@@ -31,6 +31,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Chip Configurator | Servchip — Find the Right AI Accelerator",
+    description:
+      "Configure your ideal AI chip setup. NVIDIA, AMD, Intel. Matched to your workload.",
+    images: [OG_IMAGE],
+  },
 };
 
 export default function Page() {

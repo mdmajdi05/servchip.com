@@ -90,6 +90,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "FAQ | Servchip — Enterprise Chip Distributor",
+    description:
+      "Common questions about buying AI chips, semiconductor procurement, enterprise chip purchasing, shipping, warranty & support.",
+    images: [OG_IMAGE],
+  },
 };
 
 export default function Page() {

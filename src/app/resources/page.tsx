@@ -31,6 +31,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Resources & Guides | Servchip — Enterprise Chip Distributor",
+    description:
+      "Technical guides, case studies & whitepapers on AI computing, GPU architectures & enterprise chip solutions.",
+    images: [OG_IMAGE],
+  },
 };
 
 export default function ResourcesPage() {

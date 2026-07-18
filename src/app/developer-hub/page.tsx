@@ -31,6 +31,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Developer Hub | Servchip — Enterprise AI Hardware",
+    description:
+      "SDK docs, API reference & integration guides for NVIDIA CUDA, AMD ROCm, Intel oneAPI across enterprise chip platforms.",
+    images: [OG_IMAGE],
+  },
 };
 
 export default function Page() {

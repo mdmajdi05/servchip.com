@@ -34,6 +34,14 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Buy Enterprise Chips | Servchip — NVIDIA, AMD, Intel AI Accelerators",
+    description:
+      "Buy authentic enterprise chips — NVIDIA H100, AMD MI300X, Intel Xeon. ISO 9001 certified distributor with global shipping.",
+    images: [OG_IMAGE],
+  },
 };
 
 export default function Page() {

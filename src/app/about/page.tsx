@@ -40,6 +40,14 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "About Servchip — Enterprise Chip Distributor & Semiconductor Procurement Partner",
+    description:
+      "ISO 9001 certified enterprise chip distributor. 27+ manufacturer partnerships. Serving 500+ enterprises across 150+ countries from India & UAE.",
+    images: [OG_IMAGE],
+  },
 };
 
 export default function Page() {

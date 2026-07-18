@@ -32,6 +32,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "AI Chip Comparison | NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3",
+    description:
+      "Side-by-side enterprise chip comparison — specs, performance & pricing for data center GPU procurement.",
+    images: [OG_IMAGE],
+  },
 };
 
 export default function Page() {

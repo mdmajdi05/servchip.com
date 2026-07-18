@@ -43,6 +43,13 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE.name} — Enterprise Chip Distributor for AI, HPC & Data Centers`,
+    description:
+      "ISO 9001 certified enterprise chip distributor. Buy NVIDIA H100, AMD MI300X, Intel Xeon. Semiconductor procurement & data center GPU distributor.",
+    images: [OG_IMAGE],
+  },
 };
 
 const HOME_FAQS = [

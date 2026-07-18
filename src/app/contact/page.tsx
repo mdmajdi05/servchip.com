@@ -40,6 +40,14 @@ export const metadata: Metadata = {
       },
     ],
   },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "Contact Servchip — Enterprise Chip Distributor | Buy AI Chips & Get Pricing",
+    description:
+      "Get enterprise chip pricing & semiconductor procurement quotes. 24-hour response time. Buy AI accelerators with global shipping from India & UAE.",
+    images: [OG_IMAGE],
+  },
 };
 
 export default function Page() {

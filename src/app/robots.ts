@@ -1,15 +1,15 @@
 import { MetadataRoute } from "next";
+import { SITE } from "@/lib/constants";
 
 export default function robots(): MetadataRoute.Robots {
-  const baseUrl = "https://servchip.com";
   return {
     rules: [
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/dashboard/", "/api/", "/configurator/"],
+        disallow: ["/dashboard/", "/api/", "/configurator"],
       },
     ],
-    sitemap: `${baseUrl}/sitemap.xml`,
+    sitemap: `${SITE.url}/sitemap.xml`,
   };
 }
