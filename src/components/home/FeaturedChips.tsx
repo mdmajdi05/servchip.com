@@ -32,9 +32,7 @@ export function FeaturedChips() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {loading
             ? Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)
-            : featured.map((chip, i) => (
-                <ChipCard key={chip.id} chip={chip} index={i} />
-              ))}
+            : featured.map((chip) => <ChipCard key={chip.id} chip={chip} />)}
         </div>
 
         <div className="text-center mt-10">

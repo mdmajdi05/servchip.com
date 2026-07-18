@@ -20,9 +20,10 @@ const statusStyles: Record<
 
 interface Props {
   server: ServerProduct;
+  index?: number;
 }
 
-export function ServerCard({ server }: Props) {
+export function ServerCard({ server, index: _index }: Props) {
   const status = statusStyles[server.status];
 
   return (

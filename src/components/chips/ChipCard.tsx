@@ -20,9 +20,13 @@ const statusStyles: Record<
 
 interface ChipCardProps {
   chip: ChipProduct;
+  index?: number;
 }
 
-export const ChipCard = React.memo(function ChipCard({ chip }: ChipCardProps) {
+export const ChipCard = React.memo(function ChipCard({
+  chip,
+  index: _index,
+}: ChipCardProps) {
   const status = statusStyles[chip.status];
 
   return (

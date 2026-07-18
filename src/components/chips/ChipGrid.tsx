@@ -103,8 +103,8 @@ export function ChipGrid({ chips, loading = false }: ChipGridProps) {
 
         {viewMode === "grid" ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-            {filtered.map((chip, i) => (
-              <ChipCard key={chip.id} chip={chip} index={i} />
+            {filtered.map((chip) => (
+              <ChipCard key={chip.id} chip={chip} />
             ))}
           </div>
         ) : (

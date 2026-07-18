@@ -10,6 +10,14 @@ export type {
   UseCaseOption,
   ConfigParams,
 } from "./chip";
+export {
+  isChipProduct,
+  isServerProduct,
+  isNetworkingProduct,
+  isMemoryProduct,
+  isStorageProduct,
+  getProductTypeLabel,
+} from "./guards";
 export type { ChipCategory } from "./category";
 export type {
   BlogPost,

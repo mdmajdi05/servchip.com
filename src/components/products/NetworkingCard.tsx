@@ -20,9 +20,10 @@ const statusStyles: Record<
 
 interface Props {
   net: NetworkingProduct;
+  index?: number;
 }
 
-export function NetworkingCard({ net }: Props) {
+export function NetworkingCard({ net, index: _index }: Props) {
   const status = statusStyles[net.status];
 
   return (

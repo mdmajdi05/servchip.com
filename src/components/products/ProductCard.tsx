@@ -5,23 +5,14 @@ import { ServerCard } from "./ServerCard";
 import { NetworkingCard } from "./NetworkingCard";
 import { MemoryCard } from "./MemoryCard";
 import { StorageCard } from "./StorageCard";
-import type { AnyProduct, ChipProduct, ServerProduct, NetworkingProduct, MemoryProduct, StorageProduct } from "@/types";
-
-function isChip(p: AnyProduct): p is ChipProduct {
-  return "specifications" in p;
-}
-function isServer(p: AnyProduct): p is ServerProduct {
-  return "formFactor" in p && !("specifications" in p);
-}
-function isNetworking(p: AnyProduct): p is NetworkingProduct {
-  return "specs" in p && "management" in p.specs;
-}
-function isMemory(p: AnyProduct): p is MemoryProduct {
-  return "specs" in p && "voltage" in p.specs;
-}
-function isStorage(p: AnyProduct): p is StorageProduct {
-  return "specs" in p && "interface" in p.specs;
-}
+import {
+  isChipProduct,
+  isServerProduct,
+  isNetworkingProduct,
+  isMemoryProduct,
+  isStorageProduct,
+} from "@/types";
+import type { AnyProduct } from "@/types";
 
 interface Props {
   product: AnyProduct;
@@ -29,10 +20,14 @@ interface Props {
 }
 
 export function ProductCard({ product, index = 0 }: Props) {
-  if (isChip(product)) return <ChipCard chip={product} index={index} />;
-  if (isServer(product)) return <ServerCard server={product} index={index} />;
-  if (isNetworking(product)) return <NetworkingCard net={product} index={index} />;
-  if (isMemory(product)) return <MemoryCard mem={product} index={index} />;
-  if (isStorage(product)) return <StorageCard st={product} index={index} />;
+  if (isChipProduct(product)) return <ChipCard chip={product} index={index} />;
+  if (isServerProduct(product))
+    return <ServerCard server={product} index={index} />;
+  if (isNetworkingProduct(product))
+    return <NetworkingCard net={product} index={index} />;
+  if (isMemoryProduct(product))
+    return <MemoryCard mem={product} index={index} />;
+  if (isStorageProduct(product))
+    return <StorageCard st={product} index={index} />;
   return null;
 }

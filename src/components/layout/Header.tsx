@@ -20,7 +20,6 @@ import { TopBar } from "./TopBar";
 import { SearchModal } from "@/components/interactive/SearchModal";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { ColorPicker } from "@/components/ui/ColorPicker";
-import { ChipToggle } from "@/components/ui/ChipToggle";
 import { AnimatedLogo } from "@/components/ui/AnimatedLogo";
 
 interface NavLink {
@@ -592,7 +591,6 @@ export function Header() {
           {/* Actions */}
           <div className="flex items-center gap-2.5">
             <ColorPicker />
-            <ChipToggle />
             <ThemeToggle />
             <button
               onClick={() => setSearchOpen((v) => !v)}

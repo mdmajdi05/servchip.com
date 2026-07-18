@@ -8,6 +8,8 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { getProductsByUseCase } from "@/data/products";
 import { getManufacturerColor } from "@/data/manufacturer-colors";
+import { isChipProduct, getProductTypeLabel } from "@/types";
+import type { AnyProduct, ChipProduct } from "@/types";
 
 const WORKLOADS = [
   {
@@ -46,6 +48,69 @@ const WORKLOADS = [
     color: "#E31837",
   },
 ];
+
+function ProductChipSpecs({ product }: { product: ChipProduct }) {
+  return (
+    <div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px] font-mono text-text-dim">
+      {product.specifications.memory && (
+        <span>{product.specifications.memory}</span>
+      )}
+      {product.specifications.tdp && <span>{product.specifications.tdp}</span>}
+    </div>
+  );
+}
+
+function ProductCard({
+  product,
+  index,
+}: {
+  product: AnyProduct;
+  index: number;
+}) {
+  const mfrColor = getManufacturerColor(product.manufacturer);
+
+  return (
+    <motion.div
+      key={product.id}
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.3, delay: index * 0.05 }}
+    >
+      <Link
+        href={`/products/${product.slug}`}
+        className="block bg-surface border border-border rounded-xl p-5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group h-full"
+      >
+        <div className="flex items-center gap-2 mb-3">
+          <span
+            className="w-2 h-2 rounded-full"
+            style={{ backgroundColor: mfrColor }}
+          />
+          <span className="text-[10px] font-mono font-semibold text-text-dim uppercase tracking-wider">
+            {product.manufacturer}
+          </span>
+          <Badge variant="green" size="sm">
+            {getProductTypeLabel(product)}
+          </Badge>
+        </div>
+        <h3 className="text-sm font-bold text-text mb-1.5 group-hover:text-primary transition-colors line-clamp-2">
+          {product.name}
+        </h3>
+        <p className="text-xs text-text-dim leading-relaxed line-clamp-2 mb-3">
+          {product.description}
+        </p>
+        {isChipProduct(product) && <ProductChipSpecs product={product} />}
+        <div className="mt-3 pt-3 border-t border-border flex items-center justify-between">
+          <span className="text-[10px] font-mono text-text-dim">
+            {product.bestFor}
+          </span>
+          <span className="text-primary text-xs font-semibold group-hover:translate-x-0.5 transition-transform inline-flex items-center gap-1">
+            View <ArrowRight className="w-3 h-3" />
+          </span>
+        </div>
+      </Link>
+    </motion.div>
+  );
+}
 
 export function WorkloadSolutions() {
   const [activeTab, setActiveTab] = useState(WORKLOADS[0].id);
@@ -96,115 +161,9 @@ export function WorkloadSolutions() {
             transition={{ duration: 0.2 }}
           >
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {products.map((product, i) => {
-                const mfrColor = getManufacturerColor(product.manufacturer);
-                return (
-                  <motion.div
-                    key={product.id}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3, delay: i * 0.05 }}
-                  >
-                    <Link
-                      href={`/products/${product.slug}`}
-                      className="block bg-surface border border-border rounded-xl p-5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-300 group h-full"
-                    >
-                      <div className="flex items-center gap-2 mb-3">
-                        <span
-                          className="w-2 h-2 rounded-full"
-                          style={{ backgroundColor: mfrColor }}
-                        />
-                        <span className="text-[10px] font-mono font-semibold text-text-dim uppercase tracking-wider">
-                          {product.manufacturer}
-                        </span>
-                        <Badge variant="green" size="sm">
-                          {"specifications" in product
-                            ? "Chip"
-                            : "formFactor" in product
-                              ? "Server"
-                              : "specs" in product &&
-                                  "speed" in
-                                    (
-                                      product as unknown as Record<
-                                        string,
-                                        unknown
-                                      >
-                                    ).specs
-                                ? "Networking"
-                                : "specs" in product &&
-                                    "bandwidth" in
-                                      (
-                                        product as unknown as Record<
-                                          string,
-                                          unknown
-                                        >
-                                      ).specs
-                                  ? "Memory"
-                                  : "Storage"}
-                        </Badge>
-                      </div>
-                      <h3 className="text-sm font-bold text-text mb-1.5 group-hover:text-primary transition-colors line-clamp-2">
-                        {product.name}
-                      </h3>
-                      <p className="text-xs text-text-dim leading-relaxed line-clamp-2 mb-3">
-                        {product.description}
-                      </p>
-                      {"specifications" in product &&
-                        product.specifications && (
-                          <div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px] font-mono text-text-dim">
-                            {(
-                              product as unknown as Record<
-                                string,
-                                Record<string, unknown>
-                              >
-                            ).specifications.memory && (
-                              <span>
-                                {String(
-                                  (
-                                    product as unknown as Record<
-                                      string,
-                                      Record<string, unknown>
-                                    >
-                                  ).specifications.memory,
-                                )}
-                              </span>
-                            )}
-                            {(
-                              product as unknown as Record<
-                                string,
-                                Record<string, unknown>
-                              >
-                            ).specifications.tdp && (
-                              <span>
-                                {String(
-                                  (
-                                    product as unknown as Record<
-                                      string,
-                                      Record<string, unknown>
-                                    >
-                                  ).specifications.tdp,
-                                )}
-                              </span>
-                            )}
-                          </div>
-                        )}
-                      <div className="mt-3 pt-3 border-t border-border flex items-center justify-between">
-                        <span className="text-[10px] font-mono text-text-dim">
-                          {"bestFor" in product
-                            ? String(
-                                (product as unknown as Record<string, unknown>)
-                                  .bestFor,
-                              )
-                            : ""}
-                        </span>
-                        <span className="text-primary text-xs font-semibold group-hover:translate-x-0.5 transition-transform inline-flex items-center gap-1">
-                          View <ArrowRight className="w-3 h-3" />
-                        </span>
-                      </div>
-                    </Link>
-                  </motion.div>
-                );
-              })}
+              {products.map((product, i) => (
+                <ProductCard key={product.id} product={product} index={i} />
+              ))}
             </div>
 
             {products.length === 0 && (
