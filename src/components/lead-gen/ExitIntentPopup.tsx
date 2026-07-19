@@ -13,6 +13,8 @@ import {
 } from "lucide-react";
 import { SITE } from "@/lib/constants";
 
+const EMAILS = "sales@servchip.com,contact@servchip.com,support@servchip.com";
+
 const STORAGE_KEY = "servchip-inquiry-shown";
 
 export function ExitIntentPopup() {
@@ -86,10 +88,9 @@ export function ExitIntentPopup() {
             .filter(Boolean)
             .join("\n"),
         );
-        window.open(
-          `mailto:${SITE.email}?subject=${subject}&body=${body}`,
-          "_blank",
-        );
+        const mailLink = document.createElement("a");
+        mailLink.href = `mailto:${EMAILS}?subject=${subject}&body=${body}`;
+        mailLink.click();
         localStorage.setItem(STORAGE_KEY, "1");
         setTimeout(() => setIsOpen(false), 4000);
       } else {

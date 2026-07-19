@@ -18,7 +18,8 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
-import { SITE } from "@/lib/constants";
+
+const EMAILS = "sales@servchip.com,contact@servchip.com,support@servchip.com";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
@@ -59,6 +60,32 @@ function FieldIcon({
   );
 }
 
+function buildMailtoUrl(data: ContactFormData): string {
+  const subject = encodeURIComponent(
+    `[Servchip Inquiry] ${data.topic} — ${data.name}`,
+  );
+  const lines = [
+    `Hi Servchip Team,`,
+    ``,
+    `I'm interested in the following:`,
+    ``,
+    `Name: ${data.name}`,
+    `Email: ${data.email}`,
+    data.phone ? `Phone: ${data.phone}` : null,
+    data.company ? `Company: ${data.company}` : null,
+    data.country ? `Country: ${data.country}` : null,
+    data.quantity ? `Quantity Needed: ${data.quantity}` : null,
+    `Inquiry Type: ${data.topic}`,
+    ``,
+    `Message:`,
+    data.message,
+    ``,
+    `Looking forward to your response.`,
+  ].filter(Boolean);
+  const body = encodeURIComponent(lines.join("\n"));
+  return `mailto:${EMAILS}?subject=${subject}&body=${body}`;
+}
+
 export function ContactForm() {
   const [formState, setFormState] = useState<FormState>("idle");
 
@@ -75,47 +102,21 @@ export function ContactForm() {
   const onSubmit = async (data: ContactFormData) => {
     setFormState("submitting");
 
+    // Log on server
     try {
-      const res = await fetch("/api/contact", {
+      await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
       });
-      if (!res.ok) throw new Error("Failed to send");
     } catch {
-      /* continue to mailto fallback */
+      /* continue */
     }
 
-    const subject = encodeURIComponent(
-      `[Servchip Inquiry] ${data.topic} — ${data.name}`,
-    );
-    const body = encodeURIComponent(
-      [
-        `Hi Servchip Team,`,
-        ``,
-        `I'm interested in the following:`,
-        ``,
-        `Name: ${data.name}`,
-        `Email: ${data.email}`,
-        data.phone ? `Phone: ${data.phone}` : null,
-        data.company ? `Company: ${data.company}` : null,
-        data.country ? `Country: ${data.country}` : null,
-        data.quantity ? `Quantity Needed: ${data.quantity}` : null,
-        `Inquiry Type: ${data.topic}`,
-        ``,
-        `Message:`,
-        data.message,
-        ``,
-        `Looking forward to your response.`,
-      ]
-        .filter(Boolean)
-        .join("\n"),
-    );
-
-    window.open(
-      `mailto:${SITE.email}?subject=${subject}&body=${body}`,
-      "_blank",
-    );
+    // Open email client with all 3 recipients pre-filled
+    const link = document.createElement("a");
+    link.href = buildMailtoUrl(data);
+    link.click();
 
     setFormState("success");
   };
@@ -135,35 +136,26 @@ export function ContactForm() {
         <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-4">
           <CheckCircle className="w-8 h-8 text-primary" />
         </div>
-        <h3 className="text-xl font-bold text-text mb-2">Inquiry Submitted!</h3>
-        <p className="text-text-muted text-sm mb-3 max-w-sm mx-auto">
-          Your email client has opened with the inquiry details. Send the email
-          to complete your inquiry. Our team will respond within 24 hours.
+        <h3 className="text-xl font-bold text-text mb-2">
+          Your Email Client Has Opened!
+        </h3>
+        <p className="text-text-muted text-sm mb-2 max-w-sm mx-auto">
+          Your inquiry has been pre-filled and addressed to our sales, contact,
+          and support teams. Just click{" "}
+          <strong className="text-text">Send</strong> in your email app.
         </p>
         <p className="text-text-dim text-xs mb-6">
-          You can also reach us directly at{" "}
-          <a
-            href={`mailto:${SITE.email}`}
-            className="text-primary hover:underline"
-          >
-            {SITE.email}
-          </a>{" "}
-          or call{" "}
-          <a
-            href={`tel:${SITE.phone.replace(/\s/g, "")}`}
-            className="text-primary hover:underline"
-          >
-            {SITE.email}
-          </a>
+          Recipients: sales@servchip.com, contact@servchip.com,
+          support@servchip.com
         </p>
         <div className="flex flex-col sm:flex-row gap-3 justify-center">
           <Button variant="outline" onClick={handleReset}>
             Submit Another Inquiry
           </Button>
-          <a href={`tel:${SITE.phone.replace(/\s/g, "")}`}>
+          <a href="tel:+917982498712">
             <Button variant="solid">
               <Phone className="w-4 h-4 mr-2" />
-              Call Us Now
+              Call Us Instead
             </Button>
           </a>
         </div>
@@ -181,8 +173,8 @@ export function ContactForm() {
           Send Us Your Inquiry
         </h2>
         <p className="text-text-muted text-sm">
-          Fill in the details below and our sales executive will get back to you
-          within 24 hours. All fields marked with * are required.
+          Fill in the details and your email client will open with a pre-filled
+          message sent to our sales, contact &amp; support teams.
         </p>
       </div>
 
@@ -293,14 +285,16 @@ export function ContactForm() {
           icon={<Send className="w-4 h-4" />}
           iconPosition="right"
         >
-          {formState === "submitting" ? "Submitting..." : "Submit Inquiry"}
+          {formState === "submitting"
+            ? "Opening Email..."
+            : "Submit Inquiry via Email"}
         </Button>
 
         <p className="text-xs text-text-dim text-center">
-          Your inquiry will be sent to{" "}
-          <span className="text-primary">sales@servchip.com</span>,{" "}
-          <span className="text-primary">contact@servchip.com</span>, and{" "}
-          <span className="text-primary">support@servchip.com</span>
+          📩 Your inquiry will be sent to{" "}
+          <span className="text-primary">sales@</span>,{" "}
+          <span className="text-primary">contact@</span> &amp;{" "}
+          <span className="text-primary">support@</span>servchip.com
         </p>
       </div>
     </form>
