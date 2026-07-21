@@ -7,6 +7,7 @@ import { ColorProvider } from "@/providers/ColorProvider";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { LeadGenProviders } from "@/components/lead-gen/LeadGenProviders";
+import { GAClient } from "@/components/shared/GAClient";
 import { SITE } from "@/lib/constants";
 import { OG_IMAGE, OG_WIDTH, OG_HEIGHT } from "@/lib/seo";
 import {
@@ -182,6 +183,7 @@ export default function RootLayout({
               <main>{children}</main>
               <Footer />
               <LeadGenProviders />
+              <GAClient />
             </QueryProvider>
           </ColorProvider>
         </ThemeProvider>
