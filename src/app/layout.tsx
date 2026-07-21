@@ -125,6 +125,19 @@ export default function RootLayout({
           name="google-site-verification"
           content="fXyQ-7TkmRajJRw1z6CixmK1zspDKkhBgmgUgFJF42k"
         />
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-W9W5CX2KPN"
+          strategy="afterInteractive"
+        />
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-W9W5CX2KPN');
+          `}
+        </Script>
         <link
           rel="preload"
           as="image"
