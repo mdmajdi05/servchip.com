@@ -121,6 +121,10 @@ export default function RootLayout({
   return (
     <html lang="en" className="light" suppressHydrationWarning>
       <head>
+        <meta
+          name="google-site-verification"
+          content="fXyQ-7TkmRajJRw1z6CixmK1zspDKkhBgmgUgFJF42k"
+        />
         <link
           rel="preload"
           as="image"
