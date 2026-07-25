@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { notFound } from "next/navigation";
-import { BLOG_POSTS } from "@/data/blog";
 import { SITE } from "@/lib/constants";
 import {
   articleSchema,
@@ -10,123 +8,125 @@ import {
   OG_WIDTH,
   OG_HEIGHT,
 } from "@/lib/seo";
+import { BLOG_POSTS } from "@/blog";
 import PageClient from "./page-client";
 
-export function generateStaticParams() {
+export async function generateStaticParams() {
   return BLOG_POSTS.filter((p) => p.isPublished).map((post) => ({
     slug: post.slug,
   }));
 }
 
-export async function generateMetadata(props: {
+export async function generateMetadata({
+  params,
+}: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
-  const { slug } = await props.params;
+  const { slug } = await params;
   const post = BLOG_POSTS.find((p) => p.slug === slug);
-  if (!post) return {};
-  const title = post.seo?.metaTitle || `${post.title} — Servchip Blog`;
-  const description = post.seo?.metaDescription || post.excerpt;
+  if (!post) return { title: "Article Not Found | Servchip" };
+
   return {
-    title,
-    description,
-    keywords: [
-      post.title,
-      "enterprise chip distributor blog",
-      "AI hardware guide",
-      "semiconductor procurement",
-      "NVIDIA H100 guide",
-      "AMD MI300X comparison",
-      "data center GPU guide",
-    ],
-    alternates: { canonical: `${SITE.url}/blog/${slug}` },
+    title: post.seo.metaTitle,
+    description: post.seo.metaDescription,
+    keywords: post.tags.map((t) => t.name),
+    alternates: {
+      canonical: post.seo.canonicalUrl || `${SITE.url}/blog/${post.slug}`,
+    },
+    robots: post.seo.robots || "index, follow",
     openGraph: {
-      title,
-      description,
+      title: post.seo.metaTitle,
+      description: post.seo.metaDescription,
       type: "article",
       publishedTime: post.publishedAt,
-      modifiedTime: post.updatedAt || post.publishedAt,
       authors: [post.author.name],
       tags: post.tags.map((t) => t.name),
-      images: post.featuredImage
-        ? [
-            {
-              url: post.featuredImage,
-              width: 1200,
-              height: 630,
-              alt: post.title,
-            },
-          ]
-        : [
-            {
-              url: OG_IMAGE,
-              width: OG_WIDTH,
-              height: OG_HEIGHT,
-              alt: post.title,
-            },
-          ],
+      url: `${SITE.url}/blog/${post.slug}`,
+      images: [
+        {
+          url: post.featuredImage || OG_IMAGE,
+          width: OG_WIDTH,
+          height: OG_HEIGHT,
+          alt: post.title,
+        },
+      ],
     },
     twitter: {
       card: "summary_large_image",
-      title,
-      description,
+      title: post.seo.metaTitle,
+      description: post.seo.metaDescription,
       images: [post.featuredImage || OG_IMAGE],
     },
   };
 }
 
-export default async function Page(props: {
+export default async function Page({
+  params,
+}: {
   params: Promise<{ slug: string }>;
 }) {
-  const { slug } = await props.params;
+  const { slug } = await params;
   const post = BLOG_POSTS.find((p) => p.slug === slug);
-  if (!post) notFound();
+
+  if (!post) {
+    return <PageClient />;
+  }
 
   const faqSection = post.sections?.find((s) =>
     s.heading.toLowerCase().includes("frequently asked"),
   );
-  const faqItems: { question: string; answer: string }[] | undefined =
-    faqSection
-      ? faqSection.paragraphs
-          .map((p) => {
-            const idx = p.indexOf("? ");
-            if (idx === -1) return null;
-            return {
-              question: p.substring(0, idx + 1),
-              answer: p.substring(idx + 2),
-            };
-          })
-          .filter((x): x is NonNullable<typeof x> => x !== null)
-      : undefined;
+
+  const schemas = [];
+
+  schemas.push(
+    breadcrumbSchema([
+      { name: "Home", url: "/" },
+      { name: "Blog", url: "/blog" },
+      { name: post.title, url: `/blog/${post.slug}` },
+    ]),
+  );
+
+  schemas.push(
+    articleSchema({
+      title: post.title,
+      description: post.seo.metaDescription,
+      slug: post.slug,
+      publishedAt: post.publishedAt,
+      author: { name: post.author.name },
+      image: post.featuredImage || OG_IMAGE,
+    }),
+  );
+
+  if (faqSection) {
+    let faqItems: { question: string; answer: string }[] = [];
+
+    if (faqSection.content) {
+      const faqBlock = faqSection.content.find((b) => b.type === "faq");
+      if (faqBlock && faqBlock.type === "faq") {
+        faqItems = faqBlock.items;
+      }
+    } else {
+      faqItems = (faqSection.paragraphs || []).map((p) => {
+        const sep = p.indexOf("? ");
+        return {
+          question: sep !== -1 ? p.substring(0, sep + 1) : p,
+          answer: sep !== -1 ? p.substring(sep + 2) : "",
+        };
+      });
+    }
+
+    schemas.push(faqSchema(faqItems));
+  }
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Blog", url: "/blog" },
-          { name: post.title, url: `/blog/${slug}` },
-        ])}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={articleSchema({
-          title: post.title,
-          description: post.excerpt,
-          slug: post.slug,
-          publishedAt: post.publishedAt,
-          updatedAt: post.updatedAt,
-          author: { name: post.author.name },
-          image: post.featuredImage || undefined,
-          category: post.category.name,
-        })}
-      />
-      {faqItems && faqItems.length > 0 && (
+      {schemas.map((schema, i) => (
         <script
+          key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={faqSchema(faqItems)}
+          dangerouslySetInnerHTML={{ __html: schema }}
         />
-      )}
+      ))}
       <PageClient />
     </>
   );

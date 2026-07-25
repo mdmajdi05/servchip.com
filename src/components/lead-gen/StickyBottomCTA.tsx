@@ -1,19 +1,14 @@
 "use client";
-
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import { X, ArrowRight } from "lucide-react";
 import Link from "next/link";
-
 const DISMISS_KEY = "servchip-sticky-cta-closed";
-
 export function StickyBottomCTA() {
   const [visible, setVisible] = useState(false);
   const [dismissed] = useState(() => {
     if (typeof window === "undefined") return false;
     return !!localStorage.getItem(DISMISS_KEY);
   });
-
   useEffect(() => {
     if (dismissed) return;
     const onScroll = () => {
@@ -22,22 +17,15 @@ export function StickyBottomCTA() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, [dismissed]);
-
   const close = () => {
     localStorage.setItem(DISMISS_KEY, "1");
     setVisible(false);
   };
-
   if (dismissed) return null;
-
   return (
-    <AnimatePresence>
+    <>
       {visible && (
-        <motion.div
-          initial={{ y: 100, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          exit={{ y: 100, opacity: 0 }}
-          transition={{ type: "spring", damping: 25, stiffness: 300 }}
+        <div
           className="fixed bottom-0 left-0 right-0 z-[9998] md:hidden"
         >
           <div className="bg-primary/95 backdrop-blur-lg border-t border-primary-dark/30 px-4 py-3 flex items-center justify-between gap-3">
@@ -61,8 +49,8 @@ export function StickyBottomCTA() {
               </button>
             </div>
           </div>
-        </motion.div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

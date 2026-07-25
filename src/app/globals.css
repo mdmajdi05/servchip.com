@@ -249,97 +249,6 @@ body {
   animation: blink 0.8s step-end infinite;
 }
 
-@keyframes circuit-flow {
-  0% {
-    stroke-dashoffset: 200;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-
-@keyframes data-packet {
-  0% {
-    offset-distance: 0%;
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  85% {
-    opacity: 1;
-  }
-  100% {
-    offset-distance: 100%;
-    opacity: 0;
-  }
-}
-
-@keyframes scan-line {
-  0% {
-    transform: translateY(-2px);
-    opacity: 0;
-  }
-  5% {
-    opacity: 1;
-  }
-  90% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(100vh);
-    opacity: 0;
-  }
-}
-
-@keyframes data-float {
-  0% {
-    transform: translateY(0) translateX(0);
-    opacity: 0;
-  }
-  5% {
-    opacity: var(--fo);
-  }
-  90% {
-    opacity: var(--fo);
-  }
-  100% {
-    transform: translateY(-120px) translateX(var(--fx, 20px));
-    opacity: 0;
-  }
-}
-
-@keyframes node-pulse {
-  0%,
-  100% {
-    transform: scale(1);
-    opacity: 0.4;
-  }
-  50% {
-    transform: scale(1.8);
-    opacity: 0.8;
-  }
-}
-
-@keyframes line-glow {
-  0%,
-  100% {
-    opacity: 0.15;
-  }
-  50% {
-    opacity: 0.3;
-  }
-}
-
-@keyframes circuit-draw {
-  0% {
-    stroke-dashoffset: 100;
-  }
-  100% {
-    stroke-dashoffset: 0;
-  }
-}
-
 /* Neon rotating gradient border */
 @keyframes neonBorderRotate {
   0% {
@@ -417,24 +326,17 @@ body {
 }
 
 /* ============================================================
-   HEADER OFFSET (dynamic — hides on scroll down)
+   HEADER OFFSET (fixed — header slides over content via translateY)
    ============================================================ */
 #main-content {
   padding-top: 72px;
-  transition: padding-top 0.3s ease;
 }
 @media (min-width: 1024px) {
   #main-content {
     padding-top: 104px;
   }
 }
-html.header-hidden #main-content {
-  padding-top: 0px;
-}
 
-[data-sticky-sidebar] {
-  transition: top 0.3s ease;
-}
 html.header-hidden [data-sticky-sidebar] {
   top: 16px !important;
 }

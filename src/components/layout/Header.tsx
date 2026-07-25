@@ -1,9 +1,7 @@
-﻿"use client";
-
+"use client";
 import { useState, useEffect, useRef, useCallback } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Search,
   X,
@@ -21,34 +19,28 @@ import { SearchModal } from "@/components/interactive/SearchModal";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { ColorPicker } from "@/components/ui/ColorPicker";
 import { AnimatedLogo } from "@/components/ui/AnimatedLogo";
-
 interface NavLink {
   label: string;
   href: string;
   description?: string;
   badge?: string;
 }
-
 interface NavColumn {
   title: string;
   href?: string;
   links: NavLink[];
 }
-
 interface MegaNavItem {
   label: string;
   columns: NavColumn[];
   href?: string;
 }
-
 interface SimpleNavItem {
   label: string;
   href: string;
   columns?: never;
 }
-
 type NavItem = MegaNavItem | SimpleNavItem;
-
 const PRODUCT_COLUMNS: NavColumn[] = [
   {
     title: "AI Accelerators",
@@ -207,7 +199,6 @@ const PRODUCT_COLUMNS: NavColumn[] = [
     ],
   },
 ];
-
 const CATEGORY_COLUMNS = [
   {
     title: "Computing",
@@ -285,7 +276,6 @@ const CATEGORY_COLUMNS = [
     ],
   },
 ];
-
 const SERVICES_COLUMNS = [
   {
     title: "Custom Sourcing",
@@ -348,7 +338,6 @@ const SERVICES_COLUMNS = [
     ],
   },
 ];
-
 const RESOURCE_COLUMNS = [
   {
     title: "Learn",
@@ -367,7 +356,6 @@ const RESOURCE_COLUMNS = [
     ],
   },
 ];
-
 const NAV_MEGA: MegaNavItem[] = [
   { label: "Products", columns: PRODUCT_COLUMNS, href: "/products" },
   { label: "Categories", columns: CATEGORY_COLUMNS, href: "/categories" },
@@ -375,13 +363,11 @@ const NAV_MEGA: MegaNavItem[] = [
   { label: "Services", columns: SERVICES_COLUMNS, href: "/services" },
   { label: "Resources", columns: RESOURCE_COLUMNS, href: "/resources" },
 ];
-
 const NAV_SIMPLE: SimpleNavItem[] = [
   { label: "Blog", href: "/blog" },
   { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
 ];
-
 function NavLink({
   href,
   label,
@@ -413,7 +399,6 @@ function NavLink({
     </Link>
   );
 }
-
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
@@ -425,14 +410,12 @@ export function Header() {
   const menuCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
   const pathname = usePathname();
-
   const clearMenuTimer = useCallback(() => {
     if (menuCloseTimer.current) {
       clearTimeout(menuCloseTimer.current);
       menuCloseTimer.current = null;
     }
   }, []);
-
   const openMenu = useCallback(
     (label: string) => {
       clearMenuTimer();
@@ -440,7 +423,6 @@ export function Header() {
     },
     [clearMenuTimer],
   );
-
   const closeMenuWithDelay = useCallback(
     (delay = 250) => {
       clearMenuTimer();
@@ -451,7 +433,6 @@ export function Header() {
     },
     [clearMenuTimer],
   );
-
   const toggleMenu = useCallback(
     (label: string) => {
       if (activeMenu === label) {
@@ -462,7 +443,6 @@ export function Header() {
     },
     [activeMenu, openMenu],
   );
-
   useEffect(() => {
     function onScroll() {
       const currentY = window.scrollY;
@@ -477,23 +457,19 @@ export function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
   useEffect(() => {
     document.documentElement.classList.toggle("header-hidden", hidden);
   }, [hidden]);
-
   useEffect(() => {
     const id = setTimeout(() => setMobileOpen(false), 0);
     return () => clearTimeout(id);
   }, [pathname]);
-
   useEffect(() => {
     document.body.style.overflow = mobileOpen ? "hidden" : "";
     return () => {
       document.body.style.overflow = "";
     };
   }, [mobileOpen]);
-
   useEffect(() => {
     function onKeyDown(e: KeyboardEvent) {
       if (e.key === "Escape" && activeMenu) {
@@ -503,7 +479,6 @@ export function Header() {
     document.addEventListener("keydown", onKeyDown);
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [activeMenu]);
-
   useEffect(() => {
     if (!activeMenu) return;
     function onClickOutside(e: MouseEvent) {
@@ -517,12 +492,10 @@ export function Header() {
     document.addEventListener("mousedown", onClickOutside);
     return () => document.removeEventListener("mousedown", onClickOutside);
   }, [activeMenu]);
-
   function isActive(href: string) {
     if (href === "/") return pathname === "/";
     return pathname.startsWith(href);
   }
-
   return (
     <>
       <div
@@ -542,7 +515,6 @@ export function Header() {
           <Link href="/" className="flex-shrink-0">
             <AnimatedLogo size={36} showText />
           </Link>
-
           {/* Desktop Nav */}
           <div
             ref={navContainerRef}
@@ -599,15 +571,9 @@ export function Header() {
                 />
               ))}
             </nav>
-
             {/* Mega Menu Dropdown */}
-            <AnimatePresence>
               {activeMenu && NAV_MEGA.find((m) => m.label === activeMenu) && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
+                <div
                   className="absolute left-0 right-0 top-full mt-0 flex justify-center"
                   onClick={() => setActiveMenu(null)}
                   onMouseEnter={() => {
@@ -632,11 +598,9 @@ export function Header() {
                       );
                     })()}
                   </div>
-                </motion.div>
+                </div>
               )}
-            </AnimatePresence>
           </div>
-
           {/* Actions */}
           <div className="flex items-center gap-2.5">
             <ColorPicker />
@@ -695,22 +659,14 @@ export function Header() {
           </div>
         </header>
       </div>
-
       <SearchModal open={searchOpen} onOpenChange={setSearchOpen} />
-
       {/* Mobile overlay */}
-      <AnimatePresence>
         {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+          <div
             className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
             onClick={() => setMobileOpen(false)}
           />
         )}
-      </AnimatePresence>
-
       {/* Mobile menu */}
       <div
         className={cn(
@@ -852,7 +808,6 @@ export function Header() {
               </button>
             </div>
           </div>
-
           <div className="flex-1 px-6 pb-6">
             {/* Home link */}
             <Link
@@ -868,7 +823,6 @@ export function Header() {
               <span className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-transform" />
               Home
             </Link>
-
             {/* Mega nav items with dropdown */}
             {(
               [
@@ -904,13 +858,9 @@ export function Header() {
                           )}
                         />
                       </button>
-                      <AnimatePresence>
                         {mobileDropdown === item.label && (
-                          <motion.div
+                          <div
                             key={`${item.label}-mobile`}
-                            initial={{ opacity: 0, height: 0 }}
-                            animate={{ opacity: 1, height: "auto" }}
-                            exit={{ opacity: 0, height: 0 }}
                             className="overflow-hidden"
                           >
                             <div className="pl-5 py-2 space-y-1 bg-primary/[0.02] rounded-lg my-1">
@@ -951,15 +901,14 @@ export function Header() {
                                       onClick={() => setMobileOpen(false)}
                                       className="block text-[11px] font-medium text-primary/70 hover:text-primary px-3 py-1.5 transition-transform"
                                     >
-                                      +{col.links.length - 5} more →
+                                      +{col.links.length - 5} more ?
                                     </Link>
                                   )}
                                 </div>
                               ))}
                             </div>
-                          </motion.div>
+                          </div>
                         )}
-                      </AnimatePresence>
                     </>
                   ) : (
                     <Link
@@ -979,7 +928,6 @@ export function Header() {
                 </div>
               );
             })}
-
             {/* Mobile CTA */}
             <div className="mt-6 space-y-3">
               <Link
@@ -999,11 +947,10 @@ export function Header() {
                 Sign In
               </Link>
             </div>
-
             {/* Contact info */}
             <div className="mt-6 pt-4 border-t border-border/50 text-sm text-text-muted space-y-2">
               <div className="flex items-center gap-2">
-                <span className="text-primary/60">📞</span>{" "}
+                <span className="text-primary/60">??</span>{" "}
                 <a
                   href="tel:+917982498712"
                   className="hover:text-primary transition-transform"
@@ -1012,7 +959,7 @@ export function Header() {
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-primary/60">✉️</span>{" "}
+                <span className="text-primary/60">??</span>{" "}
                 <a
                   href="mailto:sales@servchip.com"
                   className="hover:text-primary transition-transform"
@@ -1021,14 +968,14 @@ export function Header() {
                 </a>
               </div>
               <div className="flex items-start gap-2 text-xs">
-                <span className="text-primary/60 mt-0.5">📍</span>
+                <span className="text-primary/60 mt-0.5">??</span>
                 <span>
                   <strong className="text-text-muted">India:</strong>{" "}
                   {SITE.addresses.india}
                 </span>
               </div>
               <div className="flex items-start gap-2 text-xs">
-                <span className="text-primary/60 mt-0.5">📍</span>
+                <span className="text-primary/60 mt-0.5">??</span>
                 <span>
                   <strong className="text-text-muted">UAE:</strong>{" "}
                   {SITE.addresses.uae}

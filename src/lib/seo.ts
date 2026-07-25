@@ -1,4 +1,4 @@
-import { SITE } from "./constants";
+import { SITE, SCHEMA } from "./constants";
 
 export const OG_IMAGE = "/og-image.png";
 export const OG_WIDTH = 1200;
@@ -140,14 +140,6 @@ export function productSchema(product: {
   images?: string[];
   status: string;
 }) {
-  const availabilityMap: Record<string, string> = {
-    in_stock: "https://schema.org/InStock",
-    on_order: "https://schema.org/PreOrder",
-    limited: "https://schema.org/LimitedAvailability",
-    pre_order: "https://schema.org/PreOrder",
-    discontinued: "https://schema.org/Discontinued",
-  };
-
   return jsonLd({
     "@type": "Product",
     name: product.name,
@@ -165,14 +157,21 @@ export function productSchema(product: {
     offers: {
       "@type": "Offer",
       url: `${SITE.url}/products/${product.slug}`,
-      availability:
-        availabilityMap[product.status] ?? "https://schema.org/InStock",
-      priceCurrency: "USD",
+      priceCurrency: SCHEMA.currency,
       price: "0",
-      priceValidUntil: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000)
+      priceValidUntil: new Date(
+        Date.now() + SCHEMA.priceValidUntilDays * 24 * 60 * 60 * 1000,
+      )
         .toISOString()
         .split("T")[0],
-      seller: { "@type": "Organization", name: "Servchip Inc." },
+      validFrom: new Date().toISOString().split("T")[0],
+      availability:
+        SCHEMA.availabilityMap[
+          product.status as keyof typeof SCHEMA.availabilityMap
+        ] ?? "https://schema.org/InStock",
+      seller: SCHEMA.seller,
+      hasMerchantReturnPolicy: SCHEMA.returnPolicy,
+      shippingDetails: SCHEMA.shipping,
     },
   });
 }

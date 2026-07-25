@@ -3,31 +3,11 @@
 import { useRef, useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import NextImage from "next/image";
-import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { HERO_PHRASES, HERO_STATS } from "@/data/home";
 
 const styles = `
-  @keyframes scan-line {
-    0% { transform: translateY(-100%); opacity: 0; }
-    10% { opacity: 0.5; }
-    90% { opacity: 0.5; }
-    100% { transform: translateY(100vh); opacity: 0; }
-  }
-  @keyframes mesh-shift {
-    0% { transform: translate(0, 0); }
-    25% { transform: translate(10px, -5px); }
-    50% { transform: translate(-5px, 10px); }
-    75% { transform: translate(8px, 8px); }
-    100% { transform: translate(0, 0); }
-  }
-  @keyframes float-particle {
-    0% { transform: translateY(0) translateX(0); opacity: 0; }
-    10% { opacity: 0.8; }
-    90% { opacity: 0.5; }
-    100% { transform: translateY(-150px) translateX(var(--dx, 20px)); opacity: 0; }
-  }
   @keyframes logo-scroll {
     0% { transform: translateX(0); }
     100% { transform: translateX(-50%); }
@@ -215,42 +195,14 @@ export function Hero3D() {
       <div className="absolute inset-0 bg-gradient-to-r from-[#070B15]/30 via-transparent to-[#070B15]/30" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#070B15]/40 via-transparent to-transparent" />
 
-      <div
-        className="absolute inset-0 opacity-[0.025]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(0,188,212,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0,188,212,0.3) 1px, transparent 1px)",
-          backgroundSize: "60px 60px",
-          animation: "mesh-shift 20s ease-in-out infinite",
-        }}
-      />
-
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background:
-            "linear-gradient(180deg, transparent, rgba(0,188,212,0.02), transparent)",
-          animation: "scan-line 6s linear infinite",
-        }}
-      />
-
       <FloatingOrbs />
       {isDesktop && <ParticleField />}
 
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(5,7,11,0.35)_100%)] pointer-events-none" />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full z-10">
-        <motion.div
-          initial={{ y: 20 }}
-          animate={{ y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center"
-        >
-          <motion.div
-            initial={{ y: -10 }}
-            animate={{ y: 0 }}
-            transition={{ delay: 0.1 }}
-            className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-[11px] font-mono font-bold mb-8 tracking-wide uppercase border bg-black/40 backdrop-blur-md"
+        <div className="text-center">
+          <div className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-[11px] font-mono font-bold mb-8 tracking-wide uppercase border bg-black/40 backdrop-blur-md"
             style={{
               borderColor:
                 "color-mix(in srgb, var(--hero-primary) 35%, transparent)",
@@ -262,25 +214,17 @@ export function Hero3D() {
               style={{ backgroundColor: "var(--hero-secondary)" }}
             />
             AUTHORIZED DISTRIBUTOR — 50+ BRANDS
-          </motion.div>
+          </div>
 
-          <motion.h1
-            initial={{ y: 20 }}
-            animate={{ y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-4xl sm:text-5xl lg:text-[4rem] font-black text-white leading-[1.05] mb-6 tracking-tight"
+          <h1 className="text-4xl sm:text-5xl lg:text-[4rem] font-black text-white leading-[1.05] mb-6 tracking-tight"
           >
             Enterprise AI Chips &{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00BCD4] to-[#00E5FF]">
               Accelerators for HPC
             </span>
-          </motion.h1>
+          </h1>
 
-          <motion.p
-            initial={{ y: 15 }}
-            animate={{ y: 0 }}
-            transition={{ delay: 0.35 }}
-            className="text-slate-300 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto min-h-[3.5rem]"
+          <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto min-h-[3.5rem]"
           >
             <span className="text-primary/60 mr-2 font-mono text-sm">&gt;</span>
             {displayText}
@@ -288,19 +232,12 @@ export function Hero3D() {
               className="inline-block w-[6px] h-[14px] ml-1 align-middle animate-pulse"
               style={{ backgroundColor: "var(--hero-primary)" }}
             />
-          </motion.p>
+          </p>
 
-          <motion.div
-            initial={{ y: 15 }}
-            animate={{ y: 0 }}
-            transition={{ delay: 0.5 }}
-            className="flex flex-wrap gap-4 justify-center mb-12"
+          <div className="flex flex-wrap gap-4 justify-center mb-12"
           >
             <Link href="/products">
-              <motion.button
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.97 }}
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-black transition-transform"
+              <button className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-black"
                 style={{
                   backgroundColor: "var(--hero-primary)",
                   boxShadow:
@@ -308,12 +245,10 @@ export function Hero3D() {
                 }}
               >
                 Explore Products <ArrowRight className="w-4 h-4" />
-              </motion.button>
+              </button>
             </Link>
             <Link href="/rfq">
-              <motion.button
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.97 }}
+              <button
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-sm border bg-white/[0.05] backdrop-blur-sm"
                 style={{
                   borderColor:
@@ -322,27 +257,18 @@ export function Hero3D() {
                 }}
               >
                 Request Quotation
-              </motion.button>
+              </button>
             </Link>
-          </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ y: 15 }}
-            animate={{ y: 0 }}
-            transition={{ delay: 0.65 }}
-            className="grid grid-cols-3 gap-8 max-w-lg mx-auto py-6 border-t"
+          <div className="grid grid-cols-3 gap-8 max-w-lg mx-auto py-6 border-t"
             style={{
               borderColor:
                 "color-mix(in srgb, var(--hero-primary) 20%, transparent)",
             }}
           >
             {HERO_STATS.map(({ value, label }, i) => (
-              <motion.div
-                key={label}
-                initial={{ y: 10 }}
-                animate={{ y: 0 }}
-                transition={{ delay: 0.8 + i * 0.1 }}
-              >
+                <div key={label}>
                 <span
                   className="text-2xl sm:text-3xl font-black text-white font-mono tracking-tight block"
                   style={{ textShadow: "0 0 30px rgba(0,188,212,0.2)" }}
@@ -355,17 +281,13 @@ export function Hero3D() {
                 >
                   {label}
                 </span>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8 }}
-        className="absolute bottom-0 left-0 right-0 overflow-hidden py-6"
+      <div className="absolute bottom-0 left-0 right-0 overflow-hidden py-6"
       >
         <div className="relative overflow-hidden">
           <div
@@ -392,7 +314,7 @@ export function Hero3D() {
             ))}
           </div>
         </div>
-      </motion.div>
+      </div>
     </section>
   );
 }

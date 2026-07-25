@@ -1,13 +1,8 @@
-﻿"use client";
-
-import { motion } from "framer-motion";
+"use client";
 import { Phone, Mail, ShieldCheck } from "lucide-react";
-
 export function TopBar() {
   return (
-    <motion.div
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
+    <div
       className="hidden lg:flex h-8 items-center justify-between px-6 sm:px-8 lg:px-12 bg-white dark:bg-surface border-b border-gray-200/60 dark:border-border/60 text-[11px] text-text-dim relative z-10"
     >
       <div className="flex items-center gap-4">
@@ -31,13 +26,13 @@ export function TopBar() {
         </span>
         <span className="w-px h-3 bg-gradient-to-b from-transparent via-border to-transparent" />
         <span className="flex items-center gap-1 hover:text-text transition-transform duration-200 cursor-pointer">
-          <span className="text-[10px]">🌍</span> Global Shipping
+          <span className="text-[10px]">??</span> Global Shipping
         </span>
         <span className="w-px h-3 bg-gradient-to-b from-transparent via-border to-transparent" />
         <span className="flex items-center gap-1 hover:text-text transition-transform duration-200 cursor-pointer">
           <ShieldCheck className="w-3 h-3 text-primary/60" /> ISO 9001 Certified
         </span>
       </div>
-    </motion.div>
+    </div>
   );
 }

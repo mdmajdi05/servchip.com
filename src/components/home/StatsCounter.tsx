@@ -1,7 +1,6 @@
-﻿"use client";
+"use client";
 
 import { useRef, useEffect, useState } from "react";
-import { useInView } from "framer-motion";
 import {
   Cpu,
   Building2,
@@ -60,16 +59,24 @@ function StatCard({
 }
 
 export function StatsCounter() {
-  const ref = useRef(null);
-  const inView = useInView(ref, { once: true, margin: "-100px" });
+  const ref = useRef<HTMLDivElement>(null);
   const [start, setStart] = useState(false);
 
   useEffect(() => {
-    if (inView) {
-      const timer = setTimeout(() => setStart(true), 200);
-      return () => clearTimeout(timer);
-    }
-  }, [inView]);
+    const el = ref.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => setStart(true), 200);
+          observer.disconnect();
+        }
+      },
+      { rootMargin: "-100px" },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <section className="relative py-20 md:py-28 bg-surface overflow-hidden">

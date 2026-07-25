@@ -1,6 +1,4 @@
-﻿"use client";
-
-import { motion } from "framer-motion";
+"use client";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ContactForm } from "@/components/forms/ContactForm";
 import {
@@ -13,9 +11,7 @@ import {
 } from "lucide-react";
 import { SITE } from "@/lib/constants";
 import Link from "next/link";
-
 const WHATSAPP_NUMBER = "917982498712";
-
 const CONTACT_METHODS = [
   {
     icon: Phone,
@@ -42,7 +38,6 @@ const CONTACT_METHODS = [
     color: "bg-[#25D366]/10 text-[#25D366]",
   },
 ];
-
 export default function ContactPage() {
   return (
     <div className="min-h-screen bg-bg-dark pb-20">
@@ -51,23 +46,16 @@ export default function ContactPage() {
         <SectionHeading
           label="Contact Us"
           title="Let's Talk About Your AI Infrastructure"
-          subtitle="Whether you need 1 GPU or 1,000 — pricing, availability, or technical guidance. Our team is ready to help."
+          subtitle="Whether you need 1 GPU or 1,000 - pricing, availability, or technical guidance. Our team is ready to help."
           align="center"
         />
-
         <div className="grid lg:grid-cols-5 gap-10 mt-10 max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
+          <div
             className="lg:col-span-3"
           >
             <ContactForm />
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
+          </div>
+          <div
             className="lg:col-span-2 space-y-5"
           >
             <div className="bg-surface border border-border rounded-xl p-5">
@@ -106,7 +94,6 @@ export default function ContactPage() {
                 ))}
               </div>
             </div>
-
             <div className="bg-surface border border-border rounded-xl p-5">
               <div className="flex items-center gap-2 mb-3">
                 <Clock className="w-4 h-4 text-primary" />
@@ -122,7 +109,6 @@ export default function ContactPage() {
                 <span>Currently Online</span>
               </div>
             </div>
-
             <div className="space-y-3">
               <div className="flex items-start gap-3 p-4 bg-surface border border-border rounded-xl">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
@@ -147,7 +133,6 @@ export default function ContactPage() {
                 </div>
               </div>
             </div>
-
             <div className="bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 rounded-xl p-5">
               <h3 className="text-sm font-bold text-text mb-2">Prefer RFQ?</h3>
               <p className="text-text-muted text-xs leading-relaxed mb-3">
@@ -161,7 +146,7 @@ export default function ContactPage() {
                 Submit RFQ <ArrowRight className="w-3 h-3" />
               </Link>
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </div>

@@ -1,10 +1,8 @@
-﻿"use client";
-
+"use client";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   Send,
   CheckCircle,
@@ -18,9 +16,7 @@ import {
 } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
-
 const EMAILS = "sales@servchip.com,contact@servchip.com,support@servchip.com";
-
 const contactSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z.string().email("Please enter a valid email address"),
@@ -31,9 +27,7 @@ const contactSchema = z.object({
   topic: z.string().min(1, "Please select an inquiry type"),
   message: z.string().min(10, "Message must be at least 10 characters"),
 });
-
 type ContactFormData = z.infer<typeof contactSchema>;
-
 const TOPICS = [
   "GPU / Accelerator Pricing",
   "Server Pricing",
@@ -44,12 +38,9 @@ const TOPICS = [
   "Technical Support",
   "General Inquiry",
 ];
-
 type FormState = "idle" | "submitting" | "success";
-
 const inputClasses =
   "w-full bg-bg-dark border border-border rounded-lg pl-10 pr-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-transform duration-200";
-
 function FieldIcon({
   icon: Icon,
 }: {
@@ -59,10 +50,9 @@ function FieldIcon({
     <Icon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-dim pointer-events-none" />
   );
 }
-
 function buildMailtoUrl(data: ContactFormData): string {
   const subject = encodeURIComponent(
-    `[Servchip Inquiry] ${data.topic} — ${data.name}`,
+    `[Servchip Inquiry] ${data.topic} - ${data.name}`,
   );
   const lines = [
     `Hi Servchip Team,`,
@@ -85,10 +75,8 @@ function buildMailtoUrl(data: ContactFormData): string {
   const body = encodeURIComponent(lines.join("\n"));
   return `mailto:${EMAILS}?subject=${subject}&body=${body}`;
 }
-
 export function ContactForm() {
   const [formState, setFormState] = useState<FormState>("idle");
-
   const {
     register,
     handleSubmit,
@@ -98,10 +86,8 @@ export function ContactForm() {
     resolver: zodResolver(contactSchema),
     defaultValues: { topic: "GPU / Accelerator Pricing" },
   });
-
   const onSubmit = async (data: ContactFormData) => {
     setFormState("submitting");
-
     // Log on server
     try {
       await fetch("/api/contact", {
@@ -112,25 +98,19 @@ export function ContactForm() {
     } catch {
       /* continue */
     }
-
     // Open email client with all 3 recipients pre-filled
     const link = document.createElement("a");
     link.href = buildMailtoUrl(data);
     link.click();
-
     setFormState("success");
   };
-
   const handleReset = () => {
     reset();
     setFormState("idle");
   };
-
   if (formState === "success") {
     return (
-      <motion.div
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{ opacity: 1, scale: 1 }}
+      <div
         className="bg-surface border border-primary/30 rounded-2xl p-10 text-center"
       >
         <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-4">
@@ -159,10 +139,9 @@ export function ContactForm() {
             </Button>
           </a>
         </div>
-      </motion.div>
+      </div>
     );
   }
-
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
@@ -177,7 +156,6 @@ export function ContactForm() {
           message sent to our sales, contact &amp; support teams.
         </p>
       </div>
-
       <div className="space-y-4">
         <div className="grid sm:grid-cols-2 gap-4">
           <Field label="Full Name" required error={errors.name?.message}>
@@ -201,7 +179,6 @@ export function ContactForm() {
             />
           </Field>
         </div>
-
         <div className="grid sm:grid-cols-2 gap-4">
           <Field label="Phone Number" error={errors.phone?.message}>
             <FieldIcon icon={Phone} />
@@ -224,7 +201,6 @@ export function ContactForm() {
             />
           </Field>
         </div>
-
         <div className="grid sm:grid-cols-2 gap-4">
           <Field label="Country" error={errors.country?.message}>
             <FieldIcon icon={Globe} />
@@ -247,7 +223,6 @@ export function ContactForm() {
             />
           </Field>
         </div>
-
         <Field label="Inquiry Type" required error={errors.topic?.message}>
           <FieldIcon icon={MessageSquare} />
           <select
@@ -262,11 +237,10 @@ export function ContactForm() {
             ))}
           </select>
         </Field>
-
         <Field label="Your Message" required error={errors.message?.message}>
           <textarea
             rows={4}
-            placeholder="Tell us what you need — product names, specs, quantities, timeline..."
+            placeholder="Tell us what you need - product names, specs, quantities, timeline..."
             disabled={formState === "submitting"}
             className={cn(
               "w-full bg-bg-dark border border-border rounded-lg px-3 py-2.5 text-sm text-text placeholder-text-dim outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/20 transition-transform duration-200 resize-none",
@@ -275,7 +249,6 @@ export function ContactForm() {
             {...register("message")}
           />
         </Field>
-
         <Button
           type="submit"
           variant="solid"
@@ -289,9 +262,8 @@ export function ContactForm() {
             ? "Opening Email..."
             : "Submit Inquiry via Email"}
         </Button>
-
         <p className="text-xs text-text-dim text-center">
-          📩 Your inquiry will be sent to{" "}
+          ?? Your inquiry will be sent to{" "}
           <span className="text-primary">sales@</span>,{" "}
           <span className="text-primary">contact@</span> &amp;{" "}
           <span className="text-primary">support@</span>servchip.com
@@ -300,7 +272,6 @@ export function ContactForm() {
     </form>
   );
 }
-
 function Field({
   label,
   required,
@@ -319,18 +290,13 @@ function Field({
         {required && <span className="text-primary ml-0.5">*</span>}
       </label>
       {children}
-      <AnimatePresence>
         {error && (
-          <motion.p
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
+          <p
             className="text-error text-xs mt-1"
           >
             {error}
-          </motion.p>
+          </p>
         )}
-      </AnimatePresence>
     </div>
   );
 }

@@ -3,7 +3,6 @@
 import { useState, useMemo, createElement } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
   ArrowLeft,
   Server,
@@ -92,10 +91,7 @@ export default function CategoryDetailPage() {
     return (
       <div className="min-h-screen bg-bg-dark">
         <div className="max-w-7xl mx-auto px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col items-center justify-center py-32 text-center"
+          <div className="flex flex-col items-center justify-center py-32 text-center"
           >
             <Server className="w-16 h-16 text-text-dim mb-6" />
             <h1 className="text-2xl font-bold text-text mb-2">
@@ -111,7 +107,7 @@ export default function CategoryDetailPage() {
             >
               <ArrowLeft className="w-4 h-4" /> Back to Categories
             </Link>
-          </motion.div>
+          </div>
         </div>
       </div>
     );
@@ -121,9 +117,7 @@ export default function CategoryDetailPage() {
     <div className="min-h-screen bg-bg-dark">
       <div className="max-w-7xl mx-auto px-4 pb-20">
         {/* Breadcrumb */}
-        <motion.nav
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
+        <nav
           className="flex items-center gap-2 text-sm text-text-dim mb-6 pt-4"
         >
           <Link
@@ -134,13 +128,10 @@ export default function CategoryDetailPage() {
           </Link>
           <span>/</span>
           <span className="text-text">{category.name}</span>
-        </motion.nav>
+        </nav>
 
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
+        <div
           className="mb-8"
         >
           <div className="flex items-center gap-4 mb-2">
@@ -168,7 +159,7 @@ export default function CategoryDetailPage() {
                 </Badge>
               ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Search + type filters */}
         <div className="flex flex-wrap items-center gap-3 mb-6">

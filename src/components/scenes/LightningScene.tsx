@@ -99,7 +99,6 @@ export function LightningScene() {
             style={{
               strokeDasharray: "100",
               strokeDashoffset: "100",
-              animation: `circuit-draw 3s ${i * 0.15}s ease-in-out infinite alternate`,
             }}
           />
         ))}

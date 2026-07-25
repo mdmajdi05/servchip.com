@@ -1,7 +1,5 @@
-﻿"use client";
-
+"use client";
 import { useState, useRef, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
   Search,
@@ -12,11 +10,11 @@ import {
   Network,
   MemoryStick,
   HardDrive,
+  FileText,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { searchProducts } from "@/data/search";
+import { searchProducts, searchBlogPosts } from "@/data/search";
 import type { ProductType } from "@/types";
-
 const TYPE_ICON: Record<ProductType, typeof Cpu> = {
   chip: Cpu,
   server: Server,
@@ -24,7 +22,6 @@ const TYPE_ICON: Record<ProductType, typeof Cpu> = {
   memory: MemoryStick,
   storage: HardDrive,
 };
-
 const TYPE_LABEL: Record<ProductType, string> = {
   chip: "Chip",
   server: "Server",
@@ -32,25 +29,23 @@ const TYPE_LABEL: Record<ProductType, string> = {
   memory: "Memory",
   storage: "Storage",
 };
-
 export function SearchBar() {
   const [open, setOpen] = useState(false);
   const [query, setQuery] = useState("");
   const [debounced, setDebounced] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     if (open) inputRef.current?.focus();
   }, [open]);
-
   useEffect(() => {
     const timer = setTimeout(() => setDebounced(query), 300);
     return () => clearTimeout(timer);
   }, [query]);
-
-  const results = searchProducts(debounced).slice(0, 6);
-
+  const loading = query.length >= 2 && query !== debounced;
+  const products = searchProducts(debounced).slice(0, 6);
+  const blogPosts = searchBlogPosts(debounced).slice(0, 3);
+  const hasResults = products.length > 0 || blogPosts.length > 0;
   useEffect(() => {
     function handleClick(e: MouseEvent) {
       if (
@@ -63,9 +58,6 @@ export function SearchBar() {
     document.addEventListener("mousedown", handleClick);
     return () => document.removeEventListener("mousedown", handleClick);
   }, [open]);
-
-  const loading = query !== debounced && query.length >= 2;
-
   return (
     <div className="relative" ref={panelRef}>
       <button
@@ -80,14 +72,8 @@ export function SearchBar() {
       >
         <Search className="w-4 h-4" />
       </button>
-
-      <AnimatePresence>
         {open && (
-          <motion.div
-            initial={{ opacity: 0, y: -8, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -8, scale: 0.96 }}
-            transition={{ duration: 0.15 }}
+          <div
             className="absolute top-full right-0 mt-2 w-80 bg-surface border border-border rounded-xl shadow-2xl overflow-hidden z-50"
           >
             <div className="flex items-center gap-2 px-4 py-3 border-b border-border">
@@ -97,11 +83,11 @@ export function SearchBar() {
                 type="text"
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search products..."
-                aria-label="Search products"
+                placeholder="Search products & blog..."
+                aria-label="Search products and blog"
                 className="flex-1 bg-transparent text-sm text-text placeholder-text-dim outline-none"
               />
-              {loading && (
+              {loading && query.length >= 2 && (
                 <Loader2 className="w-3.5 h-3.5 text-text-dim animate-spin" />
               )}
               {query && !loading && (
@@ -114,18 +100,25 @@ export function SearchBar() {
                 </button>
               )}
             </div>
-
-            <div className="max-h-72 overflow-y-auto">
-              {results.length === 0 && debounced.length >= 2 && !loading && (
+            <div className="max-h-80 overflow-y-auto">
+              {loading && query.length >= 2 && (
+                <p className="px-4 py-6 text-center text-text-dim text-xs">Searching...</p>
+              )}
+              {!loading && debounced.length >= 2 && !hasResults && (
                 <p className="px-4 py-6 text-center text-text-dim text-xs">
                   No results found
                 </p>
               )}
-              {results.map(({ product, type }) => {
+              {!loading && products.length > 0 && (
+                <div className="px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-text-dim">
+                  Products ({products.length})
+                </div>
+              )}
+              {!loading && products.map(({ product, type }) => {
                 const Icon = TYPE_ICON[type];
                 return (
                   <Link
-                    key={product.id}
+                    key={`p-${product.id}`}
                     href={`/products/${product.slug}`}
                     onClick={() => {
                       setOpen(false);
@@ -158,23 +151,38 @@ export function SearchBar() {
                   </Link>
                 );
               })}
-              {results.length > 0 && (
+              {!loading && blogPosts.length > 0 && (
+                <div className="px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-text-dim border-t border-border">
+                  Blog Posts ({blogPosts.length})
+                </div>
+              )}
+              {!loading && blogPosts.map((post) => (
                 <Link
-                  href={`/products?q=${encodeURIComponent(debounced)}`}
+                  key={`b-${post.slug}`}
+                  href={`/blog/${post.slug}`}
                   onClick={() => {
                     setOpen(false);
                     setQuery("");
                     setDebounced("");
                   }}
-                  className="block px-4 py-2.5 text-xs text-center text-primary hover:bg-bg-dark transition-transform border-t border-border"
+                  className="flex items-center gap-3 px-4 py-3 hover:bg-bg-dark transition-transform"
                 >
-                  View all results
+                  <span className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                    <FileText className="w-3.5 h-3.5 text-primary" />
+                  </span>
+                  <div className="flex-1 min-w-0">
+                    <span className="text-sm text-text font-medium truncate block">
+                      {post.title}
+                    </span>
+                    <span className="text-xs text-text-dim truncate block">
+                      {post.category}
+                    </span>
+                  </div>
                 </Link>
-              )}
+              ))}
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
     </div>
   );
 }

@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 import { CHIPS } from "@/data/chips";
-import { BLOG_POSTS } from "@/data/blog";
+import { BLOG_POSTS } from "@/blog";
 import { CATEGORIES } from "@/data/categories";
 import { MANUFACTURERS } from "@/data/manufacturers";
 import { SITE } from "@/lib/constants";

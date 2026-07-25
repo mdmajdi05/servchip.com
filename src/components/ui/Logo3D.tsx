@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef } from "react";
-import { motion } from "framer-motion";
 import Link from "next/link";
 
 export function Logo3D() {
@@ -15,10 +14,8 @@ export function Logo3D() {
     >
       {/* 3D Logo Box */}
       <div className="relative perspective-[800px]">
-        <motion.div
+        <div
           className="relative w-10 h-10 preserve-3d cursor-pointer"
-          whileHover={{ rotateY: 180, rotateX: 10 }}
-          transition={{ duration: 0.8, ease: [0.23, 1, 0.32, 1] }}
           style={{ transformStyle: "preserve-3d" }}
         >
           {/* Front face */}
@@ -40,7 +37,7 @@ export function Logo3D() {
 
           {/* Glow aura */}
           <div className="absolute -inset-2 rounded-2xl bg-primary/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-        </motion.div>
+        </div>
 
         {/* Pins decoration */}
         <div className="absolute -bottom-0.5 left-1/2 -translate-x-1/2 flex gap-[2px]">

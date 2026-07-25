@@ -1,7 +1,5 @@
-﻿"use client";
-
+"use client";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   ArrowRight,
   ArrowLeft,
@@ -20,7 +18,6 @@ import {
   Bot,
   Circle,
 } from "lucide-react";
-
 const ICON_MAP: Record<string, typeof Brain> = {
   Brain,
   Zap,
@@ -41,7 +38,6 @@ import { USE_CASES } from "@/data/use-cases";
 import { CHIPS } from "@/data/chips";
 import type { ChipProduct } from "@/types";
 import { cn } from "@/lib/utils";
-
 const BUDGET_TIERS = [
   {
     id: "budget",
@@ -64,7 +60,6 @@ const BUDGET_TIERS = [
     description: "Maximum performance, data-center grade",
   },
 ] as const;
-
 const PERFORMANCE_PRIORITIES = [
   {
     id: "memory",
@@ -87,7 +82,6 @@ const PERFORMANCE_PRIORITIES = [
     description: "Even performance across all dimensions",
   },
 ] as const;
-
 const STATUS_CONFIG: Record<
   string,
   { label: string; clr: string; dot: string }
@@ -118,18 +112,14 @@ const STATUS_CONFIG: Record<
     dot: "bg-error",
   },
 };
-
 export default function ConfiguratorPage() {
   const router = useRouter();
-
   const [step, setStep] = useState(1);
   const [useCase, setUseCase] = useState<string | null>(null);
   const [budget, setBudget] = useState("high-end");
   const [performance, setPerformance] = useState("balanced");
   const [quantity, setQuantity] = useState(4);
-
   const selectedUseCase = USE_CASES.find((u) => u.id === useCase);
-
   const matchingChips = (selectedUseCase?.suggestedChips || [])
     .map((chipId) => {
       const chip = CHIPS.find((c) => c.id === chipId);
@@ -169,7 +159,6 @@ export default function ConfiguratorPage() {
     chip: ChipProduct;
     match: number;
   }[];
-
   const handleQuote = (chips: ChipProduct[]) => {
     if (chips.length === 0) {
       router.push("/rfq");
@@ -178,7 +167,6 @@ export default function ConfiguratorPage() {
     const slugs = chips.map((c) => c.slug).join(",");
     router.push(`/rfq?chips=${slugs}`);
   };
-
   const reset = () => {
     setStep(1);
     setUseCase(null);
@@ -186,16 +174,14 @@ export default function ConfiguratorPage() {
     setPerformance("balanced");
     setQuantity(4);
   };
-
   return (
     <>
       <PageHero
         label="Chip Configurator"
         title="Find Your Perfect Chip Match"
-        subtitle="Answer a few questions and our AI-powered configurator will recommend the optimal chips from NVIDIA, AMD, Intel and more for your specific workload, performance needs, and budget — backed by certified engineering expertise."
+        subtitle="Answer a few questions and our AI-powered configurator will recommend the optimal chips from NVIDIA, AMD, Intel and more for your specific workload, performance needs, and budget - backed by certified engineering expertise."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Configurator" }]}
       />
-
       <section
         id="configurator"
         className="py-20 md:py-28 bg-bg-body scroll-mt-20 relative overflow-hidden"
@@ -211,7 +197,6 @@ export default function ConfiguratorPage() {
             title="Find Your Perfect Chip Match"
             subtitle="Answer a few questions and our AI-powered configurator will recommend the optimal NVIDIA chips for your specific workload and requirements."
           />
-
           <div className="max-w-4xl mx-auto rounded-2xl border border-border bg-surface p-6 md:p-8">
             {/* Progress bar */}
             <div className="flex items-center justify-between mb-8">
@@ -241,15 +226,10 @@ export default function ConfiguratorPage() {
                 </div>
               ))}
             </div>
-
-            <AnimatePresence mode="wait">
               {/* Step 1: Use Case */}
               {step === 1 && (
-                <motion.div
+                <div
                   key="step1"
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -30 }}
                 >
                   <h3 className="text-lg font-bold text-text mb-1">
                     What&apos;s your primary use case?
@@ -298,16 +278,12 @@ export default function ConfiguratorPage() {
                       Continue <ArrowRight className="w-4 h-4" />
                     </Button>
                   </div>
-                </motion.div>
+                </div>
               )}
-
               {/* Step 2: Parameters */}
               {step === 2 && (
-                <motion.div
+                <div
                   key="step2"
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -30 }}
                 >
                   <h3 className="text-lg font-bold text-text mb-1">
                     Configure your parameters
@@ -315,7 +291,6 @@ export default function ConfiguratorPage() {
                   <p className="text-sm text-text-muted mb-6">
                     Set your budget, performance priority, and quantity.
                   </p>
-
                   <div className="space-y-6">
                     {/* Budget */}
                     <div>
@@ -349,7 +324,6 @@ export default function ConfiguratorPage() {
                         ))}
                       </div>
                     </div>
-
                     {/* Performance Priority */}
                     <div>
                       <label className="text-sm font-medium text-text mb-2 block">
@@ -384,7 +358,6 @@ export default function ConfiguratorPage() {
                         ))}
                       </div>
                     </div>
-
                     {/* Quantity */}
                     <div>
                       <label className="text-sm font-medium text-text mb-2 block">
@@ -408,7 +381,6 @@ export default function ConfiguratorPage() {
                       </div>
                     </div>
                   </div>
-
                   <div className="flex justify-between mt-6">
                     <Button variant="outline" onClick={() => setStep(1)}>
                       <ArrowLeft className="w-4 h-4" /> Back
@@ -417,16 +389,12 @@ export default function ConfiguratorPage() {
                       See Results <ArrowRight className="w-4 h-4" />
                     </Button>
                   </div>
-                </motion.div>
+                </div>
               )}
-
               {/* Step 3: Results */}
               {step === 3 && (
-                <motion.div
+                <div
                   key="step3"
-                  initial={{ opacity: 0, x: 30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -30 }}
                 >
                   <div className="flex items-center gap-2 mb-1">
                     <Sparkles className="w-5 h-5 text-primary" />
@@ -447,7 +415,6 @@ export default function ConfiguratorPage() {
                     budget, and <span className="text-primary">{quantity}</span>{" "}
                     units needed.
                   </p>
-
                   <div className="space-y-3 max-h-[400px] overflow-y-auto pr-1">
                     {matchingChips.map(({ chip, match }) => {
                       const sc =
@@ -490,15 +457,14 @@ export default function ConfiguratorPage() {
                               </span>
                             </div>
                           </div>
-
                           {/* Chip info */}
                           <div className="flex-1 min-w-0">
                             <p className="text-sm font-bold text-text truncate">
                               {chip.name}
                             </p>
                             <p className="text-xs text-text-muted font-mono">
-                              {chip.specifications.memory} · {chip.architecture}{" "}
-                              · {chip.specifications.tdp}
+                              {chip.specifications.memory} - {chip.architecture}{" "}
+                              - {chip.specifications.tdp}
                             </p>
                             <div className="mt-1.5">
                               <span
@@ -511,7 +477,6 @@ export default function ConfiguratorPage() {
                               </span>
                             </div>
                           </div>
-
                           <Button
                             size="sm"
                             variant="outline"
@@ -524,7 +489,6 @@ export default function ConfiguratorPage() {
                       );
                     })}
                   </div>
-
                   <div className="flex justify-between mt-6">
                     <Button variant="outline" onClick={() => setStep(2)}>
                       <ArrowLeft className="w-4 h-4" /> Back
@@ -537,10 +501,8 @@ export default function ConfiguratorPage() {
                       Request Quote for All <ArrowRight className="w-4 h-4" />
                     </Button>
                   </div>
-                </motion.div>
+                </div>
               )}
-            </AnimatePresence>
-
             {/* Reset button (when not on step 1) */}
             {step > 1 && (
               <button

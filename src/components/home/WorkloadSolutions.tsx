@@ -1,7 +1,5 @@
-﻿"use client";
-
+"use client";
 import { useState, useMemo } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Brain, Zap, Server, Monitor, Radio } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -10,7 +8,6 @@ import { getProductsByUseCase } from "@/data/products";
 import { getManufacturerColor } from "@/data/manufacturer-colors";
 import { isChipProduct, getProductTypeLabel } from "@/types";
 import type { AnyProduct, ChipProduct } from "@/types";
-
 const WORKLOADS = [
   {
     id: "ai-training",
@@ -48,7 +45,6 @@ const WORKLOADS = [
     color: "#E31837",
   },
 ];
-
 function ProductChipSpecs({ product }: { product: ChipProduct }) {
   return (
     <div className="flex flex-wrap gap-x-3 gap-y-1 text-[10px] font-mono text-text-dim">
@@ -59,7 +55,6 @@ function ProductChipSpecs({ product }: { product: ChipProduct }) {
     </div>
   );
 }
-
 function ProductCard({
   product,
   index,
@@ -68,13 +63,9 @@ function ProductCard({
   index: number;
 }) {
   const mfrColor = getManufacturerColor(product.manufacturer);
-
   return (
-    <motion.div
+    <div
       key={product.id}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3, delay: index * 0.05 }}
     >
       <Link
         href={`/products/${product.slug}`}
@@ -108,38 +99,33 @@ function ProductCard({
           </span>
         </div>
       </Link>
-    </motion.div>
+    </div>
   );
 }
-
 export function WorkloadSolutions() {
   const [activeTab, setActiveTab] = useState(WORKLOADS[0].id);
   const products = useMemo(
     () => getProductsByUseCase(activeTab).slice(0, 6),
     [activeTab],
   );
-
   return (
     <section className="py-20 bg-bg-dark">
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           label="By Workload"
           title="Which Enterprise Chip Fits Your Workload?"
-          subtitle="AI training, inference, HPC, edge — pick your use case and we'll match you to the right accelerator"
+          subtitle="AI training, inference, HPC, edge - pick your use case and we'll match you to the right accelerator"
           align="center"
         />
-
         {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">
           {WORKLOADS.map((w) => {
             const Icon = w.icon;
             const isActive = activeTab === w.id;
             return (
-              <motion.button
+              <button
                 key={w.id}
                 onClick={() => setActiveTab(w.id)}
-                whileHover={{ scale: 1.03 }}
-                whileTap={{ scale: 0.97 }}
                 className={`inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-sm font-semibold transition-transform duration-200 ${
                   isActive
                     ? "text-bg-dark shadow-lg"
@@ -149,26 +135,17 @@ export function WorkloadSolutions() {
               >
                 <Icon className="w-4 h-4" />
                 {w.label}
-              </motion.button>
+              </button>
             );
           })}
         </div>
-
         {/* Products Grid */}
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={activeTab}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.2 }}
-          >
+          <div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {products.map((product, i) => (
                 <ProductCard key={product.id} product={product} index={i} />
               ))}
             </div>
-
             {products.length === 0 && (
               <div className="text-center py-12">
                 <p className="text-text-dim text-sm">
@@ -176,9 +153,7 @@ export function WorkloadSolutions() {
                 </p>
               </div>
             )}
-          </motion.div>
-        </AnimatePresence>
-
+          </div>
         <div className="text-center mt-8">
           <Link
             href="/products"

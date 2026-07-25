@@ -1,7 +1,4 @@
-﻿"use client";
-
-import type { Variants } from "framer-motion";
-import { motion } from "framer-motion";
+"use client";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -22,13 +19,12 @@ import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { STATS } from "@/data/home";
-
 const SERVICES = [
   {
     icon: Truck,
     title: "Hardware Procurement",
     description:
-      "Need to buy enterprise chips? We source NVIDIA, AMD, Intel, and semiconductor components globally — manufacturer-direct, with full compliance docs and secure logistics.",
+      "Need to buy enterprise chips? We source NVIDIA, AMD, Intel, and semiconductor components globally - manufacturer-direct, with full compliance docs and secure logistics.",
     points: [
       "Global sourcing network",
       "Manufacturer verification",
@@ -52,7 +48,7 @@ const SERVICES = [
     icon: Search,
     title: "Hard-to-Find Parts",
     description:
-      "Looking for legacy NVIDIA chips, discontinued AMD accelerators, or scarce Intel components? We track down enterprise chips others can't find — with warranty on every unit.",
+      "Looking for legacy NVIDIA chips, discontinued AMD accelerators, or scarce Intel components? We track down enterprise chips others can't find - with warranty on every unit.",
     points: [
       "Legacy & EOL chip sourcing",
       "Verified global inventory",
@@ -64,7 +60,7 @@ const SERVICES = [
     icon: Headphones,
     title: "Technical Support",
     description:
-      "Our certified engineers help with setup, configuration, and performance tuning across NVIDIA, AMD, and Intel server platforms — from single GPUs to full clusters.",
+      "Our certified engineers help with setup, configuration, and performance tuning across NVIDIA, AMD, and Intel server platforms - from single GPUs to full clusters.",
     points: [
       "Multi-vendor certified engineers",
       "Remote & on-site support",
@@ -88,7 +84,7 @@ const SERVICES = [
     icon: Wrench,
     title: "Integration Services",
     description:
-      "From racking servers to configuring GPU clusters — our team gets your new NVIDIA, AMD, or Intel hardware production-ready from day one.",
+      "From racking servers to configuring GPU clusters - our team gets your new NVIDIA, AMD, or Intel hardware production-ready from day one.",
     points: [
       "System integration",
       "Cluster configuration",
@@ -100,7 +96,7 @@ const SERVICES = [
     icon: Cpu,
     title: "AI Infrastructure Design",
     description:
-      "Planning an AI training or inference deployment? We design the full server architecture — from GPU selection and NVLink topology to storage and networking.",
+      "Planning an AI training or inference deployment? We design the full server architecture - from GPU selection and NVLink topology to storage and networking.",
     points: [
       "Full architecture design",
       "GPU cluster planning",
@@ -112,9 +108,9 @@ const SERVICES = [
     icon: Building2,
     title: "Data Center Planning",
     description:
-      "Building or expanding a data center? We plan server rack layouts, power distribution, and cooling for GPU-accelerated workloads across NVIDIA, AMD, and Intel.",
+      "Building or expanding a data center? We plan server racks, power distribution, and cooling for GPU-accelerated workloads across NVIDIA, AMD, and Intel.",
     points: [
-      "Rack layout optimization",
+      "Rack optimization",
       "Power distribution design",
       "Cooling solution planning",
       "Structured cabling",
@@ -133,7 +129,6 @@ const SERVICES = [
     ],
   },
 ];
-
 const HOW_IT_WORKS = [
   {
     step: "01",
@@ -153,38 +148,31 @@ const HOW_IT_WORKS = [
     step: "03",
     title: "Deliver",
     description:
-      "From procurement through deployment, we manage the entire lifecycle — logistics, integration, testing, and handover — with continuous support every step of the way.",
+      "From procurement through deployment, we manage the entire lifecycle - logistics, integration, testing, and handover - with continuous support every step of the way.",
     icon: Package,
   },
 ];
-
-const containerVariants: Variants = {
+const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
-    opacity: 1,
     transition: { staggerChildren: 0.06 },
   },
 };
-
-const itemVariants: Variants = {
+const itemVariants = {
   hidden: { opacity: 0, y: 24 },
   visible: {
-    opacity: 1,
-    y: 0,
     transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
   },
 };
-
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-bg-dark">
       <PageHero
         label="Services"
         title="End-to-End Enterprise Chip Solutions"
-        subtitle="From finding the right chip to getting it deployed — we handle the full lifecycle so you can focus on building."
+        subtitle="From finding the right chip to getting it deployed - we handle the full lifecycle so you can focus on building."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
       />
-
       {/* Service Grid */}
       <section className="relative py-20 md:py-28 bg-bg-dark overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
@@ -193,19 +181,12 @@ export default function ServicesPage() {
           <SectionHeading
             label="What We Offer"
             title="Complete Service Portfolio"
-            subtitle="Nine specialized service lines covering the entire chip lifecycle — from sourcing and procurement to deployment, optimization, and ongoing support."
+            subtitle="Nine specialized service lines covering the entire chip lifecycle - from sourcing and procurement to deployment, optimization, and ongoing support."
           />
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {SERVICES.map((service) => (
-              <motion.div
+              <div
                 key={service.title}
-                variants={itemVariants}
                 className="group relative rounded-2xl border border-border bg-surface p-6 md:p-7 card-hover overflow-hidden flex flex-col"
               >
                 <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-transform pointer-events-none" />
@@ -238,12 +219,11 @@ export default function ServicesPage() {
                     <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5" />
                   </Link>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
-
       {/* How It Works */}
       <section className="relative py-20 md:py-28 bg-surface overflow-hidden">
         <div className="absolute inset-0 bg-dot-grid opacity-15 pointer-events-none" />
@@ -253,7 +233,6 @@ export default function ServicesPage() {
             title="How It Works"
             subtitle="A streamlined three-phase engagement model designed for clarity, speed, and enterprise-grade delivery."
           />
-
           <div className="max-w-5xl mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
               {HOW_IT_WORKS.map((step, i) => (
@@ -283,7 +262,6 @@ export default function ServicesPage() {
           </div>
         </div>
       </section>
-
       {/* Stats */}
       <section className="relative py-20 md:py-28 bg-bg-dark overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-15 pointer-events-none" />
@@ -292,18 +270,12 @@ export default function ServicesPage() {
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <SectionHeading
             title="Trusted by Enterprises Worldwide"
-            subtitle="500+ chips delivered, 200+ enterprise clients, and 99.9% authenticity rate — our track record speaks for itself."
+            subtitle="500+ chips delivered, 200+ enterprise clients, and 99.9% authenticity rate - our track record speaks for itself."
           />
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6 max-w-4xl mx-auto"
-          >
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-5 md:gap-6 max-w-4xl mx-auto">
             {STATS.map((stat) => (
-              <motion.div
+              <div
                 key={stat.label}
-                variants={itemVariants}
                 className="rounded-2xl border border-border bg-surface p-6 md:p-8 text-center card-hover"
               >
                 <div className="text-3xl md:text-4xl font-black text-primary font-mono">
@@ -313,19 +285,15 @@ export default function ServicesPage() {
                 <div className="text-xs text-text-muted mt-1.5 font-medium uppercase tracking-wider">
                   {stat.label}
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
-
       {/* CTA */}
       <section className="relative py-20 md:py-28 bg-surface overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+          <div
             className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent p-8 md:p-12"
           >
             <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 justify-between">
@@ -342,7 +310,7 @@ export default function ServicesPage() {
                 <p className="text-sm md:text-base text-text-muted leading-relaxed">
                   Tell us about your requirements and our certified engineers
                   will design a complete solution with detailed specifications,
-                  pricing, and deployment plan — typically within 24 hours.
+                  pricing, and deployment plan - typically within 24 hours.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 shrink-0">
@@ -366,7 +334,7 @@ export default function ServicesPage() {
                 </Link>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
     </div>

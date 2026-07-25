@@ -2,7 +2,6 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
   Check,
   ArrowLeft,
@@ -46,9 +45,7 @@ export function StorageDetail() {
   if (!st) {
     return (
       <div className="min-h-screen bg-bg-dark pb-20 flex items-center justify-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <div
           className="text-center max-w-md mx-auto px-4"
         >
           <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-surface-2 border border-border flex items-center justify-center">
@@ -66,7 +63,7 @@ export function StorageDetail() {
               Back to Products
             </Button>
           </Link>
-        </motion.div>
+        </div>
       </div>
     );
   }
@@ -76,14 +73,10 @@ export function StorageDetail() {
   return (
     <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4">
-        <motion.div
-          variants={containerVariants}
-          initial={false}
-          animate="visible"
-          className="space-y-12"
+        <div
+                    className="space-y-12"
         >
-          <motion.nav
-            variants={itemVariants}
+          <nav
             className="flex items-center gap-2 text-sm"
           >
             <Link
@@ -103,10 +96,9 @@ export function StorageDetail() {
             <span className="text-text-muted truncate max-w-[200px]">
               {st.name}
             </span>
-          </motion.nav>
+          </nav>
 
-          <motion.div
-            variants={itemVariants}
+          <div
             className="grid lg:grid-cols-2 gap-8 items-start"
           >
             <div>
@@ -236,14 +228,14 @@ export function StorageDetail() {
                 </Link>
                 <Link href="/products">
                   <Button variant="ghost" size="lg">
-                    ← Back to Catalog
+                    ? Back to Catalog
                   </Button>
                 </Link>
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div variants={itemVariants}>
+          <div >
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
                 <HardDrive className="w-5 h-5 text-primary" />
@@ -299,7 +291,7 @@ export function StorageDetail() {
                   <dl className="space-y-2.5">
                     {group.rows.map((row) => {
                       const value = st.specs[row.key];
-                      if (!value || value === "—") return null;
+                      if (!value || value === "ï¿½") return null;
                       return (
                         <div
                           key={row.key}
@@ -318,9 +310,9 @@ export function StorageDetail() {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
-          <motion.div variants={itemVariants}>
+          <div >
             <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
               <div>
                 <h3 className="text-2xl md:text-3xl font-black text-text mb-2">
@@ -350,8 +342,8 @@ export function StorageDetail() {
                 </Link>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,7 +1,5 @@
-﻿"use client";
-
+"use client";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import {
   ArrowRight,
   Check,
@@ -18,7 +16,6 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ChipScene } from "@/components/shared/ChipScene";
 import { Button } from "@/components/ui/Button";
 import { TECHNOLOGY_FEATURES } from "@/data/home";
-
 const ARCHITECTURE_TIMELINE = [
   {
     name: "Blackwell",
@@ -89,13 +86,12 @@ const ARCHITECTURE_TIMELINE = [
     ],
   },
 ];
-
 const FEATURE_DEEP_DIVES = [
   {
     icon: Zap,
     title: "Transformer Engine",
     description:
-      "Hardware acceleration purpose-built for transformer models. Automatically chooses between FP8 and FP16 per layer to maximize throughput while maintaining accuracy — delivering up to 9x faster AI training on Hopper and beyond.",
+      "Hardware acceleration purpose-built for transformer models. Automatically chooses between FP8 and FP16 per layer to maximize throughput while maintaining accuracy - delivering up to 9x faster AI training on Hopper and beyond.",
     stat: "9x",
     statLabel: "Faster Training",
   },
@@ -140,7 +136,6 @@ const FEATURE_DEEP_DIVES = [
     statLabel: "Physically Accurate",
   },
 ];
-
 const ARCHITECTURE_COMPARISON = [
   {
     label: "Architecture",
@@ -175,14 +170,14 @@ const ARCHITECTURE_COMPARISON = [
     blackwell: "9000 TFLOPS",
     hopper: "3958 TFLOPS",
     ada: "2816 TFLOPS",
-    ampere: "—",
+    ampere: "-",
   },
   {
     label: "FP4 Performance",
     blackwell: "20 PFLOPS",
-    hopper: "—",
-    ada: "—",
-    ampere: "—",
+    hopper: "-",
+    ada: "-",
+    ampere: "-",
   },
   {
     label: "NVLink",
@@ -206,7 +201,6 @@ const ARCHITECTURE_COMPARISON = [
     ampere: "400W",
   },
 ];
-
 const TECH_CARDS = [
   {
     icon: Cpu,
@@ -237,7 +231,6 @@ const TECH_CARDS = [
     statLabel: "Instances per GPU",
   },
 ];
-
 function MiniScene() {
   return (
     <div className="w-full h-full">
@@ -245,17 +238,15 @@ function MiniScene() {
     </div>
   );
 }
-
 export default function TechnologyPage() {
   return (
     <>
       <PageHero
         label="The Technology"
         title="Built for the Next Generation of AI Computing"
-        subtitle="From Blackwell's FP4 precision to AMD CDNA 3 and Intel Granite Rapids — we deliver the most advanced chip architectures in the industry. Explore the technologies powering next-gen AI."
+        subtitle="From Blackwell's FP4 precision to AMD CDNA 3 and Intel Granite Rapids - we deliver the most advanced chip architectures in the industry. Explore the technologies powering next-gen AI."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Technology" }]}
       />
-
       {/* Technology section */}
       <section
         id="technology"
@@ -264,23 +255,19 @@ export default function TechnologyPage() {
         <div className="absolute inset-0 bg-grid opacity-30" />
         <div className="glow-blob w-96 h-96 bg-primary top-20 right-0" />
         <div className="glow-blob w-80 h-80 bg-secondary bottom-20 left-0" />
-
         <div className="container mx-auto px-4 relative z-10">
           <SectionHeading
             label="The Technology"
             title="Built for the Next Generation of AI Computing"
-            subtitle="From Blackwell's FP4 precision to AMD CDNA 3 and Intel AMX — we deliver the most advanced chip architectures in the industry."
+            subtitle="From Blackwell's FP4 precision to AMD CDNA 3 and Intel AMX - we deliver the most advanced chip architectures in the industry."
           />
-
           <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center mb-16">
             {/* Left: 3D Scene */}
             <div className="relative h-[320px] md:h-[420px] rounded-2xl border border-border bg-surface overflow-hidden">
               <div className="absolute inset-0 bg-dot-grid opacity-20" />
               <MiniScene />
               {/* Floating stat */}
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
+              <div
                 className="absolute top-4 right-4 px-3 py-1.5 rounded-lg border border-primary/30 bg-surface/90 backdrop-blur-sm"
               >
                 <div className="text-[10px] font-mono text-text-dim">
@@ -289,10 +276,8 @@ export default function TechnologyPage() {
                 <div className="text-sm font-bold text-primary font-mono">
                   8 TB/s
                 </div>
-              </motion.div>
-              <motion.div
-                animate={{ y: [0, 8, 0] }}
-                transition={{ duration: 4, repeat: Infinity }}
+              </div>
+              <div
                 className="absolute bottom-4 left-4 px-3 py-1.5 rounded-lg border border-secondary/30 bg-surface/90 backdrop-blur-sm"
               >
                 <div className="text-[10px] font-mono text-text-dim">
@@ -301,9 +286,8 @@ export default function TechnologyPage() {
                 <div className="text-sm font-bold text-secondary font-mono">
                   Blackwell
                 </div>
-              </motion.div>
+              </div>
             </div>
-
             {/* Right: Feature list */}
             <div>
               <ul className="space-y-3.5">
@@ -328,7 +312,6 @@ export default function TechnologyPage() {
               </ul>
             </div>
           </div>
-
           {/* Tech cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
             {TECH_CARDS.map((card, i) => (
@@ -356,7 +339,6 @@ export default function TechnologyPage() {
           </div>
         </div>
       </section>
-
       {/* Architecture timeline */}
       <section className="py-20 md:py-28 bg-bg-body relative overflow-hidden">
         <div className="absolute inset-0 bg-dot-grid opacity-15" />
@@ -370,11 +352,10 @@ export default function TechnologyPage() {
               Four Generations of AI Computing
             </h2>
             <p className="text-base md:text-lg text-text-muted max-w-2xl mx-auto mt-3">
-              Each generation delivers a step-change in AI performance — from
+              Each generation delivers a step-change in AI performance - from
               Ampere&apos;s MIG to Blackwell&apos;s FP4.
             </p>
           </div>
-
           <div className="space-y-5">
             {ARCHITECTURE_TIMELINE.map((arch, i) => (
               <div
@@ -414,7 +395,6 @@ export default function TechnologyPage() {
                       </div>
                     </div>
                   </div>
-
                   <div>
                     <p className="text-sm text-text-muted leading-relaxed mb-4">
                       {arch.description}
@@ -448,7 +428,6 @@ export default function TechnologyPage() {
                       ))}
                     </div>
                   </div>
-
                   <div className="text-right">
                     <div className="text-xs font-mono text-text-dim uppercase tracking-wider mb-1">
                       Process Node
@@ -466,7 +445,6 @@ export default function TechnologyPage() {
           </div>
         </div>
       </section>
-
       {/* Feature deep dives */}
       <section className="py-20 md:py-28 bg-bg-dark">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
@@ -483,7 +461,6 @@ export default function TechnologyPage() {
               HPC, and accelerated computing.
             </p>
           </div>
-
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {FEATURE_DEEP_DIVES.map((f) => (
               <div
@@ -513,7 +490,6 @@ export default function TechnologyPage() {
               </div>
             ))}
           </div>
-
           {/* Tech features list */}
           <div className="mt-12 rounded-2xl border border-border bg-surface p-6 md:p-8">
             <h3 className="text-sm font-mono font-bold text-primary uppercase tracking-wider mb-5 flex items-center gap-2">
@@ -540,7 +516,6 @@ export default function TechnologyPage() {
           </div>
         </div>
       </section>
-
       {/* Architecture comparison table */}
       <section className="py-20 md:py-28 bg-bg-body border-t border-border">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
@@ -556,7 +531,6 @@ export default function TechnologyPage() {
               Compare modern chip architectures across key metrics.
             </p>
           </div>
-
           <div className="max-w-5xl mx-auto rounded-2xl border border-border bg-surface overflow-hidden overflow-x-auto scrollbar-neon">
             <table className="w-full text-sm">
               <thead>
@@ -610,7 +584,6 @@ export default function TechnologyPage() {
               </tbody>
             </table>
           </div>
-
           <div className="text-center mt-10 flex flex-wrap items-center justify-center gap-3">
             <Link href="/products">
               <Button variant="solid" className="font-semibold">

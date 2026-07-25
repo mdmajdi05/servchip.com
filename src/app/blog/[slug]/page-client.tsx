@@ -2,7 +2,6 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -24,8 +23,10 @@ import type {
   MemoryProduct,
   StorageProduct,
 } from "@/types";
-import { BLOG_POSTS, getRelatedBlogPosts } from "@/data/blog";
+import { BLOG_POSTS, getRelatedBlogPosts } from "@/blog";
 import { getProductById } from "@/data/products";
+import { ReadingProgress } from "@/blog/components/ReadingProgress";
+import { PostContent } from "@/blog/components/PostContent";
 
 function getProductSpec(
   product:
@@ -49,50 +50,11 @@ const CATEGORY_BADGE: Record<string, "green" | "cyan" | "purple" | "amber"> = {
   "case-studies": "green",
 };
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08 },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: [0.23, 1, 0.32, 1] as const },
-  },
-};
-
 function toAnchor(text: string): string {
   return text
     .toLowerCase()
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)/g, "");
-}
-
-function ReadingProgress() {
-  const [progress, setProgress] = useState(0);
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      setProgress(docHeight > 0 ? Math.min(scrollTop / docHeight, 1) : 0);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-  return (
-    <div className="fixed top-0 left-0 right-0 z-[55] h-[3px] bg-bg-dark/80">
-      <div
-        className="h-full bg-primary transition-all duration-150 ease-out"
-        style={{ width: `${progress * 100}%` }}
-      />
-    </div>
-  );
 }
 
 function ShareBtn({
@@ -119,8 +81,17 @@ function ShareBtn({
   );
 }
 
+function useShareUrl() {
+  const [url, setUrl] = useState("");
+  useEffect(() => {
+    const timer = requestAnimationFrame(() => setUrl(window.location.href));
+    return () => cancelAnimationFrame(timer);
+  }, []);
+  return url;
+}
+
 function LeftSidebar({ title }: { title: string }) {
-  const shareUrl = typeof window !== "undefined" ? window.location.href : "";
+  const shareUrl = useShareUrl();
 
   return (
     <aside className="hidden xl:flex flex-col items-center pt-2">
@@ -182,12 +153,10 @@ function LeftSidebar({ title }: { title: string }) {
 
 function TOCSection({
   sections,
-  activeSection,
 }: {
   sections: { heading: string }[];
-  activeSection: string;
 }) {
-  const [activeId, setActiveId] = useState(activeSection);
+  const [activeId, setActiveId] = useState("");
   const tocLinks = sections
     .filter((s) => !s.heading.toLowerCase().includes("frequently asked"))
     .map((s) => ({ id: toAnchor(s.heading), label: s.heading }));
@@ -255,7 +224,7 @@ function RightSidebar({
         data-sticky-sidebar
         className="sticky top-[140px] space-y-10 overflow-y-auto scrollbar-none"
       >
-        <TOCSection sections={sections} activeSection="" />
+        <TOCSection sections={sections} />
 
         {relatedPosts.length > 0 && (
           <div>
@@ -315,6 +284,7 @@ function RightSidebar({
 
 export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
+  const shareUrl = useShareUrl();
   const post = BLOG_POSTS.find((p) => p.slug === slug);
 
   const relatedPosts = post ? getRelatedBlogPosts(post.id, 3) : [];
@@ -326,11 +296,7 @@ export default function BlogPostPage() {
     return (
       <div className="min-h-screen bg-bg-dark flex items-center justify-center">
         <div className="text-center px-4">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.4 }}
-          >
+          <div>
             <h1 className="text-6xl font-black text-primary mb-4">404</h1>
             <p className="text-text-muted text-lg mb-8">
               Article not found. The page you are looking for does not exist or
@@ -344,7 +310,7 @@ export default function BlogPostPage() {
                 Back to Blog
               </Button>
             </Link>
-          </motion.div>
+          </div>
         </div>
       </div>
     );
@@ -355,12 +321,8 @@ export default function BlogPostPage() {
       <ReadingProgress />
 
       <div className="max-w-[1440px] mx-auto px-6 xl:px-10 pb-20">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.div variants={itemVariants}>
+        <div>
+          <div>
             <Link
               href="/blog"
               className="inline-flex items-center gap-2 text-text-muted hover:text-primary transition-transform duration-200 mb-8 group pt-6"
@@ -368,30 +330,30 @@ export default function BlogPostPage() {
               <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" />
               <span className="text-sm font-medium">Back to Blog</span>
             </Link>
-          </motion.div>
+          </div>
 
           <div className="flex gap-8 xl:gap-12 justify-center">
             <LeftSidebar title={post.title} />
 
             <main className="flex-1 min-w-0 max-w-3xl xl:max-w-[720px]">
-              <motion.div variants={itemVariants} className="mb-6">
+              <div className="mb-6">
                 <Badge
                   variant={CATEGORY_BADGE[post.category.slug] || "default"}
                   size="md"
                 >
                   {post.category.name}
                 </Badge>
-              </motion.div>
+              </div>
 
-              <motion.h1
-                variants={itemVariants}
+              <h1
+               
                 className="text-3xl lg:text-4xl xl:text-5xl font-black text-text leading-tight mb-6"
               >
                 {post.title}
-              </motion.h1>
+              </h1>
 
-              <motion.div
-                variants={itemVariants}
+              <div
+               
                 className="flex flex-wrap items-center gap-5 text-sm text-text-muted pb-5 border-b border-border mb-5"
               >
                 <div className="flex items-center gap-2">
@@ -405,17 +367,17 @@ export default function BlogPostPage() {
                     {post.publishedAt} &middot; {post.readingTime} min read
                   </span>
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                variants={itemVariants}
+              <div
+               
                 className="flex xl:hidden items-center gap-3 pb-6 mb-6 border-b border-border"
               >
                 <span className="text-xs text-text-muted font-medium">
                   Share:
                 </span>
                 <a
-                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(typeof window !== "undefined" ? window.location.href : "")}`}
+                  href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(shareUrl)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-8 h-8 rounded-lg bg-surface border border-border flex items-center justify-center text-text-muted hover:text-primary transition-all"
@@ -429,7 +391,7 @@ export default function BlogPostPage() {
                   </svg>
                 </a>
                 <a
-                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(typeof window !== "undefined" ? window.location.href : "")}`}
+                  href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-8 h-8 rounded-lg bg-surface border border-border flex items-center justify-center text-text-muted hover:text-[#0A66C2] transition-all"
@@ -450,67 +412,14 @@ export default function BlogPostPage() {
                 >
                   <LinkIcon className="w-3.5 h-3.5" />
                 </button>
-              </motion.div>
+              </div>
 
-              {post.sections && post.sections.length > 0 && (
-                <div className="space-y-10">
-                  {post.sections.map((section, idx) => (
-                    <motion.div
-                      key={idx}
-                      variants={itemVariants}
-                      id={toAnchor(section.heading)}
-                    >
-                      <h2 className="text-xl lg:text-2xl font-bold text-text mb-4">
-                        {section.heading}
-                      </h2>
-                      {section.heading
-                        .toLowerCase()
-                        .includes("frequently asked")
-                        ? section.paragraphs.map((p, i) => {
-                            const sep = p.indexOf("? ");
-                            const question =
-                              sep !== -1 ? p.substring(0, sep + 1) : "";
-                            const answer =
-                              sep !== -1 ? p.substring(sep + 2) : p;
-                            return (
-                              <div key={i} className="mb-6 last:mb-0">
-                                <h3 className="text-base font-semibold text-text mb-2">
-                                  {question}
-                                </h3>
-                                <p className="text-text-muted leading-relaxed">
-                                  {answer}
-                                </p>
-                              </div>
-                            );
-                          })
-                        : section.paragraphs.map((p, i) => (
-                            <p
-                              key={i}
-                              className="text-text-muted leading-relaxed mb-4"
-                            >
-                              {p}
-                            </p>
-                          ))}
-                      {section.bullets && (
-                        <ul className="space-y-2 mt-4">
-                          {section.bullets.map((b, i) => (
-                            <li
-                              key={i}
-                              className="flex items-start gap-3 text-text-muted"
-                            >
-                              <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                              <span>{b}</span>
-                            </li>
-                          ))}
-                        </ul>
-                      )}
-                    </motion.div>
-                  ))}
-                </div>
-              )}
+              <div>
+                <PostContent sections={post.sections || []} />
+              </div>
 
-              <motion.div
-                variants={itemVariants}
+              <div
+               
                 className="mt-10 pt-6 border-t border-border"
               >
                 <div className="flex flex-wrap items-center gap-2">
@@ -524,10 +433,10 @@ export default function BlogPostPage() {
                     </span>
                   ))}
                 </div>
-              </motion.div>
+              </div>
 
-              <motion.div
-                variants={itemVariants}
+              <div
+               
                 className="mt-6 pt-6 border-t border-border"
               >
                 <div className="flex flex-wrap items-center gap-2">
@@ -535,7 +444,7 @@ export default function BlogPostPage() {
                     Share this article:
                   </span>
                   <a
-                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(typeof window !== "undefined" ? window.location.href : "")}`}
+                    href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(post.title)}&url=${encodeURIComponent(shareUrl)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-border text-text-muted hover:text-primary hover:border-primary/40 transition-all"
@@ -550,7 +459,7 @@ export default function BlogPostPage() {
                     Twitter
                   </a>
                   <a
-                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(typeof window !== "undefined" ? window.location.href : "")}`}
+                    href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-border text-text-muted hover:text-[#0A66C2] hover:border-[#0A66C2]/40 transition-all"
@@ -565,7 +474,7 @@ export default function BlogPostPage() {
                     LinkedIn
                   </a>
                   <a
-                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(typeof window !== "undefined" ? window.location.href : "")}`}
+                    href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-border text-text-muted hover:text-[#1877F2] hover:border-[#1877F2]/40 transition-all"
@@ -580,7 +489,7 @@ export default function BlogPostPage() {
                     Facebook
                   </a>
                   <a
-                    href={`https://api.whatsapp.com/send?text=${encodeURIComponent(post.title)}%20${encodeURIComponent(typeof window !== "undefined" ? window.location.href : "")}`}
+                    href={`https://api.whatsapp.com/send?text=${encodeURIComponent(post.title)}%20${encodeURIComponent(shareUrl)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-border text-text-muted hover:text-[#25D366] hover:border-[#25D366]/40 transition-all"
@@ -606,10 +515,10 @@ export default function BlogPostPage() {
                     Copy Link
                   </button>
                 </div>
-              </motion.div>
+              </div>
 
               {relatedProducts.length > 0 && (
-                <motion.div variants={itemVariants} className="mt-16">
+                <div className="mt-16">
                   <SectionHeading
                     title="Related Products"
                     subtitle="Browse chips and systems mentioned in this article"
@@ -637,11 +546,11 @@ export default function BlogPostPage() {
                       </Link>
                     ))}
                   </div>
-                </motion.div>
+                </div>
               )}
 
               {relatedPosts.length > 0 && (
-                <motion.div variants={itemVariants} className="mt-16">
+                <div className="mt-16">
                   <SectionHeading
                     title="Related Articles"
                     subtitle="Continue exploring our technical library"
@@ -674,11 +583,11 @@ export default function BlogPostPage() {
                       </Link>
                     ))}
                   </div>
-                </motion.div>
+                </div>
               )}
 
-              <motion.div
-                variants={itemVariants}
+              <div
+               
                 className="mt-16 p-8 rounded-xl border border-primary/30 bg-gradient-to-br from-primary/5 to-transparent text-center"
               >
                 <h2 className="text-xl font-bold text-text mb-3">
@@ -699,7 +608,7 @@ export default function BlogPostPage() {
                     Contact Our Team
                   </Button>
                 </Link>
-              </motion.div>
+              </div>
             </main>
 
             <RightSidebar
@@ -707,7 +616,7 @@ export default function BlogPostPage() {
               relatedPosts={relatedPosts}
             />
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

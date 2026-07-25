@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { BLOG_POSTS } from "@/data/blog";
+import { BLOG_POSTS } from "@/blog";
 
 export async function GET(request: Request) {
   const { searchParams } = new URL(request.url);

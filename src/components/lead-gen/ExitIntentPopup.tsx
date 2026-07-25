@@ -1,7 +1,5 @@
 "use client";
-
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   MessageSquare,
   X,
@@ -12,11 +10,8 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import { SITE } from "@/lib/constants";
-
 const EMAILS = "sales@servchip.com,contact@servchip.com,support@servchip.com";
-
 const STORAGE_KEY = "servchip-inquiry-shown";
-
 export function ExitIntentPopup() {
   const [isOpen, setIsOpen] = useState(false);
   const [formData, setFormData] = useState({
@@ -30,25 +25,20 @@ export function ExitIntentPopup() {
     "idle" | "loading" | "success" | "error"
   >("idle");
   const [errorMsg, setErrorMsg] = useState("");
-
   useEffect(() => {
     if (typeof window === "undefined") return;
     if (localStorage.getItem(STORAGE_KEY)) return;
-
     const timer = setTimeout(() => {
       if (!localStorage.getItem(STORAGE_KEY)) {
         setIsOpen(true);
       }
     }, 60000);
-
     return () => clearTimeout(timer);
   }, []);
-
   const close = () => {
     setIsOpen(false);
     localStorage.setItem(STORAGE_KEY, "1");
   };
-
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) return;
@@ -69,7 +59,6 @@ export function ExitIntentPopup() {
       const data = await res.json();
       if (res.ok) {
         setStatus("success");
-
         const subject = encodeURIComponent(
           `[Servchip Inquiry] ${formData.subject || "Product Inquiry"} — ${formData.name}`,
         );
@@ -116,22 +105,15 @@ export function ExitIntentPopup() {
   }
 
   return (
-    <AnimatePresence>
+    <>
       {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
+        <div
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-bg-dark/80 backdrop-blur-xl p-4"
           onClick={(e) => {
             if (e.target === e.currentTarget) close();
           }}
         >
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9, y: 30 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.9, y: 30 }}
-            transition={{ type: "spring", damping: 25, stiffness: 300 }}
+          <div
             className="relative w-full max-w-md bg-surface border border-border rounded-2xl shadow-2xl overflow-hidden"
           >
             <button
@@ -141,7 +123,6 @@ export function ExitIntentPopup() {
             >
               <X className="w-4 h-4" />
             </button>
-
             <div className="bg-gradient-to-r from-primary/10 via-primary/5 to-transparent px-6 pt-6 pb-4 border-b border-border">
               <div className="flex items-center gap-3 mb-3">
                 <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center">
@@ -161,12 +142,9 @@ export function ExitIntentPopup() {
                 our team is ready to help you find the right solution.
               </p>
             </div>
-
             <div className="px-6 py-4">
               {status === "success" ? (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
+                <div
                   className="text-center py-6"
                 >
                   <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
@@ -178,7 +156,7 @@ export function ExitIntentPopup() {
                   <p className="text-sm text-text-muted">
                     Our executive will reach out within 24 hours.
                   </p>
-                </motion.div>
+                </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-3">
                   <div className="relative">
@@ -193,7 +171,6 @@ export function ExitIntentPopup() {
                       className="w-full pl-10 pr-4 py-2.5 bg-bg-dark border border-border rounded-xl text-sm text-text placeholder:text-text-dim focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-transform duration-200"
                     />
                   </div>
-
                   <div className="relative">
                     <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-dim" />
                     <input
@@ -206,7 +183,6 @@ export function ExitIntentPopup() {
                       className="w-full pl-10 pr-4 py-2.5 bg-bg-dark border border-border rounded-xl text-sm text-text placeholder:text-text-dim focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-transform duration-200"
                     />
                   </div>
-
                   <div className="relative">
                     <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-dim" />
                     <input
@@ -218,7 +194,6 @@ export function ExitIntentPopup() {
                       className="w-full pl-10 pr-4 py-2.5 bg-bg-dark border border-border rounded-xl text-sm text-text placeholder:text-text-dim focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-transform duration-200"
                     />
                   </div>
-
                   <select
                     name="subject"
                     value={formData.subject}
@@ -238,7 +213,6 @@ export function ExitIntentPopup() {
                     <option value="Partnership">Partnership / Reseller</option>
                     <option value="Other">Other</option>
                   </select>
-
                   <textarea
                     name="message"
                     value={formData.message}
@@ -248,11 +222,9 @@ export function ExitIntentPopup() {
                     rows={3}
                     className="w-full px-4 py-2.5 bg-bg-dark border border-border rounded-xl text-sm text-text placeholder:text-text-dim focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-transform duration-200 resize-none"
                   />
-
                   {status === "error" && (
                     <p className="text-xs text-red-400">{errorMsg}</p>
                   )}
-
                   <button
                     type="submit"
                     disabled={status === "loading"}
@@ -267,14 +239,12 @@ export function ExitIntentPopup() {
                       </>
                     )}
                   </button>
-
                   <p className="text-xs text-text-dim text-center">
                     We respond within 24 hours. No spam, ever.
                   </p>
                 </form>
               )}
             </div>
-
             <div className="px-6 pb-4 flex items-center justify-center gap-4 text-xs text-text-dim border-t border-border pt-3">
               <a
                 href={`tel:${SITE.phone.replace(/\s/g, "")}`}
@@ -292,9 +262,9 @@ export function ExitIntentPopup() {
                 Email Us
               </a>
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       )}
-    </AnimatePresence>
+    </>
   );
 }

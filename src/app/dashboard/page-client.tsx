@@ -1,7 +1,5 @@
-﻿"use client";
-
+"use client";
 import { useRef, useState, useEffect } from "react";
-import { motion, useInView, animate } from "framer-motion";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Card } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
@@ -18,7 +16,6 @@ import {
   Settings,
   ArrowRight,
 } from "lucide-react";
-
 function AnimatedCounter({
   from = 0,
   to,
@@ -31,20 +28,36 @@ function AnimatedCounter({
   prefix?: string;
 }) {
   const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true });
   const [count, setCount] = useState(from);
-
   useEffect(() => {
-    if (isInView) {
-      const controls = animate(from, to, {
-        duration: 2,
-        ease: "easeOut" as const,
-        onUpdate: (val) => setCount(Math.round(val)),
-      });
-      return () => controls.stop();
-    }
-  }, [isInView, from, to]);
-
+    const el = ref.current;
+    if (!el) return;
+    let started = false;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started) {
+          started = true;
+          observer.disconnect();
+          const duration = 1500;
+          const steps = 60;
+          const increment = (to - from) / ((duration / 1000) * steps);
+          let current = from;
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= to) {
+              setCount(to);
+              clearInterval(timer);
+            } else {
+              setCount(Math.round(current));
+            }
+          }, 1000 / steps);
+        }
+      },
+      { threshold: 0.3 },
+    );
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [from, to]);
   return (
     <span ref={ref}>
       {prefix}
@@ -53,14 +66,12 @@ function AnimatedCounter({
     </span>
   );
 }
-
 const stats = [
   { label: "Active API Keys", value: 1247, icon: Key, suffix: "" },
   { label: "SDK Downloads", value: 8432, icon: Download, suffix: "" },
   { label: "Documentation Views", value: 24100, icon: BookOpen, suffix: "+" },
   { label: "Active Integrations", value: 156, icon: Cpu, suffix: "" },
 ];
-
 const quickActions = [
   {
     title: "Browse API Docs",
@@ -91,46 +102,44 @@ const quickActions = [
     color: "text-warning",
   },
 ];
-
 const recentActivity = [
   {
+    type: "API",
     date: "2026-07-03",
     event: "API Key generated for Prod Environment",
-    type: "API Key",
     status: "Completed",
   },
   {
+    type: "Pricing",
     date: "2026-07-03",
     event: "Bulk chip pricing query (H100 x 50 units)",
-    type: "API Call",
     status: "Success",
   },
   {
-    date: "2026-07-02",
-    event: "SDK v4.2.1 downloaded — Python client",
     type: "Download",
+    date: "2026-07-02",
+    event: "SDK v4.2.1 downloaded \u2014 Python client",
     status: "Completed",
   },
   {
+    type: "Docs",
     date: "2026-07-02",
     event: "Documentation: CUDA 12.8 guide viewed",
-    type: "Page View",
-    status: "—",
+    status: "\u2014",
   },
   {
+    type: "Sandbox",
     date: "2026-07-01",
     event: "Sandbox environment provisioned for acme-corp",
-    type: "Provision",
     status: "Active",
   },
   {
+    type: "Monitoring",
     date: "2026-07-01",
-    event: "Integration health check — all endpoints passing",
-    type: "Health",
+    event: "Integration health check \u2014 all endpoints passing",
     status: "Healthy",
   },
 ];
-
 const resources = [
   {
     title: "CUDA Guides",
@@ -161,31 +170,23 @@ const resources = [
     articles: "10 articles",
   },
 ];
-
 export default function DeveloperDashboardPage() {
   return (
     <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <h1 className="sr-only">Developer Dashboard</h1>
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+        <div
           className="mb-10"
         >
           <SectionHeading
             title="Developer Dashboard"
-            subtitle="Monitor integrations, access SDKs, explore API docs, and manage your developer tools — all in one place."
+            subtitle="Monitor integrations, access SDKs, explore API docs, and manage your developer tools - all in one place."
             align="left"
           />
-        </motion.div>
-
+        </div>
         {/* Stats Row */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
+        <div
           className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10"
         >
           {stats.map((stat) => (
@@ -202,15 +203,11 @@ export default function DeveloperDashboardPage() {
               <div className="text-sm text-text-muted">{stat.label}</div>
             </Card>
           ))}
-        </motion.div>
-
+        </div>
         {/* Quick Actions & API Overview */}
         <div className="grid lg:grid-cols-2 gap-6 mb-10">
           {/* Quick Actions */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+          <div
           >
             <h3 className="text-lg font-bold text-text mb-4 flex items-center gap-2">
               <Zap className="w-5 h-5 text-primary" />
@@ -240,13 +237,9 @@ export default function DeveloperDashboardPage() {
                 </Card>
               ))}
             </div>
-          </motion.div>
-
+          </div>
           {/* API Overview */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+          <div
           >
             <h3 className="text-lg font-bold text-text mb-4 flex items-center gap-2">
               <Code2 className="w-5 h-5 text-primary" />
@@ -292,14 +285,10 @@ export default function DeveloperDashboardPage() {
                 </Button>
               </div>
             </Card>
-          </motion.div>
+          </div>
         </div>
-
         {/* Recent Activity */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
+        <div
           className="mb-10"
         >
           <h3 className="text-lg font-bold text-text mb-4 flex items-center gap-2">
@@ -344,15 +333,6 @@ export default function DeveloperDashboardPage() {
                       </td>
                       <td className="px-6 py-3">
                         <Badge
-                          variant={
-                            row.status === "Completed" ||
-                            row.status === "Success" ||
-                            row.status === "Healthy"
-                              ? "green"
-                              : row.status === "Active"
-                                ? "cyan"
-                                : "default"
-                          }
                           size="sm"
                         >
                           {row.status}
@@ -364,13 +344,9 @@ export default function DeveloperDashboardPage() {
               </table>
             </div>
           </Card>
-        </motion.div>
-
+        </div>
         {/* Resources */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
+        <div
         >
           <h3 className="text-lg font-bold text-text mb-4 flex items-center gap-2">
             <BookText className="w-5 h-5 text-primary" />
@@ -397,7 +373,7 @@ export default function DeveloperDashboardPage() {
               </Card>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </div>
   );

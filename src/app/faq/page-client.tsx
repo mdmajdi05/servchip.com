@@ -1,14 +1,10 @@
-﻿"use client";
-
-import { motion } from "framer-motion";
+"use client";
 import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-
 interface FAQItem {
   q: string;
   a: string;
 }
-
 export default function FAQPage({ faqs }: { faqs: FAQItem[] }) {
   return (
     <div className="min-h-screen bg-bg-dark">
@@ -20,9 +16,7 @@ export default function FAQPage({ faqs }: { faqs: FAQItem[] }) {
           subtitle="Enterprise chip purchasing, semiconductor procurement, shipping, warranty & support"
           align="center"
         />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+        <div
           className="space-y-4 mt-10"
         >
           {faqs.map((faq, i) => (
@@ -41,8 +35,7 @@ export default function FAQPage({ faqs }: { faqs: FAQItem[] }) {
               </p>
             </details>
           ))}
-        </motion.div>
-
+        </div>
         <div className="mt-16 text-center">
           <p className="text-text-dim text-sm mb-4">
             Still have questions about enterprise chip procurement?

@@ -1,6 +1,5 @@
 "use client";
 
-import { motion } from "framer-motion";
 import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -81,10 +80,7 @@ export default function AboutPage() {
           <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-secondary/5 rounded-full blur-[80px]" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
+          <div>
             <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-5 py-1.5 text-xs font-semibold text-primary mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
               Enterprise Chip Distributor — Est. 2018
@@ -100,7 +96,7 @@ export default function AboutPage() {
               equipment from the brands they trust — NVIDIA, AMD, Intel and
               more. ISO 9001 certified. 500+ clients. 150+ countries.
             </p>
-          </motion.div>
+          </div>
         </div>
       </section>
 

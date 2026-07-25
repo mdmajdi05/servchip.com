@@ -1,7 +1,5 @@
-﻿"use client";
-
+"use client";
 import { useState, useMemo } from "react";
-import { motion } from "framer-motion";
 import {
   Search,
   Cpu,
@@ -23,9 +21,7 @@ import {
 import { MANUFACTURERS } from "@/data/manufacturers";
 import { ProductCard } from "@/components/products/ProductCard";
 import type { ProductType } from "@/types";
-
 type FilterType = ProductType | "all";
-
 const TYPE_TABS: { type: FilterType; label: string; icon: typeof Cpu }[] = [
   { type: "all", label: "All", icon: Cpu },
   { type: "chip", label: "Chips", icon: Cpu },
@@ -34,7 +30,6 @@ const TYPE_TABS: { type: FilterType; label: string; icon: typeof Cpu }[] = [
   { type: "memory", label: "Memory", icon: MemoryStick },
   { type: "storage", label: "Storage", icon: HardDrive },
 ];
-
 export default function ProductsPage() {
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState<FilterType>("all");
@@ -42,7 +37,6 @@ export default function ProductsPage() {
   const [sortBy, setSortBy] = useState<"name" | "manufacturer" | "status">(
     "name",
   );
-
   const filtered = useMemo(() => {
     let products =
       typeFilter === "all"
@@ -56,13 +50,11 @@ export default function ProductsPage() {
               : typeFilter === "memory"
                 ? ALL_MEMORY
                 : ALL_STORAGE;
-
     if (manufacturerFilter !== "all") {
       products = products.filter(
         (p) => p.manufacturerId === manufacturerFilter,
       );
     }
-
     if (search.trim().length >= 2) {
       const q = search.toLowerCase();
       products = products.filter(
@@ -73,7 +65,6 @@ export default function ProductsPage() {
           p.description.toLowerCase().includes(q),
       );
     }
-
     return [...products].sort((a, b) => {
       if (sortBy === "name") return a.name.localeCompare(b.name);
       if (sortBy === "manufacturer")
@@ -81,16 +72,12 @@ export default function ProductsPage() {
       return a.status.localeCompare(b.status);
     });
   }, [typeFilter, manufacturerFilter, search, sortBy]);
-
   const [showFilters, setShowFilters] = useState(false);
-
   return (
     <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+        <div
           className="py-8"
         >
           <h1 className="text-3xl lg:text-4xl font-black text-text mb-2">
@@ -100,8 +87,7 @@ export default function ProductsPage() {
             Browse {ALL_PRODUCTS.length} products across all categories and
             manufacturers
           </p>
-        </motion.div>
-
+        </div>
         {/* Search + Filters toggle */}
         <div className="flex items-center gap-3 mb-6">
           <div className="relative flex-1 max-w-md">
@@ -136,7 +122,6 @@ export default function ProductsPage() {
             Filters
           </button>
         </div>
-
         {/* Type tabs */}
         <div className="flex flex-wrap gap-2 mb-6">
           {TYPE_TABS.map((tab) => (
@@ -154,14 +139,8 @@ export default function ProductsPage() {
             </button>
           ))}
         </div>
-
         {/* Filter panel */}
-        <motion.div
-          initial={false}
-          animate={{
-            height: showFilters ? "auto" : 0,
-            opacity: showFilters ? 1 : 0,
-          }}
+        <div
           className="overflow-hidden mb-6"
         >
           <div className="flex flex-wrap items-center gap-4 p-4 rounded-xl border border-border bg-surface">
@@ -197,8 +176,7 @@ export default function ProductsPage() {
               </select>
             </div>
           </div>
-        </motion.div>
-
+        </div>
         {/* Count */}
         <p className="text-xs text-text-dim mb-4">
           {filtered.length} result{filtered.length !== 1 ? "s" : ""}
@@ -206,23 +184,19 @@ export default function ProductsPage() {
           {manufacturerFilter !== "all" && (
             <>
               {" "}
-              · {MANUFACTURERS.find((m) => m.id === manufacturerFilter)?.name}
+              - {MANUFACTURERS.find((m) => m.id === manufacturerFilter)?.name}
             </>
           )}
-          {typeFilter !== "all" && <> · {typeFilter}</>}
+          {typeFilter !== "all" && <> - {typeFilter}</>}
         </p>
-
         {/* Grid */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
+        <div
           className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
         >
           {filtered.map((product, i) => (
             <ProductCard key={product.id} product={product} index={i} />
           ))}
-        </motion.div>
-
+        </div>
         {filtered.length === 0 && (
           <div className="text-center py-20">
             <Cpu className="w-12 h-12 text-text-dim mx-auto mb-4 opacity-50" />

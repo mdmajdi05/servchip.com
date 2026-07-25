@@ -1,7 +1,4 @@
-﻿"use client";
-
-import type { Variants } from "framer-motion";
-import { motion } from "framer-motion";
+"use client";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -22,8 +19,7 @@ import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
-import { BLOG_POSTS } from "@/data/blog";
-
+import { BLOG_POSTS } from "@/blog";
 const RESOURCE_CATEGORIES = [
   {
     icon: FileText,
@@ -47,7 +43,7 @@ const RESOURCE_CATEGORIES = [
     icon: Award,
     title: "Case Studies",
     description:
-      "Real-world deployment stories from leading Indian enterprises and research institutions — detailing architectures, challenges, and measurable outcomes.",
+      "Real-world deployment stories from leading Indian enterprises and research institutions - detailing architectures, challenges, and measurable outcomes.",
     href: "/blog?category=case-studies",
     count: "1+ studies",
     color: "purple" as const,
@@ -80,9 +76,7 @@ const RESOURCE_CATEGORIES = [
     color: "cyan" as const,
   },
 ];
-
 const featuredPosts = BLOG_POSTS.slice(0, 3);
-
 function getCategoryBadgeColor(
   category: string,
 ): "green" | "cyan" | "purple" | "amber" | "default" {
@@ -95,7 +89,6 @@ function getCategoryBadgeColor(
   };
   return map[category] || "default";
 }
-
 function getCategoryName(cat: unknown): string {
   if (typeof cat === "string") return cat;
   if (cat && typeof cat === "object") {
@@ -104,34 +97,15 @@ function getCategoryName(cat: unknown): string {
   }
   return "";
 }
-
-const containerVariants: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.06 },
-  },
-};
-
-const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
-  },
-};
-
 export default function ResourcesPage() {
   return (
     <div className="min-h-screen bg-bg-dark">
       <PageHero
         label="Resources"
         title="Knowledge Base for AI & HPC Computing"
-        subtitle="Explore our growing library of technical guides, case studies, whitepapers, and expert insights — all created by multi-vendor certified engineers to help you make informed semiconductor and data center infrastructure decisions."
+        subtitle="Explore our growing library of technical guides, case studies, whitepapers, and expert insights - all created by multi-vendor certified engineers to help you make informed semiconductor and data center infrastructure decisions."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Resources" }]}
       />
-
       {/* Featured Resources */}
       {featuredPosts.length > 0 && (
         <section className="relative py-20 md:py-28 bg-surface overflow-hidden">
@@ -140,13 +114,9 @@ export default function ResourcesPage() {
             <SectionHeading
               label="Featured"
               title="Latest Resources"
-              subtitle="Curated content from our engineering team — technical deep dives, architecture comparisons, and deployment best practices."
+              subtitle="Curated content from our engineering team - technical deep dives, architecture comparisons, and deployment best practices."
             />
-
-            <motion.div
-              variants={containerVariants}
-              initial="hidden"
-              animate="visible"
+            <div
               className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6"
             >
               {featuredPosts.map((post) => {
@@ -156,16 +126,14 @@ export default function ResourcesPage() {
                     ? (post as { readingTime: number }).readingTime
                     : 5;
                 return (
-                  <motion.div
+                  <div
                     key={post.id}
-                    variants={itemVariants}
                     className="group relative rounded-2xl border border-border bg-bg-dark p-6 md:p-7 card-hover overflow-hidden flex flex-col"
                   >
                     <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-transform pointer-events-none" />
                     <div className="relative flex-1 flex flex-col">
                       <div className="flex items-center gap-2 mb-3">
                         <Badge
-                          variant={getCategoryBadgeColor(catName)}
                           size="sm"
                         >
                           {catName}
@@ -195,11 +163,10 @@ export default function ResourcesPage() {
                         </Link>
                       </div>
                     </div>
-                  </motion.div>
+                  </div>
                 );
               })}
-            </motion.div>
-
+            </div>
             <div className="text-center mt-10">
               <Link href="/blog">
                 <Button
@@ -213,7 +180,6 @@ export default function ResourcesPage() {
           </div>
         </section>
       )}
-
       {/* Resource Categories */}
       <section className="relative py-20 md:py-28 bg-bg-dark overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
@@ -222,19 +188,14 @@ export default function ResourcesPage() {
           <SectionHeading
             label="Categories"
             title="Browse by Topic"
-            subtitle="Six resource categories designed to help you find exactly what you need — from quick guides to deep technical references."
+            subtitle="Six resource categories designed to help you find exactly what you need - from quick guides to deep technical references."
           />
-
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
+          <div
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
           >
             {RESOURCE_CATEGORIES.map((cat) => (
-              <motion.div
+              <div
                 key={cat.title}
-                variants={itemVariants}
                 className="group relative rounded-2xl border border-border bg-surface p-6 md:p-7 card-hover overflow-hidden flex flex-col"
               >
                 <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-transform pointer-events-none" />
@@ -243,7 +204,7 @@ export default function ResourcesPage() {
                     <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-transform shrink-0">
                       <cat.icon className="w-6 h-6 text-primary" />
                     </div>
-                    <Badge variant={cat.color} size="sm">
+                    <Badge size="sm">
                       {cat.count}
                     </Badge>
                   </div>
@@ -261,19 +222,15 @@ export default function ResourcesPage() {
                     <ChevronRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5" />
                   </Link>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </section>
-
       {/* Newsletter CTA */}
       <section className="relative py-20 md:py-28 bg-surface overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
+          <div
             className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent p-8 md:p-12"
           >
             <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 justify-between">
@@ -290,7 +247,7 @@ export default function ResourcesPage() {
                 <p className="text-sm md:text-base text-text-muted leading-relaxed">
                   Subscribe to our newsletter and receive the latest technical
                   guides, architecture comparisons, and semiconductor industry
-                  analysis from our multi-vendor certified engineering team —
+                  analysis from our multi-vendor certified engineering team -
                   delivered straight to your inbox.
                 </p>
               </div>
@@ -312,10 +269,9 @@ export default function ResourcesPage() {
                 </Button>
               </div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
-
       {/* Quick Links */}
       <section className="relative py-20 md:py-28 bg-bg-dark overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-15 pointer-events-none" />
