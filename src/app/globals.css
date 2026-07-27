@@ -326,17 +326,8 @@ body {
 }
 
 /* ============================================================
-   HEADER OFFSET (fixed — header slides over content via translateY)
+   HEADER SLIDE (fixed — header slides over content via translateY)
    ============================================================ */
-#main-content {
-  padding-top: 72px;
-}
-@media (min-width: 1024px) {
-  #main-content {
-    padding-top: 104px;
-  }
-}
-
 html.header-hidden [data-sticky-sidebar] {
   top: 16px !important;
 }

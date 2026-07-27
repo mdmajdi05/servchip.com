@@ -401,12 +401,14 @@ function NavLink({
 }
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const menuCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
+  const prevScroll = useRef(0);
   const pathname = usePathname();
   const clearMenuTimer = useCallback(() => {
     if (menuCloseTimer.current) {
@@ -443,11 +445,22 @@ export function Header() {
   );
   useEffect(() => {
     function onScroll() {
-      setScrolled(window.scrollY > 50);
+      const currentScroll = window.scrollY;
+      setScrolled(currentScroll > 50);
+      if (currentScroll > prevScroll.current && currentScroll > 100) {
+        setHidden(true);
+      } else {
+        setHidden(false);
+      }
+      prevScroll.current = currentScroll;
     }
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("header-hidden", hidden);
+  }, [hidden]);
   useEffect(() => {
     const id = setTimeout(() => setMobileOpen(false), 0);
     return () => clearTimeout(id);
@@ -486,7 +499,12 @@ export function Header() {
   }
   return (
     <>
-      <div className="fixed top-0 left-0 right-0 z-50">
+      <div
+        className={cn(
+          "fixed top-0 left-0 right-0 z-50 transition-transform duration-300",
+          hidden && "-translate-y-full",
+        )}
+      >
         <TopBar />
         <header
           className={cn(

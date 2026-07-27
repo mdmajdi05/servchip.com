@@ -161,7 +161,10 @@ export default function RootLayout({
           <ColorProvider>
             <QueryProvider>
               <Header />
-              <main id="main-content">{children}</main>
+              <div className="h-[72px] lg:h-[104px]" />
+              <main id="main-content" className="min-h-screen">
+                {children}
+              </main>
               <Footer />
               <LeadGenProviders />
               <GAClient />
