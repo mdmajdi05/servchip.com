@@ -1,8 +1,19 @@
 "use client";
 
+import { Zap, CheckCircle, Building2, Star } from "lucide-react";
 import { TRUST_BAR_ITEMS } from "@/data/home";
 import { getManufacturerTextColor } from "@/data/manufacturer-colors";
 import { BrandLogo } from "@/components/ui/BrandLogo";
+
+const ICON_MAP: Record<string, typeof Zap> = {
+  Zap,
+  CheckCircle,
+  Building2,
+};
+
+const BADGE_ICON_MAP: Record<string, typeof Star> = {
+  Star,
+};
 
 const MANUFACTURER_NAMES = new Set([
   "NVIDIA",
@@ -48,8 +59,13 @@ export function TrustBar() {
                     compact
                   />
                 ) : (
-                  <span className="text-lg" aria-hidden="true">
-                    {item.icon}
+                  <span aria-hidden="true">
+                    {(() => {
+                      const Icon = ICON_MAP[item.icon];
+                      return Icon ? (
+                        <Icon className="w-5 h-5 text-primary/80" />
+                      ) : null;
+                    })()}
                   </span>
                 )}
                 <span
@@ -59,7 +75,16 @@ export function TrustBar() {
                   {item.text}
                 </span>
                 {item.badge && (
-                  <span className="badge-trust">{item.badge}</span>
+                  <span className="badge-trust">
+                    {(() => {
+                      const BadgeIcon = BADGE_ICON_MAP[item.badge];
+                      return BadgeIcon ? (
+                        <BadgeIcon className="w-2.5 h-2.5" />
+                      ) : (
+                        item.badge
+                      );
+                    })()}
+                  </span>
                 )}
               </div>
             );

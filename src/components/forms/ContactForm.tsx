@@ -110,9 +110,7 @@ export function ContactForm() {
   };
   if (formState === "success") {
     return (
-      <div
-        className="bg-surface border border-primary/30 rounded-2xl p-10 text-center"
-      >
+      <div className="bg-surface border border-primary/30 rounded-2xl p-10 text-center">
         <div className="w-16 h-16 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-4">
           <CheckCircle className="w-8 h-8 text-primary" />
         </div>
@@ -263,8 +261,8 @@ export function ContactForm() {
             : "Submit Inquiry via Email"}
         </Button>
         <p className="text-xs text-text-dim text-center">
-          ?? Your inquiry will be sent to{" "}
-          <span className="text-primary">sales@</span>,{" "}
+          <Send className="w-3 h-3 text-primary/60 inline-block mr-0.5" /> Your
+          inquiry will be sent to <span className="text-primary">sales@</span>,{" "}
           <span className="text-primary">contact@</span> &amp;{" "}
           <span className="text-primary">support@</span>servchip.com
         </p>
@@ -290,13 +288,7 @@ function Field({
         {required && <span className="text-primary ml-0.5">*</span>}
       </label>
       {children}
-        {error && (
-          <p
-            className="text-error text-xs mt-1"
-          >
-            {error}
-          </p>
-        )}
+      {error && <p className="text-error text-xs mt-1">{error}</p>}
     </div>
   );
 }

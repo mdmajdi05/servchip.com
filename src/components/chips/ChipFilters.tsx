@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useMemo } from "react";
-import { Search, X } from "lucide-react";
+import { Search, X, Check } from "lucide-react";
 import type { ChipProduct } from "@/types";
 import { CHIPS } from "@/data/chips";
 import { getManufacturerColor } from "@/data/manufacturer-colors";
@@ -102,9 +102,7 @@ export function ChipFilters({ filters, onChange }: ChipFiltersProps) {
           checked ? "bg-primary border-primary" : "border-border"
         } flex items-center justify-center transition-transform`}
       >
-        {checked && (
-          <span className="text-bg-dark text-[10px] font-bold">✓</span>
-        )}
+        {checked && <Check className="w-3 h-3 text-bg-dark" />}
       </div>
       {color && (
         <span

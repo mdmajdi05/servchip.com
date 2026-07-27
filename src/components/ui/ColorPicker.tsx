@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useState, useRef, useEffect } from "react";
-import { Palette } from "lucide-react";
+import { Palette, Check } from "lucide-react";
 import { useColor } from "@/providers/ColorProvider";
 
 export function ColorPicker() {
@@ -82,8 +82,8 @@ export function ColorPicker() {
                   title={theme.name}
                 >
                   {isActive && (
-                    <span className="absolute inset-0 flex items-center justify-center text-white text-[10px] font-bold drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
-                      ✓
+                    <span className="absolute inset-0 flex items-center justify-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]">
+                      <Check className="w-3 h-3 text-white" />
                     </span>
                   )}
                   <span className="absolute -bottom-4 left-1/2 -translate-x-1/2 text-[9px] text-text-dim whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">

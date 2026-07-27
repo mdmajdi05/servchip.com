@@ -1,17 +1,17 @@
 ﻿"use client";
 
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Trophy, Sparkles, Flame } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { COMPARISON_CHIPS } from "@/data/home";
 import { cn } from "@/lib/utils";
 
-const badgeEmojis: Record<string, string> = {
-  Popular: "🏆",
-  Latest: "🆕",
-  Flagship: "🔥",
+const badgeIcons: Record<string, typeof Trophy> = {
+  Popular: Trophy,
+  Latest: Sparkles,
+  Flagship: Flame,
 };
 
 const badgeVariantMap: Record<string, "green" | "cyan" | "purple"> = {
@@ -62,7 +62,13 @@ export function ComparisonPreview() {
                   variant={badgeVariantMap[chip.badge] ?? "green"}
                   size="sm"
                 >
-                  {badgeEmojis[chip.badge] ?? ""} {chip.badge}
+                  {(() => {
+                    const BadgeIcon = badgeIcons[chip.badge];
+                    return BadgeIcon ? (
+                      <BadgeIcon className="w-3 h-3 inline-block mr-0.5" />
+                    ) : null;
+                  })()}{" "}
+                  {chip.badge}
                 </Badge>
               </div>
 

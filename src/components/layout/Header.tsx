@@ -9,6 +9,9 @@ import {
   ExternalLink,
   ChevronDown,
   Sparkles,
+  Phone,
+  Mail,
+  MapPin,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SITE } from "@/lib/constants";
@@ -958,7 +961,7 @@ export function Header() {
             {/* Contact info */}
             <div className="mt-6 pt-4 border-t border-border/50 text-sm text-text-muted space-y-2">
               <div className="flex items-center gap-2">
-                <span className="text-primary/60">??</span>{" "}
+                <Phone className="w-4 h-4 text-primary/60" />
                 <a
                   href={`tel:${SITE.phoneLink}`}
                   className="hover:text-primary transition-transform"
@@ -967,7 +970,7 @@ export function Header() {
                 </a>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-primary/60">??</span>{" "}
+                <Mail className="w-4 h-4 text-primary/60" />
                 <a
                   href={`mailto:${SITE.email}`}
                   className="hover:text-primary transition-transform"
@@ -976,14 +979,14 @@ export function Header() {
                 </a>
               </div>
               <div className="flex items-start gap-2 text-xs">
-                <span className="text-primary/60 mt-0.5">??</span>
+                <MapPin className="w-3.5 h-3.5 text-primary/60 mt-0.5 shrink-0" />
                 <span>
                   <strong className="text-text-muted">India:</strong>{" "}
                   {SITE.addresses.india}
                 </span>
               </div>
               <div className="flex items-start gap-2 text-xs">
-                <span className="text-primary/60 mt-0.5">??</span>
+                <MapPin className="w-3.5 h-3.5 text-primary/60 mt-0.5 shrink-0" />
                 <span>
                   <strong className="text-text-muted">UAE:</strong>{" "}
                   {SITE.addresses.uae}

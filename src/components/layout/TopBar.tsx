@@ -1,5 +1,5 @@
 "use client";
-import { Phone, Mail, ShieldCheck } from "lucide-react";
+import { Phone, Mail, ShieldCheck, Globe } from "lucide-react";
 import { SITE } from "@/lib/constants";
 export function TopBar() {
   return (
@@ -7,14 +7,14 @@ export function TopBar() {
       <div className="flex items-center gap-4">
         <a
           href={`tel:${SITE.phoneLink}`}
-          className="flex items-center gap-1.5 hover:text-text transition-transform duration-200"
+          className="flex items-center gap-1.5 hover:text-text"
         >
           <Phone className="w-3 h-3 text-primary/60" /> {SITE.phone}
         </a>
         <span className="w-px h-3 bg-gradient-to-b from-transparent via-border to-transparent" />
         <a
           href={`mailto:${SITE.email}`}
-          className="flex items-center gap-1.5 hover:text-text transition-transform duration-200"
+          className="flex items-center gap-1.5 hover:text-text"
         >
           <Mail className="w-3 h-3 text-primary/60" /> {SITE.email}
         </a>
@@ -30,11 +30,11 @@ export function TopBar() {
           </span>
         </span>
         <span className="w-px h-3 bg-gradient-to-b from-transparent via-border to-transparent" />
-        <span className="flex items-center gap-1 hover:text-text transition-transform duration-200 cursor-pointer">
-          <span className="text-[10px]">??</span> Global Shipping
+        <span className="flex items-center gap-1 hover:text-text cursor-pointer">
+          <Globe className="w-3 h-3 text-primary/60" /> Global Shipping
         </span>
         <span className="w-px h-3 bg-gradient-to-b from-transparent via-border to-transparent" />
-        <span className="flex items-center gap-1 hover:text-text transition-transform duration-200 cursor-pointer">
+        <span className="flex items-center gap-1 hover:text-text cursor-pointer">
           <ShieldCheck className="w-3 h-3 text-primary/60" /> ISO 9001 Certified
         </span>
       </div>

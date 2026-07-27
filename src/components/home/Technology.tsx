@@ -74,7 +74,7 @@ export function Technology() {
           <div className="relative h-[400px] bg-bg-dark rounded-2xl border border-border overflow-hidden">
             <LIGHTNING_SCENE />
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-1 rounded-full bg-surface/80 backdrop-blur-sm border border-primary/20">
-              <span className="text-primary text-xs">⚡</span>
+              <Zap className="w-3 h-3 text-primary" />
               <span className="text-text-dim text-[10px] font-mono">
                 Animated Circuit Visualization
               </span>

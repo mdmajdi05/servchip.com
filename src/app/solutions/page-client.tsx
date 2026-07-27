@@ -12,6 +12,7 @@ import {
   Boxes,
   CheckCircle2,
   Circle,
+  Star,
 } from "lucide-react";
 
 const ICON_MAP: Record<string, typeof Building2> = {
@@ -444,9 +445,7 @@ export default function SolutionsPage() {
                 >
                   <div className="flex items-center gap-1 mb-3 text-[#FFD600]">
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <span key={i} className="text-xs">
-                        ★
-                      </span>
+                      <Star key={i} className="w-3 h-3 fill-current" />
                     ))}
                   </div>
                   <p className="text-xs text-text-muted leading-relaxed mb-4 flex-1 line-clamp-4">
