@@ -42,7 +42,9 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4">
-        <h1 className="sr-only">Enterprise Chip Pricing &amp; Availability</h1>
+        <h1 className="text-3xl lg:text-4xl font-black text-text leading-tight mb-8">
+          Enterprise Chip Pricing &amp; Availability
+        </h1>
         <SectionHeading
           label="Contact Us"
           title="Let's Talk About Your AI Infrastructure"
@@ -50,14 +52,10 @@ export default function ContactPage() {
           align="center"
         />
         <div className="grid lg:grid-cols-5 gap-10 mt-10 max-w-6xl mx-auto">
-          <div
-            className="lg:col-span-3"
-          >
+          <div className="lg:col-span-3">
             <ContactForm />
           </div>
-          <div
-            className="lg:col-span-2 space-y-5"
-          >
+          <div className="lg:col-span-2 space-y-5">
             <div className="bg-surface border border-border rounded-xl p-5">
               <h3 className="text-sm font-bold text-text mb-4">
                 Get in Touch Directly

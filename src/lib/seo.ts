@@ -1,6 +1,6 @@
 import { SITE, SCHEMA } from "./constants";
 
-export const OG_IMAGE = "/og-image.png";
+export const OG_IMAGE = `${SITE.url}/og-image.png`;
 export const OG_WIDTH = 1200;
 export const OG_HEIGHT = 630;
 
@@ -13,15 +13,20 @@ export function jsonLd(script: Record<string, unknown>) {
   };
 }
 
+const ORG_ID = `${SITE.url}#organization`;
+
 export function organizationSchema() {
   return jsonLd({
-    "@type": "Organization",
-    name: "Servchip Inc.",
+    "@type": ["Organization", "LocalBusiness"],
+    "@id": ORG_ID,
+    name: SITE.companyName,
     url: SITE.url,
     logo: `${SITE.url}/favicon.svg`,
-    description:
-      "ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3 accelerators. Authorized distribution partner for AI, HPC & data center hardware.",
+    description: SITE.defaultDescription,
     foundingDate: "2018",
+    telephone: SITE.phone,
+    email: SITE.email,
+    priceRange: "$$$",
     contactPoint: {
       "@type": "ContactPoint",
       telephone: SITE.phone,
@@ -29,60 +34,28 @@ export function organizationSchema() {
       email: SITE.email,
       availableLanguage: ["English"],
     },
-    address: [
-      {
-        "@type": "PostalAddress",
-        streetAddress:
-          "A-24/5, 3rd Floor, NH-19, Mohan Cooperative Industrial Estate",
-        addressLocality: "New Delhi",
-        addressRegion: "Delhi",
-        postalCode: "110044",
-        addressCountry: "IN",
-      },
-      {
-        "@type": "PostalAddress",
-        streetAddress: "Business Centre, Sharjah Publishing City Free Zone",
-        addressLocality: "Sharjah",
-        addressCountry: "AE",
-      },
-    ],
-    sameAs: [
-      "https://www.linkedin.com/company/servchip",
-      "https://twitter.com/servchip",
-      "https://facebook.com/servchip",
-      "https://youtube.com/@servchip",
-      "https://instagram.com/servchip",
-    ],
-  });
-}
-
-export function localBusinessSchema() {
-  return jsonLd({
-    "@type": "LocalBusiness",
-    name: "Servchip Inc.",
-    url: SITE.url,
-    logo: `${SITE.url}/favicon.svg`,
-    description:
-      "ISO 9001 certified enterprise chip distributor — NVIDIA, AMD, Intel authorized partner. Enterprise chip sourcing, semiconductor procurement & data center hardware.",
-    telephone: SITE.phone,
-    email: SITE.email,
-    foundingDate: "2018",
-    priceRange: "$$$$",
-    address: {
-      "@type": "PostalAddress",
-      streetAddress:
-        "A-24/5, 3rd Floor, NH-19, Mohan Cooperative Industrial Estate",
-      addressLocality: "New Delhi",
-      addressRegion: "Delhi",
-      postalCode: "110044",
-      addressCountry: "IN",
-    },
+    address: [SITE.addresses.indiaStructured, SITE.addresses.uaeStructured],
     areaServed: [
-      { "@type": "Country", name: "India" },
-      { "@type": "Country", name: "United Arab Emirates" },
-      { "@type": "Country", name: "United States" },
-      { "@type": "Country", name: "Singapore" },
-      { "@type": "Country", name: "Germany" },
+      {
+        "@type": "Place",
+        address: { "@type": "PostalAddress", addressCountry: "IN" },
+      },
+      {
+        "@type": "Place",
+        address: { "@type": "PostalAddress", addressCountry: "AE" },
+      },
+      {
+        "@type": "Place",
+        address: { "@type": "PostalAddress", addressCountry: "US" },
+      },
+      {
+        "@type": "Place",
+        address: { "@type": "PostalAddress", addressCountry: "SG" },
+      },
+      {
+        "@type": "Place",
+        address: { "@type": "PostalAddress", addressCountry: "DE" },
+      },
     ],
     hasOfferCatalog: {
       "@type": "OfferCatalog",
@@ -99,13 +72,19 @@ export function localBusinessSchema() {
         },
       ],
     },
+    sameAs: Object.values(SITE.social),
   });
+}
+
+export function localBusinessSchema() {
+  return null;
 }
 
 export function websiteSchema() {
   return jsonLd({
     "@type": "WebSite",
-    name: "Servchip",
+    "@id": `${SITE.url}#website`,
+    name: SITE.name,
     url: SITE.url,
     potentialAction: {
       "@type": "SearchAction",
@@ -113,7 +92,11 @@ export function websiteSchema() {
         "@type": "EntryPoint",
         urlTemplate: `${SITE.url}/products?q={search_term_string}`,
       },
-      "query-input": "required name=search_term_string",
+      "query-input": {
+        "@type": "PropertyValueSpecification",
+        valueRequired: true,
+        valueName: "search_term_string",
+      },
     },
   });
 }
@@ -151,14 +134,14 @@ export function productSchema(product: {
     manufacturer: { "@type": "Organization", name: product.manufacturer },
     category: product.categoryName,
     url: `${SITE.url}/products/${product.slug}`,
-    ...(product.images && product.images.length > 0
-      ? { image: product.images[0] }
-      : {}),
+    image: product.images?.[0] || `${SITE.url}/og-image.png`,
     itemCondition: "https://schema.org/NewCondition",
     offers: {
       "@type": "Offer",
       "@id": `${SITE.url}/products/${product.slug}#offer`,
       url: `${SITE.url}/products/${product.slug}`,
+      price: "0",
+      priceCurrency: "USD",
       priceSpecification: {
         "@type": "CompoundPriceSpecification",
         description: "Contact us for pricing — Request a Quote",
@@ -184,6 +167,7 @@ export function articleSchema(post: {
 }) {
   return jsonLd({
     "@type": "Article",
+    "@id": `${SITE.url}/blog/${post.slug}#article`,
     headline: post.title,
     description: post.description,
     url: `${SITE.url}/blog/${post.slug}`,
@@ -196,11 +180,21 @@ export function articleSchema(post: {
     },
     publisher: {
       "@type": "Organization",
-      name: "Servchip Inc.",
+      "@id": ORG_ID,
+      name: SITE.companyName,
       url: SITE.url,
       logo: { "@type": "ImageObject", url: `${SITE.url}/favicon.svg` },
     },
-    ...(post.image ? { image: post.image } : {}),
+    ...(post.image
+      ? {
+          image: {
+            "@type": "ImageObject",
+            url: post.image,
+            width: OG_WIDTH,
+            height: OG_HEIGHT,
+          },
+        }
+      : {}),
     ...(post.category ? { articleSection: post.category } : {}),
     mainEntityOfPage: {
       "@type": "WebPage",
@@ -243,7 +237,7 @@ export function serviceSchema(
         name: s.name,
         description: s.description,
         url: `${SITE.url}${s.url}`,
-        provider: { "@type": "Organization", name: "Servchip Inc." },
+        provider: { "@type": "Organization", name: SITE.companyName },
       },
     })),
   });
@@ -256,18 +250,10 @@ export function contactPageSchema() {
     url: `${SITE.url}/contact`,
     mainEntity: {
       "@type": "Organization",
-      name: "Servchip Inc.",
+      name: SITE.companyName,
       telephone: SITE.phone,
       email: SITE.email,
-      address: {
-        "@type": "PostalAddress",
-        streetAddress:
-          "A-24/5, 3rd Floor, NH-19, Mohan Cooperative Industrial Estate",
-        addressLocality: "New Delhi",
-        addressRegion: "Delhi",
-        postalCode: "110044",
-        addressCountry: "IN",
-      },
+      address: SITE.addresses.indiaStructured,
     },
   });
 }

@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   description:
     "Servchip terms of service govern the use of our website, product purchases, warranty claims, and enterprise account management.",
   alternates: { canonical: `${SITE.url}/terms` },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "Terms of Service | Servchip",
     description:

@@ -33,7 +33,7 @@ export async function generateMetadata({
     alternates: {
       canonical: post.seo.canonicalUrl || `${SITE.url}/blog/${post.slug}`,
     },
-    robots: post.seo.robots || "index, follow",
+    robots: post.seo.robots || { index: true, follow: true },
     openGraph: {
       title: post.seo.metaTitle,
       description: post.seo.metaDescription,

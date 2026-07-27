@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Mail, Send, MapPin, ChevronRight } from "lucide-react";
+import { Phone, Mail, Send, MapPin, ChevronRight } from "lucide-react";
 import { AnimatedLogo } from "@/components/ui/AnimatedLogo";
 import { MANUFACTURERS } from "@/data/manufacturers";
 import { getManufacturerColor } from "@/data/manufacturer-colors";
@@ -51,23 +51,23 @@ function InstagramIcon({ className }: { className?: string }) {
 const SOCIAL_LINKS = [
   {
     name: "Facebook",
-    href: "https://facebook.com/servchip",
+    href: SITE.social.facebook,
     icon: FacebookIcon,
   },
   {
     name: "Twitter / X",
-    href: "https://twitter.com/servchip",
+    href: SITE.social.twitter,
     icon: TwitterIcon,
   },
   {
     name: "LinkedIn",
-    href: "https://linkedin.com/company/servchip",
+    href: SITE.social.linkedin,
     icon: LinkedInIcon,
   },
-  { name: "YouTube", href: "https://youtube.com/@servchip", icon: YouTubeIcon },
+  { name: "YouTube", href: SITE.social.youtube, icon: YouTubeIcon },
   {
     name: "Instagram",
-    href: "https://instagram.com/servchip",
+    href: SITE.social.instagram,
     icon: InstagramIcon,
   },
 ];
@@ -185,21 +185,30 @@ export function Footer() {
                 </span>
               </div>
               <a
-                href="mailto:sales@servchip.com"
+                href={`mailto:${SITE.email}`}
                 className="flex items-center gap-2 text-xs text-primary hover:underline"
               >
                 <Mail className="w-3.5 h-3.5" />
-                sales@servchip.com
+                {SITE.email}
               </a>
+              <div className="flex items-center gap-2 text-sm">
+                <Phone className="w-4 h-4 text-primary" />
+                <a
+                  href={`tel:${SITE.phoneLink}`}
+                  className="text-text-muted hover:text-text transition-colors"
+                >
+                  {SITE.phone}
+                </a>
+              </div>
             </div>
           </div>
 
           {/* Link Columns */}
           {FOOTER_LINKS.map((col) => (
-            <div key={col.title}>
-              <h4 className="text-[11px] font-bold uppercase tracking-[0.12em] text-primary mb-4">
+            <nav key={col.title} aria-label={col.title}>
+              <h2 className="text-[11px] font-bold uppercase tracking-[0.12em] text-primary mb-4">
                 {col.title}
-              </h4>
+              </h2>
               <ul className="space-y-2.5">
                 {col.links.map((link) => (
                   <li key={link.href}>
@@ -223,14 +232,14 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </nav>
           ))}
         </div>
 
         {/* Newsletter row */}
         <div className="mt-12 pt-8 border-t border-border/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
           <div>
-            <h4 className="text-sm font-bold text-text mb-1">Stay Updated</h4>
+            <h2 className="text-sm font-bold text-text mb-1">Stay Updated</h2>
             <p className="text-xs text-text-dim">
               Get the latest products and industry insights.
             </p>
@@ -241,7 +250,8 @@ export function Footer() {
         {/* Bottom */}
         <div className="mt-8 pt-5 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-dim">
           <p>
-            &copy; {new Date().getFullYear()} Servchip Inc. All rights reserved.
+            &copy; {new Date().getFullYear()} {SITE.companyName} All rights
+            reserved.
           </p>
           <div className="flex items-center gap-4">
             <Link
@@ -257,7 +267,7 @@ export function Footer() {
               Terms
             </Link>
             <a
-              href="mailto:sales@servchip.com"
+              href={`mailto:${SITE.email}`}
               aria-label="Email sales team"
               className="hover:text-primary transition-transform flex items-center gap-1"
             >

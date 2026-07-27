@@ -26,6 +26,7 @@ export const metadata: Metadata = {
     "enterprise GPU guide",
   ],
   alternates: { canonical: `${SITE.url}/blog` },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "Blog | Servchip — Enterprise Chip Distributor",
     description:

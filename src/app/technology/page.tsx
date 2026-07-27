@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -15,6 +16,8 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ChipScene } from "@/components/shared/ChipScene";
 import { Button } from "@/components/ui/Button";
 import { TECHNOLOGY_FEATURES } from "@/data/home";
+import { SITE } from "@/lib/constants";
+import { breadcrumbSchema, OG_IMAGE, OG_WIDTH, OG_HEIGHT } from "@/lib/seo";
 const ARCHITECTURE_TIMELINE = [
   {
     name: "Blackwell",
@@ -237,9 +240,66 @@ function MiniScene() {
     </div>
   );
 }
+export const metadata: Metadata = {
+  title:
+    "AI Chip Technology — NVIDIA Blackwell, Hopper, AMD CDNA 3 & Intel Architectures | Servchip",
+  description:
+    "Explore GPU architecture generations — NVIDIA Blackwell FP4, Hopper Transformer Engine, AMD CDNA 3, Intel Granite Rapids. Deep dives into NVLink 5.0, MIG, HBM3e memory & enterprise AI chip technology from Servchip.",
+  keywords: [
+    "NVIDIA Blackwell architecture",
+    "Hopper Transformer Engine",
+    "AI chip technology",
+    "GPU architecture comparison",
+    "NVLink 5.0",
+    "HBM3e memory",
+    "AMD CDNA 3",
+    "Intel Granite Rapids",
+    "enterprise AI hardware",
+    "GPU compute technology",
+    "data center GPU architecture",
+    "AI accelerator technology",
+  ],
+  alternates: { canonical: `${SITE.url}/technology` },
+  robots: { index: true, follow: true },
+  openGraph: {
+    title:
+      "AI Chip Technology — NVIDIA & AMD & Intel GPU Architectures | Servchip",
+    description:
+      "Deep dive into Blackwell, Hopper, AMD CDNA 3, Intel Granite Rapids. Compare GPU architectures, memory bandwidth, tensor core generations & more from Servchip.",
+    url: `${SITE.url}/technology`,
+    images: [
+      {
+        url: OG_IMAGE,
+        width: OG_WIDTH,
+        height: OG_HEIGHT,
+        alt: "Servchip — AI Chip Technology & GPU Architecture",
+        type: "image/png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title:
+      "AI Chip Technology — NVIDIA & AMD & Intel GPU Architectures | Servchip",
+    description:
+      "Deep dive into Blackwell, Hopper, AMD CDNA 3, Intel Granite Rapids — GPU architectures powering next-gen AI.",
+    images: [OG_IMAGE],
+  },
+};
+
 export default function TechnologyPage() {
   return (
     <>
+      <h1 className="text-3xl font-black text-text mb-4">
+        AI Chip Technology — GPU Architecture & Enterprise Hardware
+      </h1>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={breadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Technology", url: "/technology" },
+        ])}
+      />
       <PageHero
         label="The Technology"
         title="Built for the Next Generation of AI Computing"

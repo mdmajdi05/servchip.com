@@ -521,7 +521,10 @@ export function Header() {
             className="hidden lg:block flex-1 relative"
             onMouseLeave={() => closeMenuWithDelay(250)}
           >
-            <nav className="flex items-center justify-center gap-0.5">
+            <nav
+              aria-label="Main navigation"
+              className="flex items-center justify-center gap-0.5"
+            >
               <NavLink
                 href="/"
                 label="Home"
@@ -534,7 +537,10 @@ export function Header() {
                   onMouseEnter={() => openMenu(item.label)}
                 >
                   <button
+                    id={`mega-menu-trigger-${item.label.toLowerCase().replace(/\s+/g, "-")}`}
                     onClick={() => toggleMenu(item.label)}
+                    aria-expanded={activeMenu === item.label}
+                    aria-haspopup="true"
                     className={cn(
                       "relative flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-transform duration-200 group",
                       activeMenu === item.label
@@ -572,34 +578,34 @@ export function Header() {
               ))}
             </nav>
             {/* Mega Menu Dropdown */}
-              {activeMenu && NAV_MEGA.find((m) => m.label === activeMenu) && (
+            {activeMenu && NAV_MEGA.find((m) => m.label === activeMenu) && (
+              <div
+                className="absolute left-0 right-0 top-full mt-0 flex justify-center"
+                onClick={() => setActiveMenu(null)}
+                onMouseEnter={() => {
+                  if (menuCloseTimer.current)
+                    clearTimeout(menuCloseTimer.current);
+                }}
+              >
                 <div
-                  className="absolute left-0 right-0 top-full mt-0 flex justify-center"
-                  onClick={() => setActiveMenu(null)}
-                  onMouseEnter={() => {
-                    if (menuCloseTimer.current)
-                      clearTimeout(menuCloseTimer.current);
-                  }}
+                  role="region"
+                  aria-labelledby={`mega-menu-trigger-${activeMenu?.toLowerCase().replace(/\s+/g, "-")}`}
+                  className="w-[min(1100px,calc(100vw-2rem))]"
+                  onClick={(e) => e.stopPropagation()}
                 >
-                  <div
-                    className="w-[min(1100px,calc(100vw-2rem))]"
-                    onClick={(e) => e.stopPropagation()}
-                  >
-                    {(() => {
-                      const item = NAV_MEGA.find(
-                        (m) => m.label === activeMenu,
-                      )!;
-                      return (
-                        <MegaMenu
-                          label={item.label}
-                          columns={item.columns}
-                          href={item.href}
-                        />
-                      );
-                    })()}
-                  </div>
+                  {(() => {
+                    const item = NAV_MEGA.find((m) => m.label === activeMenu)!;
+                    return (
+                      <MegaMenu
+                        label={item.label}
+                        columns={item.columns}
+                        href={item.href}
+                      />
+                    );
+                  })()}
                 </div>
-              )}
+              </div>
+            )}
           </div>
           {/* Actions */}
           <div className="flex items-center gap-2.5">
@@ -661,14 +667,15 @@ export function Header() {
       </div>
       <SearchModal open={searchOpen} onOpenChange={setSearchOpen} />
       {/* Mobile overlay */}
-        {mobileOpen && (
-          <div
-            className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
-            onClick={() => setMobileOpen(false)}
-          />
-        )}
+      {mobileOpen && (
+        <div
+          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+          onClick={() => setMobileOpen(false)}
+        />
+      )}
       {/* Mobile menu */}
-      <div
+      <nav
+        aria-label="Mobile navigation"
         className={cn(
           "fixed top-0 right-0 z-[60] w-full max-w-[400px] h-screen bg-surface border-l border-border overflow-y-auto transition-transform duration-500 lg:hidden",
           mobileOpen ? "right-0" : "-right-full",
@@ -858,57 +865,57 @@ export function Header() {
                           )}
                         />
                       </button>
-                        {mobileDropdown === item.label && (
-                          <div
-                            key={`${item.label}-mobile`}
-                            className="overflow-hidden"
-                          >
-                            <div className="pl-5 py-2 space-y-1 bg-primary/[0.02] rounded-lg my-1">
-                              {mega.columns.map((col) => (
-                                <div key={col.title} className="py-2">
-                                  <h4 className="text-[10px] font-semibold uppercase tracking-wider text-primary/60 px-3 mb-2">
-                                    {col.href ? (
-                                      <Link
-                                        href={col.href}
-                                        onClick={() => setMobileOpen(false)}
-                                        className="hover:text-primary transition-transform"
-                                      >
-                                        {col.title}
-                                      </Link>
-                                    ) : (
-                                      col.title
-                                    )}
-                                  </h4>
-                                  {col.links.slice(0, 5).map((link) => (
+                      {mobileDropdown === item.label && (
+                        <div
+                          key={`${item.label}-mobile`}
+                          className="overflow-hidden"
+                        >
+                          <div className="pl-5 py-2 space-y-1 bg-primary/[0.02] rounded-lg my-1">
+                            {mega.columns.map((col) => (
+                              <div key={col.title} className="py-2">
+                                <h4 className="text-[10px] font-semibold uppercase tracking-wider text-primary/60 px-3 mb-2">
+                                  {col.href ? (
                                     <Link
-                                      key={link.label}
-                                      href={link.href}
+                                      href={col.href}
                                       onClick={() => setMobileOpen(false)}
-                                      className="flex items-center gap-2 text-sm text-text-muted hover:text-text py-2 px-3 rounded-lg hover:bg-primary/[0.04] transition-transform"
+                                      className="hover:text-primary transition-transform"
                                     >
-                                      <span className="w-1 h-1 rounded-full bg-primary/20" />
-                                      {link.label}
-                                      {link.badge && (
-                                        <span className="text-[8px] font-bold uppercase text-primary bg-primary/10 px-1 py-0.5 rounded">
-                                          {link.badge}
-                                        </span>
-                                      )}
+                                      {col.title}
                                     </Link>
-                                  ))}
-                                  {col.links.length > 5 && (
-                                    <Link
-                                      href={col.href ?? "/products"}
-                                      onClick={() => setMobileOpen(false)}
-                                      className="block text-[11px] font-medium text-primary/70 hover:text-primary px-3 py-1.5 transition-transform"
-                                    >
-                                      +{col.links.length - 5} more ?
-                                    </Link>
+                                  ) : (
+                                    col.title
                                   )}
-                                </div>
-                              ))}
-                            </div>
+                                </h4>
+                                {col.links.slice(0, 5).map((link) => (
+                                  <Link
+                                    key={link.label}
+                                    href={link.href}
+                                    onClick={() => setMobileOpen(false)}
+                                    className="flex items-center gap-2 text-sm text-text-muted hover:text-text py-2 px-3 rounded-lg hover:bg-primary/[0.04] transition-transform"
+                                  >
+                                    <span className="w-1 h-1 rounded-full bg-primary/20" />
+                                    {link.label}
+                                    {link.badge && (
+                                      <span className="text-[8px] font-bold uppercase text-primary bg-primary/10 px-1 py-0.5 rounded">
+                                        {link.badge}
+                                      </span>
+                                    )}
+                                  </Link>
+                                ))}
+                                {col.links.length > 5 && (
+                                  <Link
+                                    href={col.href ?? "/products"}
+                                    onClick={() => setMobileOpen(false)}
+                                    className="block text-[11px] font-medium text-primary/70 hover:text-primary px-3 py-1.5 transition-transform"
+                                  >
+                                    +{col.links.length - 5} more ?
+                                  </Link>
+                                )}
+                              </div>
+                            ))}
                           </div>
-                        )}
+                        </div>
+                      )}
                     </>
                   ) : (
                     <Link
@@ -952,19 +959,19 @@ export function Header() {
               <div className="flex items-center gap-2">
                 <span className="text-primary/60">??</span>{" "}
                 <a
-                  href="tel:+917982498712"
+                  href={`tel:${SITE.phoneLink}`}
                   className="hover:text-primary transition-transform"
                 >
-                  +91 7982498712
+                  {SITE.phone}
                 </a>
               </div>
               <div className="flex items-center gap-2">
                 <span className="text-primary/60">??</span>{" "}
                 <a
-                  href="mailto:sales@servchip.com"
+                  href={`mailto:${SITE.email}`}
                   className="hover:text-primary transition-transform"
                 >
-                  sales@servchip.com
+                  {SITE.email}
                 </a>
               </div>
               <div className="flex items-start gap-2 text-xs">
@@ -984,7 +991,7 @@ export function Header() {
             </div>
           </div>
         </div>
-      </div>
+      </nav>
     </>
   );
 }

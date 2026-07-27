@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     "GPU SDK documentation",
   ],
   alternates: { canonical: `${SITE.url}/developer-hub` },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "Developer Hub | Servchip — Enterprise AI Hardware",
     description:

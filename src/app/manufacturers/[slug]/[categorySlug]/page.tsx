@@ -36,6 +36,7 @@ export async function generateMetadata(props: {
     alternates: {
       canonical: `${SITE.url}/manufacturers/${slug}/${categorySlug}`,
     },
+    robots: { index: true, follow: true },
     openGraph: {
       title: `${manufacturer.name} ${category.name} | Servchip`,
       description: `Buy ${manufacturer.name} ${category.name} from an ISO 9001 certified distributor.`,
@@ -48,6 +49,12 @@ export async function generateMetadata(props: {
           type: "image/png",
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${manufacturer.name} ${category.name} | Servchip`,
+      description: `Buy ${manufacturer.name} ${category.name} from an ISO 9001 certified distributor.`,
+      images: [OG_IMAGE],
     },
   };
 }

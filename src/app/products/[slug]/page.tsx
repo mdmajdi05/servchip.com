@@ -42,6 +42,7 @@ export async function generateMetadata(props: {
       "data center hardware",
     ],
     alternates: { canonical: `${SITE.url}/products/${slug}` },
+    robots: { index: true, follow: true },
     openGraph: {
       title: `${product.name} — Servchip`,
       description: product.description,

@@ -26,6 +26,7 @@ export async function generateMetadata(props: {
       "semiconductor procurement",
     ],
     alternates: { canonical: `${SITE.url}/manufacturers/${slug}` },
+    robots: { index: true, follow: true },
     openGraph: {
       title: `${manufacturer.name} Products | Servchip — Enterprise Chip Distributor`,
       description: manufacturer.seo.metaDescription,
@@ -38,6 +39,12 @@ export async function generateMetadata(props: {
           type: "image/png",
         },
       ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${manufacturer.name} Products | Servchip — Enterprise Chip Distributor`,
+      description: manufacturer.seo.metaDescription,
+      images: [OG_IMAGE],
     },
   };
 }

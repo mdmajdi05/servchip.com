@@ -8,6 +8,7 @@ export const metadata: Metadata = {
   description:
     "Servchip privacy policy explains how we collect, use, and protect your personal data when you browse our store or contact our sales team.",
   alternates: { canonical: `${SITE.url}/privacy` },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "Privacy Policy | Servchip",
     description:

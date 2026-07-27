@@ -202,7 +202,8 @@ export function Hero3D() {
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full z-10">
         <div className="text-center">
-          <div className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-[11px] font-mono font-bold mb-8 tracking-wide uppercase border bg-black/40 backdrop-blur-md"
+          <div
+            className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-[11px] font-mono font-bold mb-8 tracking-wide uppercase border bg-black/40 backdrop-blur-md"
             style={{
               borderColor:
                 "color-mix(in srgb, var(--hero-primary) 35%, transparent)",
@@ -216,15 +217,16 @@ export function Hero3D() {
             AUTHORIZED DISTRIBUTOR — 50+ BRANDS
           </div>
 
-          <h1 className="text-4xl sm:text-5xl lg:text-[4rem] font-black text-white leading-[1.05] mb-6 tracking-tight"
-          >
+          <h1 className="text-4xl sm:text-5xl lg:text-[4rem] font-black text-white leading-[1.05] mb-6 tracking-tight">
             Enterprise AI Chips &{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00BCD4] to-[#00E5FF]">
               Accelerators for HPC
             </span>
           </h1>
 
-          <p className="text-slate-300 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto min-h-[3.5rem]"
+          <p
+            className="text-slate-300 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto min-h-[3.5rem]"
+            aria-live="polite"
           >
             <span className="text-primary/60 mr-2 font-mono text-sm">&gt;</span>
             {displayText}
@@ -234,10 +236,10 @@ export function Hero3D() {
             />
           </p>
 
-          <div className="flex flex-wrap gap-4 justify-center mb-12"
-          >
+          <div className="flex flex-wrap gap-4 justify-center mb-12">
             <Link href="/products">
-              <button className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-black"
+              <button
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-black"
                 style={{
                   backgroundColor: "var(--hero-primary)",
                   boxShadow:
@@ -261,14 +263,15 @@ export function Hero3D() {
             </Link>
           </div>
 
-          <div className="grid grid-cols-3 gap-8 max-w-lg mx-auto py-6 border-t"
+          <div
+            className="grid grid-cols-3 gap-8 max-w-lg mx-auto py-6 border-t"
             style={{
               borderColor:
                 "color-mix(in srgb, var(--hero-primary) 20%, transparent)",
             }}
           >
             {HERO_STATS.map(({ value, label }, i) => (
-                <div key={label}>
+              <div key={label}>
                 <span
                   className="text-2xl sm:text-3xl font-black text-white font-mono tracking-tight block"
                   style={{ textShadow: "0 0 30px rgba(0,188,212,0.2)" }}
@@ -287,8 +290,7 @@ export function Hero3D() {
         </div>
       </div>
 
-      <div className="absolute bottom-0 left-0 right-0 overflow-hidden py-6"
-      >
+      <div className="absolute bottom-0 left-0 right-0 overflow-hidden py-6">
         <div className="relative overflow-hidden">
           <div
             className="flex gap-12 items-center"

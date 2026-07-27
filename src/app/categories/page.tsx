@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     "Intel Xeon",
   ],
   alternates: { canonical: `${SITE.url}/categories` },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "Product Categories | Servchip — Enterprise Chip Distributor",
     description:
@@ -32,6 +33,13 @@ export const metadata: Metadata = {
         type: "image/png",
       },
     ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Product Categories | Servchip — Enterprise Chip Distributor",
+    description:
+      "Browse enterprise chip categories — data center GPUs, AI accelerators, server CPUs & more.",
+    images: [OG_IMAGE],
   },
 };
 

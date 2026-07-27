@@ -95,7 +95,9 @@ export default function RFQPage() {
   return (
     <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-5xl mx-auto px-4">
-        <h1 className="sr-only">Get a Personalized Quote</h1>
+        <h1 className="text-3xl lg:text-4xl font-black text-text leading-tight mb-8">
+          Get a Personalized Quote
+        </h1>
         <SectionHeading
           label="Request a Quote"
           title="Get a Personalized Quote"

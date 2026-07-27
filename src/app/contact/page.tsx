@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     "bulk chip ordering",
   ],
   alternates: { canonical: `${SITE.url}/contact` },
+  robots: { index: true, follow: true },
   openGraph: {
     title:
       "Contact Servchip — Enterprise Chip Distributor | Buy AI Chips & Get Pricing",

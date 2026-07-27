@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     "bulk semiconductor purchasing",
   ],
   alternates: { canonical: `${SITE.url}/about` },
+  robots: { index: true, follow: true },
   openGraph: {
     title:
       "About Servchip — Enterprise Chip Distributor & Semiconductor Procurement Partner",

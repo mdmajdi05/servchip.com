@@ -28,6 +28,7 @@ export async function generateMetadata(props: {
       "AI accelerator distributor",
     ],
     alternates: { canonical: `${SITE.url}/categories/${slug}` },
+    robots: { index: true, follow: true },
     openGraph: {
       title: `${cat.name} | Servchip — Enterprise Chip Distributor`,
       description: `Buy ${cat.name} from an ISO 9001 certified distributor.`,

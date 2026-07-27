@@ -1,18 +1,23 @@
 "use client";
 import { Phone, Mail, ShieldCheck } from "lucide-react";
+import { SITE } from "@/lib/constants";
 export function TopBar() {
   return (
-    <div
-      className="hidden lg:flex h-8 items-center justify-between px-6 sm:px-8 lg:px-12 bg-white dark:bg-surface border-b border-gray-200/60 dark:border-border/60 text-[11px] text-text-dim relative z-10"
-    >
+    <div className="hidden lg:flex h-8 items-center justify-between px-6 sm:px-8 lg:px-12 bg-white dark:bg-surface border-b border-gray-200/60 dark:border-border/60 text-[11px] text-text-dim relative z-10">
       <div className="flex items-center gap-4">
-        <span className="flex items-center gap-1.5 hover:text-text transition-transform duration-200 cursor-pointer">
-          <Phone className="w-3 h-3 text-primary/60" /> +91 7982498712
-        </span>
+        <a
+          href={`tel:${SITE.phoneLink}`}
+          className="flex items-center gap-1.5 hover:text-text transition-transform duration-200"
+        >
+          <Phone className="w-3 h-3 text-primary/60" /> {SITE.phone}
+        </a>
         <span className="w-px h-3 bg-gradient-to-b from-transparent via-border to-transparent" />
-        <span className="flex items-center gap-1.5 hover:text-text transition-transform duration-200 cursor-pointer">
-          <Mail className="w-3 h-3 text-primary/60" /> sales@servchip.com
-        </span>
+        <a
+          href={`mailto:${SITE.email}`}
+          className="flex items-center gap-1.5 hover:text-text transition-transform duration-200"
+        >
+          <Mail className="w-3 h-3 text-primary/60" /> {SITE.email}
+        </a>
       </div>
       <div className="flex items-center gap-4">
         <span className="flex items-center gap-1.5">

@@ -9,16 +9,16 @@ export default function FAQPage({ faqs }: { faqs: FAQItem[] }) {
   return (
     <div className="min-h-screen bg-bg-dark">
       <div className="max-w-3xl mx-auto px-4">
-        <h1 className="sr-only">Frequently Asked Questions</h1>
+        <h1 className="text-3xl lg:text-4xl font-black text-text leading-tight mb-8">
+          Frequently Asked Questions
+        </h1>
         <SectionHeading
           label="FAQ"
           title="Frequently Asked Questions"
           subtitle="Enterprise chip purchasing, semiconductor procurement, shipping, warranty & support"
           align="center"
         />
-        <div
-          className="space-y-4 mt-10"
-        >
+        <div className="space-y-4 mt-10">
           {faqs.map((faq, i) => (
             <details
               key={i}

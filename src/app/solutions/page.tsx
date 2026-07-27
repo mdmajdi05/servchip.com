@@ -25,6 +25,7 @@ export const metadata: Metadata = {
     "semiconductor procurement",
   ],
   alternates: { canonical: `${SITE.url}/solutions` },
+  robots: { index: true, follow: true },
   openGraph: {
     title:
       "Enterprise AI & HPC Solutions | Servchip — Data Center GPU Distributor",

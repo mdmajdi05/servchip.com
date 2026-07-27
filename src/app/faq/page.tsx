@@ -76,6 +76,7 @@ export const metadata: Metadata = {
     "chip distributor questions",
   ],
   alternates: { canonical: `${SITE.url}/faq` },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "FAQ | Servchip — Enterprise Chip Distributor",
     description:

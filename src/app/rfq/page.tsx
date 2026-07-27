@@ -1,4 +1,5 @@
 ﻿import type { Metadata } from "next";
+import { Suspense } from "react";
 import { SITE } from "@/lib/constants";
 import { breadcrumbSchema, OG_IMAGE, OG_WIDTH, OG_HEIGHT } from "@/lib/seo";
 import PageClient from "./page-client";
@@ -50,7 +51,9 @@ export default function Page() {
           { name: "Request a Quote", url: "/rfq" },
         ])}
       />
-      <PageClient />
+      <Suspense fallback={null}>
+        <PageClient />
+      </Suspense>
     </>
   );
 }

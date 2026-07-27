@@ -28,6 +28,7 @@ export const metadata: Metadata = {
     "HBM memory supplier",
   ],
   alternates: { canonical: SITE.url },
+  robots: { index: true, follow: true },
   openGraph: {
     title: `${SITE.name} — Enterprise Chip Distributor for AI, HPC & Data Centers`,
     description:

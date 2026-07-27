@@ -17,6 +17,7 @@ export const metadata: Metadata = {
     "HPC best practices",
   ],
   alternates: { canonical: `${SITE.url}/resources` },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "Resources & Guides | Servchip — Enterprise Chip Distributor",
     description:

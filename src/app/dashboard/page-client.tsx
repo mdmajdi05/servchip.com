@@ -174,11 +174,11 @@ export default function DeveloperDashboardPage() {
   return (
     <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="sr-only">Developer Dashboard</h1>
+        <h1 className="text-3xl lg:text-4xl font-black text-text leading-tight mb-8">
+          Developer Dashboard
+        </h1>
         {/* Header */}
-        <div
-          className="mb-10"
-        >
+        <div className="mb-10">
           <SectionHeading
             title="Developer Dashboard"
             subtitle="Monitor integrations, access SDKs, explore API docs, and manage your developer tools - all in one place."
@@ -186,9 +186,7 @@ export default function DeveloperDashboardPage() {
           />
         </div>
         {/* Stats Row */}
-        <div
-          className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10"
-        >
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           {stats.map((stat) => (
             <Card key={stat.label} variant="elevated" padding="md">
               <div className="flex items-start justify-between mb-3">
@@ -207,8 +205,7 @@ export default function DeveloperDashboardPage() {
         {/* Quick Actions & API Overview */}
         <div className="grid lg:grid-cols-2 gap-6 mb-10">
           {/* Quick Actions */}
-          <div
-          >
+          <div>
             <h3 className="text-lg font-bold text-text mb-4 flex items-center gap-2">
               <Zap className="w-5 h-5 text-primary" />
               Quick Actions
@@ -239,8 +236,7 @@ export default function DeveloperDashboardPage() {
             </div>
           </div>
           {/* API Overview */}
-          <div
-          >
+          <div>
             <h3 className="text-lg font-bold text-text mb-4 flex items-center gap-2">
               <Code2 className="w-5 h-5 text-primary" />
               API Overview
@@ -288,9 +284,7 @@ export default function DeveloperDashboardPage() {
           </div>
         </div>
         {/* Recent Activity */}
-        <div
-          className="mb-10"
-        >
+        <div className="mb-10">
           <h3 className="text-lg font-bold text-text mb-4 flex items-center gap-2">
             <Activity className="w-5 h-5 text-primary" />
             Recent Activity
@@ -332,11 +326,7 @@ export default function DeveloperDashboardPage() {
                         </Badge>
                       </td>
                       <td className="px-6 py-3">
-                        <Badge
-                          size="sm"
-                        >
-                          {row.status}
-                        </Badge>
+                        <Badge size="sm">{row.status}</Badge>
                       </td>
                     </tr>
                   ))}
@@ -346,8 +336,7 @@ export default function DeveloperDashboardPage() {
           </Card>
         </div>
         {/* Resources */}
-        <div
-        >
+        <div>
           <h3 className="text-lg font-bold text-text mb-4 flex items-center gap-2">
             <BookText className="w-5 h-5 text-primary" />
             Resources

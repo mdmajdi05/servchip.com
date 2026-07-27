@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     "semiconductor procurement guide",
   ],
   alternates: { canonical: `${SITE.url}/comparison` },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "AI Chip Comparison | NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3",
     description:

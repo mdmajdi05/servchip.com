@@ -19,6 +19,7 @@ export const metadata: Metadata = {
     "enterprise hardware store",
   ],
   alternates: { canonical: `${SITE.url}/products` },
+  robots: { index: true, follow: true },
   openGraph: {
     title:
       "Buy Enterprise Chips | Servchip — NVIDIA, AMD, Intel AI Accelerators",
