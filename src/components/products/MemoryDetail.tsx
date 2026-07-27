@@ -45,9 +45,7 @@ export function MemoryDetail() {
   if (!mem) {
     return (
       <div className="min-h-screen bg-bg-dark pb-20 flex items-center justify-center">
-        <div
-          className="text-center max-w-md mx-auto px-4"
-        >
+        <div className="text-center max-w-md mx-auto px-4">
           <div className="w-20 h-20 mx-auto mb-6 rounded-2xl bg-surface-2 border border-border flex items-center justify-center">
             <MemoryStick className="w-10 h-10 text-text-dim" />
           </div>
@@ -73,34 +71,8 @@ export function MemoryDetail() {
   return (
     <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4">
-        <div
-          className="space-y-12"
-        >
-          <nav
-            className="flex items-center gap-2 text-sm"
-          >
-            <Link
-              href="/"
-              className="text-text-dim hover:text-primary transition-transform"
-            >
-              Home
-            </Link>
-            <span className="text-text-dim">/</span>
-            <Link
-              href="/products"
-              className="text-text-dim hover:text-primary transition-transform"
-            >
-              Products
-            </Link>
-            <span className="text-text-dim">/</span>
-            <span className="text-text-muted truncate max-w-[200px]">
-              {mem.name}
-            </span>
-          </nav>
-
-          <div
-            className="grid lg:grid-cols-2 gap-8 items-start"
-          >
+        <div className="space-y-12">
+          <div className="grid lg:grid-cols-2 gap-8 items-start pt-6">
             <div>
               <div className="relative h-[380px] md:h-[480px] rounded-2xl border border-border bg-surface overflow-hidden">
                 <div className="absolute inset-0 bg-dot-grid opacity-25" />
@@ -235,7 +207,7 @@ export function MemoryDetail() {
             </div>
           </div>
 
-          <div >
+          <div>
             <div className="flex items-center gap-3 mb-6">
               <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center">
                 <MemoryStick className="w-5 h-5 text-primary" />
@@ -309,7 +281,7 @@ export function MemoryDetail() {
             </div>
           </div>
 
-          <div >
+          <div>
             <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
               <div>
                 <h3 className="text-2xl md:text-3xl font-black text-text mb-2">

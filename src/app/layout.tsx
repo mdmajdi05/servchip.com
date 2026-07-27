@@ -147,8 +147,8 @@ export default function RootLayout({
             `,
           }}
         />
-        {/* Fixed header offset — ID selector + !important guarantees highest specificity */}
-        <style>{`#main-content{padding-top:72px!important}@media(min-width:1024px){#main-content{padding-top:104px!important}}`}</style>
+        {/* Fixed header offset — CSS custom property + inline style on <main> */}
+        <style>{`:root{--header-height:72px}@media(min-width:1024px){:root{--header-height:104px}}`}</style>
       </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans bg-bg-body text-text antialiased`}
@@ -163,7 +163,11 @@ export default function RootLayout({
           <ColorProvider>
             <QueryProvider>
               <Header />
-              <main id="main-content" className="min-h-screen pt-[104px]">
+              <main
+                id="main-content"
+                className="min-h-screen"
+                style={{ paddingTop: "var(--header-height)" }}
+              >
                 {children}
               </main>
               <Footer />

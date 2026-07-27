@@ -74,7 +74,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen bg-bg-dark">
       {/* About intro section */}
-      <section className="pb-16 relative overflow-hidden">
+      <section className="pt-12 md:pt-16 pb-16 relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" />
           <div className="absolute bottom-1/4 right-1/4 w-64 h-64 bg-secondary/5 rounded-full blur-[80px]" />
