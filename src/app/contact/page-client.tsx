@@ -42,10 +42,8 @@ export default function ContactPage() {
   return (
     <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4">
-        <h1 className="text-3xl lg:text-4xl font-black text-text leading-tight mb-8">
-          Enterprise Chip Pricing &amp; Availability
-        </h1>
         <SectionHeading
+          level="h1"
           label="Contact Us"
           title="Let's Talk About Your AI Infrastructure"
           subtitle="Whether you need 1 GPU or 1,000 - pricing, availability, or technical guidance. Our team is ready to help."

@@ -5,6 +5,7 @@ interface SectionHeadingProps {
   title: string;
   subtitle?: string;
   align?: "left" | "center";
+  level?: "h1" | "h2";
   className?: string;
 }
 
@@ -13,6 +14,7 @@ export function SectionHeading({
   title,
   subtitle,
   align = "center",
+  level = "h2",
   className,
 }: SectionHeadingProps) {
   return (
@@ -20,7 +22,7 @@ export function SectionHeading({
       className={cn(
         "max-w-2xl mb-12",
         align === "center" && "mx-auto text-center",
-        className
+        className,
       )}
     >
       {label && (
@@ -30,9 +32,15 @@ export function SectionHeading({
           <span className="w-6 h-px bg-primary" />
         </div>
       )}
-      <h2 className="text-3xl lg:text-4xl font-black text-text leading-tight mb-3">
-        {title}
-      </h2>
+      {level === "h1" ? (
+        <h1 className="text-3xl lg:text-4xl font-black text-text leading-tight mb-3">
+          {title}
+        </h1>
+      ) : (
+        <h2 className="text-3xl lg:text-4xl font-black text-text leading-tight mb-3">
+          {title}
+        </h2>
+      )}
       {subtitle && (
         <p className="text-text-muted text-base lg:text-lg leading-relaxed">
           {subtitle}

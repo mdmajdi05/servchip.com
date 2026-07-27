@@ -6,10 +6,8 @@ export default function TermsPage() {
   return (
     <div className="min-h-screen bg-bg-dark">
       <div className="max-w-3xl mx-auto px-4 py-16">
-        <h1 className="text-3xl lg:text-4xl font-black text-text leading-tight mb-8">
-          Terms of Service
-        </h1>
         <SectionHeading
+          level="h1"
           label="Legal"
           title="Terms of Service"
           subtitle="Terms and conditions governing the use of our website and services"

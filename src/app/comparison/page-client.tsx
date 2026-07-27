@@ -88,10 +88,8 @@ export default function ComparisonPage() {
   return (
     <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4">
-        <h1 className="text-3xl lg:text-4xl font-black text-text leading-tight mb-8">
-          Compare Enterprise Chips
-        </h1>
         <SectionHeading
+          level="h1"
           label="Compare"
           title="Compare Enterprise Chips"
           subtitle="Compare NVIDIA, AMD, and Intel server chips side-by-side - view specifications, performance, and pricing across all enterprise accelerators"

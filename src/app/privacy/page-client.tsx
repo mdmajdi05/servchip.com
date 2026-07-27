@@ -6,10 +6,8 @@ export default function PrivacyPage() {
   return (
     <div className="min-h-screen bg-bg-dark">
       <div className="max-w-3xl mx-auto px-4 py-16">
-        <h1 className="text-3xl lg:text-4xl font-black text-text leading-tight mb-8">
-          Privacy Policy
-        </h1>
         <SectionHeading
+          level="h1"
           label="Legal"
           title="Privacy Policy"
           subtitle="How we collect, use, and protect your data"

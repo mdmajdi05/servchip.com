@@ -174,17 +174,12 @@ export default function DeveloperDashboardPage() {
   return (
     <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h1 className="text-3xl lg:text-4xl font-black text-text leading-tight mb-8">
-          Developer Dashboard
-        </h1>
-        {/* Header */}
-        <div className="mb-10">
-          <SectionHeading
-            title="Developer Dashboard"
-            subtitle="Monitor integrations, access SDKs, explore API docs, and manage your developer tools - all in one place."
-            align="left"
-          />
-        </div>
+        <SectionHeading
+          level="h1"
+          title="Developer Dashboard"
+          subtitle="Monitor integrations, access SDKs, explore API docs, and manage your developer tools - all in one place."
+          align="left"
+        />
         {/* Stats Row */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           {stats.map((stat) => (

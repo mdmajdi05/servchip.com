@@ -98,12 +98,10 @@ export default function BlogPage() {
   return (
     <div className="min-h-screen bg-bg-dark">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <h1 className="text-3xl lg:text-4xl font-black text-text leading-tight mb-8">
-          Blog &amp; Insights
-        </h1>
         <SectionHeading
-          label="Blog"
-          title="Technical Insights & Industry Analysis"
+          level="h1"
+          label="Our Blog"
+          title="Blog &amp; Insights"
           subtitle="Expert articles on AI accelerators, architecture comparisons, and deployment guides"
           align="center"
         />
