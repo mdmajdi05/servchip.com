@@ -93,7 +93,7 @@ export default function RFQPage() {
     );
   }
   return (
-    <div className="min-h-screen bg-bg-dark pt-24 pb-20">
+    <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-5xl mx-auto px-4">
         <h1 className="sr-only">Get a Personalized Quote</h1>
         <SectionHeading

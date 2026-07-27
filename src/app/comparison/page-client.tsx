@@ -86,7 +86,7 @@ export default function ComparisonPage() {
     );
   }
   return (
-    <div className="min-h-screen bg-bg-dark pt-28 pb-20">
+    <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4">
         <h1 className="sr-only">Compare Enterprise Chips</h1>
         <SectionHeading
@@ -103,10 +103,18 @@ export default function ComparisonPage() {
               <button
                 key={chip.id}
                 onClick={() => toggleChip(chip.id)}
-                className={"relative flex items-center gap-2.5 px-4 py-2.5 rounded-xl border text-sm font-semibold transition-transform duration-200 cursor-pointer " + (selected ? "bg-primary/10 border-primary text-primary shadow-[0_0_12px_color-mix(in_srgb,var(--primary)_15%,transparent)]" : "bg-surface border-border text-text-muted hover:border-primary/30 hover:text-text")}
+                className={
+                  "relative flex items-center gap-2.5 px-4 py-2.5 rounded-xl border text-sm font-semibold transition-transform duration-200 cursor-pointer " +
+                  (selected
+                    ? "bg-primary/10 border-primary text-primary shadow-[0_0_12px_color-mix(in_srgb,var(--primary)_15%,transparent)]"
+                    : "bg-surface border-border text-text-muted hover:border-primary/30 hover:text-text")
+                }
               >
                 <span
-                  className={"w-4 h-4 rounded border flex items-center justify-center transition-transform " + (selected ? "bg-primary border-primary" : "border-border")}
+                  className={
+                    "w-4 h-4 rounded border flex items-center justify-center transition-transform " +
+                    (selected ? "bg-primary border-primary" : "border-border")
+                  }
                 >
                   {selected && <Check className="w-3 h-3 text-bg-dark" />}
                 </span>
@@ -121,9 +129,7 @@ export default function ComparisonPage() {
         </div>
         {/* Comparison Table or Empty State */}
         {selectedChips.length === 0 ? (
-          <div
-            className="text-center py-20"
-          >
+          <div className="text-center py-20">
             <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-surface border border-border flex items-center justify-center">
               <Cpu className="w-7 h-7 text-text-dim" />
             </div>
@@ -149,9 +155,7 @@ export default function ComparisonPage() {
                     className="text-center"
                   >
                     <div className="mb-1">
-                      <Badge
-                        size="sm"
-                      >
+                      <Badge size="sm">
                         {STATUS_STYLES[chip.status].label}
                       </Badge>
                     </div>

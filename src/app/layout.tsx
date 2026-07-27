@@ -180,6 +180,7 @@ export default function RootLayout({
           <ColorProvider>
             <QueryProvider>
               <Header />
+              <div className="h-[72px] lg:h-[104px]" />
               <main id="main-content">{children}</main>
               <Footer />
               <LeadGenProviders />
