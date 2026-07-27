@@ -185,7 +185,7 @@ export function Hero3D() {
 
   return (
     <section
-      className="relative min-h-screen flex items-center overflow-hidden -mt-[72px] lg:-mt-[104px]"
+      className="relative min-h-screen flex items-center overflow-hidden"
       style={{ backgroundColor: "#070B15" }}
     >
       <style>{styles}</style>
