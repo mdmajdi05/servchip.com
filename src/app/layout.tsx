@@ -161,10 +161,8 @@ export default function RootLayout({
           <ColorProvider>
             <QueryProvider>
               <Header />
-              <main
-                id="main-content"
-                className="min-h-screen pt-[72px] lg:pt-[104px]"
-              >
+              <style>{`#main-content{padding-top:72px}@media(min-width:1024px){#main-content{padding-top:104px}}`}</style>
+              <main id="main-content" className="min-h-screen">
                 {children}
               </main>
               <Footer />
