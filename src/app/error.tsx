@@ -1,14 +1,22 @@
 ﻿"use client";
 
+import { useEffect } from "react";
 import Link from "next/link";
 
 export default function ErrorPage({
-  error,
+  error: _error,
   reset,
 }: {
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  useEffect(() => {
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex, nofollow";
+    document.head.appendChild(meta);
+  }, []);
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-bg-dark px-4">
       <div className="text-center max-w-md">

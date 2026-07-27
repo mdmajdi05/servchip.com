@@ -1,7 +1,4 @@
-﻿"use client";
-
-import { useEffect } from "react";
-import Link from "next/link";
+﻿import Link from "next/link";
 import {
   ArrowRight,
   Building2,
@@ -233,11 +230,6 @@ const CASE_STUDIES = [
 ];
 
 export default function SolutionsPage() {
-  useEffect(() => {
-    document.title =
-      "Industry Solutions | Servchip — Enterprise Chip Distributor";
-  }, []);
-
   return (
     <div className="min-h-screen bg-bg-dark">
       <PageHero
@@ -261,7 +253,7 @@ export default function SolutionsPage() {
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
-            {SOLUTIONS_INLINE.map((sol, i) => {
+            {SOLUTIONS_INLINE.map((sol) => {
               const Icon = ICON_MAP[sol.icon] || Circle;
               return (
                 <div

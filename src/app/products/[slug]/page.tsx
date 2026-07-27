@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ALL_PRODUCTS } from "@/data/products";
+import { CATEGORIES } from "@/data/categories";
 import { SITE } from "@/lib/constants";
 import {
   productSchema,
@@ -79,6 +80,11 @@ export default async function Page(props: {
   const product = ALL_PRODUCTS.find((p) => p.slug === slug);
   if (!product) notFound();
 
+  const parentCategory =
+    "parentCategoryId" in product
+      ? CATEGORIES.find((c) => c.id === product.parentCategoryId)
+      : undefined;
+
   return (
     <>
       <script
@@ -86,6 +92,14 @@ export default async function Page(props: {
         dangerouslySetInnerHTML={breadcrumbSchema([
           { name: "Home", url: "/" },
           { name: "Products", url: "/products" },
+          ...(parentCategory
+            ? [
+                {
+                  name: parentCategory.name,
+                  url: `/categories/${parentCategory.slug}`,
+                },
+              ]
+            : []),
           { name: product.name, url: `/products/${slug}` },
         ])}
       />
@@ -102,7 +116,7 @@ export default async function Page(props: {
           status: product.status,
         })}
       />
-      <PageClient product={product} />
+      <PageClient product={product} parentCategory={parentCategory ?? null} />
     </>
   );
 }

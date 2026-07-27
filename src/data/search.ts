@@ -1,4 +1,10 @@
-import { ALL_CHIP_PRODUCTS, ALL_SERVERS, ALL_NETWORKING_PRODUCTS, ALL_MEMORY, ALL_STORAGE } from "./products/index";
+import {
+  ALL_CHIP_PRODUCTS,
+  ALL_SERVERS,
+  ALL_NETWORKING_PRODUCTS,
+  ALL_MEMORY,
+  ALL_STORAGE,
+} from "./products/index";
 import type { ProductType, AnyProduct } from "@/types";
 import { BLOG_POSTS } from "@/blog";
 import type { BlogPost } from "@/blog/types";
@@ -18,7 +24,10 @@ export interface BlogSearchResult {
 }
 
 function tokenize(text: string): string[] {
-  return text.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+  return text
+    .toLowerCase()
+    .split(/[^a-z0-9]+/)
+    .filter(Boolean);
 }
 
 function levenshtein(a: string, b: string): number {
@@ -43,16 +52,28 @@ function levenshtein(a: string, b: string): number {
   return matrix[b.length][a.length];
 }
 
-function wordMatch(queryWords: string[], targetWords: string[]): { match: boolean; score: number } {
+function wordMatch(
+  queryWords: string[],
+  targetWords: string[],
+): { match: boolean; score: number } {
   let totalScore = 0;
   let anyMatch = false;
   for (const qw of queryWords) {
     let best = 0;
     for (const tw of targetWords) {
-      if (tw === qw) { best = 100; break; }
-      if (tw.startsWith(qw)) { best = Math.max(best, 80); }
-      if (tw.includes(qw)) { best = Math.max(best, 60); }
-      if (qw.includes(tw) && tw.length >= 3) { best = Math.max(best, 40); }
+      if (tw === qw) {
+        best = 100;
+        break;
+      }
+      if (tw.startsWith(qw)) {
+        best = Math.max(best, 80);
+      }
+      if (tw.includes(qw)) {
+        best = Math.max(best, 60);
+      }
+      if (qw.includes(tw) && tw.length >= 3) {
+        best = Math.max(best, 40);
+      }
       const dist = levenshtein(qw, tw);
       if (dist <= 1) best = Math.max(best, 70);
       else if (dist <= 2) best = Math.max(best, 50);
@@ -63,7 +84,10 @@ function wordMatch(queryWords: string[], targetWords: string[]): { match: boolea
   return { match: anyMatch, score: totalScore / queryWords.length };
 }
 
-function searchFields(texts: string[], queryWords: string[]): { match: boolean; score: number } {
+function searchFields(
+  texts: string[],
+  queryWords: string[],
+): { match: boolean; score: number } {
   const allWords: string[] = [];
   for (const t of texts) allWords.push(...tokenize(t));
   return wordMatch(queryWords, allWords);
@@ -76,12 +100,13 @@ function getProductSearchFields(product: AnyProduct): string[] {
     product.series,
     product.description,
   ];
-  const rec = product as Record<string, unknown>;
+  const rec = product as unknown as Record<string, unknown>;
   if (typeof rec.architecture === "string") fields.push(rec.architecture);
   if (typeof rec.categoryName === "string") fields.push(rec.categoryName);
   if (typeof rec.bestFor === "string") fields.push(rec.bestFor);
-  if (Array.isArray(rec.keyFeatures)) fields.push(...rec.keyFeatures as string[]);
-  if (Array.isArray(rec.useCases)) fields.push(...rec.useCases as string[]);
+  if (Array.isArray(rec.keyFeatures))
+    fields.push(...(rec.keyFeatures as string[]));
+  if (Array.isArray(rec.useCases)) fields.push(...(rec.useCases as string[]));
   if (typeof rec.longDescription === "string") fields.push(rec.longDescription);
   return fields.filter(Boolean);
 }
@@ -100,9 +125,12 @@ function getBlogSearchFields(post: BlogPost): string[] {
       fields.push(s.heading);
       if (s.content) {
         for (const c of s.content) {
-          if (c.type === "paragraph" || c.type === "heading") fields.push(c.text);
-          if (c.type === "bulletList" || c.type === "numberedList") fields.push(...c.items);
-          if (c.type === "faq") for (const faq of c.items) fields.push(faq.question, faq.answer);
+          if (c.type === "paragraph" || c.type === "heading")
+            fields.push(c.text);
+          if (c.type === "bulletList" || c.type === "numberedList")
+            fields.push(...c.items);
+          if (c.type === "faq")
+            for (const faq of c.items) fields.push(faq.question, faq.answer);
           if (c.type === "code") fields.push(c.code);
           if (c.type === "callout") fields.push(c.text);
         }
@@ -156,7 +184,10 @@ export function searchBlogPosts(query: string): BlogSearchResult[] {
   return results;
 }
 
-export function searchAll(query: string): { products: SearchResult[]; blogPosts: BlogSearchResult[] } {
+export function searchAll(query: string): {
+  products: SearchResult[];
+  blogPosts: BlogSearchResult[];
+} {
   return {
     products: searchProducts(query),
     blogPosts: searchBlogPosts(query),

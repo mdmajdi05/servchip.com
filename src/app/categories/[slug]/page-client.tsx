@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useMemo, createElement } from "react";
+import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import {
@@ -91,8 +91,7 @@ export default function CategoryDetailPage() {
     return (
       <div className="min-h-screen bg-bg-dark">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="flex flex-col items-center justify-center py-32 text-center"
-          >
+          <div className="flex flex-col items-center justify-center py-32 text-center">
             <Server className="w-16 h-16 text-text-dim mb-6" />
             <h1 className="text-2xl font-bold text-text mb-2">
               Category Not Found
@@ -118,8 +117,13 @@ export default function CategoryDetailPage() {
       <div className="max-w-7xl mx-auto px-4 pb-20">
         {/* Breadcrumb */}
         <nav
+          aria-label="Breadcrumb"
           className="flex items-center gap-2 text-sm text-text-dim mb-6 pt-4"
         >
+          <Link href="/" className="hover:text-primary transition-transform">
+            Home
+          </Link>
+          <span>/</span>
           <Link
             href="/categories"
             className="hover:text-primary transition-transform"
@@ -131,9 +135,7 @@ export default function CategoryDetailPage() {
         </nav>
 
         {/* Header */}
-        <div
-          className="mb-8"
-        >
+        <div className="mb-8">
           <div className="flex items-center gap-4 mb-2">
             <span className="w-10 h-10 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center">
               {getCategoryIcon(category.icon)}

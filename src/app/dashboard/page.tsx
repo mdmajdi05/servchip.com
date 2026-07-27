@@ -1,5 +1,6 @@
 ﻿import type { Metadata } from "next";
 import { SITE } from "@/lib/constants";
+import { breadcrumbSchema } from "@/lib/seo";
 import PageClient from "./page-client";
 
 export const metadata: Metadata = {
@@ -16,5 +17,16 @@ export const metadata: Metadata = {
 };
 
 export default function Page() {
-  return <PageClient />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={breadcrumbSchema([
+          { name: "Home", url: "/" },
+          { name: "Dashboard", url: "/dashboard" },
+        ])}
+      />
+      <PageClient />
+    </>
+  );
 }

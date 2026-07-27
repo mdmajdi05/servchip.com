@@ -17,7 +17,7 @@ export const metadata: Metadata = {
     "data center hardware quote",
   ],
   alternates: { canonical: `${SITE.url}/rfq` },
-  robots: { index: false, follow: true },
+  robots: { index: true, follow: true },
   openGraph: {
     title: "Request a Quote | Servchip — Enterprise Chip Distributor",
     description:

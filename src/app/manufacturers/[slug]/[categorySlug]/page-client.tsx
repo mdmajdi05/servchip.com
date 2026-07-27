@@ -2,6 +2,7 @@
 
 import { useParams } from "next/navigation";
 import Link from "next/link";
+import { ChevronRight } from "lucide-react";
 import { MANUFACTURERS } from "@/data/manufacturers";
 import { getProductsByManufacturer } from "@/data/products";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -44,12 +45,30 @@ export default function ManufacturerCategoryPage() {
     <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4">
         <div className="mb-8">
-          <Link
-            href={`/manufacturers/${manufacturer.slug}`}
-            className="text-xs text-primary hover:underline mb-2 inline-block"
+          <nav
+            aria-label="Breadcrumb"
+            className="flex items-center gap-1.5 text-sm text-text-dim mb-4"
           >
-            &larr; Back to {manufacturer.name}
-          </Link>
+            <Link href="/" className="hover:text-primary transition-colors">
+              Home
+            </Link>
+            <ChevronRight className="w-3.5 h-3.5 text-text-dim/60" />
+            <Link
+              href="/products"
+              className="hover:text-primary transition-colors"
+            >
+              Products
+            </Link>
+            <ChevronRight className="w-3.5 h-3.5 text-text-dim/60" />
+            <Link
+              href={`/manufacturers/${manufacturer.slug}`}
+              className="hover:text-primary transition-colors"
+            >
+              {manufacturer.name}
+            </Link>
+            <ChevronRight className="w-3.5 h-3.5 text-text-dim/60" />
+            <span className="text-text">{category.name}</span>
+          </nav>
           <SectionHeading
             label={`${manufacturer.name} • ${category.name}`}
             title={`${manufacturer.name} ${category.name}`}

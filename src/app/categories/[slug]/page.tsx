@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
 import { CATEGORIES } from "@/data/categories";
+import { ALL_PRODUCTS } from "@/data/products";
 import { SITE } from "@/lib/constants";
-import { breadcrumbSchema, OG_IMAGE, OG_WIDTH, OG_HEIGHT } from "@/lib/seo";
+import {
+  breadcrumbSchema,
+  itemListSchema,
+  OG_IMAGE,
+  OG_WIDTH,
+  OG_HEIGHT,
+} from "@/lib/seo";
 import PageClient from "./page-client";
 
 export async function generateMetadata(props: {
@@ -10,7 +17,6 @@ export async function generateMetadata(props: {
   const { slug } = await props.params;
   const cat = CATEGORIES.find((c) => c.slug === slug);
   if (!cat) return {};
-  const catName = cat.name;
   return {
     title: `${cat.name} — Buy Enterprise ${cat.name} | Servchip Semiconductor Procurement`,
     description: `${cat.description} Buy authentic ${cat.name} from an ISO 9001 certified enterprise chip distributor. AI accelerator & semiconductor procurement with global shipping.`,
@@ -49,6 +55,13 @@ export default async function Page(props: {
 }) {
   const { slug } = await props.params;
   const cat = CATEGORIES.find((c) => c.slug === slug);
+
+  const categoryProducts = cat
+    ? ALL_PRODUCTS.filter(
+        (p) => "parentCategoryId" in p && p.parentCategoryId === cat.id,
+      )
+    : [];
+
   return (
     <>
       <script
@@ -59,6 +72,19 @@ export default async function Page(props: {
           ...(cat ? [{ name: cat.name, url: `/categories/${slug}` }] : []),
         ])}
       />
+      {categoryProducts.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={itemListSchema(
+            categoryProducts.map((p) => ({
+              name: p.name,
+              url: `/products/${p.slug}`,
+              description: p.description,
+              ...(p.images?.[0] ? { image: p.images[0] } : {}),
+            })),
+          )}
+        />
+      )}
       <PageClient />
     </>
   );

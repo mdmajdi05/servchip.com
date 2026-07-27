@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
@@ -32,8 +33,15 @@ const REGIONS = [
 ];
 type FormState = "idle" | "submitting" | "success";
 export default function RFQPage() {
+  const searchParams = useSearchParams();
   const [formState, setFormState] = useState<FormState>("idle");
-  const [selectedChips, setSelectedChips] = useState<string[]>([]);
+  const initialSlug = searchParams.get("chip");
+  const initialChipId = initialSlug
+    ? CHIPS.find((c) => c.slug === initialSlug)?.id
+    : undefined;
+  const [selectedChips, setSelectedChips] = useState<string[]>(
+    initialChipId ? [initialChipId] : [],
+  );
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -57,8 +65,7 @@ export default function RFQPage() {
     return (
       <div className="min-h-screen bg-bg-dark pb-20">
         <div className="max-w-lg mx-auto px-4 text-center">
-          <div
-          >
+          <div>
             <div className="w-20 h-20 mx-auto rounded-full bg-primary/10 flex items-center justify-center mb-6">
               <CheckCircle className="w-10 h-10 text-primary" />
             </div>
@@ -84,6 +91,7 @@ export default function RFQPage() {
         </div>
       </div>
     );
+  }
   return (
     <div className="min-h-screen bg-bg-dark pt-24 pb-20">
       <div className="max-w-5xl mx-auto px-4">
@@ -97,9 +105,7 @@ export default function RFQPage() {
         <form onSubmit={handleSubmit}>
           <div className="grid lg:grid-cols-5 gap-8 mt-10">
             {/* Chip Selection */}
-            <div
-              className="lg:col-span-3 space-y-6"
-            >
+            <div className="lg:col-span-3 space-y-6">
               <Card variant="elevated">
                 <h3 className="text-base font-bold text-text mb-1">
                   Select Chips
@@ -150,11 +156,7 @@ export default function RFQPage() {
                             </div>
                           </div>
                         </div>
-                        <Badge
-                          size="sm"
-                        >
-                          {chip.status.replace("_", " ")}
-                        </Badge>
+                        <Badge size="sm">{chip.status.replace("_", " ")}</Badge>
                       </button>
                     );
                   })}
@@ -178,9 +180,7 @@ export default function RFQPage() {
               </Card>
             </div>
             {/* Contact Details */}
-            <div
-              className="lg:col-span-2 space-y-6"
-            >
+            <div className="lg:col-span-2 space-y-6">
               <Card variant="elevated">
                 <h3 className="text-base font-bold text-text mb-4">
                   Your Information
@@ -326,5 +326,4 @@ export default function RFQPage() {
       </div>
     </div>
   );
-}
 }

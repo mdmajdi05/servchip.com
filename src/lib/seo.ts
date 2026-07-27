@@ -142,6 +142,7 @@ export function productSchema(product: {
 }) {
   return jsonLd({
     "@type": "Product",
+    "@id": `${SITE.url}/products/${product.slug}#product`,
     name: product.name,
     description: product.description,
     sku: product.id,
@@ -156,22 +157,17 @@ export function productSchema(product: {
     itemCondition: "https://schema.org/NewCondition",
     offers: {
       "@type": "Offer",
+      "@id": `${SITE.url}/products/${product.slug}#offer`,
       url: `${SITE.url}/products/${product.slug}`,
-      priceCurrency: SCHEMA.currency,
-      price: "0",
-      priceValidUntil: new Date(
-        Date.now() + SCHEMA.priceValidUntilDays * 24 * 60 * 60 * 1000,
-      )
-        .toISOString()
-        .split("T")[0],
-      validFrom: new Date().toISOString().split("T")[0],
+      priceSpecification: {
+        "@type": "CompoundPriceSpecification",
+        description: "Contact us for pricing — Request a Quote",
+      },
       availability:
         SCHEMA.availabilityMap[
           product.status as keyof typeof SCHEMA.availabilityMap
         ] ?? "https://schema.org/InStock",
       seller: SCHEMA.seller,
-      hasMerchantReturnPolicy: SCHEMA.returnPolicy,
-      shippingDetails: SCHEMA.shipping,
     },
   });
 }

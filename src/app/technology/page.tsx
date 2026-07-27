@@ -1,4 +1,3 @@
-"use client";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -267,9 +266,7 @@ export default function TechnologyPage() {
               <div className="absolute inset-0 bg-dot-grid opacity-20" />
               <MiniScene />
               {/* Floating stat */}
-              <div
-                className="absolute top-4 right-4 px-3 py-1.5 rounded-lg border border-primary/30 bg-surface/90 backdrop-blur-sm"
-              >
+              <div className="absolute top-4 right-4 px-3 py-1.5 rounded-lg border border-primary/30 bg-surface/90 backdrop-blur-sm">
                 <div className="text-[10px] font-mono text-text-dim">
                   MEMORY BANDWIDTH
                 </div>
@@ -277,9 +274,7 @@ export default function TechnologyPage() {
                   8 TB/s
                 </div>
               </div>
-              <div
-                className="absolute bottom-4 left-4 px-3 py-1.5 rounded-lg border border-secondary/30 bg-surface/90 backdrop-blur-sm"
-              >
+              <div className="absolute bottom-4 left-4 px-3 py-1.5 rounded-lg border border-secondary/30 bg-surface/90 backdrop-blur-sm">
                 <div className="text-[10px] font-mono text-text-dim">
                   ARCHITECTURE
                 </div>
@@ -291,7 +286,7 @@ export default function TechnologyPage() {
             {/* Right: Feature list */}
             <div>
               <ul className="space-y-3.5">
-                {TECHNOLOGY_FEATURES.map((feature, i) => (
+                {TECHNOLOGY_FEATURES.map((feature) => (
                   <li
                     key={feature.title}
                     className="flex items-start gap-3 group"
@@ -314,7 +309,7 @@ export default function TechnologyPage() {
           </div>
           {/* Tech cards */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
-            {TECH_CARDS.map((card, i) => (
+            {TECH_CARDS.map((card) => (
               <div
                 key={card.title}
                 className="rounded-xl border border-border bg-surface p-5 card-hover"
