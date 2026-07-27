@@ -161,8 +161,10 @@ export default function RootLayout({
           <ColorProvider>
             <QueryProvider>
               <Header />
-              <div className="h-[72px] lg:h-[104px]" />
-              <main id="main-content" className="min-h-screen">
+              <main
+                id="main-content"
+                className="min-h-screen pt-[72px] lg:pt-[104px]"
+              >
                 {children}
               </main>
               <Footer />
