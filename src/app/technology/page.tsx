@@ -290,9 +290,6 @@ export const metadata: Metadata = {
 export default function TechnologyPage() {
   return (
     <>
-      <h1 className="text-3xl font-black text-text mb-4">
-        AI Chip Technology — GPU Architecture & Enterprise Hardware
-      </h1>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={breadcrumbSchema([
