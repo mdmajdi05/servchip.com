@@ -161,10 +161,17 @@ export default function RootLayout({
           <ColorProvider>
             <QueryProvider>
               <Header />
-              <main
-                id="main-content"
-                className="min-h-screen pt-[72px] lg:pt-[104px]"
-              >
+              <div
+                aria-hidden="true"
+                style={{ height: "72px" }}
+                className="lg:hidden"
+              />
+              <div
+                aria-hidden="true"
+                style={{ height: "104px" }}
+                className="hidden lg:block"
+              />
+              <main id="main-content" className="min-h-screen">
                 {children}
               </main>
               <Footer />
