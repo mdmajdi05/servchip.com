@@ -1,5 +1,5 @@
 services:
-  frontend:
+  servchip:
     build: .
     container_name: servchip-frontend
     ports:
