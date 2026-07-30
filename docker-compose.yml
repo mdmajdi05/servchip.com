@@ -2,8 +2,6 @@ services:
   servchip:
     build: .
     container_name: servchip-frontend
-    ports:
-      - "3000:3000"
     environment:
       - NODE_ENV=production
       - HOSTNAME=0.0.0.0
@@ -14,3 +12,9 @@ services:
       timeout: 10s
       retries: 3
       start_period: 10s
+    networks:
+      - negbuy-network
+
+networks:
+  negbuy-network:
+    external: true

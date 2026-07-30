@@ -129,14 +129,14 @@ interface ColorContextType {
 }
 
 const ColorContext = createContext<ColorContextType>({
-  color: "cyan",
+  color: "blue",
   setColor: () => {},
   colorThemes,
   getCurrentTheme: () => undefined,
 });
 
 export function ColorProvider({ children }: { children: React.ReactNode }) {
-  const [color, setColorState] = useState<string>("cyan");
+  const [color, setColorState] = useState<string>("blue");
   const initialized = useRef(false);
 
   const applyColor = useCallback((colorId: string) => {
@@ -171,7 +171,7 @@ export function ColorProvider({ children }: { children: React.ReactNode }) {
         applyColor(stored);
         setColorState(stored);
       } else {
-        applyColor("cyan");
+        applyColor("blue");
       }
     }, 0);
     return () => clearTimeout(id);

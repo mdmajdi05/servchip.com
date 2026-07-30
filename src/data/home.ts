@@ -488,50 +488,6 @@ export const TESTIMONIALS: Testimonial[] = [
   },
 ];
 
-export interface InsightPost {
-  title: string;
-  excerpt: string;
-  date: string;
-  category: string;
-  slug: string;
-  image?: string;
-}
-
-export const INSIGHT_POSTS: InsightPost[] = [
-  {
-    title: "Enterprise AI Chip Landscape 2026: NVIDIA vs AMD vs Intel",
-    excerpt:
-      "A comprehensive comparison of NVIDIA H100, AMD Instinct MI300X, and Intel Gaudi 3 for enterprise AI training, inference, and HPC workloads.",
-    date: "Jun 15, 2026",
-    category: "Architecture",
-    slug: "ai-chip-landscape-2026-comparison",
-    image:
-      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=400&h=250&fit=crop",
-  },
-  {
-    title:
-      "NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3: Enterprise Accelerator Guide",
-    excerpt:
-      "Side-by-side comparison of leading enterprise AI accelerators for data center GPU deployments — memory, bandwidth, TDP, and pricing breakdown.",
-    date: "Jun 10, 2026",
-    category: "Comparison",
-    slug: "h100-vs-mi300x-vs-gaudi3-comparison",
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=250&fit=crop",
-  },
-  {
-    title:
-      "Multi-Vendor GPU Deployments: Enterprise Best Practices for AI Infrastructure",
-    excerpt:
-      "How to build and manage heterogeneous GPU infrastructure with chips from different manufacturers for AI training clusters and data center workloads.",
-    date: "Jun 5, 2026",
-    category: "Deployment",
-    slug: "multi-vendor-gpu-deployments-best-practices",
-    image:
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=400&h=250&fit=crop",
-  },
-];
-
 export const HERO_PHRASES: string[] = [
   "Enterprise chip distributor — NVIDIA H100, AMD MI300X, Intel Xeon & more",
   "ISO 9001 certified AI infrastructure provider — global shipping from India",

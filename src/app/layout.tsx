@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     siteName: SITE.name,
     title: `${SITE.name} — Enterprise Chip Distributor for AI, HPC & Data Centers`,
     description:
-      "ISO 9001 certified enterprise chip distributor. Buy NVIDIA H100/H200/B200, AMD MI300X, Intel Xeon & Gaudi 3. Global shipping from India & UAE to 150+ countries.",
+      "Servchip: ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3 accelerators to India & UAE.",
     images: [
       {
         url: OG_IMAGE,
@@ -76,8 +76,12 @@ export const metadata: Metadata = {
     },
   },
   icons: {
-    icon: "/favicon.svg",
-    apple: "/favicon.svg",
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/icon.png", type: "image/png", sizes: "48x48" },
+    ],
+    apple: "/apple-icon.png",
+    shortcut: "/favicon.ico",
   },
   other: {
     "apple-mobile-web-app-capable": "yes",
