@@ -101,6 +101,7 @@ export default function RootLayout({
           name="google-site-verification"
           content="fXyQ-7TkmRajJRw1z6CixmK1zspDKkhBgmgUgFJF42k"
         />
+        <meta name="msvalidate.01" content="4BE8A73009F581363FCC999797F2C050" />
         {/* Hreflang */}
         <link rel="alternate" href={SITE.url} hrefLang="en-in" />
         <link rel="alternate" href={SITE.url} hrefLang="en-ae" />
