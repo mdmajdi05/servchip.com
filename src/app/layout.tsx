@@ -59,7 +59,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: `${SITE.name} — Enterprise Chip Distributor for AI, HPC & Data Centers`,
     description:
-      "ISO 9001 certified enterprise chip distributor. Buy NVIDIA H100, AMD MI300X, Intel Xeon & Gaudi 3. Semiconductor procurement & data center GPU distributor.",
+      "Servchip: ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3 accelerators to India & UAE.",
     images: [{ url: OG_IMAGE, alt: "Servchip — Enterprise Chip Distributor" }],
     site: "@servchip",
     creator: "@servchip",
