@@ -1,14 +1,7 @@
 import type { Metadata } from "next";
 import { CATEGORIES } from "@/data/categories";
 import { ALL_PRODUCTS } from "@/data/products";
-import { SITE } from "@/lib/constants";
-import {
-  breadcrumbSchema,
-  itemListSchema,
-  OG_IMAGE,
-  OG_WIDTH,
-  OG_HEIGHT,
-} from "@/lib/seo";
+import { createSeoMetadata, breadcrumbSchema, itemListSchema } from "@/lib/seo";
 import PageClient from "./page-client";
 
 export async function generateMetadata(props: {
@@ -17,9 +10,10 @@ export async function generateMetadata(props: {
   const { slug } = await props.params;
   const cat = CATEGORIES.find((c) => c.slug === slug);
   if (!cat) return {};
-  return {
+  return createSeoMetadata({
     title: `${cat.name} — Buy Enterprise ${cat.name} | Servchip Semiconductor Procurement`,
     description: `${cat.description} Buy authentic ${cat.name} from an ISO 9001 certified enterprise chip distributor. AI accelerator & semiconductor procurement with global shipping.`,
+    path: `/categories/${slug}`,
     keywords: [
       `buy ${cat.name.toLowerCase()}`,
       `${cat.name.toLowerCase()} supplier`,
@@ -27,28 +21,11 @@ export async function generateMetadata(props: {
       "semiconductor procurement",
       "AI accelerator distributor",
     ],
-    alternates: { canonical: `${SITE.url}/categories/${slug}` },
-    robots: { index: true, follow: true },
-    openGraph: {
-      title: `${cat.name} | Servchip — Enterprise Chip Distributor`,
-      description: `Buy ${cat.name} from an ISO 9001 certified distributor.`,
-      images: [
-        {
-          url: OG_IMAGE,
-          width: OG_WIDTH,
-          height: OG_HEIGHT,
-          alt: `${cat.name} — Servchip`,
-          type: "image/png",
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${cat.name} | Servchip — Enterprise Chip Distributor`,
-      description: `Buy ${cat.name} from an ISO 9001 certified distributor.`,
-      images: [OG_IMAGE],
-    },
-  };
+    openGraphTitle: `${cat.name} | Servchip — Enterprise Chip Distributor`,
+    openGraphDescription: `Buy ${cat.name} from an ISO 9001 certified distributor.`,
+    twitterTitle: `${cat.name} | Servchip — Enterprise Chip Distributor`,
+    twitterDescription: `Buy ${cat.name} from an ISO 9001 certified distributor.`,
+  });
 }
 
 export default async function Page(props: {

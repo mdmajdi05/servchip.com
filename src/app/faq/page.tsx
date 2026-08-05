@@ -1,12 +1,5 @@
 ﻿import type { Metadata } from "next";
-import { SITE } from "@/lib/constants";
-import {
-  faqSchema,
-  breadcrumbSchema,
-  OG_IMAGE,
-  OG_WIDTH,
-  OG_HEIGHT,
-} from "@/lib/seo";
+import { createSeoMetadata, faqSchema, breadcrumbSchema } from "@/lib/seo";
 import PageClient from "./page-client";
 
 const FAQS = [
@@ -60,11 +53,12 @@ const FAQS = [
   },
 ];
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createSeoMetadata({
   title:
     "FAQ — Enterprise Chip Distributor | Buy AI Chips, Semiconductor Procurement",
   description:
     "Answers about buying AI chips, enterprise chip purchasing, semiconductor procurement, authenticity verification, bulk ordering, shipping, warranty & support from Servchip — ISO 9001 certified distributor for NVIDIA, AMD, Intel.",
+  path: "/faq",
   keywords: [
     "buy AI chips",
     "enterprise chip purchasing",
@@ -75,30 +69,13 @@ export const metadata: Metadata = {
     "data center hardware FAQ",
     "chip distributor questions",
   ],
-  alternates: { canonical: `${SITE.url}/faq` },
-  robots: { index: true, follow: true },
-  openGraph: {
-    title: "FAQ | Servchip — Enterprise Chip Distributor",
-    description:
-      "Common questions about buying AI chips, semiconductor procurement, enterprise chip purchasing, shipping, warranty & support.",
-    images: [
-      {
-        url: OG_IMAGE,
-        width: OG_WIDTH,
-        height: OG_HEIGHT,
-        alt: "Servchip FAQ — Enterprise Chip Distributor",
-        type: "image/png",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "FAQ | Servchip — Enterprise Chip Distributor",
-    description:
-      "Common questions about buying AI chips, semiconductor procurement, enterprise chip purchasing, shipping, warranty & support.",
-    images: [OG_IMAGE],
-  },
-};
+  openGraphTitle: "FAQ | Servchip — Enterprise Chip Distributor",
+  openGraphDescription:
+    "Common questions about buying AI chips, semiconductor procurement, enterprise chip purchasing, shipping, warranty & support.",
+  twitterTitle: "FAQ | Servchip — Enterprise Chip Distributor",
+  twitterDescription:
+    "Common questions about buying AI chips, semiconductor procurement, enterprise chip purchasing, shipping, warranty & support.",
+});
 
 export default function Page() {
   return (

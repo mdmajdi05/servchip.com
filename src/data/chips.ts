@@ -10,8 +10,8 @@ export const POPULAR_CHIP_IDS: string[] = CHIPS.filter((c) => c.isPopular).map(
   (c) => c.id,
 );
 
-export function getChipsByManufacturer(manufacturerId: string): ChipProduct[] {
-  return CHIPS.filter((c) => c.manufacturerId === manufacturerId);
+export function getChipsByBrand(brandId: string): ChipProduct[] {
+  return CHIPS.filter((c) => c.manufacturerId === brandId);
 }
 
 export function getChipById(id: string): ChipProduct | undefined {
@@ -22,11 +22,11 @@ export function getChipBySlug(slug: string): ChipProduct | undefined {
   return CHIPS.find((c) => c.slug === slug);
 }
 
-export function getManufacturerChipCount(manufacturerId: string): number {
-  return CHIPS.filter((c) => c.manufacturerId === manufacturerId).length;
+export function getBrandChipCount(brandId: string): number {
+  return CHIPS.filter((c) => c.manufacturerId === brandId).length;
 }
 
-export const MANUFACTURER_CHIP_MAP: Record<string, string[]> = CHIPS.reduce(
+export const BRAND_CHIP_MAP: Record<string, string[]> = CHIPS.reduce(
   (acc, chip) => {
     if (!acc[chip.manufacturerId]) acc[chip.manufacturerId] = [];
     acc[chip.manufacturerId].push(chip.id);
@@ -34,3 +34,10 @@ export const MANUFACTURER_CHIP_MAP: Record<string, string[]> = CHIPS.reduce(
   },
   {} as Record<string, string[]>,
 );
+
+/** @deprecated Use {@link getChipsByBrand} instead. */
+export const getChipsByManufacturer = getChipsByBrand;
+/** @deprecated Use {@link getBrandChipCount} instead. */
+export const getManufacturerChipCount = getBrandChipCount;
+/** @deprecated Use {@link BRAND_CHIP_MAP} instead. */
+export const MANUFACTURER_CHIP_MAP = BRAND_CHIP_MAP;

@@ -1,8 +1,7 @@
-import { SITE, SCHEMA } from "./constants";
+import { SITE, SCHEMA } from "../constants";
+import { OG_IMAGE, OG_WIDTH, OG_HEIGHT } from "./constants";
 
-export const OG_IMAGE = `${SITE.url}/og-image.png`;
-export const OG_WIDTH = 1200;
-export const OG_HEIGHT = 630;
+export const ORG_ID = `${SITE.url}#organization`;
 
 export function jsonLd(script: Record<string, unknown>) {
   return {
@@ -12,8 +11,6 @@ export function jsonLd(script: Record<string, unknown>) {
     }),
   };
 }
-
-const ORG_ID = `${SITE.url}#organization`;
 
 export function organizationSchema() {
   return jsonLd({
@@ -134,7 +131,7 @@ export function productSchema(product: {
     manufacturer: { "@type": "Organization", name: product.manufacturer },
     category: product.categoryName,
     url: `${SITE.url}/products/${product.slug}`,
-    image: product.images?.[0] || `${SITE.url}/og-image.png`,
+    image: product.images?.[0] || OG_IMAGE,
     itemCondition: "https://schema.org/NewCondition",
     offers: {
       "@type": "Offer",

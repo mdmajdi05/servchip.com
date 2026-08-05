@@ -1,12 +1,19 @@
-import type { ChipProduct, ServerProduct, NetworkingProduct, MemoryProduct, StorageProduct, AnyProduct } from "@/types";
+import type {
+  ChipProduct,
+  ServerProduct,
+  NetworkingProduct,
+  MemoryProduct,
+  StorageProduct,
+  AnyProduct,
+} from "@/types";
 
-import { NVIDIA_PRODUCTS } from "./manufacturers/nvidia";
-import { AMD_PRODUCTS } from "./manufacturers/amd";
-import { INTEL_PRODUCTS } from "./manufacturers/intel";
-import { GOOGLE_PRODUCTS } from "./manufacturers/google";
-import { AMAZON_PRODUCTS } from "./manufacturers/amazon";
-import { QUALCOMM_PRODUCTS } from "./manufacturers/qualcomm";
-import { AMPERE_PRODUCTS } from "./manufacturers/ampere";
+import { NVIDIA_PRODUCTS } from "./brands/nvidia";
+import { AMD_PRODUCTS } from "./brands/amd";
+import { INTEL_PRODUCTS } from "./brands/intel";
+import { GOOGLE_PRODUCTS } from "./brands/google";
+import { AMAZON_PRODUCTS } from "./brands/amazon";
+import { QUALCOMM_PRODUCTS } from "./brands/qualcomm";
+import { AMPERE_PRODUCTS } from "./brands/ampere";
 
 import { ALL_SERVERS } from "./servers/index";
 
@@ -18,17 +25,17 @@ import { NVIDIA_NETWORKING_PRODUCTS } from "./networking/nvidia-networking";
 import { ALL_MEMORY } from "./memory/index";
 import { ALL_STORAGE } from "./storage/index";
 
-export * from "./manufacturers/nvidia";
-export * from "./manufacturers/amd";
-export * from "./manufacturers/intel";
-export * from "./manufacturers/google";
-export * from "./manufacturers/amazon";
-export * from "./manufacturers/qualcomm";
-export * from "./manufacturers/ampere";
+export * from "./brands/nvidia";
+export * from "./brands/amd";
+export * from "./brands/intel";
+export * from "./brands/google";
+export * from "./brands/amazon";
+export * from "./brands/qualcomm";
+export * from "./brands/ampere";
 
 export * from "./servers/index";
 
-// Note: NVIDIA networking is exported via ./manufacturers/nvidia
+// Note: NVIDIA networking is exported via ./brands/nvidia
 export * from "./networking/broadcom";
 export * from "./networking/marvell";
 export * from "./networking/cisco";
@@ -37,9 +44,9 @@ export * from "./memory/index";
 export * from "./storage/index";
 
 export const ALL_CHIP_PRODUCTS: ChipProduct[] = [
-  ...(NVIDIA_PRODUCTS.filter(p => "specifications" in p) as ChipProduct[]),
-  ...(AMD_PRODUCTS.filter(p => "specifications" in p) as ChipProduct[]),
-  ...(INTEL_PRODUCTS.filter(p => "specifications" in p) as ChipProduct[]),
+  ...(NVIDIA_PRODUCTS.filter((p) => "specifications" in p) as ChipProduct[]),
+  ...(AMD_PRODUCTS.filter((p) => "specifications" in p) as ChipProduct[]),
+  ...(INTEL_PRODUCTS.filter((p) => "specifications" in p) as ChipProduct[]),
   ...GOOGLE_PRODUCTS,
   ...AMAZON_PRODUCTS,
   ...QUALCOMM_PRODUCTS,
@@ -62,35 +69,45 @@ export const ALL_PRODUCTS: AnyProduct[] = [
 ];
 
 export function getProductById(id: string): AnyProduct | undefined {
-  return ALL_PRODUCTS.find(p => p.id === id);
+  return ALL_PRODUCTS.find((p) => p.id === id);
 }
 
 export function getProductBySlug(slug: string): AnyProduct | undefined {
-  return ALL_PRODUCTS.find(p => p.slug === slug);
+  return ALL_PRODUCTS.find((p) => p.slug === slug);
 }
 
-export function getProductsByManufacturer(manufacturerId: string): AnyProduct[] {
-  return ALL_PRODUCTS.filter(p => p.manufacturerId === manufacturerId);
+export function getProductsByBrand(brandId: string): AnyProduct[] {
+  return ALL_PRODUCTS.filter((p) => p.manufacturerId === brandId);
 }
 
 export function getProductsByCategory(categoryId: string): AnyProduct[] {
-  return ALL_PRODUCTS.filter(p => p.categoryId === categoryId);
+  return ALL_PRODUCTS.filter((p) => p.categoryId === categoryId);
 }
 
-export function getProductsByParentCategory(parentCategoryId: string): AnyProduct[] {
-  return ALL_PRODUCTS.filter((p): p is AnyProduct & { parentCategoryId: string } =>
-    "parentCategoryId" in p && p.parentCategoryId === parentCategoryId
+export function getProductsByParentCategory(
+  parentCategoryId: string,
+): AnyProduct[] {
+  return ALL_PRODUCTS.filter(
+    (p): p is AnyProduct & { parentCategoryId: string } =>
+      "parentCategoryId" in p && p.parentCategoryId === parentCategoryId,
   );
 }
 
-export function getManufacturerProductCount(manufacturerId: string): number {
-  return ALL_PRODUCTS.filter(p => p.manufacturerId === manufacturerId).length;
+export function getBrandProductCount(brandId: string): number {
+  return ALL_PRODUCTS.filter((p) => p.manufacturerId === brandId).length;
 }
 
+/** @deprecated Use {@link getProductsByBrand} instead. */
+export const getProductsByManufacturer = getProductsByBrand;
+/** @deprecated Use {@link getBrandProductCount} instead. */
+export const getManufacturerProductCount = getBrandProductCount;
+
 export function getProductsByUseCase(useCase: string): AnyProduct[] {
-  return ALL_PRODUCTS.filter(p =>
-    "useCases" in p && Array.isArray((p as AnyProduct & { useCases: string[] }).useCases) &&
-    (p as AnyProduct & { useCases: string[] }).useCases.includes(useCase)
+  return ALL_PRODUCTS.filter(
+    (p) =>
+      "useCases" in p &&
+      Array.isArray((p as AnyProduct & { useCases: string[] }).useCases) &&
+      (p as AnyProduct & { useCases: string[] }).useCases.includes(useCase),
   );
 }
 

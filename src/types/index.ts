@@ -29,7 +29,20 @@ export type {
 export type { RFQFormData, RFQResponse } from "./rfq";
 export type {
   SiteConfig,
+  Brand,
+  BrandCategory,
+  BrandSubCategory,
   Manufacturer,
   ManufacturerCategory,
   ManufacturerSubCategory,
 } from "./site-config";
+export type {
+  Country,
+  Industry,
+  Solution,
+  TaxonomySeo,
+  TaxonomyFaq,
+  TaxonomyRelated,
+  TaxonomyStat,
+  TaxonomyHero,
+} from "./taxonomy";

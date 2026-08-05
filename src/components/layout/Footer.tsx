@@ -1,11 +1,11 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 import Link from "next/link";
 import { Phone, Mail, Send, MapPin, ChevronRight } from "lucide-react";
 import { AnimatedLogo } from "@/components/ui/AnimatedLogo";
-import { MANUFACTURERS } from "@/data/manufacturers";
-import { getManufacturerColor } from "@/data/manufacturer-colors";
+import { BRANDS } from "@/data/brands";
+import { getBrandColor } from "@/data/brand-colors";
 import { SITE } from "@/lib/constants";
 
 function FacebookIcon({ className }: { className?: string }) {
@@ -88,17 +88,19 @@ const FOOTER_LINKS: {
     ],
   },
   {
-    title: "Manufacturers",
-    links: MANUFACTURERS.slice(0, 8).map((m) => ({
+    title: "Brands",
+    links: BRANDS.slice(0, 8).map((m) => ({
       label: m.name,
-      href: `/manufacturers/${m.slug}`,
-      color: getManufacturerColor(m.name),
+      href: `/brands/${m.slug}`,
+      color: getBrandColor(m.name),
     })),
   },
   {
     title: "Resources",
     links: [
       { label: "Solutions", href: "/solutions" },
+      { label: "Industries", href: "/industries" },
+      { label: "Countries", href: "/countries" },
       { label: "Technology", href: "/technology" },
       { label: "Blog", href: "/blog" },
       { label: "Developer Hub", href: "/developer-hub" },

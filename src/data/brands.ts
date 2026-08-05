@@ -1,6 +1,6 @@
-import type { Manufacturer } from "@/types";
+import type { Brand } from "@/types";
 
-export const MANUFACTURERS: Manufacturer[] = [
+export const BRANDS: Brand[] = [
   {
     id: "nvidia",
     name: "NVIDIA",
@@ -505,7 +505,8 @@ export const MANUFACTURERS: Manufacturer[] = [
         id: "cisco-silicon",
         name: "Networking Silicon",
         slug: "networking-silicon",
-        description: "Programmable networking silicon for routers and switches.",
+        description:
+          "Programmable networking silicon for routers and switches.",
         icon: "Network",
         subcategories: [
           {
@@ -528,8 +529,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "dell",
     name: "Dell Technologies",
     slug: "dell-technologies",
-    description:
-      "AI servers and enterprise infrastructure for data centers.",
+    description: "AI servers and enterprise infrastructure for data centers.",
     longDescription:
       "Dell Technologies delivers comprehensive AI infrastructure solutions with PowerEdge servers optimized for AI training, inference, and HPC workloads, backed by global enterprise support.",
     website: "https://www.dell.com",
@@ -563,8 +563,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "hpe",
     name: "Hewlett Packard Enterprise",
     slug: "hewlett-packard-enterprise",
-    description:
-      "AI servers, HPC systems, and enterprise computing solutions.",
+    description: "AI servers, HPC systems, and enterprise computing solutions.",
     longDescription:
       "Hewlett Packard Enterprise (HPE) delivers AI-optimized servers including the Cray XD family for HPC and AI, and ProLiant servers for general enterprise workloads.",
     website: "https://www.hpe.com",
@@ -614,8 +613,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "supermicro",
     name: "Supermicro",
     slug: "supermicro",
-    description:
-      "GPU servers and high-performance computing solutions.",
+    description: "GPU servers and high-performance computing solutions.",
     longDescription:
       "Supermicro provides a broad portfolio of GPU-accelerated servers optimized for AI, deep learning, and HPC workloads, with leadership in liquid-cooled data center solutions.",
     website: "https://www.supermicro.com",
@@ -649,8 +647,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "lenovo",
     name: "Lenovo",
     slug: "lenovo",
-    description:
-      "AI servers and enterprise computing infrastructure.",
+    description: "AI servers and enterprise computing infrastructure.",
     longDescription:
       "Lenovo delivers AI-optimized server solutions including the ThinkSystem SR series, designed for AI training, inference, and high-performance computing workloads across enterprise data centers.",
     website: "https://www.lenovo.com",
@@ -684,8 +681,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "gigabyte",
     name: "Gigabyte",
     slug: "gigabyte",
-    description:
-      "GPU servers and enterprise computing platforms.",
+    description: "GPU servers and enterprise computing platforms.",
     longDescription:
       "Gigabyte Technology provides high-performance GPU servers and workstations optimized for AI, deep learning, and HPC applications with robust thermal and power designs.",
     website: "https://www.gigabyte.com",
@@ -719,8 +715,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "asus",
     name: "ASUS",
     slug: "asus",
-    description:
-      "AI servers and enterprise computing solutions.",
+    description: "AI servers and enterprise computing solutions.",
     longDescription:
       "ASUS provides AI-optimized server platforms and GPU workstations, delivering enterprise-grade performance for AI training, inference, and data analytics workloads.",
     website: "https://www.asus.com",
@@ -754,8 +749,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "inspur",
     name: "Inspur",
     slug: "inspur",
-    description:
-      "AI servers and cloud computing infrastructure.",
+    description: "AI servers and cloud computing infrastructure.",
     longDescription:
       "Inspur is a leading provider of AI server platforms, delivering high-performance computing solutions for AI training, inference, and cloud data centers worldwide.",
     website: "https://www.inspur.com",
@@ -789,8 +783,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "quanta",
     name: "Quanta",
     slug: "quanta",
-    description:
-      "AI GPU servers and cloud infrastructure solutions.",
+    description: "AI GPU servers and cloud infrastructure solutions.",
     longDescription:
       "Quanta Cloud Technology (QCT) delivers AI-optimized GPU server platforms for hyperscale data centers, AI training, and inference workloads with innovative thermal and power efficiency designs.",
     website: "https://www.quanta.com",
@@ -824,8 +817,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "foxconn",
     name: "Foxconn",
     slug: "foxconn",
-    description:
-      "AI GPU servers and data center infrastructure.",
+    description: "AI GPU servers and data center infrastructure.",
     longDescription:
       "Foxconn (Hon Hai Precision Industry) manufactures AI GPU servers and data center infrastructure solutions for hyperscale and enterprise customers worldwide.",
     website: "https://www.foxconn.com",
@@ -859,8 +851,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "wiwynn",
     name: "Wiwynn",
     slug: "wiwynn",
-    description:
-      "AI GPU servers and cloud infrastructure solutions.",
+    description: "AI GPU servers and cloud infrastructure solutions.",
     longDescription:
       "Wiwynn delivers AI-optimized server platforms and storage solutions for cloud data centers, with a focus on GPU-accelerated computing and energy-efficient designs.",
     website: "https://www.wiwynn.com",
@@ -959,8 +950,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "sk-hynix",
     name: "SK hynix",
     slug: "sk-hynix",
-    description:
-      "High-bandwidth memory solutions for AI accelerators.",
+    description: "High-bandwidth memory solutions for AI accelerators.",
     longDescription:
       "SK hynix is a leading semiconductor memory supplier, providing HBM3E memory solutions for AI accelerators and high-performance computing systems.",
     website: "https://www.skhynix.com",
@@ -1052,8 +1042,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "solidigm",
     name: "Solidigm",
     slug: "solidigm",
-    description:
-      "Enterprise SSD storage solutions for data centers.",
+    description: "Enterprise SSD storage solutions for data centers.",
     longDescription:
       "Solidigm delivers enterprise-grade NAND flash storage solutions optimized for AI, cloud, and data center workloads, building on a legacy of SSD innovation.",
     website: "https://www.solidigm.com",
@@ -1087,8 +1076,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "kioxia",
     name: "Kioxia",
     slug: "kioxia",
-    description:
-      "Enterprise SSD storage solutions for data centers.",
+    description: "Enterprise SSD storage solutions for data centers.",
     longDescription:
       "Kioxia is a global leader in NAND flash memory and enterprise SSDs, delivering high-performance storage solutions for AI, cloud, and data center applications.",
     website: "https://www.kioxia.com",
@@ -1122,8 +1110,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "wd",
     name: "Western Digital",
     slug: "western-digital",
-    description:
-      "Enterprise storage solutions for data centers.",
+    description: "Enterprise storage solutions for data centers.",
     longDescription:
       "Western Digital provides enterprise-grade HDDs and SSDs for AI, cloud, and data center storage, including the Ultrastar family of data center drives.",
     website: "https://www.westerndigital.com",
@@ -1157,8 +1144,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "seagate",
     name: "Seagate",
     slug: "seagate",
-    description:
-      "Enterprise storage solutions for data centers.",
+    description: "Enterprise storage solutions for data centers.",
     longDescription:
       "Seagate delivers enterprise-grade HDDs and NVMe SSDs for AI, cloud, and data center storage, including the Nytro family of data center SSDs.",
     website: "https://www.seagate.com",
@@ -1192,8 +1178,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "google",
     name: "Google",
     slug: "google",
-    description:
-      "TPU accelerators for AI training and inference.",
+    description: "TPU accelerators for AI training and inference.",
     longDescription:
       "Google designs custom Tensor Processing Units (TPUs) to accelerate AI training and inference workloads, powering Google's own services and cloud customers via Google Cloud.",
     website: "https://cloud.google.com/tpu",
@@ -1234,8 +1219,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "amazon",
     name: "Amazon",
     slug: "amazon",
-    description:
-      "Custom AI chips for cloud and machine learning workloads.",
+    description: "Custom AI chips for cloud and machine learning workloads.",
     longDescription:
       "Amazon Web Services (AWS) designs custom silicon including Trainium for AI training and Inferentia for AI inference, delivering cost-effective performance for cloud AI workloads.",
     website: "https://aws.amazon.com/machine-learning/custom-silicon/",
@@ -1276,8 +1260,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "qualcomm",
     name: "Qualcomm",
     slug: "qualcomm",
-    description:
-      "Data center CPUs and AI inference processors.",
+    description: "Data center CPUs and AI inference processors.",
     longDescription:
       "Qualcomm is expanding into data center computing with custom-designed CPUs for cloud and AI workloads, leveraging its industry-leading ARM processor expertise.",
     website: "https://www.qualcomm.com",
@@ -1311,8 +1294,7 @@ export const MANUFACTURERS: Manufacturer[] = [
     id: "ampere",
     name: "Ampere",
     slug: "ampere",
-    description:
-      "ARM-based server CPUs for cloud and edge computing.",
+    description: "ARM-based server CPUs for cloud and edge computing.",
     longDescription:
       "Ampere Computing designs high-performance, power-efficient ARM-based server processors for cloud data centers, edge computing, and sustainable AI workloads.",
     website: "https://www.amperecomputing.com",
@@ -1456,18 +1438,29 @@ export const MANUFACTURERS: Manufacturer[] = [
   },
 ];
 
-export const MANUFACTURER_IDS: string[] = MANUFACTURERS.map((m) => m.id);
+export const BRAND_IDS: string[] = BRANDS.map((m) => m.id);
 
-export function getManufacturer(id: string): Manufacturer | undefined {
-  return MANUFACTURERS.find((m) => m.id === id);
+export function getBrand(id: string): Brand | undefined {
+  return BRANDS.find((m) => m.id === id);
 }
 
-export function getManufacturerBySlug(slug: string): Manufacturer | undefined {
-  return MANUFACTURERS.find((m) => m.slug === slug);
+export function getBrandBySlug(slug: string): Brand | undefined {
+  return BRANDS.find((m) => m.slug === slug);
 }
 
-export function getAllManufacturerChipIds(): string[] {
-  return MANUFACTURERS.flatMap((m) =>
+export function getAllBrandChipIds(): string[] {
+  return BRANDS.flatMap((m) =>
     m.categories.flatMap((c) => c.subcategories.flatMap((s) => s.chipIds)),
   ).filter(Boolean);
 }
+
+/** @deprecated Use {@link BRANDS} instead. */
+export const MANUFACTURERS = BRANDS;
+/** @deprecated Use {@link BRAND_IDS} instead. */
+export const MANUFACTURER_IDS = BRAND_IDS;
+/** @deprecated Use {@link getBrand} instead. */
+export const getManufacturer = getBrand;
+/** @deprecated Use {@link getBrandBySlug} instead. */
+export const getManufacturerBySlug = getBrandBySlug;
+/** @deprecated Use {@link getAllBrandChipIds} instead. */
+export const getAllManufacturerChipIds = getAllBrandChipIds;

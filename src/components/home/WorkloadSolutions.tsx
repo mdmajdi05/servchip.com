@@ -5,7 +5,7 @@ import { ArrowRight, Brain, Zap, Server, Monitor, Radio } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { getProductsByUseCase } from "@/data/products";
-import { getManufacturerColor } from "@/data/manufacturer-colors";
+import { getBrandColor } from "@/data/brand-colors";
 import { isChipProduct, getProductTypeLabel } from "@/types";
 import type { AnyProduct, ChipProduct } from "@/types";
 const WORKLOADS = [
@@ -62,11 +62,9 @@ function ProductCard({
   product: AnyProduct;
   index: number;
 }) {
-  const mfrColor = getManufacturerColor(product.manufacturer);
+  const mfrColor = getBrandColor(product.manufacturer);
   return (
-    <div
-      key={product.id}
-    >
+    <div key={product.id}>
       <Link
         href={`/products/${product.slug}`}
         className="block bg-surface border border-border rounded-xl p-5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-transform duration-300 group h-full"
@@ -140,20 +138,20 @@ export function WorkloadSolutions() {
           })}
         </div>
         {/* Products Grid */}
-          <div>
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-              {products.map((product, i) => (
-                <ProductCard key={product.id} product={product} index={i} />
-              ))}
-            </div>
-            {products.length === 0 && (
-              <div className="text-center py-12">
-                <p className="text-text-dim text-sm">
-                  No products found for this workload.
-                </p>
-              </div>
-            )}
+        <div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {products.map((product, i) => (
+              <ProductCard key={product.id} product={product} index={i} />
+            ))}
           </div>
+          {products.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-text-dim text-sm">
+                No products found for this workload.
+              </p>
+            </div>
+          )}
+        </div>
         <div className="text-center mt-8">
           <Link
             href="/products"

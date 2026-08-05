@@ -2,7 +2,7 @@
 
 import { Zap, CheckCircle, Building2, Star } from "lucide-react";
 import { TRUST_BAR_ITEMS } from "@/data/home";
-import { getManufacturerTextColor } from "@/data/manufacturer-colors";
+import { getBrandTextColor } from "@/data/brand-colors";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 
 const ICON_MAP: Record<string, typeof Zap> = {
@@ -46,7 +46,7 @@ export function TrustBar() {
         >
           {[...TRUST_BAR_ITEMS, ...TRUST_BAR_ITEMS].map((item, i) => {
             const isMfr = MANUFACTURER_NAMES.has(item.text);
-            const color = getManufacturerTextColor(item.text);
+            const color = getBrandTextColor(item.text);
             return (
               <div
                 key={`trust-${i}`}

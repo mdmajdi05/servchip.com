@@ -15,7 +15,10 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { SITE } from "@/lib/constants";
-import { MANUFACTURERS } from "@/data/manufacturers";
+import { BRANDS } from "@/data/brands";
+import { COUNTRIES } from "@/data/countries";
+import { INDUSTRIES } from "@/data/industries";
+import { SOLUTIONS } from "@/data/solutions";
 import { MegaMenu } from "./MegaMenu";
 import { TopBar } from "./TopBar";
 import { SearchModal } from "@/components/interactive/SearchModal";
@@ -51,27 +54,27 @@ const PRODUCT_COLUMNS: NavColumn[] = [
     links: [
       {
         label: "NVIDIA",
-        href: "/manufacturers/nvidia",
+        href: "/brands/nvidia",
         description: "H100, H200, B200, GB200",
       },
       {
         label: "AMD",
-        href: "/manufacturers/amd",
+        href: "/brands/amd",
         description: "Instinct MI300X, MI325X, MI350X",
       },
       {
         label: "Intel",
-        href: "/manufacturers/intel",
+        href: "/brands/intel",
         description: "Gaudi 2, Gaudi 3",
       },
       {
         label: "Google",
-        href: "/manufacturers/google",
+        href: "/brands/google",
         description: "TPU v6, TPU v7",
       },
       {
         label: "Amazon",
-        href: "/manufacturers/amazon",
+        href: "/brands/amazon",
         description: "Trainium 2, Inferentia 2",
       },
     ],
@@ -82,27 +85,27 @@ const PRODUCT_COLUMNS: NavColumn[] = [
     links: [
       {
         label: "AMD EPYC",
-        href: "/manufacturers/amd",
+        href: "/brands/amd",
         description: "EPYC 9005 Turin",
       },
       {
         label: "Intel Xeon",
-        href: "/manufacturers/intel",
+        href: "/brands/intel",
         description: "Xeon 6 Granite Rapids",
       },
       {
         label: "Ampere",
-        href: "/manufacturers/ampere",
+        href: "/brands/ampere",
         description: "AmpereOne ARM",
       },
       {
         label: "Qualcomm",
-        href: "/manufacturers/qualcomm",
+        href: "/brands/qualcomm",
         description: "DC server CPUs",
       },
       {
         label: "NVIDIA Grace",
-        href: "/manufacturers/nvidia",
+        href: "/brands/nvidia",
         description: "ARM superchip",
       },
     ],
@@ -113,34 +116,34 @@ const PRODUCT_COLUMNS: NavColumn[] = [
     links: [
       {
         label: "Dell",
-        href: "/manufacturers/dell-technologies",
+        href: "/brands/dell-technologies",
         description: "PowerEdge XE9680",
       },
       {
         label: "HPE",
-        href: "/manufacturers/hewlett-packard-enterprise",
+        href: "/brands/hewlett-packard-enterprise",
         description: "Cray XD670",
       },
       {
         label: "Supermicro",
-        href: "/manufacturers/supermicro",
+        href: "/brands/supermicro",
         description: "AS-8125GS",
       },
       {
         label: "Lenovo",
-        href: "/manufacturers/lenovo",
+        href: "/brands/lenovo",
         description: "ThinkSystem SR780A",
       },
       {
         label: "Gigabyte",
-        href: "/manufacturers/gigabyte",
+        href: "/brands/gigabyte",
         description: "G593",
       },
-      { label: "ASUS", href: "/manufacturers/asus", description: "ESC N8" },
-      { label: "Inspur", href: "/manufacturers/inspur", description: "NF5688" },
-      { label: "Quanta", href: "/manufacturers/quanta" },
-      { label: "Foxconn", href: "/manufacturers/foxconn" },
-      { label: "Wiwynn", href: "/manufacturers/wiwynn" },
+      { label: "ASUS", href: "/brands/asus", description: "ESC N8" },
+      { label: "Inspur", href: "/brands/inspur", description: "NF5688" },
+      { label: "Quanta", href: "/brands/quanta" },
+      { label: "Foxconn", href: "/brands/foxconn" },
+      { label: "Wiwynn", href: "/brands/wiwynn" },
     ],
   },
   {
@@ -149,17 +152,17 @@ const PRODUCT_COLUMNS: NavColumn[] = [
     links: [
       {
         label: "Broadcom",
-        href: "/manufacturers/broadcom",
+        href: "/brands/broadcom",
         description: "Tomahawk 6",
       },
       {
         label: "Marvell",
-        href: "/manufacturers/marvell",
+        href: "/brands/marvell",
         description: "Teralynx 10",
       },
       {
         label: "Cisco",
-        href: "/manufacturers/cisco",
+        href: "/brands/cisco",
         description: "Silicon One",
       },
     ],
@@ -170,33 +173,33 @@ const PRODUCT_COLUMNS: NavColumn[] = [
     links: [
       {
         label: "SK hynix",
-        href: "/manufacturers/sk-hynix",
+        href: "/brands/sk-hynix",
         description: "HBM3E",
       },
       {
         label: "Samsung",
-        href: "/manufacturers/samsung",
+        href: "/brands/samsung",
         description: "HBM3E, DDR5, SSD",
       },
       {
         label: "Micron",
-        href: "/manufacturers/micron",
+        href: "/brands/micron",
         description: "HBM3E, DDR5, SSD",
       },
       {
         label: "Solidigm",
-        href: "/manufacturers/solidigm",
+        href: "/brands/solidigm",
         description: "D7-P5810",
       },
-      { label: "Kioxia", href: "/manufacturers/kioxia", description: "CM7-V3" },
+      { label: "Kioxia", href: "/brands/kioxia", description: "CM7-V3" },
       {
         label: "Western Digital",
-        href: "/manufacturers/western-digital",
+        href: "/brands/western-digital",
         description: "Ultrastar SSD",
       },
       {
         label: "Seagate",
-        href: "/manufacturers/seagate",
+        href: "/brands/seagate",
         description: "Nytro 3530",
       },
     ],
@@ -271,9 +274,9 @@ const CATEGORY_COLUMNS = [
   {
     title: "Brands",
     links: [
-      ...MANUFACTURERS.map((m) => ({
+      ...BRANDS.map((m) => ({
         label: m.name,
-        href: `/manufacturers/${m.slug}`,
+        href: `/brands/${m.slug}`,
         description: m.description,
       })),
     ],
@@ -362,6 +365,39 @@ const RESOURCE_COLUMNS = [
 const NAV_MEGA: MegaNavItem[] = [
   { label: "Products", columns: PRODUCT_COLUMNS, href: "/products" },
   { label: "Categories", columns: CATEGORY_COLUMNS, href: "/categories" },
+  {
+    label: "Solutions",
+    columns: [
+      {
+        title: "Solutions",
+        href: "/solutions",
+        links: SOLUTIONS.slice(0, 6).map((s) => ({
+          label: s.name,
+          href: `/solutions/${s.slug}`,
+          description: s.description,
+        })),
+      },
+      {
+        title: "Industries",
+        href: "/industries",
+        links: INDUSTRIES.slice(0, 8).map((i) => ({
+          label: i.name,
+          href: `/industries/${i.slug}`,
+          description: i.description,
+        })),
+      },
+      {
+        title: "Countries",
+        href: "/countries",
+        links: COUNTRIES.map((c) => ({
+          label: c.name,
+          href: `/countries/${c.slug}`,
+          description: c.description,
+        })),
+      },
+    ],
+    href: "/solutions",
+  },
   { label: "Technology", columns: RESOURCE_COLUMNS, href: "/technology" },
   { label: "Services", columns: SERVICES_COLUMNS, href: "/services" },
   { label: "Resources", columns: RESOURCE_COLUMNS, href: "/resources" },

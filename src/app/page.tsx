@@ -1,18 +1,13 @@
 import type { Metadata } from "next";
 import { HomeSections } from "@/components/home/HomeSections";
 import { SITE } from "@/lib/constants";
-import {
-  OG_IMAGE,
-  OG_WIDTH,
-  OG_HEIGHT,
-  faqSchema,
-  breadcrumbSchema,
-} from "@/lib/seo";
+import { createSeoMetadata, faqSchema, breadcrumbSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createSeoMetadata({
   title: `${SITE.name} — Enterprise Chip Distributor for AI, HPC & Data Centers`,
   description:
     "Servchip: ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3 accelerators to India & UAE.",
+  path: "/",
   keywords: [
     "enterprise chip distributor",
     "buy AI chips",
@@ -74,31 +69,13 @@ export const metadata: Metadata = {
     "Best Intel chip distributor Dubai",
     "Best Intel chip distributor India",
   ],
-  alternates: { canonical: SITE.url },
-  robots: { index: true, follow: true },
-  openGraph: {
-    title: `${SITE.name} — Enterprise Chip Distributor for AI, HPC & Data Centers`,
-    description:
-      "Servchip: ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3 accelerators to India & UAE.",
-    url: SITE.url,
-    images: [
-      {
-        url: OG_IMAGE,
-        width: OG_WIDTH,
-        height: OG_HEIGHT,
-        alt: "Servchip — Enterprise Chip Distributor",
-        type: "image/png",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `${SITE.name} — Enterprise Chip Distributor for AI, HPC & Data Centers`,
-    description:
-      "Servchip: ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3 accelerators to India & UAE.",
-    images: [OG_IMAGE],
-  },
-};
+  openGraphTitle: `${SITE.name} — Enterprise Chip Distributor for AI, HPC & Data Centers`,
+  openGraphDescription:
+    "Servchip: ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3 accelerators to India & UAE.",
+  twitterTitle: `${SITE.name} — Enterprise Chip Distributor for AI, HPC & Data Centers`,
+  twitterDescription:
+    "Servchip: ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3 accelerators to India & UAE.",
+});
 
 const HOME_FAQS = [
   {

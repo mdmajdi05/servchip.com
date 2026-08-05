@@ -2,14 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ALL_PRODUCTS } from "@/data/products";
 import { CATEGORIES } from "@/data/categories";
-import { SITE } from "@/lib/constants";
-import {
-  productSchema,
-  breadcrumbSchema,
-  OG_IMAGE,
-  OG_WIDTH,
-  OG_HEIGHT,
-} from "@/lib/seo";
+import { createSeoMetadata, productSchema, breadcrumbSchema } from "@/lib/seo";
 import PageClient from "./page-client";
 
 function getProductName(product: {
@@ -30,9 +23,14 @@ export async function generateMetadata(props: {
   const product = ALL_PRODUCTS.find((p) => p.slug === slug);
   if (!product) return {};
 
-  return {
+  const productImage = product.images?.[0]
+    ? { url: product.images[0], alt: product.name, width: 800, height: 600 }
+    : undefined;
+
+  return createSeoMetadata({
     title: getProductName(product),
     description: product.description,
+    path: `/products/${slug}`,
     keywords: [
       `buy ${product.name}`,
       `${product.manufacturer} ${product.series}`,
@@ -41,37 +39,12 @@ export async function generateMetadata(props: {
       "semiconductor procurement",
       "data center hardware",
     ],
-    alternates: { canonical: `${SITE.url}/products/${slug}` },
-    robots: { index: true, follow: true },
-    openGraph: {
-      title: `${product.name} — Servchip`,
-      description: product.description,
-      type: "website",
-      images: product.images?.[0]
-        ? [
-            {
-              url: product.images[0],
-              width: 800,
-              height: 600,
-              alt: product.name,
-            },
-          ]
-        : [
-            {
-              url: OG_IMAGE,
-              width: OG_WIDTH,
-              height: OG_HEIGHT,
-              alt: product.name,
-            },
-          ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: `${product.name} — Servchip`,
-      description: product.description,
-      images: [product.images?.[0] || OG_IMAGE],
-    },
-  };
+    ...(productImage ? { image: productImage } : {}),
+    openGraphTitle: `${product.name} — Servchip`,
+    openGraphDescription: product.description,
+    twitterTitle: `${product.name} — Servchip`,
+    twitterDescription: product.description,
+  });
 }
 
 export default async function Page(props: {

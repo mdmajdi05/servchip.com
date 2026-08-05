@@ -48,6 +48,22 @@ const nextConfig: NextConfig = {
       },
       { source: "/consulting/hpc", destination: "/services", permanent: true },
       { source: "/log", destination: "/", permanent: true },
+      // Manufacturers → Brands migration (301 permanent, SEO preserved)
+      {
+        source: "/manufacturers/:slug/:categorySlug",
+        destination: "/brands/:slug/:categorySlug",
+        permanent: true,
+      },
+      {
+        source: "/manufacturers/:slug",
+        destination: "/brands/:slug",
+        permanent: true,
+      },
+      {
+        source: "/manufacturers",
+        destination: "/products",
+        permanent: true,
+      },
     ];
   },
   async headers() {

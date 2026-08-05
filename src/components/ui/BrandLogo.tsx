@@ -1,8 +1,5 @@
 import Image from "next/image";
-import {
-  MANUFACTURER_COLORS,
-  getManufacturerTextColor,
-} from "@/data/manufacturer-colors";
+import { BRAND_COLORS, getBrandTextColor } from "@/data/brand-colors";
 
 interface BrandLogoProps {
   name: string;
@@ -69,8 +66,8 @@ export function BrandLogo({
     );
   }
 
-  const color = MANUFACTURER_COLORS[name] || "#6B7280";
-  const textColor = getManufacturerTextColor(name);
+  const color = BRAND_COLORS[name] || "#6B7280";
+  const textColor = getBrandTextColor(name);
   const initials = name
     .split(/[\s-]+/)
     .map((w) => w[0])

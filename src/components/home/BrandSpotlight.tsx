@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useState } from "react";
 
@@ -8,10 +8,7 @@ import Image from "next/image";
 import { ArrowRight, Cpu } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CHIPS } from "@/data/chips";
-import {
-  MANUFACTURER_COLORS,
-  getManufacturerTextColor,
-} from "@/data/manufacturer-colors";
+import { BRAND_COLORS, getBrandTextColor } from "@/data/brand-colors";
 
 // Group chips by manufacturer for the showcase
 const ENTERPRISE_ROWS = [
@@ -64,8 +61,8 @@ export function BrandSpotlight() {
 
         <div className="space-y-16">
           {ENTERPRISE_ROWS.map((row, index) => {
-            const color = MANUFACTURER_COLORS[row.manufacturer] || "#76B900";
-            const textColor = getManufacturerTextColor(row.manufacturer);
+            const color = BRAND_COLORS[row.manufacturer] || "#76B900";
+            const textColor = getBrandTextColor(row.manufacturer);
             const isReversed = index % 2 === 1;
             const imgFailed = failedImages.has(row.manufacturer);
             const rowChips = getChipsForRow(row.chips);
@@ -169,7 +166,7 @@ export function BrandSpotlight() {
 
                   <div className="flex items-center pt-2">
                     <Link
-                      href={`/manufacturers/${row.manufacturer.toLowerCase()}`}
+                      href={`/brands/${row.manufacturer.toLowerCase()}`}
                       className="inline-flex items-center gap-1.5 text-sm font-semibold px-5 py-2.5 rounded-xl text-white transition-transform duration-300 hover:scale-105"
                       style={{ backgroundColor: textColor }}
                     >

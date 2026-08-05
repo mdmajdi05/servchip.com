@@ -2,35 +2,21 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { SITE } from "@/lib/constants";
 import { NotFoundContent } from "@/components/ui/NotFoundContent";
-import { breadcrumbSchema, OG_IMAGE, OG_WIDTH, OG_HEIGHT } from "@/lib/seo";
+import { createSeoMetadata, breadcrumbSchema } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createSeoMetadata({
   title: `404 — Page Not Found | ${SITE.name}`,
   description:
     "The page you are looking for does not exist or has been moved. Browse enterprise chips, AI accelerators, and semiconductor procurement solutions at Servchip.",
-  robots: { index: false, follow: true },
-  openGraph: {
-    title: `404 — Page Not Found | ${SITE.name}`,
-    description:
-      "The page you are looking for does not exist or has been moved. Browse enterprise chips, AI accelerators, and semiconductor procurement at Servchip.",
-    images: [
-      {
-        url: OG_IMAGE,
-        width: OG_WIDTH,
-        height: OG_HEIGHT,
-        alt: "Servchip — Page Not Found",
-        type: "image/png",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: `404 — Page Not Found | ${SITE.name}`,
-    description:
-      "The page you are looking for does not exist or has been moved.",
-    images: [OG_IMAGE],
-  },
-};
+  path: "/404",
+  noindex: true,
+  openGraphTitle: `404 — Page Not Found | ${SITE.name}`,
+  openGraphDescription:
+    "The page you are looking for does not exist or has been moved. Browse enterprise chips, AI accelerators, and semiconductor procurement at Servchip.",
+  twitterTitle: `404 — Page Not Found | ${SITE.name}`,
+  twitterDescription:
+    "The page you are looking for does not exist or has been moved.",
+});
 
 export default function NotFound() {
   return (

@@ -1,4 +1,4 @@
-export const MANUFACTURER_COLORS: Record<string, string> = {
+export const BRAND_COLORS: Record<string, string> = {
   NVIDIA: "#76B900",
   AMD: "#ED1C24",
   Intel: "#0071C5",
@@ -64,8 +64,8 @@ const TEXT_DARKEN_MAP: Record<string, string> = {
   "#333333": "#1A1A1A",
 };
 
-export function getManufacturerTextColor(name: string): string {
-  const color = MANUFACTURER_COLORS[name] || "#6B7280";
+export function getBrandTextColor(name: string): string {
+  const color = BRAND_COLORS[name] || "#6B7280";
   return TEXT_DARKEN_MAP[color] || darkenColor(color, 0.35);
 }
 
@@ -85,6 +85,13 @@ function darkenColor(hex: string, amount: number): string {
   return `#${r.toString(16).padStart(2, "0")}${g.toString(16).padStart(2, "0")}${b.toString(16).padStart(2, "0")}`;
 }
 
-export function getManufacturerColor(name: string): string {
-  return MANUFACTURER_COLORS[name] || "#6B7280";
+export function getBrandColor(name: string): string {
+  return BRAND_COLORS[name] || "#6B7280";
 }
+
+/** @deprecated Use {@link BRAND_COLORS} instead. */
+export const MANUFACTURER_COLORS = BRAND_COLORS;
+/** @deprecated Use {@link getBrandColor} instead. */
+export const getManufacturerColor = getBrandColor;
+/** @deprecated Use {@link getBrandTextColor} instead. */
+export const getManufacturerTextColor = getBrandTextColor;

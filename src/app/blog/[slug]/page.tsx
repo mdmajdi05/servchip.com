@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
-import { SITE } from "@/lib/constants";
 import {
+  createSeoMetadata,
   articleSchema,
   breadcrumbSchema,
   faqSchema,
@@ -26,38 +26,30 @@ export async function generateMetadata({
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) return { title: "Article Not Found | Servchip" };
 
-  return {
+  return createSeoMetadata({
     title: post.seo.metaTitle,
     description: post.seo.metaDescription,
+    path: `/blog/${post.slug}`,
     keywords: post.tags.map((t) => t.name),
-    alternates: {
-      canonical: post.seo.canonicalUrl || `${SITE.url}/blog/${post.slug}`,
-    },
-    robots: post.seo.robots || { index: true, follow: true },
-    openGraph: {
-      title: post.seo.metaTitle,
-      description: post.seo.metaDescription,
-      type: "article",
-      publishedTime: post.publishedAt,
-      authors: [post.author.name],
-      tags: post.tags.map((t) => t.name),
-      url: `${SITE.url}/blog/${post.slug}`,
-      images: [
-        {
-          url: post.featuredImage || OG_IMAGE,
-          width: OG_WIDTH,
-          height: OG_HEIGHT,
-          alt: post.title,
-        },
-      ],
-    },
-    twitter: {
-      card: "summary_large_image",
-      title: post.seo.metaTitle,
-      description: post.seo.metaDescription,
-      images: [post.featuredImage || OG_IMAGE],
-    },
-  };
+    ...(post.seo.canonicalUrl
+      ? { alternates: { canonical: post.seo.canonicalUrl } }
+      : {}),
+    ...(post.seo.robots ? { robots: post.seo.robots } : {}),
+    type: "article",
+    publishedTime: post.publishedAt,
+    authors: [post.author.name],
+    tags: post.tags.map((t) => t.name),
+    ...(post.featuredImage
+      ? {
+          image: {
+            url: post.featuredImage,
+            alt: post.title,
+            width: OG_WIDTH,
+            height: OG_HEIGHT,
+          },
+        }
+      : {}),
+  });
 }
 
 export default async function Page({

@@ -1,10 +1,10 @@
-﻿"use client";
+"use client";
 
 import { useMemo } from "react";
 import { Search, X, Check } from "lucide-react";
 import type { ChipProduct } from "@/types";
 import { CHIPS } from "@/data/chips";
-import { getManufacturerColor } from "@/data/manufacturer-colors";
+import { getBrandColor } from "@/data/brand-colors";
 
 export interface ChipFiltersState {
   search: string;
@@ -43,7 +43,7 @@ function getUniqueSpecValues(
 }
 
 export function ChipFilters({ filters, onChange }: ChipFiltersProps) {
-  const MANUFACTURERS = useMemo(() => getUniqueValues("manufacturer"), []);
+  const BRANDS = useMemo(() => getUniqueValues("manufacturer"), []);
   const ARCHITECTURES = useMemo(() => getUniqueValues("architecture"), []);
   const SERIES = useMemo(() => getUniqueValues("series"), []);
 
@@ -138,17 +138,17 @@ export function ChipFilters({ filters, onChange }: ChipFiltersProps) {
         )}
       </div>
 
-      {/* Manufacturer */}
+      {/* Brand */}
       <div>
         <h4 className="text-xs font-semibold uppercase tracking-wider text-primary mb-2">
-          Manufacturer
+          Brand
         </h4>
         <div className="space-y-0.5 max-h-40 overflow-y-auto">
-          {MANUFACTURERS.map((m) => (
+          {BRANDS.map((m) => (
             <Checkbox
               key={m}
               label={m}
-              color={getManufacturerColor(m)}
+              color={getBrandColor(m)}
               checked={filters.manufacturer.includes(m)}
               onToggle={() => toggle("manufacturer", m)}
             />

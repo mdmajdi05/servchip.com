@@ -1,19 +1,13 @@
 import type { Metadata } from "next";
-import { SITE } from "@/lib/constants";
-import {
-  serviceSchema,
-  breadcrumbSchema,
-  OG_IMAGE,
-  OG_WIDTH,
-  OG_HEIGHT,
-} from "@/lib/seo";
+import { createSeoMetadata, serviceSchema, breadcrumbSchema } from "@/lib/seo";
 import PageClient from "./page-client";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = createSeoMetadata({
   title:
     "Enterprise Chip Services — Semiconductor Procurement, Integration & AI Infrastructure Consulting",
   description:
     "End-to-end enterprise chip services — custom semiconductor procurement, hardware sourcing, system integration, AI infrastructure consulting, and enterprise support. ISO 9001 certified chip distributor with global delivery.",
+  path: "/services",
   keywords: [
     "enterprise chip services",
     "semiconductor procurement services",
@@ -24,32 +18,15 @@ export const metadata: Metadata = {
     "NVIDIA server configuration",
     "bulk chip procurement",
   ],
-  alternates: { canonical: `${SITE.url}/services` },
-  robots: { index: true, follow: true },
-  openGraph: {
-    title:
-      "Enterprise Chip Services | Servchip — Semiconductor Procurement & Integration",
-    description:
-      "Custom semiconductor procurement, system integration, AI infrastructure consulting, and enterprise hardware support from an ISO 9001 certified chip distributor.",
-    images: [
-      {
-        url: OG_IMAGE,
-        width: OG_WIDTH,
-        height: OG_HEIGHT,
-        alt: "Servchip Enterprise Chip Services",
-        type: "image/png",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title:
-      "Enterprise Chip Services | Servchip — Semiconductor Procurement & Integration",
-    description:
-      "Custom semiconductor procurement, system integration, AI infrastructure consulting, and enterprise hardware support from an ISO 9001 certified chip distributor.",
-    images: [OG_IMAGE],
-  },
-};
+  openGraphTitle:
+    "Enterprise Chip Services | Servchip — Semiconductor Procurement & Integration",
+  openGraphDescription:
+    "Custom semiconductor procurement, system integration, AI infrastructure consulting, and enterprise hardware support from an ISO 9001 certified chip distributor.",
+  twitterTitle:
+    "Enterprise Chip Services | Servchip — Semiconductor Procurement & Integration",
+  twitterDescription:
+    "Custom semiconductor procurement, system integration, AI infrastructure consulting, and enterprise hardware support from an ISO 9001 certified chip distributor.",
+});
 
 const SERVICES = [
   {

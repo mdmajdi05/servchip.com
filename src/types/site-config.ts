@@ -1,4 +1,4 @@
-export interface Manufacturer {
+export interface Brand {
   id: string;
   name: string;
   slug: string;
@@ -8,29 +8,36 @@ export interface Manufacturer {
   website: string;
   founded: string;
   headquarters: string;
-  categories: ManufacturerCategory[];
+  categories: BrandCategory[];
   seo: {
     metaTitle: string;
     metaDescription: string;
   };
 }
 
-export interface ManufacturerCategory {
+export interface BrandCategory {
   id: string;
   name: string;
   slug: string;
   description: string;
   icon: string;
-  subcategories: ManufacturerSubCategory[];
+  subcategories: BrandSubCategory[];
 }
 
-export interface ManufacturerSubCategory {
+export interface BrandSubCategory {
   id: string;
   name: string;
   slug: string;
   description: string;
   chipIds: string[];
 }
+
+/** @deprecated Use {@link Brand} instead. */
+export type Manufacturer = Brand;
+/** @deprecated Use {@link BrandCategory} instead. */
+export type ManufacturerCategory = BrandCategory;
+/** @deprecated Use {@link BrandSubCategory} instead. */
+export type ManufacturerSubCategory = BrandSubCategory;
 
 export interface SiteConfig {
   id: string;

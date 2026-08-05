@@ -18,7 +18,7 @@ import {
   ALL_MEMORY,
   ALL_STORAGE,
 } from "@/data/products";
-import { MANUFACTURERS } from "@/data/manufacturers";
+import { BRANDS } from "@/data/brands";
 import { ProductCard } from "@/components/products/ProductCard";
 import type { ProductType } from "@/types";
 type FilterType = ProductType | "all";
@@ -77,15 +77,13 @@ export default function ProductsPage() {
     <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4">
         {/* Header */}
-        <div
-          className="py-8"
-        >
+        <div className="py-8">
           <h1 className="text-3xl lg:text-4xl font-black text-text mb-2">
             All Products
           </h1>
           <p className="text-text-muted text-sm">
             Browse {ALL_PRODUCTS.length} products across all categories and
-            manufacturers
+            brands
           </p>
         </div>
         {/* Search + Filters toggle */}
@@ -96,7 +94,7 @@ export default function ProductsPage() {
               type="text"
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              placeholder="Search by name, manufacturer, series..."
+              placeholder="Search by name, brand, series..."
               aria-label="Search products"
               className="w-full pl-9 pr-4 py-2.5 text-sm bg-surface border border-border rounded-xl text-text placeholder:text-text-dim focus:outline-none focus:border-primary/50 transition-transform"
             />
@@ -140,21 +138,19 @@ export default function ProductsPage() {
           ))}
         </div>
         {/* Filter panel */}
-        <div
-          className="overflow-hidden mb-6"
-        >
+        <div className="overflow-hidden mb-6">
           <div className="flex flex-wrap items-center gap-4 p-4 rounded-xl border border-border bg-surface">
             <div>
               <label className="text-[10px] font-semibold uppercase tracking-wider text-text-dim block mb-1.5">
-                Manufacturer
+                Brand
               </label>
               <select
                 value={manufacturerFilter}
                 onChange={(e) => setManufacturerFilter(e.target.value)}
                 className="px-3 py-1.5 text-sm bg-bg-dark border border-border rounded-lg text-text focus:outline-none focus:border-primary/50"
               >
-                <option value="all">All Manufacturers</option>
-                {MANUFACTURERS.map((m) => (
+                <option value="all">All Brands</option>
+                {BRANDS.map((m) => (
                   <option key={m.id} value={m.id}>
                     {m.name}
                   </option>
@@ -171,7 +167,7 @@ export default function ProductsPage() {
                 className="px-3 py-1.5 text-sm bg-bg-dark border border-border rounded-lg text-text focus:outline-none focus:border-primary/50"
               >
                 <option value="name">Name</option>
-                <option value="manufacturer">Manufacturer</option>
+                <option value="manufacturer">Brand</option>
                 <option value="status">Status</option>
               </select>
             </div>
@@ -182,17 +178,12 @@ export default function ProductsPage() {
           {filtered.length} result{filtered.length !== 1 ? "s" : ""}
           {search && <> for &ldquo;{search}&rdquo;</>}
           {manufacturerFilter !== "all" && (
-            <>
-              {" "}
-              - {MANUFACTURERS.find((m) => m.id === manufacturerFilter)?.name}
-            </>
+            <> - {BRANDS.find((m) => m.id === manufacturerFilter)?.name}</>
           )}
           {typeFilter !== "all" && <> - {typeFilter}</>}
         </p>
         {/* Grid */}
-        <div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"
-        >
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
           {filtered.map((product, i) => (
             <ProductCard key={product.id} product={product} index={i} />
           ))}

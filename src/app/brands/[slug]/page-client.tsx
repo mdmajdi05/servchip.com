@@ -13,14 +13,13 @@ import {
   MemoryStick,
   HardDrive,
 } from "lucide-react";
-import { MANUFACTURERS, getManufacturerBySlug } from "@/data/manufacturers";
-import { getProductsByManufacturer } from "@/data/products";
-import { getManufacturerColor } from "@/data/manufacturer-colors";
+import { getBrandBySlug } from "@/data/brands";
+import { getProductsByBrand } from "@/data/products";
+import { getBrandColor } from "@/data/brand-colors";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/shared/PageHero";
 import { ProductCard } from "@/components/products/ProductCard";
 import { Button } from "@/components/ui/Button";
-import type { ProductType } from "@/types";
 
 const TYPE_ICON: Record<string, typeof Cpu> = {
   chip: Cpu,
@@ -30,14 +29,12 @@ const TYPE_ICON: Record<string, typeof Cpu> = {
   storage: HardDrive,
 };
 
-export default function ManufacturerPage() {
+export default function BrandPage() {
   const params = useParams();
   const slug = params.slug as string;
-  const manufacturer = getManufacturerBySlug(slug);
-  const products = getProductsByManufacturer(manufacturer?.id ?? "");
-  const color = manufacturer
-    ? getManufacturerColor(manufacturer.name)
-    : undefined;
+  const brand = getBrandBySlug(slug);
+  const products = getProductsByBrand(brand?.id ?? "");
+  const color = brand ? getBrandColor(brand.name) : undefined;
 
   const grouped = products.reduce<Record<string, typeof products>>((acc, p) => {
     const type =
@@ -55,13 +52,11 @@ export default function ManufacturerPage() {
     return acc;
   }, {});
 
-  if (!manufacturer) {
+  if (!brand) {
     return (
       <div className="min-h-screen bg-bg-dark flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-2xl font-bold text-text mb-2">
-            Manufacturer Not Found
-          </h1>
+          <h1 className="text-2xl font-bold text-text mb-2">Brand Not Found</h1>
           <Link href="/products" className="text-primary hover:underline">
             Browse all products
           </Link>
@@ -73,13 +68,13 @@ export default function ManufacturerPage() {
   return (
     <div className="min-h-screen bg-bg-dark">
       <PageHero
-        label={manufacturer.name}
-        title={`${manufacturer.name} — Enterprise Hardware Solutions`}
-        subtitle={manufacturer.longDescription}
+        label={brand.name}
+        title={`${brand.name} — Enterprise Hardware Solutions`}
+        subtitle={brand.longDescription}
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Products", href: "/products" },
-          { label: manufacturer.name },
+          { label: brand.name },
         ]}
       />
 
@@ -92,7 +87,7 @@ export default function ManufacturerPage() {
               <div>
                 <div className="text-xs text-text-dim">Founded</div>
                 <div className="text-sm font-semibold text-text">
-                  {manufacturer.founded}
+                  {brand.founded}
                 </div>
               </div>
             </div>
@@ -101,7 +96,7 @@ export default function ManufacturerPage() {
               <div>
                 <div className="text-xs text-text-dim">Headquarters</div>
                 <div className="text-sm font-semibold text-text">
-                  {manufacturer.headquarters}
+                  {brand.headquarters}
                 </div>
               </div>
             </div>
@@ -110,12 +105,12 @@ export default function ManufacturerPage() {
               <div>
                 <div className="text-xs text-text-dim">Website</div>
                 <a
-                  href={manufacturer.website}
+                  href={brand.website}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm font-semibold text-primary hover:underline"
                 >
-                  {manufacturer.website}
+                  {brand.website}
                 </a>
               </div>
             </div>
@@ -123,16 +118,16 @@ export default function ManufacturerPage() {
 
           <SectionHeading
             label="Categories"
-            title={`${manufacturer.name} Product Lines`}
-            subtitle={`Browse our complete ${manufacturer.name} portfolio by category`}
+            title={`${brand.name} Product Lines`}
+            subtitle={`Browse our complete ${brand.name} portfolio by category`}
             align="center"
           />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-10">
-            {manufacturer.categories.map((cat, i) => (
+            {brand.categories.map((cat, i) => (
               <div key={cat.id}>
                 <Link
-                  href={`/manufacturers/${manufacturer.slug}/${cat.slug}`}
+                  href={`/brands/${brand.slug}/${cat.slug}`}
                   className="block group rounded-2xl border border-border bg-surface p-6 card-hover h-full"
                 >
                   <h3 className="text-lg font-bold text-text mb-2 group-hover:text-primary transition-transform">

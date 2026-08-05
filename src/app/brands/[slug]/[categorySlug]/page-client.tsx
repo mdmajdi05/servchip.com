@@ -3,22 +3,20 @@
 import { useParams } from "next/navigation";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { MANUFACTURERS } from "@/data/manufacturers";
-import { getProductsByManufacturer } from "@/data/products";
+import { BRANDS } from "@/data/brands";
+import { getProductsByBrand } from "@/data/products";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProductCard } from "@/components/products/ProductCard";
 
-export default function ManufacturerCategoryPage() {
+export default function BrandCategoryPage() {
   const params = useParams();
   const slug = params.slug as string;
   const categorySlug = params.categorySlug as string;
 
-  const manufacturer = MANUFACTURERS.find((m) => m.slug === slug);
-  const category = manufacturer?.categories.find(
-    (c) => c.slug === categorySlug,
-  );
+  const brand = BRANDS.find((b) => b.slug === slug);
+  const category = brand?.categories.find((c) => c.slug === categorySlug);
 
-  if (!manufacturer || !category) {
+  if (!brand || !category) {
     return (
       <div className="min-h-screen bg-bg-dark flex items-center justify-center">
         <div className="text-center">
@@ -33,7 +31,7 @@ export default function ManufacturerCategoryPage() {
     );
   }
 
-  const allProducts = getProductsByManufacturer(manufacturer.id);
+  const allProducts = getProductsByBrand(brand.id);
   const allChipIds = category.subcategories.flatMap((s) => s.chipIds);
   const categoryProducts = allProducts.filter((p) =>
     allChipIds.length > 0
@@ -61,17 +59,17 @@ export default function ManufacturerCategoryPage() {
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-text-dim/60" />
             <Link
-              href={`/manufacturers/${manufacturer.slug}`}
+              href={`/brands/${brand.slug}`}
               className="hover:text-primary transition-colors"
             >
-              {manufacturer.name}
+              {brand.name}
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-text-dim/60" />
             <span className="text-text">{category.name}</span>
           </nav>
           <SectionHeading
-            label={`${manufacturer.name} • ${category.name}`}
-            title={`${manufacturer.name} ${category.name}`}
+            label={`${brand.name} • ${category.name}`}
+            title={`${brand.name} ${category.name}`}
             subtitle={category.description}
             align="left"
           />

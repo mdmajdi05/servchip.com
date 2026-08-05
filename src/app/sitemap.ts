@@ -2,7 +2,10 @@ import { MetadataRoute } from "next";
 import { CHIPS } from "@/data/chips";
 import { BLOG_POSTS } from "@/blog";
 import { CATEGORIES } from "@/data/categories";
-import { MANUFACTURERS } from "@/data/manufacturers";
+import { BRANDS } from "@/data/brands";
+import { COUNTRIES } from "@/data/countries";
+import { INDUSTRIES } from "@/data/industries";
+import { SOLUTIONS } from "@/data/solutions";
 import { SITE } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -64,6 +67,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
     },
     {
+      url: `${baseUrl}/industries`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
+      url: `${baseUrl}/countries`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+    },
+    {
       url: `${baseUrl}/technology`,
       lastModified: new Date(),
       changeFrequency: "weekly",
@@ -107,22 +122,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   ];
 
-  const manufacturerPages: MetadataRoute.Sitemap = MANUFACTURERS.map((m) => ({
-    url: `${baseUrl}/manufacturers/${m.slug}`,
+  const manufacturerPages: MetadataRoute.Sitemap = BRANDS.map((m) => ({
+    url: `${baseUrl}/brands/${m.slug}`,
     lastModified: new Date(),
     changeFrequency: "weekly" as const,
     priority: 0.9,
   }));
 
-  const manufacturerCategoryPages: MetadataRoute.Sitemap =
-    MANUFACTURERS.flatMap((m) =>
-      m.categories.map((c) => ({
-        url: `${baseUrl}/manufacturers/${m.slug}/${c.slug}`,
-        lastModified: new Date(),
-        changeFrequency: "weekly" as const,
-        priority: 0.8,
-      })),
-    );
+  const manufacturerCategoryPages: MetadataRoute.Sitemap = BRANDS.flatMap((m) =>
+    m.categories.map((c) => ({
+      url: `${baseUrl}/brands/${m.slug}/${c.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "weekly" as const,
+      priority: 0.8,
+    })),
+  );
 
   const chipPages: MetadataRoute.Sitemap = CHIPS.map((chip) => ({
     url: `${baseUrl}/products/${chip.slug}`,
@@ -147,6 +161,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
+  const countryPages: MetadataRoute.Sitemap = COUNTRIES.map((c) => ({
+    url: `${baseUrl}/countries/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  const industryPages: MetadataRoute.Sitemap = INDUSTRIES.map((i) => ({
+    url: `${baseUrl}/industries/${i.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
+
+  const solutionPages: MetadataRoute.Sitemap = SOLUTIONS.map((s) => ({
+    url: `${baseUrl}/solutions/${s.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
   return [
     ...staticPages,
     ...manufacturerPages,
@@ -154,5 +189,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...chipPages,
     ...categoryPages,
     ...blogPages,
+    ...countryPages,
+    ...industryPages,
+    ...solutionPages,
   ];
 }

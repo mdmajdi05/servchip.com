@@ -1,18 +1,18 @@
-﻿"use client";
+"use client";
 
 import React from "react";
 import Link from "next/link";
-import { MANUFACTURERS } from "@/data/manufacturers";
-import { MANUFACTURER_COLORS } from "@/data/manufacturer-colors";
+import { BRANDS } from "@/data/brands";
+import { BRAND_COLORS } from "@/data/brand-colors";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 
-const DISPLAY_MANUFACTURERS = MANUFACTURERS.filter(
+const DISPLAY_BRANDS = BRANDS.filter(
   (m) => m.id !== "google-cloud" && m.id !== "amazon-web-services",
 );
 
 const colorVarName = (name: string) => {
-  const color = MANUFACTURER_COLORS[name] || "#6B7280";
+  const color = BRAND_COLORS[name] || "#6B7280";
   return color;
 };
 
@@ -27,7 +27,7 @@ const LogoItem = React.memo(function LogoItem({
 
   return (
     <Link
-      href={`/manufacturers/${slug}`}
+      href={`/brands/${slug}`}
       className="flex-shrink-0 w-[150px] h-[80px] mx-3 rounded-xl bg-surface border border-border flex items-center justify-center hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-transform duration-300 group"
     >
       <div className="flex items-center gap-3 px-3">
@@ -41,7 +41,7 @@ const LogoItem = React.memo(function LogoItem({
 });
 
 export function ClientLogos() {
-  const manufacturers = DISPLAY_MANUFACTURERS;
+  const manufacturers = DISPLAY_BRANDS;
 
   const row1 = manufacturers.slice(0, Math.ceil(manufacturers.length / 2));
   const row2 = manufacturers.slice(Math.ceil(manufacturers.length / 2));
@@ -50,7 +50,7 @@ export function ClientLogos() {
     <section className="py-20 bg-surface overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 mb-10">
         <SectionHeading
-          label="Manufacturer Partners"
+          label="Brand Partners"
           title="Trusted by Leading Brands Worldwide"
           subtitle="Authorized partnerships with NVIDIA, AMD, Intel, and the world's top semiconductor and server hardware manufacturers"
           align="center"
