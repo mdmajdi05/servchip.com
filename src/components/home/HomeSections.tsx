@@ -1,6 +1,7 @@
 "use client";
 
 import dynamic from "next/dynamic";
+import type { Country, CountryMarket } from "@/types";
 
 const Hero3D = dynamic(
   () => import("@/components/home/Hero3D").then((m) => m.Hero3D),
@@ -180,6 +181,19 @@ const FAQAccordion = dynamic(
     ),
   },
 );
+const CountryMarketStrip = dynamic(
+  () =>
+    import("@/components/home/CountryMarketStrip").then(
+      (m) => m.CountryMarketStrip,
+    ),
+  {
+    loading: () => (
+      <div className="h-32 flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+      </div>
+    ),
+  },
+);
 const LatestInsights = dynamic(
   () =>
     import("@/components/home/LatestInsights").then((m) => m.LatestInsights),
@@ -213,11 +227,20 @@ const LocationsStrip = dynamic(
   },
 );
 
-export function HomeSections() {
+export function HomeSections({
+  country,
+  market,
+}: {
+  country?: Country;
+  market?: CountryMarket;
+}) {
   return (
     <>
-      <Hero3D />
+      <Hero3D country={country} market={market} />
       <TrustBar />
+      {country && market && (
+        <CountryMarketStrip country={country} market={market} />
+      )}
       <BrandSpotlight />
       <StatsCounter />
       <ClientLogos />
@@ -231,7 +254,7 @@ export function HomeSections() {
       <ComparisonPreview />
       <HowItWorks />
       <SuccessStories />
-      <FAQAccordion />
+      <FAQAccordion faqs={country?.faqs} countryName={country?.name} />
       <LatestInsights />
       <LocationsStrip />
       <FinalCTA />

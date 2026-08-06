@@ -16,6 +16,7 @@ import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 const API_ENDPOINTS = [
   {
@@ -236,6 +237,7 @@ const INLINED_FEATURES = [
 ];
 
 export default function DeveloperHubPage() {
+  const prefix = useCountryPrefix();
   return (
     <div className="min-h-screen bg-bg-dark">
       <PageHero
@@ -373,7 +375,7 @@ export default function DeveloperHubPage() {
           </div>
 
           <div className="text-center mt-8">
-            <Link href="/contact">
+            <Link href={`${prefix}/contact`}>
               <Button
                 variant="outline"
                 size="md"
@@ -573,13 +575,13 @@ export default function DeveloperHubPage() {
           {/* Related content */}
           <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
             <Link
-              href="/categories/ai-servers-platforms"
+              href={`${prefix}/categories/ai-servers-platforms`}
               className="px-4 py-2 text-sm font-medium rounded-xl border border-border text-text-muted hover:text-text hover:border-primary/30 transition-transform"
             >
               AI Server Platforms
             </Link>
             <Link
-              href="/blog/rocm-vs-cuda-amd-nvidia-ai-stack-2026"
+              href={`${prefix}/blog/rocm-vs-cuda-amd-nvidia-ai-stack-2026`}
               className="px-4 py-2 text-sm font-medium rounded-xl border border-border text-text-muted hover:text-text hover:border-primary/30 transition-transform"
             >
               ROCm vs CUDA comparison
@@ -588,7 +590,7 @@ export default function DeveloperHubPage() {
 
           {/* CTA */}
           <div className="text-center mt-6">
-            <Link href="/contact">
+            <Link href={`${prefix}/contact`}>
               <Button
                 variant="solid"
                 size="lg"

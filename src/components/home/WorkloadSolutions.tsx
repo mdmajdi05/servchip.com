@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/Badge";
 import { getProductsByUseCase } from "@/data/products";
 import { getBrandColor } from "@/data/brand-colors";
 import { isChipProduct, getProductTypeLabel } from "@/types";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { AnyProduct, ChipProduct } from "@/types";
 const WORKLOADS = [
   {
@@ -63,10 +64,11 @@ function ProductCard({
   index: number;
 }) {
   const mfrColor = getBrandColor(product.manufacturer);
+  const prefix = useCountryPrefix();
   return (
     <div key={product.id}>
       <Link
-        href={`/products/${product.slug}`}
+        href={`${prefix}/products/${product.slug}`}
         className="block bg-surface border border-border rounded-xl p-5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-transform duration-300 group h-full"
       >
         <div className="flex items-center gap-2 mb-3">
@@ -102,6 +104,7 @@ function ProductCard({
 }
 export function WorkloadSolutions() {
   const [activeTab, setActiveTab] = useState(WORKLOADS[0].id);
+  const prefix = useCountryPrefix();
   const products = useMemo(
     () => getProductsByUseCase(activeTab).slice(0, 6),
     [activeTab],
@@ -154,13 +157,13 @@ export function WorkloadSolutions() {
         </div>
         <div className="text-center mt-8 flex flex-wrap items-center justify-center gap-5">
           <Link
-            href="/products"
+            href={`${prefix}/products`}
             className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:underline"
           >
             Browse All Products <ArrowRight className="w-3.5 h-3.5" />
           </Link>
           <Link
-            href="/solutions"
+            href={`${prefix}/solutions`}
             className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:underline"
           >
             Explore Solutions <ArrowRight className="w-3.5 h-3.5" />

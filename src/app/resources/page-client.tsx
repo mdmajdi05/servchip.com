@@ -20,6 +20,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { BLOG_POSTS } from "@/blog";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 const RESOURCE_CATEGORIES = [
   {
     icon: FileText,
@@ -98,13 +99,17 @@ function getCategoryName(cat: unknown): string {
   return "";
 }
 export default function ResourcesPage() {
+  const prefix = useCountryPrefix();
   return (
     <div className="min-h-screen bg-bg-dark">
       <PageHero
         label="Resources"
         title="Knowledge Base for AI & HPC Computing"
         subtitle="Explore our growing library of technical guides, case studies, whitepapers, and expert insights - all created by multi-vendor certified engineers to help you make informed semiconductor and data center infrastructure decisions."
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Resources" }]}
+        breadcrumbs={[
+          { label: "Home", href: `${prefix}/` },
+          { label: "Resources" },
+        ]}
       />
       {/* Featured Resources */}
       {featuredPosts.length > 0 && (
@@ -148,7 +153,7 @@ export default function ResourcesPage() {
                           {post.publishedAt}
                         </span>
                         <Link
-                          href={`/blog/${post.slug}`}
+                          href={`${prefix}/blog/${post.slug}`}
                           aria-label={`Read full article: ${post.title}`}
                           className="inline-flex items-center gap-1 text-xs font-semibold text-primary group/link"
                         >
@@ -162,7 +167,7 @@ export default function ResourcesPage() {
               })}
             </div>
             <div className="text-center mt-10 flex flex-wrap items-center justify-center gap-3">
-              <Link href="/blog">
+              <Link href={`${prefix}/blog`}>
                 <Button
                   variant="outline"
                   className="border-primary/40 text-primary hover:bg-primary/10"
@@ -170,7 +175,7 @@ export default function ResourcesPage() {
                   View All Articles <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
-              <Link href="/developer-hub">
+              <Link href={`${prefix}/developer-hub`}>
                 <Button variant="solid" className="font-semibold">
                   Visit Developer Hub <ArrowRight className="w-4 h-4" />
                 </Button>
@@ -210,7 +215,7 @@ export default function ResourcesPage() {
                     {cat.description}
                   </p>
                   <Link
-                    href={cat.href}
+                    href={`${prefix}${cat.href}`}
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary group/link mt-auto pt-3 border-t border-border"
                   >
                     <span>Explore {cat.title}</span>
@@ -277,7 +282,7 @@ export default function ResourcesPage() {
           <div className="max-w-3xl mx-auto">
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
               <Link
-                href="/contact"
+                href={`${prefix}/contact`}
                 className="flex items-center gap-3 rounded-2xl border border-border bg-surface p-5 card-hover group"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-transform shrink-0">
@@ -294,7 +299,7 @@ export default function ResourcesPage() {
                 <ExternalLink className="w-4 h-4 text-text-dim shrink-0" />
               </Link>
               <Link
-                href="/faq"
+                href={`${prefix}/faq`}
                 className="flex items-center gap-3 rounded-2xl border border-border bg-surface p-5 card-hover group"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-transform shrink-0">
@@ -309,7 +314,7 @@ export default function ResourcesPage() {
                 <ExternalLink className="w-4 h-4 text-text-dim shrink-0" />
               </Link>
               <Link
-                href="/contact"
+                href={`${prefix}/contact`}
                 className="flex items-center gap-3 rounded-2xl border border-border bg-surface p-5 card-hover group"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-transform shrink-0">

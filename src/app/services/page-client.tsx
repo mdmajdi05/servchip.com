@@ -18,6 +18,7 @@ import {
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import { STATS } from "@/data/home";
 const SERVICES = [
   {
@@ -165,13 +166,17 @@ const itemVariants = {
   },
 };
 export default function ServicesPage() {
+  const prefix = useCountryPrefix();
   return (
     <div className="min-h-screen bg-bg-dark">
       <PageHero
         label="Services"
         title="End-to-End Enterprise Chip Solutions"
         subtitle="From finding the right chip to getting it deployed - we handle the full lifecycle so you can focus on building."
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Services" }]}
+        breadcrumbs={[
+          { label: "Home", href: `${prefix}/` },
+          { label: "Services" },
+        ]}
       />
       {/* Service Grid */}
       <section className="relative py-20 md:py-28 bg-bg-dark overflow-hidden">
@@ -212,7 +217,7 @@ export default function ServicesPage() {
                     ))}
                   </ul>
                   <Link
-                    href="/contact"
+                    href={`${prefix}/contact`}
                     className="inline-flex items-center gap-1.5 text-xs font-semibold text-primary group/link mt-auto pt-3 border-t border-border"
                   >
                     <span>Request Service</span>
@@ -312,7 +317,7 @@ export default function ServicesPage() {
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 shrink-0">
-                <Link href="/contact">
+                <Link href={`${prefix}/contact`}>
                   <Button
                     variant="solid"
                     size="lg"
@@ -321,7 +326,7 @@ export default function ServicesPage() {
                     Talk to an Expert <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
-                <Link href="/rfq">
+                <Link href={`${prefix}/rfq`}>
                   <Button
                     variant="outline"
                     size="lg"
@@ -330,7 +335,7 @@ export default function ServicesPage() {
                     Get a Quote
                   </Button>
                 </Link>
-                <Link href="/resources">
+                <Link href={`${prefix}/resources`}>
                   <Button
                     variant="outline"
                     size="lg"

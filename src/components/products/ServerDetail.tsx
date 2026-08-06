@@ -21,6 +21,7 @@ import { Button } from "@/components/ui/Button";
 import { ManufacturerLink } from "@/components/products/ManufacturerLink";
 import { CountryAvailabilityLinks } from "@/components/products/CountryAvailabilityLinks";
 import { ProductCard } from "@/components/products/ProductCard";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { ServerProduct } from "@/types";
 
 const statusStyles: Record<
@@ -86,6 +87,7 @@ const itemVariants = {
 
 export function ServerDetail() {
   const { slug } = useParams<{ slug: string }>();
+  const prefix = useCountryPrefix();
   const server = ALL_SERVERS.find((s) => s.slug === slug);
 
   if (!server) {
@@ -102,7 +104,7 @@ export function ServerDetail() {
             The server platform you are looking for does not exist or may have
             been removed.
           </p>
-          <Link href="/products">
+          <Link href={`${prefix}/products`}>
             <Button variant="solid" icon={<ArrowLeft className="w-4 h-4" />}>
               Back to Products
             </Button>
@@ -241,7 +243,7 @@ export function ServerDetail() {
               )}
 
               <div className="flex flex-wrap gap-3 pt-2">
-                <Link href={`/rfq?chip=${server.slug}`}>
+                <Link href={`${prefix}/rfq?chip=${server.slug}`}>
                   <Button
                     variant="solid"
                     size="lg"
@@ -251,7 +253,7 @@ export function ServerDetail() {
                     Get Quote
                   </Button>
                 </Link>
-                <Link href={`/comparison?add=${server.slug}`}>
+                <Link href={`${prefix}/comparison?add=${server.slug}`}>
                   <Button
                     variant="outline"
                     size="lg"
@@ -260,7 +262,7 @@ export function ServerDetail() {
                     Compare with similar chips
                   </Button>
                 </Link>
-                <Link href="/products">
+                <Link href={`${prefix}/products`}>
                   <Button variant="ghost" size="lg">
                     ? Back to Catalog
                   </Button>
@@ -328,7 +330,7 @@ export function ServerDetail() {
                     catalog.
                   </p>
                 </div>
-                <Link href="/products">
+                <Link href={`${prefix}/products`}>
                   <Button variant="outline" size="sm">
                     View All <ArrowRight className="w-3.5 h-3.5" />
                   </Button>
@@ -355,7 +357,7 @@ export function ServerDetail() {
                 </p>
               </div>
               <div className="flex gap-3 shrink-0">
-                <Link href={`/rfq?chip=${server.slug}`}>
+                <Link href={`${prefix}/rfq?chip=${server.slug}`}>
                   <Button
                     variant="solid"
                     size="lg"
@@ -365,7 +367,7 @@ export function ServerDetail() {
                     Request Quote
                   </Button>
                 </Link>
-                <Link href="/contact">
+                <Link href={`${prefix}/contact`}>
                   <Button variant="outline" size="lg">
                     Talk to Expert
                   </Button>
@@ -378,7 +380,7 @@ export function ServerDetail() {
 
           <div className="text-center">
             <Link
-              href="/faq"
+              href={`${prefix}/faq`}
               className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
             >
               Shipping, MOQ &amp; Sourcing FAQ{" "}

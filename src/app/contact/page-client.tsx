@@ -10,6 +10,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { SITE } from "@/lib/constants";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import Link from "next/link";
 const WHATSAPP_NUMBER = "917982498712";
 const CONTACT_METHODS = [
@@ -39,6 +40,7 @@ const CONTACT_METHODS = [
   },
 ];
 export default function ContactPage() {
+  const prefix = useCountryPrefix();
   return (
     <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4">
@@ -136,7 +138,7 @@ export default function ContactPage() {
                 quantities, and timelines.
               </p>
               <Link
-                href="/rfq"
+                href={`${prefix}/rfq`}
                 className="inline-flex items-center gap-2 text-xs font-semibold text-primary hover:underline"
               >
                 Submit RFQ <ArrowRight className="w-3 h-3" />
@@ -151,7 +153,7 @@ export default function ContactPage() {
                 FAQ.
               </p>
               <Link
-                href="/faq"
+                href={`${prefix}/faq`}
                 className="inline-flex items-center gap-2 text-xs font-semibold text-primary hover:underline"
               >
                 Check our FAQ first <ArrowRight className="w-3 h-3" />

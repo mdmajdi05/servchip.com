@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { MapPin, ChevronRight } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 interface LocationLink {
   label: string;
@@ -65,6 +66,7 @@ const REGION_GROUPS: {
 ];
 
 export function LocationsStrip() {
+  const prefix = useCountryPrefix();
   return (
     <section className="py-20 bg-bg-body">
       <div className="max-w-7xl mx-auto px-4">
@@ -90,7 +92,11 @@ export function LocationsStrip() {
                 {group.links.map((link) => (
                   <li key={link.label}>
                     <Link
-                      href={link.href}
+                      href={
+                        link.href.startsWith("/countries/")
+                          ? link.href
+                          : `${prefix}${link.href}`
+                      }
                       className="group inline-flex items-start gap-1.5 text-sm text-text-muted hover:text-primary transition-colors"
                     >
                       <ChevronRight className="w-3.5 h-3.5 mt-0.5 text-primary/50 group-hover:text-primary shrink-0" />

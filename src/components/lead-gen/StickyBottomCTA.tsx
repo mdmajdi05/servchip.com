@@ -2,9 +2,11 @@
 import { useState, useEffect } from "react";
 import { X, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 const DISMISS_KEY = "servchip-sticky-cta-closed";
 export function StickyBottomCTA() {
   const [visible, setVisible] = useState(false);
+  const prefix = useCountryPrefix();
   const [dismissed] = useState(() => {
     if (typeof window === "undefined") return false;
     return !!localStorage.getItem(DISMISS_KEY);
@@ -25,16 +27,14 @@ export function StickyBottomCTA() {
   return (
     <>
       {visible && (
-        <div
-          className="fixed bottom-0 left-0 right-0 z-[9998] md:hidden"
-        >
+        <div className="fixed bottom-0 left-0 right-0 z-[9998] md:hidden">
           <div className="bg-primary/95 backdrop-blur-lg border-t border-primary-dark/30 px-4 py-3 flex items-center justify-between gap-3">
             <p className="text-sm font-semibold text-bg-dark leading-tight">
               Need GPU Pricing? Get a Free Quote
             </p>
             <div className="flex items-center gap-2 shrink-0">
               <Link
-                href="/rfq"
+                href={`${prefix}/rfq`}
                 className="inline-flex items-center gap-1.5 px-4 py-2 bg-bg-dark text-primary font-semibold text-sm rounded-lg hover:bg-surface transition-transform duration-200 hover:scale-[1.02]"
               >
                 Get Quote

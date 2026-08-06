@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { searchProducts, searchBlogPosts } from "@/data/search";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { ProductType } from "@/types";
 const TYPE_ICON: Record<ProductType, typeof Cpu> = {
   chip: Cpu,
@@ -35,6 +36,7 @@ export function SearchBar() {
   const [debounced, setDebounced] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
+  const prefix = useCountryPrefix();
   useEffect(() => {
     if (open) inputRef.current?.focus();
   }, [open]);
@@ -72,54 +74,55 @@ export function SearchBar() {
       >
         <Search className="w-4 h-4" />
       </button>
-        {open && (
-          <div
-            className="absolute top-full right-0 mt-2 w-80 bg-surface border border-border rounded-xl shadow-2xl overflow-hidden z-50"
-          >
-            <div className="flex items-center gap-2 px-4 py-3 border-b border-border">
-              <Search className="w-4 h-4 text-text-dim" />
-              <input
-                ref={inputRef}
-                type="text"
-                value={query}
-                onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search products & blog..."
-                aria-label="Search products and blog"
-                className="flex-1 bg-transparent text-sm text-text placeholder-text-dim outline-none"
-              />
-              {loading && query.length >= 2 && (
-                <Loader2 className="w-3.5 h-3.5 text-text-dim animate-spin" />
-              )}
-              {query && !loading && (
-                <button
-                  onClick={() => setQuery("")}
-                  aria-label="Clear search"
-                  className="text-text-dim hover:text-text"
-                >
-                  <X className="w-3.5 h-3.5" />
-                </button>
-              )}
-            </div>
-            <div className="max-h-80 overflow-y-auto">
-              {loading && query.length >= 2 && (
-                <p className="px-4 py-6 text-center text-text-dim text-xs">Searching...</p>
-              )}
-              {!loading && debounced.length >= 2 && !hasResults && (
-                <p className="px-4 py-6 text-center text-text-dim text-xs">
-                  No results found
-                </p>
-              )}
-              {!loading && products.length > 0 && (
-                <div className="px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-text-dim">
-                  Products ({products.length})
-                </div>
-              )}
-              {!loading && products.map(({ product, type }) => {
+      {open && (
+        <div className="absolute top-full right-0 mt-2 w-80 bg-surface border border-border rounded-xl shadow-2xl overflow-hidden z-50">
+          <div className="flex items-center gap-2 px-4 py-3 border-b border-border">
+            <Search className="w-4 h-4 text-text-dim" />
+            <input
+              ref={inputRef}
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search products & blog..."
+              aria-label="Search products and blog"
+              className="flex-1 bg-transparent text-sm text-text placeholder-text-dim outline-none"
+            />
+            {loading && query.length >= 2 && (
+              <Loader2 className="w-3.5 h-3.5 text-text-dim animate-spin" />
+            )}
+            {query && !loading && (
+              <button
+                onClick={() => setQuery("")}
+                aria-label="Clear search"
+                className="text-text-dim hover:text-text"
+              >
+                <X className="w-3.5 h-3.5" />
+              </button>
+            )}
+          </div>
+          <div className="max-h-80 overflow-y-auto">
+            {loading && query.length >= 2 && (
+              <p className="px-4 py-6 text-center text-text-dim text-xs">
+                Searching...
+              </p>
+            )}
+            {!loading && debounced.length >= 2 && !hasResults && (
+              <p className="px-4 py-6 text-center text-text-dim text-xs">
+                No results found
+              </p>
+            )}
+            {!loading && products.length > 0 && (
+              <div className="px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-text-dim">
+                Products ({products.length})
+              </div>
+            )}
+            {!loading &&
+              products.map(({ product, type }) => {
                 const Icon = TYPE_ICON[type];
                 return (
                   <Link
                     key={`p-${product.id}`}
-                    href={`/products/${product.slug}`}
+                    href={`${prefix}/products/${product.slug}`}
                     onClick={() => {
                       setOpen(false);
                       setQuery("");
@@ -151,15 +154,16 @@ export function SearchBar() {
                   </Link>
                 );
               })}
-              {!loading && blogPosts.length > 0 && (
-                <div className="px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-text-dim border-t border-border">
-                  Blog Posts ({blogPosts.length})
-                </div>
-              )}
-              {!loading && blogPosts.map((post) => (
+            {!loading && blogPosts.length > 0 && (
+              <div className="px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider text-text-dim border-t border-border">
+                Blog Posts ({blogPosts.length})
+              </div>
+            )}
+            {!loading &&
+              blogPosts.map((post) => (
                 <Link
                   key={`b-${post.slug}`}
-                  href={`/blog/${post.slug}`}
+                  href={`${prefix}/blog/${post.slug}`}
                   onClick={() => {
                     setOpen(false);
                     setQuery("");
@@ -180,9 +184,9 @@ export function SearchBar() {
                   </div>
                 </Link>
               ))}
-            </div>
           </div>
-        )}
+        </div>
+      )}
     </div>
   );
 }

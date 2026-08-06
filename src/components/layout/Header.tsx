@@ -26,6 +26,7 @@ import { SearchModal } from "@/components/interactive/SearchModal";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { ColorPicker } from "@/components/ui/ColorPicker";
 import { AnimatedLogo } from "@/components/ui/AnimatedLogo";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 interface NavLink {
   label: string;
   href: string;
@@ -456,6 +457,26 @@ export function Header() {
   const navContainerRef = useRef<HTMLDivElement>(null);
   const prevScroll = useRef(0);
   const pathname = usePathname();
+  const prefix = useCountryPrefix();
+  const COUNTRY_LINK = /^\/[a-z]{2}(\/|$)/;
+  const prefixed = (href?: string) => {
+    if (!href || !prefix) return href;
+    if (COUNTRY_LINK.test(href)) return href;
+    return `${prefix}${href}`;
+  };
+  const navMega: MegaNavItem[] = NAV_MEGA.map((item) => ({
+    ...item,
+    href: prefixed(item.href),
+    columns: item.columns.map((col) => ({
+      ...col,
+      href: prefixed(col.href),
+      links: col.links.map((l) => ({ ...l, href: prefixed(l.href) as string })),
+    })),
+  }));
+  const navSimple: SimpleNavItem[] = NAV_SIMPLE.map((l) => ({
+    ...l,
+    href: prefixed(l.href) as string,
+  }));
   const clearMenuTimer = useCallback(() => {
     if (menuCloseTimer.current) {
       clearTimeout(menuCloseTimer.current);
@@ -540,8 +561,19 @@ export function Header() {
     return () => document.removeEventListener("mousedown", onClickOutside);
   }, [activeMenu]);
   function isActive(href: string) {
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
+    const clean =
+      prefix && pathname.startsWith(prefix)
+        ? pathname === prefix
+          ? "/"
+          : pathname.slice(prefix.length)
+        : pathname;
+    const h = href.startsWith(prefix)
+      ? href === prefix
+        ? "/"
+        : href.slice(prefix.length)
+      : href;
+    if (!h || h === "/") return clean === "/";
+    return clean.startsWith(h);
   }
   return (
     <>
@@ -559,7 +591,7 @@ export function Header() {
           )}
         >
           {/* Logo */}
-          <Link href="/" className="flex-shrink-0">
+          <Link href={prefixed("/") ?? "/"} className="flex-shrink-0">
             <AnimatedLogo size={36} showText />
           </Link>
           {/* Desktop Nav */}
@@ -573,11 +605,11 @@ export function Header() {
               className="flex items-center justify-center gap-0.5"
             >
               <NavLink
-                href="/"
+                href={prefixed("/") ?? "/"}
                 label="Home"
-                isActive={isActive("/") && pathname === "/"}
+                isActive={isActive(prefixed("/") ?? "/")}
               />
-              {NAV_MEGA.map((item) => (
+              {navMega.map((item) => (
                 <div
                   key={item.label}
                   className="relative"
@@ -615,7 +647,7 @@ export function Header() {
                   </button>
                 </div>
               ))}
-              {NAV_SIMPLE.map((link) => (
+              {navSimple.map((link) => (
                 <NavLink
                   key={link.href}
                   href={link.href}
@@ -666,14 +698,14 @@ export function Header() {
               <Search className="w-[18px] h-[18px]" />
             </button>
             <Link
-              href="/contact"
+              href={prefixed("/contact") ?? "/contact"}
               className="hidden lg:flex items-center gap-1.5 text-sm font-medium text-text-muted hover:text-text hover:bg-primary/[0.04] transition-transform px-3 py-2 rounded-lg"
             >
               <User className="w-4 h-4" />
               Sign In
             </Link>
             <Link
-              href="/rfq"
+              href={prefixed("/rfq") ?? "/rfq"}
               className="relative hidden sm:inline-flex items-center gap-1.5 px-5 py-2 text-xs font-bold bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:from-primary-dark hover:to-primary transition-transform duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 group/quote overflow-hidden"
             >
               <Sparkles className="w-3 h-3 group-hover/quote:rotate-12 transition-transform duration-300" />
@@ -733,7 +765,7 @@ export function Header() {
           <div className="sticky top-0 z-10 bg-gradient-to-b from-surface via-surface to-surface/95 backdrop-blur-xl border-b border-border/50 p-6">
             <div className="flex items-center justify-between">
               <Link
-                href="/"
+                href={prefixed("/") ?? "/"}
                 className="flex items-center gap-3 font-extrabold text-xl tracking-tight"
               >
                 <div className="w-[30px] h-[30px] relative">
@@ -865,11 +897,11 @@ export function Header() {
           <div className="flex-1 px-6 pb-6">
             {/* Home link */}
             <Link
-              href="/"
+              href={prefixed("/") ?? "/"}
               onClick={() => setMobileOpen(false)}
               className={cn(
                 "flex items-center gap-2 py-3.5 text-base font-medium border-b border-border/50 transition-transform group",
-                pathname === "/"
+                pathname === "/" || pathname === prefix
                   ? "text-primary"
                   : "text-text-muted hover:text-text",
               )}
@@ -880,8 +912,8 @@ export function Header() {
             {/* Mega nav items with dropdown */}
             {(
               [
-                ...NAV_MEGA,
-                ...NAV_SIMPLE.map((l) => ({
+                ...navMega,
+                ...navSimple.map((l) => ({
                   ...l,
                   columns: [] as NavColumn[],
                 })),
@@ -985,7 +1017,7 @@ export function Header() {
             {/* Mobile CTA */}
             <div className="mt-6 space-y-3">
               <Link
-                href="/rfq"
+                href={prefixed("/rfq") ?? "/rfq"}
                 onClick={() => setMobileOpen(false)}
                 className="flex items-center justify-center gap-2 w-full py-3.5 text-sm font-bold bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:shadow-lg hover:shadow-primary/30 transition-transform"
               >
@@ -993,7 +1025,7 @@ export function Header() {
                 Get Quote <ExternalLink className="w-3.5 h-3.5" />
               </Link>
               <Link
-                href="/contact"
+                href={prefixed("/contact") ?? "/contact"}
                 onClick={() => setMobileOpen(false)}
                 className="flex items-center justify-center gap-2 w-full py-3.5 text-sm font-medium text-text-muted border border-border rounded-lg hover:text-text hover:border-primary/30 transition-transform"
               >

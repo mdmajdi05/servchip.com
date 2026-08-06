@@ -6,6 +6,8 @@ import NextImage from "next/image";
 import { ArrowRight } from "lucide-react";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { HERO_PHRASES, HERO_STATS } from "@/data/home";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
+import type { Country, CountryMarket } from "@/types";
 
 const styles = `
   @keyframes logo-scroll {
@@ -171,8 +173,15 @@ const LOGOS = [
   { src: "/images/logos/lenovo.svg", label: "Lenovo" },
 ];
 
-export function Hero3D() {
+export function Hero3D({
+  country,
+  market,
+}: {
+  country?: Country;
+  market?: CountryMarket;
+}) {
   const displayText = useTypewriter(HERO_PHRASES, 40, 2500);
+  const prefix = useCountryPrefix();
   const isDesktop = useSyncExternalStore(
     (cb) => {
       const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -182,6 +191,26 @@ export function Hero3D() {
     () => window.matchMedia("(hover: hover) and (pointer: fine)").matches,
     () => false,
   );
+
+  const heroTitle = (
+    <>
+      AI Chip Distributor —{" "}
+      <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00BCD4] to-[#00E5FF]">
+        Data Center GPUs
+      </span>{" "}
+      for HPC &amp; AI
+      {country ? ` in ${country.hero.label}` : null}
+    </>
+  );
+
+  const heroSubtitle =
+    country && market
+      ? `${market.shippingNote} ${market.leadTime} delivery. ${market.currency} (${market.currencySymbol}) pricing.`
+      : displayText;
+  const heroBadge = country
+    ? `AUTHORIZED NVIDIA DISTRIBUTOR — ${country.name.toUpperCase()}`
+    : "AUTHORIZED NVIDIA DISTRIBUTOR — DATA CENTER GPUs & AI CHIPS";
+  const heroStats = country?.stats ?? HERO_STATS;
 
   return (
     <section
@@ -214,15 +243,11 @@ export function Hero3D() {
               className="w-1.5 h-1.5 rounded-full inline-block animate-ping"
               style={{ backgroundColor: "var(--hero-secondary)" }}
             />
-            AUTHORIZED NVIDIA DISTRIBUTOR — DATA CENTER GPUs & AI CHIPS
+            {heroBadge}
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-[4rem] font-black text-white leading-[1.05] mb-6 tracking-tight">
-            AI Chip Distributor —{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00BCD4] to-[#00E5FF]">
-              Data Center GPUs
-            </span>{" "}
-            for HPC &amp; AI
+            {heroTitle}
           </h1>
 
           <p
@@ -230,15 +255,17 @@ export function Hero3D() {
             aria-live="polite"
           >
             <span className="text-primary/60 mr-2 font-mono text-sm">&gt;</span>
-            {displayText}
-            <span
-              className="inline-block w-[6px] h-[14px] ml-1 align-middle animate-pulse"
-              style={{ backgroundColor: "var(--hero-primary)" }}
-            />
+            {heroSubtitle}
+            {!country && (
+              <span
+                className="inline-block w-[6px] h-[14px] ml-1 align-middle animate-pulse"
+                style={{ backgroundColor: "var(--hero-primary)" }}
+              />
+            )}
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center mb-12">
-            <Link href="/products">
+            <Link href={`${prefix}/products`}>
               <button
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-black"
                 style={{
@@ -250,7 +277,7 @@ export function Hero3D() {
                 Explore Products <ArrowRight className="w-4 h-4" />
               </button>
             </Link>
-            <Link href="/rfq">
+            <Link href={`${prefix}/rfq`}>
               <button
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-sm border bg-white/[0.05] backdrop-blur-sm"
                 style={{
@@ -271,7 +298,7 @@ export function Hero3D() {
                 "color-mix(in srgb, var(--hero-primary) 20%, transparent)",
             }}
           >
-            {HERO_STATS.map(({ value, label }, i) => (
+            {heroStats.map(({ value, label }, i) => (
               <div key={label}>
                 <span
                   className="text-2xl sm:text-3xl font-black text-white font-mono tracking-tight block"

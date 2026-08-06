@@ -5,6 +5,7 @@ import { ArrowRight, Server } from "lucide-react";
 import { INDUSTRIES } from "@/data/industries";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 const ICON_MAP: Record<string, typeof Server> = {
   Server,
@@ -18,6 +19,7 @@ const ICON_MAP: Record<string, typeof Server> = {
 };
 
 export default function IndustriesPage() {
+  const prefix = useCountryPrefix();
   return (
     <div className="min-h-screen bg-bg-dark">
       <PageHero
@@ -40,7 +42,7 @@ export default function IndustriesPage() {
               return (
                 <Link
                   key={industry.id}
-                  href={`/industries/${industry.slug}`}
+                  href={`${prefix}/industries/${industry.slug}`}
                   className="group rounded-2xl border border-border bg-surface p-6 card-hover h-full"
                 >
                   <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-transform">

@@ -8,6 +8,7 @@ import { BRANDS } from "@/data/brands";
 import { COUNTRIES, getCountryPath } from "@/data/countries";
 import { getBrandColor } from "@/data/brand-colors";
 import { SITE } from "@/lib/constants";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -132,6 +133,14 @@ const FOOTER_LINKS: {
 ];
 
 export function Footer() {
+  const prefix = useCountryPrefix();
+  const COUNTRY_LINK = /^\/[a-z]{2}(\/|$)/;
+  const prefixed = (href: string) =>
+    !prefix || COUNTRY_LINK.test(href) ? href : `${prefix}${href}`;
+  const footerLinks = FOOTER_LINKS.map((col) => ({
+    ...col,
+    links: col.links.map((l) => ({ ...l, href: prefixed(l.href) })),
+  }));
   return (
     <footer className="bg-bg-dark border-t border-border relative overflow-hidden">
       {/* Grid background */}
@@ -151,7 +160,7 @@ export function Footer() {
         <div className="grid grid-cols-2 md:grid-cols-6 gap-8 lg:gap-12">
           {/* Brand (2 cols) */}
           <div className="col-span-2">
-            <Link href="/" className="mb-4 inline-block">
+            <Link href={prefixed("/")} className="mb-4 inline-block">
               <AnimatedLogo
                 size={32}
                 showText
@@ -218,7 +227,7 @@ export function Footer() {
           </div>
 
           {/* Link Columns */}
-          {FOOTER_LINKS.map((col) => (
+          {footerLinks.map((col) => (
             <nav key={col.title} aria-label={col.title}>
               <h2 className="text-[11px] font-bold uppercase tracking-[0.12em] text-primary mb-4">
                 {col.title}
@@ -269,13 +278,13 @@ export function Footer() {
           </p>
           <div className="flex items-center gap-4">
             <Link
-              href="/privacy"
+              href={prefixed("/privacy")}
               className="hover:text-text transition-transform"
             >
               Privacy
             </Link>
             <Link
-              href="/terms"
+              href={prefixed("/terms")}
               className="hover:text-text transition-transform"
             >
               Terms

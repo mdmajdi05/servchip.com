@@ -15,6 +15,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { CATEGORIES } from "@/data/categories";
 import { getProductsByParentCategory } from "@/data/products";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 const ICON_MAP: Record<string, typeof Server> = {
   Server,
@@ -27,6 +28,7 @@ const ICON_MAP: Record<string, typeof Server> = {
 };
 
 export function CategoriesGrid() {
+  const prefix = useCountryPrefix();
   return (
     <section className="py-20 bg-bg-dark">
       <div className="max-w-7xl mx-auto px-4">
@@ -44,7 +46,7 @@ export function CategoriesGrid() {
             return (
               <div key={cat.slug}>
                 <Link
-                  href={`/categories/${cat.slug}`}
+                  href={`${prefix}/categories/${cat.slug}`}
                   className="block bg-surface border border-border rounded-xl p-5 hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-transform duration-300 group"
                 >
                   <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3 group-hover:bg-primary/20 transition-transform">
@@ -67,7 +69,7 @@ export function CategoriesGrid() {
 
         <div className="text-center mt-8">
           <Link
-            href="/categories"
+            href={`${prefix}/categories`}
             className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:underline"
           >
             View All Categories <ArrowRight className="w-3.5 h-3.5" />

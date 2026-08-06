@@ -12,6 +12,7 @@ import {
 } from "@/types";
 import type { AnyProduct } from "@/types";
 import { BRANDS } from "@/data/brands";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 const ChipDetail = dynamic(
   () => import("@/components/products/ChipDetail").then((m) => m.ChipDetail),
@@ -51,6 +52,7 @@ export default function ProductDetailPage({
   const brandCategory = brand?.categories.find((c) =>
     c.subcategories.some((s) => s.chipIds.includes(product.id)),
   );
+  const prefix = useCountryPrefix();
 
   return (
     <>
@@ -58,18 +60,24 @@ export default function ProductDetailPage({
         aria-label="Breadcrumb"
         className="flex items-center gap-1.5 text-sm text-text-dim max-w-7xl mx-auto px-4 pt-6"
       >
-        <Link href="/" className="hover:text-primary transition-colors">
+        <Link
+          href={`${prefix}/`}
+          className="hover:text-primary transition-colors"
+        >
           Home
         </Link>
         <ChevronRight className="w-3.5 h-3.5 text-text-dim/60" />
-        <Link href="/products" className="hover:text-primary transition-colors">
+        <Link
+          href={`${prefix}/products`}
+          className="hover:text-primary transition-colors"
+        >
           Products
         </Link>
         {brandCategory && brand && (
           <>
             <ChevronRight className="w-3.5 h-3.5 text-text-dim/60" />
             <Link
-              href={`/brands/${brand.slug}/${brandCategory.slug}`}
+              href={`${prefix}/brands/${brand.slug}/${brandCategory.slug}`}
               className="hover:text-primary transition-colors"
             >
               {brandCategory.name}
@@ -80,7 +88,7 @@ export default function ProductDetailPage({
           <>
             <ChevronRight className="w-3.5 h-3.5 text-text-dim/60" />
             <Link
-              href={`/categories/${parentCategory.slug}`}
+              href={`${prefix}/categories/${parentCategory.slug}`}
               className="hover:text-primary transition-colors"
             >
               {parentCategory.name}

@@ -8,9 +8,11 @@ import { SkeletonCard } from "@/components/ui/Skeleton";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 export function FeaturedChips() {
   const [loading, setLoading] = useState(true);
+  const prefix = useCountryPrefix();
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 500);
@@ -36,7 +38,7 @@ export function FeaturedChips() {
         </div>
 
         <div className="text-center mt-10">
-          <Link href="/products">
+          <Link href={`${prefix}/products`}>
             <Button
               variant="outline"
               size="lg"

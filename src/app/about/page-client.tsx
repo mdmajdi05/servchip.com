@@ -4,6 +4,7 @@ import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import {
   ShieldCheck,
   Award,
@@ -71,6 +72,7 @@ const TEAM = [
 ];
 
 export default function AboutPage() {
+  const prefix = useCountryPrefix();
   return (
     <div className="min-h-screen bg-bg-dark">
       {/* About intro section */}
@@ -139,14 +141,17 @@ export default function AboutPage() {
                 entire AMD MI300X cluster build-out — we handle everything with
                 full traceability and manufacturer-direct sourcing. Our{" "}
                 <Link
-                  href="/technology"
+                  href={`${prefix}/technology`}
                   className="text-primary hover:underline"
                 >
                   technology platform
                 </Link>{" "}
                 keeps your pipeline informed from quote to delivery, backed by
                 comprehensive{" "}
-                <Link href="/services" className="text-primary hover:underline">
+                <Link
+                  href={`${prefix}/services`}
+                  className="text-primary hover:underline"
+                >
                   enterprise services
                 </Link>
                 .
@@ -251,7 +256,7 @@ export default function AboutPage() {
             hours.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
-            <Link href="/rfq">
+            <Link href={`${prefix}/rfq`}>
               <Button
                 variant="solid"
                 size="lg"
@@ -261,7 +266,7 @@ export default function AboutPage() {
                 Request a Quote
               </Button>
             </Link>
-            <Link href="/contact">
+            <Link href={`${prefix}/contact`}>
               <Button variant="outline" size="lg">
                 Contact Sales
               </Button>

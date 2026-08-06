@@ -25,6 +25,7 @@ import type {
 } from "@/types";
 import { BLOG_POSTS, getRelatedBlogPosts } from "@/blog";
 import { getProductById } from "@/data/products";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import { ReadingProgress } from "@/blog/components/ReadingProgress";
 import { PostContent } from "@/blog/components/PostContent";
 
@@ -151,11 +152,7 @@ function LeftSidebar({ title }: { title: string }) {
   );
 }
 
-function TOCSection({
-  sections,
-}: {
-  sections: { heading: string }[];
-}) {
+function TOCSection({ sections }: { sections: { heading: string }[] }) {
   const [activeId, setActiveId] = useState("");
   const tocLinks = sections
     .filter((s) => !s.heading.toLowerCase().includes("frequently asked"))
@@ -218,6 +215,7 @@ function RightSidebar({
     category?: { name: string; slug: string };
   }[];
 }) {
+  const prefix = useCountryPrefix();
   return (
     <aside className="hidden xl:block w-[260px] flex-shrink-0">
       <div
@@ -235,7 +233,7 @@ function RightSidebar({
               {relatedPosts.slice(0, 4).map((rp) => (
                 <Link
                   key={rp.id}
-                  href={`/blog/${rp.slug}`}
+                  href={`${prefix}/blog/${rp.slug}`}
                   className="block group"
                 >
                   <p className="text-xs text-text-muted group-hover:text-primary transition-colors leading-relaxed line-clamp-2">
@@ -259,7 +257,7 @@ function RightSidebar({
           <p className="text-[11px] text-text-muted leading-relaxed mb-4">
             Get weekly chip market insights and buying guides.
           </p>
-          <Link href="/contact">
+          <Link href={`${prefix}/contact`}>
             <Button variant="solid" size="sm" className="w-full text-xs">
               <Mail className="w-3 h-3 mr-1.5" />
               Subscribe
@@ -267,7 +265,7 @@ function RightSidebar({
           </Link>
         </div>
 
-        <Link href="/contact" className="block group">
+        <Link href={`${prefix}/contact`} className="block group">
           <div className="rounded-xl border border-border bg-surface p-5 text-center hover:border-primary/30 transition-all duration-300">
             <p className="text-xs font-semibold text-text mb-1 group-hover:text-primary transition-colors">
               Need help choosing?
@@ -286,6 +284,7 @@ export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
   const shareUrl = useShareUrl();
   const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const prefix = useCountryPrefix();
 
   const relatedPosts = post ? getRelatedBlogPosts(post.id, 3) : [];
   const relatedProducts = post?.relatedProductIds
@@ -302,7 +301,7 @@ export default function BlogPostPage() {
               Article not found. The page you are looking for does not exist or
               has been moved.
             </p>
-            <Link href="/blog">
+            <Link href={`${prefix}/blog`}>
               <Button
                 variant="outline"
                 icon={<ArrowLeft className="w-4 h-4" />}
@@ -324,7 +323,7 @@ export default function BlogPostPage() {
         <div>
           <div>
             <Link
-              href="/blog"
+              href={`${prefix}/blog`}
               className="inline-flex items-center gap-2 text-text-muted hover:text-primary transition-transform duration-200 mb-8 group pt-6"
             >
               <ArrowLeft className="w-4 h-4 transition-transform duration-200 group-hover:-translate-x-1" />
@@ -345,17 +344,11 @@ export default function BlogPostPage() {
                 </Badge>
               </div>
 
-              <h1
-               
-                className="text-3xl lg:text-4xl xl:text-5xl font-black text-text leading-tight mb-6"
-              >
+              <h1 className="text-3xl lg:text-4xl xl:text-5xl font-black text-text leading-tight mb-6">
                 {post.title}
               </h1>
 
-              <div
-               
-                className="flex flex-wrap items-center gap-5 text-sm text-text-muted pb-5 border-b border-border mb-5"
-              >
+              <div className="flex flex-wrap items-center gap-5 text-sm text-text-muted pb-5 border-b border-border mb-5">
                 <div className="flex items-center gap-2">
                   <User className="w-4 h-4 text-primary" />
                   <span>{post.author.name}</span>
@@ -369,10 +362,7 @@ export default function BlogPostPage() {
                 </div>
               </div>
 
-              <div
-               
-                className="flex xl:hidden items-center gap-3 pb-6 mb-6 border-b border-border"
-              >
+              <div className="flex xl:hidden items-center gap-3 pb-6 mb-6 border-b border-border">
                 <span className="text-xs text-text-muted font-medium">
                   Share:
                 </span>
@@ -418,10 +408,7 @@ export default function BlogPostPage() {
                 <PostContent sections={post.sections || []} />
               </div>
 
-              <div
-               
-                className="mt-10 pt-6 border-t border-border"
-              >
+              <div className="mt-10 pt-6 border-t border-border">
                 <div className="flex flex-wrap items-center gap-2">
                   <Tag className="w-4 h-4 text-primary" />
                   {post.tags.map((t) => (
@@ -435,10 +422,7 @@ export default function BlogPostPage() {
                 </div>
               </div>
 
-              <div
-               
-                className="mt-6 pt-6 border-t border-border"
-              >
+              <div className="mt-6 pt-6 border-t border-border">
                 <div className="flex flex-wrap items-center gap-2">
                   <span className="text-xs text-text-muted font-medium">
                     Share this article:
@@ -528,7 +512,7 @@ export default function BlogPostPage() {
                     {relatedProducts.slice(0, 6).map((product) => (
                       <Link
                         key={product!.id}
-                        href={`/products/${product!.slug}`}
+                        href={`${prefix}/products/${product!.slug}`}
                         className="group p-4 rounded-xl border border-border bg-surface hover:border-primary/40 transition-all duration-300 hover:-translate-y-1"
                       >
                         <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-3">
@@ -558,7 +542,7 @@ export default function BlogPostPage() {
                   />
                   <div className="grid md:grid-cols-3 gap-6 mt-8">
                     {relatedPosts.map((rp) => (
-                      <Link key={rp.id} href={`/blog/${rp.slug}`}>
+                      <Link key={rp.id} href={`${prefix}/blog/${rp.slug}`}>
                         <div className="group p-5 rounded-xl border border-border bg-surface hover:border-primary/40 transition-all duration-300 hover:-translate-y-1">
                           <Badge
                             variant={
@@ -586,10 +570,7 @@ export default function BlogPostPage() {
                 </div>
               )}
 
-              <div
-               
-                className="mt-16 p-8 rounded-xl border border-primary/30 bg-gradient-to-br from-primary/5 to-transparent text-center"
-              >
+              <div className="mt-16 p-8 rounded-xl border border-primary/30 bg-gradient-to-br from-primary/5 to-transparent text-center">
                 <h2 className="text-xl font-bold text-text mb-3">
                   Need Help Choosing the Right Chip?
                 </h2>
@@ -598,7 +579,7 @@ export default function BlogPostPage() {
                   help you select and deploy the optimal solution for your
                   workload.
                 </p>
-                <Link href="/contact">
+                <Link href={`${prefix}/contact`}>
                   <Button
                     variant="solid"
                     size="lg"

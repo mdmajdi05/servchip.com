@@ -10,103 +10,126 @@ import {
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FAQ_CATEGORIES } from "@/data/home";
-export function FAQAccordion() {
+import type { TaxonomyFaq } from "@/types";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
+
+export function FAQAccordion({
+  faqs,
+  countryName,
+}: {
+  faqs?: TaxonomyFaq[];
+  countryName?: string;
+}) {
   const [activeCategory, setActiveCategory] = useState(FAQ_CATEGORIES[0].id);
   const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const isCountryFaqs = Boolean(faqs?.length);
   const currentCategory = FAQ_CATEGORIES.find((c) => c.id === activeCategory)!;
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
+  const prefix = useCountryPrefix();
   return (
     <section className="py-20 bg-bg-dark relative overflow-hidden">
       <div className="absolute inset-0 bg-dot-grid opacity-10" />
       <div className="max-w-4xl mx-auto px-4 relative z-10">
         <SectionHeading
           label="FAQ"
-          title="Frequently Asked Questions"
-          subtitle="Quick answers on enterprise chips, pricing, warranty, delivery, and technical support."
+          title={
+            isCountryFaqs
+              ? `Frequently Asked Questions — ${countryName}`
+              : "Frequently Asked Questions"
+          }
+          subtitle={
+            isCountryFaqs
+              ? `Everything buyers in ${countryName} need to know about enterprise chips, pricing, delivery and support.`
+              : "Quick answers on enterprise chips, pricing, warranty, delivery, and technical support."
+          }
           align="center"
         />
         {/* Category Tabs */}
-        <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {FAQ_CATEGORIES.map((cat) => {
-            const isActive = activeCategory === cat.id;
-            return (
-              <button
-                key={cat.id}
-                onClick={() => {
-                  setActiveCategory(cat.id);
-                  setOpenIndex(null);
-                }}
-                className={`px-4 py-2 rounded-xl text-sm font-semibold transition-transform duration-200 ${
-                  isActive
-                    ? "bg-primary text-bg-dark shadow-lg shadow-primary/25"
-                    : "bg-surface border border-border text-text-muted hover:border-primary/30 hover:text-text"
-                }`}
-              >
-                {cat.label}
-              </button>
-            );
-          })}
-        </div>
+        {!isCountryFaqs && (
+          <div className="flex flex-wrap justify-center gap-2 mb-10">
+            {FAQ_CATEGORIES.map((cat) => {
+              const isActive = activeCategory === cat.id;
+              return (
+                <button
+                  key={cat.id}
+                  onClick={() => {
+                    setActiveCategory(cat.id);
+                    setOpenIndex(null);
+                  }}
+                  className={`px-4 py-2 rounded-xl text-sm font-semibold transition-transform duration-200 ${
+                    isActive
+                      ? "bg-primary text-bg-dark shadow-lg shadow-primary/25"
+                      : "bg-surface border border-border text-text-muted hover:border-primary/30 hover:text-text"
+                  }`}
+                >
+                  {cat.label}
+                </button>
+              );
+            })}
+          </div>
+        )}
         {/* FAQ Items */}
         <div key={activeCategory} className="space-y-3">
-          {currentCategory.items.map((item, index) => {
-            const isOpen = openIndex === index;
-            return (
-              <div
-                key={item.question}
-                className={`rounded-xl border overflow-hidden transition-transform duration-200 ${
-                  isOpen
-                    ? "border-primary/40 bg-surface shadow-lg shadow-primary/5"
-                    : "border-border bg-surface hover:border-primary/20 hover:shadow-md"
-                }`}
-              >
-                <button
-                  onClick={() => toggle(index)}
-                  className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left transition-transform"
+          {(isCountryFaqs ? faqs! : currentCategory.items).map(
+            (item, index) => {
+              const isOpen = openIndex === index;
+              return (
+                <div
+                  key={item.question}
+                  className={`rounded-xl border overflow-hidden transition-transform duration-200 ${
+                    isOpen
+                      ? "border-primary/40 bg-surface shadow-lg shadow-primary/5"
+                      : "border-border bg-surface hover:border-primary/20 hover:shadow-md"
+                  }`}
                 >
-                  <span className="text-sm font-semibold text-text flex items-center gap-3">
-                    <span
-                      className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform ${
-                        isOpen ? "bg-primary/20" : "bg-primary/10"
+                  <button
+                    onClick={() => toggle(index)}
+                    className="w-full flex items-center justify-between gap-4 px-5 py-4 text-left transition-transform"
+                  >
+                    <span className="text-sm font-semibold text-text flex items-center gap-3">
+                      <span
+                        className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 transition-transform ${
+                          isOpen ? "bg-primary/20" : "bg-primary/10"
+                        }`}
+                      >
+                        <HelpCircle
+                          className={`w-3.5 h-3.5 transition-transform ${
+                            isOpen ? "text-primary" : "text-primary/80"
+                          }`}
+                        />
+                      </span>
+                      {item.question}
+                    </span>
+                    <div
+                      className={`flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center transition-transform ${
+                        isOpen ? "bg-primary/20" : "bg-border/50"
                       }`}
                     >
-                      <HelpCircle
+                      <ChevronDown
                         className={`w-3.5 h-3.5 transition-transform ${
-                          isOpen ? "text-primary" : "text-primary/80"
+                          isOpen ? "text-primary" : "text-text-dim"
                         }`}
                       />
-                    </span>
-                    {item.question}
-                  </span>
-                  <div
-                    className={`flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center transition-transform ${
-                      isOpen ? "bg-primary/20" : "bg-border/50"
-                    }`}
-                  >
-                    <ChevronDown
-                      className={`w-3.5 h-3.5 transition-transform ${
-                        isOpen ? "text-primary" : "text-text-dim"
-                      }`}
-                    />
-                  </div>
-                </button>
-                {isOpen && (
-                  <div className="overflow-hidden">
-                    <div className="px-5 pb-5 pt-0">
-                      <div className="pl-10 pr-4">
-                        <div className="w-full h-px bg-gradient-to-r from-primary/30 via-primary/10 to-transparent mb-3" />
-                        <p className="text-sm text-text-muted leading-relaxed">
-                          {item.answer}
-                        </p>
+                    </div>
+                  </button>
+                  {isOpen && (
+                    <div className="overflow-hidden">
+                      <div className="px-5 pb-5 pt-0">
+                        <div className="pl-10 pr-4">
+                          <div className="w-full h-px bg-gradient-to-r from-primary/30 via-primary/10 to-transparent mb-3" />
+                          <p className="text-sm text-text-muted leading-relaxed">
+                            {item.answer}
+                          </p>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            );
-          })}
+                  )}
+                </div>
+              );
+            },
+          )}
         </div>
         {/* Can't Find Your Answer CTA */}
         <div className="mt-12 relative">
@@ -123,20 +146,20 @@ export function FAQAccordion() {
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link
-                href="/rfq"
+                href={`${prefix}/rfq`}
                 className="inline-flex items-center gap-2 bg-primary text-bg-dark px-5 py-2.5 rounded-xl font-semibold text-sm hover:scale-105 transition-transform shadow-lg shadow-primary/25"
               >
                 Send Enquiry <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                href="/contact"
+                href={`${prefix}/contact`}
                 className="inline-flex items-center gap-2 border border-border bg-surface text-text px-5 py-2.5 rounded-xl font-semibold text-sm hover:border-primary/30 hover:text-primary transition-transform"
               >
                 <Phone className="w-4 h-4" />
                 Talk to Sales
               </Link>
               <Link
-                href="/faq"
+                href={`${prefix}/faq`}
                 className="inline-flex items-center gap-2 border border-border bg-surface text-text px-5 py-2.5 rounded-xl font-semibold text-sm hover:border-primary/30 hover:text-primary transition-transform"
               >
                 <HelpCircle className="w-4 h-4" />

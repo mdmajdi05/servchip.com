@@ -7,9 +7,11 @@ import { getProductsByBrand } from "@/data/products";
 import { getBrandColor } from "@/data/brand-colors";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/shared/PageHero";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 export default function BrandsPage() {
   const brands = [...BRANDS].sort((a, b) => a.name.localeCompare(b.name));
+  const prefix = useCountryPrefix();
 
   return (
     <div className="min-h-screen bg-bg-dark">
@@ -17,7 +19,10 @@ export default function BrandsPage() {
         label="Brand Directory"
         title="Every Manufacturer We Stock"
         subtitle="Browse authentic enterprise hardware from 28 manufacturers — AI accelerators, server CPUs, networking, memory and storage."
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Brands" }]}
+        breadcrumbs={[
+          { label: "Home", href: `${prefix}/` },
+          { label: "Brands" },
+        ]}
       />
 
       <section className="py-16 bg-bg-body">
@@ -37,7 +42,7 @@ export default function BrandsPage() {
               return (
                 <Link
                   key={brand.id}
-                  href={`/brands/${brand.slug}`}
+                  href={`${prefix}/brands/${brand.slug}`}
                   className="group rounded-2xl border border-border bg-surface p-6 card-hover h-full flex flex-col"
                 >
                   <div className="flex items-center gap-3 mb-3">

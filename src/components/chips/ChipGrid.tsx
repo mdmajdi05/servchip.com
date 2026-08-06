@@ -6,6 +6,7 @@ import { ChipCard } from "./ChipCard";
 import { ChipFilters, type ChipFiltersState } from "./ChipFilters";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { ChipProduct } from "@/types";
 const statusStyles: Record<
   ChipProduct["status"],
@@ -22,6 +23,7 @@ interface ChipGridProps {
   loading?: boolean;
 }
 export function ChipGrid({ chips, loading = false }: ChipGridProps) {
+  const prefix = useCountryPrefix();
   const [filters, setFilters] = useState<ChipFiltersState>({
     search: "",
     manufacturer: [],
@@ -115,7 +117,7 @@ export function ChipGrid({ chips, loading = false }: ChipGridProps) {
                   </div>
                   <div className="min-w-0 flex-1">
                     <Link
-                      href={`/products/${chip.slug}`}
+                      href={`${prefix}/products/${chip.slug}`}
                       className="text-sm font-bold text-text hover:text-primary transition-transform line-clamp-1"
                     >
                       {chip.name}
@@ -137,15 +139,13 @@ export function ChipGrid({ chips, loading = false }: ChipGridProps) {
                   </div>
                 </div>
                 <div className="flex items-center gap-3 shrink-0">
-                  <Badge size="sm">
-                    {statusStyles[chip.status].label}
-                  </Badge>
-                  <Link href={`/products/${chip.slug}`}>
+                  <Badge size="sm">{statusStyles[chip.status].label}</Badge>
+                  <Link href={`${prefix}/products/${chip.slug}`}>
                     <Button variant="outline" size="sm">
                       Details
                     </Button>
                   </Link>
-                  <Link href={`/rfq?chip=${chip.slug}`}>
+                  <Link href={`${prefix}/rfq?chip=${chip.slug}`}>
                     <Button variant="solid" size="sm">
                       Get Quote
                     </Button>

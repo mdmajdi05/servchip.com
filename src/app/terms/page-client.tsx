@@ -2,8 +2,10 @@
 
 import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 export default function TermsPage() {
+  const prefix = useCountryPrefix();
   return (
     <div className="min-h-screen bg-bg-dark">
       <div className="max-w-3xl mx-auto px-4 py-16">
@@ -46,7 +48,10 @@ export default function TermsPage() {
           </p>
           <p>
             Questions about these terms?{" "}
-            <Link href="/contact" className="text-primary hover:underline">
+            <Link
+              href={`${prefix}/contact`}
+              className="text-primary hover:underline"
+            >
               Contact Us
             </Link>
             .

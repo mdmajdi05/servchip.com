@@ -25,6 +25,7 @@ import { ChipCard } from "@/components/chips/ChipCard";
 import { ChipScene } from "@/components/shared/ChipScene";
 import { ManufacturerLink } from "@/components/products/ManufacturerLink";
 import { CountryAvailabilityLinks } from "@/components/products/CountryAvailabilityLinks";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { ChipProduct } from "@/types";
 
 const statusStyles: Record<
@@ -121,6 +122,7 @@ const itemVariants = {
 
 export function ChipDetail() {
   const { slug } = useParams<{ slug: string }>();
+  const prefix = useCountryPrefix();
   const chip = CHIPS.find((c) => c.slug === slug);
   const relatedChips = chip
     ? CHIPS.filter(
@@ -142,7 +144,7 @@ export function ChipDetail() {
             The chip you are looking for does not exist or may have been
             removed.
           </p>
-          <Link href="/products">
+          <Link href={`${prefix}/products`}>
             <Button variant="solid" icon={<ArrowLeft className="w-4 h-4" />}>
               Back to Products
             </Button>
@@ -275,7 +277,7 @@ export function ChipDetail() {
               )}
 
               <div className="flex flex-wrap gap-3 pt-2">
-                <Link href={`/rfq?chip=${chip.slug}`}>
+                <Link href={`${prefix}/rfq?chip=${chip.slug}`}>
                   <Button
                     variant="solid"
                     size="lg"
@@ -285,7 +287,7 @@ export function ChipDetail() {
                     Get Quote
                   </Button>
                 </Link>
-                <Link href={`/comparison?add=${chip.slug}`}>
+                <Link href={`${prefix}/comparison?add=${chip.slug}`}>
                   <Button
                     variant="outline"
                     size="lg"
@@ -294,7 +296,7 @@ export function ChipDetail() {
                     Add to Compare
                   </Button>
                 </Link>
-                <Link href="/products">
+                <Link href={`${prefix}/products`}>
                   <Button variant="ghost" size="lg">
                     ? Back to Catalog
                   </Button>
@@ -363,7 +365,7 @@ export function ChipDetail() {
                 </p>
               </div>
               <div className="flex gap-3 shrink-0">
-                <Link href={`/rfq?chip=${chip.slug}`}>
+                <Link href={`${prefix}/rfq?chip=${chip.slug}`}>
                   <Button
                     variant="solid"
                     size="lg"
@@ -373,7 +375,7 @@ export function ChipDetail() {
                     Request Quote
                   </Button>
                 </Link>
-                <Link href="/contact">
+                <Link href={`${prefix}/contact`}>
                   <Button variant="outline" size="lg">
                     Talk to Expert
                   </Button>
@@ -393,7 +395,7 @@ export function ChipDetail() {
                     More chips in {chip.categoryName}.
                   </p>
                 </div>
-                <Link href={`/products?category=${chip.categoryId}`}>
+                <Link href={`${prefix}/products?category=${chip.categoryId}`}>
                   <Button variant="outline" size="sm">
                     View All <ArrowRight className="w-3.5 h-3.5" />
                   </Button>
@@ -411,7 +413,7 @@ export function ChipDetail() {
 
           <div className="text-center">
             <Link
-              href="/faq"
+              href={`${prefix}/faq`}
               className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
             >
               Shipping, MOQ &amp; Sourcing FAQ{" "}

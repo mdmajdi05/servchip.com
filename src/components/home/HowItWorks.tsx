@@ -5,8 +5,10 @@ import { ArrowRight } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { HOW_IT_WORKS_STEPS } from "@/data/home";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 export function HowItWorks() {
+  const prefix = useCountryPrefix();
   return (
     <section className="py-20 bg-bg-dark">
       <div className="max-w-7xl mx-auto px-4">
@@ -39,7 +41,7 @@ export function HowItWorks() {
         </div>
 
         <div className="text-center mt-10">
-          <Link href="/rfq">
+          <Link href={`${prefix}/rfq`}>
             <Button
               variant="solid"
               size="lg"

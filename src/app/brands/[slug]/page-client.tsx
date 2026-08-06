@@ -20,6 +20,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/shared/PageHero";
 import { ProductCard } from "@/components/products/ProductCard";
 import { Button } from "@/components/ui/Button";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 const TYPE_ICON: Record<string, typeof Cpu> = {
   chip: Cpu,
@@ -35,6 +36,7 @@ export default function BrandPage() {
   const brand = getBrandBySlug(slug);
   const products = getProductsByBrand(brand?.id ?? "");
   const color = brand ? getBrandColor(brand.name) : undefined;
+  const prefix = useCountryPrefix();
 
   const grouped = products.reduce<Record<string, typeof products>>((acc, p) => {
     const type =
@@ -57,7 +59,10 @@ export default function BrandPage() {
       <div className="min-h-screen bg-bg-dark flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-text mb-2">Brand Not Found</h1>
-          <Link href="/products" className="text-primary hover:underline">
+          <Link
+            href={`${prefix}/products`}
+            className="text-primary hover:underline"
+          >
             Browse all products
           </Link>
         </div>
@@ -72,8 +77,8 @@ export default function BrandPage() {
         title={`${brand.name} — Enterprise Hardware Solutions`}
         subtitle={brand.longDescription}
         breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Products", href: "/products" },
+          { label: "Home", href: `${prefix}/` },
+          { label: "Products", href: `${prefix}/products` },
           { label: brand.name },
         ]}
       />
@@ -127,7 +132,7 @@ export default function BrandPage() {
             {brand.categories.map((cat, i) => (
               <div key={cat.id}>
                 <Link
-                  href={`/brands/${brand.slug}/${cat.slug}`}
+                  href={`${prefix}/brands/${brand.slug}/${cat.slug}`}
                   className="block group rounded-2xl border border-border bg-surface p-6 card-hover h-full"
                 >
                   <h3 className="text-lg font-bold text-text mb-2 group-hover:text-primary transition-transform">
@@ -192,7 +197,7 @@ export default function BrandPage() {
             <p className="text-text-muted">
               No products currently listed. Contact us for availability.
             </p>
-            <Link href="/contact">
+            <Link href={`${prefix}/contact`}>
               <Button variant="solid" size="sm" className="mt-4">
                 Contact Sales
               </Button>

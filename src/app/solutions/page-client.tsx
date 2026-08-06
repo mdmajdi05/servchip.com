@@ -1,4 +1,5 @@
-﻿import Link from "next/link";
+﻿"use client";
+import Link from "next/link";
 import {
   ArrowRight,
   Building2,
@@ -30,6 +31,7 @@ const ICON_MAP: Record<string, typeof Building2> = {
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import { TESTIMONIALS_DATA } from "@/data/testimonials";
 
 const TESTIMONIALS = TESTIMONIALS_DATA.map((t, i) => ({
@@ -231,13 +233,17 @@ const CASE_STUDIES = [
 ];
 
 export default function SolutionsPage() {
+  const prefix = useCountryPrefix();
   return (
     <div className="min-h-screen bg-bg-dark">
       <PageHero
         label="Solutions"
         title="Industry-Specific AI Computing Solutions"
         subtitle="From enterprise AI to healthcare, automotive, and government — we architect complete solutions using NVIDIA, AMD, and Intel chips tailored to your industry's unique data center compute, compliance, and scale requirements."
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Solutions" }]}
+        breadcrumbs={[
+          { label: "Home", href: `${prefix}/` },
+          { label: "Solutions" },
+        ]}
       />
 
       {/* Explore by category */}
@@ -245,19 +251,19 @@ export default function SolutionsPage() {
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
-              href="/categories/ai-servers-platforms"
+              href={`${prefix}/categories/ai-servers-platforms`}
               className="px-4 py-2 text-sm font-medium rounded-xl border border-primary/30 text-primary hover:bg-primary/10 transition-transform"
             >
               AI Server Platforms
             </Link>
             <Link
-              href="/categories/networking-interconnects"
+              href={`${prefix}/categories/networking-interconnects`}
               className="px-4 py-2 text-sm font-medium rounded-xl border border-border text-text-muted hover:text-text hover:border-primary/30 transition-transform"
             >
               Networking & Interconnects
             </Link>
             <Link
-              href="/rfq"
+              href={`${prefix}/rfq`}
               className="px-4 py-2 text-sm font-bold rounded-xl bg-gradient-to-r from-primary to-primary-dark text-bg-dark hover:shadow-lg hover:shadow-primary/30 transition-transform"
             >
               Talk to Sales <ArrowRight className="w-3.5 h-3.5 inline-block" />
@@ -390,7 +396,7 @@ export default function SolutionsPage() {
                       {sol.recommendedChips.map((c) => (
                         <Link
                           key={c}
-                          href="/products"
+                          href={`${prefix}/products`}
                           className="px-2 py-0.5 rounded-md bg-surface-2 border border-border text-[10px] font-mono text-text hover:text-primary hover:border-primary/30 transition-transform"
                         >
                           {c}
@@ -507,12 +513,12 @@ export default function SolutionsPage() {
               </p>
             </div>
             <div className="flex gap-3 shrink-0">
-              <Link href="/contact">
+              <Link href={`${prefix}/contact`}>
                 <Button variant="solid" className="font-semibold">
                   Talk to an Expert <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
-              <Link href="/configurator">
+              <Link href={`${prefix}/configurator`}>
                 <Button
                   variant="outline"
                   className="border-border text-text-muted hover:text-text"

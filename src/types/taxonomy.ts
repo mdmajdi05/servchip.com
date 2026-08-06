@@ -43,6 +43,13 @@ export interface Country {
   market?: CountryMarket;
 }
 
+export interface CountryContact {
+  email: string;
+  phone: string;
+  phoneDisplay: string;
+  hours: string;
+}
+
 export interface CountryMarket {
   code: string;
   locale: string;
@@ -51,6 +58,7 @@ export interface CountryMarket {
   warehouse: string;
   shippingNote: string;
   leadTime: string;
+  contact: CountryContact;
 }
 
 export interface Industry {

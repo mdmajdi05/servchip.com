@@ -15,6 +15,7 @@ import {
   Truck,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 interface MegaLink {
   label: string;
@@ -62,6 +63,7 @@ const ICON_MAP: Record<string, typeof Cpu> = {
 };
 
 export function MegaMenu({ columns, featured }: MegaMenuProps) {
+  const prefix = useCountryPrefix();
   return (
     <div className="rounded-2xl border border-primary/15 bg-surface shadow-2xl shadow-black/50 p-5 max-h-[75vh] overflow-y-auto scrollbar-neon">
       <div
@@ -150,7 +152,7 @@ export function MegaMenu({ columns, featured }: MegaMenuProps) {
           to close
         </span>
         <Link
-          href="/products"
+          href={`${prefix}/products`}
           className="flex items-center gap-1 text-primary/50 hover:text-primary/80 transition-transform"
         >
           View all <ArrowUpRight className="w-2.5 h-2.5" />

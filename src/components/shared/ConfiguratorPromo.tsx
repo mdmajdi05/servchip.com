@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight, Sparkles, Cpu, Zap, Brain } from "lucide-react";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 const PERKS = [
   { icon: Cpu, text: "Workload-matched picks" },
@@ -10,6 +11,7 @@ const PERKS = [
 ];
 
 export function ConfiguratorPromo() {
+  const prefix = useCountryPrefix();
   return (
     <section className="py-16 md:py-20 bg-bg-dark">
       <div className="max-w-7xl mx-auto px-4">
@@ -37,7 +39,7 @@ export function ConfiguratorPromo() {
                 training, inference, HPC or professional workload.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center">
-                <Link href="/configurator">
+                <Link href={`${prefix}/configurator`}>
                   <span className="inline-flex items-center gap-2 bg-primary text-bg-dark px-6 py-3 rounded-xl font-semibold text-sm hover:scale-105 transition-transform shadow-lg shadow-primary/25">
                     <Sparkles className="w-4 h-4" />
                     Try the Configurator

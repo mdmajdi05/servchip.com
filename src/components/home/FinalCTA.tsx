@@ -3,8 +3,10 @@
 import Link from "next/link";
 import { ArrowRight, MessageSquare, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/Button";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 export function FinalCTA() {
+  const prefix = useCountryPrefix();
   return (
     <section className="py-24 bg-bg-dark relative overflow-hidden">
       <div className="absolute inset-0">
@@ -28,7 +30,7 @@ export function FinalCTA() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <Link href="/rfq">
+            <Link href={`${prefix}/rfq`}>
               <Button
                 variant="solid"
                 size="lg"
@@ -38,7 +40,7 @@ export function FinalCTA() {
                 Request a Quote
               </Button>
             </Link>
-            <Link href="/contact">
+            <Link href={`${prefix}/contact`}>
               <Button
                 variant="outline"
                 size="lg"

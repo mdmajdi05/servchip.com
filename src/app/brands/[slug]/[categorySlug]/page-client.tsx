@@ -7,11 +7,13 @@ import { BRANDS } from "@/data/brands";
 import { getProductsByBrand } from "@/data/products";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProductCard } from "@/components/products/ProductCard";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 export default function BrandCategoryPage() {
   const params = useParams();
   const slug = params.slug as string;
   const categorySlug = params.categorySlug as string;
+  const prefix = useCountryPrefix();
 
   const brand = BRANDS.find((b) => b.slug === slug);
   const category = brand?.categories.find((c) => c.slug === categorySlug);
@@ -23,7 +25,10 @@ export default function BrandCategoryPage() {
           <h1 className="text-2xl font-bold text-text mb-2">
             Category Not Found
           </h1>
-          <Link href="/products" className="text-primary hover:underline">
+          <Link
+            href={`${prefix}/products`}
+            className="text-primary hover:underline"
+          >
             Browse all products
           </Link>
         </div>
@@ -47,19 +52,22 @@ export default function BrandCategoryPage() {
             aria-label="Breadcrumb"
             className="flex items-center gap-1.5 text-sm text-text-dim mb-4"
           >
-            <Link href="/" className="hover:text-primary transition-colors">
+            <Link
+              href={`${prefix}/`}
+              className="hover:text-primary transition-colors"
+            >
               Home
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-text-dim/60" />
             <Link
-              href="/products"
+              href={`${prefix}/products`}
               className="hover:text-primary transition-colors"
             >
               Products
             </Link>
             <ChevronRight className="w-3.5 h-3.5 text-text-dim/60" />
             <Link
-              href={`/brands/${brand.slug}`}
+              href={`${prefix}/brands/${brand.slug}`}
               className="hover:text-primary transition-colors"
             >
               {brand.name}

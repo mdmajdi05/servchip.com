@@ -6,6 +6,7 @@ import { BRANDS } from "@/data/brands";
 import { BRAND_COLORS } from "@/data/brand-colors";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { BrandLogo } from "@/components/ui/BrandLogo";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 const DISPLAY_BRANDS = BRANDS.filter(
   (m) => m.id !== "google-cloud" && m.id !== "amazon-web-services",
@@ -24,10 +25,11 @@ const LogoItem = React.memo(function LogoItem({
   slug: string;
 }) {
   const color = colorVarName(name);
+  const prefix = useCountryPrefix();
 
   return (
     <Link
-      href={`/brands/${slug}`}
+      href={`${prefix}/brands/${slug}`}
       className="flex-shrink-0 w-[150px] h-[80px] mx-3 rounded-xl bg-surface border border-border flex items-center justify-center hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-transform duration-300 group"
     >
       <div className="flex items-center gap-3 px-3">

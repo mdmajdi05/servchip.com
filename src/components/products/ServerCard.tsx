@@ -6,6 +6,7 @@ import { Server } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Tilt3D } from "@/components/ui/Tilt3D";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { ServerProduct } from "@/types";
 
 const statusStyles: Record<
@@ -26,6 +27,7 @@ interface Props {
 
 export function ServerCard({ server, index: _index }: Props) {
   const status = statusStyles[server.status];
+  const prefix = useCountryPrefix();
 
   return (
     <div>
@@ -80,12 +82,12 @@ export function ServerCard({ server, index: _index }: Props) {
           </div>
 
           <div className="flex gap-2">
-            <Link href={`/products/${server.slug}`} className="flex-1">
+            <Link href={`${prefix}/products/${server.slug}`} className="flex-1">
               <Button variant="outline" size="sm" fullWidth>
                 Details
               </Button>
             </Link>
-            <Link href={`/rfq?chip=${server.slug}`} className="flex-1">
+            <Link href={`${prefix}/rfq?chip=${server.slug}`} className="flex-1">
               <Button variant="solid" size="sm" fullWidth>
                 Get Quote
               </Button>

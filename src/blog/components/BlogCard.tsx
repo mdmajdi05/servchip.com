@@ -2,6 +2,7 @@ import type { BlogPost } from "@/blog/types";
 import Link from "next/link";
 import { Clock, ArrowRight, User } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 const CATEGORY_BADGE: Record<string, "green" | "cyan" | "purple" | "amber"> = {
   architecture: "purple",
@@ -12,8 +13,9 @@ const CATEGORY_BADGE: Record<string, "green" | "cyan" | "purple" | "amber"> = {
 };
 
 export function BlogCard({ post }: { post: BlogPost }) {
+  const prefix = useCountryPrefix();
   return (
-    <Link href={`/blog/${post.slug}`} className="group block h-full">
+    <Link href={`${prefix}/blog/${post.slug}`} className="group block h-full">
       <article className="h-full rounded-xl border border-border bg-surface p-6 transition-transform duration-300 group-hover:border-primary/25 group-hover:shadow-[0_0_24px_color-mix(in_srgb,var(--primary)_8%,transparent)] group-hover:-translate-y-1 flex flex-col">
         <div className="flex items-center justify-between mb-4">
           <Badge
@@ -38,7 +40,9 @@ export function BlogCard({ post }: { post: BlogPost }) {
               <User className="w-4 h-4 text-text-dim" />
             </div>
             <div className="flex flex-col">
-              <span className="text-xs text-text-muted">{post.publishedAt}</span>
+              <span className="text-xs text-text-muted">
+                {post.publishedAt}
+              </span>
               <span className="text-xs text-text-dim flex items-center gap-1">
                 <Clock className="w-3 h-3" />
                 {post.readingTime} min read

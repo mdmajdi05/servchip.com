@@ -25,6 +25,7 @@ import { BRANDS } from "@/data/brands";
 import { CATEGORIES } from "@/data/categories";
 import { ProductCard } from "@/components/products/ProductCard";
 import { ConfiguratorPromo } from "@/components/shared/ConfiguratorPromo";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { ProductType } from "@/types";
 type FilterType = ProductType | "all";
 const TYPE_TABS: { type: FilterType; label: string; icon: typeof Cpu }[] = [
@@ -36,6 +37,7 @@ const TYPE_TABS: { type: FilterType; label: string; icon: typeof Cpu }[] = [
   { type: "storage", label: "Storage", icon: HardDrive },
 ];
 export default function ProductsPage() {
+  const prefix = useCountryPrefix();
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState<FilterType>("all");
   const [manufacturerFilter, setManufacturerFilter] = useState<string>("all");
@@ -149,7 +151,7 @@ export default function ProductsPage() {
               View by Category:
             </span>
             <Link
-              href="/categories"
+              href={`${prefix}/categories`}
               className="px-3 py-1.5 text-xs font-medium rounded-lg border border-primary/40 text-primary hover:bg-primary/10 transition-transform"
             >
               All Categories
@@ -157,7 +159,7 @@ export default function ProductsPage() {
             {CATEGORIES.map((cat) => (
               <Link
                 key={cat.slug}
-                href={`/categories/${cat.slug}`}
+                href={`${prefix}/categories/${cat.slug}`}
                 className="px-3 py-1.5 text-xs font-medium rounded-lg border border-border text-text-muted hover:text-text hover:border-primary/30 transition-transform"
               >
                 {cat.name}
@@ -166,14 +168,14 @@ export default function ProductsPage() {
           </div>
           <div className="flex flex-wrap items-center gap-2">
             <Link
-              href="/comparison"
+              href={`${prefix}/comparison`}
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-primary/40 text-primary hover:bg-primary/10 transition-transform"
             >
               <Scale className="w-3.5 h-3.5" />
               Compare Products
             </Link>
             <Link
-              href="/rfq"
+              href={`${prefix}/rfq`}
               className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg bg-gradient-to-r from-primary to-primary-dark text-bg-dark hover:shadow-lg hover:shadow-primary/30 transition-transform"
             >
               Request Bulk Pricing
@@ -216,7 +218,7 @@ export default function ProductsPage() {
               </select>
             </div>
             <Link
-              href="/brands"
+              href={`${prefix}/brands`}
               className="ml-auto text-xs font-medium text-primary hover:underline flex items-center gap-1"
             >
               Browse All Brands <ArrowRight className="w-3 h-3" />

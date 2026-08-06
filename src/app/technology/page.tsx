@@ -270,46 +270,49 @@ export const metadata: Metadata = createSeoMetadata({
     "Deep dive into Blackwell, Hopper, AMD CDNA 3, Intel Granite Rapids — GPU architectures powering next-gen AI.",
 });
 
-export default function TechnologyPage() {
+export default function TechnologyPage({ prefix = "" }: { prefix?: string }) {
   return (
     <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Technology", url: "/technology" },
+          { name: "Home", url: `${prefix}/` },
+          { name: "Technology", url: `${prefix}/technology` },
         ])}
       />
       <PageHero
         label="The Technology"
         title="Built for the Next Generation of AI Computing"
         subtitle="From Blackwell's FP4 precision to AMD CDNA 3 and Intel Granite Rapids - we deliver the most advanced chip architectures in the industry. Explore the technologies powering next-gen AI."
-        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Technology" }]}
+        breadcrumbs={[
+          { label: "Home", href: `${prefix}/` },
+          { label: "Technology" },
+        ]}
       />
       {/* Explore by vendor */}
       <section className="py-10 bg-bg-dark border-b border-border">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
-              href="/categories"
+              href={`${prefix}/categories`}
               className="px-4 py-2 text-sm font-medium rounded-xl border border-primary/30 text-primary hover:bg-primary/10 transition-transform"
             >
               Explore Categories
             </Link>
             <Link
-              href="/brands/nvidia"
+              href={`${prefix}/brands/nvidia`}
               className="px-4 py-2 text-sm font-medium rounded-xl border border-border text-text-muted hover:text-text hover:border-primary/30 transition-transform"
             >
               NVIDIA Technology
             </Link>
             <Link
-              href="/brands/amd"
+              href={`${prefix}/brands/amd`}
               className="px-4 py-2 text-sm font-medium rounded-xl border border-border text-text-muted hover:text-text hover:border-primary/30 transition-transform"
             >
               AMD Technology
             </Link>
             <Link
-              href="/brands/intel"
+              href={`${prefix}/brands/intel`}
               className="px-4 py-2 text-sm font-medium rounded-xl border border-border text-text-muted hover:text-text hover:border-primary/30 transition-transform"
             >
               Intel Technology
@@ -486,7 +489,7 @@ export default function TechnologyPage() {
                       {arch.chips.map((c) => (
                         <Link
                           key={c}
-                          href="/products"
+                          href={`${prefix}/products`}
                           className="font-mono text-text hover:text-primary transition-transform"
                         >
                           {c}
@@ -651,12 +654,12 @@ export default function TechnologyPage() {
             </table>
           </div>
           <div className="text-center mt-10 flex flex-wrap items-center justify-center gap-3">
-            <Link href="/products">
+            <Link href={`${prefix}/products`}>
               <Button variant="solid" className="font-semibold">
                 Browse All Chips <ArrowRight className="w-4 h-4" />
               </Button>
             </Link>
-            <Link href="/comparison">
+            <Link href={`${prefix}/comparison`}>
               <Button
                 variant="outline"
                 className="border-border text-text-muted hover:text-text"

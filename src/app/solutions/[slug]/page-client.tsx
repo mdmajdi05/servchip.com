@@ -22,8 +22,10 @@ import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProductCard } from "@/components/products/ProductCard";
 import { BrandLogo } from "@/components/ui/BrandLogo";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 export default function SolutionPage() {
+  const prefix = useCountryPrefix();
   const params = useParams();
   const slug = params.slug as string;
   const solution = getSolutionBySlug(slug);
@@ -36,7 +38,10 @@ export default function SolutionPage() {
           <h1 className="text-2xl font-bold text-text mb-2">
             Solution Not Found
           </h1>
-          <Link href="/solutions" className="text-primary hover:underline">
+          <Link
+            href={`${prefix}/solutions`}
+            className="text-primary hover:underline"
+          >
             Browse solutions
           </Link>
         </div>
@@ -72,8 +77,8 @@ export default function SolutionPage() {
         title={solution.hero.title}
         subtitle={solution.hero.subtitle}
         breadcrumbs={[
-          { label: "Home", href: "/" },
-          { label: "Solutions", href: "/solutions" },
+          { label: "Home", href: `${prefix}/` },
+          { label: "Solutions", href: `${prefix}/solutions` },
           { label: solution.name },
         ]}
       />
@@ -116,7 +121,7 @@ export default function SolutionPage() {
                 {relatedBrands.map((brand) => (
                   <Link
                     key={brand.id}
-                    href={`/brands/${brand.slug}`}
+                    href={`${prefix}/brands/${brand.slug}`}
                     className="flex items-center gap-3 p-4 rounded-xl border border-border bg-surface card-hover hover:border-primary/30"
                   >
                     <BrandLogo name={brand.name} className="w-6 h-6" />
@@ -151,7 +156,7 @@ export default function SolutionPage() {
           )}
           <div className="text-center mt-10">
             <Link
-              href="/products"
+              href={`${prefix}/products`}
               className="inline-flex items-center gap-2 bg-primary text-bg-dark px-5 py-2.5 rounded-xl font-semibold text-sm hover:scale-105 transition-transform shadow-lg shadow-primary/25"
             >
               View All Products <ArrowRight className="w-4 h-4" />
@@ -224,13 +229,13 @@ export default function SolutionPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link
-                href="/rfq"
+                href={`${prefix}/rfq`}
                 className="inline-flex items-center gap-2 bg-primary text-bg-dark px-5 py-2.5 rounded-xl font-semibold text-sm hover:scale-105 transition-transform shadow-lg shadow-primary/25"
               >
                 Request a Quote <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                href="/contact"
+                href={`${prefix}/contact`}
                 className="inline-flex items-center gap-2 border border-border bg-surface text-text px-5 py-2.5 rounded-xl font-semibold text-sm hover:border-primary/30 hover:text-primary transition-transform"
               >
                 <Truck className="w-4 h-4" />

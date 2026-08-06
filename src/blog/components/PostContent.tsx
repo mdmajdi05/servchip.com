@@ -3,7 +3,9 @@
 import type { BlogSection, ContentBlock } from "@/blog/types";
 import dynamic from "next/dynamic";
 import Link from "next/link";
-import { COUNTRIES } from "@/data/countries";
+import { COUNTRIES, getCountryPath } from "@/data/countries";
+import { COUNTRY_MARKETS } from "@/data/country-markets";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import { BlogTable, BlogCodeBlock, BlogCallout, BlogLinkList } from "./blocks";
 
 const GpuCalculator = dynamic(
@@ -27,7 +29,7 @@ const GpuCalculator = dynamic(
 
 const INLINE_LINK_RE = /\[([^\]]+)\]\((\/[^)]*)\)/g;
 
-function renderRichText(text: string) {
+function renderRichText(text: string, prefix: string) {
   if (!text.includes("[") || !text.includes("](")) return text;
   const parts: React.ReactNode[] = [];
   let lastIndex = 0;
@@ -40,10 +42,14 @@ function renderRichText(text: string) {
     }
     const anchor = match[1];
     const href = match[2];
+    const prefixedHref =
+      href.startsWith("/countries/") || /^\/[a-z]{2}(\/|$)/.test(href)
+        ? href
+        : `${prefix}${href}`;
     parts.push(
       <Link
         key={key++}
-        href={href}
+        href={prefixedHref}
         className="text-primary hover:text-primary-dark underline underline-offset-4 transition-colors"
       >
         {anchor}
@@ -64,12 +70,12 @@ function toAnchor(text: string): string {
     .replace(/(^-|-$)/g, "");
 }
 
-function renderBlock(block: ContentBlock, idx: number) {
+function renderBlock(block: ContentBlock, idx: number, prefix: string) {
   switch (block.type) {
     case "paragraph":
       return (
         <p key={idx} className="text-text-muted leading-relaxed mb-4">
-          {renderRichText(block.text)}
+          {renderRichText(block.text, prefix)}
         </p>
       );
     case "heading":
@@ -91,7 +97,7 @@ function renderBlock(block: ContentBlock, idx: number) {
           {block.items.map((item, i) => (
             <li key={i} className="flex items-start gap-3 text-text-muted">
               <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-              <span>{renderRichText(item)}</span>
+              <span>{renderRichText(item, prefix)}</span>
             </li>
           ))}
         </ul>
@@ -101,7 +107,7 @@ function renderBlock(block: ContentBlock, idx: number) {
         <ol key={idx} className="space-y-2 my-4 list-decimal list-inside">
           {block.items.map((item, i) => (
             <li key={i} className="text-text-muted">
-              {renderRichText(item)}
+              {renderRichText(item, prefix)}
             </li>
           ))}
         </ol>
@@ -142,7 +148,7 @@ function renderBlock(block: ContentBlock, idx: number) {
                 {item.question}
               </h3>
               <p className="text-text-muted leading-relaxed">
-                {renderRichText(item.answer)}
+                {renderRichText(item.answer, prefix)}
               </p>
             </div>
           ))}
@@ -166,6 +172,7 @@ function renderBlock(block: ContentBlock, idx: number) {
 }
 
 export function PostContent({ sections }: { sections: BlogSection[] }) {
+  const prefix = useCountryPrefix();
   if (!sections || sections.length === 0) return null;
 
   return (
@@ -177,7 +184,9 @@ export function PostContent({ sections }: { sections: BlogSection[] }) {
           </h2>
 
           {section.content ? (
-            <div>{section.content.map(renderBlock)}</div>
+            <div>
+              {section.content.map((block, i) => renderBlock(block, i, prefix))}
+            </div>
           ) : section.heading.toLowerCase().includes("frequently asked") ? (
             (section.paragraphs || []).map((p, i) => {
               const sep = p.indexOf("? ");
@@ -186,10 +195,10 @@ export function PostContent({ sections }: { sections: BlogSection[] }) {
               return (
                 <div key={i} className="mb-6 last:mb-0">
                   <h3 className="text-base font-semibold text-text mb-2">
-                    {renderRichText(question)}
+                    {renderRichText(question, prefix)}
                   </h3>
                   <p className="text-text-muted leading-relaxed">
-                    {renderRichText(answer)}
+                    {renderRichText(answer, prefix)}
                   </p>
                 </div>
               );
@@ -197,7 +206,7 @@ export function PostContent({ sections }: { sections: BlogSection[] }) {
           ) : (
             (section.paragraphs || []).map((p, i) => (
               <p key={i} className="text-text-muted leading-relaxed mb-4">
-                {renderRichText(p)}
+                {renderRichText(p, prefix)}
               </p>
             ))
           )}
@@ -207,7 +216,7 @@ export function PostContent({ sections }: { sections: BlogSection[] }) {
               {section.bullets.map((b, i) => (
                 <li key={i} className="flex items-start gap-3 text-text-muted">
                   <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span>{renderRichText(b)}</span>
+                  <span>{renderRichText(b, prefix)}</span>
                 </li>
               ))}
             </ul>
@@ -228,7 +237,11 @@ export function PostContent({ sections }: { sections: BlogSection[] }) {
           {COUNTRIES.map((country) => (
             <li key={country.slug}>
               <Link
-                href={`/countries/${country.slug}`}
+                href={
+                  COUNTRY_MARKETS[country.code]
+                    ? getCountryPath(country)
+                    : `/countries/${country.slug}`
+                }
                 className="inline-flex items-center gap-1.5 rounded-full border border-border bg-bg-body px-3 py-1.5 text-xs text-text-muted hover:border-primary/40 hover:text-primary transition-colors"
               >
                 <span className="text-sm leading-none">{country.flag}</span>

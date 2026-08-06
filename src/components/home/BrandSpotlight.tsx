@@ -9,6 +9,7 @@ import { ArrowRight, Cpu } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { CHIPS } from "@/data/chips";
 import { BRAND_COLORS, getBrandTextColor } from "@/data/brand-colors";
+import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 // Group chips by manufacturer for the showcase
 const ENTERPRISE_ROWS = [
@@ -40,6 +41,7 @@ const ENTERPRISE_ROWS = [
 
 export function BrandSpotlight() {
   const [failedImages, setFailedImages] = useState<Set<string>>(new Set());
+  const prefix = useCountryPrefix();
 
   const handleImageError = (id: string) => {
     setFailedImages((prev) => new Set(prev).add(id));
@@ -150,7 +152,7 @@ export function BrandSpotlight() {
                             </p>
                           </div>
                           <Link
-                            href={`/products/${chip.slug}`}
+                            href={`${prefix}/products/${chip.slug}`}
                             className="text-xs font-semibold px-3 py-1.5 rounded-lg transition-transform hover:scale-105 shrink-0"
                             style={{
                               backgroundColor: `${color}22`,
@@ -166,7 +168,7 @@ export function BrandSpotlight() {
 
                   <div className="flex items-center pt-2">
                     <Link
-                      href={`/brands/${row.manufacturer.toLowerCase()}`}
+                      href={`${prefix}/brands/${row.manufacturer.toLowerCase()}`}
                       className="inline-flex items-center gap-1.5 text-sm font-semibold px-5 py-2.5 rounded-xl text-white transition-transform duration-300 hover:scale-105"
                       style={{ backgroundColor: textColor }}
                     >
@@ -182,7 +184,7 @@ export function BrandSpotlight() {
 
         <div className="text-center mt-12">
           <Link
-            href="/products"
+            href={`${prefix}/products`}
             className="inline-flex items-center gap-2 bg-primary/10 text-primary border border-primary/30 px-8 py-3.5 rounded-xl font-semibold text-sm hover:bg-primary/20 transition-transform"
           >
             <Cpu className="w-4 h-4" />
