@@ -38,6 +38,11 @@ export const TRUST_BAR_ITEMS: TrustBarItem[] = [
   { icon: "Building2", text: "HPE" },
   { icon: "Building2", text: "Supermicro" },
   { icon: "Building2", text: "Lenovo" },
+  { icon: "Zap", text: "AI Chip Distributor" },
+  { icon: "Zap", text: "Data Center GPU Supplier" },
+  { icon: "Zap", text: "NVIDIA Distributor — UAE & Dubai" },
+  { icon: "Zap", text: "AMD Authorized Distributor — USA" },
+  { icon: "Zap", text: "Intel Distributor — Dubai" },
 ];
 
 export interface Stat {
@@ -490,8 +495,10 @@ export const TESTIMONIALS: Testimonial[] = [
 
 export const HERO_PHRASES: string[] = [
   "Enterprise chip distributor — NVIDIA H100, AMD MI300X, Intel Xeon & more",
-  "ISO 9001 certified AI infrastructure provider — global shipping from India",
-  "Your trusted data center GPU distributor for AI, HPC & enterprise workloads",
+  "Authorized NVIDIA distributor — H100, H200, B200 data center GPUs",
+  "AI chip distributor for Dubai, UAE, India & USA — global shipping",
+  "Data center GPU supplier — AMD Instinct, Intel Gaudi, NVIDIA",
+  "AI accelerator supplier — HPC chips, server CPUs & HBM memory",
 ];
 
 export interface HeroStat {

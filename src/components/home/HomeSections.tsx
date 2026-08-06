@@ -188,6 +188,17 @@ const FinalCTA = dynamic(
     ),
   },
 );
+const LocationsStrip = dynamic(
+  () =>
+    import("@/components/home/LocationsStrip").then((m) => m.LocationsStrip),
+  {
+    loading: () => (
+      <div className="h-32 flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+      </div>
+    ),
+  },
+);
 
 export function HomeSections() {
   return (
@@ -208,6 +219,7 @@ export function HomeSections() {
       <SuccessStories />
       <FAQAccordion />
       <LatestInsights />
+      <LocationsStrip />
       <FinalCTA />
     </>
   );

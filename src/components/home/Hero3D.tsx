@@ -214,14 +214,15 @@ export function Hero3D() {
               className="w-1.5 h-1.5 rounded-full inline-block animate-ping"
               style={{ backgroundColor: "var(--hero-secondary)" }}
             />
-            AUTHORIZED DISTRIBUTOR — 50+ BRANDS
+            AUTHORIZED NVIDIA DISTRIBUTOR — DATA CENTER GPUs & AI CHIPS
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-[4rem] font-black text-white leading-[1.05] mb-6 tracking-tight">
-            Enterprise AI Chips &{" "}
+            AI Chip Distributor —{" "}
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00BCD4] to-[#00E5FF]">
-              Accelerators for HPC
-            </span>
+              Data Center GPUs
+            </span>{" "}
+            for HPC &amp; AI
           </h1>
 
           <p

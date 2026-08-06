@@ -63,7 +63,7 @@ export function ServicesShowcase() {
         <SectionHeading
           label="Our Services"
           title="Beyond just selling chips"
-          subtitle="Sourcing, integration, consulting, and support — everything you need to deploy enterprise hardware"
+          subtitle="Enterprise semiconductor distribution, sourcing, integration, consulting and support — everything you need to deploy NVIDIA, AMD & Intel data center hardware"
           align="center"
         />
 

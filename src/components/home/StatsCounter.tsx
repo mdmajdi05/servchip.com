@@ -85,8 +85,8 @@ export function StatsCounter() {
         <div className="mb-12 md:mb-16">
           <SectionHeading
             label="Our Impact"
-            title="Trusted by Data Center Teams Worldwide"
-            subtitle="Our numbers speak — from enterprise chip sourcing to global semiconductor delivery"
+            title="Trusted by Data Center GPU Teams Worldwide"
+            subtitle="Enterprise chip sourcing at scale — data center GPUs, AI accelerators & server processors shipped from Dubai, India & USA"
             align="center"
           />
         </div>
