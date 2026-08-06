@@ -1,6 +1,7 @@
 "use client";
-import { Phone, Mail, ShieldCheck, Globe } from "lucide-react";
+import { Phone, Mail, ShieldCheck } from "lucide-react";
 import { SITE } from "@/lib/constants";
+import { CountrySelector } from "./CountrySelector";
 export function TopBar() {
   return (
     <div className="hidden lg:flex h-8 items-center justify-between px-6 sm:px-8 lg:px-12 bg-white dark:bg-surface border-b border-gray-200/60 dark:border-border/60 text-[11px] text-text-dim relative z-10">
@@ -30,9 +31,7 @@ export function TopBar() {
           </span>
         </span>
         <span className="w-px h-3 bg-gradient-to-b from-transparent via-border to-transparent" />
-        <span className="flex items-center gap-1 hover:text-text cursor-pointer">
-          <Globe className="w-3 h-3 text-primary/60" /> Global Shipping
-        </span>
+        <CountrySelector />
         <span className="w-px h-3 bg-gradient-to-b from-transparent via-border to-transparent" />
         <span className="flex items-center gap-1 hover:text-text cursor-pointer">
           <ShieldCheck className="w-3 h-3 text-primary/60" /> ISO 9001 Certified

@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { CHIPS } from "@/data/chips";
+import { ConfiguratorPromo } from "@/components/shared/ConfiguratorPromo";
 import type { ChipProduct } from "@/types";
 const DEFAULT_SERIES = ["H100", "H200", "B200"];
 const STATUS_STYLES: Record<
@@ -245,6 +246,7 @@ export default function ComparisonPage() {
             Browse All Products <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
+        <ConfiguratorPromo />
       </div>
     </div>
   );

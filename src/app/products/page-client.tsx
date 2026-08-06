@@ -24,6 +24,7 @@ import {
 import { BRANDS } from "@/data/brands";
 import { CATEGORIES } from "@/data/categories";
 import { ProductCard } from "@/components/products/ProductCard";
+import { ConfiguratorPromo } from "@/components/shared/ConfiguratorPromo";
 import type { ProductType } from "@/types";
 type FilterType = ProductType | "all";
 const TYPE_TABS: { type: FilterType; label: string; icon: typeof Cpu }[] = [
@@ -256,6 +257,7 @@ export default function ProductsPage() {
           </div>
         )}
       </div>
+      <ConfiguratorPromo />
     </div>
   );
 }

@@ -80,6 +80,19 @@ const WorkloadSolutions = dynamic(
     ),
   },
 );
+const ConfiguratorPromo = dynamic(
+  () =>
+    import("@/components/shared/ConfiguratorPromo").then(
+      (m) => m.ConfiguratorPromo,
+    ),
+  {
+    loading: () => (
+      <div className="h-32 flex items-center justify-center">
+        <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+      </div>
+    ),
+  },
+);
 const ServicesShowcase = dynamic(
   () =>
     import("@/components/home/ServicesShowcase").then(
@@ -210,6 +223,7 @@ export function HomeSections() {
       <ClientLogos />
       <CategoriesGrid />
       <WorkloadSolutions />
+      <ConfiguratorPromo />
       <ServicesShowcase />
       <FeaturedChips />
       <Technology />

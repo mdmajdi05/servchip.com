@@ -21,6 +21,7 @@ import { INDUSTRIES } from "@/data/industries";
 import { SOLUTIONS } from "@/data/solutions";
 import { MegaMenu } from "./MegaMenu";
 import { TopBar } from "./TopBar";
+import { CountrySelector } from "./CountrySelector";
 import { SearchModal } from "@/components/interactive/SearchModal";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { ColorPicker } from "@/components/ui/ColorPicker";
@@ -1010,6 +1011,13 @@ export function Header() {
                 >
                   {SITE.phone}
                 </a>
+              </div>
+              <div className="flex items-center gap-2">
+                <MapPin className="w-4 h-4 text-primary/60" />
+                <span className="text-xs text-text-dim">
+                  Select your location:
+                </span>
+                <CountrySelector />
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-primary/60" />
