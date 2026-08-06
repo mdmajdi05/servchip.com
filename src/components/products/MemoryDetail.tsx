@@ -17,6 +17,7 @@ import { ALL_MEMORY, getRelatedProducts } from "@/data/products";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { ManufacturerLink } from "@/components/products/ManufacturerLink";
+import { CountryAvailabilityLinks } from "@/components/products/CountryAvailabilityLinks";
 import { ProductCard } from "@/components/products/ProductCard";
 import type { MemoryProduct } from "@/types";
 
@@ -356,6 +357,8 @@ export function MemoryDetail() {
               </div>
             </div>
           </div>
+
+          <CountryAvailabilityLinks productName={mem.series} />
 
           <div className="text-center">
             <Link

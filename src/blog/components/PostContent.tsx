@@ -3,6 +3,7 @@
 import type { BlogSection, ContentBlock } from "@/blog/types";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { COUNTRIES } from "@/data/countries";
 import { BlogTable, BlogCodeBlock, BlogCallout, BlogLinkList } from "./blocks";
 
 const GpuCalculator = dynamic(
@@ -213,6 +214,30 @@ export function PostContent({ sections }: { sections: BlogSection[] }) {
           )}
         </div>
       ))}
+
+      <div className="mt-10 rounded-2xl border border-border bg-surface p-6 md:p-8">
+        <h2 className="text-base font-bold text-text mb-3">
+          Servchip global availability
+        </h2>
+        <p className="text-sm text-text-muted leading-relaxed mb-4">
+          Enterprise NVIDIA, AMD and Intel hardware is available through
+          Servchip across these regions. Browse local availability, delivery
+          details and region-specific sourcing:
+        </p>
+        <ul className="flex flex-wrap gap-2">
+          {COUNTRIES.map((country) => (
+            <li key={country.slug}>
+              <Link
+                href={`/countries/${country.slug}`}
+                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-bg-body px-3 py-1.5 text-xs text-text-muted hover:border-primary/40 hover:text-primary transition-colors"
+              >
+                <span className="text-sm leading-none">{country.flag}</span>
+                {country.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
   );
 }

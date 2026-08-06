@@ -24,6 +24,7 @@ import { Button } from "@/components/ui/Button";
 import { ChipCard } from "@/components/chips/ChipCard";
 import { ChipScene } from "@/components/shared/ChipScene";
 import { ManufacturerLink } from "@/components/products/ManufacturerLink";
+import { CountryAvailabilityLinks } from "@/components/products/CountryAvailabilityLinks";
 import type { ChipProduct } from "@/types";
 
 const statusStyles: Record<
@@ -405,6 +406,8 @@ export function ChipDetail() {
               </div>
             </div>
           )}
+
+          <CountryAvailabilityLinks productName={chip.series} />
 
           <div className="text-center">
             <Link

@@ -19,6 +19,7 @@ import { ALL_SERVERS, getRelatedProducts } from "@/data/products";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { ManufacturerLink } from "@/components/products/ManufacturerLink";
+import { CountryAvailabilityLinks } from "@/components/products/CountryAvailabilityLinks";
 import { ProductCard } from "@/components/products/ProductCard";
 import type { ServerProduct } from "@/types";
 
@@ -372,6 +373,8 @@ export function ServerDetail() {
               </div>
             </div>
           </div>
+
+          <CountryAvailabilityLinks productName={server.series} />
 
           <div className="text-center">
             <Link

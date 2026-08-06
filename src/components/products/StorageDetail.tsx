@@ -17,6 +17,7 @@ import { ALL_STORAGE, getRelatedProducts } from "@/data/products";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { ManufacturerLink } from "@/components/products/ManufacturerLink";
+import { CountryAvailabilityLinks } from "@/components/products/CountryAvailabilityLinks";
 import { ProductCard } from "@/components/products/ProductCard";
 import type { StorageProduct } from "@/types";
 
@@ -359,6 +360,8 @@ export function StorageDetail() {
               </div>
             </div>
           </div>
+
+          <CountryAvailabilityLinks productName={st.series} />
 
           <div className="text-center">
             <Link
