@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { COUNTRIES, getCountryBySlug } from "@/data/countries";
 import { createSeoMetadata, breadcrumbSchema, faqSchema } from "@/lib/seo";
+import { SITE } from "@/lib/constants";
 import PageClient from "./page-client";
 
 export async function generateStaticParams() {
@@ -14,6 +15,19 @@ export async function generateMetadata(props: {
   const { slug } = await props.params;
   const country = getCountryBySlug(slug);
   if (!country) return {};
+  const hreflangMap: Record<string, string> = {
+    india: "en-IN",
+    uae: "en-AE",
+    usa: "en-US",
+    "saudi-arabia": "en-SA",
+    qatar: "en-QA",
+    oman: "en-OM",
+    singapore: "en-SG",
+    malaysia: "en-MY",
+    china: "zh-CN",
+    philippines: "en-PH",
+  };
+  const lang = hreflangMap[country.slug] ?? "en";
   return createSeoMetadata({
     title: country.seo.metaTitle,
     description: country.seo.metaDescription,
@@ -23,6 +37,12 @@ export async function generateMetadata(props: {
     twitterTitle: `${country.name} | Servchip — Enterprise Chip Distributor`,
     openGraphDescription: country.seo.metaDescription,
     twitterDescription: country.seo.metaDescription,
+    alternates: {
+      languages: {
+        "x-default": `${SITE.url}/countries/${slug}`,
+        [lang]: `${SITE.url}/countries/${slug}`,
+      },
+    },
   });
 }
 

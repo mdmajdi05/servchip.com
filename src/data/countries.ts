@@ -376,6 +376,259 @@ export const COUNTRIES: Country[] = [
       { value: "24/7", label: "Support" },
     ],
   },
+  {
+    id: "singapore",
+    name: "Singapore",
+    slug: "singapore",
+    flag: "🇸🇬",
+    region: "Southeast Asia",
+    description:
+      "Enterprise NVIDIA, AMD & Intel AI chip distribution for Singapore's data center and semiconductor hub.",
+    longDescription:
+      "Servchip supplies NVIDIA, AMD and Intel AI accelerators to Singapore's data centers, cloud providers, fintech and semiconductor ecosystem. As an enterprise chip distributor, we deliver authentic, warrantied hardware to Singapore with fast regional turnaround and full documentation.",
+    hero: {
+      label: "Singapore",
+      title: "Enterprise AI Hardware for Singapore",
+      subtitle:
+        "NVIDIA, AMD & Intel accelerators delivered to Singapore data centers and enterprises with authentic sourcing and fast delivery.",
+    },
+    seo: {
+      metaTitle:
+        "NVIDIA Distributor in Singapore | AI Chip Supplier | Servchip",
+      metaDescription:
+        "Buy NVIDIA H100, H200, B200, AMD Instinct & Intel Gaudi AI chips in Singapore. Enterprise chip distributor with authentic, warrantied hardware and fast delivery across Singapore.",
+      keywords: [
+        "NVIDIA distributor in Singapore",
+        "AI chip distributor Singapore",
+        "buy AI GPUs Singapore",
+        "data center GPU supplier Singapore",
+        "GPU distributor Singapore",
+        "semiconductor distributor Singapore",
+      ],
+    },
+    faqs: [
+      {
+        question: "Do you supply NVIDIA AI chips to Singapore?",
+        answer:
+          "Yes. Servchip is an enterprise chip distributor supplying NVIDIA H100, H200, B200 and AMD Instinct accelerators to Singapore data centers, cloud providers and enterprises.",
+      },
+      {
+        question: "How fast is delivery to Singapore?",
+        answer:
+          "We deliver enterprise AI hardware to Singapore typically within 3-5 days, leveraging our regional logistics network with full customs clearance.",
+      },
+      {
+        question: "Are products authentic and under warranty?",
+        answer:
+          "Yes. Every chip is authentic, factory-sealed and covered by manufacturer warranty with complete chain of custody documentation.",
+      },
+    ],
+    related: {
+      brandIds: ["nvidia", "amd", "intel", "supermicro", "dell"],
+      categoryIds: [
+        "nvidia-dc-gpus",
+        "amd-instinct",
+        "server-cpus",
+        "ai-servers",
+        "networking",
+      ],
+      useCases: ["ai-training", "ai-inference", "hpc"],
+    },
+    stats: [
+      { value: "3-5 days", label: "Delivery to Singapore" },
+      { value: "100%", label: "Authentic hardware" },
+      { value: "ISO 9001", label: "Certified distributor" },
+    ],
+  },
+  {
+    id: "malaysia",
+    name: "Malaysia",
+    slug: "malaysia",
+    flag: "🇲🇾",
+    region: "Southeast Asia",
+    description:
+      "NVIDIA, AMD & Intel enterprise AI chip supply for Malaysia's data center and semiconductor manufacturing sector.",
+    longDescription:
+      "Servchip distributes enterprise NVIDIA, AMD and Intel accelerators to Malaysia's data centers, enterprises and semiconductor ecosystem in Kuala Lumpur, Penang and beyond. We deliver authentic, warrantied AI hardware with full support across Malaysia.",
+    hero: {
+      label: "Malaysia",
+      title: "Enterprise AI Chips Delivered Across Malaysia",
+      subtitle:
+        "Authentic NVIDIA, AMD & Intel accelerators for Malaysian data centers, enterprises and research institutions.",
+    },
+    seo: {
+      metaTitle: "NVIDIA Distributor in Malaysia | Intel Supplier | Servchip",
+      metaDescription:
+        "Buy NVIDIA H100, H200, B200, AMD Instinct & Intel Gaudi AI chips in Malaysia. Enterprise chip distributor with authentic, warrantied hardware delivered across KL, Penang & beyond.",
+      keywords: [
+        "NVIDIA distributor in Malaysia",
+        "Intel supplier Malaysia",
+        "AI chip distributor Malaysia",
+        "buy AI GPUs Malaysia",
+        "data center GPU supplier Malaysia",
+        "GPU distributor Malaysia",
+      ],
+    },
+    faqs: [
+      {
+        question: "Do you supply NVIDIA AI chips to Malaysia?",
+        answer:
+          "Yes. Servchip is an enterprise chip distributor supplying NVIDIA H100, H200, B200 and Intel Gaudi accelerators to Malaysian data centers and enterprises.",
+      },
+      {
+        question: "Do you deliver to Kuala Lumpur and Penang?",
+        answer:
+          "Yes. We deliver enterprise AI hardware to Kuala Lumpur, Penang and across Malaysia with full customs clearance and local coordination.",
+      },
+      {
+        question: "Can you support semiconductor and data center projects?",
+        answer:
+          "Yes. We support Malaysian data center builds, semiconductor projects and research institutions with authentic, warrantied hardware and technical guidance.",
+      },
+    ],
+    related: {
+      brandIds: ["nvidia", "amd", "intel", "dell", "hpe"],
+      categoryIds: [
+        "nvidia-dc-gpus",
+        "amd-instinct",
+        "ai-servers",
+        "server-cpus",
+        "networking",
+      ],
+      useCases: ["ai-training", "ai-inference", "hpc"],
+    },
+    stats: [
+      { value: "KL & Penang", label: "Delivery coverage" },
+      { value: "100%", label: "Authentic hardware" },
+      { value: "24/7", label: "Support" },
+    ],
+  },
+  {
+    id: "china",
+    name: "China",
+    slug: "china",
+    flag: "🇨🇳",
+    region: "East Asia",
+    description:
+      "Enterprise AI accelerator sourcing for Chinese data centers and sovereign AI initiatives.",
+    longDescription:
+      "Servchip supports enterprise AI infrastructure buyers in China with NVIDIA, AMD and Intel accelerators and data center hardware. We serve Chinese data centers and enterprises with authentic sourcing, compliance documentation and dedicated support.",
+    hero: {
+      label: "China",
+      title: "Enterprise AI Accelerators for China",
+      subtitle:
+        "Authentic NVIDIA, AMD & Intel hardware for Chinese data centers and enterprises with compliance support.",
+    },
+    seo: {
+      metaTitle: "NVIDIA Distributor in China | Enterprise AI Chips | Servchip",
+      metaDescription:
+        "Enterprise NVIDIA, AMD & Intel AI chip distribution for China. Authentic data center GPUs and accelerators with compliance documentation and dedicated support.",
+      keywords: [
+        "NVIDIA distributor in China",
+        "AI chip distributor China",
+        "data center GPU supplier China",
+        "enterprise AI chips China",
+        "GPU distributor China",
+      ],
+    },
+    faqs: [
+      {
+        question: "Do you supply AI chips to enterprises in China?",
+        answer:
+          "Yes. Servchip distributes enterprise NVIDIA, AMD and Intel accelerators to Chinese data centers and enterprises with compliance documentation.",
+      },
+      {
+        question: "Do you handle export compliance for China?",
+        answer:
+          "Yes. All shipments are processed with strict adherence to applicable export regulations and we provide complete documentation for compliance teams.",
+      },
+      {
+        question: "Are products authentic and under warranty?",
+        answer:
+          "Yes. Every chip is authentic, factory-sealed and covered by manufacturer warranty with serial number traceability.",
+      },
+    ],
+    related: {
+      brandIds: ["nvidia", "amd", "intel", "supermicro", "dell"],
+      categoryIds: [
+        "nvidia-dc-gpus",
+        "amd-instinct",
+        "server-cpus",
+        "ai-servers",
+        "networking",
+      ],
+      useCases: ["ai-training", "ai-inference", "hpc"],
+    },
+    stats: [
+      { value: "Compliance", label: "Handled & documented" },
+      { value: "100%", label: "Authentic hardware" },
+      { value: "Enterprise", label: "Data center focus" },
+    ],
+  },
+  {
+    id: "philippines",
+    name: "Philippines",
+    slug: "philippines",
+    flag: "🇵🇭",
+    region: "Southeast Asia",
+    description:
+      "NVIDIA, AMD & Intel AI chip distribution for the Philippines' growing data center and enterprise market.",
+    longDescription:
+      "Servchip supplies NVIDIA, AMD and Intel AI accelerators to data centers and enterprises across the Philippines. From Manila to Cebu, we deliver authentic, warrantied enterprise hardware with fast regional shipping and dedicated support.",
+    hero: {
+      label: "Philippines",
+      title: "Enterprise AI Hardware for the Philippines",
+      subtitle:
+        "Authentic NVIDIA, AMD & Intel accelerators delivered to Philippine data centers and enterprises.",
+    },
+    seo: {
+      metaTitle:
+        "NVIDIA Distributor in Philippines | AI Chip Supplier | Servchip",
+      metaDescription:
+        "Buy NVIDIA H100, H200, B200, AMD Instinct & Intel Gaudi AI chips in the Philippines. Enterprise chip distributor with authentic hardware and fast Manila delivery.",
+      keywords: [
+        "NVIDIA distributor in Philippines",
+        "AI chip distributor Philippines",
+        "buy AI GPUs Philippines",
+        "data center GPU supplier Philippines",
+        "GPU distributor Manila",
+        "semiconductor distributor Philippines",
+      ],
+    },
+    faqs: [
+      {
+        question: "Do you supply AI chips to the Philippines?",
+        answer:
+          "Yes. Servchip is an enterprise chip distributor supplying NVIDIA, AMD and Intel accelerators to Philippine data centers and enterprises.",
+      },
+      {
+        question: "Do you deliver to Manila and Cebu?",
+        answer:
+          "Yes. We deliver enterprise AI hardware to Manila, Cebu and across the Philippines with full customs clearance.",
+      },
+      {
+        question: "Are products authentic and under warranty?",
+        answer:
+          "Yes. Every chip is authentic, factory-sealed and covered by manufacturer warranty with complete documentation.",
+      },
+    ],
+    related: {
+      brandIds: ["nvidia", "amd", "intel", "supermicro", "dell"],
+      categoryIds: [
+        "nvidia-dc-gpus",
+        "amd-instinct",
+        "ai-servers",
+        "networking",
+        "server-cpus",
+      ],
+      useCases: ["ai-training", "ai-inference", "hpc"],
+    },
+    stats: [
+      { value: "Manila & Cebu", label: "Delivery coverage" },
+      { value: "100%", label: "Authentic hardware" },
+      { value: "Fast", label: "Regional shipping" },
+    ],
+  },
 ];
 
 export function getCountryBySlug(slug: string): Country | undefined {
