@@ -120,3 +120,33 @@ export function getProductsByUseCases(useCases: string[]): AnyProduct[] {
   }
   return Array.from(results.values());
 }
+
+export function getRelatedProducts(
+  product: AnyProduct,
+  limit = 4,
+): AnyProduct[] {
+  if (!product) return [];
+
+  const parentCategoryId =
+    "parentCategoryId" in product && product.parentCategoryId
+      ? product.parentCategoryId
+      : product.categoryId;
+  const brandMatches: AnyProduct[] = [];
+  const categoryMatches: AnyProduct[] = [];
+
+  for (const p of ALL_PRODUCTS) {
+    if (p.id === product.id) continue;
+    const pParent =
+      "parentCategoryId" in p && p.parentCategoryId
+        ? p.parentCategoryId
+        : p.categoryId;
+    if (pParent !== parentCategoryId) continue;
+    if (p.manufacturerId === product.manufacturerId) {
+      brandMatches.push(p);
+    } else {
+      categoryMatches.push(p);
+    }
+  }
+
+  return [...brandMatches, ...categoryMatches].slice(0, limit);
+}

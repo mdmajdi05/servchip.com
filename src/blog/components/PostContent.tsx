@@ -2,20 +2,59 @@
 
 import type { BlogSection, ContentBlock } from "@/blog/types";
 import dynamic from "next/dynamic";
+import Link from "next/link";
 import { BlogTable, BlogCodeBlock, BlogCallout, BlogLinkList } from "./blocks";
 
 const GpuCalculator = dynamic(
-  () => import("./blocks/GpuCalculator").then((m) => ({ default: m.GpuCalculator })),
-  { ssr: false, loading: () => (
-    <div className="my-8 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/[0.02] to-transparent p-6 md:p-8">
-      <div className="animate-pulse space-y-4">
-        <div className="h-6 w-48 bg-primary/10 rounded" />
-        <div className="h-10 w-full bg-primary/5 rounded" />
-        <div className="h-20 w-full bg-primary/5 rounded" />
+  () =>
+    import("./blocks/GpuCalculator").then((m) => ({
+      default: m.GpuCalculator,
+    })),
+  {
+    ssr: false,
+    loading: () => (
+      <div className="my-8 rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/[0.02] to-transparent p-6 md:p-8">
+        <div className="animate-pulse space-y-4">
+          <div className="h-6 w-48 bg-primary/10 rounded" />
+          <div className="h-10 w-full bg-primary/5 rounded" />
+          <div className="h-20 w-full bg-primary/5 rounded" />
+        </div>
       </div>
-    </div>
-  )}
+    ),
+  },
 );
+
+const INLINE_LINK_RE = /\[([^\]]+)\]\((\/[^)]*)\)/g;
+
+function renderRichText(text: string) {
+  if (!text.includes("[") || !text.includes("](")) return text;
+  const parts: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  let key = 0;
+  const re = new RegExp(INLINE_LINK_RE.source, "g");
+  while ((match = re.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(text.slice(lastIndex, match.index));
+    }
+    const anchor = match[1];
+    const href = match[2];
+    parts.push(
+      <Link
+        key={key++}
+        href={href}
+        className="text-primary hover:text-primary-dark underline underline-offset-4 transition-colors"
+      >
+        {anchor}
+      </Link>,
+    );
+    lastIndex = re.lastIndex;
+  }
+  if (lastIndex < text.length) {
+    parts.push(text.slice(lastIndex));
+  }
+  return parts.length > 0 ? parts : text;
+}
 
 function toAnchor(text: string): string {
   return text
@@ -29,15 +68,12 @@ function renderBlock(block: ContentBlock, idx: number) {
     case "paragraph":
       return (
         <p key={idx} className="text-text-muted leading-relaxed mb-4">
-          {block.text}
+          {renderRichText(block.text)}
         </p>
       );
     case "heading":
       return block.level === 3 ? (
-        <h3
-          key={idx}
-          className="text-base font-semibold text-text mb-3 mt-6"
-        >
+        <h3 key={idx} className="text-base font-semibold text-text mb-3 mt-6">
           {block.text}
         </h3>
       ) : (
@@ -52,12 +88,9 @@ function renderBlock(block: ContentBlock, idx: number) {
       return (
         <ul key={idx} className="space-y-2 my-4">
           {block.items.map((item, i) => (
-            <li
-              key={i}
-              className="flex items-start gap-3 text-text-muted"
-            >
+            <li key={i} className="flex items-start gap-3 text-text-muted">
               <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-              <span>{item}</span>
+              <span>{renderRichText(item)}</span>
             </li>
           ))}
         </ul>
@@ -67,22 +100,16 @@ function renderBlock(block: ContentBlock, idx: number) {
         <ol key={idx} className="space-y-2 my-4 list-decimal list-inside">
           {block.items.map((item, i) => (
             <li key={i} className="text-text-muted">
-              {item}
+              {renderRichText(item)}
             </li>
           ))}
         </ol>
       );
     case "table":
-      return (
-        <BlogTable key={idx} headers={block.headers} rows={block.rows} />
-      );
+      return <BlogTable key={idx} headers={block.headers} rows={block.rows} />;
     case "code":
       return (
-        <BlogCodeBlock
-          key={idx}
-          language={block.language}
-          code={block.code}
-        />
+        <BlogCodeBlock key={idx} language={block.language} code={block.code} />
       );
     case "image":
       return (
@@ -103,11 +130,7 @@ function renderBlock(block: ContentBlock, idx: number) {
       );
     case "callout":
       return (
-        <BlogCallout
-          key={idx}
-          variant={block.variant}
-          text={block.text}
-        />
+        <BlogCallout key={idx} variant={block.variant} text={block.text} />
       );
     case "faq":
       return (
@@ -117,19 +140,15 @@ function renderBlock(block: ContentBlock, idx: number) {
               <h3 className="text-base font-semibold text-text mb-2">
                 {item.question}
               </h3>
-              <p className="text-text-muted leading-relaxed">{item.answer}</p>
+              <p className="text-text-muted leading-relaxed">
+                {renderRichText(item.answer)}
+              </p>
             </div>
           ))}
         </div>
       );
     case "linkList":
-      return (
-        <BlogLinkList
-          key={idx}
-          title={block.title}
-          links={block.links}
-        />
-      );
+      return <BlogLinkList key={idx} title={block.title} links={block.links} />;
     case "html":
       return (
         <div
@@ -166,16 +185,18 @@ export function PostContent({ sections }: { sections: BlogSection[] }) {
               return (
                 <div key={i} className="mb-6 last:mb-0">
                   <h3 className="text-base font-semibold text-text mb-2">
-                    {question}
+                    {renderRichText(question)}
                   </h3>
-                  <p className="text-text-muted leading-relaxed">{answer}</p>
+                  <p className="text-text-muted leading-relaxed">
+                    {renderRichText(answer)}
+                  </p>
                 </div>
               );
             })
           ) : (
             (section.paragraphs || []).map((p, i) => (
               <p key={i} className="text-text-muted leading-relaxed mb-4">
-                {p}
+                {renderRichText(p)}
               </p>
             ))
           )}
@@ -183,12 +204,9 @@ export function PostContent({ sections }: { sections: BlogSection[] }) {
           {!section.content && section.bullets && (
             <ul className="space-y-2 mt-4">
               {section.bullets.map((b, i) => (
-                <li
-                  key={i}
-                  className="flex items-start gap-3 text-text-muted"
-                >
+                <li key={i} className="flex items-start gap-3 text-text-muted">
                   <span className="mt-1.5 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                  <span>{b}</span>
+                  <span>{renderRichText(b)}</span>
                 </li>
               ))}
             </ul>

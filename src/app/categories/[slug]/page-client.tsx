@@ -17,6 +17,7 @@ import { Badge } from "@/components/ui/Badge";
 import { ProductCard } from "@/components/products/ProductCard";
 import { ALL_PRODUCTS } from "@/data/products";
 import { CATEGORIES } from "@/data/categories";
+import { BRANDS } from "@/data/brands";
 import {
   isChipProduct,
   isServerProduct,
@@ -161,6 +162,33 @@ export default function CategoryDetailPage() {
                 </Badge>
               ))}
           </div>
+          {/* Related manufacturers */}
+          {(() => {
+            const brandIds = [
+              ...new Set(categoryProducts.map((p) => p.manufacturerId)),
+            ];
+            if (brandIds.length === 0) return null;
+            return (
+              <div className="mt-4 flex flex-wrap items-center gap-2">
+                <span className="text-xs font-semibold text-text-dim uppercase tracking-wider mr-1">
+                  Related manufacturers:
+                </span>
+                {brandIds.map((bid) => {
+                  const brand = BRANDS.find((b) => b.id === bid);
+                  if (!brand) return null;
+                  return (
+                    <Link
+                      key={bid}
+                      href={`/brands/${brand.slug}`}
+                      className="px-3 py-1.5 text-xs font-medium rounded-lg border border-border text-text-muted hover:text-text hover:border-primary/30 transition-transform"
+                    >
+                      {brand.name} products
+                    </Link>
+                  );
+                })}
+              </div>
+            );
+          })()}
         </div>
 
         {/* Search + type filters */}

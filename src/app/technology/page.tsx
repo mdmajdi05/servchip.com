@@ -286,6 +286,37 @@ export default function TechnologyPage() {
         subtitle="From Blackwell's FP4 precision to AMD CDNA 3 and Intel Granite Rapids - we deliver the most advanced chip architectures in the industry. Explore the technologies powering next-gen AI."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Technology" }]}
       />
+      {/* Explore by vendor */}
+      <section className="py-10 bg-bg-dark border-b border-border">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/categories"
+              className="px-4 py-2 text-sm font-medium rounded-xl border border-primary/30 text-primary hover:bg-primary/10 transition-transform"
+            >
+              Explore Categories
+            </Link>
+            <Link
+              href="/brands/nvidia"
+              className="px-4 py-2 text-sm font-medium rounded-xl border border-border text-text-muted hover:text-text hover:border-primary/30 transition-transform"
+            >
+              NVIDIA Technology
+            </Link>
+            <Link
+              href="/brands/amd"
+              className="px-4 py-2 text-sm font-medium rounded-xl border border-border text-text-muted hover:text-text hover:border-primary/30 transition-transform"
+            >
+              AMD Technology
+            </Link>
+            <Link
+              href="/brands/intel"
+              className="px-4 py-2 text-sm font-medium rounded-xl border border-border text-text-muted hover:text-text hover:border-primary/30 transition-transform"
+            >
+              Intel Technology
+            </Link>
+          </div>
+        </div>
+      </section>
       {/* Technology section */}
       <section
         id="technology"

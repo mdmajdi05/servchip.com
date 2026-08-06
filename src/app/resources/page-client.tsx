@@ -116,9 +116,7 @@ export default function ResourcesPage() {
               title="Latest Resources"
               subtitle="Curated content from our engineering team - technical deep dives, architecture comparisons, and deployment best practices."
             />
-            <div
-              className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6"
-            >
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
               {featuredPosts.map((post) => {
                 const catName = getCategoryName(post.category);
                 const readTime =
@@ -133,11 +131,7 @@ export default function ResourcesPage() {
                     <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-transform pointer-events-none" />
                     <div className="relative flex-1 flex flex-col">
                       <div className="flex items-center gap-2 mb-3">
-                        <Badge
-                          size="sm"
-                        >
-                          {catName}
-                        </Badge>
+                        <Badge size="sm">{catName}</Badge>
                         <span className="flex items-center gap-1 text-[10px] text-text-dim font-mono">
                           <Clock className="w-3 h-3" />
                           {readTime} min
@@ -167,13 +161,18 @@ export default function ResourcesPage() {
                 );
               })}
             </div>
-            <div className="text-center mt-10">
+            <div className="text-center mt-10 flex flex-wrap items-center justify-center gap-3">
               <Link href="/blog">
                 <Button
                   variant="outline"
                   className="border-primary/40 text-primary hover:bg-primary/10"
                 >
                   View All Articles <ArrowRight className="w-4 h-4" />
+                </Button>
+              </Link>
+              <Link href="/developer-hub">
+                <Button variant="solid" className="font-semibold">
+                  Visit Developer Hub <ArrowRight className="w-4 h-4" />
                 </Button>
               </Link>
             </div>
@@ -190,9 +189,7 @@ export default function ResourcesPage() {
             title="Browse by Topic"
             subtitle="Six resource categories designed to help you find exactly what you need - from quick guides to deep technical references."
           />
-          <div
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6"
-          >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 md:gap-6">
             {RESOURCE_CATEGORIES.map((cat) => (
               <div
                 key={cat.title}
@@ -204,9 +201,7 @@ export default function ResourcesPage() {
                     <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-transform shrink-0">
                       <cat.icon className="w-6 h-6 text-primary" />
                     </div>
-                    <Badge size="sm">
-                      {cat.count}
-                    </Badge>
+                    <Badge size="sm">{cat.count}</Badge>
                   </div>
                   <h3 className="text-lg font-bold text-text mb-2.5 group-hover:text-primary transition-transform">
                     {cat.title}
@@ -230,9 +225,7 @@ export default function ResourcesPage() {
       {/* Newsletter CTA */}
       <section className="relative py-20 md:py-28 bg-surface overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <div
-            className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent p-8 md:p-12"
-          >
+          <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent p-8 md:p-12">
             <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 justify-between">
               <div className="max-w-2xl">
                 <div className="flex items-center gap-2 mb-3">

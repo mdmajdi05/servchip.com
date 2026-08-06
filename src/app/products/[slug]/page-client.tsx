@@ -11,6 +11,7 @@ import {
   isStorageProduct,
 } from "@/types";
 import type { AnyProduct } from "@/types";
+import { BRANDS } from "@/data/brands";
 
 const ChipDetail = dynamic(
   () => import("@/components/products/ChipDetail").then((m) => m.ChipDetail),
@@ -46,6 +47,11 @@ export default function ProductDetailPage({
   product: AnyProduct;
   parentCategory: { name: string; slug: string } | null;
 }) {
+  const brand = BRANDS.find((b) => b.id === product.manufacturerId);
+  const brandCategory = brand?.categories.find((c) =>
+    c.subcategories.some((s) => s.chipIds.includes(product.id)),
+  );
+
   return (
     <>
       <nav
@@ -59,6 +65,17 @@ export default function ProductDetailPage({
         <Link href="/products" className="hover:text-primary transition-colors">
           Products
         </Link>
+        {brandCategory && brand && (
+          <>
+            <ChevronRight className="w-3.5 h-3.5 text-text-dim/60" />
+            <Link
+              href={`/brands/${brand.slug}/${brandCategory.slug}`}
+              className="hover:text-primary transition-colors"
+            >
+              {brandCategory.name}
+            </Link>
+          </>
+        )}
         {parentCategory && (
           <>
             <ChevronRight className="w-3.5 h-3.5 text-text-dim/60" />

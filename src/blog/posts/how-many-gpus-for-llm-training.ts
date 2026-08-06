@@ -45,7 +45,7 @@ export const post: BlogPost = {
         },
         {
           type: "paragraph",
-          text: "If you're planning a deployment, start by estimating total VRAM instead of GPU count. Memory is the real constraint. Once you know your memory requirement, choosing the right number of GPUs becomes straightforward.",
+          text: "If you're planning a deployment, start by estimating total VRAM instead of GPU count. Memory is the real constraint. Once you know your memory requirement, choosing the right number of GPUs becomes straightforward. Whether you're sizing [AI server platforms](/categories/ai-servers-platforms) or a cluster built around [networking & interconnects](/categories/networking-interconnects), the same math applies.",
         },
       ],
     },
@@ -198,14 +198,32 @@ export const post: BlogPost = {
         },
         {
           type: "table",
-          headers: ["Use Case", "Model", "Min VRAM", "Recommended GPUs", "Approx. Cost"],
+          headers: [
+            "Use Case",
+            "Model",
+            "Min VRAM",
+            "Recommended GPUs",
+            "Approx. Cost",
+          ],
           rows: [
             ["LoRA Fine-tuning", "7B", "24 GB", "1x RTX 4090", "~$2K"],
             ["Full Fine-tuning", "7B", "120 GB", "2x A100 80GB", "~$30K"],
             ["Full Fine-tuning", "13B", "234 GB", "4x A100 80GB", "~$60K"],
             ["Full Fine-tuning", "30B", "540 GB", "8x A100 80GB", "~$120K"],
-            ["Training from Scratch", "70B", "1.3 TB", "16-20x H100 80GB", "~$500K+"],
-            ["Training from Scratch", "175B", "3.2 TB", "40-50x H100 80GB", "~$1.5M+"],
+            [
+              "Training from Scratch",
+              "70B",
+              "1.3 TB",
+              "16-20x H100 80GB",
+              "~$500K+",
+            ],
+            [
+              "Training from Scratch",
+              "175B",
+              "3.2 TB",
+              "40-50x H100 80GB",
+              "~$1.5M+",
+            ],
           ],
         },
         {
@@ -242,30 +260,93 @@ export const post: BlogPost = {
         },
         {
           type: "table",
-          headers: ["Category", "GPU", "VRAM", "Memory BW", "NVLink", "Best For"],
+          headers: [
+            "Category",
+            "GPU",
+            "VRAM",
+            "Memory BW",
+            "NVLink",
+            "Best For",
+          ],
           rows: [
-            ["Consumer", "RTX 4090", "24 GB", "1 TB/s", "No", "LoRA, 7B inference"],
-            ["Consumer", "RTX 5090", "32 GB", "1.8 TB/s", "No", "LoRA, small fine-tuning"],
-            ["Enterprise", "L40S", "48 GB", "864 GB/s", "No", "Inference, mid training"],
-            ["Enterprise", "A100 80GB", "80 GB", "2 TB/s", "Yes", "Full fine-tuning, 13B-30B"],
-            ["Enterprise", "H100 SXM", "80 GB", "3.35 TB/s", "Yes", "Training large models"],
-            ["Enterprise", "H200 SXM", "141 GB", "4.8 TB/s", "Yes", "70B training, large batches"],
-            ["Enterprise", "B200 SXM", "192 GB", "8 TB/s", "Yes", "Frontier-scale training"],
+            [
+              "Consumer",
+              "RTX 4090",
+              "24 GB",
+              "1 TB/s",
+              "No",
+              "LoRA, 7B inference",
+            ],
+            [
+              "Consumer",
+              "RTX 5090",
+              "32 GB",
+              "1.8 TB/s",
+              "No",
+              "LoRA, small fine-tuning",
+            ],
+            [
+              "Enterprise",
+              "L40S",
+              "48 GB",
+              "864 GB/s",
+              "No",
+              "Inference, mid training",
+            ],
+            [
+              "Enterprise",
+              "A100 80GB",
+              "80 GB",
+              "2 TB/s",
+              "Yes",
+              "Full fine-tuning, 13B-30B",
+            ],
+            [
+              "Enterprise",
+              "H100 SXM",
+              "80 GB",
+              "3.35 TB/s",
+              "Yes",
+              "Training large models",
+            ],
+            [
+              "Enterprise",
+              "H200 SXM",
+              "141 GB",
+              "4.8 TB/s",
+              "Yes",
+              "70B training, large batches",
+            ],
+            [
+              "Enterprise",
+              "B200 SXM",
+              "192 GB",
+              "8 TB/s",
+              "Yes",
+              "Frontier-scale training",
+            ],
           ],
         },
         {
           type: "paragraph",
-          text: "Consumer GPUs like the RTX 4090 are excellent for experimentation, fine-tuning with LoRA, and running inference on mid-sized models. Enterprise GPUs like the H100 and B200 offer higher memory bandwidth, NVLink for fast inter-GPU communication, and much larger VRAM pools, making them essential for full training runs and large-scale deployments.",
+          text: "Consumer GPUs like the RTX 4090 are excellent for experimentation, fine-tuning with LoRA, and running inference on mid-sized models. Enterprise GPUs like the [NVIDIA H100 Tensor Core GPU](/products/nvidia-h100-tensor-core-gpu), the [NVIDIA H200 Tensor Core GPU](/products/nvidia-h200-tensor-core-gpu), and the [NVIDIA GB200 Grace Blackwell Superchip](/products/nvidia-gb200-grace-blackwell-superchip) offer higher memory bandwidth, NVLink for fast inter-GPU communication, and much larger VRAM pools, making them essential for full training runs and large-scale deployments. For turnkey systems, [Supermicro GPU servers](/brands/supermicro/gpu-servers) are a popular choice.",
         },
         {
           type: "linkList",
           title: "Related Guides",
           links: [
-            { text: "NVIDIA H100 vs H200 vs B200 Comparison", href: "/blog/nvidia-h100-vs-h200-vs-b200" },
-            { text: "AI Inference Architecture Guide", href: "/blog/ai-inference-architecture-guide-2026" },
-            { text: "Enterprise AI Server Comparison 2026", href: "/blog/enterprise-ai-server-comparison-2026" },
-            { text: "GPU Cooling Requirements for AI Clusters", href: "/blog/gpu-cooling-requirements-ai-clusters" },
-            { text: "Data Center GPU Procurement Guide", href: "/blog/data-center-gpu-procurement-guide-2026" },
+            {
+              text: "How to Choose the Right GPU in 2026",
+              href: "/blog/gpu-buying-guide-2026",
+            },
+            {
+              text: "Browse Enterprise GPUs by Category",
+              href: "/categories/nvidia-data-center-gpus",
+            },
+            {
+              text: "Compare AI Accelerators Side by Side",
+              href: "/comparison",
+            },
           ],
         },
       ],
@@ -279,7 +360,11 @@ export const post: BlogPost = {
         },
         {
           type: "table",
-          headers: ["Component", "Training (per param)", "Inference (per param)"],
+          headers: [
+            "Component",
+            "Training (per param)",
+            "Inference (per param)",
+          ],
           rows: [
             ["Weights (fp16)", "2 bytes", "2 bytes"],
             ["Gradients (fp16)", "2 bytes", "0 bytes"],
@@ -298,10 +383,22 @@ export const post: BlogPost = {
           type: "linkList",
           title: "External References",
           links: [
-            { text: "PyTorch Documentation - Memory Management", href: "https://pytorch.org/docs/stable/notes/cuda.html" },
-            { text: "DeepSpeed ZeRO Optimization", href: "https://www.deepspeed.ai/tutorials/zero/" },
-            { text: "Hugging Face - Model Memory Calculator", href: "https://huggingface.co/spaces/hf-accelerate/model-memory-usage" },
-            { text: "NVIDIA - CUDA Memory Optimization", href: "https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html" },
+            {
+              text: "PyTorch Documentation - Memory Management",
+              href: "https://pytorch.org/docs/stable/notes/cuda.html",
+            },
+            {
+              text: "DeepSpeed ZeRO Optimization",
+              href: "https://www.deepspeed.ai/tutorials/zero/",
+            },
+            {
+              text: "Hugging Face - Model Memory Calculator",
+              href: "https://huggingface.co/spaces/hf-accelerate/model-memory-usage",
+            },
+            {
+              text: "NVIDIA - CUDA Memory Optimization",
+              href: "https://docs.nvidia.com/deeplearning/performance/dl-performance-gpu-background/index.html",
+            },
           ],
         },
       ],
@@ -336,27 +433,33 @@ export const post: BlogPost = {
           items: [
             {
               question: "How to calculate GPU requirements for LLM?",
-              answer: "Multiply your model\u2019s parameter count by the bytes-per-parameter figure for your training setup (roughly 16-20 bytes for full fine-tuning with Adam, or as little as 2 bytes for inference-only). Add activation memory based on your batch size and sequence length, then divide the total by your GPU\u2019s usable VRAM to get the number of GPUs needed. Use our interactive GPU calculator above for an instant estimate.",
+              answer:
+                "Multiply your model\u2019s parameter count by the bytes-per-parameter figure for your training setup (roughly 16-20 bytes for full fine-tuning with Adam, or as little as 2 bytes for inference-only). Add activation memory based on your batch size and sequence length, then divide the total by your GPU\u2019s usable VRAM to get the number of GPUs needed. Use our interactive GPU calculator above for an instant estimate.",
             },
             {
               question: "How much VRAM for LLM training?",
-              answer: "Full fine-tuning with mixed precision and Adam needs 16-20 bytes of VRAM per parameter. A 7B model needs roughly 112-140 GB, a 13B model needs 208-260 GB, and a 70B model needs over 1 TB of total VRAM. Techniques like LoRA, gradient checkpointing, and ZeRO sharding can reduce these figures dramatically.",
+              answer:
+                "Full fine-tuning with mixed precision and Adam needs 16-20 bytes of VRAM per parameter. A 7B model needs roughly 112-140 GB, a 13B model needs 208-260 GB, and a 70B model needs over 1 TB of total VRAM. Techniques like LoRA, gradient checkpointing, and ZeRO sharding can reduce these figures dramatically.",
             },
             {
               question: "How many GPUs for a 7B model?",
-              answer: "For LoRA fine-tuning, a single 24 GB consumer GPU like the RTX 4090 works for a 7B model. For full fine-tuning, you need 2-3 enterprise GPUs with 80 GB VRAM each, or 5-6 consumer 24 GB GPUs with ZeRO sharding enabled.",
+              answer:
+                "For LoRA fine-tuning, a single 24 GB consumer GPU like the RTX 4090 works for a 7B model. For full fine-tuning, you need 2-3 enterprise GPUs with 80 GB VRAM each, or 5-6 consumer 24 GB GPUs with ZeRO sharding enabled.",
             },
             {
               question: "How many GPUs for a 13B model?",
-              answer: "Full fine-tuning a 13B model requires approximately 234 GB of VRAM. On 80 GB enterprise GPUs, you need 4 GPUs. On 24 GB consumer GPUs, you need 11-13 cards with ZeRO-3 sharding. With LoRA, a single 24 GB GPU can handle 13B fine-tuning.",
+              answer:
+                "Full fine-tuning a 13B model requires approximately 234 GB of VRAM. On 80 GB enterprise GPUs, you need 4 GPUs. On 24 GB consumer GPUs, you need 11-13 cards with ZeRO-3 sharding. With LoRA, a single 24 GB GPU can handle 13B fine-tuning.",
             },
             {
               question: "How many GPUs to train a 70B model?",
-              answer: "Training a 70B model from scratch typically requires 16-32 high-memory GPUs (80 GB+ each), depending on desired throughput. With ZeRO-3 sharding and pipeline parallelism, 16 H100 80GB GPUs can train a 70B model, but 32 is more common for reasonable training times.",
+              answer:
+                "Training a 70B model from scratch typically requires 16-32 high-memory GPUs (80 GB+ each), depending on desired throughput. With ZeRO-3 sharding and pipeline parallelism, 16 H100 80GB GPUs can train a 70B model, but 32 is more common for reasonable training times.",
             },
             {
               question: "Which GPU for LLM training?",
-              answer: "For small-scale fine-tuning with LoRA, a single 24 GB consumer GPU is often sufficient. For full fine-tuning of mid-sized models, look for GPUs with 48 GB or more. For large-scale training from scratch, enterprise-grade GPUs with 80 GB+ VRAM and high memory bandwidth, typically accessed through cloud providers, are the standard choice.",
+              answer:
+                "For small-scale fine-tuning with LoRA, a single 24 GB consumer GPU is often sufficient. For full fine-tuning of mid-sized models, look for GPUs with 48 GB or more. For large-scale training from scratch, enterprise-grade GPUs with 80 GB+ VRAM and high memory bandwidth, typically accessed through cloud providers, are the standard choice.",
             },
           ],
         },
@@ -375,7 +478,7 @@ export const post: BlogPost = {
         },
         {
           type: "paragraph",
-          text: "If you are planning an LLM deployment, start by estimating total VRAM instead of GPU count. Memory is the real constraint. Once you know your memory requirement, choosing the right number of GPUs becomes straightforward. If your workload changes frequently, cloud GPU instances often provide a more cost-effective option than buying dedicated hardware.",
+          text: "If you are planning an LLM deployment, start by estimating total VRAM instead of GPU count. Memory is the real constraint. Once you know your memory requirement, choosing the right number of GPUs becomes straightforward. If your workload changes frequently, cloud GPU instances often provide a more cost-effective option than buying dedicated hardware. For a broader walkthrough of specs and pricing, follow [our GPU buying guide](/blog/gpu-buying-guide-2026).",
         },
         {
           type: "paragraph",
@@ -385,7 +488,14 @@ export const post: BlogPost = {
           type: "linkList",
           title: "Ready to Buy?",
           links: [
-            { text: "Browse Enterprise GPUs (A100, H100, H200, B200)", href: "/categories/ai-gpus-accelerators" },
+            {
+              text: "Browse Enterprise GPUs (A100, H100, H200, B200)",
+              href: "/categories/nvidia-data-center-gpus",
+            },
+            {
+              text: "Browse AI Servers & Platforms",
+              href: "/categories/ai-servers-platforms",
+            },
             { text: "Submit an RFQ for Volume Pricing", href: "/rfq" },
             { text: "Chat with Our GPU Specialists", href: "/contact" },
           ],

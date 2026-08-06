@@ -23,6 +23,7 @@ import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { ChipCard } from "@/components/chips/ChipCard";
 import { ChipScene } from "@/components/shared/ChipScene";
+import { ManufacturerLink } from "@/components/products/ManufacturerLink";
 import type { ChipProduct } from "@/types";
 
 const statusStyles: Record<
@@ -221,6 +222,14 @@ export function ChipDetail() {
                     <span>{chip.architecture}</span>
                   </div>
                   <span className="text-text-dim">|</span>
+                  <span className="text-text-muted">
+                    <ManufacturerLink
+                      manufacturer={chip.manufacturer}
+                      manufacturerId={chip.manufacturerId}
+                      className="font-medium text-text-muted"
+                    />
+                  </span>
+                  <span className="text-text-dim">|</span>
                   <span className="text-text-muted">{chip.categoryName}</span>
                 </div>
               </div>
@@ -396,6 +405,16 @@ export function ChipDetail() {
               </div>
             </div>
           )}
+
+          <div className="text-center">
+            <Link
+              href="/faq"
+              className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+            >
+              Shipping, MOQ &amp; Sourcing FAQ{" "}
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
         </div>
       </div>
     </div>

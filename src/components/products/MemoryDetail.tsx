@@ -13,9 +13,11 @@ import {
   Server,
   Cpu,
 } from "lucide-react";
-import { ALL_MEMORY } from "@/data/products";
+import { ALL_MEMORY, getRelatedProducts } from "@/data/products";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
+import { ManufacturerLink } from "@/components/products/ManufacturerLink";
+import { ProductCard } from "@/components/products/ProductCard";
 import type { MemoryProduct } from "@/types";
 
 const statusStyles: Record<
@@ -67,6 +69,7 @@ export function MemoryDetail() {
   }
 
   const status = statusStyles[mem.status];
+  const relatedProducts = getRelatedProducts(mem);
 
   return (
     <div className="min-h-screen bg-bg-dark pb-20">
@@ -141,7 +144,13 @@ export function MemoryDetail() {
                 <div className="flex items-center gap-4 text-sm">
                   <div className="flex items-center gap-1.5 text-text-muted">
                     <MemoryStick className="w-4 h-4 text-primary/70" />
-                    <span>{mem.manufacturer}</span>
+                    <span>
+                      <ManufacturerLink
+                        manufacturer={mem.manufacturer}
+                        manufacturerId={mem.manufacturerId}
+                        className="font-medium text-text-muted"
+                      />
+                    </span>
                   </div>
                   <span className="text-text-dim">|</span>
                   <span className="text-text-muted">{mem.specs.type}</span>
@@ -196,6 +205,15 @@ export function MemoryDetail() {
                     iconPosition="right"
                   >
                     Get Quote
+                  </Button>
+                </Link>
+                <Link href={`/comparison?add=${mem.slug}`}>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    icon={<Layers className="w-4 h-4" />}
+                  >
+                    Compare with similar chips
                   </Button>
                 </Link>
                 <Link href="/products">
@@ -281,6 +299,32 @@ export function MemoryDetail() {
             </div>
           </div>
 
+          {relatedProducts.length > 0 && (
+            <div>
+              <div className="flex items-center justify-between mb-8">
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-black text-text mb-1">
+                    You May Also Consider
+                  </h2>
+                  <p className="text-sm text-text-muted">
+                    More {mem.categoryName.toLowerCase()} options from our
+                    catalog.
+                  </p>
+                </div>
+                <Link href="/products">
+                  <Button variant="outline" size="sm">
+                    View All <ArrowRight className="w-3.5 h-3.5" />
+                  </Button>
+                </Link>
+              </div>
+              <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {relatedProducts.map((related) => (
+                  <ProductCard key={related.id} product={related} />
+                ))}
+              </div>
+            </div>
+          )}
+
           <div>
             <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent p-8 md:p-10 flex flex-col md:flex-row items-start md:items-center gap-6 justify-between">
               <div>
@@ -311,6 +355,16 @@ export function MemoryDetail() {
                 </Link>
               </div>
             </div>
+          </div>
+
+          <div className="text-center">
+            <Link
+              href="/faq"
+              className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
+            >
+              Shipping, MOQ &amp; Sourcing FAQ{" "}
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
         </div>
       </div>

@@ -293,9 +293,7 @@ export default function ServicesPage() {
       {/* CTA */}
       <section className="relative py-20 md:py-28 bg-surface overflow-hidden">
         <div className="container mx-auto px-4 md:px-6 lg:px-8">
-          <div
-            className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent p-8 md:p-12"
-          >
+          <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent p-8 md:p-12">
             <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 justify-between">
               <div className="max-w-2xl">
                 <div className="flex items-center gap-2 mb-3">
@@ -330,6 +328,15 @@ export default function ServicesPage() {
                     className="border-border text-text-muted hover:text-text"
                   >
                     Get a Quote
+                  </Button>
+                </Link>
+                <Link href="/resources">
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    className="border-border text-text-muted hover:text-text"
+                  >
+                    Explore Resources
                   </Button>
                 </Link>
               </div>

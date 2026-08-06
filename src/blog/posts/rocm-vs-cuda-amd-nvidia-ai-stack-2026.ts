@@ -45,7 +45,7 @@ export const post: BlogPost = {
         },
         {
           type: "paragraph",
-          text: "This guide compares both stacks honestly \u2014 where ROCm holds up, where CUDA still wins, what migration actually involves, and how to decide which one fits your workload in 2026.",
+          text: "This guide compares both stacks honestly \u2014 where [AMD's ROCm ecosystem](/brands/amd) holds up, where [NVIDIA's CUDA ecosystem](/brands/nvidia) still wins, what migration actually involves, and how to decide which one fits your workload in 2026. If you're weighing hardware, our [AMD Instinct MI300X](/products/amd-instinct-mi300x) and [NVIDIA H200 Tensor Core GPU](/products/nvidia-h200-tensor-core-gpu) pages give a side-by-side look at the leading parts.",
         },
       ],
     },
@@ -166,7 +166,7 @@ export const post: BlogPost = {
         },
         {
           type: "paragraph",
-          text: "ROCm supported GPUs in 2026 span the full current Instinct lineup \u2014 MI300X, MI325X, MI350X, MI355X, and the newly launched MI400-series parts \u2014 plus select Radeon PRO workstation cards for local development. The ROCm GitHub repository remains the best source for real-time compatibility status, since framework support shifts release to release faster than any static article can track.",
+          text: "ROCm supported GPUs in 2026 span the full current Instinct lineup \u2014 MI300X, MI325X, MI350X, MI355X, and the newly launched MI400-series parts \u2014 plus select Radeon PRO workstation cards for local development. The ROCm GitHub repository remains the best source for real-time compatibility status, since framework support shifts release to release faster than any static article can track. For hands-on tooling and documentation, our [Developer Hub](/developer-hub) collects the practical guides referenced throughout this comparison.",
         },
         {
           type: "paragraph",
@@ -633,7 +633,7 @@ export const post: BlogPost = {
       content: [
         {
           type: "paragraph",
-          text: "The ROCm vs CUDA decision in 2026 no longer has an obvious universal answer, and that itself is the headline. CUDA still holds the deeper ecosystem, the more mature large-scale training tooling, and the lowest integration risk for teams already invested in NVIDIA-specific optimizations. ROCm has closed enough of the performance gap \u2014 and built enough of a cost and memory-capacity advantage \u2014 that it's now a legitimate default for standard PyTorch and vLLM-based inference workloads.",
+          text: "The ROCm vs CUDA decision in 2026 no longer has an obvious universal answer, and that itself is the headline. CUDA still holds the deeper ecosystem, the more mature large-scale training tooling, and the lowest integration risk for teams already invested in NVIDIA-specific optimizations. ROCm has closed enough of the performance gap \u2014 and built enough of a cost and memory-capacity advantage \u2014 that it's now a legitimate default for standard PyTorch and vLLM-based inference workloads. For the broader market context around these two vendors, see our analysis of [AI chip market trends in 2026](/blog/ai-chip-market-trends-2026-nvidia-amd-intel).",
         },
         {
           type: "paragraph",

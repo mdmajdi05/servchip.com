@@ -1,5 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
+import Link from "next/link";
 import {
   Search,
   Cpu,
@@ -9,6 +10,8 @@ import {
   HardDrive,
   SlidersHorizontal,
   X,
+  ArrowRight,
+  Scale,
 } from "lucide-react";
 import {
   ALL_PRODUCTS,
@@ -19,6 +22,7 @@ import {
   ALL_STORAGE,
 } from "@/data/products";
 import { BRANDS } from "@/data/brands";
+import { CATEGORIES } from "@/data/categories";
 import { ProductCard } from "@/components/products/ProductCard";
 import type { ProductType } from "@/types";
 type FilterType = ProductType | "all";
@@ -137,6 +141,45 @@ export default function ProductsPage() {
             </button>
           ))}
         </div>
+        {/* Category chips + toolbar CTAs */}
+        <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
+          <div className="flex flex-wrap items-center gap-2">
+            <span className="text-xs font-semibold text-text-dim uppercase tracking-wider mr-1">
+              View by Category:
+            </span>
+            <Link
+              href="/categories"
+              className="px-3 py-1.5 text-xs font-medium rounded-lg border border-primary/40 text-primary hover:bg-primary/10 transition-transform"
+            >
+              All Categories
+            </Link>
+            {CATEGORIES.map((cat) => (
+              <Link
+                key={cat.slug}
+                href={`/categories/${cat.slug}`}
+                className="px-3 py-1.5 text-xs font-medium rounded-lg border border-border text-text-muted hover:text-text hover:border-primary/30 transition-transform"
+              >
+                {cat.name}
+              </Link>
+            ))}
+          </div>
+          <div className="flex flex-wrap items-center gap-2">
+            <Link
+              href="/comparison"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg border border-primary/40 text-primary hover:bg-primary/10 transition-transform"
+            >
+              <Scale className="w-3.5 h-3.5" />
+              Compare Products
+            </Link>
+            <Link
+              href="/rfq"
+              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-lg bg-gradient-to-r from-primary to-primary-dark text-bg-dark hover:shadow-lg hover:shadow-primary/30 transition-transform"
+            >
+              Request Bulk Pricing
+              <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
+          </div>
+        </div>
         {/* Filter panel */}
         <div className="overflow-hidden mb-6">
           <div className="flex flex-wrap items-center gap-4 p-4 rounded-xl border border-border bg-surface">
@@ -171,6 +214,12 @@ export default function ProductsPage() {
                 <option value="status">Status</option>
               </select>
             </div>
+            <Link
+              href="/brands"
+              className="ml-auto text-xs font-medium text-primary hover:underline flex items-center gap-1"
+            >
+              Browse All Brands <ArrowRight className="w-3 h-3" />
+            </Link>
           </div>
         </div>
         {/* Count */}

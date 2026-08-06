@@ -320,6 +320,14 @@ export default function RFQPage() {
                   <Package className="w-3 h-3 text-primary" /> Global delivery
                 </span>
               </div>
+              <div className="text-center">
+                <Link
+                  href="/faq"
+                  className="text-xs text-primary hover:underline"
+                >
+                  Read Sourcing FAQ
+                </Link>
+              </div>
             </div>
           </div>
         </form>

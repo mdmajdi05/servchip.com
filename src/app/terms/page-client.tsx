@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export default function TermsPage() {
@@ -42,6 +43,13 @@ export default function TermsPage() {
             Servchip shall not be liable for any indirect, incidental, or
             consequential damages arising from the use of our products or
             services.
+          </p>
+          <p>
+            Questions about these terms?{" "}
+            <Link href="/contact" className="text-primary hover:underline">
+              Contact Us
+            </Link>
+            .
           </p>
         </div>
       </div>

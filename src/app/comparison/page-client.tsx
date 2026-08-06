@@ -231,7 +231,13 @@ export default function ComparisonPage() {
           </div>
         )}
         {/* Bottom CTA */}
-        <div className="text-center mt-12">
+        <div className="text-center mt-12 flex flex-wrap items-center justify-center gap-4">
+          <Link
+            href="/categories"
+            className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:underline"
+          >
+            Browse All Categories <ArrowRight className="w-3.5 h-3.5" />
+          </Link>
           <Link
             href="/products"
             className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:underline"

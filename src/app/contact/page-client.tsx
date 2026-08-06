@@ -142,6 +142,21 @@ export default function ContactPage() {
                 Submit RFQ <ArrowRight className="w-3 h-3" />
               </Link>
             </div>
+            <div className="bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 rounded-xl p-5">
+              <h3 className="text-sm font-bold text-text mb-2">
+                Quick Answers?
+              </h3>
+              <p className="text-text-muted text-xs leading-relaxed mb-3">
+                Shipping, MOQ, sourcing, and pricing questions answered in our
+                FAQ.
+              </p>
+              <Link
+                href="/faq"
+                className="inline-flex items-center gap-2 text-xs font-semibold text-primary hover:underline"
+              >
+                Check our FAQ first <ArrowRight className="w-3 h-3" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>

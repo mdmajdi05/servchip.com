@@ -240,6 +240,32 @@ export default function SolutionsPage() {
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Solutions" }]}
       />
 
+      {/* Explore by category */}
+      <section className="py-10 bg-bg-dark border-b border-border">
+        <div className="container mx-auto px-4 md:px-6 lg:px-8">
+          <div className="flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/categories/ai-servers-platforms"
+              className="px-4 py-2 text-sm font-medium rounded-xl border border-primary/30 text-primary hover:bg-primary/10 transition-transform"
+            >
+              AI Server Platforms
+            </Link>
+            <Link
+              href="/categories/networking-interconnects"
+              className="px-4 py-2 text-sm font-medium rounded-xl border border-border text-text-muted hover:text-text hover:border-primary/30 transition-transform"
+            >
+              Networking & Interconnects
+            </Link>
+            <Link
+              href="/rfq"
+              className="px-4 py-2 text-sm font-bold rounded-xl bg-gradient-to-r from-primary to-primary-dark text-bg-dark hover:shadow-lg hover:shadow-primary/30 transition-transform"
+            >
+              Talk to Sales <ArrowRight className="w-3.5 h-3.5 inline-block" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* Inlined Solutions component */}
       <section
         id="solutions"

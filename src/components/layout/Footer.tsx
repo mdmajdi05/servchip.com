@@ -89,11 +89,14 @@ const FOOTER_LINKS: {
   },
   {
     title: "Brands",
-    links: BRANDS.slice(0, 8).map((m) => ({
-      label: m.name,
-      href: `/brands/${m.slug}`,
-      color: getBrandColor(m.name),
-    })),
+    links: [
+      { label: "All Brands", href: "/brands", color: getBrandColor("NVIDIA") },
+      ...BRANDS.slice(0, 7).map((m) => ({
+        label: m.name,
+        href: `/brands/${m.slug}`,
+        color: getBrandColor(m.name),
+      })),
+    ],
   },
   {
     title: "Resources",
@@ -102,6 +105,10 @@ const FOOTER_LINKS: {
       { label: "Industries", href: "/industries" },
       { label: "Countries", href: "/countries" },
       { label: "Technology", href: "/technology" },
+      { label: "Resource Hub", href: "/resources" },
+      { label: "Compare GPUs", href: "/comparison" },
+      { label: "Build Your Server", href: "/configurator" },
+      { label: "Submit an RFQ", href: "/rfq" },
       { label: "Blog", href: "/blog" },
       { label: "Developer Hub", href: "/developer-hub" },
       { label: "Services", href: "/services" },

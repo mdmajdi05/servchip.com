@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 export default function PrivacyPage() {
@@ -43,7 +44,12 @@ export default function PrivacyPage() {
           </p>
           <h3 className="text-text font-semibold">Contact</h3>
           <p>
-            For privacy-related inquiries, contact us at privacy@servchip.com.
+            For privacy-related inquiries, contact us at privacy@servchip.com or
+            reach out via our{" "}
+            <Link href="/contact" className="text-primary hover:underline">
+              contact page
+            </Link>
+            .
           </p>
         </div>
       </div>

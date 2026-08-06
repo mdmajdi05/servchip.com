@@ -274,6 +274,12 @@ const CATEGORY_COLUMNS = [
   {
     title: "Brands",
     links: [
+      {
+        label: "All Brands",
+        href: "/brands",
+        description: "Browse every manufacturer we stock",
+        badge: "28",
+      },
       ...BRANDS.map((m) => ({
         label: m.name,
         href: `/brands/${m.slug}`,

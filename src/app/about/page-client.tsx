@@ -137,7 +137,19 @@ export default function AboutPage() {
                 Today, over 500 companies across 150+ countries trust us for
                 semiconductor procurement. From a single NVIDIA H100 to an
                 entire AMD MI300X cluster build-out — we handle everything with
-                full traceability and manufacturer-direct sourcing.
+                full traceability and manufacturer-direct sourcing. Our{" "}
+                <Link
+                  href="/technology"
+                  className="text-primary hover:underline"
+                >
+                  technology platform
+                </Link>{" "}
+                keeps your pipeline informed from quote to delivery, backed by
+                comprehensive{" "}
+                <Link href="/services" className="text-primary hover:underline">
+                  enterprise services
+                </Link>
+                .
               </p>
               <div className="flex items-center gap-2 text-sm">
                 <Target className="w-4 h-4 text-primary" />

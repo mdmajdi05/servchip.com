@@ -570,8 +570,24 @@ export default function DeveloperHubPage() {
             </div>
           </div>
 
+          {/* Related content */}
+          <div className="mt-12 flex flex-wrap items-center justify-center gap-3">
+            <Link
+              href="/categories/ai-servers-platforms"
+              className="px-4 py-2 text-sm font-medium rounded-xl border border-border text-text-muted hover:text-text hover:border-primary/30 transition-transform"
+            >
+              AI Server Platforms
+            </Link>
+            <Link
+              href="/blog/rocm-vs-cuda-amd-nvidia-ai-stack-2026"
+              className="px-4 py-2 text-sm font-medium rounded-xl border border-border text-text-muted hover:text-text hover:border-primary/30 transition-transform"
+            >
+              ROCm vs CUDA comparison
+            </Link>
+          </div>
+
           {/* CTA */}
-          <div className="text-center mt-12">
+          <div className="text-center mt-6">
             <Link href="/contact">
               <Button
                 variant="solid"

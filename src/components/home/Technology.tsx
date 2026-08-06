@@ -94,7 +94,7 @@ export function Technology() {
 
         <div className="text-center mt-12">
           <Link
-            href="/about"
+            href="/technology"
             aria-label="Discover Servchip's semiconductor technology platform"
             className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:underline"
           >
