@@ -27,6 +27,7 @@ import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { ColorPicker } from "@/components/ui/ColorPicker";
 import { AnimatedLogo } from "@/components/ui/AnimatedLogo";
 import { useCountryPrefix } from "@/lib/useCountryPrefix";
+import { isCountryPath } from "@/lib/localized-path";
 interface NavLink {
   label: string;
   href: string;
@@ -458,10 +459,9 @@ export function Header() {
   const prevScroll = useRef(0);
   const pathname = usePathname();
   const prefix = useCountryPrefix();
-  const COUNTRY_LINK = /^\/[a-z]{2}(\/|$)/;
   const prefixed = (href?: string) => {
     if (!href || !prefix) return href;
-    if (COUNTRY_LINK.test(href)) return href;
+    if (isCountryPath(href) || href.startsWith("/countries/")) return href;
     return `${prefix}${href}`;
   };
   const navMega: MegaNavItem[] = NAV_MEGA.map((item) => ({

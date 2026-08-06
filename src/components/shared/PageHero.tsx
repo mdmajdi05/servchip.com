@@ -1,4 +1,5 @@
-﻿import Link from "next/link";
+﻿"use client";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 

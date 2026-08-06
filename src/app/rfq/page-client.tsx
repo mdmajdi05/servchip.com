@@ -13,9 +13,8 @@ import {
   Clock,
   ShieldCheck,
 } from "lucide-react";
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import { CHIPS } from "@/data/chips";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 const QUANTITIES = ["1-10", "11-50", "51-200", "201-1000", "1000+"];
 const TIMEFRAMES = [
   "Within 1 week",
@@ -34,7 +33,6 @@ const REGIONS = [
 ];
 type FormState = "idle" | "submitting" | "success";
 export default function RFQPage() {
-  const prefix = useCountryPrefix();
   const searchParams = useSearchParams();
   const [formState, setFormState] = useState<FormState>("idle");
   const initialSlug = searchParams.get("chip");
@@ -82,10 +80,10 @@ export default function RFQPage() {
               A confirmation has been sent to {form.email}.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href={`${prefix}/products`}>
+              <Link href="/products">
                 <Button variant="outline">Browse More Products</Button>
               </Link>
-              <Link href={`${prefix}/`}>
+              <Link href="/">
                 <Button variant="solid">Back to Home</Button>
               </Link>
             </div>
@@ -324,7 +322,7 @@ export default function RFQPage() {
               </div>
               <div className="text-center">
                 <Link
-                  href={`${prefix}/faq`}
+                  href="/faq"
                   className="text-xs text-primary hover:underline"
                 >
                   Read Sourcing FAQ

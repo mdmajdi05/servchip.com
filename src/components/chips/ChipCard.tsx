@@ -1,12 +1,11 @@
 ﻿"use client";
 
 import React from "react";
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import Image from "next/image";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Tilt3D } from "@/components/ui/Tilt3D";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { ChipProduct } from "@/types";
 
 const statusStyles: Record<
@@ -30,7 +29,6 @@ export const ChipCard = React.memo(function ChipCard({
   index: _index,
 }: ChipCardProps) {
   const status = statusStyles[chip.status];
-  const prefix = useCountryPrefix();
 
   return (
     <div>
@@ -268,12 +266,12 @@ export const ChipCard = React.memo(function ChipCard({
           </div>
 
           <div className="flex gap-2">
-            <Link href={`${prefix}/products/${chip.slug}`} className="flex-1">
+            <Link href={`/products/${chip.slug}`} className="flex-1">
               <Button variant="outline" size="sm" fullWidth>
                 Details
               </Button>
             </Link>
-            <Link href={`${prefix}/rfq?chip=${chip.slug}`} className="flex-1">
+            <Link href={`/rfq?chip=${chip.slug}`} className="flex-1">
               <Button variant="solid" size="sm" fullWidth>
                 Get Quote
               </Button>

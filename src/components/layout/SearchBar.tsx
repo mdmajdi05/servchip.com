@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, useEffect } from "react";
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import {
   Search,
   X,
@@ -14,7 +14,6 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { searchProducts, searchBlogPosts } from "@/data/search";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { ProductType } from "@/types";
 const TYPE_ICON: Record<ProductType, typeof Cpu> = {
   chip: Cpu,
@@ -36,7 +35,6 @@ export function SearchBar() {
   const [debounced, setDebounced] = useState("");
   const inputRef = useRef<HTMLInputElement>(null);
   const panelRef = useRef<HTMLDivElement>(null);
-  const prefix = useCountryPrefix();
   useEffect(() => {
     if (open) inputRef.current?.focus();
   }, [open]);
@@ -122,7 +120,7 @@ export function SearchBar() {
                 return (
                   <Link
                     key={`p-${product.id}`}
-                    href={`${prefix}/products/${product.slug}`}
+                    href={`/products/${product.slug}`}
                     onClick={() => {
                       setOpen(false);
                       setQuery("");
@@ -163,7 +161,7 @@ export function SearchBar() {
               blogPosts.map((post) => (
                 <Link
                   key={`b-${post.slug}`}
-                  href={`${prefix}/blog/${post.slug}`}
+                  href={`/blog/${post.slug}`}
                   onClick={() => {
                     setOpen(false);
                     setQuery("");

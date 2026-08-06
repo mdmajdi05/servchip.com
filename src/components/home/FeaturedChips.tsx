@@ -5,14 +5,12 @@ import { ChipCard } from "@/components/chips/ChipCard";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { SkeletonCard } from "@/components/ui/Skeleton";
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 export function FeaturedChips() {
   const [loading, setLoading] = useState(true);
-  const prefix = useCountryPrefix();
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 500);
@@ -38,7 +36,7 @@ export function FeaturedChips() {
         </div>
 
         <div className="text-center mt-10">
-          <Link href={`${prefix}/products`}>
+          <Link href={`/products`}>
             <Button
               variant="outline"
               size="lg"

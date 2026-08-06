@@ -1,6 +1,6 @@
 "use client";
 import { useState, useRef, useEffect, useMemo } from "react";
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import {
   Search,
   X,
@@ -16,7 +16,6 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { searchProducts, searchBlogPosts } from "@/data/search";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { ProductType } from "@/types";
 const TYPE_ICON: Record<ProductType, typeof Cpu> = {
   chip: Cpu,
@@ -39,7 +38,6 @@ export interface SearchModalProps {
 export function SearchModal({ open, onOpenChange }: SearchModalProps) {
   const [query, setQuery] = useState("");
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const prefix = useCountryPrefix();
   const [loading, setLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const listRef = useRef<HTMLDivElement>(null);
@@ -211,7 +209,7 @@ export function SearchModal({ open, onOpenChange }: SearchModalProps) {
                   return (
                     <Link
                       key={`p-${product.id}`}
-                      href={`${prefix}/products/${product.slug}`}
+                      href={`/products/${product.slug}`}
                       onClick={() => onOpenChange(false)}
                       className={cn(
                         "flex items-center gap-4 px-5 py-3.5 transition-transform",
@@ -258,7 +256,7 @@ export function SearchModal({ open, onOpenChange }: SearchModalProps) {
                   return (
                     <Link
                       key={`b-${post.slug}`}
-                      href={`${prefix}/blog/${post.slug}`}
+                      href={`/blog/${post.slug}`}
                       onClick={() => onOpenChange(false)}
                       className={cn(
                         "flex items-center gap-4 px-5 py-3.5 transition-transform",

@@ -1,6 +1,6 @@
 ﻿"use client";
 
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 
 import { Cpu, Sparkles, Layers, BookOpen, ArrowUpRight } from "lucide-react";
 

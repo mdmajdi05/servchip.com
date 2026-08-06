@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import {
   Truck,
   Banknote,
@@ -10,7 +10,6 @@ import {
   Phone,
   ArrowRight,
 } from "lucide-react";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { Country, CountryMarket } from "@/types";
 
 export function CountryMarketStrip({
@@ -20,8 +19,6 @@ export function CountryMarketStrip({
   country: Country;
   market: CountryMarket;
 }) {
-  const prefix = useCountryPrefix();
-
   return (
     <section
       className="py-12 bg-bg-body border-b border-border-subtle"
@@ -86,7 +83,7 @@ export function CountryMarketStrip({
 
         <div className="text-center mt-6">
           <Link
-            href={`${prefix}/products`}
+            href={`/products`}
             className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary/80 transition-colors"
           >
             Browse {country.name} catalog <ArrowRight className="w-4 h-4" />

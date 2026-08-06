@@ -2,13 +2,12 @@
 
 import { useState } from "react";
 
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import Image from "next/image";
 import { ArrowRight, Clock, Tag, ImageIcon } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { BLOG_POSTS } from "@/blog";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 const LATEST_POSTS = [...BLOG_POSTS]
   .sort(
@@ -28,7 +27,6 @@ function formatDate(dateStr: string) {
 
 export function LatestInsights() {
   const [failedImgs, setFailedImgs] = useState<Set<string>>(new Set());
-  const prefix = useCountryPrefix();
 
   return (
     <section className="py-20 bg-bg-dark">
@@ -44,7 +42,7 @@ export function LatestInsights() {
           {LATEST_POSTS.map((post) => (
             <div key={post.slug}>
               <Link
-                href={`${prefix}/blog/${post.slug}`}
+                href={`/blog/${post.slug}`}
                 className="block bg-surface border border-border rounded-xl h-full hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-transform duration-300 overflow-hidden"
               >
                 {post.featuredImage && !failedImgs.has(post.slug) ? (
@@ -95,7 +93,7 @@ export function LatestInsights() {
 
         <div className="text-center mt-8">
           <Link
-            href={`${prefix}/blog`}
+            href={`/blog`}
             className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:underline"
           >
             View All Articles <ArrowRight className="w-3.5 h-3.5" />

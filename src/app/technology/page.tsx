@@ -284,10 +284,7 @@ export default function TechnologyPage({ prefix = "" }: { prefix?: string }) {
         label="The Technology"
         title="Built for the Next Generation of AI Computing"
         subtitle="From Blackwell's FP4 precision to AMD CDNA 3 and Intel Granite Rapids - we deliver the most advanced chip architectures in the industry. Explore the technologies powering next-gen AI."
-        breadcrumbs={[
-          { label: "Home", href: `${prefix}/` },
-          { label: "Technology" },
-        ]}
+        breadcrumbs={[{ label: "Home", href: "/" }, { label: "Technology" }]}
       />
       {/* Explore by vendor */}
       <section className="py-10 bg-bg-dark border-b border-border">

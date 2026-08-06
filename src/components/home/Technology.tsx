@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic";
 
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import {
   ArrowRight,
   Cpu,
@@ -15,7 +15,6 @@ import {
 } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { TECHNOLOGY_FEATURES } from "@/data/home";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { TechnologyFeature } from "@/data/home";
 
 const LIGHTNING_SCENE = dynamic(
@@ -61,7 +60,6 @@ function FeatureCard({
 }
 
 export function Technology() {
-  const prefix = useCountryPrefix();
   return (
     <section className="py-20 bg-surface">
       <div className="max-w-7xl mx-auto px-4">
@@ -96,7 +94,7 @@ export function Technology() {
 
         <div className="text-center mt-12">
           <Link
-            href={`${prefix}/technology`}
+            href={`/technology`}
             aria-label="Discover Servchip's semiconductor technology platform"
             className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:underline"
           >

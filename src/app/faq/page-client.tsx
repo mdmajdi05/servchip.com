@@ -1,13 +1,11 @@
 "use client";
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 interface FAQItem {
   q: string;
   a: string;
 }
 export default function FAQPage({ faqs }: { faqs: FAQItem[] }) {
-  const prefix = useCountryPrefix();
   return (
     <div className="min-h-screen bg-bg-dark">
       <div className="max-w-3xl mx-auto px-4">
@@ -42,19 +40,19 @@ export default function FAQPage({ faqs }: { faqs: FAQItem[] }) {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-3">
             <Link
-              href={`${prefix}/contact`}
+              href="/contact"
               className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-bg-dark text-sm font-bold rounded-lg hover:bg-primary-dark transition-transform"
             >
               Contact Our Chip Experts
             </Link>
             <Link
-              href={`${prefix}/rfq`}
+              href="/rfq"
               className="inline-flex items-center gap-2 px-6 py-3 border border-primary/40 text-primary text-sm font-bold rounded-lg hover:bg-primary/10 transition-transform"
             >
               Submit an RFQ for Volume Pricing
             </Link>
             <Link
-              href={`${prefix}/products`}
+              href="/products"
               className="inline-flex items-center gap-2 px-6 py-3 border border-border text-text-muted text-sm font-bold rounded-lg hover:text-text hover:border-primary/30 transition-transform"
             >
               Browse Products

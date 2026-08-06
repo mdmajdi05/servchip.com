@@ -1,6 +1,6 @@
 "use client";
 import { useState, useMemo } from "react";
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import { X, ArrowRight, Cpu, Check } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
@@ -8,7 +8,6 @@ import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
 import { CHIPS } from "@/data/chips";
 import { ConfiguratorPromo } from "@/components/shared/ConfiguratorPromo";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { ChipProduct } from "@/types";
 const DEFAULT_SERIES = ["H100", "H200", "B200"];
 const STATUS_STYLES: Record<
@@ -72,7 +71,6 @@ const SPEC_LABELS: Record<string, string> = {
   manufacturingProcess: "Manufacturing Process",
 };
 export default function ComparisonPage() {
-  const prefix = useCountryPrefix();
   const defaultIds = useMemo(
     () =>
       CHIPS.filter((c) => DEFAULT_SERIES.includes(c.series)).map((c) => c.id),
@@ -222,7 +220,7 @@ export default function ComparisonPage() {
                 <div className="sticky left-0 z-10" />
                 {selectedChips.map((chip) => (
                   <div key={chip.id} className="px-2 pt-2">
-                    <Link href={`${prefix}/rfq?chip=${chip.slug}`}>
+                    <Link href={`/rfq?chip=${chip.slug}`}>
                       <Button variant="solid" size="sm" fullWidth>
                         Get Quote <ArrowRight className="w-3.5 h-3.5" />
                       </Button>
@@ -236,13 +234,13 @@ export default function ComparisonPage() {
         {/* Bottom CTA */}
         <div className="text-center mt-12 flex flex-wrap items-center justify-center gap-4">
           <Link
-            href={`${prefix}/categories`}
+            href="/categories"
             className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:underline"
           >
             Browse All Categories <ArrowRight className="w-3.5 h-3.5" />
           </Link>
           <Link
-            href={`${prefix}/products`}
+            href="/products"
             className="inline-flex items-center gap-1.5 text-primary text-sm font-semibold hover:underline"
           >
             Browse All Products <ArrowRight className="w-3.5 h-3.5" />

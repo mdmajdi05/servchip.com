@@ -1,11 +1,9 @@
 "use client";
 
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 export default function PrivacyPage() {
-  const prefix = useCountryPrefix();
   return (
     <div className="min-h-screen bg-bg-dark">
       <div className="max-w-3xl mx-auto px-4 py-16">
@@ -48,10 +46,7 @@ export default function PrivacyPage() {
           <p>
             For privacy-related inquiries, contact us at privacy@servchip.com or
             reach out via our{" "}
-            <Link
-              href={`${prefix}/contact`}
-              className="text-primary hover:underline"
-            >
+            <Link href="/contact" className="text-primary hover:underline">
               contact page
             </Link>
             .

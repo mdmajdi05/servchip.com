@@ -1,8 +1,7 @@
 import type { BlogPost } from "@/blog/types";
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import { Clock, ArrowRight, User } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 const CATEGORY_BADGE: Record<string, "green" | "cyan" | "purple" | "amber"> = {
   architecture: "purple",
@@ -13,9 +12,8 @@ const CATEGORY_BADGE: Record<string, "green" | "cyan" | "purple" | "amber"> = {
 };
 
 export function BlogCard({ post }: { post: BlogPost }) {
-  const prefix = useCountryPrefix();
   return (
-    <Link href={`${prefix}/blog/${post.slug}`} className="group block h-full">
+    <Link href={`/blog/${post.slug}`} className="group block h-full">
       <article className="h-full rounded-xl border border-border bg-surface p-6 transition-transform duration-300 group-hover:border-primary/25 group-hover:shadow-[0_0_24px_color-mix(in_srgb,var(--primary)_8%,transparent)] group-hover:-translate-y-1 flex flex-col">
         <div className="flex items-center justify-between mb-4">
           <Badge

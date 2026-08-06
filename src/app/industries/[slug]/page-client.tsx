@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import {
   ArrowRight,
   ChevronDown,
@@ -22,10 +22,8 @@ import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProductCard } from "@/components/products/ProductCard";
 import { BrandLogo } from "@/components/ui/BrandLogo";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 export default function IndustryPage() {
-  const prefix = useCountryPrefix();
   const params = useParams();
   const slug = params.slug as string;
   const industry = getIndustryBySlug(slug);
@@ -38,10 +36,7 @@ export default function IndustryPage() {
           <h1 className="text-2xl font-bold text-text mb-2">
             Industry Not Found
           </h1>
-          <Link
-            href={`${prefix}/solutions`}
-            className="text-primary hover:underline"
-          >
+          <Link href="/solutions" className="text-primary hover:underline">
             Browse solutions
           </Link>
         </div>
@@ -78,7 +73,7 @@ export default function IndustryPage() {
         subtitle={industry.hero.subtitle}
         breadcrumbs={[
           { label: "Home", href: "/" },
-          { label: "Solutions", href: `${prefix}/solutions` },
+          { label: "Solutions", href: "/solutions" },
           { label: industry.name },
         ]}
       />
@@ -121,7 +116,7 @@ export default function IndustryPage() {
                 {relatedBrands.map((brand) => (
                   <Link
                     key={brand.id}
-                    href={`${prefix}/brands/${brand.slug}`}
+                    href={`/brands/${brand.slug}`}
                     className="flex items-center gap-3 p-4 rounded-xl border border-border bg-surface card-hover hover:border-primary/30"
                   >
                     <BrandLogo name={brand.name} className="w-6 h-6" />
@@ -156,7 +151,7 @@ export default function IndustryPage() {
           )}
           <div className="text-center mt-10">
             <Link
-              href={`${prefix}/products`}
+              href="/products"
               className="inline-flex items-center gap-2 bg-primary text-bg-dark px-5 py-2.5 rounded-xl font-semibold text-sm hover:scale-105 transition-transform shadow-lg shadow-primary/25"
             >
               View All Products <ArrowRight className="w-4 h-4" />
@@ -229,13 +224,13 @@ export default function IndustryPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link
-                href={`${prefix}/rfq`}
+                href="/rfq"
                 className="inline-flex items-center gap-2 bg-primary text-bg-dark px-5 py-2.5 rounded-xl font-semibold text-sm hover:scale-105 transition-transform shadow-lg shadow-primary/25"
               >
                 Request a Quote <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                href={`${prefix}/contact`}
+                href="/contact"
                 className="inline-flex items-center gap-2 border border-border bg-surface text-text px-5 py-2.5 rounded-xl font-semibold text-sm hover:border-primary/30 hover:text-primary transition-transform"
               >
                 <Truck className="w-4 h-4" />

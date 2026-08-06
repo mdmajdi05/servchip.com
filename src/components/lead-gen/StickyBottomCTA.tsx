@@ -1,12 +1,10 @@
 "use client";
 import { useState, useEffect } from "react";
 import { X, ArrowRight } from "lucide-react";
-import Link from "next/link";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
+import { AppLink as Link } from "@/components/ui/AppLink";
 const DISMISS_KEY = "servchip-sticky-cta-closed";
 export function StickyBottomCTA() {
   const [visible, setVisible] = useState(false);
-  const prefix = useCountryPrefix();
   const [dismissed] = useState(() => {
     if (typeof window === "undefined") return false;
     return !!localStorage.getItem(DISMISS_KEY);
@@ -34,7 +32,7 @@ export function StickyBottomCTA() {
             </p>
             <div className="flex items-center gap-2 shrink-0">
               <Link
-                href={`${prefix}/rfq`}
+                href="/rfq"
                 className="inline-flex items-center gap-1.5 px-4 py-2 bg-bg-dark text-primary font-semibold text-sm rounded-lg hover:bg-surface transition-transform duration-200 hover:scale-[1.02]"
               >
                 Get Quote

@@ -1,6 +1,6 @@
 "use client";
 
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import { ArrowRight } from "lucide-react";
 
 interface InContentCTAProps {

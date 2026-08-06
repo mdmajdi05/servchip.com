@@ -1,13 +1,12 @@
 ﻿"use client";
 
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import { ArrowRight, Trophy, Sparkles, Flame } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
 import { COMPARISON_CHIPS } from "@/data/home";
 import { cn } from "@/lib/utils";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 const badgeIcons: Record<string, typeof Trophy> = {
   Popular: Trophy,
@@ -22,7 +21,6 @@ const badgeVariantMap: Record<string, "green" | "cyan" | "purple"> = {
 };
 
 export function ComparisonPreview() {
-  const prefix = useCountryPrefix();
   return (
     <section className="py-20 bg-bg-body">
       <div className="max-w-7xl mx-auto px-4">
@@ -75,7 +73,7 @@ export function ComparisonPreview() {
               </div>
 
               <div className="mt-4">
-                <Link href={`${prefix}/rfq`}>
+                <Link href={`/rfq`}>
                   <Button variant="solid" size="sm" fullWidth>
                     Get Quote
                   </Button>
@@ -87,7 +85,7 @@ export function ComparisonPreview() {
 
         <div className="text-center mt-8">
           <Link
-            href={`${prefix}/comparison`}
+            href={`/comparison`}
             className="inline-flex items-center gap-1.5 px-5 py-2.5 text-sm font-semibold text-text rounded-lg border border-primary hover:bg-primary/10 hover:neon-glow transition-transform duration-200"
           >
             Use Full Comparison Tool <ArrowRight className="w-3.5 h-3.5" />

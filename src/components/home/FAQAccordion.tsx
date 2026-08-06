@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import {
   ChevronDown,
   HelpCircle,
@@ -11,7 +11,6 @@ import {
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { FAQ_CATEGORIES } from "@/data/home";
 import type { TaxonomyFaq } from "@/types";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 export function FAQAccordion({
   faqs,
@@ -27,7 +26,6 @@ export function FAQAccordion({
   const toggle = (index: number) => {
     setOpenIndex(openIndex === index ? null : index);
   };
-  const prefix = useCountryPrefix();
   return (
     <section className="py-20 bg-bg-dark relative overflow-hidden">
       <div className="absolute inset-0 bg-dot-grid opacity-10" />
@@ -146,20 +144,20 @@ export function FAQAccordion({
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link
-                href={`${prefix}/rfq`}
+                href={`/rfq`}
                 className="inline-flex items-center gap-2 bg-primary text-bg-dark px-5 py-2.5 rounded-xl font-semibold text-sm hover:scale-105 transition-transform shadow-lg shadow-primary/25"
               >
                 Send Enquiry <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                href={`${prefix}/contact`}
+                href={`/contact`}
                 className="inline-flex items-center gap-2 border border-border bg-surface text-text px-5 py-2.5 rounded-xl font-semibold text-sm hover:border-primary/30 hover:text-primary transition-transform"
               >
                 <Phone className="w-4 h-4" />
                 Talk to Sales
               </Link>
               <Link
-                href={`${prefix}/faq`}
+                href={`/faq`}
                 className="inline-flex items-center gap-2 border border-border bg-surface text-text px-5 py-2.5 rounded-xl font-semibold text-sm hover:border-primary/30 hover:text-primary transition-transform"
               >
                 <HelpCircle className="w-4 h-4" />

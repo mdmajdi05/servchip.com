@@ -1,10 +1,9 @@
 ﻿"use client";
 
 import { ArrowRight } from "lucide-react";
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { SERVICES } from "@/data/home";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { ServiceItem } from "@/data/home";
 
 function ServiceCard({
@@ -15,7 +14,6 @@ function ServiceCard({
   index: number;
 }) {
   const Icon = service.icon;
-  const prefix = useCountryPrefix();
   return (
     <div className="group relative">
       <div className="relative h-full rounded-2xl border border-border bg-surface p-6 card-hover overflow-hidden">
@@ -44,7 +42,7 @@ function ServiceCard({
           </ul>
 
           <Link
-            href={`${prefix}/contact`}
+            href={`/contact`}
             aria-label="Contact Servchip for sourcing services"
             className="inline-flex items-center gap-1 text-primary text-xs font-semibold group/link"
           >

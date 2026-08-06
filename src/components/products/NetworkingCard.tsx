@@ -1,12 +1,11 @@
 ﻿"use client";
 
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import Image from "next/image";
 import { Network } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { Badge } from "@/components/ui/Badge";
 import { Tilt3D } from "@/components/ui/Tilt3D";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { NetworkingProduct } from "@/types";
 
 const statusStyles: Record<
@@ -27,7 +26,6 @@ interface Props {
 
 export function NetworkingCard({ net, index: _index }: Props) {
   const status = statusStyles[net.status];
-  const prefix = useCountryPrefix();
 
   return (
     <div>
@@ -82,12 +80,12 @@ export function NetworkingCard({ net, index: _index }: Props) {
           </div>
 
           <div className="flex gap-2">
-            <Link href={`${prefix}/products/${net.slug}`} className="flex-1">
+            <Link href={`/products/${net.slug}`} className="flex-1">
               <Button variant="outline" size="sm" fullWidth>
                 Details
               </Button>
             </Link>
-            <Link href={`${prefix}/rfq?chip=${net.slug}`} className="flex-1">
+            <Link href={`/rfq?chip=${net.slug}`} className="flex-1">
               <Button variant="solid" size="sm" fullWidth>
                 Get Quote
               </Button>

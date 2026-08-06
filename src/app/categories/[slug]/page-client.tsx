@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from "react";
 import { useParams } from "next/navigation";
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import {
   ArrowLeft,
   Server,
@@ -18,7 +18,6 @@ import { ProductCard } from "@/components/products/ProductCard";
 import { ALL_PRODUCTS } from "@/data/products";
 import { CATEGORIES } from "@/data/categories";
 import { BRANDS } from "@/data/brands";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import {
   isChipProduct,
   isServerProduct,
@@ -56,7 +55,6 @@ export default function CategoryDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const [search, setSearch] = useState("");
   const [activeType, setActiveType] = useState<string | "all">("all");
-  const prefix = useCountryPrefix();
 
   const category = CATEGORIES.find((c) => c.slug === slug);
   const categoryProducts = category
@@ -104,7 +102,7 @@ export default function CategoryDetailPage() {
               have been moved.
             </p>
             <Link
-              href={`${prefix}/categories`}
+              href="/categories"
               className="inline-flex items-center gap-2 text-sm text-primary hover:text-primary-dark transition-transform"
             >
               <ArrowLeft className="w-4 h-4" /> Back to Categories
@@ -123,15 +121,12 @@ export default function CategoryDetailPage() {
           aria-label="Breadcrumb"
           className="flex items-center gap-2 text-sm text-text-dim mb-6 pt-4"
         >
-          <Link
-            href={`${prefix}/`}
-            className="hover:text-primary transition-transform"
-          >
+          <Link href="/" className="hover:text-primary transition-transform">
             Home
           </Link>
           <span>/</span>
           <Link
-            href={`${prefix}/categories`}
+            href="/categories"
             className="hover:text-primary transition-transform"
           >
             Categories
@@ -184,7 +179,7 @@ export default function CategoryDetailPage() {
                   return (
                     <Link
                       key={bid}
-                      href={`${prefix}/brands/${brand.slug}`}
+                      href={`/brands/${brand.slug}`}
                       className="px-3 py-1.5 text-xs font-medium rounded-lg border border-border text-text-muted hover:text-text hover:border-primary/30 transition-transform"
                     >
                       {brand.name} products

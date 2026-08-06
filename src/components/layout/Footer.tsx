@@ -9,6 +9,7 @@ import { COUNTRIES, getCountryPath } from "@/data/countries";
 import { getBrandColor } from "@/data/brand-colors";
 import { SITE } from "@/lib/constants";
 import { useCountryPrefix } from "@/lib/useCountryPrefix";
+import { isCountryPath } from "@/lib/localized-path";
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -134,9 +135,10 @@ const FOOTER_LINKS: {
 
 export function Footer() {
   const prefix = useCountryPrefix();
-  const COUNTRY_LINK = /^\/[a-z]{2}(\/|$)/;
   const prefixed = (href: string) =>
-    !prefix || COUNTRY_LINK.test(href) ? href : `${prefix}${href}`;
+    !prefix || isCountryPath(href) || href.startsWith("/countries/")
+      ? href
+      : `${prefix}${href}`;
   const footerLinks = FOOTER_LINKS.map((col) => ({
     ...col,
     links: col.links.map((l) => ({ ...l, href: prefixed(l.href) })),

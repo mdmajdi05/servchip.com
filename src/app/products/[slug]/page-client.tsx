@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import dynamic from "next/dynamic";
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import { ChevronRight } from "lucide-react";
 import {
   isChipProduct,
@@ -12,7 +12,6 @@ import {
 } from "@/types";
 import type { AnyProduct } from "@/types";
 import { BRANDS } from "@/data/brands";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 
 const ChipDetail = dynamic(
   () => import("@/components/products/ChipDetail").then((m) => m.ChipDetail),
@@ -52,7 +51,6 @@ export default function ProductDetailPage({
   const brandCategory = brand?.categories.find((c) =>
     c.subcategories.some((s) => s.chipIds.includes(product.id)),
   );
-  const prefix = useCountryPrefix();
 
   return (
     <>
@@ -60,24 +58,18 @@ export default function ProductDetailPage({
         aria-label="Breadcrumb"
         className="flex items-center gap-1.5 text-sm text-text-dim max-w-7xl mx-auto px-4 pt-6"
       >
-        <Link
-          href={`${prefix}/`}
-          className="hover:text-primary transition-colors"
-        >
+        <Link href="/" className="hover:text-primary transition-colors">
           Home
         </Link>
         <ChevronRight className="w-3.5 h-3.5 text-text-dim/60" />
-        <Link
-          href={`${prefix}/products`}
-          className="hover:text-primary transition-colors"
-        >
+        <Link href="/products" className="hover:text-primary transition-colors">
           Products
         </Link>
         {brandCategory && brand && (
           <>
             <ChevronRight className="w-3.5 h-3.5 text-text-dim/60" />
             <Link
-              href={`${prefix}/brands/${brand.slug}/${brandCategory.slug}`}
+              href={`/brands/${brand.slug}/${brandCategory.slug}`}
               className="hover:text-primary transition-colors"
             >
               {brandCategory.name}
@@ -88,7 +80,7 @@ export default function ProductDetailPage({
           <>
             <ChevronRight className="w-3.5 h-3.5 text-text-dim/60" />
             <Link
-              href={`${prefix}/categories/${parentCategory.slug}`}
+              href={`/categories/${parentCategory.slug}`}
               className="hover:text-primary transition-colors"
             >
               {parentCategory.name}

@@ -1,12 +1,11 @@
 "use client";
 
 import { useRef, useEffect, useState, useSyncExternalStore } from "react";
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import NextImage from "next/image";
 import { ArrowRight } from "lucide-react";
 import { useTypewriter } from "@/hooks/useTypewriter";
 import { HERO_PHRASES, HERO_STATS } from "@/data/home";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { Country, CountryMarket } from "@/types";
 
 const styles = `
@@ -181,7 +180,6 @@ export function Hero3D({
   market?: CountryMarket;
 }) {
   const displayText = useTypewriter(HERO_PHRASES, 40, 2500);
-  const prefix = useCountryPrefix();
   const isDesktop = useSyncExternalStore(
     (cb) => {
       const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -265,7 +263,7 @@ export function Hero3D({
           </p>
 
           <div className="flex flex-wrap gap-4 justify-center mb-12">
-            <Link href={`${prefix}/products`}>
+            <Link href={`/products`}>
               <button
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-black"
                 style={{
@@ -277,7 +275,7 @@ export function Hero3D({
                 Explore Products <ArrowRight className="w-4 h-4" />
               </button>
             </Link>
-            <Link href={`${prefix}/rfq`}>
+            <Link href={`/rfq`}>
               <button
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-sm border bg-white/[0.05] backdrop-blur-sm"
                 style={{

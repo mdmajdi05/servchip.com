@@ -1,7 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import {
   ArrowRight,
   ChevronDown,
@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import { useState } from "react";
 import { getCountryBySlug } from "@/data/countries";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import { getBrand } from "@/data/brands";
 import {
   getProductsByBrand,
@@ -28,7 +27,6 @@ export default function CountryPage() {
   const params = useParams();
   const slug = params.slug as string;
   const country = getCountryBySlug(slug);
-  const prefix = useCountryPrefix();
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   if (!country) {
@@ -38,10 +36,7 @@ export default function CountryPage() {
           <h1 className="text-2xl font-bold text-text mb-2">
             Location Not Found
           </h1>
-          <Link
-            href={`${prefix}/products`}
-            className="text-primary hover:underline"
-          >
+          <Link href="/products" className="text-primary hover:underline">
             Browse all products
           </Link>
         </div>
@@ -121,7 +116,7 @@ export default function CountryPage() {
                 {relatedBrands.map((brand) => (
                   <Link
                     key={brand.id}
-                    href={`${prefix}/brands/${brand.slug}`}
+                    href={`/brands/${brand.slug}`}
                     className="flex items-center gap-3 p-4 rounded-xl border border-border bg-surface card-hover hover:border-primary/30"
                   >
                     <BrandLogo name={brand.name} className="w-6 h-6" />
@@ -156,7 +151,7 @@ export default function CountryPage() {
           )}
           <div className="text-center mt-10">
             <Link
-              href={`${prefix}/products`}
+              href="/products"
               className="inline-flex items-center gap-2 bg-primary text-bg-dark px-5 py-2.5 rounded-xl font-semibold text-sm hover:scale-105 transition-transform shadow-lg shadow-primary/25"
             >
               View All Products <ArrowRight className="w-4 h-4" />
@@ -229,13 +224,13 @@ export default function CountryPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-3">
               <Link
-                href={`${prefix}/rfq`}
+                href="/rfq"
                 className="inline-flex items-center gap-2 bg-primary text-bg-dark px-5 py-2.5 rounded-xl font-semibold text-sm hover:scale-105 transition-transform shadow-lg shadow-primary/25"
               >
                 Request a Quote <ArrowRight className="w-4 h-4" />
               </Link>
               <Link
-                href={`${prefix}/contact`}
+                href="/contact"
                 className="inline-flex items-center gap-2 border border-border bg-surface text-text px-5 py-2.5 rounded-xl font-semibold text-sm hover:border-primary/30 hover:text-primary transition-transform"
               >
                 <MapPin className="w-4 h-4" />

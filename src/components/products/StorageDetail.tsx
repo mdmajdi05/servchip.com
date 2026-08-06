@@ -1,7 +1,7 @@
 ﻿"use client";
 
 import { useParams } from "next/navigation";
-import Link from "next/link";
+import { AppLink as Link } from "@/components/ui/AppLink";
 import {
   Check,
   ArrowLeft,
@@ -19,7 +19,6 @@ import { Button } from "@/components/ui/Button";
 import { ManufacturerLink } from "@/components/products/ManufacturerLink";
 import { CountryAvailabilityLinks } from "@/components/products/CountryAvailabilityLinks";
 import { ProductCard } from "@/components/products/ProductCard";
-import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import type { StorageProduct } from "@/types";
 
 const statusStyles: Record<
@@ -44,7 +43,6 @@ const itemVariants = {
 
 export function StorageDetail() {
   const { slug } = useParams<{ slug: string }>();
-  const prefix = useCountryPrefix();
   const st = ALL_STORAGE.find((s) => s.slug === slug);
 
   if (!st) {
@@ -61,7 +59,7 @@ export function StorageDetail() {
             The storage product you are looking for does not exist or may have
             been removed.
           </p>
-          <Link href={`${prefix}/products`}>
+          <Link href={`/products`}>
             <Button variant="solid" icon={<ArrowLeft className="w-4 h-4" />}>
               Back to Products
             </Button>
@@ -200,7 +198,7 @@ export function StorageDetail() {
               )}
 
               <div className="flex flex-wrap gap-3 pt-2">
-                <Link href={`${prefix}/rfq?chip=${st.slug}`}>
+                <Link href={`/rfq?chip=${st.slug}`}>
                   <Button
                     variant="solid"
                     size="lg"
@@ -210,7 +208,7 @@ export function StorageDetail() {
                     Get Quote
                   </Button>
                 </Link>
-                <Link href={`${prefix}/comparison?add=${st.slug}`}>
+                <Link href={`/comparison?add=${st.slug}`}>
                   <Button
                     variant="outline"
                     size="lg"
@@ -219,7 +217,7 @@ export function StorageDetail() {
                     Compare with similar chips
                   </Button>
                 </Link>
-                <Link href={`${prefix}/products`}>
+                <Link href={`/products`}>
                   <Button variant="ghost" size="lg">
                     ? Back to Catalog
                   </Button>
@@ -317,7 +315,7 @@ export function StorageDetail() {
                     catalog.
                   </p>
                 </div>
-                <Link href={`${prefix}/products`}>
+                <Link href={`/products`}>
                   <Button variant="outline" size="sm">
                     View All <ArrowRight className="w-3.5 h-3.5" />
                   </Button>
@@ -344,7 +342,7 @@ export function StorageDetail() {
                 </p>
               </div>
               <div className="flex gap-3 shrink-0">
-                <Link href={`${prefix}/rfq?chip=${st.slug}`}>
+                <Link href={`/rfq?chip=${st.slug}`}>
                   <Button
                     variant="solid"
                     size="lg"
@@ -354,7 +352,7 @@ export function StorageDetail() {
                     Request Quote
                   </Button>
                 </Link>
-                <Link href={`${prefix}/contact`}>
+                <Link href={`/contact`}>
                   <Button variant="outline" size="lg">
                     Talk to Expert
                   </Button>
@@ -367,7 +365,7 @@ export function StorageDetail() {
 
           <div className="text-center">
             <Link
-              href={`${prefix}/faq`}
+              href={`/faq`}
               className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline"
             >
               Shipping, MOQ &amp; Sourcing FAQ{" "}
