@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { COUNTRIES } from "@/data/countries";
+import { COUNTRIES, getCountryPath } from "@/data/countries";
 
 export function CountryAvailabilityLinks({
   productName,
@@ -20,7 +20,7 @@ export function CountryAvailabilityLinks({
         {countries.map((country) => (
           <li key={country.slug}>
             <Link
-              href={`/countries/${country.slug}`}
+              href={getCountryPath(country)}
               className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-text-muted hover:border-primary/40 hover:text-primary transition-colors"
             >
               <span className="text-sm leading-none">{country.flag}</span>

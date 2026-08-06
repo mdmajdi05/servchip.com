@@ -107,8 +107,11 @@ export default function RootLayout({
         />
         <meta name="msvalidate.01" content="4BE8A73009F581363FCC999797F2C050" />
         {/* Hreflang */}
-        <link rel="alternate" href={SITE.url} hrefLang="en-in" />
-        <link rel="alternate" href={SITE.url} hrefLang="en-ae" />
+        <link rel="alternate" href={`${SITE.url}/us`} hrefLang="en-us" />
+        <link rel="alternate" href={`${SITE.url}/uk`} hrefLang="en-gb" />
+        <link rel="alternate" href={`${SITE.url}/de`} hrefLang="de-de" />
+        <link rel="alternate" href={`${SITE.url}/in`} hrefLang="en-in" />
+        <link rel="alternate" href={`${SITE.url}/ae`} hrefLang="en-ae" />
         <link rel="alternate" href={SITE.url} hrefLang="en" />
         <link rel="alternate" href={SITE.url} hrefLang="x-default" />
         {/* Preconnect hints */}

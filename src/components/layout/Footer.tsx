@@ -5,7 +5,7 @@ import Link from "next/link";
 import { Phone, Mail, Send, MapPin, ChevronRight } from "lucide-react";
 import { AnimatedLogo } from "@/components/ui/AnimatedLogo";
 import { BRANDS } from "@/data/brands";
-import { COUNTRIES } from "@/data/countries";
+import { COUNTRIES, getCountryPath } from "@/data/countries";
 import { getBrandColor } from "@/data/brand-colors";
 import { SITE } from "@/lib/constants";
 
@@ -115,7 +115,7 @@ const FOOTER_LINKS: {
       { label: "Services", href: "/services" },
       ...COUNTRIES.map((c) => ({
         label: c.name,
-        href: `/countries/${c.slug}`,
+        href: getCountryPath(c),
       })),
     ],
   },

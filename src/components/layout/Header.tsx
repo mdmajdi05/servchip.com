@@ -16,7 +16,7 @@ import {
 import { cn } from "@/lib/utils";
 import { SITE } from "@/lib/constants";
 import { BRANDS } from "@/data/brands";
-import { COUNTRIES } from "@/data/countries";
+import { COUNTRIES, getCountryPath } from "@/data/countries";
 import { INDUSTRIES } from "@/data/industries";
 import { SOLUTIONS } from "@/data/solutions";
 import { MegaMenu } from "./MegaMenu";
@@ -398,7 +398,7 @@ const NAV_MEGA: MegaNavItem[] = [
         href: "/countries",
         links: COUNTRIES.map((c) => ({
           label: c.name,
-          href: `/countries/${c.slug}`,
+          href: getCountryPath(c),
           description: c.description,
         })),
       },

@@ -30,6 +30,7 @@ export interface Country {
   id: string;
   name: string;
   slug: string;
+  code: string;
   flag: string;
   region: string;
   description: string;
@@ -39,6 +40,17 @@ export interface Country {
   faqs: TaxonomyFaq[];
   related: TaxonomyRelated;
   stats?: TaxonomyStat[];
+  market?: CountryMarket;
+}
+
+export interface CountryMarket {
+  code: string;
+  locale: string;
+  currency: string;
+  currencySymbol: string;
+  warehouse: string;
+  shippingNote: string;
+  leadTime: string;
 }
 
 export interface Industry {

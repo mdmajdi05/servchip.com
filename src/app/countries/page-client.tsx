@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { COUNTRIES } from "@/data/countries";
+import { COUNTRIES, getCountryPath } from "@/data/countries";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
@@ -27,7 +27,7 @@ export default function CountriesPage() {
             {COUNTRIES.map((country) => (
               <Link
                 key={country.id}
-                href={`/countries/${country.slug}`}
+                href={getCountryPath(country)}
                 className="group rounded-2xl border border-border bg-surface p-6 card-hover h-full"
               >
                 <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-transform text-2xl">

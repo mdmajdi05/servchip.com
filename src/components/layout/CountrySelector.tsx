@@ -5,14 +5,15 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Globe, ChevronDown, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { COUNTRIES } from "@/data/countries";
+import { COUNTRIES, getCountryPath } from "@/data/countries";
+import { COUNTRY_MARKETS } from "@/data/country-markets";
 
 const STORAGE_KEY = "servchip-country";
 
 function readStoredCountry(): string {
   if (typeof window === "undefined") return "global";
   const stored = window.localStorage.getItem(STORAGE_KEY);
-  return stored && COUNTRIES.some((c) => c.slug === stored) ? stored : "global";
+  return stored && COUNTRIES.some((c) => c.code === stored) ? stored : "global";
 }
 
 export function CountrySelector() {
@@ -21,9 +22,9 @@ export function CountrySelector() {
   const [stored, setStored] = useState<string>(() => readStoredCountry());
   const ref = useRef<HTMLDivElement>(null);
 
-  const pathMatch = pathname.match(/^\/countries\/([^/]+)/);
+  const pathMatch = pathname.match(/^\/([a-z]{2})(?:\/|$)/);
   const selected =
-    pathMatch && COUNTRIES.some((c) => c.slug === pathMatch[1])
+    pathMatch && COUNTRIES.some((c) => c.code === pathMatch[1])
       ? pathMatch[1]
       : stored;
 
@@ -37,13 +38,15 @@ export function CountrySelector() {
     return () => document.removeEventListener("mousedown", onClickOutside);
   }, []);
 
-  const current = COUNTRIES.find((c) => c.slug === selected);
+  const current = COUNTRIES.find((c) => c.code === selected);
 
-  function handleSelect(slug: string | "global") {
-    setStored(slug);
+  function handleSelect(code: string | "global") {
+    setStored(code);
     setOpen(false);
-    window.localStorage.setItem(STORAGE_KEY, slug);
+    window.localStorage.setItem(STORAGE_KEY, code);
   }
+
+  const enabledCountries = COUNTRIES.filter((c) => COUNTRY_MARKETS[c.code]);
 
   return (
     <div ref={ref} className="relative">
@@ -89,14 +92,14 @@ export function CountrySelector() {
             {selected === "global" && <Check className="w-3.5 h-3.5" />}
           </Link>
           <div className="my-1 h-px bg-border/60" />
-          {COUNTRIES.map((country) => (
+          {enabledCountries.map((country) => (
             <Link
               key={country.slug}
-              href={`/countries/${country.slug}`}
-              onClick={() => handleSelect(country.slug)}
+              href={getCountryPath(country)}
+              onClick={() => handleSelect(country.code)}
               className={cn(
                 "flex items-center justify-between gap-2 px-2 py-2 rounded-lg text-sm transition-transform",
-                selected === country.slug
+                selected === country.code
                   ? "bg-primary/10 text-primary font-semibold"
                   : "text-text-muted hover:bg-primary/[0.04] hover:text-text",
               )}
@@ -105,7 +108,7 @@ export function CountrySelector() {
                 <span className="text-sm leading-none">{country.flag}</span>
                 {country.name}
               </span>
-              {selected === country.slug && <Check className="w-3.5 h-3.5" />}
+              {selected === country.code && <Check className="w-3.5 h-3.5" />}
             </Link>
           ))}
         </div>

@@ -3,7 +3,8 @@ import { CHIPS } from "@/data/chips";
 import { BLOG_POSTS } from "@/blog";
 import { CATEGORIES } from "@/data/categories";
 import { BRANDS } from "@/data/brands";
-import { COUNTRIES } from "@/data/countries";
+import { COUNTRIES, getCountryPath } from "@/data/countries";
+import { COUNTRY_MARKETS } from "@/data/country-markets";
 import { INDUSTRIES } from "@/data/industries";
 import { SOLUTIONS } from "@/data/solutions";
 import { SITE } from "@/lib/constants";
@@ -162,11 +163,31 @@ export default function sitemap(): MetadataRoute.Sitemap {
   }));
 
   const countryPages: MetadataRoute.Sitemap = COUNTRIES.map((c) => ({
-    url: `${baseUrl}/countries/${c.slug}`,
+    url: `${baseUrl}${getCountryPath(c)}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
-    priority: 0.7,
+    priority: 0.8,
   }));
+
+  const countryProductListingPages: MetadataRoute.Sitemap = COUNTRIES.filter(
+    (c) => COUNTRY_MARKETS[c.code],
+  ).map((c) => ({
+    url: `${baseUrl}${getCountryPath(c)}/products`,
+    lastModified: new Date(),
+    changeFrequency: "daily" as const,
+    priority: 0.8,
+  }));
+
+  const countryProductPages: MetadataRoute.Sitemap = COUNTRIES.filter(
+    (c) => COUNTRY_MARKETS[c.code],
+  ).flatMap((c) =>
+    CHIPS.map((chip) => ({
+      url: `${baseUrl}${getCountryPath(c)}/products/${chip.slug}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly" as const,
+      priority: 0.7,
+    })),
+  );
 
   const industryPages: MetadataRoute.Sitemap = INDUSTRIES.map((i) => ({
     url: `${baseUrl}/industries/${i.slug}`,
@@ -190,6 +211,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...categoryPages,
     ...blogPages,
     ...countryPages,
+    ...countryProductListingPages,
+    ...countryProductPages,
     ...industryPages,
     ...solutionPages,
   ];

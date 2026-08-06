@@ -38,6 +38,7 @@ export type {
 } from "./site-config";
 export type {
   Country,
+  CountryMarket,
   Industry,
   Solution,
   TaxonomySeo,

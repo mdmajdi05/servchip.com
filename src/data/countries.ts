@@ -5,6 +5,7 @@ export const COUNTRIES: Country[] = [
     id: "india",
     name: "India",
     slug: "india",
+    code: "in",
     flag: "🇮🇳",
     region: "South Asia",
     description:
@@ -68,6 +69,7 @@ export const COUNTRIES: Country[] = [
     id: "uae",
     name: "United Arab Emirates",
     slug: "uae",
+    code: "ae",
     flag: "🇦🇪",
     region: "Middle East",
     description:
@@ -131,6 +133,7 @@ export const COUNTRIES: Country[] = [
     id: "usa",
     name: "United States",
     slug: "usa",
+    code: "us",
     flag: "🇺🇸",
     region: "North America",
     description:
@@ -194,6 +197,7 @@ export const COUNTRIES: Country[] = [
     id: "saudi-arabia",
     name: "Saudi Arabia",
     slug: "saudi-arabia",
+    code: "sa",
     flag: "🇸🇦",
     region: "Middle East",
     description:
@@ -256,6 +260,7 @@ export const COUNTRIES: Country[] = [
     id: "qatar",
     name: "Qatar",
     slug: "qatar",
+    code: "qa",
     flag: "🇶🇦",
     region: "Middle East",
     description:
@@ -318,6 +323,7 @@ export const COUNTRIES: Country[] = [
     id: "oman",
     name: "Oman",
     slug: "oman",
+    code: "om",
     flag: "🇴🇲",
     region: "Middle East",
     description:
@@ -380,6 +386,7 @@ export const COUNTRIES: Country[] = [
     id: "singapore",
     name: "Singapore",
     slug: "singapore",
+    code: "sg",
     flag: "🇸🇬",
     region: "Southeast Asia",
     description:
@@ -444,6 +451,7 @@ export const COUNTRIES: Country[] = [
     id: "malaysia",
     name: "Malaysia",
     slug: "malaysia",
+    code: "my",
     flag: "🇲🇾",
     region: "Southeast Asia",
     description:
@@ -507,6 +515,7 @@ export const COUNTRIES: Country[] = [
     id: "china",
     name: "China",
     slug: "china",
+    code: "cn",
     flag: "🇨🇳",
     region: "East Asia",
     description:
@@ -569,6 +578,7 @@ export const COUNTRIES: Country[] = [
     id: "philippines",
     name: "Philippines",
     slug: "philippines",
+    code: "ph",
     flag: "🇵🇭",
     region: "Southeast Asia",
     description:
@@ -629,10 +639,146 @@ export const COUNTRIES: Country[] = [
       { value: "Fast", label: "Regional shipping" },
     ],
   },
+  {
+    id: "united-kingdom",
+    name: "United Kingdom",
+    slug: "united-kingdom",
+    code: "uk",
+    flag: "🇬🇧",
+    region: "Europe",
+    description:
+      "Enterprise AI accelerators, GPUs and data center hardware for UK data centers, universities and research institutions.",
+    longDescription:
+      "Servchip supplies enterprise AI accelerators, data center GPUs and HPC hardware to the United Kingdom. From London's enterprise data centers to Cambridge and Oxford research institutions, we deliver authentic, fully warrantied NVIDIA, AMD and Intel hardware with full EU/UK compliance and documentation.",
+    hero: {
+      label: "United Kingdom",
+      title: "Enterprise AI Hardware for the United Kingdom",
+      subtitle:
+        "NVIDIA, AMD & Intel accelerators delivered across the UK with authentic sourcing, full warranty and local support.",
+    },
+    seo: {
+      metaTitle: "AI Chip Distributor UK | NVIDIA, AMD, Intel | Servchip",
+      metaDescription:
+        "Buy NVIDIA H100, H200, B200, AMD Instinct MI300X & Intel Gaudi AI chips in the UK. Enterprise AI chip distributor with delivery across the United Kingdom.",
+      keywords: [
+        "AI chip distributor UK",
+        "NVIDIA H100 UK",
+        "buy AI GPUs United Kingdom",
+        "data center GPU supplier UK",
+        "GPU server supplier London",
+        "semiconductor distributor UK",
+      ],
+    },
+    faqs: [
+      {
+        question: "Do you deliver AI chips across the UK?",
+        answer:
+          "Yes. Servchip ships enterprise AI hardware across the United Kingdom including London, Manchester, Cambridge and Edinburgh with DDP delivery and full warranty support.",
+      },
+      {
+        question: "Are your chips authentic and under warranty?",
+        answer:
+          "Every chip is sourced from manufacturers or authorized distribution partners, with full chain of custody documentation, serial number traceability and manufacturer warranty.",
+      },
+      {
+        question: "Do you support research institutions and universities?",
+        answer:
+          "Yes. We support universities and research institutions across the UK with procurement, compliance and delivery for HPC and AI research infrastructure.",
+      },
+    ],
+    related: {
+      brandIds: ["nvidia", "amd", "intel", "supermicro", "dell"],
+      categoryIds: [
+        "nvidia-dc-gpus",
+        "amd-instinct",
+        "server-cpus",
+        "ai-servers",
+        "networking",
+      ],
+      useCases: ["ai-training", "ai-inference", "hpc"],
+    },
+    stats: [
+      { value: "8+", label: "Cities served" },
+      { value: "100%", label: "UK/EU compliance" },
+      { value: "ISO 9001", label: "Certified distributor" },
+    ],
+  },
+  {
+    id: "germany",
+    name: "Germany",
+    slug: "germany",
+    code: "de",
+    flag: "🇩🇪",
+    region: "Europe",
+    description:
+      "Enterprise AI and HPC hardware supply for German data centers, automotive and industrial AI programs.",
+    longDescription:
+      "Servchip supplies AI accelerators and HPC infrastructure to Germany's enterprise data centers, automotive R&D and industrial AI programs. From Frankfurt's data-center hub to Munich's engineering ecosystem, we deliver authentic NVIDIA, AMD and Intel hardware with full EU compliance.",
+    hero: {
+      label: "Germany",
+      title: "AI Hardware for Germany's Data Centers & Industry",
+      subtitle:
+        "Enterprise accelerators for German data centers, automotive R&D and industrial AI across Frankfurt, Berlin and Munich.",
+    },
+    seo: {
+      metaTitle: "AI Chip Distributor Germany | NVIDIA, AMD, Intel | Servchip",
+      metaDescription:
+        "Buy NVIDIA H100, H200, AMD Instinct & Intel Xeon AI chips in Germany. Enterprise AI chip distributor with delivery across Germany and the EU.",
+      keywords: [
+        "AI chip distributor Germany",
+        "NVIDIA H100 Germany",
+        "buy AI GPUs Germany",
+        "data center GPU supplier Frankfurt",
+        "GPU server supplier Germany",
+        "semiconductor distributor Germany",
+      ],
+    },
+    faqs: [
+      {
+        question: "Do you deliver AI chips across Germany?",
+        answer:
+          "Yes. Servchip delivers enterprise AI hardware across Germany including Frankfurt, Berlin, Munich and Hamburg with full EU compliance and documentation.",
+      },
+      {
+        question: "Do you support automotive and industrial AI programs?",
+        answer:
+          "Yes. We support German automotive R&D and industrial AI programs with procurement, compliance and delivery for training and inference infrastructure.",
+      },
+      {
+        question: "Are products authentic and under warranty?",
+        answer:
+          "Every chip is authentic, factory-sealed and covered by manufacturer warranty with complete chain-of-custody documentation.",
+      },
+    ],
+    related: {
+      brandIds: ["nvidia", "amd", "intel", "supermicro", "dell"],
+      categoryIds: [
+        "nvidia-dc-gpus",
+        "amd-instinct",
+        "ai-servers",
+        "networking",
+        "server-cpus",
+      ],
+      useCases: ["ai-training", "ai-inference", "hpc"],
+    },
+    stats: [
+      { value: "Frankfurt", label: "EU data-center hub" },
+      { value: "100%", label: "EU compliance" },
+      { value: "12+", label: "Cities served" },
+    ],
+  },
 ];
 
 export function getCountryBySlug(slug: string): Country | undefined {
   return COUNTRIES.find((c) => c.slug === slug);
+}
+
+export function getCountryByCode(code: string): Country | undefined {
+  return COUNTRIES.find((c) => c.code === code);
+}
+
+export function getCountryPath(country: Country): string {
+  return `/${country.code}`;
 }
 
 export function getCountry(id: string): Country | undefined {

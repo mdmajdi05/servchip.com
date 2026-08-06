@@ -64,6 +64,32 @@ const nextConfig: NextConfig = {
         destination: "/products",
         permanent: true,
       },
+      // Country subdirectory migration: /countries/{slug} → /{code} (301, SEO preserved)
+      {
+        source: "/countries/usa",
+        destination: "/us",
+        permanent: true,
+      },
+      {
+        source: "/countries/india",
+        destination: "/in",
+        permanent: true,
+      },
+      {
+        source: "/countries/uae",
+        destination: "/ae",
+        permanent: true,
+      },
+      {
+        source: "/countries/united-kingdom",
+        destination: "/uk",
+        permanent: true,
+      },
+      {
+        source: "/countries/germany",
+        destination: "/de",
+        permanent: true,
+      },
     ];
   },
   async headers() {
