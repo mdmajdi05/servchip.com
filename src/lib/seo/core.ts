@@ -15,5 +15,4 @@ export {
 } from "./generators";
 export type { CountryVars } from "./config";
 export { countryContext, countryVars } from "./config";
-export { SEO_CONTENT_OVERRIDES } from "./content/overrides";
 export { interpolate, stripServchip } from "./helpers";

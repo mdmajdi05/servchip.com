@@ -28,7 +28,6 @@ export {
   createBreadcrumb,
   createEntityBreadcrumb,
   countryParams,
-  SEO_CONTENT_OVERRIDES,
   stripServchip,
 } from "./core";
 export type {

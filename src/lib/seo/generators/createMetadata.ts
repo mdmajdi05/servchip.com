@@ -4,7 +4,6 @@ import { getLocalizedPath } from "@/lib/localized-path";
 import { createSeoMetadata, type SeoMetadataInput } from "../metadata";
 import { countryVars } from "../config/countries";
 import { interpolate } from "../helpers/interpolate";
-import { SEO_CONTENT_OVERRIDES } from "../content/overrides";
 import { STATIC_PAGE_TEMPLATES, ENTITY_TEMPLATES } from "../templates";
 import type { StaticRoute } from "../templates/pages";
 import type { EntityRoute } from "../templates/entities";
@@ -51,14 +50,10 @@ export function createMetadata(
 
   const countrySource =
     typeof def.country === "function" ? def.country(vars) : (def.country ?? {});
-  const override = SEO_CONTENT_OVERRIDES[`${country}-${page}`];
-  const fields = {
-    ...interpolateFields(
-      countrySource,
-      vars as unknown as Record<string, string | string[]>,
-    ),
-    ...override,
-  };
+  const fields = interpolateFields(
+    countrySource,
+    vars as unknown as Record<string, string | string[]>,
+  );
   const path = getLocalizedPath(country, def.path);
 
   return createSeoMetadata({
