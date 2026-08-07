@@ -3,8 +3,12 @@ import { notFound } from "next/navigation";
 import { SOLUTIONS, getSolutionBySlug } from "@/data/solutions";
 import { getCountryByCode } from "@/data/countries";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
-import { createSeoMetadata, breadcrumbSchema, faqSchema } from "@/lib/seo";
-import { SITE } from "@/lib/constants";
+import {
+  createEntityMetadata,
+  createEntityBreadcrumb,
+  breadcrumbSchema,
+  faqSchema,
+} from "@/lib/seo";
 import PageClient from "@/app/solutions/[slug]/page-client";
 
 export async function generateStaticParams() {
@@ -23,22 +27,15 @@ export async function generateMetadata(props: {
   const solution = getSolutionBySlug(slug);
   if (!countryObj || !market || !solution) return {};
 
-  return createSeoMetadata({
-    title: `${solution.name} in ${countryObj.name} | Servchip`,
-    description: `${solution.seo.metaDescription} Available in ${countryObj.name} with ${market.currency} pricing, shipped from ${market.warehouse}.`,
-    path: `/${country}/solutions/${slug}`,
-    keywords: [...solution.seo.keywords, `${solution.name} ${countryObj.name}`],
-    openGraphTitle: `${solution.name} in ${countryObj.name} | Servchip`,
-    twitterTitle: `${solution.name} in ${countryObj.name} | Servchip`,
-    openGraphDescription: `${solution.seo.metaDescription} Available in ${countryObj.name}.`,
-    twitterDescription: `${solution.seo.metaDescription}`,
-    alternates: {
-      languages: {
-        "x-default": `${SITE.url}/solutions/${slug}`,
-        [market.locale]: `${SITE.url}/${country}/solutions/${slug}`,
-      },
-    },
-  });
+  return (
+    createEntityMetadata("solution", country, {
+      slug: solution.slug,
+      solution: solution.name,
+      solutionMetaTitle: solution.seo.metaTitle,
+      solutionMetaDescription: solution.seo.metaDescription,
+      solutionKeywords: solution.seo.keywords,
+    }) ?? {}
+  );
 }
 
 export default async function Page(props: {
@@ -53,12 +50,12 @@ export default async function Page(props: {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: `/${country}` },
-          { name: countryObj.name, url: `/${country}` },
-          { name: "Solutions", url: `/${country}/solutions` },
-          { name: solution.name, url: `/${country}/solutions/${slug}` },
-        ])}
+        dangerouslySetInnerHTML={breadcrumbSchema(
+          createEntityBreadcrumb(country, [
+            { name: "Solutions", url: "/solutions" },
+            { name: solution.name, url: `/solutions/${slug}` },
+          ]),
+        )}
       />
       <script
         type="application/ld+json"

@@ -1,62 +1,13 @@
 import type { Metadata } from "next";
 import { HomeSections } from "@/components/home/HomeSections";
-import { SITE } from "@/lib/constants";
-import { createSeoMetadata, faqSchema, breadcrumbSchema } from "@/lib/seo";
+import {
+  createMetadata,
+  createBreadcrumb,
+  faqSchema,
+  breadcrumbSchema,
+} from "@/lib/seo";
 
-export const metadata: Metadata = createSeoMetadata({
-  title: `${SITE.name} — AI Chip Distributor & Enterprise GPU Distributor | NVIDIA H100, AMD Instinct, Intel Gaudi`,
-  description:
-    "Servchip is your enterprise chip distributor & data center GPU supplier — NVIDIA H100, H200, B200, AMD Instinct MI300X, Intel Xeon & Gaudi 3. Authorized NVIDIA distributor & AI accelerator supplier in Dubai, UAE, India & USA.",
-  path: "/",
-  keywords: [
-    "AI chip company",
-    "enterprise GPU distributor",
-    "nvidia ai chips",
-    "amd ai chip",
-    "amd authorized distributors",
-    "data center gpu",
-    "nvidia data center gpu",
-    "intel data center gpu",
-    "nvidia data center",
-    "nvidia h200 supplier",
-    "nvidia b200 gpu",
-    "nvidia h100",
-    "h100 gpu",
-    "enterprise chip distributor",
-    "AI chip distributor",
-    "Data center GPU supplier",
-    "NVIDIA H100 distributor",
-    "AMD Instinct distributor",
-    "Intel Gaudi distributor",
-    "enterprise semiconductor distributor",
-    "Server processor supplier",
-    "HPC chip distributor",
-    "AI accelerator supplier",
-    "nvidia supplier in dubai",
-    "nvidia supplier in uae",
-    "nvidia suppliers in india",
-    "gpu suppliers in india",
-    "nvidia distributor in india",
-    "nvidia distributor in uae",
-    "nvidia distributor in dubai",
-    "nvidia distributor in singapore",
-    "nvidia distributor in malaysia",
-    "nvidia distributor in china",
-    "nvidia distributor in philippines",
-    "nvidia authorized dealer",
-    "amd authorized distributors in usa",
-    "amd distributor in uae",
-    "intel distributor in dubai",
-    "intel supplier in uae",
-    "intel supplier malaysia",
-  ],
-  openGraphTitle: `${SITE.name} — AI Chip Distributor & Enterprise GPU Distributor`,
-  openGraphDescription:
-    "Authorized NVIDIA, AMD & Intel distributor. NVIDIA H100, AMD Instinct MI300X, Intel Gaudi — data center GPUs & AI accelerators with global shipping from Dubai, India & USA.",
-  twitterTitle: `${SITE.name} — AI Chip Distributor & Enterprise GPU Distributor`,
-  twitterDescription:
-    "Authorized NVIDIA, AMD & Intel distributor. NVIDIA H100, AMD Instinct MI300X, Intel Gaudi — data center GPUs & AI accelerators with global shipping.",
-});
+export const metadata: Metadata = createMetadata("home");
 
 const HOME_FAQS = [
   {
@@ -106,7 +57,7 @@ export default function HomePage() {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([{ name: "Home", url: "/" }])}
+        dangerouslySetInnerHTML={breadcrumbSchema(createBreadcrumb("home"))}
       />
       <script
         type="application/ld+json"

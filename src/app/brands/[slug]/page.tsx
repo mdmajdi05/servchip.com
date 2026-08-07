@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BRANDS, getBrandBySlug } from "@/data/brands";
-import { createSeoMetadata, breadcrumbSchema } from "@/lib/seo";
+import {
+  createEntityMetadata,
+  createEntityBreadcrumb,
+  stripServchip,
+  breadcrumbSchema,
+} from "@/lib/seo";
 import PageClient from "./page-client";
 
 export async function generateStaticParams() {
@@ -14,22 +19,14 @@ export async function generateMetadata(props: {
   const { slug } = await props.params;
   const brand = getBrandBySlug(slug);
   if (!brand) return {};
-  return createSeoMetadata({
-    title: `${brand.seo.metaTitle} | Enterprise Chip Distributor`,
-    description: `${brand.seo.metaDescription} Buy authentic ${brand.name} chips from an ISO 9001 certified distributor. Semiconductor procurement with global shipping.`,
-    path: `/brands/${slug}`,
-    keywords: [
-      `buy ${brand.name} chips`,
-      `${brand.name} distributor`,
-      `${brand.name} enterprise`,
-      "enterprise chip distributor",
-      "semiconductor procurement",
-    ],
-    openGraphTitle: `${brand.name} Products | Servchip — Enterprise Chip Distributor`,
-    twitterTitle: `${brand.name} Products | Servchip — Enterprise Chip Distributor`,
-    openGraphDescription: brand.seo.metaDescription,
-    twitterDescription: brand.seo.metaDescription,
-  });
+  return (
+    createEntityMetadata("brand", undefined, {
+      slug: brand.slug,
+      brand: brand.name,
+      brandMetaTitle: stripServchip(brand.seo.metaTitle),
+      brandMetaDescription: brand.seo.metaDescription,
+    }) ?? {}
+  );
 }
 
 export default async function Page(props: {
@@ -42,11 +39,12 @@ export default async function Page(props: {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Brands", url: "/products" },
-          { name: brand.name, url: `/brands/${slug}` },
-        ])}
+        dangerouslySetInnerHTML={breadcrumbSchema(
+          createEntityBreadcrumb(undefined, [
+            { name: "Brands", url: "/products" },
+            { name: brand.name, url: `/brands/${slug}` },
+          ]),
+        )}
       />
       <PageClient />
     </>

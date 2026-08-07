@@ -1,5 +1,10 @@
 ﻿import type { Metadata } from "next";
-import { createSeoMetadata, faqSchema, breadcrumbSchema } from "@/lib/seo";
+import {
+  createMetadata,
+  createBreadcrumb,
+  faqSchema,
+  breadcrumbSchema,
+} from "@/lib/seo";
 import PageClient from "./page-client";
 
 const FAQS = [
@@ -53,39 +58,14 @@ const FAQS = [
   },
 ];
 
-export const metadata: Metadata = createSeoMetadata({
-  title:
-    "FAQ — Enterprise Chip Distributor | Buy AI Chips, Semiconductor Procurement",
-  description:
-    "Answers about buying AI chips, enterprise chip purchasing, semiconductor procurement, authenticity verification, bulk ordering, shipping, warranty & support from Servchip — ISO 9001 certified distributor for NVIDIA, AMD, Intel.",
-  path: "/faq",
-  keywords: [
-    "buy AI chips",
-    "enterprise chip purchasing",
-    "semiconductor procurement",
-    "NVIDIA H100 buying guide",
-    "bulk semiconductor purchasing",
-    "enterprise GPU procurement",
-    "data center hardware FAQ",
-    "chip distributor questions",
-  ],
-  openGraphTitle: "FAQ | Servchip — Enterprise Chip Distributor",
-  openGraphDescription:
-    "Common questions about buying AI chips, semiconductor procurement, enterprise chip purchasing, shipping, warranty & support.",
-  twitterTitle: "FAQ | Servchip — Enterprise Chip Distributor",
-  twitterDescription:
-    "Common questions about buying AI chips, semiconductor procurement, enterprise chip purchasing, shipping, warranty & support.",
-});
+export const metadata: Metadata = createMetadata("faq");
 
 export default function Page() {
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "FAQ", url: "/faq" },
-        ])}
+        dangerouslySetInnerHTML={breadcrumbSchema(createBreadcrumb("faq"))}
       />
       <script
         type="application/ld+json"

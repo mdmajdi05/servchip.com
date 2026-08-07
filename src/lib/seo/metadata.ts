@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { SITE } from "../constants";
 import { OG_IMAGE, OG_WIDTH, OG_HEIGHT } from "./constants";
+import { stripServchip } from "./helpers";
 
 export interface SeoImage {
   url: string;
@@ -44,9 +45,10 @@ export function createSeoMetadata(input: SeoMetadataInput): Metadata {
   const { title, description, path } = input;
   const url = `${SITE.url}${path}`;
   const image = input.image ?? DEFAULT_IMAGE;
+  const titleTag = stripServchip(title);
 
   const metadata: Metadata = {
-    title,
+    title: titleTag,
     description,
     ...(input.keywords?.length ? { keywords: input.keywords } : {}),
     alternates: {

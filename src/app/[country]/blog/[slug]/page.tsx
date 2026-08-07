@@ -3,8 +3,11 @@ import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "@/blog";
 import { getCountryByCode } from "@/data/countries";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
-import { createSeoMetadata, breadcrumbSchema } from "@/lib/seo";
-import { SITE } from "@/lib/constants";
+import {
+  createEntityMetadata,
+  createEntityBreadcrumb,
+  breadcrumbSchema,
+} from "@/lib/seo";
 import BlogPostPage from "@/app/blog/[slug]/page-client";
 
 export async function generateStaticParams() {
@@ -26,30 +29,29 @@ export async function generateMetadata(props: {
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!countryObj || !market || !post) return {};
 
-  return createSeoMetadata({
-    title: post.seo.metaTitle,
-    description: post.seo.metaDescription,
-    path: `/${country}/blog/${post.slug}`,
-    keywords: post.tags.map((t) => t.name),
-    ...(post.featuredImage
-      ? {
-          image: {
-            url: post.featuredImage,
-            alt: post.title,
-            width: 1200,
-            height: 630,
-          },
-        }
-      : {}),
-    openGraphTitle: `${post.title} — ${countryObj.name} | Servchip`,
-    twitterTitle: `${post.title} — ${countryObj.name} | Servchip`,
-    alternates: {
-      languages: {
-        "x-default": `${SITE.url}/blog/${post.slug}`,
-        [market.locale]: `${SITE.url}/${country}/blog/${post.slug}`,
+  return (
+    createEntityMetadata(
+      "blog",
+      country,
+      {
+        slug: post.slug,
+        blogTitle: post.seo.metaTitle,
+        blogDescription: post.seo.metaDescription,
+        tags: post.tags.map((t) => t.name),
+        postTitle: post.title,
       },
-    },
-  });
+      post.featuredImage
+        ? {
+            image: {
+              url: post.featuredImage,
+              alt: post.title,
+              width: 1200,
+              height: 630,
+            },
+          }
+        : {},
+    ) ?? {}
+  );
 }
 
 export default async function Page(props: {
@@ -64,15 +66,15 @@ export default async function Page(props: {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: countryObj.name, url: `/${country}` },
-          { name: "Blog", url: `/${country}/blog` },
-          {
-            name: post?.title ?? "Article",
-            url: `/${country}/blog/${slug}`,
-          },
-        ])}
+        dangerouslySetInnerHTML={breadcrumbSchema(
+          createEntityBreadcrumb(country, [
+            { name: "Blog", url: "/blog" },
+            {
+              name: post?.title ?? "Article",
+              url: `/blog/${slug}`,
+            },
+          ]),
+        )}
       />
       <BlogPostPage />
     </>

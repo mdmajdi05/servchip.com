@@ -3,8 +3,11 @@ import { notFound } from "next/navigation";
 import { BRANDS, getBrandBySlug } from "@/data/brands";
 import { getCountryByCode } from "@/data/countries";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
-import { createSeoMetadata, breadcrumbSchema } from "@/lib/seo";
-import { SITE } from "@/lib/constants";
+import {
+  createEntityMetadata,
+  createEntityBreadcrumb,
+  breadcrumbSchema,
+} from "@/lib/seo";
 import BrandCategoryPage from "@/app/brands/[slug]/[categorySlug]/page-client";
 
 export async function generateStaticParams() {
@@ -30,24 +33,15 @@ export async function generateMetadata(props: {
   const category = brand?.categories.find((c) => c.slug === categorySlug);
   if (!countryObj || !market || !brand || !category) return {};
 
-  return createSeoMetadata({
-    title: `Buy ${brand.name} ${category.name} in ${countryObj.name} | Servchip`,
-    description: `Buy authentic ${brand.name} ${category.name} in ${countryObj.name}. Priced in ${market.currency}, shipped from ${market.warehouse}. ISO 9001 certified distributor.`,
-    path: `/${country}/brands/${brand.slug}/${category.slug}`,
-    keywords: [
-      `${brand.name} ${category.name} ${countryObj.name}`,
-      `buy ${brand.name} products ${countryObj.name}`,
-      `${brand.name} distributor ${countryObj.name}`,
-    ],
-    openGraphTitle: `${brand.name} ${category.name} in ${countryObj.name} | Servchip`,
-    twitterTitle: `${brand.name} ${category.name} in ${countryObj.name} | Servchip`,
-    alternates: {
-      languages: {
-        "x-default": `${SITE.url}/brands/${brand.slug}/${category.slug}`,
-        [market.locale]: `${SITE.url}/${country}/brands/${brand.slug}/${category.slug}`,
-      },
-    },
-  });
+  return (
+    createEntityMetadata("brandCategory", country, {
+      brandSlug: brand.slug,
+      categorySlug: category.slug,
+      brand: brand.name,
+      category: category.name,
+      categoryDescription: category.description,
+    }) ?? {}
+  );
 }
 
 export default async function Page(props: {
@@ -63,16 +57,16 @@ export default async function Page(props: {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: countryObj.name, url: `/${country}` },
-          { name: "Brands", url: `/${country}/brands` },
-          { name: brand.name, url: `/${country}/brands/${brand.slug}` },
-          {
-            name: category.name,
-            url: `/${country}/brands/${brand.slug}/${category.slug}`,
-          },
-        ])}
+        dangerouslySetInnerHTML={breadcrumbSchema(
+          createEntityBreadcrumb(country, [
+            { name: "Brands", url: "/brands" },
+            { name: brand.name, url: `/brands/${brand.slug}` },
+            {
+              name: category.name,
+              url: `/brands/${brand.slug}/${category.slug}`,
+            },
+          ]),
+        )}
       />
       <BrandCategoryPage />
     </>

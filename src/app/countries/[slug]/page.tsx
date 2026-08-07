@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { COUNTRIES, getCountryBySlug } from "@/data/countries";
-import { createSeoMetadata, breadcrumbSchema, faqSchema } from "@/lib/seo";
+import {
+  createEntityMetadata,
+  createEntityBreadcrumb,
+  breadcrumbSchema,
+  faqSchema,
+} from "@/lib/seo";
 import { SITE } from "@/lib/constants";
 import PageClient from "./page-client";
 
@@ -28,22 +33,27 @@ export async function generateMetadata(props: {
     philippines: "en-PH",
   };
   const lang = hreflangMap[country.slug] ?? "en";
-  return createSeoMetadata({
-    title: country.seo.metaTitle,
-    description: country.seo.metaDescription,
-    path: `/countries/${slug}`,
-    keywords: country.seo.keywords,
-    openGraphTitle: `${country.name} | Servchip — Enterprise Chip Distributor`,
-    twitterTitle: `${country.name} | Servchip — Enterprise Chip Distributor`,
-    openGraphDescription: country.seo.metaDescription,
-    twitterDescription: country.seo.metaDescription,
-    alternates: {
-      languages: {
-        "x-default": `${SITE.url}/countries/${slug}`,
-        [lang]: `${SITE.url}/countries/${slug}`,
+  return (
+    createEntityMetadata(
+      "country",
+      undefined,
+      {
+        slug: country.slug,
+        name: country.name,
+        countryMetaTitle: country.seo.metaTitle,
+        countryMetaDescription: country.seo.metaDescription,
+        countryMetaKeywords: country.seo.keywords,
       },
-    },
-  });
+      {
+        alternates: {
+          languages: {
+            "x-default": `${SITE.url}/countries/${country.slug}`,
+            [lang]: `${SITE.url}/countries/${country.slug}`,
+          },
+        },
+      },
+    ) ?? {}
+  );
 }
 
 export default async function Page(props: {
@@ -56,11 +66,12 @@ export default async function Page(props: {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Countries", url: "/countries" },
-          { name: country.name, url: `/countries/${slug}` },
-        ])}
+        dangerouslySetInnerHTML={breadcrumbSchema(
+          createEntityBreadcrumb(undefined, [
+            { name: "Countries", url: "/countries" },
+            { name: country.name, url: `/countries/${slug}` },
+          ]),
+        )}
       />
       <script
         type="application/ld+json"

@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { CATEGORIES } from "@/data/categories";
 import { ALL_PRODUCTS } from "@/data/products";
-import { createSeoMetadata, breadcrumbSchema, itemListSchema } from "@/lib/seo";
+import {
+  createEntityMetadata,
+  createEntityBreadcrumb,
+  breadcrumbSchema,
+  itemListSchema,
+} from "@/lib/seo";
 import PageClient from "./page-client";
 
 export async function generateMetadata(props: {
@@ -10,22 +15,14 @@ export async function generateMetadata(props: {
   const { slug } = await props.params;
   const cat = CATEGORIES.find((c) => c.slug === slug);
   if (!cat) return {};
-  return createSeoMetadata({
-    title: `${cat.name} — Buy Enterprise ${cat.name} | Servchip Semiconductor Procurement`,
-    description: `${cat.description} Buy authentic ${cat.name} from an ISO 9001 certified enterprise chip distributor. AI accelerator & semiconductor procurement with global shipping.`,
-    path: `/categories/${slug}`,
-    keywords: [
-      `buy ${cat.name.toLowerCase()}`,
-      `${cat.name.toLowerCase()} supplier`,
-      "enterprise chip distributor",
-      "semiconductor procurement",
-      "AI accelerator distributor",
-    ],
-    openGraphTitle: `${cat.name} | Servchip — Enterprise Chip Distributor`,
-    openGraphDescription: `Buy ${cat.name} from an ISO 9001 certified distributor.`,
-    twitterTitle: `${cat.name} | Servchip — Enterprise Chip Distributor`,
-    twitterDescription: `Buy ${cat.name} from an ISO 9001 certified distributor.`,
-  });
+  return (
+    createEntityMetadata("category", undefined, {
+      slug: cat.slug,
+      category: cat.name,
+      categoryLower: cat.name.toLowerCase(),
+      categoryDescription: cat.description,
+    }) ?? {}
+  );
 }
 
 export default async function Page(props: {
@@ -44,11 +41,12 @@ export default async function Page(props: {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Categories", url: "/categories" },
-          ...(cat ? [{ name: cat.name, url: `/categories/${slug}` }] : []),
-        ])}
+        dangerouslySetInnerHTML={breadcrumbSchema(
+          createEntityBreadcrumb(undefined, [
+            { name: "Categories", url: "/categories" },
+            ...(cat ? [{ name: cat.name, url: `/categories/${slug}` }] : []),
+          ]),
+        )}
       />
       {categoryProducts.length > 0 && (
         <script

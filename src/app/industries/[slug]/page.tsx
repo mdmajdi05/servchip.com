@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { INDUSTRIES, getIndustryBySlug } from "@/data/industries";
-import { createSeoMetadata, breadcrumbSchema, faqSchema } from "@/lib/seo";
+import {
+  createEntityMetadata,
+  createEntityBreadcrumb,
+  breadcrumbSchema,
+  faqSchema,
+} from "@/lib/seo";
 import PageClient from "./page-client";
 
 export async function generateStaticParams() {
@@ -14,16 +19,15 @@ export async function generateMetadata(props: {
   const { slug } = await props.params;
   const industry = getIndustryBySlug(slug);
   if (!industry) return {};
-  return createSeoMetadata({
-    title: industry.seo.metaTitle,
-    description: industry.seo.metaDescription,
-    path: `/industries/${slug}`,
-    keywords: industry.seo.keywords,
-    openGraphTitle: `${industry.name} Solutions | Servchip`,
-    twitterTitle: `${industry.name} Solutions | Servchip`,
-    openGraphDescription: industry.seo.metaDescription,
-    twitterDescription: industry.seo.metaDescription,
-  });
+  return (
+    createEntityMetadata("industry", undefined, {
+      slug: industry.slug,
+      industry: industry.name,
+      industryMetaTitle: industry.seo.metaTitle,
+      industryMetaDescription: industry.seo.metaDescription,
+      industryKeywords: industry.seo.keywords,
+    }) ?? {}
+  );
 }
 
 export default async function Page(props: {
@@ -36,11 +40,12 @@ export default async function Page(props: {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Industries", url: "/solutions" },
-          { name: industry.name, url: `/industries/${slug}` },
-        ])}
+        dangerouslySetInnerHTML={breadcrumbSchema(
+          createEntityBreadcrumb(undefined, [
+            { name: "Industries", url: "/solutions" },
+            { name: industry.name, url: `/industries/${slug}` },
+          ]),
+        )}
       />
       <script
         type="application/ld+json"

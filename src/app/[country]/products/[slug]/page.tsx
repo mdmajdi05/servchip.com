@@ -4,8 +4,12 @@ import { ALL_PRODUCTS } from "@/data/products";
 import { getCountryByCode } from "@/data/countries";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
 import { CATEGORIES } from "@/data/categories";
-import { createSeoMetadata, productSchema, breadcrumbSchema } from "@/lib/seo";
-import { SITE } from "@/lib/constants";
+import {
+  createEntityMetadata,
+  createEntityBreadcrumb,
+  productSchema,
+  breadcrumbSchema,
+} from "@/lib/seo";
 import ProductDetailPage from "@/app/products/[slug]/page-client";
 
 export async function generateMetadata(props: {
@@ -17,27 +21,16 @@ export async function generateMetadata(props: {
   const product = ALL_PRODUCTS.find((p) => p.slug === slug);
   if (!countryObj || !market || !product) return {};
 
-  return createSeoMetadata({
-    title: `Buy ${product.name} in ${countryObj.name}`,
-    description: `${product.name} (${product.series}) available in ${countryObj.name}. Priced in ${market.currency}, shipped from ${market.warehouse}. Authentic, warrantied — request a quote today.`,
-    path: `/${country}/products/${slug}`,
-    keywords: [
-      `buy ${product.name} ${countryObj.name}`,
-      `${product.manufacturer} ${product.series} ${countryObj.name}`,
-      `${product.categoryName} supplier ${countryObj.name}`,
-      `data center hardware ${countryObj.name}`,
-    ],
-    openGraphTitle: `${product.name} — Buy in ${countryObj.name} | Servchip`,
-    twitterTitle: `${product.name} — Buy in ${countryObj.name} | Servchip`,
-    openGraphDescription: `${product.name} available in ${countryObj.name} with delivery across the region. Request a quote.`,
-    twitterDescription: `${product.name} available in ${countryObj.name}.`,
-    alternates: {
-      languages: {
-        "x-default": `${SITE.url}/products/${slug}`,
-        [market.locale]: `${SITE.url}/${country}/products/${slug}`,
-      },
-    },
-  });
+  return (
+    createEntityMetadata("product", country, {
+      slug: product.slug,
+      product: product.name,
+      productDescription: product.description,
+      manufacturer: product.manufacturer,
+      series: product.series,
+      categoryName: product.categoryName,
+    }) ?? {}
+  );
 }
 
 export default async function Page(props: {
@@ -57,12 +50,12 @@ export default async function Page(props: {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: countryObj.name, url: `/${country}` },
-          { name: "Products", url: `/${country}/products` },
-          { name: product.name, url: `/${country}/products/${slug}` },
-        ])}
+        dangerouslySetInnerHTML={breadcrumbSchema(
+          createEntityBreadcrumb(country, [
+            { name: "Products", url: "/products" },
+            { name: product.name, url: `/products/${slug}` },
+          ]),
+        )}
       />
       <script
         type="application/ld+json"

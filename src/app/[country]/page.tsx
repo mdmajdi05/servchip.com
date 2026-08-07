@@ -3,42 +3,23 @@ import { notFound } from "next/navigation";
 import { HomeSections } from "@/components/home/HomeSections";
 import { getCountryByCode } from "@/data/countries";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
-import { createSeoMetadata, faqSchema, breadcrumbSchema } from "@/lib/seo";
-import { SITE } from "@/lib/constants";
+import {
+  createMetadata,
+  createBreadcrumb,
+  countryParams,
+  faqSchema,
+  breadcrumbSchema,
+} from "@/lib/seo";
 
 export async function generateStaticParams() {
-  return Object.keys(COUNTRY_MARKETS).map((code) => ({ country: code }));
+  return countryParams();
 }
 
 export async function generateMetadata(props: {
   params: Promise<{ country: string }>;
 }): Promise<Metadata> {
   const { country } = await props.params;
-  const countryObj = getCountryByCode(country);
-  const market = COUNTRY_MARKETS[country];
-  if (!countryObj || !market) return {};
-
-  const cleanTitle = countryObj.seo.metaTitle.replace(
-    /\s*\|\s*Servchip\s*$/i,
-    "",
-  );
-
-  return createSeoMetadata({
-    title: cleanTitle,
-    description: countryObj.seo.metaDescription,
-    path: `/${country}`,
-    keywords: countryObj.seo.keywords,
-    openGraphTitle: `${countryObj.name} | Servchip — Enterprise Chip Distributor`,
-    twitterTitle: `${countryObj.name} | Servchip — Enterprise Chip Distributor`,
-    openGraphDescription: countryObj.seo.metaDescription,
-    twitterDescription: countryObj.seo.metaDescription,
-    alternates: {
-      languages: {
-        "x-default": SITE.url,
-        [market.locale]: `${SITE.url}/${country}`,
-      },
-    },
-  });
+  return createMetadata("home", country) ?? {};
 }
 
 export default async function Page(props: {
@@ -53,10 +34,9 @@ export default async function Page(props: {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: countryObj.name, url: `/${country}` },
-        ])}
+        dangerouslySetInnerHTML={breadcrumbSchema(
+          createBreadcrumb("home", country),
+        )}
       />
       <script
         type="application/ld+json"

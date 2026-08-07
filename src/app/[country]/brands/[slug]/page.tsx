@@ -3,8 +3,12 @@ import { notFound } from "next/navigation";
 import { BRANDS, getBrandBySlug } from "@/data/brands";
 import { getCountryByCode } from "@/data/countries";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
-import { createSeoMetadata, breadcrumbSchema } from "@/lib/seo";
-import { SITE } from "@/lib/constants";
+import {
+  createEntityMetadata,
+  createEntityBreadcrumb,
+  stripServchip,
+  breadcrumbSchema,
+} from "@/lib/seo";
 import BrandPage from "@/app/brands/[slug]/page-client";
 
 export async function generateStaticParams() {
@@ -23,25 +27,14 @@ export async function generateMetadata(props: {
   const brand = getBrandBySlug(slug);
   if (!countryObj || !market || !brand) return {};
 
-  return createSeoMetadata({
-    title: `Buy ${brand.name} Products in ${countryObj.name} | Servchip`,
-    description: `Buy authentic ${brand.name} enterprise hardware in ${countryObj.name}. Priced in ${market.currency}, shipped from ${market.warehouse}. ISO 9001 certified distributor.`,
-    path: `/${country}/brands/${brand.slug}`,
-    keywords: [
-      `buy ${brand.name} chips ${countryObj.name}`,
-      `${brand.name} distributor ${countryObj.name}`,
-      `${brand.name} products ${countryObj.name}`,
-      `enterprise ${brand.name} hardware ${countryObj.name}`,
-    ],
-    openGraphTitle: `${brand.name} Products in ${countryObj.name} | Servchip`,
-    twitterTitle: `${brand.name} Products in ${countryObj.name} | Servchip`,
-    alternates: {
-      languages: {
-        "x-default": `${SITE.url}/brands/${brand.slug}`,
-        [market.locale]: `${SITE.url}/${country}/brands/${brand.slug}`,
-      },
-    },
-  });
+  return (
+    createEntityMetadata("brand", country, {
+      slug: brand.slug,
+      brand: brand.name,
+      brandMetaTitle: stripServchip(brand.seo.metaTitle),
+      brandMetaDescription: brand.seo.metaDescription,
+    }) ?? {}
+  );
 }
 
 export default async function Page(props: {
@@ -56,12 +49,12 @@ export default async function Page(props: {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: countryObj.name, url: `/${country}` },
-          { name: "Brands", url: `/${country}/brands` },
-          { name: brand.name, url: `/${country}/brands/${brand.slug}` },
-        ])}
+        dangerouslySetInnerHTML={breadcrumbSchema(
+          createEntityBreadcrumb(country, [
+            { name: "Brands", url: "/brands" },
+            { name: brand.name, url: `/brands/${brand.slug}` },
+          ]),
+        )}
       />
       <BrandPage />
     </>

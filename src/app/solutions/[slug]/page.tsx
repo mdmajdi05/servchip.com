@@ -1,7 +1,12 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SOLUTIONS, getSolutionBySlug } from "@/data/solutions";
-import { createSeoMetadata, breadcrumbSchema, faqSchema } from "@/lib/seo";
+import {
+  createEntityMetadata,
+  createEntityBreadcrumb,
+  breadcrumbSchema,
+  faqSchema,
+} from "@/lib/seo";
 import PageClient from "./page-client";
 
 export async function generateStaticParams() {
@@ -14,16 +19,15 @@ export async function generateMetadata(props: {
   const { slug } = await props.params;
   const solution = getSolutionBySlug(slug);
   if (!solution) return {};
-  return createSeoMetadata({
-    title: solution.seo.metaTitle,
-    description: solution.seo.metaDescription,
-    path: `/solutions/${slug}`,
-    keywords: solution.seo.keywords,
-    openGraphTitle: `${solution.name} | Servchip`,
-    twitterTitle: `${solution.name} | Servchip`,
-    openGraphDescription: solution.seo.metaDescription,
-    twitterDescription: solution.seo.metaDescription,
-  });
+  return (
+    createEntityMetadata("solution", undefined, {
+      slug: solution.slug,
+      solution: solution.name,
+      solutionMetaTitle: solution.seo.metaTitle,
+      solutionMetaDescription: solution.seo.metaDescription,
+      solutionKeywords: solution.seo.keywords,
+    }) ?? {}
+  );
 }
 
 export default async function Page(props: {
@@ -36,11 +40,12 @@ export default async function Page(props: {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Solutions", url: "/solutions" },
-          { name: solution.name, url: `/solutions/${slug}` },
-        ])}
+        dangerouslySetInnerHTML={breadcrumbSchema(
+          createEntityBreadcrumb(undefined, [
+            { name: "Solutions", url: "/solutions" },
+            { name: solution.name, url: `/solutions/${slug}` },
+          ]),
+        )}
       />
       <script
         type="application/ld+json"

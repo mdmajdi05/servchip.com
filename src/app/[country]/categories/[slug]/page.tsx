@@ -3,8 +3,11 @@ import { notFound } from "next/navigation";
 import { CATEGORIES } from "@/data/categories";
 import { getCountryByCode } from "@/data/countries";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
-import { createSeoMetadata, breadcrumbSchema } from "@/lib/seo";
-import { SITE } from "@/lib/constants";
+import {
+  createEntityMetadata,
+  createEntityBreadcrumb,
+  breadcrumbSchema,
+} from "@/lib/seo";
 import CategoryDetailPage from "@/app/categories/[slug]/page-client";
 
 export async function generateStaticParams() {
@@ -23,25 +26,14 @@ export async function generateMetadata(props: {
   const category = CATEGORIES.find((c) => c.slug === slug);
   if (!countryObj || !market || !category) return {};
 
-  return createSeoMetadata({
-    title: `Buy ${category.name} in ${countryObj.name} | Servchip`,
-    description: `Buy ${category.name} products in ${countryObj.name}. Priced in ${market.currency}, shipped from ${market.warehouse}. Authentic, warrantied enterprise hardware.`,
-    path: `/${country}/categories/${category.slug}`,
-    keywords: [
-      `buy ${category.name} ${countryObj.name}`,
-      `${category.name} supplier ${countryObj.name}`,
-      `data center hardware ${countryObj.name}`,
-      `enterprise ${category.name} ${countryObj.name}`,
-    ],
-    openGraphTitle: `${category.name} in ${countryObj.name} | Servchip`,
-    twitterTitle: `${category.name} in ${countryObj.name} | Servchip`,
-    alternates: {
-      languages: {
-        "x-default": `${SITE.url}/categories/${category.slug}`,
-        [market.locale]: `${SITE.url}/${country}/categories/${category.slug}`,
-      },
-    },
-  });
+  return (
+    createEntityMetadata("category", country, {
+      slug: category.slug,
+      category: category.name,
+      categoryLower: category.name.toLowerCase(),
+      categoryDescription: category.description,
+    }) ?? {}
+  );
 }
 
 export default async function Page(props: {
@@ -56,15 +48,15 @@ export default async function Page(props: {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: countryObj.name, url: `/${country}` },
-          { name: "Categories", url: `/${country}/categories` },
-          {
-            name: category.name,
-            url: `/${country}/categories/${category.slug}`,
-          },
-        ])}
+        dangerouslySetInnerHTML={breadcrumbSchema(
+          createEntityBreadcrumb(country, [
+            { name: "Categories", url: "/categories" },
+            {
+              name: category.name,
+              url: `/categories/${category.slug}`,
+            },
+          ]),
+        )}
       />
       <CategoryDetailPage />
     </>

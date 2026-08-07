@@ -3,8 +3,12 @@ import { notFound } from "next/navigation";
 import { INDUSTRIES, getIndustryBySlug } from "@/data/industries";
 import { getCountryByCode } from "@/data/countries";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
-import { createSeoMetadata, breadcrumbSchema, faqSchema } from "@/lib/seo";
-import { SITE } from "@/lib/constants";
+import {
+  createEntityMetadata,
+  createEntityBreadcrumb,
+  breadcrumbSchema,
+  faqSchema,
+} from "@/lib/seo";
 import PageClient from "@/app/industries/[slug]/page-client";
 
 export async function generateStaticParams() {
@@ -23,25 +27,15 @@ export async function generateMetadata(props: {
   const industry = getIndustryBySlug(slug);
   if (!countryObj || !market || !industry) return {};
 
-  return createSeoMetadata({
-    title: `${industry.name} Solutions in ${countryObj.name} | Servchip`,
-    description: `${industry.seo.metaDescription} Available in ${countryObj.name} with ${market.currency} pricing, shipped from ${market.warehouse}.`,
-    path: `/${country}/industries/${slug}`,
-    keywords: [
-      ...industry.seo.keywords,
-      `${industry.name} solutions ${countryObj.name}`,
-    ],
-    openGraphTitle: `${industry.name} Solutions in ${countryObj.name} | Servchip`,
-    twitterTitle: `${industry.name} Solutions in ${countryObj.name} | Servchip`,
-    openGraphDescription: `${industry.seo.metaDescription} Available in ${countryObj.name}.`,
-    twitterDescription: `${industry.seo.metaDescription}`,
-    alternates: {
-      languages: {
-        "x-default": `${SITE.url}/industries/${slug}`,
-        [market.locale]: `${SITE.url}/${country}/industries/${slug}`,
-      },
-    },
-  });
+  return (
+    createEntityMetadata("industry", country, {
+      slug: industry.slug,
+      industry: industry.name,
+      industryMetaTitle: industry.seo.metaTitle,
+      industryMetaDescription: industry.seo.metaDescription,
+      industryKeywords: industry.seo.keywords,
+    }) ?? {}
+  );
 }
 
 export default async function Page(props: {
@@ -56,12 +50,12 @@ export default async function Page(props: {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: `/${country}` },
-          { name: countryObj.name, url: `/${country}` },
-          { name: "Industries", url: `/${country}/industries` },
-          { name: industry.name, url: `/${country}/industries/${slug}` },
-        ])}
+        dangerouslySetInnerHTML={breadcrumbSchema(
+          createEntityBreadcrumb(country, [
+            { name: "Industries", url: "/industries" },
+            { name: industry.name, url: `/industries/${slug}` },
+          ]),
+        )}
       />
       <script
         type="application/ld+json"

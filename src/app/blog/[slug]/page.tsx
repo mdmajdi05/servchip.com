@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import {
-  createSeoMetadata,
+  createEntityMetadata,
+  createEntityBreadcrumb,
   articleSchema,
   breadcrumbSchema,
   faqSchema,
@@ -26,30 +27,39 @@ export async function generateMetadata({
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) return { title: "Article Not Found | Servchip" };
 
-  return createSeoMetadata({
-    title: post.seo.metaTitle,
-    description: post.seo.metaDescription,
-    path: `/blog/${post.slug}`,
-    keywords: post.tags.map((t) => t.name),
-    ...(post.seo.canonicalUrl
-      ? { alternates: { canonical: post.seo.canonicalUrl } }
-      : {}),
-    ...(post.seo.robots ? { robots: post.seo.robots } : {}),
-    type: "article",
-    publishedTime: post.publishedAt,
-    authors: [post.author.name],
-    tags: post.tags.map((t) => t.name),
-    ...(post.featuredImage
-      ? {
-          image: {
-            url: post.featuredImage,
-            alt: post.title,
-            width: OG_WIDTH,
-            height: OG_HEIGHT,
-          },
-        }
-      : {}),
-  });
+  return (
+    createEntityMetadata(
+      "blog",
+      undefined,
+      {
+        slug: post.slug,
+        blogTitle: post.seo.metaTitle,
+        blogDescription: post.seo.metaDescription,
+        tags: post.tags.map((t) => t.name),
+        postTitle: post.title,
+      },
+      {
+        type: "article",
+        publishedTime: post.publishedAt,
+        authors: [post.author.name],
+        tags: post.tags.map((t) => t.name),
+        ...(post.seo.canonicalUrl
+          ? { alternates: { canonical: post.seo.canonicalUrl } }
+          : {}),
+        ...(post.seo.robots ? { robots: post.seo.robots } : {}),
+        ...(post.featuredImage
+          ? {
+              image: {
+                url: post.featuredImage,
+                alt: post.title,
+                width: OG_WIDTH,
+                height: OG_HEIGHT,
+              },
+            }
+          : {}),
+      },
+    ) ?? {}
+  );
 }
 
 export default async function Page({
@@ -71,11 +81,12 @@ export default async function Page({
   const schemas = [];
 
   schemas.push(
-    breadcrumbSchema([
-      { name: "Home", url: "/" },
-      { name: "Blog", url: "/blog" },
-      { name: post.title, url: `/blog/${post.slug}` },
-    ]),
+    breadcrumbSchema(
+      createEntityBreadcrumb(undefined, [
+        { name: "Blog", url: "/blog" },
+        { name: post.title, url: `/blog/${post.slug}` },
+      ]),
+    ),
   );
 
   schemas.push(

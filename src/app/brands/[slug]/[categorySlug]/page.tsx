@@ -1,7 +1,11 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BRANDS } from "@/data/brands";
-import { createSeoMetadata, breadcrumbSchema } from "@/lib/seo";
+import {
+  createEntityMetadata,
+  createEntityBreadcrumb,
+  breadcrumbSchema,
+} from "@/lib/seo";
 import PageClient from "./page-client";
 
 export async function generateStaticParams() {
@@ -22,22 +26,15 @@ export async function generateMetadata(props: {
   if (!brand) return {};
   const category = brand.categories.find((c) => c.slug === categorySlug);
   if (!category) return {};
-  return createSeoMetadata({
-    title: `${brand.name} ${category.name} | Buy Enterprise Chips & AI Accelerators`,
-    description: `Buy ${brand.name} ${category.name}. ${category.description} Enterprise chip distributor with semiconductor procurement expertise.`,
-    path: `/brands/${slug}/${categorySlug}`,
-    keywords: [
-      `buy ${brand.name} ${category.name}`,
-      `${brand.name} ${category.name} supplier`,
-      "enterprise chip distributor",
-      "semiconductor procurement",
-      "AI accelerator supplier",
-    ],
-    openGraphTitle: `${brand.name} ${category.name} | Servchip`,
-    twitterTitle: `${brand.name} ${category.name} | Servchip`,
-    openGraphDescription: `Buy ${brand.name} ${category.name} from an ISO 9001 certified distributor.`,
-    twitterDescription: `Buy ${brand.name} ${category.name} from an ISO 9001 certified distributor.`,
-  });
+  return (
+    createEntityMetadata("brandCategory", undefined, {
+      brandSlug: brand.slug,
+      categorySlug: category.slug,
+      brand: brand.name,
+      category: category.name,
+      categoryDescription: category.description,
+    }) ?? {}
+  );
 }
 
 export default async function Page(props: {
@@ -52,15 +49,16 @@ export default async function Page(props: {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Brands", url: "/products" },
-          { name: brand.name, url: `/brands/${slug}` },
-          {
-            name: category.name,
-            url: `/brands/${slug}/${categorySlug}`,
-          },
-        ])}
+        dangerouslySetInnerHTML={breadcrumbSchema(
+          createEntityBreadcrumb(undefined, [
+            { name: "Brands", url: "/products" },
+            { name: brand.name, url: `/brands/${slug}` },
+            {
+              name: category.name,
+              url: `/brands/${slug}/${categorySlug}`,
+            },
+          ]),
+        )}
       />
       <PageClient />
     </>

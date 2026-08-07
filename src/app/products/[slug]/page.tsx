@@ -2,7 +2,12 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { ALL_PRODUCTS } from "@/data/products";
 import { CATEGORIES } from "@/data/categories";
-import { createSeoMetadata, productSchema, breadcrumbSchema } from "@/lib/seo";
+import {
+  createEntityMetadata,
+  createEntityBreadcrumb,
+  productSchema,
+  breadcrumbSchema,
+} from "@/lib/seo";
 import PageClient from "./page-client";
 
 function getProductName(product: {
@@ -27,24 +32,22 @@ export async function generateMetadata(props: {
     ? { url: product.images[0], alt: product.name, width: 800, height: 600 }
     : undefined;
 
-  return createSeoMetadata({
-    title: getProductName(product),
-    description: product.description,
-    path: `/products/${slug}`,
-    keywords: [
-      `buy ${product.name}`,
-      `${product.manufacturer} ${product.series}`,
-      `${product.categoryName} supplier`,
-      "enterprise chip distributor",
-      "semiconductor procurement",
-      "data center hardware",
-    ],
-    ...(productImage ? { image: productImage } : {}),
-    openGraphTitle: `${product.name} — Servchip`,
-    openGraphDescription: product.description,
-    twitterTitle: `${product.name} — Servchip`,
-    twitterDescription: product.description,
-  });
+  return (
+    createEntityMetadata(
+      "product",
+      undefined,
+      {
+        slug: product.slug,
+        product: product.name,
+        productName: getProductName(product),
+        productDescription: product.description,
+        manufacturer: product.manufacturer,
+        series: product.series,
+        categoryName: product.categoryName,
+      },
+      productImage ? { image: productImage } : {},
+    ) ?? {}
+  );
 }
 
 export default async function Page(props: {
@@ -63,19 +66,20 @@ export default async function Page(props: {
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={breadcrumbSchema([
-          { name: "Home", url: "/" },
-          { name: "Products", url: "/products" },
-          ...(parentCategory
-            ? [
-                {
-                  name: parentCategory.name,
-                  url: `/categories/${parentCategory.slug}`,
-                },
-              ]
-            : []),
-          { name: product.name, url: `/products/${slug}` },
-        ])}
+        dangerouslySetInnerHTML={breadcrumbSchema(
+          createEntityBreadcrumb(undefined, [
+            { name: "Products", url: "/products" },
+            ...(parentCategory
+              ? [
+                  {
+                    name: parentCategory.name,
+                    url: `/categories/${parentCategory.slug}`,
+                  },
+                ]
+              : []),
+            { name: product.name, url: `/products/${slug}` },
+          ]),
+        )}
       />
       <script
         type="application/ld+json"
