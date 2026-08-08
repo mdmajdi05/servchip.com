@@ -32,7 +32,7 @@ const CONTACT_METHODS = [
   {
     icon: MessageCircle,
     label: "WhatsApp",
-    value: "+91 79824 98712",
+    value: "+91 7982498712",
     href: `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Servchip%2C%20I%27m%20interested%20in%20your%20products.`,
     description: "Chat instantly",
     color: "bg-[#25D366]/10 text-[#25D366]",
