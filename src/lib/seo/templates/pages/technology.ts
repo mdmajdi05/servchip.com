@@ -3,10 +3,9 @@ import type { SeoPageTemplate } from "../types";
 export const technology: SeoPageTemplate = {
   path: "/technology",
   label: "Technology",
-  title:
-    "AI Chip Technology — NVIDIA Blackwell, Hopper, AMD CDNA 3 & Intel Architectures | Servchip",
+  title: "AI Chip Technology | Blackwell, Hopper & CDNA",
   description:
-    "Explore GPU architecture generations — NVIDIA Blackwell FP4, Hopper Transformer Engine, AMD CDNA 3, Intel Granite Rapids. Deep dives into NVLink 5.0, MIG, HBM3e memory & enterprise AI chip technology from Servchip.",
+    "Explore GPU architecture generations — NVIDIA Blackwell, Hopper, AMD CDNA 3 and Intel Granite Rapids. NVLink, MIG and HBM3e memory.",
   keywords: [
     "NVIDIA Blackwell architecture",
     "Hopper Transformer Engine",
@@ -30,9 +29,9 @@ export const technology: SeoPageTemplate = {
   twitterDescription:
     "Deep dive into Blackwell, Hopper, AMD CDNA 3, Intel Granite Rapids — GPU architectures powering next-gen AI.",
   country: {
-    title: "AI Chip Technology{{countrySuffix}} — Blackwell, Hopper & CDNA 3",
+    title: "AI Chip Technology{{countrySuffix}} | Blackwell & CDNA",
     description:
-      "Explore GPU architecture generations — NVIDIA Blackwell, Hopper, AMD CDNA 3, Intel Granite Rapids{{countrySuffix}}. NVLink 5.0, MIG, HBM3e memory & enterprise AI chip technology from Servchip with {{currency}} pricing.",
+      "Explore GPU architecture generations{{countrySuffix}} — NVIDIA Blackwell, Hopper, AMD CDNA 3 and Intel Granite Rapids. NVLink and HBM3e memory.",
     keywords: [
       "NVIDIA Blackwell architecture {{name}}",
       "AI chip technology {{name}}",

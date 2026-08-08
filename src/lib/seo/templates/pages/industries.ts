@@ -3,9 +3,9 @@ import type { SeoPageTemplate } from "../types";
 export const industries: SeoPageTemplate = {
   path: "/industries",
   label: "Industries",
-  title: "Industries We Serve | Enterprise AI Solutions by Sector | Servchip",
+  title: "Industries | Enterprise AI GPU Solutions",
   description:
-    "Enterprise AI and data center hardware solutions for data centers, healthcare, finance, government, research, telecom and manufacturing. NVIDIA, AMD & Intel hardware by industry.",
+    "Enterprise AI and data center hardware solutions for healthcare, finance, government, research, telecom and manufacturing.",
   keywords: [
     "enterprise AI by industry",
     "AI infrastructure solutions",
@@ -17,10 +17,9 @@ export const industries: SeoPageTemplate = {
   openGraphTitle: "Industries We Serve | Servchip",
   twitterTitle: "Industries We Serve | Servchip",
   country: {
-    title:
-      "Industries We Serve in {{name}} | Enterprise AI Solutions by Sector",
+    title: "Industries in {{name}} | Enterprise AI Solutions",
     description:
-      "Enterprise AI and data center hardware solutions in {{name}} for data centers, healthcare, finance, government, research, telecom and manufacturing. NVIDIA, AMD & Intel hardware with {{currency}} pricing.",
+      "Enterprise AI and data center hardware in {{name}} for healthcare, finance, government, research, telecom and manufacturing.",
     keywords: [
       "enterprise AI by industry {{name}}",
       "AI infrastructure solutions {{name}}",

@@ -3,10 +3,9 @@ import type { SeoPageTemplate } from "../types";
 export const faq: SeoPageTemplate = {
   path: "/faq",
   label: "FAQ",
-  title:
-    "FAQ — Enterprise Chip Distributor | Buy AI Chips, Semiconductor Procurement",
+  title: "FAQ | AI Chip Distributor Questions",
   description:
-    "Answers about buying AI chips, enterprise chip purchasing, semiconductor procurement, authenticity verification, bulk ordering, shipping, warranty & support from Servchip — ISO 9001 certified distributor for NVIDIA, AMD, Intel.",
+    "Answers about buying AI chips, enterprise chip purchasing, semiconductor procurement, bulk ordering, shipping, warranty and support.",
   keywords: [
     "buy AI chips",
     "enterprise chip purchasing",
@@ -24,9 +23,9 @@ export const faq: SeoPageTemplate = {
   twitterDescription:
     "Common questions about buying AI chips, semiconductor procurement, enterprise chip purchasing, shipping, warranty & support.",
   country: {
-    title: "FAQ — Enterprise Chip Distribution{{countrySuffix}} | Servchip",
+    title: "FAQ{{countrySuffix}} | AI Chip Distributor Questions",
     description:
-      "Answers about buying AI chips, enterprise chip purchasing and semiconductor procurement{{countrySuffix}}. Authenticity, bulk ordering, {{currency}} pricing, shipping, warranty & support.",
+      "Answers about buying AI chips and enterprise chip purchasing{{countrySuffix}}. Authenticity, bulk ordering, {{currency}} pricing, shipping and support.",
     keywords: [
       "buy AI chips {{name}}",
       "enterprise chip purchasing {{name}}",

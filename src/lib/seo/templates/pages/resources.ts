@@ -3,10 +3,9 @@ import type { SeoPageTemplate } from "../types";
 export const resources: SeoPageTemplate = {
   path: "/resources",
   label: "Resources",
-  title:
-    "Resources — Enterprise AI Hardware Guides, Blog & Semiconductor Procurement Insights",
+  title: "Resources | AI Chip Guides & Whitepapers",
   description:
-    "Technical guides, blog articles, case studies & whitepapers on AI computing, GPU architectures, HPC deployments, semiconductor procurement tips & enterprise chip solutions from Servchip's certified engineers.",
+    "Technical guides, blog articles, case studies and whitepapers on AI computing, GPU architectures and semiconductor procurement.",
   keywords: [
     "AI hardware guides",
     "enterprise chip resources",
@@ -22,10 +21,9 @@ export const resources: SeoPageTemplate = {
   twitterDescription:
     "Technical guides, case studies & whitepapers on AI computing, GPU architectures & enterprise chip solutions.",
   country: {
-    title:
-      "Resources — Enterprise AI Hardware Guides{{countrySuffix}} | Servchip",
+    title: "Resources & Guides{{countrySuffix}} | Servchip",
     description:
-      "Technical guides, blog articles, case studies & whitepapers on AI computing, GPU architectures, HPC deployments and semiconductor procurement for buyers{{countrySuffix}}.",
+      "Technical guides, blog articles and whitepapers on AI computing, GPU architectures and semiconductor procurement{{countrySuffix}}.",
     keywords: [
       "AI hardware guides {{name}}",
       "enterprise chip resources {{name}}",

@@ -3,10 +3,9 @@ import type { SeoPageTemplate } from "../types";
 export const solutions: SeoPageTemplate = {
   path: "/solutions",
   label: "Solutions",
-  title:
-    "Enterprise AI & HPC Solutions — Data Center, Edge & Cloud Infrastructure | Servchip",
+  title: "Enterprise AI Solutions | GPUs & HPC",
   description:
-    "Multi-vendor enterprise solutions for AI training, HPC, data center acceleration, edge computing & professional visualization. NVIDIA, AMD, Intel hardware for enterprise deployments with global semiconductor procurement.",
+    "Multi-vendor enterprise solutions for AI training, HPC and data center acceleration with NVIDIA, AMD and Intel hardware.",
   keywords: [
     "enterprise AI solutions",
     "HPC solutions",
@@ -26,9 +25,9 @@ export const solutions: SeoPageTemplate = {
   twitterDescription:
     "Multi-vendor enterprise solutions for AI training, HPC, and data center workloads featuring NVIDIA, AMD, and Intel hardware.",
   country: {
-    title: "Enterprise AI & HPC Solutions in {{name}} | Servchip",
+    title: "Enterprise AI Solutions in {{name}} | GPUs",
     description:
-      "Multi-vendor enterprise solutions for AI training, HPC, data center acceleration, edge computing & professional visualization in {{name}}. NVIDIA, AMD, Intel hardware with {{currency}} pricing and {{warehouse}} shipping.",
+      "Multi-vendor enterprise solutions for AI training, HPC and data center acceleration{{countrySuffix}} with NVIDIA, AMD and Intel hardware.",
     keywords: [
       "enterprise AI solutions {{name}}",
       "HPC solutions {{name}}",

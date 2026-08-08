@@ -4,9 +4,9 @@ import type { SeoPageTemplate } from "../types";
 export const home: SeoPageTemplate = {
   path: "/",
   label: "Home",
-  title: `${SITE.name} — AI Chip Distributor & Enterprise GPU Distributor | NVIDIA H100, AMD Instinct, Intel Gaudi`,
+  title: `Enterprise AI Hardware & Chip Distributor | Servchip`,
   description:
-    "Servchip is your enterprise chip distributor & data center GPU supplier — NVIDIA H100, H200, B200, AMD Instinct MI300X, Intel Xeon & Gaudi 3. Authorized NVIDIA distributor & AI accelerator supplier in Dubai, UAE, India & USA.",
+    "Buy enterprise AI accelerators, GPUs, and semiconductors. Servchip provides certified global procurement and multi-vendor engineering support.",
   keywords: [
     "AI chip company",
     "enterprise GPU distributor",

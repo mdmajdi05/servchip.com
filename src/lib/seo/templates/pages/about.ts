@@ -3,10 +3,9 @@ import type { SeoPageTemplate } from "../types";
 export const about: SeoPageTemplate = {
   path: "/about",
   label: "About",
-  title:
-    "About Servchip — ISO 9001 Certified Enterprise Chip Distributor | Semiconductor Procurement",
+  title: "About Servchip | Enterprise Chip Distributor",
   description:
-    "Learn about Servchip, an ISO 9001 certified enterprise chip distributor and semiconductor procurement partner. Authorized distribution for NVIDIA, AMD, Intel with 27+ manufacturer partnerships, serving 500+ enterprises across 150+ countries from India & UAE.",
+    "Servchip is an ISO 9001 certified enterprise chip distributor & semiconductor procurement partner serving 500+ global enterprises across 150+ countries.",
   keywords: [
     "about Servchip",
     "enterprise chip distributor",
@@ -26,10 +25,9 @@ export const about: SeoPageTemplate = {
   twitterDescription:
     "ISO 9001 certified enterprise chip distributor. 27+ manufacturer partnerships. Serving 500+ enterprises across 150+ countries from India & UAE.",
   country: {
-    title:
-      "About Servchip — ISO 9001 Enterprise Chip Distributor{{countrySuffix}}",
+    title: "About Servchip | Chip Distributor{{countrySuffix}}",
     description:
-      "Learn about Servchip, an ISO 9001 certified enterprise chip distributor and semiconductor procurement partner serving {{name}}. Authorized NVIDIA, AMD & Intel distribution with local {{currency}} pricing and shipping from {{warehouse}}.",
+      "ISO 9001 certified enterprise chip distributor serving {{name}} with authorized NVIDIA, AMD and Intel distribution and {{currency}} pricing from {{warehouse}}.",
     keywords: [
       "about Servchip {{name}}",
       "enterprise chip distributor {{name}}",

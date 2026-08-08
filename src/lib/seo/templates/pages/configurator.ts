@@ -3,10 +3,9 @@ import type { SeoPageTemplate } from "../types";
 export const configurator: SeoPageTemplate = {
   path: "/configurator",
   label: "Configurator",
-  title:
-    "Chip Configurator — Find the Right AI Accelerator for Your Workload | Servchip",
+  title: "Chip Configurator | Find Your AI Accelerator",
   description:
-    "Configure your ideal chip setup from NVIDIA, AMD, Intel and more. Answer a few questions and get matched with the right AI accelerator for training, inference, HPC, or professional graphics. Enterprise chip distributor.",
+    "Configure your ideal chip setup from NVIDIA, AMD and Intel. Get matched with the right AI accelerator for your workload.",
   keywords: [
     "chip configurator",
     "AI accelerator finder",
@@ -23,9 +22,9 @@ export const configurator: SeoPageTemplate = {
   twitterDescription:
     "Configure your ideal AI chip setup. NVIDIA, AMD, Intel. Matched to your workload.",
   country: {
-    title: "Chip Configurator{{countrySuffix}} — Find the Right AI Accelerator",
+    title: "Chip Configurator{{countrySuffix}} | Find Your GPU",
     description:
-      "Configure your ideal chip setup{{countrySuffix}} from NVIDIA, AMD, Intel and more. Get matched with the right AI accelerator for training, inference, HPC or professional graphics.",
+      "Configure your ideal chip setup{{countrySuffix}} from NVIDIA, AMD and Intel. Get matched with the right AI accelerator.",
     keywords: [
       "chip configurator {{name}}",
       "AI accelerator finder {{name}}",

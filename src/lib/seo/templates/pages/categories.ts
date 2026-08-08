@@ -3,10 +3,9 @@ import type { SeoPageTemplate } from "../types";
 export const categories: SeoPageTemplate = {
   path: "/categories",
   label: "Categories",
-  title:
-    "Product Categories — Data Center GPUs, AI Accelerators, Server CPUs & Enterprise Hardware | Servchip",
+  title: "Chip Categories | GPUs, AI Accelerators & CPUs",
   description:
-    "Browse enterprise chip categories — NVIDIA data center GPUs, AMD Instinct accelerators, Intel Xeon CPUs, AI servers, networking, memory & storage from an ISO 9001 certified distributor for semiconductor procurement.",
+    "Browse enterprise chip categories — NVIDIA data center GPUs, AMD Instinct, Intel Xeon, AI servers, networking, memory and storage.",
   keywords: [
     "enterprise chip categories",
     "data center GPUs",
@@ -24,10 +23,9 @@ export const categories: SeoPageTemplate = {
   twitterDescription:
     "Browse enterprise chip categories — data center GPUs, AI accelerators, server CPUs & more.",
   country: {
-    title:
-      "Product Categories in {{name}} | Data Center GPUs & AI Accelerators",
+    title: "Chip Categories in {{name}} | GPUs & AI",
     description:
-      "Browse enterprise chip categories in {{name}} — NVIDIA data center GPUs, AMD Instinct, Intel Xeon, AI servers, networking, memory & storage. Priced in {{currency}}.",
+      "Browse enterprise chip categories in {{name}} — NVIDIA data center GPUs, AMD Instinct, Intel Xeon and AI servers.",
     keywords: [
       "enterprise chip categories {{name}}",
       "data center GPUs {{name}}",

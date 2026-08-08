@@ -3,10 +3,9 @@ import type { SeoPageTemplate } from "../types";
 export const contact: SeoPageTemplate = {
   path: "/contact",
   label: "Contact",
-  title:
-    "Contact Us — Buy Enterprise Chips, AI Accelerators & Semiconductor Procurement",
+  title: "Contact Us | Buy AI Chips & Enterprise GPUs",
   description:
-    "Contact Servchip for enterprise chip pricing, AI accelerator availability, and semiconductor procurement quotes. NVIDIA H100, AMD MI300X, Intel Xeon & more. Enterprise hardware distributor with 24-hour response time & global shipping.",
+    "Contact Servchip for enterprise chip pricing, AI accelerator availability and procurement quotes. NVIDIA H100, AMD MI300X, Intel Xeon and more.",
   keywords: [
     "contact Servchip",
     "buy enterprise chips",
@@ -26,10 +25,9 @@ export const contact: SeoPageTemplate = {
   twitterDescription:
     "Get enterprise chip pricing & semiconductor procurement quotes. 24-hour response time. Buy AI accelerators with global shipping from India & UAE.",
   country: {
-    title:
-      "Contact Us{{countrySuffix}} — Enterprise Chip Pricing & AI Accelerator Quotes",
+    title: "Contact Us{{countrySuffix}} | AI Chip Pricing",
     description:
-      "Contact Servchip{{countrySuffix}} for enterprise chip pricing, AI accelerator availability and semiconductor procurement quotes. NVIDIA H100, AMD MI300X, Intel Xeon & more. {{currency}} pricing, 24-hour response time.",
+      "Contact Servchip{{countrySuffix}} for AI chip pricing, availability and procurement quotes. NVIDIA H100, AMD MI300X, Intel Xeon and more.",
     keywords: [
       "contact Servchip {{name}}",
       "buy enterprise chips {{name}}",

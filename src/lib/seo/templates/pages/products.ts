@@ -3,10 +3,9 @@ import type { SeoPageTemplate } from "../types";
 export const products: SeoPageTemplate = {
   path: "/products",
   label: "Products",
-  title:
-    "Buy Enterprise Chips — NVIDIA H100, AMD MI300X, Intel Xeon & AI Accelerators | Servchip",
+  title: "Buy AI Chips | NVIDIA, AMD & Intel GPUs",
   description:
-    "Buy authentic enterprise chips from an ISO 9001 certified distributor. NVIDIA H100, H200, B200, AMD MI300X, Intel Xeon & Gaudi 3. AI accelerators, server CPUs, data center GPUs. Semiconductor procurement with global shipping.",
+    "Buy authentic enterprise chips — NVIDIA H100, H200, B200, AMD MI300X, Intel Xeon and Gaudi 3. AI accelerators and data center GPUs.",
   keywords: [
     "buy AI chips",
     "enterprise chip distributor",
@@ -26,9 +25,9 @@ export const products: SeoPageTemplate = {
   twitterDescription:
     "Buy authentic enterprise chips — NVIDIA H100, AMD MI300X, Intel Xeon. ISO 9001 certified distributor with global shipping.",
   country: {
-    title: "Buy Enterprise AI Chips in {{name}} | NVIDIA, AMD, Intel",
+    title: "Buy AI Chips in {{name}} | NVIDIA & AMD",
     description:
-      "Buy authentic NVIDIA H100, AMD MI300X, Intel Xeon & AI accelerators in {{name}}. Priced in {{currency}}, shipped from {{warehouse}}. ISO 9001 certified distributor.",
+      "Buy authentic NVIDIA H100, AMD MI300X, Intel Xeon and AI accelerators in {{name}}. Priced in {{currency}}, shipped from {{warehouse}}.",
     keywords: [
       "buy AI chips {{name}}",
       "NVIDIA GPU distributor {{name}}",

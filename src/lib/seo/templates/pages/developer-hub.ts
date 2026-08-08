@@ -3,10 +3,9 @@ import type { SeoPageTemplate } from "../types";
 export const developerHub: SeoPageTemplate = {
   path: "/developer-hub",
   label: "Developer Hub",
-  title:
-    "Developer Hub — SDK, API Docs & Integration Guides for AI Chips | Servchip",
+  title: "Developer Hub | CUDA, ROCm & oneAPI Guides",
   description:
-    "Integration guides for NVIDIA CUDA, AMD ROCm, Intel oneAPI. SDK documentation, API reference, and code samples for enterprise AI chip development and semiconductor deployment.",
+    "Integration guides for NVIDIA CUDA, AMD ROCm and Intel oneAPI. SDK documentation and code samples for AI chip development.",
   keywords: [
     "NVIDIA CUDA SDK",
     "AMD ROCm guide",
@@ -22,10 +21,9 @@ export const developerHub: SeoPageTemplate = {
   twitterDescription:
     "SDK docs, API reference & integration guides for NVIDIA CUDA, AMD ROCm, Intel oneAPI across enterprise chip platforms.",
   country: {
-    title:
-      "Developer Hub{{countrySuffix}} — SDK & Integration Guides | Servchip",
+    title: "Developer Hub{{countrySuffix}} | SDK Guides",
     description:
-      "Integration guides for NVIDIA CUDA, AMD ROCm, Intel oneAPI{{countrySuffix}}. SDK documentation, API reference and code samples for enterprise AI chip development.",
+      "Integration guides for NVIDIA CUDA, AMD ROCm and Intel oneAPI{{countrySuffix}}. SDK documentation and code samples.",
     keywords: [
       "NVIDIA CUDA SDK {{name}}",
       "AMD ROCm guide {{name}}",

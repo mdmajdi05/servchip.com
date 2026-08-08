@@ -3,10 +3,9 @@ import type { SeoPageTemplate } from "../types";
 export const blog: SeoPageTemplate = {
   path: "/blog",
   label: "Blog",
-  title:
-    "Blog — Enterprise AI Hardware Guides, Chip Architecture Insights & Semiconductor Procurement",
+  title: "AI Chip Blog | Guides, Comparisons & GPU Insights",
   description:
-    "Expert guides on NVIDIA Blackwell, AMD CDNA 3, Intel Granite Rapids & more. Enterprise AI chip comparisons, deployment best practices, semiconductor procurement tips & data center infrastructure insights.",
+    "Expert guides on NVIDIA Blackwell, AMD CDNA 3 and Intel Granite Rapids. AI chip comparisons and deployment best practices.",
   keywords: [
     "AI hardware guides",
     "enterprise chip blog",
@@ -24,7 +23,7 @@ export const blog: SeoPageTemplate = {
   twitterDescription:
     "Expert guides on AI chip architectures, comparisons & enterprise deployment best practices.",
   country: {
-    title: "AI Hardware Blog — {{name}} Edition | Servchip",
+    title: "AI Chip Blog for Buyers{{countrySuffix}} | Servchip",
     description:
       "Enterprise AI hardware guides, chip architecture insights and semiconductor procurement tips for buyers in {{name}}.",
     keywords: [

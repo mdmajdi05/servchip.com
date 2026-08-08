@@ -3,10 +3,9 @@ import type { SeoPageTemplate } from "../types";
 export const rfq: SeoPageTemplate = {
   path: "/rfq",
   label: "Request a Quote",
-  title:
-    "Request a Quote — Enterprise AI Hardware Pricing & Semiconductor Procurement",
+  title: "Request a Quote | AI Chip Pricing",
   description:
-    "Request a personalized quote for enterprise chips — NVIDIA H100, AMD MI300X, Intel Xeon & Gaudi 3. Volume discounts, 24-hour response time & global shipping from an ISO 9001 certified distributor.",
+    "Request a personalized quote for enterprise chips — NVIDIA H100, AMD MI300X, Intel Xeon and Gaudi 3. Volume discounts and 24-hour response.",
   keywords: [
     "enterprise chip pricing",
     "NVIDIA H100 quote",
@@ -22,9 +21,9 @@ export const rfq: SeoPageTemplate = {
   twitterDescription:
     "Get enterprise chip pricing. NVIDIA, AMD, Intel hardware. Volume discounts & 24-hour quotes.",
   country: {
-    title: "Request a Quote{{countrySuffix}} — Enterprise AI Hardware Pricing",
+    title: "Request a Quote{{countrySuffix}} | AI Chip Pricing",
     description:
-      "Request a personalized quote for enterprise chips{{countrySuffix}} — NVIDIA H100, AMD MI300X, Intel Xeon & Gaudi 3. {{currency}} volume discounts, 24-hour response time, shipped from {{warehouse}}.",
+      "Request a personalized quote for enterprise chips{{countrySuffix}} — NVIDIA H100, AMD MI300X, Intel Xeon & Gaudi 3. {{currency}} volume discounts and 24-hour response.",
     keywords: [
       "enterprise chip pricing {{name}}",
       "NVIDIA H100 quote {{name}}",

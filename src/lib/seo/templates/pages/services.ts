@@ -3,10 +3,9 @@ import type { SeoPageTemplate } from "../types";
 export const services: SeoPageTemplate = {
   path: "/services",
   label: "Services",
-  title:
-    "Enterprise Chip Services — Semiconductor Procurement, Integration & AI Infrastructure Consulting",
+  title: "Chip Services | Procurement & Integration",
   description:
-    "End-to-end enterprise chip services — custom semiconductor procurement, hardware sourcing, system integration, AI infrastructure consulting, and enterprise support. ISO 9001 certified chip distributor with global delivery.",
+    "End-to-end enterprise chip services — semiconductor procurement, hardware sourcing, system integration and AI infrastructure consulting.",
   keywords: [
     "enterprise chip services",
     "semiconductor procurement services",
@@ -26,10 +25,9 @@ export const services: SeoPageTemplate = {
   twitterDescription:
     "Custom semiconductor procurement, system integration, AI infrastructure consulting, and enterprise hardware support from an ISO 9001 certified chip distributor.",
   country: {
-    title:
-      "Enterprise Chip Services in {{name}} — Semiconductor Procurement & Integration",
+    title: "Chip Services{{countrySuffix}} | Procurement",
     description:
-      "End-to-end enterprise chip services in {{name}} — custom semiconductor procurement, hardware sourcing, system integration and AI infrastructure consulting. ISO 9001 certified distributor with {{currency}} pricing and delivery from {{warehouse}}.",
+      "End-to-end enterprise chip services{{countrySuffix}} — semiconductor procurement, hardware sourcing and system integration.",
     keywords: [
       "enterprise chip services {{name}}",
       "semiconductor procurement services {{name}}",

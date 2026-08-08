@@ -3,10 +3,9 @@ import type { SeoPageTemplate } from "../types";
 export const comparison: SeoPageTemplate = {
   path: "/comparison",
   label: "Comparison",
-  title:
-    "AI Chip Comparison — NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3 | Enterprise Chip Specs",
+  title: "GPU Comparison | H100 vs MI300X vs Gaudi",
   description:
-    "Compare enterprise AI accelerators side by side — NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3. Memory, bandwidth, TFLOPS, TDP & architecture specs for data center GPU procurement decisions.",
+    "Compare NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3 — memory, bandwidth, TFLOPS, TDP and architecture specs.",
   keywords: [
     "NVIDIA H100 vs AMD MI300X",
     "AI chip comparison",
@@ -25,9 +24,9 @@ export const comparison: SeoPageTemplate = {
   twitterDescription:
     "Side-by-side enterprise chip comparison — specs, performance & pricing for data center GPU procurement.",
   country: {
-    title: "AI Chip Comparison in {{name}} — H100 vs MI300X vs Gaudi 3",
+    title: "GPU Comparison in {{name}} | H100 vs MI300X",
     description:
-      "Compare enterprise AI accelerators for buyers in {{name}} — NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3. Memory, bandwidth, TFLOPS, TDP & architecture specs for {{currency}} data center procurement decisions.",
+      "Compare enterprise AI accelerators in {{name}} — NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3. Specs and procurement guidance.",
     keywords: [
       "NVIDIA H100 vs AMD MI300X {{name}}",
       "AI chip comparison {{name}}",
