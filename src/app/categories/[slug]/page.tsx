@@ -6,6 +6,7 @@ import {
   createEntityBreadcrumb,
   breadcrumbSchema,
   itemListSchema,
+  stripServchip,
 } from "@/lib/seo";
 import PageClient from "./page-client";
 
@@ -21,6 +22,7 @@ export async function generateMetadata(props: {
       category: cat.name,
       categoryLower: cat.name.toLowerCase(),
       categoryDescription: cat.description,
+      categoryMetaTitle: stripServchip(cat.seo.metaTitle),
     }) ?? {}
   );
 }

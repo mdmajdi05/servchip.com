@@ -27,7 +27,7 @@ export const about: SeoPageTemplate = {
   country: {
     title: "About Servchip | Chip Distributor{{countrySuffix}}",
     description:
-      "ISO 9001 certified enterprise chip distributor serving {{name}} with authorized NVIDIA, AMD and Intel distribution and {{currency}} pricing from {{warehouse}}.",
+      "ISO 9001 certified enterprise chip distributor serving {{nameShort}} with authorized NVIDIA, AMD and Intel distribution and {{currency}} pricing from {{warehouse}}.",
     keywords: [
       "about Servchip {{name}}",
       "enterprise chip distributor {{name}}",

@@ -17,7 +17,7 @@ export const industries: SeoPageTemplate = {
   openGraphTitle: "Industries We Serve | Servchip",
   twitterTitle: "Industries We Serve | Servchip",
   country: {
-    title: "Industries in {{name}} | Enterprise AI Solutions",
+    title: "Industries in {{nameShort}} | Enterprise AI Solutions",
     description:
       "Enterprise AI and data center hardware in {{name}} for healthcare, finance, government, research, telecom and manufacturing.",
     keywords: [

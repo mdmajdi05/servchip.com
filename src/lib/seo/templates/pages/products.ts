@@ -25,7 +25,7 @@ export const products: SeoPageTemplate = {
   twitterDescription:
     "Buy authentic enterprise chips — NVIDIA H100, AMD MI300X, Intel Xeon. ISO 9001 certified distributor with global shipping.",
   country: {
-    title: "Buy AI Chips in {{name}} | NVIDIA & AMD",
+    title: "Buy AI Chips in {{nameShort}} | NVIDIA & AMD",
     description:
       "Buy authentic NVIDIA H100, AMD MI300X, Intel Xeon and AI accelerators in {{name}}. Priced in {{currency}}, shipped from {{warehouse}}.",
     keywords: [

@@ -7,19 +7,9 @@ import {
   createEntityBreadcrumb,
   productSchema,
   breadcrumbSchema,
+  stripServchip,
 } from "@/lib/seo";
 import PageClient from "./page-client";
-
-function getProductName(product: {
-  name: string;
-  specifications?: object;
-  formFactor?: string;
-}): string {
-  if ("specifications" in (product || {}))
-    return `${product.name} — Specifications, Pricing & Availability`;
-  if (product.formFactor) return `${product.name} — AI Server Specs & Pricing`;
-  return `${product.name} — Product Details & Pricing`;
-}
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
@@ -39,7 +29,7 @@ export async function generateMetadata(props: {
       {
         slug: product.slug,
         product: product.name,
-        productName: getProductName(product),
+        productName: stripServchip(product.seo.metaTitle),
         productDescription: product.description,
         manufacturer: product.manufacturer,
         series: product.series,

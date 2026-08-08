@@ -25,7 +25,7 @@ export const solutions: SeoPageTemplate = {
   twitterDescription:
     "Multi-vendor enterprise solutions for AI training, HPC, and data center workloads featuring NVIDIA, AMD, and Intel hardware.",
   country: {
-    title: "Enterprise AI Solutions in {{name}} | GPUs",
+    title: "Enterprise AI Solutions in {{nameShort}} | GPUs",
     description:
       "Multi-vendor enterprise solutions for AI training, HPC and data center acceleration{{countrySuffix}} with NVIDIA, AMD and Intel hardware.",
     keywords: [

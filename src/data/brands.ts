@@ -1430,8 +1430,7 @@ export const BRANDS: Brand[] = [
       },
     ],
     seo: {
-      metaTitle:
-        "Nokia Semiconductor & Network Processor Distributor | Servchip",
+      metaTitle: "Nokia Semiconductor & Network Processor | Servchip",
       metaDescription:
         "Authorized distributor of Nokia network processors, optical DSPs, 5G semiconductors, and IoT chips. Global delivery, enterprise support.",
     },

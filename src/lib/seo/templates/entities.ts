@@ -46,7 +46,7 @@ export const ENTITY_TEMPLATES: Record<EntityRoute, SeoEntityTemplate> = {
       twitterDescription: "{{productDescription}}",
     },
     country: {
-      title: "Buy {{product}}{{countrySuffix}}",
+      title: "{{product}}{{countrySuffix}}",
       description:
         "{{product}} ({{series}}) available{{countrySuffix}}. Priced in {{currency}}, shipped from {{warehouse}}. Authentic, warrantied — request a quote today.",
       keywords: [
@@ -66,7 +66,7 @@ export const ENTITY_TEMPLATES: Record<EntityRoute, SeoEntityTemplate> = {
   brand: {
     globalPath: "/brands/{{slug}}",
     global: {
-      title: "{{brandMetaTitle}} | Enterprise Chip Distributor",
+      title: "{{brandMetaTitle}}",
       description:
         "{{brandMetaDescription}} Buy authentic {{brand}} chips from an ISO 9001 certified distributor. Semiconductor procurement with global shipping.",
       keywords: [
@@ -84,7 +84,7 @@ export const ENTITY_TEMPLATES: Record<EntityRoute, SeoEntityTemplate> = {
       twitterDescription: "{{brandMetaDescription}}",
     },
     country: {
-      title: "Buy {{brand}} Products{{countrySuffix}}",
+      title: "{{brand}} Products{{countrySuffix}}",
       description:
         "Buy authentic {{brand}} enterprise hardware{{countrySuffix}}. Priced in {{currency}}, shipped from {{warehouse}}. ISO 9001 certified distributor.",
       keywords: [
@@ -101,7 +101,7 @@ export const ENTITY_TEMPLATES: Record<EntityRoute, SeoEntityTemplate> = {
   brandCategory: {
     globalPath: "/brands/{{brandSlug}}/{{categorySlug}}",
     global: {
-      title: "{{brand}} {{category}} | Buy Enterprise Chips & AI Accelerators",
+      title: "{{brand}} {{category}}",
       description:
         "Buy {{brand}} {{category}}. {{categoryDescription}} Enterprise chip distributor with semiconductor procurement expertise.",
       keywords: [
@@ -119,7 +119,7 @@ export const ENTITY_TEMPLATES: Record<EntityRoute, SeoEntityTemplate> = {
         "Buy {{brand}} {{category}} from an ISO 9001 certified distributor.",
     },
     country: {
-      title: "Buy {{brand}} {{category}}{{countrySuffix}}",
+      title: "{{brand}} {{category}}{{countrySuffix}}",
       description:
         "Buy authentic {{brand}} {{category}}{{countrySuffix}}. Priced in {{currency}}, shipped from {{warehouse}}. ISO 9001 certified distributor.",
       keywords: [
@@ -135,8 +135,7 @@ export const ENTITY_TEMPLATES: Record<EntityRoute, SeoEntityTemplate> = {
   category: {
     globalPath: "/categories/{{slug}}",
     global: {
-      title:
-        "{{category}} — Buy Enterprise {{category}} | Servchip Semiconductor Procurement",
+      title: "{{categoryMetaTitle}}",
       description:
         "{{categoryDescription}} Buy authentic {{category}} from an ISO 9001 certified enterprise chip distributor. AI accelerator & semiconductor procurement with global shipping.",
       keywords: [

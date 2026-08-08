@@ -24,7 +24,7 @@ export const comparison: SeoPageTemplate = {
   twitterDescription:
     "Side-by-side enterprise chip comparison — specs, performance & pricing for data center GPU procurement.",
   country: {
-    title: "GPU Comparison in {{name}} | H100 vs MI300X",
+    title: "GPU Comparison in {{nameShort}} | H100 vs MI300X",
     description:
       "Compare enterprise AI accelerators in {{name}} — NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3. Specs and procurement guidance.",
     keywords: [

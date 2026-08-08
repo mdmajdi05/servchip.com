@@ -23,7 +23,7 @@ export const categories: SeoPageTemplate = {
   twitterDescription:
     "Browse enterprise chip categories — data center GPUs, AI accelerators, server CPUs & more.",
   country: {
-    title: "Chip Categories in {{name}} | GPUs & AI",
+    title: "Chip Categories in {{nameShort}} | GPUs & AI",
     description:
       "Browse enterprise chip categories in {{name}} — NVIDIA data center GPUs, AMD Instinct, Intel Xeon and AI servers.",
     keywords: [

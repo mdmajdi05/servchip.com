@@ -3,9 +3,18 @@ import { COUNTRY_MARKETS } from "@/data/country-markets";
 import { stripServchip } from "../helpers";
 import type { Country, CountryMarket } from "@/types";
 
+const SHORT_NAMES: Record<string, string> = {
+  in: "India",
+  ae: "UAE",
+  us: "USA",
+  uk: "UK",
+  de: "Germany",
+};
+
 export interface CountryVars {
   country: string;
   name: string;
+  nameShort: string;
   countrySuffix: string;
   currency: string;
   warehouse: string;
@@ -29,10 +38,12 @@ export function countryVars(country: string): CountryVars | null {
   const ctx = countryContext(country);
   if (!ctx) return null;
   const { countryObj, market } = ctx;
+  const nameShort = SHORT_NAMES[country] ?? countryObj.name;
   return {
     country,
     name: countryObj.name,
-    countrySuffix: ` in ${countryObj.name}`,
+    nameShort,
+    countrySuffix: ` in ${nameShort}`,
     currency: market.currency,
     warehouse: market.warehouse,
     locale: market.locale,

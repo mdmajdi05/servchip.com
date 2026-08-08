@@ -21,7 +21,7 @@ export const brands: SeoPageTemplate = {
   twitterDescription:
     "Browse every brand we stock — NVIDIA, AMD, Intel, Dell, HPE and 27+ manufacturers.",
   country: {
-    title: "Brand Directory in {{name}} | NVIDIA & AMD",
+    title: "Brand Directory in {{nameShort}} | NVIDIA & AMD",
     description:
       "Browse authentic enterprise hardware brands in {{name}} — NVIDIA, AMD, Intel, HPE, Dell and more. Priced in {{currency}}, shipped from {{warehouse}}.",
     keywords: [
