@@ -400,10 +400,9 @@ export const COUNTRIES: Country[] = [
         "NVIDIA, AMD & Intel accelerators delivered to Singapore data centers and enterprises with authentic sourcing and fast delivery.",
     },
     seo: {
-      metaTitle:
-        "NVIDIA Distributor in Singapore | AI Chip Supplier | Servchip",
+      metaTitle: "NVIDIA Distributor in Singapore | AI Chips | Servchip",
       metaDescription:
-        "Buy NVIDIA H100, H200, B200, AMD Instinct & Intel Gaudi AI chips in Singapore. Enterprise chip distributor with authentic, warrantied hardware and fast delivery across Singapore.",
+        "Buy NVIDIA H100, H200, B200, AMD Instinct & Intel Gaudi AI chips in Singapore with authentic, warrantied hardware and fast delivery.",
       keywords: [
         "NVIDIA distributor in Singapore",
         "AI chip distributor Singapore",
@@ -467,7 +466,7 @@ export const COUNTRIES: Country[] = [
     seo: {
       metaTitle: "NVIDIA Distributor in Malaysia | Intel Supplier | Servchip",
       metaDescription:
-        "Buy NVIDIA H100, H200, B200, AMD Instinct & Intel Gaudi AI chips in Malaysia. Enterprise chip distributor with authentic, warrantied hardware delivered across KL, Penang & beyond.",
+        "Buy NVIDIA H100, H200, B200, AMD Instinct & Intel Gaudi AI chips in Malaysia with authentic, warrantied hardware delivered across KL, Penang & beyond.",
       keywords: [
         "NVIDIA distributor in Malaysia",
         "Intel supplier Malaysia",
@@ -592,10 +591,9 @@ export const COUNTRIES: Country[] = [
         "Authentic NVIDIA, AMD & Intel accelerators delivered to Philippine data centers and enterprises.",
     },
     seo: {
-      metaTitle:
-        "NVIDIA Distributor in Philippines | AI Chip Supplier | Servchip",
+      metaTitle: "NVIDIA Distributor in Philippines | AI Chips | Servchip",
       metaDescription:
-        "Buy NVIDIA H100, H200, B200, AMD Instinct & Intel Gaudi AI chips in the Philippines. Enterprise chip distributor with authentic hardware and fast Manila delivery.",
+        "Buy NVIDIA H100, H200, B200, AMD Instinct & Intel Gaudi AI chips in the Philippines with authentic hardware and fast Manila delivery.",
       keywords: [
         "NVIDIA distributor in Philippines",
         "AI chip distributor Philippines",

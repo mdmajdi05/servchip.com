@@ -19,10 +19,9 @@ export const post: BlogPost = {
   updatedAt: "2026-07-25",
   isPublished: true,
   seo: {
-    metaTitle:
-      "How Many GPUs Do You Need for LLM Training? Calculator (2026) | Servchip",
+    metaTitle: "How Many GPUs for LLM Training? Calculator (2026) | Servchip",
     metaDescription:
-      "Free LLM GPU calculator: estimate VRAM, GPU count, and training cost for any model. Includes formulas, real-world examples for 7B to 175B models, and enterprise hardware recommendations.",
+      "Free LLM GPU calculator: estimate VRAM, GPU count and training cost for any model. Formulas and examples for 7B to 175B models.",
     focusKeyword: "how many GPUs for LLM training",
     canonicalUrl: "https://servchip.com/blog/how-many-gpus-for-llm-training",
   },

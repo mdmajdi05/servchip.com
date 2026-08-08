@@ -25,10 +25,9 @@ export const post: BlogPost = {
   publishedAt: "2026-08-08",
   isPublished: true,
   seo: {
-    metaTitle:
-      "GPU Server Procurement UAE: A Complete Buyer's Guide | Servchip",
+    metaTitle: "GPU Server Procurement UAE: A Buyer's Guide | Servchip",
     metaDescription:
-      "Buying GPU servers in the UAE? A practical guide to export compliance, OEM selection, configuration, logistics, and financing for enterprise AI infrastructure.",
+      "Buying GPU servers in the UAE? A practical guide to export compliance, OEM selection, configuration, logistics and financing for enterprise AI.",
     focusKeyword: "GPU Server Procurement UAE",
     canonicalUrl:
       "https://servchip.com/blog/gpu-server-procurement-uae-buyers-guide",

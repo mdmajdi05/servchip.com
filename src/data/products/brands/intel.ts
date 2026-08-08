@@ -55,8 +55,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     isFeatured: true,
     isPopular: true,
     seo: {
-      metaTitle:
-        "Intel Xeon 6900 Series (Granite Rapids) | Enterprise Processors",
+      metaTitle: "Intel Xeon 6900 Series (Granite Rapids) | Servchip",
       metaDescription:
         "Intel Xeon 6900 Series with up to 128 P-cores, 500W TDP, Granite Rapids architecture for data center and HPC workloads.",
     },
@@ -117,8 +116,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     isFeatured: false,
     isPopular: true,
     seo: {
-      metaTitle:
-        "Intel Xeon 6700 Series (Granite Rapids) | Efficient Enterprise CPUs",
+      metaTitle: "Intel Xeon 6700 Series (Granite Rapids) | Servchip",
       metaDescription:
         "Intel Xeon 6700 Series with Granite Rapids efficient cores for cloud-native, virtualized, and enterprise workloads.",
     },
@@ -178,7 +176,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     isFeatured: true,
     isPopular: false,
     seo: {
-      metaTitle: "Intel Xeon Max 9480 | HBM2e-Integrated HPC Processor",
+      metaTitle: "Intel Xeon Max 9480 | HBM2e HPC Processor",
       metaDescription:
         "Intel Xeon Max 9480 with 64 GB HBM2e on-package, 56 cores, Sapphire Rapids architecture for HPC and AI workloads.",
     },
@@ -239,7 +237,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     isFeatured: true,
     isPopular: false,
     seo: {
-      metaTitle: "Intel Xeon 6980P | 128-Core Granite Rapids Processor",
+      metaTitle: "Intel Xeon 6980P | 128-Core Granite Rapids CPU",
       metaDescription:
         "Intel Xeon 6980P flagship with 128 P-cores, 500W TDP, Granite Rapids for hyperscale data center compute.",
     },
@@ -300,7 +298,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     isFeatured: false,
     isPopular: true,
     seo: {
-      metaTitle: "Intel Xeon 8490H | 60-Core Sapphire Rapids Processor",
+      metaTitle: "Intel Xeon 8490H | 60-Core Sapphire Rapids CPU",
       metaDescription:
         "Intel Xeon 8490H with 60 Sapphire Rapids cores, AMX acceleration, and DDR5 support for enterprise AI and analytics.",
     },
@@ -477,7 +475,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     isFeatured: true,
     isPopular: false,
     seo: {
-      metaTitle: "Intel Xeon w9-3595X | 60-Core Workstation Processor",
+      metaTitle: "Intel Xeon w9-3595X | 60-Core Workstation CPU",
       metaDescription:
         "Intel Xeon w9-3595X with 60 Sapphire Rapids cores for professional content creation and AI.",
     },
@@ -537,7 +535,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     isFeatured: true,
     isPopular: false,
     seo: {
-      metaTitle: "Intel Xeon 6960P | 72-Core Granite Rapids Processor",
+      metaTitle: "Intel Xeon 6960P | 72-Core Granite Rapids CPU",
       metaDescription:
         "Intel Xeon 6960P with 72 P-cores, Granite Rapids architecture for enterprise and HPC workloads.",
     },
@@ -597,7 +595,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     isFeatured: false,
     isPopular: false,
     seo: {
-      metaTitle: "Intel Xeon 6950P | 60-Core Granite Rapids Processor",
+      metaTitle: "Intel Xeon 6950P | 60-Core Granite Rapids CPU",
       metaDescription:
         "Intel Xeon 6950P with 60 P-cores, Granite Rapids architecture for mainstream enterprise compute.",
     },
@@ -657,7 +655,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     isFeatured: false,
     isPopular: false,
     seo: {
-      metaTitle: "Intel Xeon 6940P | 48-Core Granite Rapids Processor",
+      metaTitle: "Intel Xeon 6940P | 48-Core Granite Rapids CPU",
       metaDescription:
         "Intel Xeon 6940P with 48 P-cores for cost-effective enterprise server deployments.",
     },
@@ -717,7 +715,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     isFeatured: false,
     isPopular: false,
     seo: {
-      metaTitle: "Intel Xeon 6930P | 36-Core Granite Rapids Processor",
+      metaTitle: "Intel Xeon 6930P | 36-Core Granite Rapids CPU",
       metaDescription:
         "Intel Xeon 6930P with 36 P-cores for balanced enterprise compute and database workloads.",
     },
@@ -777,7 +775,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     isFeatured: false,
     isPopular: false,
     seo: {
-      metaTitle: "Intel Xeon 6920P | 24-Core Granite Rapids Processor",
+      metaTitle: "Intel Xeon 6920P | 24-Core Granite Rapids CPU",
       metaDescription:
         "Intel Xeon 6920P with 24 P-cores for entry-level enterprise server deployments.",
     },
@@ -837,7 +835,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     isFeatured: false,
     isPopular: false,
     seo: {
-      metaTitle: "Intel Xeon 6780P | 64-Core E-Core Granite Rapids Processor",
+      metaTitle: "Intel Xeon 6780P | 64-Core E-Core Granite CPU",
       metaDescription:
         "Intel Xeon 6780P with 64 E-cores for high-throughput cloud-native and scale-out workloads.",
     },
@@ -897,7 +895,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     isFeatured: false,
     isPopular: false,
     seo: {
-      metaTitle: "Intel Xeon 6770P | 48-Core E-Core Granite Rapids Processor",
+      metaTitle: "Intel Xeon 6770P | 48-Core E-Core Granite CPU",
       metaDescription:
         "Intel Xeon 6770P with 48 E-cores for efficient cloud-native and throughput-optimized workloads.",
     },
@@ -957,7 +955,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     isFeatured: false,
     isPopular: false,
     seo: {
-      metaTitle: "Intel Xeon 6760P | 32-Core E-Core Granite Rapids Processor",
+      metaTitle: "Intel Xeon 6760P | 32-Core E-Core Granite Rapids",
       metaDescription:
         "Intel Xeon 6760P with 32 E-cores for cost-efficient scale-out and cloud-native infrastructure.",
     },
@@ -1017,7 +1015,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     isFeatured: false,
     isPopular: false,
     seo: {
-      metaTitle: "Intel Xeon 6710P | 12-Core E-Core Granite Rapids Processor",
+      metaTitle: "Intel Xeon 6710P | 12-Core E-Core Granite Rapids",
       metaDescription:
         "Intel Xeon 6710P with 12 E-cores for entry-level and edge-optimized data center deployments.",
     },
@@ -1077,7 +1075,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     isFeatured: false,
     isPopular: false,
     seo: {
-      metaTitle: "Intel Xeon 6500Y | Power-Optimized Granite Rapids Processor",
+      metaTitle: "Intel Xeon 6500Y | Power-Optimized Granite CPU",
       metaDescription:
         "Intel Xeon 6500Y with 32 cores for power-optimized enterprise and cloud infrastructure deployments.",
     },

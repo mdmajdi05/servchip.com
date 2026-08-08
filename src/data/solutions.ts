@@ -201,8 +201,7 @@ export const SOLUTIONS: Solution[] = [
         "Accelerators, GPU servers, networking, memory and storage — everything your AI program needs.",
     },
     seo: {
-      metaTitle:
-        "Enterprise AI Infrastructure | GPU Servers & Networking | Servchip",
+      metaTitle: "Enterprise AI Infrastructure | Servchip",
       metaDescription:
         "Complete AI infrastructure — NVIDIA & AMD accelerators, GPU servers, networking, HBM memory and storage. Enterprise AI hardware from Servchip.",
       keywords: [
