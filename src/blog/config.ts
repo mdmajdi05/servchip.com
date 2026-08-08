@@ -27,7 +27,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     name: "Guides",
     slug: "guides",
     description: "Technical guides and tutorials",
-    postCount: 5,
+    postCount: 6,
   },
   {
     id: "case-studies",
