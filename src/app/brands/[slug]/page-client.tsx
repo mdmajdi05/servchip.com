@@ -70,7 +70,7 @@ export default function BrandPage() {
       <PageHero
         label={brand.name}
         title={`${brand.name} — Enterprise Hardware Solutions`}
-        subtitle={brand.longDescription}
+        subtitle={brand.description}
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Products", href: "/products" },
@@ -81,7 +81,7 @@ export default function BrandPage() {
       {/* Info Section */}
       <section className="py-16 bg-bg-body">
         <div className="max-w-7xl mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-6 mb-12">
+          <div className="grid md:grid-cols-3 gap-6">
             <div className="flex items-center gap-3 p-4 rounded-xl border border-border bg-bg-dark">
               <Calendar className="w-5 h-5 text-primary" />
               <div>
@@ -115,7 +115,29 @@ export default function BrandPage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
+      {/* About Section */}
+      <section className="py-16 bg-bg-dark">
+        <div className="max-w-7xl mx-auto px-4">
+          <SectionHeading
+            label="About"
+            title={`About ${brand.name}`}
+            subtitle="Distributor overview and product coverage"
+            align="center"
+          />
+          <div className="max-w-3xl mx-auto mt-8">
+            <p className="text-base md:text-lg text-text-muted leading-relaxed text-center">
+              {brand.longDescription}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Categories Section */}
+      <section className="py-16 bg-bg-body">
+        <div className="max-w-7xl mx-auto px-4">
           <SectionHeading
             label="Categories"
             title={`${brand.name} Product Lines`}

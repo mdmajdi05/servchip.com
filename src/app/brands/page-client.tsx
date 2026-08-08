@@ -49,7 +49,7 @@ export default function BrandsPage() {
                       {brand.name}
                     </h3>
                   </div>
-                  <p className="text-sm text-text-muted mb-4 flex-1">
+                  <p className="text-sm text-text-muted mb-4 flex-1 line-clamp-3">
                     {brand.description}
                   </p>
                   <div className="flex items-center justify-between">
