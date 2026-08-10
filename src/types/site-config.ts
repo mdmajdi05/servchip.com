@@ -9,7 +9,7 @@ export interface Brand {
   founded: string;
   headquarters: string;
   categories: BrandCategory[];
-  seo: {
+  seo?: {
     metaTitle: string;
     metaDescription: string;
   };

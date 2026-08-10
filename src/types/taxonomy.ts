@@ -36,7 +36,7 @@ export interface Country {
   description: string;
   longDescription: string;
   hero: TaxonomyHero;
-  seo: TaxonomySeo;
+  seo?: TaxonomySeo;
   faqs: TaxonomyFaq[];
   related: TaxonomyRelated;
   stats?: TaxonomyStat[];
@@ -69,7 +69,7 @@ export interface Industry {
   description: string;
   longDescription: string;
   hero: TaxonomyHero;
-  seo: TaxonomySeo;
+  seo?: TaxonomySeo;
   faqs: TaxonomyFaq[];
   related: TaxonomyRelated;
   stats?: TaxonomyStat[];
@@ -83,7 +83,7 @@ export interface Solution {
   description: string;
   longDescription: string;
   hero: TaxonomyHero;
-  seo: TaxonomySeo;
+  seo?: TaxonomySeo;
   faqs: TaxonomyFaq[];
   related: TaxonomyRelated;
   stats?: TaxonomyStat[];

@@ -9,6 +9,7 @@ import {
   breadcrumbSchema,
   faqSchema,
 } from "@/lib/seo";
+import { getSolutionSeo } from "@/lib/seo/content";
 import PageClient from "@/app/solutions/[slug]/page-client";
 
 export async function generateStaticParams() {
@@ -25,15 +26,16 @@ export async function generateMetadata(props: {
   const countryObj = getCountryByCode(country);
   const market = COUNTRY_MARKETS[country];
   const solution = getSolutionBySlug(slug);
-  if (!countryObj || !market || !solution) return {};
+  const seo = solution ? getSolutionSeo(solution.slug) : undefined;
+  if (!countryObj || !market || !solution || !seo) return {};
 
   return (
     createEntityMetadata("solution", country, {
       slug: solution.slug,
       solution: solution.name,
-      solutionMetaTitle: solution.seo.metaTitle,
-      solutionMetaDescription: solution.seo.metaDescription,
-      solutionKeywords: solution.seo.keywords,
+      solutionMetaTitle: seo.metaTitle,
+      solutionMetaDescription: seo.metaDescription,
+      solutionKeywords: seo.keywords ?? [],
     }) ?? {}
   );
 }

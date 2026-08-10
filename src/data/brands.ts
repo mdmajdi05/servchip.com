@@ -151,12 +151,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "NVIDIA GPU Distributor | Enterprise AI GPUs & Hardware | Servchip",
-      metaDescription:
-        "NVIDIA GPU distributor and supplier for enterprise AI, HPC and data centers. Explore H100, H200, B200 and GB200 GPUs for AI training, inference and high-performance computing, with global sourcing and procurement support.",
-    },
   },
   {
     id: "amd",
@@ -272,11 +266,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle: "AMD GPU & CPU Distributor | Instinct & EPYC | Servchip",
-      metaDescription:
-        "AMD GPU and CPU distributor for enterprise AI, HPC and data centers. Explore Instinct MI300X, MI325X and MI350X accelerators and EPYC server CPUs for AI training, inference and high-performance computing.",
-    },
   },
   {
     id: "intel",
@@ -407,12 +396,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "Intel CPU & AI Accelerator Distributor | Xeon & Gaudi | Servchip",
-      metaDescription:
-        "Intel CPU and AI accelerator distributor for enterprise data centers. Explore Xeon 6 processors, Gaudi 3 AI accelerators and Arc Pro GPUs for AI, HPC and high-performance computing infrastructure.",
-    },
   },
   {
     id: "broadcom",
@@ -450,12 +433,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "Broadcom Networking Silicon Distributor | Ethernet Switches | Servchip",
-      metaDescription:
-        "Broadcom networking silicon distributor for AI and data center networks. Explore Tomahawk and Jericho Ethernet switch silicon for high-throughput AI clusters, enterprise networks and hyperscale infrastructure.",
-    },
   },
   {
     id: "marvell",
@@ -486,12 +463,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "Marvell Ethernet Switch Distributor | Teralynx & Networking | Servchip",
-      metaDescription:
-        "Marvell Ethernet switch and networking silicon distributor for cloud, AI and data centers. Explore Teralynx switch platforms for high-density enterprise and hyperscale networking infrastructure.",
-    },
   },
   {
     id: "cisco",
@@ -523,12 +494,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "Cisco Networking Silicon Distributor | Silicon One | Servchip",
-      metaDescription:
-        "Cisco networking silicon distributor for enterprise, data center and AI networks. Explore Silicon One programmable networking silicon for routers, switches and high-performance AI network fabrics.",
-    },
   },
   {
     id: "dell",
@@ -559,12 +524,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "Dell PowerEdge Server Distributor | AI Infrastructure | Servchip",
-      metaDescription:
-        "Dell PowerEdge server distributor for enterprise AI, HPC and data centers. Explore XE9680 and XE8640 GPU servers for AI training, inference and high-performance computing infrastructure.",
-    },
   },
   {
     id: "hpe",
@@ -611,11 +570,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle: "HPE Server Distributor | Cray XD & ProLiant | Servchip",
-      metaDescription:
-        "HPE server distributor for enterprise AI, HPC and data centers. Explore Cray XD AI and HPC servers and ProLiant systems for high-performance computing, enterprise workloads and data center infrastructure.",
-    },
   },
   {
     id: "supermicro",
@@ -646,12 +600,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "Supermicro GPU Server Distributor | AI & HPC Servers | Servchip",
-      metaDescription:
-        "Supermicro GPU server distributor for AI, deep learning and HPC workloads. Explore AS-8125GS and SYS-821GE GPU servers for AI training, inference and high-performance data center computing.",
-    },
   },
   {
     id: "lenovo",
@@ -682,12 +630,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "Lenovo Server Distributor | ThinkSystem AI Servers | Servchip",
-      metaDescription:
-        "Lenovo ThinkSystem server distributor for enterprise AI and HPC. Explore SR780A and SR685A AI servers for AI training, inference, high-performance computing and data center workloads.",
-    },
   },
   {
     id: "gigabyte",
@@ -718,12 +660,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "Gigabyte GPU Server Distributor | AI & HPC Servers | Servchip",
-      metaDescription:
-        "Gigabyte GPU server distributor for AI and HPC workloads. Explore G Series GPU servers for AI training, deep learning, inference and high-density data center computing.",
-    },
   },
   {
     id: "asus",
@@ -754,11 +690,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle: "ASUS Server Distributor | ESC AI Server Platforms | Servchip",
-      metaDescription:
-        "ASUS AI server distributor for enterprise AI and data center workloads. Explore ESC GPU server platforms for AI training, inference, data analytics and high-performance computing.",
-    },
   },
   {
     id: "inspur",
@@ -789,12 +720,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "Inspur Server Distributor | NF AI Server Platforms | Servchip",
-      metaDescription:
-        "Inspur AI server distributor for enterprise AI, HPC and cloud data centers. Explore NF Series GPU servers, including NF5688, for large-scale AI training, inference and high-performance computing.",
-    },
   },
   {
     id: "quanta",
@@ -825,11 +750,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle: "Quanta Server Distributor | AI GPU Infrastructure | Servchip",
-      metaDescription:
-        "Quanta QCT server distributor for hyperscale and enterprise data centers. Explore AI GPU server platforms for machine learning training, inference, cloud computing and high-performance workloads.",
-    },
   },
   {
     id: "foxconn",
@@ -860,12 +780,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "Foxconn Server Distributor | AI GPU Infrastructure | Servchip",
-      metaDescription:
-        "Foxconn AI GPU server distributor for hyperscale and enterprise data centers. Explore GPU server platforms for high-density AI training, inference and high-performance computing infrastructure.",
-    },
   },
   {
     id: "wiwynn",
@@ -896,11 +810,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle: "Wiwynn Server Distributor | AI GPU Infrastructure | Servchip",
-      metaDescription:
-        "Wiwynn AI GPU server distributor for cloud and data center infrastructure. Explore GPU-accelerated server and storage platforms for AI computing, hyperscale deployments and high-performance workloads.",
-    },
   },
   {
     id: "samsung",
@@ -961,12 +870,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "Samsung Memory & SSD Distributor | HBM, DDR5 & Enterprise SSDs | Servchip",
-      metaDescription:
-        "Samsung memory and SSD distributor for AI and enterprise data centers. Explore HBM3E memory, DDR5 RDIMM and enterprise SSDs for AI accelerators, HPC systems and high-performance storage.",
-    },
   },
   {
     id: "sk-hynix",
@@ -997,11 +900,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle: "SK hynix Memory Distributor | HBM3E for AI | Servchip",
-      metaDescription:
-        "SK hynix memory distributor for AI accelerators and HPC systems. Explore HBM3E high-bandwidth memory for AI training, inference and high-performance computing applications.",
-    },
   },
   {
     id: "micron",
@@ -1055,12 +953,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "Micron Memory & SSD Distributor | HBM, DDR5 & Storage | Servchip",
-      metaDescription:
-        "Micron memory and SSD distributor for AI, cloud and enterprise data centers. Explore HBM3E memory, DDR5 RDIMM and enterprise NVMe SSDs for AI, HPC and high-throughput computing infrastructure.",
-    },
   },
   {
     id: "solidigm",
@@ -1091,11 +983,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle: "Solidigm Enterprise SSD Distributor | D7 Series | Servchip",
-      metaDescription:
-        "Solidigm enterprise SSD distributor for AI, cloud and data center storage. Explore D7 Series NVMe SSDs for high-performance computing, data-intensive applications and demanding enterprise workloads.",
-    },
   },
   {
     id: "kioxia",
@@ -1126,11 +1013,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle: "Kioxia Enterprise SSD Distributor | CM7 Series | Servchip",
-      metaDescription:
-        "Kioxia enterprise SSD distributor for AI, cloud and data centers. Explore CM7 Series NVMe SSDs for high-performance computing, enterprise storage and data-intensive workloads.",
-    },
   },
   {
     id: "wd",
@@ -1161,12 +1043,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "Western Digital Storage Distributor | Ultrastar SSDs | Servchip",
-      metaDescription:
-        "Western Digital storage distributor for AI, cloud and enterprise data centers. Explore Ultrastar enterprise SSDs for high-performance computing, data-intensive applications and scalable storage infrastructure.",
-    },
   },
   {
     id: "seagate",
@@ -1197,11 +1073,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle: "Seagate Enterprise SSD Distributor | Nytro Series | Servchip",
-      metaDescription:
-        "Seagate enterprise SSD distributor for AI, cloud and data centers. Explore Nytro enterprise NVMe SSDs for high-performance computing, demanding workloads and data-intensive storage infrastructure.",
-    },
   },
   {
     id: "google",
@@ -1239,12 +1110,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "Google TPU Distributor | AI Accelerator Infrastructure | Servchip",
-      metaDescription:
-        "Google TPU infrastructure distributor for AI and machine learning workloads. Explore TPU accelerator platforms for AI training, inference and high-performance data center computing.",
-    },
   },
   {
     id: "amazon",
@@ -1282,11 +1147,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle: "AWS AI Chip Distributor | Trainium & Inferentia | Servchip",
-      metaDescription:
-        "AWS AI chip distributor for machine learning infrastructure. Explore Amazon Trainium and Inferentia AI accelerators for model training, inference and high-performance cloud AI workloads.",
-    },
   },
   {
     id: "qualcomm",
@@ -1317,11 +1177,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle: "Qualcomm Data Center CPU Distributor | Servchip",
-      metaDescription:
-        "Qualcomm data center CPU distributor for cloud and AI infrastructure. Explore ARM-based server processors for enterprise data centers, cloud computing and energy-efficient AI workloads.",
-    },
   },
   {
     id: "ampere",
@@ -1352,12 +1207,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "Ampere Server CPU Distributor | AmpereOne ARM CPUs | Servchip",
-      metaDescription:
-        "Ampere server CPU distributor for cloud and data center infrastructure. Explore AmpereOne ARM server processors for cloud-native computing, energy-efficient data centers and AI-ready workloads.",
-    },
   },
   {
     id: "nokia",
@@ -1464,12 +1313,6 @@ export const BRANDS: Brand[] = [
         ],
       },
     ],
-    seo: {
-      metaTitle:
-        "Nokia Networking Silicon Distributor | 5G & Optical | Servchip",
-      metaDescription:
-        "Nokia networking silicon distributor for telecom, 5G and data center infrastructure. Explore network processors, optical DSPs and semiconductor solutions for advanced connectivity and high-performance networks.",
-    },
   },
 ];
 

@@ -7,6 +7,7 @@ import {
   breadcrumbSchema,
   faqSchema,
 } from "@/lib/seo";
+import { getCountrySeo } from "@/lib/seo/content";
 import { SITE } from "@/lib/constants";
 import PageClient from "./page-client";
 
@@ -19,7 +20,8 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { slug } = await props.params;
   const country = getCountryBySlug(slug);
-  if (!country) return {};
+  const seo = country ? getCountrySeo(country.id) : undefined;
+  if (!country || !seo) return {};
   const hreflangMap: Record<string, string> = {
     india: "en-IN",
     uae: "en-AE",
@@ -40,9 +42,9 @@ export async function generateMetadata(props: {
       {
         slug: country.slug,
         name: country.name,
-        countryMetaTitle: country.seo.metaTitle,
-        countryMetaDescription: country.seo.metaDescription,
-        countryMetaKeywords: country.seo.keywords,
+        countryMetaTitle: seo.metaTitle,
+        countryMetaDescription: seo.metaDescription,
+        countryMetaKeywords: seo.keywords ?? [],
       },
       {
         alternates: {

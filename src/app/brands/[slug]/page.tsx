@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BRANDS, getBrandBySlug } from "@/data/brands";
+import { getBrandSeo } from "@/lib/seo/content";
 import {
   createEntityMetadata,
   createEntityBreadcrumb,
-  stripServchip,
   breadcrumbSchema,
 } from "@/lib/seo";
 import PageClient from "./page-client";
@@ -18,13 +18,15 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { slug } = await props.params;
   const brand = getBrandBySlug(slug);
-  if (!brand) return {};
+  const seo = brand ? getBrandSeo(brand.id) : undefined;
+  if (!brand || !seo) return {};
   return (
     createEntityMetadata("brand", undefined, {
       slug: brand.slug,
       brand: brand.name,
-      brandMetaTitle: stripServchip(brand.seo.metaTitle),
-      brandMetaDescription: brand.seo.metaDescription,
+      brandMetaTitle: seo.metaTitle,
+      brandMetaDescription: seo.metaDescription,
+      brandKeywords: seo.keywords ?? [],
     }) ?? {}
   );
 }

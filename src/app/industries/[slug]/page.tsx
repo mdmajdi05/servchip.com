@@ -7,6 +7,7 @@ import {
   breadcrumbSchema,
   faqSchema,
 } from "@/lib/seo";
+import { getIndustrySeo } from "@/lib/seo/content";
 import PageClient from "./page-client";
 
 export async function generateStaticParams() {
@@ -18,14 +19,15 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { slug } = await props.params;
   const industry = getIndustryBySlug(slug);
-  if (!industry) return {};
+  const seo = industry ? getIndustrySeo(industry.slug) : undefined;
+  if (!industry || !seo) return {};
   return (
     createEntityMetadata("industry", undefined, {
       slug: industry.slug,
       industry: industry.name,
-      industryMetaTitle: industry.seo.metaTitle,
-      industryMetaDescription: industry.seo.metaDescription,
-      industryKeywords: industry.seo.keywords,
+      industryMetaTitle: seo.metaTitle,
+      industryMetaDescription: seo.metaDescription,
+      industryKeywords: seo.keywords ?? [],
     }) ?? {}
   );
 }

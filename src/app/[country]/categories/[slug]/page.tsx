@@ -7,8 +7,8 @@ import {
   createEntityMetadata,
   createEntityBreadcrumb,
   breadcrumbSchema,
-  stripServchip,
 } from "@/lib/seo";
+import { getCategorySeo } from "@/lib/seo/content";
 import CategoryDetailPage from "@/app/categories/[slug]/page-client";
 
 export async function generateStaticParams() {
@@ -25,7 +25,8 @@ export async function generateMetadata(props: {
   const countryObj = getCountryByCode(country);
   const market = COUNTRY_MARKETS[country];
   const category = CATEGORIES.find((c) => c.slug === slug);
-  if (!countryObj || !market || !category) return {};
+  const seo = category ? getCategorySeo(category.id) : undefined;
+  if (!countryObj || !market || !category || !seo) return {};
 
   return (
     createEntityMetadata("category", country, {
@@ -33,7 +34,9 @@ export async function generateMetadata(props: {
       category: category.name,
       categoryLower: category.name.toLowerCase(),
       categoryDescription: category.description,
-      categoryMetaTitle: stripServchip(category.seo.metaTitle),
+      categoryMetaTitle: seo.metaTitle,
+      categoryMetaDescription: seo.metaDescription,
+      categoryKeywords: seo.keywords ?? [],
     }) ?? {}
   );
 }

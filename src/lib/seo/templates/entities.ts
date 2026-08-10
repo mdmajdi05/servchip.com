@@ -67,15 +67,8 @@ export const ENTITY_TEMPLATES: Record<EntityRoute, SeoEntityTemplate> = {
     globalPath: "/brands/{{slug}}",
     global: {
       title: "{{brandMetaTitle}}",
-      description:
-        "{{brandMetaDescription}} Buy authentic {{brand}} chips from an ISO 9001 certified distributor. Semiconductor procurement with global shipping.",
-      keywords: [
-        "buy {{brand}} chips",
-        "{{brand}} distributor",
-        "{{brand}} enterprise",
-        "enterprise chip distributor",
-        "semiconductor procurement",
-      ],
+      description: "{{brandMetaDescription}}",
+      keywords: ["{{brandKeywords}}"],
       openGraphTitle:
         "{{brand}} Products | Servchip — Enterprise Chip Distributor",
       twitterTitle:
@@ -136,21 +129,12 @@ export const ENTITY_TEMPLATES: Record<EntityRoute, SeoEntityTemplate> = {
     globalPath: "/categories/{{slug}}",
     global: {
       title: "{{categoryMetaTitle}}",
-      description:
-        "{{categoryDescription}} Buy authentic {{category}} from an ISO 9001 certified enterprise chip distributor. AI accelerator & semiconductor procurement with global shipping.",
-      keywords: [
-        "buy {{categoryLower}}",
-        "{{categoryLower}} supplier",
-        "enterprise chip distributor",
-        "semiconductor procurement",
-        "AI accelerator distributor",
-      ],
+      description: "{{categoryMetaDescription}}",
+      keywords: ["{{categoryKeywords}}"],
       openGraphTitle: "{{category}} | Servchip — Enterprise Chip Distributor",
-      openGraphDescription:
-        "Buy {{category}} from an ISO 9001 certified distributor.",
+      openGraphDescription: "{{categoryMetaDescription}}",
       twitterTitle: "{{category}} | Servchip — Enterprise Chip Distributor",
-      twitterDescription:
-        "Buy {{category}} from an ISO 9001 certified distributor.",
+      twitterDescription: "{{categoryMetaDescription}}",
     },
     country: {
       title: "Buy {{category}}{{countrySuffix}}",

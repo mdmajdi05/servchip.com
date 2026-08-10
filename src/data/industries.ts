@@ -16,18 +16,6 @@ export const INDUSTRIES: Industry[] = [
       subtitle:
         "NVIDIA HGX platforms, Spectrum-X networking and full rack integration for modern data centers.",
     },
-    seo: {
-      metaTitle: "Data Center GPU Solutions | NVIDIA, AMD | Servchip",
-      metaDescription:
-        "GPU-accelerated data center solutions — NVIDIA H100, H200, B200, GB200, AMD Instinct, networking & storage. Enterprise chip distributor for data centers.",
-      keywords: [
-        "data center GPUs",
-        "GPU-accelerated data center",
-        "NVIDIA data center GPU distributor",
-        "AI data center infrastructure",
-        "data center hardware supplier",
-      ],
-    },
     faqs: [
       {
         question: "What hardware do you supply for data centers?",
@@ -77,18 +65,6 @@ export const INDUSTRIES: Industry[] = [
       title: "Production-Grade AI Infrastructure",
       subtitle:
         "Training clusters, inference platforms and GPU-accelerated stacks built on authentic enterprise hardware.",
-    },
-    seo: {
-      metaTitle: "AI Infrastructure Solutions | NVIDIA, AMD | Servchip",
-      metaDescription:
-        "End-to-end AI infrastructure — training clusters, inference platforms, GPU-accelerated servers. Enterprise AI hardware distributor for production workloads.",
-      keywords: [
-        "AI infrastructure",
-        "AI training cluster",
-        "GPU cluster supplier",
-        "AI inference infrastructure",
-        "enterprise AI hardware",
-      ],
     },
     faqs: [
       {
@@ -140,18 +116,6 @@ export const INDUSTRIES: Industry[] = [
       subtitle:
         "Accelerate medical imaging, drug discovery and genomics with authentic enterprise GPUs.",
     },
-    seo: {
-      metaTitle: "Healthcare AI & GPU Solutions | NVIDIA | Servchip",
-      metaDescription:
-        "GPU-accelerated solutions for healthcare — medical imaging AI, drug discovery, genomics. NVIDIA RTX & data center GPUs for hospitals and pharma.",
-      keywords: [
-        "healthcare AI",
-        "medical imaging GPU",
-        "drug discovery GPU",
-        "genomics computing",
-        "NVIDIA healthcare solutions",
-      ],
-    },
     faqs: [
       {
         question: "Which GPUs are best for medical imaging AI?",
@@ -199,18 +163,6 @@ export const INDUSTRIES: Industry[] = [
       title: "High-Performance Compute for Finance",
       subtitle:
         "Low-latency trading servers, GPU risk analytics and fraud-detection infrastructure.",
-    },
-    seo: {
-      metaTitle: "Finance & Fintech GPU Solutions | NVIDIA | Servchip",
-      metaDescription:
-        "Low-latency GPU and CPU compute for trading, risk analytics and financial AI. Enterprise hardware for finance and fintech from Servchip.",
-      keywords: [
-        "finance GPU",
-        "low-latency trading server",
-        "risk analytics GPU",
-        "fintech infrastructure",
-        "financial AI hardware",
-      ],
     },
     faqs: [
       {
@@ -260,18 +212,6 @@ export const INDUSTRIES: Industry[] = [
       title: "Secure AI & HPC for the Public Sector",
       subtitle:
         "Sovereign AI programs, national research and public infrastructure on authentic enterprise hardware.",
-    },
-    seo: {
-      metaTitle: "Government AI & HPC Solutions | NVIDIA | Servchip",
-      metaDescription:
-        "Secure, compliant AI and HPC infrastructure for government and public sector — sovereign AI, national research and public institutions.",
-      keywords: [
-        "government AI",
-        "sovereign AI infrastructure",
-        "public sector HPC",
-        "national AI program hardware",
-        "government GPU procurement",
-      ],
     },
     faqs: [
       {
@@ -323,18 +263,6 @@ export const INDUSTRIES: Industry[] = [
       subtitle:
         "Power universities, national labs and scientific research with authentic HPC hardware.",
     },
-    seo: {
-      metaTitle: "Research HPC & GPU Clusters | NVIDIA, AMD | Servchip",
-      metaDescription:
-        "HPC clusters and GPU compute for universities, national labs and scientific research. NVIDIA & AMD accelerators from Servchip.",
-      keywords: [
-        "research HPC",
-        "university GPU cluster",
-        "academic computing",
-        "scientific HPC hardware",
-        "national lab GPU",
-      ],
-    },
     faqs: [
       {
         question: "Do you support academic and research discounts?",
@@ -385,18 +313,6 @@ export const INDUSTRIES: Industry[] = [
       subtitle:
         "GPU-accelerated edge computing and telecom-grade hardware for 5G and distributed networks.",
     },
-    seo: {
-      metaTitle: "Telecom & Edge AI Solutions | NVIDIA | Servchip",
-      metaDescription:
-        "Edge AI inference, 5G infrastructure and telecom data center hardware. GPU-accelerated edge platforms from Servchip.",
-      keywords: [
-        "edge AI",
-        "telecom infrastructure",
-        "5G edge computing",
-        "NVIDIA edge AI",
-        "distributed data center hardware",
-      ],
-    },
     faqs: [
       {
         question: "What hardware do you supply for edge AI?",
@@ -445,18 +361,6 @@ export const INDUSTRIES: Industry[] = [
       title: "GPU Compute for Industry 4.0",
       subtitle:
         "Digital twins, industrial AI and computer vision on authentic enterprise hardware.",
-    },
-    seo: {
-      metaTitle: "Industrial AI & Digital Twin Solutions | NVIDIA | Servchip",
-      metaDescription:
-        "GPU compute for digital twins, industrial AI, computer vision and smart manufacturing. NVIDIA enterprise GPUs from Servchip.",
-      keywords: [
-        "industrial AI",
-        "digital twin GPU",
-        "smart manufacturing",
-        "computer vision hardware",
-        "Industry 4.0 infrastructure",
-      ],
     },
     faqs: [
       {

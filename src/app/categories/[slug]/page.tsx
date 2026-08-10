@@ -6,8 +6,8 @@ import {
   createEntityBreadcrumb,
   breadcrumbSchema,
   itemListSchema,
-  stripServchip,
 } from "@/lib/seo";
+import { getCategorySeo } from "@/lib/seo/content";
 import PageClient from "./page-client";
 
 export async function generateMetadata(props: {
@@ -15,14 +15,17 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { slug } = await props.params;
   const cat = CATEGORIES.find((c) => c.slug === slug);
-  if (!cat) return {};
+  const seo = cat ? getCategorySeo(cat.id) : undefined;
+  if (!cat || !seo) return {};
   return (
     createEntityMetadata("category", undefined, {
       slug: cat.slug,
       category: cat.name,
       categoryLower: cat.name.toLowerCase(),
       categoryDescription: cat.description,
-      categoryMetaTitle: stripServchip(cat.seo.metaTitle),
+      categoryMetaTitle: seo.metaTitle,
+      categoryMetaDescription: seo.metaDescription,
+      categoryKeywords: seo.keywords ?? [],
     }) ?? {}
   );
 }

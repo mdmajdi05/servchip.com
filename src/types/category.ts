@@ -9,7 +9,7 @@ export interface ChipCategory {
   sortOrder: number;
   productCount: number;
   isActive: boolean;
-  seo: {
+  seo?: {
     metaTitle: string;
     metaDescription: string;
   };

@@ -7,6 +7,7 @@ import {
   breadcrumbSchema,
   faqSchema,
 } from "@/lib/seo";
+import { getSolutionSeo } from "@/lib/seo/content";
 import PageClient from "./page-client";
 
 export async function generateStaticParams() {
@@ -18,14 +19,15 @@ export async function generateMetadata(props: {
 }): Promise<Metadata> {
   const { slug } = await props.params;
   const solution = getSolutionBySlug(slug);
-  if (!solution) return {};
+  const seo = solution ? getSolutionSeo(solution.slug) : undefined;
+  if (!solution || !seo) return {};
   return (
     createEntityMetadata("solution", undefined, {
       slug: solution.slug,
       solution: solution.name,
-      solutionMetaTitle: solution.seo.metaTitle,
-      solutionMetaDescription: solution.seo.metaDescription,
-      solutionKeywords: solution.seo.keywords,
+      solutionMetaTitle: seo.metaTitle,
+      solutionMetaDescription: seo.metaDescription,
+      solutionKeywords: seo.keywords ?? [],
     }) ?? {}
   );
 }

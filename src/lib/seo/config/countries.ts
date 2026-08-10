@@ -1,6 +1,7 @@
 import { getCountryByCode } from "@/data/countries";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
 import { stripServchip } from "../helpers";
+import { getCountrySeo } from "../content";
 import type { Country, CountryMarket } from "@/types";
 
 const SHORT_NAMES: Record<string, string> = {
@@ -39,6 +40,7 @@ export function countryVars(country: string): CountryVars | null {
   if (!ctx) return null;
   const { countryObj, market } = ctx;
   const nameShort = SHORT_NAMES[country] ?? countryObj.name;
+  const seo = getCountrySeo(countryObj.id);
   return {
     country,
     name: countryObj.name,
@@ -47,8 +49,8 @@ export function countryVars(country: string): CountryVars | null {
     currency: market.currency,
     warehouse: market.warehouse,
     locale: market.locale,
-    metaTitle: stripServchip(countryObj.seo.metaTitle),
-    metaDescription: countryObj.seo.metaDescription,
-    metaKeywords: countryObj.seo.keywords,
+    metaTitle: seo ? stripServchip(seo.metaTitle) : "",
+    metaDescription: seo?.metaDescription ?? "",
+    metaKeywords: seo?.keywords ?? [],
   };
 }

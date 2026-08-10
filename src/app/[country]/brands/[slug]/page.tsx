@@ -6,9 +6,9 @@ import { COUNTRY_MARKETS } from "@/data/country-markets";
 import {
   createEntityMetadata,
   createEntityBreadcrumb,
-  stripServchip,
   breadcrumbSchema,
 } from "@/lib/seo";
+import { getBrandSeo } from "@/lib/seo/content";
 import BrandPage from "@/app/brands/[slug]/page-client";
 
 export async function generateStaticParams() {
@@ -25,14 +25,16 @@ export async function generateMetadata(props: {
   const countryObj = getCountryByCode(country);
   const market = COUNTRY_MARKETS[country];
   const brand = getBrandBySlug(slug);
-  if (!countryObj || !market || !brand) return {};
+  const seo = brand ? getBrandSeo(brand.id) : undefined;
+  if (!countryObj || !market || !brand || !seo) return {};
 
   return (
     createEntityMetadata("brand", country, {
       slug: brand.slug,
       brand: brand.name,
-      brandMetaTitle: stripServchip(brand.seo.metaTitle),
-      brandMetaDescription: brand.seo.metaDescription,
+      brandMetaTitle: seo.metaTitle,
+      brandMetaDescription: seo.metaDescription,
+      brandKeywords: seo.keywords ?? [],
     }) ?? {}
   );
 }

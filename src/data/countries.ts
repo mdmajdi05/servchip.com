@@ -18,19 +18,6 @@ export const COUNTRIES: Country[] = [
       subtitle:
         "NVIDIA, AMD, Intel & server platforms delivered across India with authentic sourcing, full warranty and dedicated local support.",
     },
-    seo: {
-      metaTitle: "AI Chip Distributor India | NVIDIA, AMD, Intel | Servchip",
-      metaDescription:
-        "Buy NVIDIA H100, H200, B200, AMD Instinct MI300X & Intel Gaudi AI chips in India. ISO 9001 certified enterprise chip distributor with delivery across India.",
-      keywords: [
-        "AI chip distributor India",
-        "NVIDIA H100 India",
-        "buy AI GPUs India",
-        "data center GPU supplier India",
-        "GPU server supplier India",
-        "semiconductor distributor India",
-      ],
-    },
     faqs: [
       {
         question: "Do you deliver AI chips across India?",
@@ -81,19 +68,6 @@ export const COUNTRIES: Country[] = [
       title: "AI Accelerators Delivered Across the UAE",
       subtitle:
         "Enterprise GPU and AI chip supply for Dubai, Abu Dhabi & the wider GCC — fast delivery, authentic sourcing.",
-    },
-    seo: {
-      metaTitle: "AI Chip Distributor UAE | NVIDIA, AMD, Intel | Servchip",
-      metaDescription:
-        "NVIDIA H100, H200, B200 & AMD Instinct GPU distributor in UAE — Dubai & Abu Dhabi. Authorized enterprise AI chip supplier with fast GCC delivery.",
-      keywords: [
-        "AI chip distributor UAE",
-        "NVIDIA Supplier in Dubai",
-        "NVIDIA Supplier in UAE",
-        "GPU distributor UAE",
-        "data center GPU distributor Dubai",
-        "AMD distributor UAE",
-      ],
     },
     faqs: [
       {
@@ -146,19 +120,6 @@ export const COUNTRIES: Country[] = [
       subtitle:
         "Authentic NVIDIA, AMD & Intel accelerators for US data centers, CSPs and research institutions.",
     },
-    seo: {
-      metaTitle: "AI Chip Distributor USA | NVIDIA, AMD, Intel | Servchip",
-      metaDescription:
-        "Buy NVIDIA H100, H200, AMD Instinct & Intel Xeon AI chips in the USA. Authorized enterprise chip distributor with US export compliance.",
-      keywords: [
-        "AI chip distributor USA",
-        "NVIDIA GPU distributor USA",
-        "buy AI GPUs USA",
-        "data center GPU distributor USA",
-        "AMD distributor USA",
-        "semiconductor distributor USA",
-      ],
-    },
     faqs: [
       {
         question: "Do you supply AI chips to US data centers?",
@@ -209,18 +170,6 @@ export const COUNTRIES: Country[] = [
       title: "AI Hardware for Saudi Arabia's Vision 2030",
       subtitle:
         "Enterprise accelerators for sovereign AI, smart cities and government programs across the Kingdom.",
-    },
-    seo: {
-      metaTitle: "AI Chip Distributor Saudi Arabia | NVIDIA, AMD | Servchip",
-      metaDescription:
-        "NVIDIA H100, H200, AMD Instinct AI chip supplier in Saudi Arabia. Enterprise GPU distribution for Vision 2030 data centers in Riyadh & Jeddah.",
-      keywords: [
-        "AI chip distributor Saudi Arabia",
-        "NVIDIA supplier Riyadh",
-        "data center GPU distributor Saudi Arabia",
-        "buy AI GPUs KSA",
-        "semiconductor distributor Saudi Arabia",
-      ],
     },
     faqs: [
       {
@@ -273,18 +222,6 @@ export const COUNTRIES: Country[] = [
       subtitle:
         "Enterprise accelerators and research computing hardware delivered across Qatar.",
     },
-    seo: {
-      metaTitle: "AI Chip Distributor Qatar | NVIDIA, AMD, Intel | Servchip",
-      metaDescription:
-        "NVIDIA, AMD & Intel AI accelerator distributor in Qatar. Enterprise GPU and HPC hardware supply for Doha research institutions and data centers.",
-      keywords: [
-        "AI chip distributor Qatar",
-        "NVIDIA supplier Doha",
-        "HPC hardware Qatar",
-        "GPU distributor Qatar",
-        "data center hardware Doha",
-      ],
-    },
     faqs: [
       {
         question: "Do you supply HPC hardware to Qatari research institutions?",
@@ -335,18 +272,6 @@ export const COUNTRIES: Country[] = [
       title: "Enterprise AI Infrastructure for Oman",
       subtitle:
         "Authentic NVIDIA, AMD & Intel hardware for Oman's data centers and enterprises.",
-    },
-    seo: {
-      metaTitle: "AI Chip Distributor Oman | NVIDIA, AMD, Intel | Servchip",
-      metaDescription:
-        "NVIDIA, AMD & Intel AI accelerator distributor in Oman. Enterprise GPU and data center hardware supply for Muscat and across the Sultanate.",
-      keywords: [
-        "AI chip distributor Oman",
-        "NVIDIA supplier Muscat",
-        "GPU distributor Oman",
-        "data center hardware Oman",
-        "semiconductor distributor Oman",
-      ],
     },
     faqs: [
       {
@@ -399,19 +324,6 @@ export const COUNTRIES: Country[] = [
       subtitle:
         "NVIDIA, AMD & Intel accelerators delivered to Singapore data centers and enterprises with authentic sourcing and fast delivery.",
     },
-    seo: {
-      metaTitle: "NVIDIA Distributor in Singapore | AI Chips | Servchip",
-      metaDescription:
-        "Buy NVIDIA H100, H200, B200, AMD Instinct & Intel Gaudi AI chips in Singapore with authentic, warrantied hardware and fast delivery.",
-      keywords: [
-        "NVIDIA distributor in Singapore",
-        "AI chip distributor Singapore",
-        "buy AI GPUs Singapore",
-        "data center GPU supplier Singapore",
-        "GPU distributor Singapore",
-        "semiconductor distributor Singapore",
-      ],
-    },
     faqs: [
       {
         question: "Do you supply NVIDIA AI chips to Singapore?",
@@ -462,19 +374,6 @@ export const COUNTRIES: Country[] = [
       title: "Enterprise AI Chips Delivered Across Malaysia",
       subtitle:
         "Authentic NVIDIA, AMD & Intel accelerators for Malaysian data centers, enterprises and research institutions.",
-    },
-    seo: {
-      metaTitle: "NVIDIA Distributor in Malaysia | Intel Supplier | Servchip",
-      metaDescription:
-        "Buy NVIDIA H100, H200, B200, AMD Instinct & Intel Gaudi AI chips in Malaysia with authentic, warrantied hardware delivered across KL, Penang & beyond.",
-      keywords: [
-        "NVIDIA distributor in Malaysia",
-        "Intel supplier Malaysia",
-        "AI chip distributor Malaysia",
-        "buy AI GPUs Malaysia",
-        "data center GPU supplier Malaysia",
-        "GPU distributor Malaysia",
-      ],
     },
     faqs: [
       {
@@ -527,18 +426,6 @@ export const COUNTRIES: Country[] = [
       subtitle:
         "Authentic NVIDIA, AMD & Intel hardware for Chinese data centers and enterprises with compliance support.",
     },
-    seo: {
-      metaTitle: "NVIDIA Distributor in China | Enterprise AI Chips | Servchip",
-      metaDescription:
-        "Enterprise NVIDIA, AMD & Intel AI chip distribution for China. Authentic data center GPUs and accelerators with compliance documentation and dedicated support.",
-      keywords: [
-        "NVIDIA distributor in China",
-        "AI chip distributor China",
-        "data center GPU supplier China",
-        "enterprise AI chips China",
-        "GPU distributor China",
-      ],
-    },
     faqs: [
       {
         question: "Do you supply AI chips to enterprises in China?",
@@ -589,19 +476,6 @@ export const COUNTRIES: Country[] = [
       title: "Enterprise AI Hardware for the Philippines",
       subtitle:
         "Authentic NVIDIA, AMD & Intel accelerators delivered to Philippine data centers and enterprises.",
-    },
-    seo: {
-      metaTitle: "NVIDIA Distributor in Philippines | AI Chips | Servchip",
-      metaDescription:
-        "Buy NVIDIA H100, H200, B200, AMD Instinct & Intel Gaudi AI chips in the Philippines with authentic hardware and fast Manila delivery.",
-      keywords: [
-        "NVIDIA distributor in Philippines",
-        "AI chip distributor Philippines",
-        "buy AI GPUs Philippines",
-        "data center GPU supplier Philippines",
-        "GPU distributor Manila",
-        "semiconductor distributor Philippines",
-      ],
     },
     faqs: [
       {
@@ -654,19 +528,6 @@ export const COUNTRIES: Country[] = [
       subtitle:
         "NVIDIA, AMD & Intel accelerators delivered across the UK with authentic sourcing, full warranty and local support.",
     },
-    seo: {
-      metaTitle: "AI Chip Distributor UK | NVIDIA, AMD, Intel | Servchip",
-      metaDescription:
-        "Buy NVIDIA H100, H200, B200, AMD Instinct MI300X & Intel Gaudi AI chips in the UK. Enterprise AI chip distributor with delivery across the United Kingdom.",
-      keywords: [
-        "AI chip distributor UK",
-        "NVIDIA H100 UK",
-        "buy AI GPUs United Kingdom",
-        "data center GPU supplier UK",
-        "GPU server supplier London",
-        "semiconductor distributor UK",
-      ],
-    },
     faqs: [
       {
         question: "Do you deliver AI chips across the UK?",
@@ -717,19 +578,6 @@ export const COUNTRIES: Country[] = [
       title: "AI Hardware for Germany's Data Centers & Industry",
       subtitle:
         "Enterprise accelerators for German data centers, automotive R&D and industrial AI across Frankfurt, Berlin and Munich.",
-    },
-    seo: {
-      metaTitle: "AI Chip Distributor Germany | NVIDIA, AMD, Intel | Servchip",
-      metaDescription:
-        "Buy NVIDIA H100, H200, AMD Instinct & Intel Xeon AI chips in Germany. Enterprise AI chip distributor with delivery across Germany and the EU.",
-      keywords: [
-        "AI chip distributor Germany",
-        "NVIDIA H100 Germany",
-        "buy AI GPUs Germany",
-        "data center GPU supplier Frankfurt",
-        "GPU server supplier Germany",
-        "semiconductor distributor Germany",
-      ],
     },
     faqs: [
       {
