@@ -222,6 +222,25 @@ export default function ComparisonPage() {
     );
     return map;
   }, [selectedChips]);
+
+  const groupWinners = useMemo(() => {
+    const leaders: { group: string; chips: ChipProduct[]; metric: string }[] =
+      [];
+    SPEC_GROUPS.forEach((group) => {
+      const numericKey = group.keys.find((k) => NUMERIC_KEYS.has(k));
+      if (!numericKey) return;
+      const winners = bestValues.get(numericKey) || [];
+      if (!winners.length) return;
+      const leadChips = selectedChips.filter((c) => winners.includes(c.id));
+      if (!leadChips.length) return;
+      leaders.push({
+        group: group.label,
+        chips: leadChips,
+        metric: SPEC_LABELS[numericKey] || numericKey,
+      });
+    });
+    return leaders;
+  }, [bestValues, selectedChips]);
   return (
     <div className="min-h-screen bg-bg-dark pb-20 relative overflow-x-hidden">
       {/* Ambient glow background */}
@@ -487,6 +506,39 @@ export default function ComparisonPage() {
           </div>
         </div>
 
+        {/* Category winners strip */}
+        {selectedChips.length > 1 && groupWinners.length > 0 && (
+          <div className="mb-6">
+            <div className="flex items-center gap-2 mb-3">
+              <Trophy className="w-4 h-4 text-amber" />
+              <h2 className="text-sm font-bold text-text">Category Leaders</h2>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
+              {groupWinners.map(({ group, chips, metric }) => (
+                <div
+                  key={group}
+                  className="rounded-xl border border-amber/25 bg-gradient-to-br from-amber/[0.06] to-surface p-4 flex items-start gap-3"
+                >
+                  <span className="w-9 h-9 shrink-0 rounded-lg bg-amber/10 border border-amber/25 flex items-center justify-center">
+                    <Trophy className="w-4 h-4 text-amber" />
+                  </span>
+                  <div className="min-w-0">
+                    <div className="text-[10px] font-bold uppercase tracking-wider text-amber">
+                      {group}
+                    </div>
+                    <div className="text-sm font-bold text-text leading-tight mt-0.5 truncate">
+                      {chips.map((c) => c.name).join(" · ")}
+                    </div>
+                    <div className="text-[11px] text-text-dim mt-0.5">
+                      Leads on {metric}
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
+
         {/* Empty state */}
         {selectedChips.length === 0 ? (
           <div className="text-center py-20">
@@ -597,10 +649,10 @@ export default function ComparisonPage() {
                     return (
                       <div
                         key={key}
-                        className="grid bg-surface border-b border-border/60"
+                        className="grid bg-surface border-b border-border/60 group/row hover:bg-surface-2/60 transition-colors"
                         style={{ gridTemplateColumns: gridCols }}
                       >
-                        <div className="sticky left-0 z-10 bg-surface px-4 py-3 flex items-center justify-between border-r border-border/60">
+                        <div className="sticky left-0 z-10 bg-surface px-4 py-3 flex items-center justify-between border-r border-border/60 group-hover/row:bg-surface-2/60 transition-colors">
                           <span className="text-xs text-text-dim">
                             {SPEC_LABELS[key] || key}
                           </span>
@@ -616,8 +668,10 @@ export default function ComparisonPage() {
                           return (
                             <div
                               key={chip.id}
-                              className={`px-4 py-3 flex items-center gap-1.5 border-l border-border/60 ${
-                                isWinner ? "bg-primary/5" : "bg-surface"
+                              className={`px-4 py-3 flex items-center gap-1.5 border-l border-border/60 transition-colors ${
+                                isWinner
+                                  ? "bg-primary/5"
+                                  : "bg-surface group-hover/row:bg-surface-2/60"
                               }`}
                             >
                               {isWinner && (
@@ -669,10 +723,14 @@ export default function ComparisonPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
             {selectedChips.map((chip) => {
               const color = getBrandColor(chip.manufacturer);
+              const winCount = groupWinners.filter((w) =>
+                w.chips.some((c) => c.id === chip.id),
+              ).length;
               return (
                 <div
                   key={chip.id}
                   className="rounded-2xl border border-border bg-surface overflow-hidden shadow-lg shadow-black/20 hover:shadow-xl transition-all hover:-translate-y-1"
+                  style={{ boxShadow: `0 4px 24px -12px ${color}33` }}
                 >
                   <div className="relative h-32 bg-gradient-to-br from-surface-2 to-bg-dark flex items-center justify-center overflow-hidden border-b border-border/60">
                     {chip.images && chip.images[0] ? (
@@ -692,35 +750,65 @@ export default function ComparisonPage() {
                         {STATUS_STYLES[chip.status].label}
                       </Badge>
                     </div>
+                    <div
+                      className="absolute inset-x-0 bottom-0 h-1"
+                      style={{ backgroundColor: color }}
+                    />
                   </div>
                   <div className="p-4">
-                    <div className="flex items-center gap-2 mb-1">
-                      <span
-                        className="w-2 h-2 rounded-full shrink-0"
-                        style={{ backgroundColor: color }}
-                      />
-                      <span className="text-[10px] font-bold uppercase tracking-wider text-text-dim">
-                        {chip.manufacturer}
-                      </span>
+                    <div className="flex items-center justify-between gap-2 mb-1">
+                      <div className="flex items-center gap-2">
+                        <span
+                          className="w-2 h-2 rounded-full shrink-0"
+                          style={{ backgroundColor: color }}
+                        />
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-text-dim">
+                          {chip.manufacturer}
+                        </span>
+                      </div>
+                      {winCount > 0 && (
+                        <span className="inline-flex items-center gap-1 text-[10px] font-bold text-amber uppercase tracking-wider">
+                          <Trophy className="w-3 h-3" />
+                          {winCount} win{winCount > 1 ? "s" : ""}
+                        </span>
+                      )}
                     </div>
                     <h3 className="font-bold text-text mb-3 leading-tight">
                       {chip.name}
                     </h3>
                     <dl className="space-y-1.5">
                       {SPEC_GROUPS.flatMap((group) =>
-                        group.keys.map((key) => (
-                          <div
-                            key={key}
-                            className="flex items-start justify-between gap-3"
-                          >
-                            <dt className="text-[10px] text-text-dim uppercase tracking-wider shrink-0 pt-0.5">
-                              {SPEC_LABELS[key] || key}
-                            </dt>
-                            <dd className="text-xs text-text-muted font-mono text-right">
-                              {chip.specifications[key] || "-"}
-                            </dd>
-                          </div>
-                        )),
+                        group.keys.map((key) => {
+                          const isWinner =
+                            bestValues.get(key)?.includes(chip.id) || false;
+                          return (
+                            <div
+                              key={key}
+                              className={`flex items-start justify-between gap-3 px-2 py-1 rounded-md ${
+                                isWinner ? "bg-primary/5" : ""
+                              }`}
+                            >
+                              <dt className="text-[10px] text-text-dim uppercase tracking-wider shrink-0 pt-0.5">
+                                {SPEC_LABELS[key] || key}
+                              </dt>
+                              <dd
+                                className={`text-xs font-mono text-right ${
+                                  isWinner
+                                    ? "font-bold text-primary"
+                                    : "text-text-muted"
+                                }`}
+                              >
+                                {isWinner && (
+                                  <Trophy
+                                    className="w-3 h-3 inline mr-1 align-[-1px]"
+                                    style={{ color }}
+                                  />
+                                )}
+                                {chip.specifications[key] || "-"}
+                              </dd>
+                            </div>
+                          );
+                        }),
                       )}
                     </dl>
                     <Link
@@ -763,6 +851,63 @@ export default function ComparisonPage() {
         </div>
         <ConfiguratorPromo />
       </div>
+
+      {/* Mobile sticky action bar */}
+      {selectedChips.length > 0 && (
+        <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-border bg-bg-dark/90 backdrop-blur-xl px-4 py-3 flex items-center justify-between gap-3">
+          <div className="flex items-center gap-2 -space-x-2">
+            {selectedChips.slice(0, 4).map((chip) => {
+              const color = getBrandColor(chip.manufacturer);
+              return (
+                <span
+                  key={chip.id}
+                  className="w-8 h-8 rounded-full overflow-hidden border-2 border-bg-dark bg-surface-2 flex items-center justify-center"
+                  title={chip.name}
+                >
+                  {chip.images && chip.images[0] ? (
+                    <Image
+                      src={chip.images[0]}
+                      alt=""
+                      width={32}
+                      height={32}
+                      unoptimized
+                      className="object-cover w-full h-full"
+                    />
+                  ) : (
+                    <Cpu className="w-3.5 h-3.5" style={{ color }} />
+                  )}
+                </span>
+              );
+            })}
+            {selectedChips.length > 4 && (
+              <span className="w-8 h-8 rounded-full border-2 border-bg-dark bg-surface-2 flex items-center justify-center text-[10px] font-bold text-text-dim">
+                +{selectedChips.length - 4}
+              </span>
+            )}
+          </div>
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setView(view === "table" ? "cards" : "table")}
+              className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg border border-border text-text-muted hover:text-text transition-colors"
+            >
+              {view === "table" ? (
+                <LayoutGrid className="w-3.5 h-3.5" />
+              ) : (
+                <Columns3 className="w-3.5 h-3.5" />
+              )}
+              {view === "table" ? "Cards" : "Table"}
+            </button>
+            <Button
+              variant="solid"
+              size="sm"
+              onClick={copyShareLink}
+              icon={<Link2 className="w-3.5 h-3.5" />}
+            >
+              {copied ? "Copied!" : "Share"}
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
