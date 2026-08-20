@@ -905,7 +905,7 @@ export default function ComparisonPage() {
 
         {/* Category winners strip + Visual comparison (side-by-side on xl) */}
         {selectedChips.length > 1 && (
-          <div className="grid xl:grid-cols-[340px_1fr] gap-6 mb-6 items-start">
+          <div className="grid xl:grid-cols-[1fr_340px] gap-6 mb-6 items-start">
             {groupWinners.length > 0 && (
               <div className="order-2 xl:sticky xl:top-24 self-start">
                 <div className="flex items-center gap-2 mb-3">
