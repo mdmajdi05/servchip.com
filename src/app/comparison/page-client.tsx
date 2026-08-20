@@ -109,23 +109,38 @@ function parseNumericValue(value: string): number | null {
 
 interface RadarDatum {
   label: string;
+  short: string;
   key: keyof ChipProduct["specifications"];
   value: number;
   max: number;
 }
 
-function RadarChart({ chips }: { chips: ChipProduct[] }) {
-  const size = 260;
+function RadarChart({
+  chips,
+  highlightId,
+  onHighlight,
+}: {
+  chips: ChipProduct[];
+  highlightId: string | null;
+  onHighlight: (id: string | null) => void;
+}) {
+  const size = 320;
   const cx = size / 2;
   const cy = size / 2;
-  const radius = 100;
+  const radius = 112;
   const axes: RadarDatum[] = [
-    { label: "Mem", key: "memory", value: 0, max: 1 },
-    { label: "Bandwidth", key: "memoryBandwidth", value: 0, max: 1 },
-    { label: "FP8", key: "fp8TFLOPS", value: 0, max: 1 },
-    { label: "FP16", key: "fp16TFLOPS", value: 0, max: 1 },
-    { label: "TF32", key: "tf32TFLOPS", value: 0, max: 1 },
-    { label: "Cores", key: "cudaCores", value: 0, max: 1 },
+    { label: "Memory", short: "Mem", key: "memory", value: 0, max: 1 },
+    {
+      label: "Bandwidth",
+      short: "BW",
+      key: "memoryBandwidth",
+      value: 0,
+      max: 1,
+    },
+    { label: "FP8", short: "FP8", key: "fp8TFLOPS", value: 0, max: 1 },
+    { label: "FP16", short: "FP16", key: "fp16TFLOPS", value: 0, max: 1 },
+    { label: "TF32", short: "TF32", key: "tf32TFLOPS", value: 0, max: 1 },
+    { label: "Cores", short: "Cores", key: "cudaCores", value: 0, max: 1 },
   ];
   const normalized = axes.map((axis) => {
     const vals = chips
@@ -180,6 +195,7 @@ function RadarChart({ chips }: { chips: ChipProduct[] }) {
       {/* Chip polygons */}
       {chips.map((chip) => {
         const color = getBrandColor(chip.manufacturer);
+        const isDimmed = highlightId !== null && highlightId !== chip.id;
         const ratio = (axis: RadarDatum) =>
           Math.max(
             0.12,
@@ -192,37 +208,83 @@ function RadarChart({ chips }: { chips: ChipProduct[] }) {
           return `${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle)}`;
         });
         return (
-          <polygon
+          <g
             key={chip.id}
-            points={pts.join(" ")}
-            fill={color}
-            fillOpacity="0.12"
-            stroke={color}
-            strokeWidth="2"
-            strokeLinejoin="round"
-          />
+            onMouseEnter={() => onHighlight(chip.id)}
+            onMouseLeave={() => onHighlight(null)}
+            className="cursor-pointer"
+            opacity={isDimmed ? 0.25 : 1}
+            style={{ transition: "opacity 200ms ease" }}
+          >
+            <polygon
+              points={pts.join(" ")}
+              fill={color}
+              fillOpacity="0.14"
+              stroke={color}
+              strokeWidth={highlightId === chip.id ? 3 : 2}
+              strokeLinejoin="round"
+            />
+            {/* Vertex dots */}
+            {normalized.map((axis, i) => {
+              const angle = (Math.PI * 2 * i) / normalized.length - Math.PI / 2;
+              const r = radius * ratio(axis);
+              return (
+                <circle
+                  key={`${chip.id}-${axis.key}`}
+                  cx={cx + r * Math.cos(angle)}
+                  cy={cy + r * Math.sin(angle)}
+                  r="2.5"
+                  fill={color}
+                />
+              );
+            })}
+          </g>
         );
       })}
       {/* Axis labels */}
       {normalized.map((axis, i) => {
         const angle = (Math.PI * 2 * i) / normalized.length - Math.PI / 2;
-        const lx = cx + (radius + 22) * Math.cos(angle);
-        const ly = cy + (radius + 22) * Math.sin(angle);
+        const lx = cx + (radius + 24) * Math.cos(angle);
+        const ly = cy + (radius + 24) * Math.sin(angle);
+        const maxLabel = axis.max.toLocaleString();
         return (
-          <text
-            key={axis.key}
-            x={lx}
-            y={ly}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            className="fill-current text-text-dim"
-            fontSize="9"
-            style={{ fill: "var(--text-dim)" }}
-          >
-            {axis.label}
-          </text>
+          <g key={axis.key}>
+            <text
+              x={lx}
+              y={ly}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fontSize="10"
+              fontWeight="700"
+              style={{ fill: "var(--text)" }}
+            >
+              {axis.label}
+            </text>
+            <text
+              x={lx}
+              y={ly + 11}
+              textAnchor="middle"
+              dominantBaseline="middle"
+              fontSize="7.5"
+              style={{ fill: "var(--text-dim)" }}
+            >
+              best {maxLabel}
+            </text>
+          </g>
         );
       })}
+      {/* Center note */}
+      <text
+        x={cx}
+        y={cy}
+        textAnchor="middle"
+        dominantBaseline="middle"
+        fontSize="8"
+        opacity="0.6"
+        style={{ fill: "var(--text-dim)" }}
+      >
+        higher = better
+      </text>
     </svg>
   );
 }
@@ -231,17 +293,33 @@ function SpecBars({ chips }: { chips: ChipProduct[] }) {
   const keys: {
     key: keyof ChipProduct["specifications"];
     label: string;
-    unit: string;
+    hint: string;
   }[] = [
-    { key: "memory", label: "Memory", unit: "" },
-    { key: "memoryBandwidth", label: "Bandwidth", unit: "" },
-    { key: "fp8TFLOPS", label: "FP8", unit: " TFLOPS" },
-    { key: "fp16TFLOPS", label: "FP16", unit: " TFLOPS" },
-    { key: "tf32TFLOPS", label: "TF32", unit: " TFLOPS" },
+    { key: "memory", label: "Memory", hint: "Onboard VRAM / HBM capacity" },
+    {
+      key: "memoryBandwidth",
+      label: "Memory Bandwidth",
+      hint: "Data transfer speed to/from GPU memory",
+    },
+    {
+      key: "fp8TFLOPS",
+      label: "FP8 Compute",
+      hint: "AI training/inference speed",
+    },
+    {
+      key: "fp16TFLOPS",
+      label: "FP16 Compute",
+      hint: "Mixed-precision AI speed",
+    },
+    {
+      key: "tf32TFLOPS",
+      label: "TF32 Compute",
+      hint: "Standard tensor math speed",
+    },
   ];
   return (
     <div className="space-y-5">
-      {keys.map(({ key, label, unit }) => {
+      {keys.map(({ key, label, hint }) => {
         const vals = chips.map((c) =>
           parseNumericValue(c.specifications[key] || ""),
         );
@@ -249,21 +327,37 @@ function SpecBars({ chips }: { chips: ChipProduct[] }) {
           ...vals.filter((v): v is number => v !== null).map((v) => v || 0),
           1,
         );
+        const bestId =
+          max > 1
+            ? chips.find(
+                (c) =>
+                  (parseNumericValue(c.specifications[key] || "") ?? 0) === max,
+              )?.id
+            : undefined;
         return (
           <div key={key}>
-            <div className="flex items-center justify-between mb-1.5">
-              <span className="text-[11px] font-semibold text-text uppercase tracking-wider">
-                {label}
-              </span>
+            <div className="flex items-baseline justify-between gap-2 mb-1.5">
+              <div>
+                <span className="text-[11px] font-bold text-text uppercase tracking-wider">
+                  {label}
+                </span>
+                <span className="ml-2 text-[10px] text-text-dim">{hint}</span>
+              </div>
             </div>
             <div className="space-y-1.5">
               {chips.map((chip) => {
                 const v = parseNumericValue(chip.specifications[key] || "");
                 const width = v === null ? 0 : (v / max) * 100;
                 const color = getBrandColor(chip.manufacturer);
+                const isBest = chip.id === bestId && v !== null;
                 return (
-                  <div key={chip.id} className="flex items-center gap-2">
-                    <span className="w-16 shrink-0 text-[10px] text-text-dim truncate">
+                  <div
+                    key={chip.id}
+                    className={`flex items-center gap-2 rounded-md px-1.5 py-0.5 ${
+                      isBest ? "bg-primary/5" : ""
+                    }`}
+                  >
+                    <span className="w-16 shrink-0 text-[10px] font-semibold text-text truncate">
                       {chip.name.split(" ").slice(-1)[0]}
                     </span>
                     <div className="flex-1 h-4 bg-bg-dark rounded-full overflow-hidden border border-border/60">
@@ -277,9 +371,14 @@ function SpecBars({ chips }: { chips: ChipProduct[] }) {
                       />
                     </div>
                     <span className="w-24 shrink-0 text-right text-[10px] font-mono text-text-muted truncate">
-                      {chip.specifications[key]}
-                      {v !== null ? unit : ""}
+                      {chip.specifications[key] || "-"}
                     </span>
+                    {isBest && (
+                      <Trophy
+                        className="w-3 h-3 shrink-0 text-amber"
+                        aria-label="Best in this metric"
+                      />
+                    )}
                   </div>
                 );
               })}
@@ -311,6 +410,7 @@ export default function ComparisonPage() {
   const [view, setView] = useState<"table" | "cards">("table");
   const [visualMode, setVisualMode] = useState<"radar" | "bars">("radar");
   const [copied, setCopied] = useState(false);
+  const [highlightId, setHighlightId] = useState<string | null>(null);
   const manufacturers = useMemo(() => {
     const map = new Map<string, string>();
     CHIPS.forEach((c) => {
@@ -758,7 +858,7 @@ export default function ComparisonPage() {
         {/* Visual comparison */}
         {selectedChips.length > 1 && (
           <div className="mb-6 rounded-2xl border border-border bg-surface overflow-hidden shadow-xl shadow-black/20">
-            <div className="px-5 py-4 border-b border-border flex items-center justify-between gap-3 bg-gradient-to-r from-surface-2/60 to-surface">
+            <div className="px-5 py-4 border-b border-border flex flex-wrap items-center justify-between gap-3 bg-gradient-to-r from-surface-2/60 to-surface">
               <div className="flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-secondary" />
                 <h2 className="text-sm font-bold text-text">
@@ -767,34 +867,97 @@ export default function ComparisonPage() {
               </div>
               <span className="text-[11px] text-text-dim hidden md:inline">
                 {visualMode === "radar"
-                  ? "Multi-axis overview across all specs"
-                  : "Relative performance on key metrics"}
+                  ? "At a glance overview of who leads on each spec"
+                  : "Side-by-side performance on key metrics"}
               </span>
             </div>
-            <div className="p-5 grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
-              <div className="mx-auto w-full max-w-xs lg:max-w-none aspect-square">
-                {visualMode === "radar" ? (
-                  <RadarChart chips={selectedChips} />
-                ) : (
-                  <SpecBars chips={selectedChips} />
-                )}
-              </div>
-              <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
+            <div className="p-5">
+              {/* Legend */}
+              <div className="flex flex-wrap gap-2 mb-5">
                 {selectedChips.map((chip) => {
                   const color = getBrandColor(chip.manufacturer);
+                  const active = highlightId === chip.id;
                   return (
-                    <span
+                    <button
                       key={chip.id}
-                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border/60 bg-bg-dark text-xs font-semibold text-text"
+                      onMouseEnter={() => setHighlightId(chip.id)}
+                      onMouseLeave={() => setHighlightId(null)}
+                      className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-semibold text-text transition-all ${
+                        active
+                          ? "border-primary/50 bg-primary/10 shadow-[0_0_12px_color-mix(in_srgb,var(--primary)_15%,transparent)]"
+                          : "border-border/60 bg-bg-dark hover:border-primary/30"
+                      }`}
                     >
                       <span
-                        className="w-2 h-2 rounded-full"
-                        style={{ backgroundColor: color }}
+                        className="w-2.5 h-2.5 rounded-full shrink-0"
+                        style={{
+                          backgroundColor: color,
+                          boxShadow: `0 0 6px ${color}66`,
+                        }}
                       />
-                      {chip.name.split(" ").slice(-1)[0]}
-                    </span>
+                      {chip.name}
+                    </button>
                   );
                 })}
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div className="mx-auto w-full max-w-sm">
+                  {visualMode === "radar" ? (
+                    <>
+                      <RadarChart
+                        chips={selectedChips}
+                        highlightId={highlightId}
+                        onHighlight={setHighlightId}
+                      />
+                      <p className="text-center text-[11px] text-text-dim mt-2">
+                        Each corner is a spec — the bigger the shape, the more
+                        powerful the chip. Hover a chip to focus its outline.
+                      </p>
+                    </>
+                  ) : (
+                    <SpecBars chips={selectedChips} />
+                  )}
+                </div>
+                <div>
+                  <h3 className="text-sm font-bold text-text mb-3 flex items-center gap-2">
+                    <Trophy className="w-4 h-4 text-amber" />
+                    What this tells you
+                  </h3>
+                  <ul className="space-y-2 text-sm text-text-muted leading-relaxed">
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                      <span>
+                        <strong className="text-text">Wider shape</strong> =
+                        strong across more specs — a balanced pick.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                      <span>
+                        <strong className="text-text">Long spike</strong> in one
+                        direction = specialized for that workload.
+                      </span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                      <span>
+                        <strong className="text-text">
+                          Trophy in bars view
+                        </strong>{" "}
+                        = the best value for that specific metric.
+                      </span>
+                    </li>
+                  </ul>
+                  <div className="mt-4 p-3 rounded-lg border border-border/60 bg-bg-dark/60">
+                    <p className="text-[11px] text-text-dim leading-relaxed">
+                      <strong className="text-text-muted">Tip:</strong> pair
+                      this with the table below to see exact numbers — the
+                      visuals show relative strength, the table shows the raw
+                      specs.
+                    </p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
