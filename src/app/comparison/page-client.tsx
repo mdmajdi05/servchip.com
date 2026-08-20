@@ -907,7 +907,7 @@ export default function ComparisonPage() {
         {selectedChips.length > 1 && (
           <div className="grid xl:grid-cols-[340px_1fr] gap-6 mb-6 items-start">
             {groupWinners.length > 0 && (
-              <div className="xl:sticky xl:top-24 self-start">
+              <div className="order-2 xl:sticky xl:top-24 self-start">
                 <div className="flex items-center gap-2 mb-3">
                   <Trophy className="w-4 h-4 text-amber" />
                   <h2 className="text-sm font-bold text-text">
@@ -941,7 +941,7 @@ export default function ComparisonPage() {
             )}
 
             {/* Visual comparison */}
-            <div className="rounded-2xl border border-border bg-surface overflow-hidden shadow-xl shadow-black/20">
+            <div className="order-1 rounded-2xl border border-border bg-surface overflow-hidden shadow-xl shadow-black/20">
               <div className="px-5 py-4 border-b border-border flex flex-wrap items-center justify-between gap-3 bg-gradient-to-r from-surface-2/60 to-surface">
                 <div className="flex items-center gap-2">
                   <Sparkles className="w-4 h-4 text-secondary" />
