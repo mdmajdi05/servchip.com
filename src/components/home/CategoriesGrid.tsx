@@ -11,7 +11,6 @@ import {
   MemoryStick,
   Cloud,
 } from "lucide-react";
-import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { CATEGORIES } from "@/data/categories";
 import { getProductsByParentCategory } from "@/data/products";
@@ -30,15 +29,8 @@ export function CategoriesGrid() {
   return (
     <section className="py-20 bg-bg-dark">
       <div className="max-w-7xl mx-auto px-4">
-        <SectionHeading
-          label="Categories"
-          title="Browse Enterprise Hardware by Category"
-          subtitle="AI accelerators, server CPUs, networking, memory & storage — all from authorized manufacturers"
-          align="center"
-        />
-
         <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
-          {CATEGORIES.slice(0, 10).map((cat, index) => {
+          {CATEGORIES.slice(0, 10).map((cat) => {
             const Icon = ICON_MAP[cat.icon] || Server;
             const count = getProductsByParentCategory(cat.id).length;
             return (
