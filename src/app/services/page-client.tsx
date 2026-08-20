@@ -1,5 +1,6 @@
 "use client";
 import { AppLink as Link } from "@/components/ui/AppLink";
+import Image from "next/image";
 import {
   ArrowRight,
   Truck,
@@ -14,6 +15,8 @@ import {
   CheckCircle2,
   Sparkles,
   ChevronRight,
+  MapPin,
+  Globe,
 } from "lucide-react";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -152,18 +155,38 @@ const HOW_IT_WORKS = [
     icon: Package,
   },
 ];
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    transition: { staggerChildren: 0.06 },
+interface SpotlightPage {
+  title: string;
+  region: string;
+  description: string;
+  caption: string;
+  image: string;
+  alt: string;
+  url: string;
+  cta: string;
+  tags: string[];
+}
+
+/**
+ * Dedicated landing pages that promote a single distribution focus (brand,
+ * region, or both). Add a new entry here to surface a new landing page on
+ * this services overview — no other code changes needed.
+ */
+const SPOTLIGHT_PAGES: SpotlightPage[] = [
+  {
+    title: "NVIDIA GPU Distributor Middle East",
+    region: "UAE • Saudi Arabia • Qatar • Kuwait • Oman • Bahrain",
+    description:
+      "Servchip supplies genuine NVIDIA H100, H200, B200, Blackwell, RTX PRO, and DGX GPUs to enterprise, government, and research buyers across all six GCC markets — with export documentation, regional logistics, and after-sales support handled end to end.",
+    caption:
+      "Supply across all six GCC markets — backed by an ISO 9001 certified India-UAE distribution base.",
+    image: "/images/server-room-1.jpg",
+    alt: "NVIDIA GPU distributor serving enterprise buyers across the Middle East",
+    url: "/nvidia-gpu-distributor-middle-east",
+    cta: "Explore NVIDIA GPU Distribution",
+    tags: ["H100", "H200", "B200", "Blackwell", "RTX PRO", "DGX"],
   },
-};
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] },
-  },
-};
+];
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-bg-dark">
@@ -222,6 +245,96 @@ export default function ServicesPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+      {/* Distributor & Regional Spotlight Pages */}
+      <section className="relative py-20 md:py-28 bg-surface overflow-hidden">
+        <div className="absolute inset-0">
+          <Image
+            src="/images/server-room-4.jpg"
+            alt="NVIDIA GPU distributor serving enterprise buyers across the Middle East"
+            fill
+            sizes="100vw"
+            unoptimized
+            className="object-cover opacity-20"
+          />
+        </div>
+        <div className="absolute inset-0 bg-gradient-to-b from-surface via-surface/85 to-surface pointer-events-none" />
+        <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
+          {SPOTLIGHT_PAGES.map((spot) => (
+            <div
+              key={spot.url}
+              className="max-w-5xl mx-auto rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent p-8 md:p-12 overflow-hidden"
+            >
+              <div className="grid lg:grid-cols-2 gap-10 items-center">
+                <div>
+                  <div className="flex items-center gap-2 mb-3">
+                    <MapPin className="w-4 h-4 text-primary" />
+                    <span className="text-xs font-mono text-primary uppercase tracking-widest font-bold">
+                      {spot.region}
+                    </span>
+                  </div>
+                  <h2 className="text-2xl md:text-4xl font-black text-text mb-3 leading-tight">
+                    {spot.title}
+                  </h2>
+                  <p className="text-sm md:text-base text-text-muted leading-relaxed mb-6">
+                    {spot.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {spot.tags.map((gpu) => (
+                      <span
+                        key={gpu}
+                        className="px-3 py-1.5 rounded-lg border border-primary/20 bg-primary/5 text-xs font-mono font-bold text-primary"
+                      >
+                        {gpu}
+                      </span>
+                    ))}
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Link href={spot.url}>
+                      <Button
+                        variant="solid"
+                        size="lg"
+                        className="font-semibold shadow-lg shadow-primary/20"
+                      >
+                        {spot.cta}
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
+                    </Link>
+                    <Link href="/contact">
+                      <Button
+                        variant="outline"
+                        size="lg"
+                        className="border-border text-text-muted hover:text-text"
+                      >
+                        Talk to an Expert
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+                <div className="relative hidden lg:block">
+                  <div className="relative rounded-2xl border border-border overflow-hidden">
+                    <div className="relative w-full h-72">
+                      <Image
+                        src={spot.image}
+                        alt={spot.alt}
+                        fill
+                        sizes="(max-width: 1024px) 100vw, 50vw"
+                        unoptimized
+                        className="object-cover"
+                      />
+                    </div>
+                    <div className="absolute inset-x-4 bottom-4 rounded-xl border border-border bg-bg-dark/90 backdrop-blur p-4">
+                      <div className="flex items-center gap-2 text-xs text-text-muted">
+                        <Globe className="w-3.5 h-3.5 text-primary" />
+                        {spot.caption}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
       </section>
       {/* How It Works */}

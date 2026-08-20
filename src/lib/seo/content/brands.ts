@@ -3,8 +3,7 @@ import type { SeoEntry } from "./types";
 // Brand page SEO. Key = brand id (src/data/brands.ts).
 export const BRAND_SEO: Record<string, SeoEntry> = {
   nvidia: {
-    metaTitle:
-      "NVIDIA GPU Distributor | Enterprise AI GPUs & Hardware | Servchip",
+    metaTitle: "NVIDIA GPU Distributor | H100, H200, B200 | Servchip",
     metaDescription:
       "NVIDIA GPU distributor and supplier for enterprise AI, HPC and data centers. Explore H100, H200, B200 and GB200 GPUs for AI training, HPC workloads.",
     keywords: [
@@ -28,8 +27,7 @@ export const BRAND_SEO: Record<string, SeoEntry> = {
     ],
   },
   intel: {
-    metaTitle:
-      "Intel CPU & AI Accelerator Distributor | Xeon & Gaudi | Servchip",
+    metaTitle: "Intel CPU & AI Accelerator Distributor | Xeon | Servchip",
     metaDescription:
       "Intel CPU and AI accelerator distributor for enterprise data centers. Explore Xeon 6, Gaudi 3 and Arc Pro GPUs for AI, HPC and enterprise infrastructure.",
     keywords: [
@@ -41,8 +39,7 @@ export const BRAND_SEO: Record<string, SeoEntry> = {
     ],
   },
   broadcom: {
-    metaTitle:
-      "Broadcom Networking Silicon Distributor | Ethernet Switches | Servchip",
+    metaTitle: "Broadcom Networking Silicon Distributor | Servchip",
     metaDescription:
       "Broadcom networking silicon distributor for AI and data center networks. Explore Tomahawk and Jericho Ethernet switch silicon for AI clusters and networks.",
     keywords: [
@@ -54,8 +51,7 @@ export const BRAND_SEO: Record<string, SeoEntry> = {
     ],
   },
   marvell: {
-    metaTitle:
-      "Marvell Ethernet Switch Distributor | Teralynx & Networking | Servchip",
+    metaTitle: "Marvell Ethernet Switch Distributor | Teralynx | Servchip",
     metaDescription:
       "Marvell Ethernet switch and networking silicon distributor for cloud, AI and data centers. Explore Teralynx switch platforms for enterprise networking.",
     keywords: [
@@ -66,7 +62,7 @@ export const BRAND_SEO: Record<string, SeoEntry> = {
     ],
   },
   cisco: {
-    metaTitle: "Cisco Networking Silicon Distributor | Silicon One | Servchip",
+    metaTitle: "Cisco Networking Distributor | Silicon One | Servchip",
     metaDescription:
       "Cisco networking distributor for enterprise, data center and AI networks. Explore Silicon One for routers, switches and high-performance AI fabrics.",
     keywords: [
@@ -77,8 +73,7 @@ export const BRAND_SEO: Record<string, SeoEntry> = {
     ],
   },
   dell: {
-    metaTitle:
-      "Dell PowerEdge Server Distributor | AI Infrastructure | Servchip",
+    metaTitle: "Dell PowerEdge Server Distributor | AI Infra | Servchip",
     metaDescription:
       "Dell PowerEdge server distributor for enterprise AI, HPC and data centers. Explore XE9680 and XE8640 GPU servers for AI training, inference and HPC.",
     keywords: [],
@@ -90,8 +85,7 @@ export const BRAND_SEO: Record<string, SeoEntry> = {
     keywords: [],
   },
   supermicro: {
-    metaTitle:
-      "Supermicro GPU Server Distributor | AI & HPC Servers | Servchip",
+    metaTitle: "Supermicro GPU Server Distributor | AI & HPC | Servchip",
     metaDescription:
       "Supermicro GPU server distributor for AI, deep learning and HPC workloads. Explore AS-8125GS and SYS-821GE GPU servers for training and inference.",
     keywords: [
@@ -102,7 +96,7 @@ export const BRAND_SEO: Record<string, SeoEntry> = {
     ],
   },
   lenovo: {
-    metaTitle: "Lenovo Server Distributor | ThinkSystem AI Servers | Servchip",
+    metaTitle: "Lenovo Server Distributor | ThinkSystem AI | Servchip",
     metaDescription:
       "Lenovo ThinkSystem server distributor for enterprise AI and HPC. Explore SR780A and SR685A AI servers for training, inference and data center workloads.",
     keywords: [
@@ -113,7 +107,7 @@ export const BRAND_SEO: Record<string, SeoEntry> = {
     ],
   },
   gigabyte: {
-    metaTitle: "Gigabyte GPU Server Distributor | AI & HPC Servers | Servchip",
+    metaTitle: "Gigabyte GPU Server Distributor | AI & HPC | Servchip",
     metaDescription:
       "Gigabyte GPU server distributor for AI and HPC workloads. Explore G Series GPU servers for AI training, deep learning, inference and data centers.",
     keywords: ["Gigabyte GPU server", "G593", "GPU server distributor"],
@@ -125,7 +119,7 @@ export const BRAND_SEO: Record<string, SeoEntry> = {
     keywords: ["ASUS ESC N8", "ASUS AI server", "GPU server distributor"],
   },
   inspur: {
-    metaTitle: "Inspur Server Distributor | NF AI Server Platforms | Servchip",
+    metaTitle: "Inspur Server Distributor | NF AI Servers | Servchip",
     metaDescription:
       "Inspur AI server distributor for enterprise AI, HPC and cloud data centers. Explore NF Series GPU servers, including NF5688, for AI training and inference.",
     keywords: ["Inspur NF5688", "Inspur AI server", "GPU server distributor"],
@@ -137,7 +131,7 @@ export const BRAND_SEO: Record<string, SeoEntry> = {
     keywords: ["Quanta QCT", "AI GPU server", "hyperscale server"],
   },
   foxconn: {
-    metaTitle: "Foxconn Server Distributor | AI GPU Infrastructure | Servchip",
+    metaTitle: "Foxconn Server Distributor | AI GPU Servers | Servchip",
     metaDescription:
       "Foxconn AI GPU server distributor for hyperscale and enterprise data centers. Explore GPU server platforms for AI training, inference and HPC computing.",
     keywords: [
@@ -157,8 +151,7 @@ export const BRAND_SEO: Record<string, SeoEntry> = {
     ],
   },
   samsung: {
-    metaTitle:
-      "Samsung Memory & SSD Distributor | HBM, DDR5 & Enterprise SSDs | Servchip",
+    metaTitle: "Samsung Memory & SSD Distributor | HBM, DDR5 | Servchip",
     metaDescription:
       "Samsung memory and SSD distributor for AI and enterprise data centers. Explore HBM3E memory, DDR5 RDIMM and enterprise SSDs for AI and HPC systems.",
     keywords: [
@@ -175,8 +168,7 @@ export const BRAND_SEO: Record<string, SeoEntry> = {
     keywords: ["SK hynix HBM3E", "HBM3E memory", "AI memory distributor"],
   },
   micron: {
-    metaTitle:
-      "Micron Memory & SSD Distributor | HBM, DDR5 & Storage | Servchip",
+    metaTitle: "Micron Memory & SSD Distributor | HBM & DDR5 | Servchip",
     metaDescription:
       "Micron memory and SSD distributor for AI, cloud and enterprise data centers. Explore HBM3E memory, DDR5 RDIMM and enterprise NVMe SSDs for AI and HPC.",
     keywords: [
@@ -187,20 +179,19 @@ export const BRAND_SEO: Record<string, SeoEntry> = {
     ],
   },
   solidigm: {
-    metaTitle: "Solidigm Enterprise SSD Distributor | D7 Series | Servchip",
+    metaTitle: "Solidigm Enterprise SSD Distributor | D7 | Servchip",
     metaDescription:
       "Solidigm enterprise SSD distributor for AI, cloud and data center storage. Explore D7 Series NVMe SSDs for high-performance computing and enterprise use.",
     keywords: ["Solidigm D7", "enterprise SSD", "NVMe SSD distributor"],
   },
   kioxia: {
-    metaTitle: "Kioxia Enterprise SSD Distributor | CM7 Series | Servchip",
+    metaTitle: "Kioxia Enterprise SSD Distributor | CM7 | Servchip",
     metaDescription:
       "Kioxia enterprise SSD distributor for AI, cloud and data centers. Explore CM7 Series NVMe SSDs for high-performance computing and enterprise storage.",
     keywords: ["Kioxia CM7", "enterprise SSD", "NVMe SSD distributor"],
   },
   wd: {
-    metaTitle:
-      "Western Digital Storage Distributor | Ultrastar SSDs | Servchip",
+    metaTitle: "Western Digital Storage Distributor | Ultrastar | Servchip",
     metaDescription:
       "Western Digital storage distributor for AI, cloud and enterprise data centers. Explore Ultrastar enterprise SSDs for high-performance computing and storage",
     keywords: [],
@@ -212,8 +203,7 @@ export const BRAND_SEO: Record<string, SeoEntry> = {
     keywords: ["Seagate Nytro", "enterprise SSD", "NVMe SSD distributor"],
   },
   google: {
-    metaTitle:
-      "Google TPU Distributor | AI Accelerator Infrastructure | Servchip",
+    metaTitle: "Google TPU Distributor | AI Accelerators | Servchip",
     metaDescription:
       "Google TPU infrastructure distributor for AI and machine learning. Explore TPU accelerator platforms for AI training, inference and high-performance AI.",
     keywords: [
@@ -229,7 +219,7 @@ export const BRAND_SEO: Record<string, SeoEntry> = {
     keywords: ["Amazon Trainium", "Inferentia", "AWS AI chips"],
   },
   qualcomm: {
-    metaTitle: "Qualcomm Data Center CPU Distributor | Servchip",
+    metaTitle: "Qualcomm Data Center CPU Distributor | ARM CPUs | Servchip",
     metaDescription:
       "Qualcomm data center CPU distributor for cloud and AI infrastructure. Explore ARM-based server processors for enterprise data centers and efficient AI.",
     keywords: [
@@ -239,13 +229,13 @@ export const BRAND_SEO: Record<string, SeoEntry> = {
     ],
   },
   ampere: {
-    metaTitle: "Ampere Server CPU Distributor | AmpereOne ARM CPUs | Servchip",
+    metaTitle: "Ampere Server CPU Distributor | AmpereOne | Servchip",
     metaDescription:
       "Ampere server CPU distributor for cloud and data center infrastructure. Explore AmpereOne ARM server processors for cloud-native computing and AI.",
     keywords: ["AmpereOne", "ARM server CPU", "cloud-native processor"],
   },
   nokia: {
-    metaTitle: "Nokia Networking Silicon Distributor | 5G & Optical | Servchip",
+    metaTitle: "Nokia Networking Distributor | 5G & Optical | Servchip",
     metaDescription:
       "Nokia networking silicon distributor for telecom, 5G and data centers. Explore network processors, optical DSPs and solutions for high-performance AI.",
     keywords: [

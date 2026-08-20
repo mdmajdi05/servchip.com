@@ -27,7 +27,7 @@ export const SOLUTION_SEO: Record<string, SeoEntry> = {
     ],
   },
   hpc: {
-    metaTitle: "HPC Clusters & Solutions | NVIDIA, AMD | Servchip",
+    metaTitle: "HPC Clusters & Solutions | NVIDIA, AMD GPUs | Servchip",
     metaDescription:
       "HPC clusters for scientific simulation, molecular dynamics and financial analytics. NVIDIA & AMD high-performance computing infrastructure from Servchip.",
     keywords: [
@@ -39,7 +39,7 @@ export const SOLUTION_SEO: Record<string, SeoEntry> = {
     ],
   },
   "ai-infrastructure": {
-    metaTitle: "Enterprise AI Infrastructure | Servchip",
+    metaTitle: "Enterprise AI Infrastructure & Data Centers | Servchip",
     metaDescription:
       "Complete AI infrastructure — NVIDIA & AMD accelerators, GPU servers, networking, HBM memory and storage. Enterprise AI hardware from Servchip.",
     keywords: [

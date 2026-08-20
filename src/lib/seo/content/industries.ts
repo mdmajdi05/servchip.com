@@ -27,7 +27,7 @@ export const INDUSTRY_SEO: Record<string, SeoEntry> = {
     ],
   },
   healthcare: {
-    metaTitle: "Healthcare AI & GPU Solutions | NVIDIA | Servchip",
+    metaTitle: "Healthcare AI & GPU Solutions | NVIDIA, AMD | Servchip",
     metaDescription:
       "GPU-accelerated solutions for healthcare — medical imaging AI, drug discovery, genomics. NVIDIA RTX & data center GPUs for hospitals and pharma.",
     keywords: [
@@ -51,7 +51,7 @@ export const INDUSTRY_SEO: Record<string, SeoEntry> = {
     ],
   },
   government: {
-    metaTitle: "Government AI & HPC Solutions | NVIDIA | Servchip",
+    metaTitle: "Government AI & HPC Solutions | NVIDIA, AMD | Servchip",
     metaDescription:
       "Secure, compliant AI and HPC infrastructure for government and public sector — sovereign AI, national research programs and public institutions.",
     keywords: [
@@ -75,7 +75,7 @@ export const INDUSTRY_SEO: Record<string, SeoEntry> = {
     ],
   },
   telecom: {
-    metaTitle: "Telecom & Edge AI Solutions | NVIDIA | Servchip",
+    metaTitle: "Telecom & Edge AI Solutions | NVIDIA, AMD | Servchip",
     metaDescription:
       "Edge AI inference, 5G infrastructure and telecom data center hardware. GPU-accelerated edge platforms and networking solutions from Servchip.",
     keywords: [

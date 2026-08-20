@@ -3,7 +3,7 @@ import type { SeoEntry } from "./types";
 // Category page SEO. Key = category id (src/data/categories.ts).
 export const CATEGORY_SEO: Record<string, SeoEntry> = {
   "nvidia-dc-gpus": {
-    metaTitle: "NVIDIA Data Center GPUs | Servchip",
+    metaTitle: "NVIDIA Data Center GPUs | H100, H200, B200 | Servchip",
     metaDescription:
       "NVIDIA data center GPUs — H100, H200, B200, B300, GB200, L40S and L4 for AI training, inference and HPC. Authentic, warrantied enterprise supply.",
     keywords: [
@@ -15,7 +15,7 @@ export const CATEGORY_SEO: Record<string, SeoEntry> = {
     ],
   },
   "amd-instinct": {
-    metaTitle: "AMD Instinct AI Accelerators | Servchip",
+    metaTitle: "AMD Instinct AI Accelerators | MI300X, MI350X | Servchip",
     metaDescription:
       "AMD Instinct MI300X, MI325X and MI350X AI accelerators for training and HPC. Authentic Instinct GPUs with enterprise procurement and global sourcing.",
     keywords: [
@@ -27,7 +27,7 @@ export const CATEGORY_SEO: Record<string, SeoEntry> = {
     ],
   },
   "intel-gaudi": {
-    metaTitle: "Intel Gaudi AI Accelerators | Servchip",
+    metaTitle: "Intel Gaudi AI Accelerators | Xeon & Gaudi 3 | Servchip",
     metaDescription:
       "Intel Gaudi 2 and Gaudi 3 AI accelerators for cost-efficient training and inference. Enterprise AI hardware with certified global sourcing support.",
     keywords: [
@@ -39,7 +39,7 @@ export const CATEGORY_SEO: Record<string, SeoEntry> = {
     ],
   },
   "google-tpu": {
-    metaTitle: "Google TPU for AI | Servchip",
+    metaTitle: "Google TPU for AI | TPU v5, v6 Accelerators | Servchip",
     metaDescription:
       "Google TPU v6 and v7 custom AI accelerators for large-scale training and inference. Enterprise access and procurement support for AI workloads.",
     keywords: [
@@ -51,7 +51,7 @@ export const CATEGORY_SEO: Record<string, SeoEntry> = {
     ],
   },
   "amazon-ai": {
-    metaTitle: "Amazon AI Chips | Servchip",
+    metaTitle: "Amazon AI Chips | Trainium & Inferentia 2 | Servchip",
     metaDescription:
       "Amazon Trainium 2 and Inferentia 2 custom AI chips for AWS EC2 instances. Cost-efficient training and inference for cloud and machine learning workloads.",
     keywords: [
@@ -63,7 +63,7 @@ export const CATEGORY_SEO: Record<string, SeoEntry> = {
     ],
   },
   "server-cpus": {
-    metaTitle: "Server CPUs — AMD EPYC, Intel Xeon | Servchip",
+    metaTitle: "Server CPUs | AMD EPYC, Intel Xeon & Gaudi | Servchip",
     metaDescription:
       "Server CPUs — AMD EPYC 9005/9004, Intel Xeon 6/4th Gen, AmpereOne, NVIDIA Grace and Qualcomm. Enterprise processors with global procurement support.",
     keywords: [
@@ -87,7 +87,7 @@ export const CATEGORY_SEO: Record<string, SeoEntry> = {
     ],
   },
   networking: {
-    metaTitle: "Networking & Interconnects | Servchip",
+    metaTitle: "Networking & Interconnects | Ethernet, InfiniBand | Servchip",
     metaDescription:
       "NVIDIA Spectrum-X, Quantum, ConnectX, Broadcom Tomahawk, Marvell Teralynx and Cisco Silicon One. Enterprise networking for AI data centers worldwide.",
     keywords: [
@@ -99,7 +99,7 @@ export const CATEGORY_SEO: Record<string, SeoEntry> = {
     ],
   },
   "ai-memory": {
-    metaTitle: "AI Memory — HBM3E, DDR5, CXL | Servchip",
+    metaTitle: "AI Memory & CXL Modules | HBM3E, DDR5 RDIMM | Servchip",
     metaDescription:
       "HBM3E memory from SK hynix, Samsung and Micron, plus DDR5 RDIMM, MRDIMM and CXL memory modules for AI accelerators and high-performance servers.",
     keywords: [
@@ -111,7 +111,7 @@ export const CATEGORY_SEO: Record<string, SeoEntry> = {
     ],
   },
   "enterprise-storage": {
-    metaTitle: "Enterprise NVMe SSDs | Servchip",
+    metaTitle: "Enterprise NVMe SSDs | Data Center Storage | Servchip",
     metaDescription:
       "Enterprise NVMe SSDs from Samsung, Micron, Solidigm, Kioxia, WD and Seagate. High-performance storage for AI, cloud and data center workloads.",
     keywords: [
