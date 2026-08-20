@@ -107,6 +107,63 @@ function parseNumericValue(value: string): number | null {
   return Number.isFinite(num) ? num : null;
 }
 
+const RADAR_AXES: {
+  label: string;
+  short: string;
+  key: keyof ChipProduct["specifications"];
+}[] = [
+  { label: "Memory", short: "Mem", key: "memory" },
+  { label: "Bandwidth", short: "BW", key: "memoryBandwidth" },
+  { label: "FP8", short: "FP8", key: "fp8TFLOPS" },
+  { label: "FP16", short: "FP16", key: "fp16TFLOPS" },
+  { label: "TF32", short: "TF32", key: "tf32TFLOPS" },
+  { label: "CUDA Cores", short: "Cores", key: "cudaCores" },
+];
+
+const LEADER_KEYS: {
+  group: string;
+  keys: (keyof ChipProduct["specifications"])[];
+}[] = [
+  { group: "Memory", keys: ["memoryBandwidth", "memory"] },
+  {
+    group: "Compute",
+    keys: [
+      "fp8TFLOPS",
+      "fp16TFLOPS",
+      "tf32TFLOPS",
+      "tensorCores",
+      "cudaCores",
+      "fp64TFLOPS",
+    ],
+  },
+];
+
+function shortChipLabel(chip: ChipProduct): string {
+  const parts = chip.slug.split("-").filter(Boolean);
+  const tail = parts
+    .slice(1)
+    .filter((p) => !/^(ada|pro|nvl|pcie|sxm|series)$/i.test(p))
+    .slice(-2);
+  if (!tail.length) return chip.series.split(" ")[0] || chip.name;
+  return tail.map((p) => p.toUpperCase()).join(" ");
+}
+
+function chipKind(chip: ChipProduct): "network" | "cpu" | "gpu" {
+  const id = chip.categoryId || "";
+  const name = chip.categoryName || "";
+  if (
+    /networking|pensando|dpu|ethernet/i.test(name) ||
+    /networking|pensando|dpu|ethernet/i.test(id)
+  )
+    return "network";
+  if (
+    /xeon|epyc|processor|graviton|altra|grace|cpu/i.test(name) ||
+    /xeon|epyc|processor|graviton|altra|grace|hpc|cpu/i.test(id)
+  )
+    return "cpu";
+  return "gpu";
+}
+
 interface RadarDatum {
   label: string;
   short: string;
@@ -117,10 +174,16 @@ interface RadarDatum {
 
 function RadarChart({
   chips,
+  axes,
   highlightId,
   onHighlight,
 }: {
   chips: ChipProduct[];
+  axes: {
+    label: string;
+    short: string;
+    key: keyof ChipProduct["specifications"];
+  }[];
   highlightId: string | null;
   onHighlight: (id: string | null) => void;
 }) {
@@ -128,21 +191,8 @@ function RadarChart({
   const cx = size / 2;
   const cy = size / 2;
   const radius = 112;
-  const axes: RadarDatum[] = [
-    { label: "Memory", short: "Mem", key: "memory", value: 0, max: 1 },
-    {
-      label: "Bandwidth",
-      short: "BW",
-      key: "memoryBandwidth",
-      value: 0,
-      max: 1,
-    },
-    { label: "FP8", short: "FP8", key: "fp8TFLOPS", value: 0, max: 1 },
-    { label: "FP16", short: "FP16", key: "fp16TFLOPS", value: 0, max: 1 },
-    { label: "TF32", short: "TF32", key: "tf32TFLOPS", value: 0, max: 1 },
-    { label: "Cores", short: "Cores", key: "cudaCores", value: 0, max: 1 },
-  ];
-  const normalized = axes.map((axis) => {
+  const radarDatum = axes.map((a): RadarDatum => ({ ...a, value: 0, max: 1 }));
+  const normalized = radarDatum.map((axis) => {
     const vals = chips
       .map((c) => parseNumericValue(c.specifications[axis.key] || ""))
       .filter((n): n is number => n !== null);
@@ -327,13 +377,18 @@ function SpecBars({ chips }: { chips: ChipProduct[] }) {
           ...vals.filter((v): v is number => v !== null).map((v) => v || 0),
           1,
         );
-        const bestId =
+        const bestIds =
           max > 1
-            ? chips.find(
-                (c) =>
-                  (parseNumericValue(c.specifications[key] || "") ?? 0) === max,
-              )?.id
-            : undefined;
+            ? new Set(
+                chips
+                  .filter(
+                    (c) =>
+                      (parseNumericValue(c.specifications[key] || "") ?? 0) ===
+                      max,
+                  )
+                  .map((c) => c.id),
+              )
+            : new Set<string>();
         return (
           <div key={key}>
             <div className="flex items-baseline justify-between gap-2 mb-1.5">
@@ -349,7 +404,7 @@ function SpecBars({ chips }: { chips: ChipProduct[] }) {
                 const v = parseNumericValue(chip.specifications[key] || "");
                 const width = v === null ? 0 : (v / max) * 100;
                 const color = getBrandColor(chip.manufacturer);
-                const isBest = chip.id === bestId && v !== null;
+                const isBest = v !== null && bestIds.has(chip.id);
                 return (
                   <div
                     key={chip.id}
@@ -357,8 +412,11 @@ function SpecBars({ chips }: { chips: ChipProduct[] }) {
                       isBest ? "bg-primary/5" : ""
                     }`}
                   >
-                    <span className="w-16 shrink-0 text-[10px] font-semibold text-text truncate">
-                      {chip.name.split(" ").slice(-1)[0]}
+                    <span
+                      className="w-20 shrink-0 text-[10px] font-semibold text-text truncate"
+                      title={chip.name}
+                    >
+                      {shortChipLabel(chip)}
                     </span>
                     <div className="flex-1 h-4 bg-bg-dark rounded-full overflow-hidden border border-border/60">
                       <div
@@ -514,23 +572,46 @@ export default function ComparisonPage() {
   const groupWinners = useMemo(() => {
     const leaders: { group: string; chips: ChipProduct[]; metric: string }[] =
       [];
-    SPEC_GROUPS.forEach((group) => {
-      const numericKey = group.keys.find((k) => NUMERIC_KEYS.has(k));
+    LEADER_KEYS.forEach(({ group, keys }) => {
+      const numericKey = keys.find((k) =>
+        selectedChips.some(
+          (c) => parseNumericValue(c.specifications[k] || "") !== null,
+        ),
+      );
       if (!numericKey) return;
       const winners = bestValues.get(numericKey) || [];
       if (!winners.length) return;
       const leadChips = selectedChips.filter((c) => winners.includes(c.id));
       if (!leadChips.length) return;
       leaders.push({
-        group: group.label,
+        group,
         chips: leadChips,
         metric: SPEC_LABELS[numericKey] || numericKey,
       });
     });
     return leaders;
   }, [bestValues, selectedChips]);
+  const radarAxes = useMemo(
+    () =>
+      RADAR_AXES.filter((axis) => {
+        let count = 0;
+        for (const c of selectedChips) {
+          if (parseNumericValue(c.specifications[axis.key] || "") !== null) {
+            count += 1;
+            if (count >= 2) return true;
+          }
+        }
+        return false;
+      }),
+    [selectedChips],
+  );
+  const canDrawRadar = radarAxes.length >= 3;
+  const mixedTypes = useMemo(
+    () => new Set(selectedChips.map(chipKind)).size > 1,
+    [selectedChips],
+  );
   return (
-    <div className="min-h-screen bg-bg-dark pb-20 relative overflow-x-hidden">
+    <div className="min-h-screen bg-bg-dark pb-28 relative overflow-x-hidden">
       {/* Ambient glow background */}
       <div className="absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-primary/[0.07] via-transparent to-transparent pointer-events-none" />
       <div className="absolute top-40 -right-32 w-96 h-96 rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
@@ -871,6 +952,19 @@ export default function ComparisonPage() {
                   : "Side-by-side performance on key metrics"}
               </span>
             </div>
+            {mixedTypes && (
+              <div className="px-5 py-3 border-b border-border bg-amber/[0.06]">
+                <p className="flex items-start gap-2 text-xs text-amber leading-relaxed">
+                  <Info className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                  <span>
+                    You&apos;re comparing different chip types (GPU, CPU, or
+                    network). Compute and memory specs aren&apos;t directly
+                    comparable across types — use the table for exact numbers,
+                    or filter to one chip type.
+                  </span>
+                </p>
+              </div>
+            )}
             <div className="p-5">
               {/* Legend */}
               <div className="flex flex-wrap gap-2 mb-5">
@@ -904,17 +998,33 @@ export default function ComparisonPage() {
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
                 <div className="mx-auto w-full max-w-sm">
                   {visualMode === "radar" ? (
-                    <>
-                      <RadarChart
-                        chips={selectedChips}
-                        highlightId={highlightId}
-                        onHighlight={setHighlightId}
-                      />
-                      <p className="text-center text-[11px] text-text-dim mt-2">
-                        Each corner is a spec — the bigger the shape, the more
-                        powerful the chip. Hover a chip to focus its outline.
-                      </p>
-                    </>
+                    canDrawRadar ? (
+                      <>
+                        <RadarChart
+                          chips={selectedChips}
+                          axes={radarAxes}
+                          highlightId={highlightId}
+                          onHighlight={setHighlightId}
+                        />
+                        <p className="text-center text-[11px] text-text-dim mt-2">
+                          Each corner is a spec — the bigger the shape, the more
+                          powerful the chip. A shape hugging the center means no
+                          data for that spec. Hover a chip to focus its outline.
+                        </p>
+                      </>
+                    ) : (
+                      <div className="text-center py-14 px-6">
+                        <Info className="w-8 h-8 text-text-dim mx-auto mb-3" />
+                        <p className="text-sm font-semibold text-text mb-1">
+                          Radar not available for this mix
+                        </p>
+                        <p className="text-xs text-text-muted leading-relaxed max-w-xs mx-auto">
+                          These chips don&apos;t share enough specs to draw a
+                          comparison (e.g., GPU vs CPU vs network). Switch to
+                          Bars or the table to compare what they do share.
+                        </p>
+                      </div>
+                    )
                   ) : (
                     <SpecBars chips={selectedChips} />
                   )}
@@ -980,7 +1090,13 @@ export default function ComparisonPage() {
               variant="solid"
               size="lg"
               className="mt-6"
-              onClick={() => setSelectedIds(CHIPS.slice(0, 3).map((c) => c.id))}
+              onClick={() =>
+                setSelectedIds(
+                  CHIPS.filter((c) => DEFAULT_SERIES.includes(c.series)).map(
+                    (c) => c.id,
+                  ),
+                )
+              }
             >
               Try popular chips <ArrowRight className="w-4 h-4" />
             </Button>
@@ -1278,7 +1394,7 @@ export default function ComparisonPage() {
 
       {/* Mobile sticky action bar */}
       {selectedChips.length > 0 && (
-        <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-border bg-bg-dark/90 backdrop-blur-xl px-4 py-3 flex items-center justify-between gap-3">
+        <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-border bg-bg-dark/90 backdrop-blur-xl px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 -space-x-2">
             {selectedChips.slice(0, 4).map((chip) => {
               const color = getBrandColor(chip.manufacturer);
@@ -1314,6 +1430,8 @@ export default function ComparisonPage() {
               <div className="sm:hidden flex rounded-lg border border-border overflow-hidden">
                 <button
                   onClick={() => setVisualMode("radar")}
+                  aria-label="Radar chart view"
+                  title="Radar chart view"
                   className={`flex items-center gap-1.5 px-2.5 py-2 text-xs font-semibold transition-colors ${
                     visualMode === "radar"
                       ? "bg-secondary/15 text-secondary"
@@ -1324,6 +1442,8 @@ export default function ComparisonPage() {
                 </button>
                 <button
                   onClick={() => setVisualMode("bars")}
+                  aria-label="Bar chart view"
+                  title="Bar chart view"
                   className={`flex items-center gap-1.5 px-2.5 py-2 text-xs font-semibold transition-colors ${
                     visualMode === "bars"
                       ? "bg-secondary/15 text-secondary"
@@ -1336,6 +1456,12 @@ export default function ComparisonPage() {
             )}
             <button
               onClick={() => setView(view === "table" ? "cards" : "table")}
+              aria-label={
+                view === "table"
+                  ? "Switch to card view"
+                  : "Switch to table view"
+              }
+              title={view === "table" ? "Card view" : "Table view"}
               className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg border border-border text-text-muted hover:text-text transition-colors"
             >
               {view === "table" ? (
