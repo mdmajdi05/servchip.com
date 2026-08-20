@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getCountryByCode } from "@/data/countries";
+import { getAuthorizedDistributorFaq } from "@/data/faq";
 import {
   createMetadata,
   createBreadcrumb,
@@ -28,6 +29,11 @@ export default async function Page(props: {
   const countryObj = getCountryByCode(country);
   if (!countryObj) notFound();
 
+  const faqs = [
+    getAuthorizedDistributorFaq(countryObj.name),
+    ...countryObj.faqs,
+  ];
+
   return (
     <>
       <script
@@ -38,11 +44,9 @@ export default async function Page(props: {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={faqSchema(countryObj.faqs)}
+        dangerouslySetInnerHTML={faqSchema(faqs)}
       />
-      <PageClient
-        faqs={countryObj.faqs.map((f) => ({ q: f.question, a: f.answer }))}
-      />
+      <PageClient faqs={faqs.map((f) => ({ q: f.question, a: f.answer }))} />
     </>
   );
 }

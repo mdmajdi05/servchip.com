@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { HomeSections } from "@/components/home/HomeSections";
 import { getCountryByCode } from "@/data/countries";
+import { getAuthorizedDistributorFaq } from "@/data/faq";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
 import {
   createMetadata,
@@ -30,6 +31,11 @@ export default async function Page(props: {
   const market = COUNTRY_MARKETS[country];
   if (!countryObj) notFound();
 
+  const countryFaqs = [
+    getAuthorizedDistributorFaq(countryObj.name),
+    ...countryObj.faqs,
+  ];
+
   return (
     <>
       <script
@@ -40,9 +46,12 @@ export default async function Page(props: {
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={faqSchema(countryObj.faqs)}
+        dangerouslySetInnerHTML={faqSchema(countryFaqs)}
       />
-      <HomeSections country={countryObj} market={market} />
+      <HomeSections
+        country={{ ...countryObj, faqs: countryFaqs }}
+        market={market}
+      />
     </>
   );
 }

@@ -5,7 +5,10 @@ import {
   faqSchema,
   breadcrumbSchema,
 } from "@/lib/seo";
+import { getAuthorizedDistributorFaq } from "@/data/faq";
 import PageClient from "./page-client";
+
+const AUTHORIZED_FAQ = getAuthorizedDistributorFaq();
 
 const FAQS = [
   {
@@ -32,10 +35,7 @@ const FAQS = [
     q: "Can Servchip help me choose the right AI chip for my workload?",
     a: "Absolutely. Our multi-vendor certified engineering team provides free technical consultation to help match the right chip to your workload — whether it's AI training, inference, HPC, or data center operations. We offer architecture reviews, workload benchmarking, and side-by-side comparisons across NVIDIA, AMD, and Intel.",
   },
-  {
-    q: "Is Servchip an authorized NVIDIA distributor in India?",
-    a: "Yes. Servchip is an authorized distribution partner for NVIDIA, AMD, Intel, and 27+ manufacturers. We supply authentic data center GPUs including NVIDIA H100, H200, B200, AMD Instinct MI300X, and Intel Gaudi 3 to enterprises across India, UAE, and globally.",
-  },
+  { q: AUTHORIZED_FAQ.question, a: AUTHORIZED_FAQ.answer },
   {
     q: "Do you supply HBM memory for AI workloads?",
     a: "Yes. We are an authorized distributor for HBM3E memory from SK hynix, Samsung, and Micron. HBM memory is available for AI accelerator deployments, high-performance computing, and data center memory upgrades. Contact us for HBM3E pricing and availability.",

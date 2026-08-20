@@ -903,169 +903,174 @@ export default function ComparisonPage() {
           </div>
         </div>
 
-        {/* Category winners strip */}
-        {selectedChips.length > 1 && groupWinners.length > 0 && (
-          <div className="mb-6">
-            <div className="flex items-center gap-2 mb-3">
-              <Trophy className="w-4 h-4 text-amber" />
-              <h2 className="text-sm font-bold text-text">Category Leaders</h2>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-3">
-              {groupWinners.map(({ group, chips, metric }) => (
-                <div
-                  key={group}
-                  className="rounded-xl border border-amber/25 bg-gradient-to-br from-amber/[0.06] to-surface p-4 flex items-start gap-3"
-                >
-                  <span className="w-9 h-9 shrink-0 rounded-lg bg-amber/10 border border-amber/25 flex items-center justify-center">
-                    <Trophy className="w-4 h-4 text-amber" />
-                  </span>
-                  <div className="min-w-0">
-                    <div className="text-[10px] font-bold uppercase tracking-wider text-amber">
-                      {group}
-                    </div>
-                    <div className="text-sm font-bold text-text leading-tight mt-0.5 truncate">
-                      {chips.map((c) => c.name).join(" · ")}
-                    </div>
-                    <div className="text-[11px] text-text-dim mt-0.5">
-                      Leads on {metric}
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Visual comparison */}
+        {/* Category winners strip + Visual comparison (side-by-side on xl) */}
         {selectedChips.length > 1 && (
-          <div className="mb-6 rounded-2xl border border-border bg-surface overflow-hidden shadow-xl shadow-black/20">
-            <div className="px-5 py-4 border-b border-border flex flex-wrap items-center justify-between gap-3 bg-gradient-to-r from-surface-2/60 to-surface">
-              <div className="flex items-center gap-2">
-                <Sparkles className="w-4 h-4 text-secondary" />
-                <h2 className="text-sm font-bold text-text">
-                  Visual Comparison
-                </h2>
-              </div>
-              <span className="text-[11px] text-text-dim hidden md:inline">
-                {visualMode === "radar"
-                  ? "At a glance overview of who leads on each spec"
-                  : "Side-by-side performance on key metrics"}
-              </span>
-            </div>
-            {mixedTypes && (
-              <div className="px-5 py-3 border-b border-border bg-amber/[0.06]">
-                <p className="flex items-start gap-2 text-xs text-amber leading-relaxed">
-                  <Info className="w-3.5 h-3.5 shrink-0 mt-0.5" />
-                  <span>
-                    You&apos;re comparing different chip types (GPU, CPU, or
-                    network). Compute and memory specs aren&apos;t directly
-                    comparable across types — use the table for exact numbers,
-                    or filter to one chip type.
-                  </span>
-                </p>
+          <div className="grid xl:grid-cols-[340px_1fr] gap-6 mb-6 items-start">
+            {groupWinners.length > 0 && (
+              <div className="xl:sticky xl:top-24 self-start">
+                <div className="flex items-center gap-2 mb-3">
+                  <Trophy className="w-4 h-4 text-amber" />
+                  <h2 className="text-sm font-bold text-text">
+                    Category Leaders
+                  </h2>
+                </div>
+                <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-1 gap-3">
+                  {groupWinners.map(({ group, chips, metric }) => (
+                    <div
+                      key={group}
+                      className="rounded-xl border border-amber/25 bg-gradient-to-br from-amber/[0.06] to-surface p-4 flex items-start gap-3"
+                    >
+                      <span className="w-9 h-9 shrink-0 rounded-lg bg-amber/10 border border-amber/25 flex items-center justify-center">
+                        <Trophy className="w-4 h-4 text-amber" />
+                      </span>
+                      <div className="min-w-0">
+                        <div className="text-[10px] font-bold uppercase tracking-wider text-amber">
+                          {group}
+                        </div>
+                        <div className="text-sm font-bold text-text leading-tight mt-0.5 truncate">
+                          {chips.map((c) => c.name).join(" · ")}
+                        </div>
+                        <div className="text-[11px] text-text-dim mt-0.5">
+                          Leads on {metric}
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
               </div>
             )}
-            <div className="p-5">
-              {/* Legend */}
-              <div className="flex flex-wrap gap-2 mb-5">
-                {selectedChips.map((chip) => {
-                  const color = getBrandColor(chip.manufacturer);
-                  const active = highlightId === chip.id;
-                  return (
-                    <button
-                      key={chip.id}
-                      onMouseEnter={() => setHighlightId(chip.id)}
-                      onMouseLeave={() => setHighlightId(null)}
-                      className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-semibold text-text transition-all ${
-                        active
-                          ? "border-primary/50 bg-primary/10 shadow-[0_0_12px_color-mix(in_srgb,var(--primary)_15%,transparent)]"
-                          : "border-border/60 bg-bg-dark hover:border-primary/30"
-                      }`}
-                    >
-                      <span
-                        className="w-2.5 h-2.5 rounded-full shrink-0"
-                        style={{
-                          backgroundColor: color,
-                          boxShadow: `0 0 6px ${color}66`,
-                        }}
-                      />
-                      {chip.name}
-                    </button>
-                  );
-                })}
-              </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
-                <div className="mx-auto w-full max-w-sm">
-                  {visualMode === "radar" ? (
-                    canDrawRadar ? (
-                      <>
-                        <RadarChart
-                          chips={selectedChips}
-                          axes={radarAxes}
-                          highlightId={highlightId}
-                          onHighlight={setHighlightId}
-                        />
-                        <p className="text-center text-[11px] text-text-dim mt-2">
-                          Each corner is a spec — the bigger the shape, the more
-                          powerful the chip. A shape hugging the center means no
-                          data for that spec. Hover a chip to focus its outline.
-                        </p>
-                      </>
-                    ) : (
-                      <div className="text-center py-14 px-6">
-                        <Info className="w-8 h-8 text-text-dim mx-auto mb-3" />
-                        <p className="text-sm font-semibold text-text mb-1">
-                          Radar not available for this mix
-                        </p>
-                        <p className="text-xs text-text-muted leading-relaxed max-w-xs mx-auto">
-                          These chips don&apos;t share enough specs to draw a
-                          comparison (e.g., GPU vs CPU vs network). Switch to
-                          Bars or the table to compare what they do share.
-                        </p>
-                      </div>
-                    )
-                  ) : (
-                    <SpecBars chips={selectedChips} />
-                  )}
+            {/* Visual comparison */}
+            <div className="rounded-2xl border border-border bg-surface overflow-hidden shadow-xl shadow-black/20">
+              <div className="px-5 py-4 border-b border-border flex flex-wrap items-center justify-between gap-3 bg-gradient-to-r from-surface-2/60 to-surface">
+                <div className="flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-secondary" />
+                  <h2 className="text-sm font-bold text-text">
+                    Visual Comparison
+                  </h2>
                 </div>
-                <div>
-                  <h3 className="text-sm font-bold text-text mb-3 flex items-center gap-2">
-                    <Trophy className="w-4 h-4 text-amber" />
-                    What this tells you
-                  </h3>
-                  <ul className="space-y-2 text-sm text-text-muted leading-relaxed">
-                    <li className="flex items-start gap-2">
-                      <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                      <span>
-                        <strong className="text-text">Wider shape</strong> =
-                        strong across more specs — a balanced pick.
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                      <span>
-                        <strong className="text-text">Long spike</strong> in one
-                        direction = specialized for that workload.
-                      </span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
-                      <span>
-                        <strong className="text-text">
-                          Trophy in bars view
-                        </strong>{" "}
-                        = the best value for that specific metric.
-                      </span>
-                    </li>
-                  </ul>
-                  <div className="mt-4 p-3 rounded-lg border border-border/60 bg-bg-dark/60">
-                    <p className="text-[11px] text-text-dim leading-relaxed">
-                      <strong className="text-text-muted">Tip:</strong> pair
-                      this with the table below to see exact numbers — the
-                      visuals show relative strength, the table shows the raw
-                      specs.
-                    </p>
+                <span className="text-[11px] text-text-dim hidden md:inline">
+                  {visualMode === "radar"
+                    ? "At a glance overview of who leads on each spec"
+                    : "Side-by-side performance on key metrics"}
+                </span>
+              </div>
+              {mixedTypes && (
+                <div className="px-5 py-3 border-b border-border bg-amber/[0.06]">
+                  <p className="flex items-start gap-2 text-xs text-amber leading-relaxed">
+                    <Info className="w-3.5 h-3.5 shrink-0 mt-0.5" />
+                    <span>
+                      You&apos;re comparing different chip types (GPU, CPU, or
+                      network). Compute and memory specs aren&apos;t directly
+                      comparable across types — use the table for exact numbers,
+                      or filter to one chip type.
+                    </span>
+                  </p>
+                </div>
+              )}
+              <div className="p-5">
+                {/* Legend */}
+                <div className="flex flex-wrap gap-2 mb-5">
+                  {selectedChips.map((chip) => {
+                    const color = getBrandColor(chip.manufacturer);
+                    const active = highlightId === chip.id;
+                    return (
+                      <button
+                        key={chip.id}
+                        onMouseEnter={() => setHighlightId(chip.id)}
+                        onMouseLeave={() => setHighlightId(null)}
+                        className={`inline-flex items-center gap-2 px-3 py-2 rounded-lg border text-xs font-semibold text-text transition-all ${
+                          active
+                            ? "border-primary/50 bg-primary/10 shadow-[0_0_12px_color-mix(in_srgb,var(--primary)_15%,transparent)]"
+                            : "border-border/60 bg-bg-dark hover:border-primary/30"
+                        }`}
+                      >
+                        <span
+                          className="w-2.5 h-2.5 rounded-full shrink-0"
+                          style={{
+                            backgroundColor: color,
+                            boxShadow: `0 0 6px ${color}66`,
+                          }}
+                        />
+                        {chip.name}
+                      </button>
+                    );
+                  })}
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+                  <div className="mx-auto w-full max-w-sm">
+                    {visualMode === "radar" ? (
+                      canDrawRadar ? (
+                        <>
+                          <RadarChart
+                            chips={selectedChips}
+                            axes={radarAxes}
+                            highlightId={highlightId}
+                            onHighlight={setHighlightId}
+                          />
+                          <p className="text-center text-[11px] text-text-dim mt-2">
+                            Each corner is a spec — the bigger the shape, the
+                            more powerful the chip. A shape hugging the center
+                            means no data for that spec. Hover a chip to focus
+                            its outline.
+                          </p>
+                        </>
+                      ) : (
+                        <div className="text-center py-14 px-6">
+                          <Info className="w-8 h-8 text-text-dim mx-auto mb-3" />
+                          <p className="text-sm font-semibold text-text mb-1">
+                            Radar not available for this mix
+                          </p>
+                          <p className="text-xs text-text-muted leading-relaxed max-w-xs mx-auto">
+                            These chips don&apos;t share enough specs to draw a
+                            comparison (e.g., GPU vs CPU vs network). Switch to
+                            Bars or the table to compare what they do share.
+                          </p>
+                        </div>
+                      )
+                    ) : (
+                      <SpecBars chips={selectedChips} />
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="text-sm font-bold text-text mb-3 flex items-center gap-2">
+                      <Trophy className="w-4 h-4 text-amber" />
+                      What this tells you
+                    </h3>
+                    <ul className="space-y-2 text-sm text-text-muted leading-relaxed">
+                      <li className="flex items-start gap-2">
+                        <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                        <span>
+                          <strong className="text-text">Wider shape</strong> =
+                          strong across more specs — a balanced pick.
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                        <span>
+                          <strong className="text-text">Long spike</strong> in
+                          one direction = specialized for that workload.
+                        </span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
+                        <span>
+                          <strong className="text-text">
+                            Trophy in bars view
+                          </strong>{" "}
+                          = the best value for that specific metric.
+                        </span>
+                      </li>
+                    </ul>
+                    <div className="mt-4 p-3 rounded-lg border border-border/60 bg-bg-dark/60">
+                      <p className="text-[11px] text-text-dim leading-relaxed">
+                        <strong className="text-text-muted">Tip:</strong> pair
+                        this with the table below to see exact numbers — the
+                        visuals show relative strength, the table shows the raw
+                        specs.
+                      </p>
+                    </div>
                   </div>
                 </div>
               </div>

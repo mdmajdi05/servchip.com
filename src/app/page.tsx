@@ -6,6 +6,7 @@ import {
   faqSchema,
   breadcrumbSchema,
 } from "@/lib/seo";
+import { getAuthorizedDistributorFaq } from "@/data/faq";
 
 export const metadata: Metadata = createMetadata("home");
 
@@ -35,11 +36,7 @@ const HOME_FAQS = [
     answer:
       "Absolutely. Our engineering team provides free technical consultation to help match the right chip to your workload. We offer architecture reviews, workload benchmarking, and side-by-side comparisons across NVIDIA, AMD, and Intel.",
   },
-  {
-    question: "Is Servchip an authorized NVIDIA distributor in India?",
-    answer:
-      "Yes. Servchip is an authorized distribution partner for NVIDIA, AMD, Intel, and 27+ manufacturers. We supply authentic data center GPUs including NVIDIA H100, H200, AMD Instinct MI300X, and Intel Gaudi 3 to enterprises across India and globally.",
-  },
+  getAuthorizedDistributorFaq(),
   {
     question: "How do I buy AI chips in bulk?",
     answer:

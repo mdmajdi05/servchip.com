@@ -13,6 +13,7 @@ import {
   Cpu,
   ClipboardCheck,
 } from "lucide-react";
+import { getAuthorizedDistributorFaq } from "@/data/faq";
 
 export interface TrustBarItem {
   icon: string;
@@ -317,6 +318,7 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
     id: "products",
     label: "Products & Authenticity",
     items: [
+      getAuthorizedDistributorFaq(),
       {
         question: "Are all chips 100% authentic?",
         answer:

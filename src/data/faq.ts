@@ -19,6 +19,25 @@ export interface FAQItem {
   answer: string;
 }
 
+export function getAuthorizedDistributorFaq(countryName?: string): FAQItem {
+  const brandPart =
+    "Yes. Servchip is an authorized distribution partner for NVIDIA, AMD, Intel, and 27+ manufacturers. We supply authentic data center GPUs including NVIDIA H100, H200, B200, AMD Instinct MI300X, and Intel Gaudi 3 to enterprises";
+  if (countryName) {
+    const market =
+      countryName === "India"
+        ? "across India, UAE, and globally"
+        : `across ${countryName} and globally`;
+    return {
+      question: `Is Servchip an authorized NVIDIA distributor in ${countryName}?`,
+      answer: `${brandPart} ${market}.`,
+    };
+  }
+  return {
+    question: "Is Servchip an authorized NVIDIA distributor?",
+    answer: `${brandPart} across India, UAE, and globally.`,
+  };
+}
+
 export const FAQ_CATEGORIES: FAQCategory[] = [
   {
     id: "ordering",
