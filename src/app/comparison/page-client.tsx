@@ -14,6 +14,9 @@ import {
   Link2,
   Trophy,
   ArrowDown,
+  Sparkles,
+  BarChart3,
+  Gauge,
 } from "lucide-react";
 import Image from "next/image";
 import { SectionHeading } from "@/components/ui/SectionHeading";
@@ -104,6 +107,190 @@ function parseNumericValue(value: string): number | null {
   return Number.isFinite(num) ? num : null;
 }
 
+interface RadarDatum {
+  label: string;
+  key: keyof ChipProduct["specifications"];
+  value: number;
+  max: number;
+}
+
+function RadarChart({ chips }: { chips: ChipProduct[] }) {
+  const size = 260;
+  const cx = size / 2;
+  const cy = size / 2;
+  const radius = 100;
+  const axes: RadarDatum[] = [
+    { label: "Mem", key: "memory", value: 0, max: 1 },
+    { label: "Bandwidth", key: "memoryBandwidth", value: 0, max: 1 },
+    { label: "FP8", key: "fp8TFLOPS", value: 0, max: 1 },
+    { label: "FP16", key: "fp16TFLOPS", value: 0, max: 1 },
+    { label: "TF32", key: "tf32TFLOPS", value: 0, max: 1 },
+    { label: "Cores", key: "cudaCores", value: 0, max: 1 },
+  ];
+  const normalized = axes.map((axis) => {
+    const vals = chips
+      .map((c) => parseNumericValue(c.specifications[axis.key] || ""))
+      .filter((n): n is number => n !== null);
+    const max = vals.length ? Math.max(...vals) : 1;
+    return { ...axis, max: max || 1 };
+  });
+  function polyPoints(ratio: number) {
+    return normalized
+      .map((axis, i) => {
+        const angle = (Math.PI * 2 * i) / normalized.length - Math.PI / 2;
+        const r = radius * ratio;
+        return `${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle)}`;
+      })
+      .join(" ");
+  }
+  return (
+    <svg
+      viewBox={`0 0 ${size} ${size}`}
+      className="w-full h-full"
+      role="img"
+      aria-label="Radar chart comparing chip specifications"
+    >
+      {/* Grid rings */}
+      {[0.25, 0.5, 0.75, 1].map((r) => (
+        <polygon
+          key={r}
+          points={polyPoints(r)}
+          fill="none"
+          stroke="var(--border)"
+          strokeWidth="1"
+          opacity="0.6"
+        />
+      ))}
+      {/* Axis lines */}
+      {normalized.map((axis, i) => {
+        const angle = (Math.PI * 2 * i) / normalized.length - Math.PI / 2;
+        return (
+          <line
+            key={axis.key}
+            x1={cx}
+            y1={cy}
+            x2={cx + radius * Math.cos(angle)}
+            y2={cy + radius * Math.sin(angle)}
+            stroke="var(--border)"
+            strokeWidth="1"
+            opacity="0.4"
+          />
+        );
+      })}
+      {/* Chip polygons */}
+      {chips.map((chip) => {
+        const color = getBrandColor(chip.manufacturer);
+        const ratio = (axis: RadarDatum) =>
+          Math.max(
+            0.12,
+            (parseNumericValue(chip.specifications[axis.key] || "") ?? 0) /
+              (axis.max || 1),
+          );
+        const pts = normalized.map((axis, i) => {
+          const angle = (Math.PI * 2 * i) / normalized.length - Math.PI / 2;
+          const r = radius * ratio(axis);
+          return `${cx + r * Math.cos(angle)},${cy + r * Math.sin(angle)}`;
+        });
+        return (
+          <polygon
+            key={chip.id}
+            points={pts.join(" ")}
+            fill={color}
+            fillOpacity="0.12"
+            stroke={color}
+            strokeWidth="2"
+            strokeLinejoin="round"
+          />
+        );
+      })}
+      {/* Axis labels */}
+      {normalized.map((axis, i) => {
+        const angle = (Math.PI * 2 * i) / normalized.length - Math.PI / 2;
+        const lx = cx + (radius + 22) * Math.cos(angle);
+        const ly = cy + (radius + 22) * Math.sin(angle);
+        return (
+          <text
+            key={axis.key}
+            x={lx}
+            y={ly}
+            textAnchor="middle"
+            dominantBaseline="middle"
+            className="fill-current text-text-dim"
+            fontSize="9"
+            style={{ fill: "var(--text-dim)" }}
+          >
+            {axis.label}
+          </text>
+        );
+      })}
+    </svg>
+  );
+}
+
+function SpecBars({ chips }: { chips: ChipProduct[] }) {
+  const keys: {
+    key: keyof ChipProduct["specifications"];
+    label: string;
+    unit: string;
+  }[] = [
+    { key: "memory", label: "Memory", unit: "" },
+    { key: "memoryBandwidth", label: "Bandwidth", unit: "" },
+    { key: "fp8TFLOPS", label: "FP8", unit: " TFLOPS" },
+    { key: "fp16TFLOPS", label: "FP16", unit: " TFLOPS" },
+    { key: "tf32TFLOPS", label: "TF32", unit: " TFLOPS" },
+  ];
+  return (
+    <div className="space-y-5">
+      {keys.map(({ key, label, unit }) => {
+        const vals = chips.map((c) =>
+          parseNumericValue(c.specifications[key] || ""),
+        );
+        const max = Math.max(
+          ...vals.filter((v): v is number => v !== null).map((v) => v || 0),
+          1,
+        );
+        return (
+          <div key={key}>
+            <div className="flex items-center justify-between mb-1.5">
+              <span className="text-[11px] font-semibold text-text uppercase tracking-wider">
+                {label}
+              </span>
+            </div>
+            <div className="space-y-1.5">
+              {chips.map((chip) => {
+                const v = parseNumericValue(chip.specifications[key] || "");
+                const width = v === null ? 0 : (v / max) * 100;
+                const color = getBrandColor(chip.manufacturer);
+                return (
+                  <div key={chip.id} className="flex items-center gap-2">
+                    <span className="w-16 shrink-0 text-[10px] text-text-dim truncate">
+                      {chip.name.split(" ").slice(-1)[0]}
+                    </span>
+                    <div className="flex-1 h-4 bg-bg-dark rounded-full overflow-hidden border border-border/60">
+                      <div
+                        className="h-full rounded-full transition-all duration-700 ease-out"
+                        style={{
+                          width: `${Math.max(width, 2)}%`,
+                          background: `linear-gradient(90deg, ${color}, ${color}99)`,
+                          boxShadow: `0 0 8px ${color}44`,
+                        }}
+                      />
+                    </div>
+                    <span className="w-24 shrink-0 text-right text-[10px] font-mono text-text-muted truncate">
+                      {chip.specifications[key]}
+                      {v !== null ? unit : ""}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function ComparisonPage() {
   const getInitialSelection = () => {
     const defaults = CHIPS.filter((c) => DEFAULT_SERIES.includes(c.series)).map(
@@ -122,6 +309,7 @@ export default function ComparisonPage() {
   const [brandFilter, setBrandFilter] = useState<string>("all");
   const [showAllChips, setShowAllChips] = useState(false);
   const [view, setView] = useState<"table" | "cards">("table");
+  const [visualMode, setVisualMode] = useState<"radar" | "bars">("radar");
   const [copied, setCopied] = useState(false);
   const manufacturers = useMemo(() => {
     const map = new Map<string, string>();
@@ -415,30 +603,58 @@ export default function ComparisonPage() {
             </div>
             <div className="flex items-center gap-2">
               {selectedChips.length > 1 && (
-                <div className="flex rounded-lg border border-border overflow-hidden">
-                  <button
-                    onClick={() => setView("table")}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold transition-colors ${
-                      view === "table"
-                        ? "bg-primary text-bg-dark"
-                        : "text-text-muted hover:text-text"
-                    }`}
-                  >
-                    <Columns3 className="w-3.5 h-3.5" />
-                    Table
-                  </button>
-                  <button
-                    onClick={() => setView("cards")}
-                    className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold transition-colors ${
-                      view === "cards"
-                        ? "bg-primary text-bg-dark"
-                        : "text-text-muted hover:text-text"
-                    }`}
-                  >
-                    <LayoutGrid className="w-3.5 h-3.5" />
-                    Cards
-                  </button>
-                </div>
+                <>
+                  <div className="hidden sm:flex rounded-lg border border-border overflow-hidden">
+                    <button
+                      onClick={() => setVisualMode("radar")}
+                      className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold transition-colors ${
+                        visualMode === "radar"
+                          ? "bg-secondary/15 text-secondary"
+                          : "text-text-muted hover:text-text"
+                      }`}
+                      title="Radar chart comparison"
+                    >
+                      <Gauge className="w-3.5 h-3.5" />
+                      Radar
+                    </button>
+                    <button
+                      onClick={() => setVisualMode("bars")}
+                      className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold transition-colors ${
+                        visualMode === "bars"
+                          ? "bg-secondary/15 text-secondary"
+                          : "text-text-muted hover:text-text"
+                      }`}
+                      title="Bar chart comparison"
+                    >
+                      <BarChart3 className="w-3.5 h-3.5" />
+                      Bars
+                    </button>
+                  </div>
+                  <div className="flex rounded-lg border border-border overflow-hidden">
+                    <button
+                      onClick={() => setView("table")}
+                      className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold transition-colors ${
+                        view === "table"
+                          ? "bg-primary text-bg-dark"
+                          : "text-text-muted hover:text-text"
+                      }`}
+                    >
+                      <Columns3 className="w-3.5 h-3.5" />
+                      Table
+                    </button>
+                    <button
+                      onClick={() => setView("cards")}
+                      className={`flex items-center gap-1.5 px-3 py-1.5 text-xs font-semibold transition-colors ${
+                        view === "cards"
+                          ? "bg-primary text-bg-dark"
+                          : "text-text-muted hover:text-text"
+                      }`}
+                    >
+                      <LayoutGrid className="w-3.5 h-3.5" />
+                      Cards
+                    </button>
+                  </div>
+                </>
               )}
               {selectedChips.length > 0 && (
                 <button
@@ -535,6 +751,51 @@ export default function ComparisonPage() {
                   </div>
                 </div>
               ))}
+            </div>
+          </div>
+        )}
+
+        {/* Visual comparison */}
+        {selectedChips.length > 1 && (
+          <div className="mb-6 rounded-2xl border border-border bg-surface overflow-hidden shadow-xl shadow-black/20">
+            <div className="px-5 py-4 border-b border-border flex items-center justify-between gap-3 bg-gradient-to-r from-surface-2/60 to-surface">
+              <div className="flex items-center gap-2">
+                <Sparkles className="w-4 h-4 text-secondary" />
+                <h2 className="text-sm font-bold text-text">
+                  Visual Comparison
+                </h2>
+              </div>
+              <span className="text-[11px] text-text-dim hidden md:inline">
+                {visualMode === "radar"
+                  ? "Multi-axis overview across all specs"
+                  : "Relative performance on key metrics"}
+              </span>
+            </div>
+            <div className="p-5 grid grid-cols-1 lg:grid-cols-2 gap-6 items-center">
+              <div className="mx-auto w-full max-w-xs lg:max-w-none aspect-square">
+                {visualMode === "radar" ? (
+                  <RadarChart chips={selectedChips} />
+                ) : (
+                  <SpecBars chips={selectedChips} />
+                )}
+              </div>
+              <div className="flex flex-wrap gap-2 justify-center lg:justify-start">
+                {selectedChips.map((chip) => {
+                  const color = getBrandColor(chip.manufacturer);
+                  return (
+                    <span
+                      key={chip.id}
+                      className="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg border border-border/60 bg-bg-dark text-xs font-semibold text-text"
+                    >
+                      <span
+                        className="w-2 h-2 rounded-full"
+                        style={{ backgroundColor: color }}
+                      />
+                      {chip.name.split(" ").slice(-1)[0]}
+                    </span>
+                  );
+                })}
+              </div>
             </div>
           </div>
         )}
@@ -886,6 +1147,30 @@ export default function ComparisonPage() {
             )}
           </div>
           <div className="flex items-center gap-2">
+            {selectedChips.length > 1 && (
+              <div className="sm:hidden flex rounded-lg border border-border overflow-hidden">
+                <button
+                  onClick={() => setVisualMode("radar")}
+                  className={`flex items-center gap-1.5 px-2.5 py-2 text-xs font-semibold transition-colors ${
+                    visualMode === "radar"
+                      ? "bg-secondary/15 text-secondary"
+                      : "text-text-muted hover:text-text"
+                  }`}
+                >
+                  <Gauge className="w-3.5 h-3.5" />
+                </button>
+                <button
+                  onClick={() => setVisualMode("bars")}
+                  className={`flex items-center gap-1.5 px-2.5 py-2 text-xs font-semibold transition-colors ${
+                    visualMode === "bars"
+                      ? "bg-secondary/15 text-secondary"
+                      : "text-text-muted hover:text-text"
+                  }`}
+                >
+                  <BarChart3 className="w-3.5 h-3.5" />
+                </button>
+              </div>
+            )}
             <button
               onClick={() => setView(view === "table" ? "cards" : "table")}
               className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg border border-border text-text-muted hover:text-text transition-colors"
