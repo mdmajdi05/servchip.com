@@ -1,15 +1,15 @@
 "use client";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { AppLink as Link } from "@/components/ui/AppLink";
-import { X, ArrowRight, Cpu, Check } from "lucide-react";
+import { X, ArrowRight, Cpu, Check, Search, Trash2, Info } from "lucide-react";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
-import { Card } from "@/components/ui/Card";
-import { CHIPS } from "@/data/chips";
+import { CHIPS, getChipBySlug } from "@/data/chips";
 import { ConfiguratorPromo } from "@/components/shared/ConfiguratorPromo";
 import type { ChipProduct } from "@/types";
 const DEFAULT_SERIES = ["H100", "H200", "B200"];
+const MAX_SELECTED = 8;
 const STATUS_STYLES: Record<
   ChipProduct["status"],
   { label: string; variant: "green" | "cyan" | "amber" | "purple" | "default" }
@@ -71,21 +71,83 @@ const SPEC_LABELS: Record<string, string> = {
   manufacturingProcess: "Manufacturing Process",
 };
 export default function ComparisonPage() {
-  const defaultIds = useMemo(
-    () =>
-      CHIPS.filter((c) => DEFAULT_SERIES.includes(c.series)).map((c) => c.id),
-    [],
-  );
-  const [selectedIds, setSelectedIds] = useState<string[]>(defaultIds);
+  const getInitialSelection = () => {
+    const defaults = CHIPS.filter((c) => DEFAULT_SERIES.includes(c.series)).map(
+      (c) => c.id,
+    );
+    if (typeof window === "undefined") return defaults;
+    const params = new URLSearchParams(window.location.search);
+    const addIds = params
+      .getAll("add")
+      .map((slug) => getChipBySlug(slug)?.id)
+      .filter((id): id is string => Boolean(id));
+    return Array.from(new Set([...defaults, ...addIds])).slice(0, MAX_SELECTED);
+  };
+  const [selectedIds, setSelectedIds] = useState<string[]>(getInitialSelection);
+  const [search, setSearch] = useState("");
+  const [brandFilter, setBrandFilter] = useState<string>("all");
+  const [showAllChips, setShowAllChips] = useState(false);
+  const manufacturers = useMemo(() => {
+    const map = new Map<string, string>();
+    CHIPS.forEach((c) => {
+      if (!map.has(c.manufacturerId)) map.set(c.manufacturerId, c.manufacturer);
+    });
+    return Array.from(map.entries());
+  }, []);
   const selectedChips = useMemo(
     () => CHIPS.filter((c) => selectedIds.includes(c.id)),
     [selectedIds],
   );
+  const filteredChips = useMemo(() => {
+    const q = search.trim().toLowerCase();
+    return CHIPS.filter((c) => {
+      if (brandFilter !== "all" && c.manufacturerId !== brandFilter)
+        return false;
+      if (!q) return true;
+      return (
+        c.name.toLowerCase().includes(q) ||
+        c.series.toLowerCase().includes(q) ||
+        c.manufacturer.toLowerCase().includes(q) ||
+        c.architecture.toLowerCase().includes(q)
+      );
+    }).sort((a, b) => a.manufacturer.localeCompare(b.manufacturer));
+  }, [search, brandFilter]);
+  useEffect(() => {
+    const applyUrlParams = () => {
+      const params = new URLSearchParams(window.location.search);
+      const addIds = params
+        .getAll("add")
+        .map((slug) => getChipBySlug(slug)?.id)
+        .filter((id): id is string => Boolean(id));
+      if (addIds.length) {
+        setSelectedIds((prev) =>
+          Array.from(new Set([...prev, ...addIds])).slice(0, MAX_SELECTED),
+        );
+      }
+    };
+    window.addEventListener("popstate", applyUrlParams);
+    return () => window.removeEventListener("popstate", applyUrlParams);
+  }, []);
+  useEffect(() => {
+    const slugs = selectedIds
+      .map((id) => CHIPS.find((c) => c.id === id)?.slug)
+      .filter((s): s is string => Boolean(s));
+    const url = new URL(window.location.href);
+    url.search = slugs.length ? slugs.map((s) => `add=${s}`).join("&") : "";
+    window.history.replaceState(null, "", url.pathname + url.search);
+  }, [selectedIds]);
   function toggleChip(id: string) {
-    setSelectedIds((prev) =>
-      prev.includes(id) ? prev.filter((x) => x !== id) : [...prev, id],
-    );
+    setSelectedIds((prev) => {
+      if (prev.includes(id)) return prev.filter((x) => x !== id);
+      if (prev.length >= MAX_SELECTED) return prev;
+      return [...prev, id];
+    });
   }
+  const visibleChips = showAllChips
+    ? filteredChips
+    : filteredChips.slice(0, 24);
+  const gridCols = `180px repeat(${selectedChips.length}, 220px)`;
+  const atLimit = selectedIds.length >= MAX_SELECTED;
   return (
     <div className="min-h-screen bg-bg-dark pb-20">
       <div className="max-w-7xl mx-auto px-4">
@@ -93,40 +155,160 @@ export default function ComparisonPage() {
           level="h1"
           label="Compare"
           title="Compare Enterprise Chips"
-          subtitle="Compare NVIDIA, AMD, and Intel server chips side-by-side - view specifications, performance, and pricing across all enterprise accelerators"
+          subtitle="Search and compare NVIDIA, AMD, and Intel server chips side-by-side - pick up to 8 chips at a time for a clean, readable comparison"
           align="center"
         />
-        {/* Chip Selector */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {CHIPS.map((chip) => {
-            const selected = selectedIds.includes(chip.id);
-            return (
-              <button
-                key={chip.id}
-                onClick={() => toggleChip(chip.id)}
-                className={
-                  "relative flex items-center gap-2.5 px-4 py-2.5 rounded-xl border text-sm font-semibold transition-transform duration-200 cursor-pointer " +
-                  (selected
-                    ? "bg-primary/10 border-primary text-primary shadow-[0_0_12px_color-mix(in_srgb,var(--primary)_15%,transparent)]"
-                    : "bg-surface border-border text-text-muted hover:border-primary/30 hover:text-text")
-                }
-              >
-                <span
-                  className={
-                    "w-4 h-4 rounded border flex items-center justify-center transition-transform " +
-                    (selected ? "bg-primary border-primary" : "border-border")
-                  }
+        {/* Selector panel */}
+        <div className="rounded-2xl border border-border bg-surface overflow-hidden mb-8">
+          <div className="p-4 md:p-5 flex flex-col lg:flex-row lg:items-center gap-4 border-b border-border">
+            <div className="relative flex-1">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-dim" />
+              <input
+                type="text"
+                value={search}
+                onChange={(e) => setSearch(e.target.value)}
+                placeholder={`Search ${CHIPS.length} chips by name, series, brand...`}
+                aria-label="Search chips"
+                className="w-full pl-9 pr-9 py-2.5 text-sm bg-bg-dark border border-border rounded-xl text-text placeholder:text-text-dim focus:outline-none focus:border-primary/50 transition-transform"
+              />
+              {search && (
+                <button
+                  onClick={() => setSearch("")}
+                  aria-label="Clear search"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-text-dim hover:text-text"
                 >
-                  {selected && <Check className="w-3 h-3 text-bg-dark" />}
-                </span>
-                <Cpu className="w-3.5 h-3.5" />
-                {chip.series}
-                {selected && (
-                  <X className="w-3.5 h-3.5 text-primary/60 hover:text-primary" />
-                )}
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              )}
+            </div>
+            <div className="flex items-center gap-2 overflow-x-auto scrollbar-thin pb-1 lg:pb-0">
+              <button
+                onClick={() => setBrandFilter("all")}
+                className={`shrink-0 px-3 py-2 text-xs font-semibold rounded-lg border transition-transform ${
+                  brandFilter === "all"
+                    ? "bg-primary/15 border-primary/40 text-primary"
+                    : "border-border text-text-muted hover:text-text hover:border-primary/30"
+                }`}
+              >
+                All
               </button>
-            );
-          })}
+              {manufacturers.map(([id, name]) => (
+                <button
+                  key={id}
+                  onClick={() => setBrandFilter(id)}
+                  className={`shrink-0 px-3 py-2 text-xs font-semibold rounded-lg border transition-transform ${
+                    brandFilter === id
+                      ? "bg-primary/15 border-primary/40 text-primary"
+                      : "border-border text-text-muted hover:text-text hover:border-primary/30"
+                  }`}
+                >
+                  {name}
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="max-h-56 overflow-y-auto scrollbar-thin p-3">
+            {visibleChips.length === 0 ? (
+              <p className="text-sm text-text-muted px-3 py-6 text-center">
+                No chips match your search.
+              </p>
+            ) : (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2">
+                {visibleChips.map((chip) => {
+                  const selected = selectedIds.includes(chip.id);
+                  return (
+                    <button
+                      key={chip.id}
+                      onClick={() => toggleChip(chip.id)}
+                      disabled={!selected && atLimit}
+                      className={`flex items-center gap-2.5 px-3 py-2.5 rounded-xl border text-left text-sm transition-transform disabled:opacity-40 disabled:cursor-not-allowed ${
+                        selected
+                          ? "bg-primary/10 border-primary text-primary"
+                          : "bg-bg-dark border-border text-text-muted hover:border-primary/30 hover:text-text"
+                      }`}
+                    >
+                      <span
+                        className={`w-4 h-4 shrink-0 rounded border flex items-center justify-center transition-transform ${
+                          selected
+                            ? "bg-primary border-primary"
+                            : "border-border"
+                        }`}
+                      >
+                        {selected && <Check className="w-3 h-3 text-bg-dark" />}
+                      </span>
+                      <span className="min-w-0">
+                        <span className="block font-bold text-xs truncate">
+                          {chip.name}
+                        </span>
+                        <span className="block text-[10px] text-text-dim truncate">
+                          {chip.architecture}
+                        </span>
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
+          <div className="px-4 py-3 border-t border-border flex flex-wrap items-center justify-between gap-3">
+            <span className="text-xs text-text-muted">
+              {filteredChips.length} chips {search && "match your search"}
+              {!showAllChips &&
+                filteredChips.length > 24 &&
+                ` - showing 24 of ${filteredChips.length}`}
+            </span>
+            {filteredChips.length > 24 && (
+              <button
+                onClick={() => setShowAllChips((v) => !v)}
+                className="text-xs font-semibold text-primary hover:underline"
+              >
+                {showAllChips ? "Show fewer" : "Show all"}
+              </button>
+            )}
+          </div>
+        </div>
+        {/* Selected chips bar */}
+        <div className="mb-6">
+          <div className="flex items-center justify-between gap-3 mb-2">
+            <h2 className="text-sm font-bold text-text">
+              Comparing{" "}
+              <span className="text-primary">{selectedChips.length}</span>/
+              {MAX_SELECTED} chips
+            </h2>
+            {selectedChips.length > 0 && (
+              <button
+                onClick={() => setSelectedIds([])}
+                className="inline-flex items-center gap-1.5 text-xs text-text-dim hover:text-error transition-colors"
+              >
+                <Trash2 className="w-3.5 h-3.5" />
+                Clear all
+              </button>
+            )}
+          </div>
+          {atLimit && (
+            <div className="flex items-center gap-2 text-xs text-amber px-3 py-2 rounded-lg bg-amber/10 border border-amber/20 mb-2">
+              <Info className="w-3.5 h-3.5 shrink-0" />
+              You&apos;ve reached the {MAX_SELECTED}-chip limit. Remove one to
+              add another.
+            </div>
+          )}
+          <div className="flex items-center gap-2 overflow-x-auto scrollbar-thin pb-2">
+            {selectedChips.map((chip) => (
+              <span
+                key={chip.id}
+                className="inline-flex items-center gap-2 shrink-0 px-3 py-2 rounded-xl border border-primary/30 bg-primary/5 text-xs font-semibold text-primary"
+              >
+                {chip.name}
+                <button
+                  onClick={() => toggleChip(chip.id)}
+                  aria-label={`Remove ${chip.name}`}
+                  className="text-primary/60 hover:text-error transition-colors"
+                >
+                  <X className="w-3.5 h-3.5" />
+                </button>
+              </span>
+            ))}
+          </div>
         </div>
         {/* Comparison Table or Empty State */}
         {selectedChips.length === 0 ? (
@@ -138,65 +320,76 @@ export default function ComparisonPage() {
               No Chips Selected
             </h3>
             <p className="text-sm text-text-muted max-w-md mx-auto">
-              Click on any chip above to add it to the comparison table and view
-              specifications side by side.
+              Search and pick chips above to add them to the comparison table
+              and view specifications side by side.
             </p>
           </div>
         ) : (
-          <div className="overflow-x-auto pb-4 scrollbar-thin">
-            <div className="min-w-[640px]">
+          <div className="overflow-auto max-h-[640px] rounded-2xl border border-border scrollbar-thin">
+            <div
+              className="min-w-full"
+              style={{ minWidth: 180 + selectedChips.length * 220 }}
+            >
               {/* Header Row */}
-              <div className="grid grid-cols-[180px_repeat(auto-fit,minmax(200px,1fr))] gap-px mb-px">
-                <div className="sticky left-0 z-10 bg-bg-dark" />
+              <div
+                className="grid sticky top-0 z-20 border-b border-border bg-bg-dark"
+                style={{ gridTemplateColumns: gridCols }}
+              >
+                <div className="sticky left-0 z-30 bg-bg-dark px-4 py-3 flex items-center">
+                  <span className="text-xs font-bold text-text uppercase tracking-wider">
+                    Specification
+                  </span>
+                </div>
                 {selectedChips.map((chip) => (
-                  <Card
+                  <div
                     key={chip.id}
-                    variant="elevated"
-                    padding="sm"
-                    className="text-center"
+                    className="bg-bg-dark px-3 py-3 text-center border-l border-border"
                   >
-                    <div className="mb-1">
-                      <Badge size="sm">
-                        {STATUS_STYLES[chip.status].label}
-                      </Badge>
-                    </div>
+                    <Badge size="sm" className="mb-1">
+                      {STATUS_STYLES[chip.status].label}
+                    </Badge>
                     <h3 className="text-sm font-bold text-text leading-tight">
-                      {chip.series}
+                      {chip.name}
                     </h3>
                     <p className="text-[10px] text-text-dim mt-0.5 leading-tight line-clamp-1">
                       {chip.architecture}
                     </p>
                     <button
                       onClick={() => toggleChip(chip.id)}
-                      className="mt-2 text-text-dim hover:text-error transition-transform"
-                      aria-label={`Remove ${chip.series}`}
+                      className="mt-2 text-text-dim hover:text-error transition-colors"
+                      aria-label={`Remove ${chip.name}`}
                     >
                       <X className="w-3.5 h-3.5 mx-auto" />
                     </button>
-                  </Card>
+                  </div>
                 ))}
               </div>
               {/* Spec Rows */}
               {SPEC_GROUPS.map((group) => (
-                <div key={group.label} className="mb-px">
-                  {/* Group Header */}
-                  <div className="grid grid-cols-[180px_repeat(auto-fit,minmax(200px,1fr))] gap-px mb-px">
-                    <div className="sticky left-0 z-10 bg-surface-2 rounded-tl-lg px-4 py-2">
+                <div key={group.label}>
+                  <div
+                    className="grid bg-surface-2 border-b border-border"
+                    style={{ gridTemplateColumns: gridCols }}
+                  >
+                    <div className="sticky left-0 z-10 bg-surface-2 px-4 py-2">
                       <span className="text-xs font-bold text-primary uppercase tracking-wider">
                         {group.label}
                       </span>
                     </div>
                     {selectedChips.map((chip) => (
-                      <div key={chip.id} className="bg-surface-2 px-4 py-2" />
+                      <div
+                        key={chip.id}
+                        className="bg-surface-2 px-4 py-2 border-l border-border"
+                      />
                     ))}
                   </div>
-                  {/* Spec Values */}
                   {group.keys.map((key) => (
                     <div
                       key={key}
-                      className="grid grid-cols-[180px_repeat(auto-fit,minmax(200px,1fr))] gap-px mb-px"
+                      className="grid bg-surface border-b border-border/60"
+                      style={{ gridTemplateColumns: gridCols }}
                     >
-                      <div className="sticky left-0 z-10 bg-surface rounded-l-lg px-4 py-3 flex items-center">
+                      <div className="sticky left-0 z-10 bg-surface px-4 py-3 flex items-center border-r border-border/60">
                         <span className="text-xs text-text-dim">
                           {SPEC_LABELS[key] || key}
                         </span>
@@ -204,7 +397,7 @@ export default function ComparisonPage() {
                       {selectedChips.map((chip) => (
                         <div
                           key={chip.id}
-                          className="bg-surface px-4 py-3 flex items-center"
+                          className="bg-surface px-4 py-3 flex items-center border-l border-border/60"
                         >
                           <span className="text-xs text-text-muted font-mono">
                             {chip.specifications[key] || "-"}
@@ -216,10 +409,16 @@ export default function ComparisonPage() {
                 </div>
               ))}
               {/* Quote Row */}
-              <div className="grid grid-cols-[180px_repeat(auto-fit,minmax(200px,1fr))] gap-px mt-2">
-                <div className="sticky left-0 z-10" />
+              <div
+                className="grid bg-bg-dark"
+                style={{ gridTemplateColumns: gridCols }}
+              >
+                <div className="sticky left-0 z-10 bg-bg-dark px-4 py-3" />
                 {selectedChips.map((chip) => (
-                  <div key={chip.id} className="px-2 pt-2">
+                  <div
+                    key={chip.id}
+                    className="px-3 py-3 border-l border-border"
+                  >
                     <Link href={`/rfq?chip=${chip.slug}`}>
                       <Button variant="solid" size="sm" fullWidth>
                         Get Quote <ArrowRight className="w-3.5 h-3.5" />
@@ -230,6 +429,13 @@ export default function ComparisonPage() {
               </div>
             </div>
           </div>
+        )}
+        {/* Scroll hint */}
+        {selectedChips.length > 3 && (
+          <p className="text-xs text-text-dim text-center mt-3">
+            Horizontal scroll available - drag or shift+scroll to compare all{" "}
+            {selectedChips.length} chips.
+          </p>
         )}
         {/* Bottom CTA */}
         <div className="text-center mt-12 flex flex-wrap items-center justify-center gap-4">

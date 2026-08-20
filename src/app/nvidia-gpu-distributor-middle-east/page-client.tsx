@@ -561,7 +561,6 @@ export default function ServicesPage() {
             className="object-cover opacity-20"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-surface via-surface/80 to-surface pointer-events-none" />
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <div className="max-w-4xl mx-auto">
             <SectionHeading
@@ -946,7 +945,6 @@ export default function ServicesPage() {
             className="object-cover opacity-15"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-surface via-surface/85 to-surface pointer-events-none" />
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <div className="rounded-2xl border border-primary/20 bg-gradient-to-br from-primary/10 via-secondary/5 to-transparent p-8 md:p-12">
             <div className="flex flex-col lg:flex-row items-start lg:items-center gap-8 justify-between">

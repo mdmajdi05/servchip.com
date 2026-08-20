@@ -259,7 +259,6 @@ export default function ServicesPage() {
             className="object-cover opacity-20"
           />
         </div>
-        <div className="absolute inset-0 bg-gradient-to-b from-surface via-surface/85 to-surface pointer-events-none" />
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           {SPOTLIGHT_PAGES.map((spot) => (
             <div

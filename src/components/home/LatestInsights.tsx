@@ -58,7 +58,6 @@ export function LatestInsights() {
                       }
                       className="object-cover transition-transform duration-500 hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-surface via-transparent to-transparent" />
                   </div>
                 ) : (
                   <div className="h-48 bg-gradient-to-br from-bg-dark to-surface-2 flex items-center justify-center">
