@@ -6,6 +6,7 @@ import { post as post19 } from "./gpu-tco-cloud-vs-on-premise";
 import { post as post20 } from "./rocm-vs-cuda-amd-nvidia-ai-stack-2026";
 import { post as post21 } from "./gpu-server-procurement-uae-buyers-guide";
 import { post as post22 } from "./nvidia-h100-vs-amd-mi300x";
+import { post as post23 } from "./best-ai-companies-in-uae";
 
 export const BLOG_POSTS: BlogPost[] = [
   post16,
@@ -15,4 +16,5 @@ export const BLOG_POSTS: BlogPost[] = [
   post20,
   post21,
   post22,
+  post23,
 ];

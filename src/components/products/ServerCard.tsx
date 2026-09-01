@@ -35,7 +35,7 @@ export function ServerCard({ server, index: _index }: Props) {
             {server.images && server.images.length > 0 ? (
               <Image
                 src={server.images[0]}
-                alt={server.name}
+                alt={`${server.name} — ${server.categoryName}`}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 unoptimized

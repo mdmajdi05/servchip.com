@@ -132,7 +132,11 @@ function renderBlock(block: ContentBlock, idx: number) {
       );
     case "callout":
       return (
-        <BlogCallout key={idx} variant={block.variant} text={block.text} />
+        <BlogCallout
+          key={idx}
+          variant={block.variant}
+          text={renderRichText(block.text)}
+        />
       );
     case "faq":
       return (

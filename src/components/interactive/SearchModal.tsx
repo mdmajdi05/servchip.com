@@ -34,9 +34,14 @@ const TYPE_LABEL: Record<ProductType, string> = {
 export interface SearchModalProps {
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  initialQuery?: string;
 }
-export function SearchModal({ open, onOpenChange }: SearchModalProps) {
-  const [query, setQuery] = useState("");
+export function SearchModal({
+  open,
+  onOpenChange,
+  initialQuery,
+}: SearchModalProps) {
+  const [query, setQuery] = useState(initialQuery ?? "");
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [loading, setLoading] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
@@ -144,7 +149,7 @@ export function SearchModal({ open, onOpenChange }: SearchModalProps) {
                 value={query}
                 onChange={(e) => handleQueryChange(e.target.value)}
                 onKeyDown={handleInputKeyDown}
-                placeholder="Search products, blog posts, guides..."
+                placeholder="Search GPUs, CPUs, Servers & more..."
                 aria-label="Search products and blog posts"
                 className="flex-1 bg-transparent text-base text-text placeholder-text-dim outline-none"
               />

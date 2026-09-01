@@ -35,7 +35,7 @@ export function NetworkingCard({ net, index: _index }: Props) {
             {net.images && net.images.length > 0 ? (
               <Image
                 src={net.images[0]}
-                alt={net.name}
+                alt={`${net.name} — ${net.categoryName}`}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 unoptimized

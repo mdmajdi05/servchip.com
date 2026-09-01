@@ -212,7 +212,7 @@ export function Hero3D({
 
   return (
     <section
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="relative min-h-[70vh] flex items-center overflow-hidden"
       style={{ backgroundColor: "#070B15" }}
     >
       <style>{styles}</style>
@@ -227,7 +227,7 @@ export function Hero3D({
 
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(5,7,11,0.35)_100%)] pointer-events-none" />
 
-      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full z-10">
+      <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full z-10">
         <div className="text-center">
           <div
             className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-[11px] font-mono font-bold mb-8 tracking-wide uppercase border bg-black/40 backdrop-blur-md"
@@ -249,7 +249,7 @@ export function Hero3D({
           </h1>
 
           <p
-            className="text-slate-300 text-base sm:text-lg leading-relaxed mb-10 max-w-2xl mx-auto min-h-[3.5rem]"
+            className="text-slate-300 text-base sm:text-lg leading-relaxed mb-6 max-w-2xl mx-auto min-h-[3.5rem]"
             aria-live="polite"
           >
             <span className="text-primary/60 mr-2 font-mono text-sm">&gt;</span>
@@ -262,7 +262,7 @@ export function Hero3D({
             )}
           </p>
 
-          <div className="flex flex-wrap gap-4 justify-center mb-12">
+          <div className="flex flex-wrap gap-4 justify-center mb-8">
             <Link href={`/products`}>
               <button
                 className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm text-black"
@@ -289,26 +289,55 @@ export function Hero3D({
             </Link>
           </div>
 
-          <div
-            className="grid grid-cols-3 gap-8 max-w-lg mx-auto py-6 border-t"
-            style={{
-              borderColor:
-                "color-mix(in srgb, var(--hero-primary) 20%, transparent)",
-            }}
-          >
+          <div className="grid grid-cols-3 gap-3 sm:gap-5 max-w-xl mx-auto py-5">
             {heroStats.map(({ value, label }, i) => (
-              <div key={label}>
+              <div
+                key={label}
+                className="group relative text-center px-3 py-4 rounded-xl border bg-white/[0.03] backdrop-blur-sm hover:bg-white/[0.07] hover:-translate-y-1 transition-all duration-300"
+                style={{
+                  borderColor:
+                    "color-mix(in srgb, var(--hero-primary) 25%, transparent)",
+                }}
+              >
+                {/* Corner brackets */}
                 <span
-                  className="text-2xl sm:text-3xl font-black text-white font-mono tracking-tight block"
-                  style={{ textShadow: "0 0 30px rgba(0,188,212,0.2)" }}
+                  className="absolute top-1.5 left-1.5 w-2.5 h-2.5 border-t border-l"
+                  style={{ borderColor: "var(--hero-secondary)" }}
+                />
+                <span
+                  className="absolute bottom-1.5 right-1.5 w-2.5 h-2.5 border-b border-r"
+                  style={{ borderColor: "var(--hero-secondary)" }}
+                />
+
+                {/* Scan line */}
+                <span className="absolute inset-x-3 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+
+                <span
+                  className="text-xl sm:text-2xl lg:text-[1.75rem] font-black text-white font-mono tracking-tight block"
+                  style={{
+                    textShadow: `0 0 24px color-mix(in srgb, var(--hero-primary) 60%, transparent)`,
+                  }}
                 >
                   {value}
                 </span>
                 <span
-                  className="text-[10px] font-mono mt-0.5 uppercase tracking-widest font-semibold block"
-                  style={{ color: "var(--hero-primary)" }}
+                  className="block text-[9px] font-mono mt-2 uppercase tracking-[0.18em] font-semibold leading-snug"
+                  style={{ color: "var(--hero-secondary)" }}
                 >
                   {label}
+                </span>
+
+                {/* Progress glow bar */}
+                <span className="relative block mt-3 mx-auto h-[3px] w-full max-w-[90px] overflow-hidden rounded-full bg-white/10">
+                  <span
+                    className="absolute inset-y-0 left-0 rounded-full"
+                    style={{
+                      width: i === 0 ? "100%" : i === 1 ? "80%" : "96%",
+                      background:
+                        "linear-gradient(90deg, var(--hero-primary), var(--hero-secondary))",
+                      boxShadow: `0 0 12px color-mix(in srgb, var(--hero-primary) 70%, transparent)`,
+                    }}
+                  />
                 </span>
               </div>
             ))}

@@ -2,14 +2,23 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Phone, Mail, Send, MapPin, ChevronRight } from "lucide-react";
+import {
+  Phone,
+  Mail,
+  Send,
+  MapPin,
+  ChevronRight,
+  ShieldCheck,
+  Globe,
+  Boxes,
+} from "lucide-react";
 import { AnimatedLogo } from "@/components/ui/AnimatedLogo";
 import { BRANDS } from "@/data/brands";
-import { COUNTRIES, getCountryPath } from "@/data/countries";
 import { getBrandColor } from "@/data/brand-colors";
 import { SITE } from "@/lib/constants";
 import { useCountryPrefix } from "@/lib/useCountryPrefix";
 import { isCountryPath } from "@/lib/localized-path";
+import { CountrySelector } from "./CountrySelector";
 
 function FacebookIcon({ className }: { className?: string }) {
   return (
@@ -52,27 +61,17 @@ function InstagramIcon({ className }: { className?: string }) {
 }
 
 const SOCIAL_LINKS = [
-  {
-    name: "Facebook",
-    href: SITE.social.facebook,
-    icon: FacebookIcon,
-  },
-  {
-    name: "Twitter / X",
-    href: SITE.social.twitter,
-    icon: TwitterIcon,
-  },
-  {
-    name: "LinkedIn",
-    href: SITE.social.linkedin,
-    icon: LinkedInIcon,
-  },
+  { name: "Facebook", href: SITE.social.facebook, icon: FacebookIcon },
+  { name: "Twitter / X", href: SITE.social.twitter, icon: TwitterIcon },
+  { name: "LinkedIn", href: SITE.social.linkedin, icon: LinkedInIcon },
   { name: "YouTube", href: SITE.social.youtube, icon: YouTubeIcon },
-  {
-    name: "Instagram",
-    href: SITE.social.instagram,
-    icon: InstagramIcon,
-  },
+  { name: "Instagram", href: SITE.social.instagram, icon: InstagramIcon },
+];
+
+const TRUST_BADGES = [
+  { icon: ShieldCheck, label: "ISO 9001" },
+  { icon: Globe, label: "Worldwide Shipping" },
+  { icon: Boxes, label: "27+ Brands" },
 ];
 
 const FOOTER_LINKS: {
@@ -83,7 +82,7 @@ const FOOTER_LINKS: {
     title: "Products",
     links: [
       { label: "All Products", href: "/products" },
-      { label: "AI Accelerators", href: "/categories/ai-gpus-accelerators" },
+      { label: "AI Accelerators", href: "/categories/nvidia-data-center-gpus" },
       { label: "Server CPUs", href: "/categories/server-cpus" },
       { label: "AI Servers", href: "/categories/ai-servers-platforms" },
       { label: "Networking", href: "/categories/networking-interconnects" },
@@ -115,10 +114,6 @@ const FOOTER_LINKS: {
       { label: "Blog", href: "/blog" },
       { label: "Developer Hub", href: "/developer-hub" },
       { label: "Services", href: "/services" },
-      ...COUNTRIES.map((c) => ({
-        label: c.name,
-        href: getCountryPath(c),
-      })),
     ],
   },
   {
@@ -144,7 +139,15 @@ export function Footer() {
     links: col.links.map((l) => ({ ...l, href: prefixed(l.href) })),
   }));
   return (
-    <footer className="bg-bg-dark border-t border-border relative overflow-hidden">
+    <footer className="bg-bg-dark border-t border-border/40 relative overflow-hidden">
+      {/* Top gradient accent */}
+      <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
+
+      {/* Ambient glows */}
+      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
+      <div className="absolute top-24 right-0 w-80 h-80 rounded-full bg-secondary/10 blur-3xl pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
+
       {/* Grid background */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"
@@ -157,14 +160,13 @@ export function Footer() {
         }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 py-16 relative">
-        {/* Top grid */}
-        <div className="grid grid-cols-2 md:grid-cols-6 gap-8 lg:gap-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div className="grid grid-cols-2 md:grid-cols-6 gap-x-8 gap-y-12 py-16">
           {/* Brand (2 cols) */}
           <div className="col-span-2">
-            <Link href={prefixed("/")} className="mb-4 inline-block">
+            <Link href={prefixed("/")} className="mb-5 inline-block">
               <AnimatedLogo
-                size={32}
+                size={36}
                 showText
                 textClassName="text-text font-bold text-sm tracking-tight"
               />
@@ -173,6 +175,22 @@ export function Footer() {
               Trusted enterprise chip distributor for NVIDIA, AMD, Intel and 27+
               manufacturers. ISO 9001 certified, shipping worldwide.
             </p>
+
+            {/* Trust badges */}
+            <div className="flex flex-wrap gap-2 mb-6">
+              {TRUST_BADGES.map((b) => {
+                const Icon = b.icon;
+                return (
+                  <span
+                    key={b.label}
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wide rounded-full border border-primary/20 bg-primary/5 text-primary"
+                  >
+                    <Icon className="w-3 h-3" />
+                    {b.label}
+                  </span>
+                );
+              })}
+            </div>
 
             {/* Social icons */}
             <div className="flex gap-2.5 mb-6">
@@ -184,8 +202,8 @@ export function Footer() {
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-9 h-9 rounded-xl bg-surface border border-border flex items-center justify-center text-text-muted hover:text-primary hover:border-primary/40 hover:bg-primary/[0.04] hover:-translate-y-0.5 transition-transform duration-200"
                     aria-label={s.name}
+                    className="w-9 h-9 rounded-full bg-surface border border-border flex items-center justify-center text-text-muted hover:text-white hover:border-primary hover:bg-primary hover:-translate-y-0.5 hover:shadow-lg hover:shadow-primary/30 transition-all duration-200"
                   >
                     <Icon className="w-4 h-4" />
                   </a>
@@ -231,17 +249,20 @@ export function Footer() {
           {/* Link Columns */}
           {footerLinks.map((col) => (
             <nav key={col.title} aria-label={col.title}>
-              <h2 className="text-[11px] font-bold uppercase tracking-[0.12em] text-primary mb-4">
-                {col.title}
-              </h2>
+              <div className="mb-4">
+                <h2 className="text-[11px] font-bold uppercase tracking-[0.12em] text-primary">
+                  {col.title}
+                </h2>
+                <span className="mt-1.5 block h-[2px] w-6 bg-gradient-to-r from-primary to-transparent rounded-full" />
+              </div>
               <ul className="space-y-2.5">
                 {col.links.map((link) => (
                   <li key={link.href}>
                     <Link
                       href={link.href}
-                      className="group flex items-center gap-1.5 text-sm text-text-muted hover:text-text transition-transform"
+                      className="group flex items-center gap-1.5 text-sm text-text-muted hover:text-text transition-all duration-200"
                     >
-                      <ChevronRight className="w-3 h-3 text-primary/30 group-hover:text-primary/70 -ml-0.5 transition-transform" />
+                      <ChevronRight className="w-3 h-3 text-primary/30 group-hover:text-primary group-hover:translate-x-0.5 transition-all" />
                       {link.color ? (
                         <span className="flex items-center gap-1.5">
                           <span
@@ -257,44 +278,62 @@ export function Footer() {
                   </li>
                 ))}
               </ul>
+              {col.title === "Company" && (
+                <div className="mt-5">
+                  <p className="text-[10px] font-semibold uppercase tracking-widest text-text-dim mb-2">
+                    Visit a Location
+                  </p>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-2 rounded-full border border-border bg-surface text-xs text-text-muted hover:border-primary/40 hover:text-text transition-colors">
+                    <CountrySelector />
+                  </div>
+                </div>
+              )}
             </nav>
           ))}
         </div>
 
-        {/* Newsletter row */}
-        <div className="mt-12 pt-8 border-t border-border/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-          <div>
-            <h2 className="text-sm font-bold text-text mb-1">Stay Updated</h2>
-            <p className="text-xs text-text-dim">
-              Get the latest products and industry insights.
-            </p>
+        {/* Newsletter CTA */}
+        <div className="relative rounded-2xl p-px bg-gradient-to-r from-primary/40 via-secondary/30 to-primary/40">
+          <div className="rounded-[calc(1rem-1px)] bg-bg-dark px-6 py-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+            <div className="flex items-center gap-4">
+              <div className="hidden sm:flex w-11 h-11 shrink-0 rounded-xl bg-primary/10 border border-primary/25 items-center justify-center">
+                <Send className="w-5 h-5 text-primary" />
+              </div>
+              <div>
+                <h2 className="text-sm font-bold text-text mb-0.5">
+                  Stay Updated
+                </h2>
+                <p className="text-xs text-text-dim">
+                  Get the latest products and industry insights. No spam, ever.
+                </p>
+              </div>
+            </div>
+            <NewsletterForm />
           </div>
-          <NewsletterForm />
         </div>
 
         {/* Bottom */}
-        <div className="mt-8 pt-5 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-dim">
+        <div className="mt-10 py-6 border-t border-border/50 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-text-dim">
           <p>
             &copy; {new Date().getFullYear()} {SITE.companyName} All rights
             reserved.
           </p>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-5">
             <Link
               href={prefixed("/privacy")}
-              className="hover:text-text transition-transform"
+              className="hover:text-text transition-colors"
             >
               Privacy
             </Link>
             <Link
               href={prefixed("/terms")}
-              className="hover:text-text transition-transform"
+              className="hover:text-text transition-colors"
             >
               Terms
             </Link>
             <a
               href={`mailto:${SITE.email}`}
-              aria-label="Email sales team"
-              className="hover:text-primary transition-transform flex items-center gap-1"
+              className="hover:text-primary transition-colors flex items-center gap-1"
             >
               <Mail className="w-3 h-3" /> Contact
             </a>
@@ -338,29 +377,32 @@ function NewsletterForm() {
   }
 
   if (status === "success") {
-    return <p className="text-sm text-primary font-medium">{message}</p>;
+    return (
+      <p className="text-sm text-primary font-medium self-center">{message}</p>
+    );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="flex gap-2">
+    <form onSubmit={handleSubmit} className="flex gap-2 w-full sm:w-auto">
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
         placeholder="your@email.com"
-        className="w-56 px-3 py-2 text-sm bg-surface border border-border rounded-lg text-text placeholder:text-text-dim focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-transform"
+        className="flex-1 sm:w-64 px-4 py-2.5 text-sm bg-surface border border-border rounded-lg text-text placeholder:text-text-dim/60 focus:outline-none focus:border-primary/50 focus:ring-2 focus:ring-primary/15 transition-shadow"
         required
       />
       <button
         type="submit"
         disabled={status === "loading"}
         aria-label="Subscribe to newsletter"
-        className="px-4 py-2 bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:shadow-lg hover:shadow-primary/30 transition-transform disabled:opacity-50"
+        className="inline-flex items-center gap-2 px-4 py-2.5 bg-gradient-to-r from-primary to-primary-dark text-white text-sm font-semibold rounded-lg hover:shadow-lg hover:shadow-primary/25 hover:brightness-110 transition-all disabled:opacity-50 shrink-0"
       >
         <Send className="w-4 h-4" />
+        <span className="hidden sm:inline">Subscribe</span>
       </button>
       {status === "error" && (
-        <p className="text-xs text-error mt-1">{message}</p>
+        <p className="text-xs text-error mt-1 self-center">{message}</p>
       )}
     </form>
   );

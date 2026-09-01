@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { persistSubmission } from "../_lib/persist";
 
 export async function POST(request: NextRequest) {
   try {
@@ -7,21 +8,32 @@ export async function POST(request: NextRequest) {
 
     if (!name || !email) {
       return NextResponse.json(
-        { success: false, error: { code: "VALIDATION_ERROR", message: "Name and email are required" } },
-        { status: 400 }
+        {
+          success: false,
+          error: {
+            code: "VALIDATION_ERROR",
+            message: "Name and email are required",
+          },
+        },
+        { status: 400 },
       );
     }
 
     if (!chips || !Array.isArray(chips) || chips.length === 0) {
       return NextResponse.json(
-        { success: false, error: { code: "VALIDATION_ERROR", message: "At least one chip is required" } },
-        { status: 400 }
+        {
+          success: false,
+          error: {
+            code: "VALIDATION_ERROR",
+            message: "At least one chip is required",
+          },
+        },
+        { status: 400 },
       );
     }
 
     const refId = `RFQ-${Date.now().toString(36).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
-
-    console.log("RFQ Received:", {
+    const summary = {
       refId,
       name,
       email,
@@ -29,10 +41,18 @@ export async function POST(request: NextRequest) {
       phone,
       urgency,
       chipCount: chips.length,
-      chips: chips.map((c: { chipId: string; quantity: number }) => ({ chipId: c.chipId, quantity: c.quantity })),
+      chips: chips.map((c: { chipId: string; quantity: number }) => ({
+        chipId: c.chipId,
+        quantity: c.quantity,
+      })),
       requirements,
+    };
+
+    console.log("RFQ Received:", {
+      ...summary,
       timestamp: new Date().toISOString(),
     });
+    await persistSubmission("rfq", summary);
 
     return NextResponse.json({
       success: true,
@@ -42,8 +62,11 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("RFQ submission error:", error);
     return NextResponse.json(
-      { success: false, error: { code: "SERVER_ERROR", message: "Failed to submit RFQ" } },
-      { status: 500 }
+      {
+        success: false,
+        error: { code: "SERVER_ERROR", message: "Failed to submit RFQ" },
+      },
+      { status: 500 },
     );
   }
 }

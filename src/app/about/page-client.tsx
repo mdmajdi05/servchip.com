@@ -1,5 +1,7 @@
 "use client";
 
+import Image from "next/image";
+
 import { AppLink as Link } from "@/components/ui/AppLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
@@ -159,28 +161,40 @@ export default function AboutPage() {
                 </span>
               </div>
             </div>
-            <div className="bg-surface border border-border rounded-2xl p-8">
-              <h3 className="text-lg font-bold text-text mb-4">
-                Our Commitment
-              </h3>
-              <ul className="space-y-3">
-                {[
-                  "100% authentic products with full chain of custody",
-                  "ISO 9001:2015 certified quality management",
-                  "24-hour quote response guaranteed",
-                  "Dedicated account managers for every client",
-                  "Multi-vendor certified engineering support team",
-                  "Secure global logistics with real-time tracking",
-                ].map((item, i) => (
-                  <li
-                    key={item}
-                    className="flex items-center gap-2 text-sm text-text-muted"
-                  >
-                    <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
+            <div className="space-y-6">
+              <div className="relative h-56 md:h-64 rounded-2xl overflow-hidden border border-border">
+                <Image
+                  src="/images/server-room-2.webp"
+                  alt="Enterprise data center server racks stocked for global AI chip distribution"
+                  fill
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                  unoptimized
+                  className="object-cover"
+                />
+              </div>
+              <div className="bg-surface border border-border rounded-2xl p-8">
+                <h3 className="text-lg font-bold text-text mb-4">
+                  Our Commitment
+                </h3>
+                <ul className="space-y-3">
+                  {[
+                    "100% authentic products with full chain of custody",
+                    "ISO 9001:2015 certified quality management",
+                    "24-hour quote response guaranteed",
+                    "Dedicated account managers for every client",
+                    "Multi-vendor certified engineering support team",
+                    "Secure global logistics with real-time tracking",
+                  ].map((item, i) => (
+                    <li
+                      key={item}
+                      className="flex items-center gap-2 text-sm text-text-muted"
+                    >
+                      <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </div>
         </div>

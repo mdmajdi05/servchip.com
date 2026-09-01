@@ -956,7 +956,7 @@ export default function ComparisonPage() {
                           {chip.images && chip.images[0] ? (
                             <Image
                               src={chip.images[0]}
-                              alt={chip.name}
+                              alt={`${chip.name} — ${chip.categoryName}`}
                               width={40}
                               height={40}
                               unoptimized
@@ -1098,7 +1098,7 @@ export default function ComparisonPage() {
                     {chip.images && chip.images[0] ? (
                       <Image
                         src={chip.images[0]}
-                        alt={chip.name}
+                        alt={`${chip.name} — ${chip.categoryName}`}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                         unoptimized

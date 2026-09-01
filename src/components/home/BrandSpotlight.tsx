@@ -15,24 +15,24 @@ const ENTERPRISE_ROWS = [
   {
     manufacturer: "NVIDIA",
     chips: ["nvidia-h100", "nvidia-h200", "nvidia-b200", "nvidia-gb200"],
-    image:
-      "https://images.unsplash.com/photo-1600267185393-e158a98703de?w=600&q=80",
+    image: "/images/ai-chip-5.jpg",
+    alt: "NVIDIA H100 and H200 data center GPUs for enterprise AI training clusters",
     desc: "Enterprise AI training and inference GPUs powering the world's largest AI clusters.",
     badge: "Data Center GPUs",
   },
   {
     manufacturer: "AMD",
     chips: ["amd-mi300x", "amd-mi325x", "amd-mi350x"],
-    image:
-      "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=80",
+    image: "/images/ai-chip-2.jpg",
+    alt: "AMD Instinct MI300X accelerators for AI training and high-performance computing",
     desc: "High-performance Instinct accelerators for AI training, HPC, and scientific computing.",
     badge: "Instinct Accelerators",
   },
   {
     manufacturer: "Intel",
     chips: ["intel-gaudi-3", "intel-xeon-6980p", "intel-xeon-8490h"],
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
+    image: "/images/ai-chip-3.jpg",
+    alt: "Intel Gaudi 3 AI accelerators and Xeon processors for data center workloads",
     desc: "Gaudi AI accelerators and Xeon processors for enterprise AI and data center workloads.",
     badge: "AI & Xeon",
   },
@@ -90,7 +90,7 @@ export function BrandSpotlight() {
                       ) : (
                         <Image
                           src={row.image}
-                          alt={`${row.manufacturer} enterprise chips`}
+                          alt={row.alt}
                           fill
                           sizes="(max-width: 1024px) 100vw, 50vw"
                           unoptimized

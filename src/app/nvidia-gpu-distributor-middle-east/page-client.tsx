@@ -249,8 +249,8 @@ const WORKLOAD_SOLUTIONS = [
   {
     title: "LLM training",
     description:
-      "Memory capacity and interconnect bandwidth typically matter more than raw compute for large language model training; see our VRAM and GPU memory sizing guide before specifying a cluster",
-    href: "/blog/vram-gpu-memory-requirements-llm",
+      "Memory capacity and interconnect bandwidth typically matter more than raw compute for large language model training; see our GPU sizing guide before specifying a cluster",
+    href: "/blog/how-many-gpus-for-llm-training",
   },
   {
     title: "AI inference",
@@ -777,14 +777,14 @@ export default function ServicesPage() {
             </Link>
             , our{" "}
             <Link
-              href="/blog/gpu-tco-cloud-vs-on-premise"
+              href="/blog/gpu-total-cost-of-ownership-cloud-vs-on-premise"
               className="text-primary hover:underline"
             >
               GPU total cost of ownership analysis
             </Link>
             , and our{" "}
             <Link
-              href="/blog/air-vs-liquid-server-cooling"
+              href="/solutions/data-centers"
               className="text-primary hover:underline"
             >
               data center cooling guidance

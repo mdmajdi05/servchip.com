@@ -20,42 +20,42 @@ import { cn } from "@/lib/utils";
 const API_ENDPOINTS = [
   {
     method: "GET",
-    path: "/api/v1/chips",
+    path: "/api/chips",
     desc: "List all chips with filters (category, architecture, status)",
   },
   {
     method: "GET",
-    path: "/api/v1/chips/:slug",
+    path: "/api/chips/:slug",
     desc: "Get full chip details including specs by slug",
   },
   {
     method: "GET",
-    path: "/api/v1/chips/featured",
+    path: "/api/chips/featured",
     desc: "Get featured NVIDIA chips",
   },
   {
     method: "GET",
-    path: "/api/v1/categories",
+    path: "/api/categories",
     desc: "List all chip categories with product counts",
   },
   {
     method: "GET",
-    path: "/api/v1/blog",
+    path: "/api/blog",
     desc: "List blog posts with category/tag filters",
   },
   {
     method: "POST",
-    path: "/api/v1/rfq",
+    path: "/api/rfq",
     desc: "Submit a request for quote (auth required)",
   },
   {
     method: "POST",
-    path: "/api/v1/contact",
+    path: "/api/contact",
     desc: "Submit a contact form message",
   },
   {
     method: "POST",
-    path: "/api/v1/newsletter",
+    path: "/api/newsletter",
     desc: "Subscribe to the Servchip newsletter",
   },
 ];
@@ -162,16 +162,16 @@ func main() {
     fmt.Println(h200.Specs.Memory) // "141GB HBM3e"
 }`,
   curl: `# Fetch featured NVIDIA chips
-curl -X GET "https://api.servchip.com/v1/chips?featured=true" \\
+curl -X GET "https://servchip.com/api/chips?featured=true" \\
   -H "Authorization: Bearer $SERVCHIP_API_KEY" \\
   -H "Content-Type: application/json"
 
 # Get a specific chip by slug
-curl -X GET "https://api.servchip.com/v1/chips/nvidia-h200-tensor-core-gpu" \\
+curl -X GET "https://servchip.com/api/chips/nvidia-h200-tensor-core-gpu" \\
   -H "Authorization: Bearer $SERVCHIP_API_KEY"
 
 # Submit an RFQ
-curl -X POST "https://api.servchip.com/v1/rfq" \\
+curl -X POST "https://servchip.com/api/rfq" \\
   -H "Authorization: Bearer $SERVCHIP_API_KEY" \\
   -H "Content-Type: application/json" \\
   -d '{
@@ -183,7 +183,7 @@ curl -X POST "https://api.servchip.com/v1/rfq" \\
 
 const CODE_SAMPLE = `// Fetch featured NVIDIA chips
 const response = await fetch(
-  "https://api.servchip.com/v1/chips?featured=true",
+  "https://servchip.com/api/chips?featured=true",
   {
     headers: {
       "Authorization": "Bearer sk_your_api_key",
@@ -197,15 +197,15 @@ const { data } = await response.json();
 console.log(data[0].name); // "NVIDIA H100 Tensor Core GPU"`;
 
 const INLINED_ENDPOINTS = [
-  { method: "GET", path: "/api/v1/chips", desc: "List all chips with filters" },
+  { method: "GET", path: "/api/chips", desc: "List all chips with filters" },
   {
     method: "GET",
-    path: "/api/v1/chips/:slug",
+    path: "/api/chips/:slug",
     desc: "Get chip details by slug",
   },
-  { method: "GET", path: "/api/v1/categories", desc: "List all categories" },
-  { method: "POST", path: "/api/v1/rfq", desc: "Submit request for quote" },
-  { method: "GET", path: "/api/v1/blog", desc: "List blog posts" },
+  { method: "GET", path: "/api/categories", desc: "List all categories" },
+  { method: "POST", path: "/api/rfq", desc: "Submit request for quote" },
+  { method: "GET", path: "/api/blog", desc: "List blog posts" },
 ];
 
 const INLINED_FEATURES = [
@@ -401,7 +401,7 @@ export default function DeveloperHubPage() {
             <p className="text-base md:text-lg text-text-muted max-w-2xl mx-auto mt-3">
               All REST endpoints. Base URL:{" "}
               <code className="px-1.5 py-0.5 rounded bg-surface-2 border border-border text-primary font-mono text-sm">
-                https://api.servchip.com/v1
+                https://servchip.com/api
               </code>
             </p>
           </div>

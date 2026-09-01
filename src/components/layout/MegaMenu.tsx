@@ -97,7 +97,7 @@ export function MegaMenu({ columns, featured }: MegaMenuProps) {
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      className="group/link flex items-center justify-between py-1.5 px-2.5 rounded-lg text-sm text-text-muted hover:text-text hover:bg-primary/[0.06] transition-transform duration-200"
+                      className="group/link flex items-center justify-between py-1.5 px-2.5 rounded-lg text-sm text-text-muted hover:text-text hover:bg-primary/[0.06] transition-transform duration-200 dark:text-white/85 dark:hover:text-white"
                     >
                       <div className="flex items-center gap-2.5 min-w-0">
                         <span className="w-1.5 h-1.5 rounded-full bg-primary/30 group-hover/link:bg-primary shrink-0 transition-transform duration-200" />
@@ -113,7 +113,7 @@ export function MegaMenu({ columns, featured }: MegaMenuProps) {
                       <ChevronRight className="w-3 h-3 shrink-0 opacity-0 -translate-x-1 group-hover/link:opacity-100 group-hover/link:translate-x-0 transition-transform duration-200 text-primary" />
                     </Link>
                     {link.description && (
-                      <p className="text-[11px] text-text-dim px-[26px] pb-1 leading-relaxed line-clamp-1">
+                      <p className="text-[11px] text-text-dim px-[26px] pb-1 leading-relaxed line-clamp-1 dark:text-white/60">
                         {link.description}
                       </p>
                     )}
@@ -128,7 +128,9 @@ export function MegaMenu({ columns, featured }: MegaMenuProps) {
       {featured && (
         <div className="mt-4 p-4 rounded-xl border border-primary/15 bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-between">
           <div>
-            <p className="text-xs text-text-muted mb-0.5">{featured.tag}</p>
+            <p className="text-xs text-text-muted mb-0.5 dark:text-white/70">
+              {featured.tag}
+            </p>
             <p className="text-sm font-semibold text-text">{featured.title}</p>
           </div>
           <Link
@@ -141,7 +143,7 @@ export function MegaMenu({ columns, featured }: MegaMenuProps) {
       )}
 
       <div className="mt-4 h-px bg-gradient-to-r from-transparent via-primary/15 to-transparent" />
-      <div className="mt-2.5 flex items-center justify-between text-[10px] text-text-dim/40">
+      <div className="mt-2.5 flex items-center justify-between text-[10px] text-text-dim/40 dark:text-white/50">
         <span>
           Press{" "}
           <kbd className="px-1 py-0.5 rounded bg-primary/[0.06] text-primary/60 font-mono text-[9px]">

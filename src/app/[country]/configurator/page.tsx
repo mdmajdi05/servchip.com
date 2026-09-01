@@ -17,7 +17,15 @@ export async function generateMetadata(props: {
   params: Promise<{ country: string }>;
 }): Promise<Metadata> {
   const { country } = await props.params;
-  return createMetadata("configurator", country) ?? {};
+  const base = createMetadata("configurator", country) ?? {};
+  return {
+    ...base,
+    robots: {
+      index: false,
+      follow: true,
+      googleBot: { index: false, follow: true },
+    },
+  };
 }
 
 export default async function Page(props: {

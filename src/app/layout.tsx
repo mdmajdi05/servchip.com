@@ -140,9 +140,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={websiteSchema()}
         />
-        <Script
-          id="theme-init"
-          strategy="beforeInteractive"
+        <script
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
@@ -156,7 +154,7 @@ export default function RootLayout({
           }}
         />
         {/* Fixed header offset — CSS custom property + inline style on <main> */}
-        <style>{`:root{--header-height:72px}@media(min-width:1024px){:root{--header-height:104px}}`}</style>
+        <style>{`:root{--header-height:56px}@media(min-width:1024px){:root{--header-height:124px}}`}</style>
       </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans bg-bg-body text-text antialiased`}

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { persistSubmission } from "../_lib/persist";
 
 export async function POST(request: NextRequest) {
   try {
@@ -30,7 +31,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log("📩 Contact form submission:", {
+    const summary = {
       name,
       email,
       company,
@@ -39,8 +40,13 @@ export async function POST(request: NextRequest) {
       message,
       quantity,
       country,
+    };
+
+    console.log("📩 Contact form submission:", {
+      ...summary,
       timestamp: new Date().toISOString(),
     });
+    await persistSubmission("contact", summary);
 
     return NextResponse.json({
       success: true,

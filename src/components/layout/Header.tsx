@@ -23,6 +23,7 @@ import { MegaMenu } from "./MegaMenu";
 import { TopBar } from "./TopBar";
 import { CountrySelector } from "./CountrySelector";
 import { SearchModal } from "@/components/interactive/SearchModal";
+import { HeaderSearch } from "@/components/interactive/HeaderSearch";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { ColorPicker } from "@/components/ui/ColorPicker";
 import { AnimatedLogo } from "@/components/ui/AnimatedLogo";
@@ -53,7 +54,7 @@ type NavItem = MegaNavItem | SimpleNavItem;
 const PRODUCT_COLUMNS: NavColumn[] = [
   {
     title: "AI Accelerators",
-    href: "/categories/ai-gpus-accelerators",
+    href: "/categories/nvidia-data-center-gpus",
     links: [
       {
         label: "NVIDIA",
@@ -353,6 +354,61 @@ const SERVICES_COLUMNS = [
     ],
   },
 ];
+const TECHNOLOGY_COLUMNS: NavColumn[] = [
+  {
+    title: "Architectures",
+    href: "/technology",
+    links: [
+      {
+        label: "NVIDIA Blackwell",
+        href: "/technology",
+        description: "B200, GB200 next-gen platform",
+      },
+      {
+        label: "NVIDIA Hopper",
+        href: "/technology",
+        description: "H100, H200 generation",
+      },
+      {
+        label: "Ada Lovelace",
+        href: "/brands/nvidia",
+        description: "RTX 40 / 50 generation",
+      },
+      {
+        label: "NVIDIA Grace",
+        href: "/brands/nvidia",
+        description: "ARM CPU superchip",
+      },
+      {
+        label: "AMD CDNA",
+        href: "/brands/amd",
+        description: "Instinct MI300X generation",
+      },
+    ],
+  },
+  {
+    title: "Tools",
+    href: "/technology",
+    links: [
+      {
+        label: "Chip Comparison Tool",
+        href: "/comparison",
+        description: "Side-by-side GPU spec comparison",
+      },
+      {
+        label: "Server Configurator",
+        href: "/configurator",
+        description: "Build your AI server",
+      },
+      {
+        label: "Developer Hub",
+        href: "/developer-hub",
+        description: "API docs & SDKs",
+      },
+    ],
+  },
+];
+
 const RESOURCE_COLUMNS = [
   {
     title: "Learn",
@@ -407,7 +463,7 @@ const NAV_MEGA: MegaNavItem[] = [
     ],
     href: "/solutions",
   },
-  { label: "Technology", columns: RESOURCE_COLUMNS, href: "/technology" },
+  { label: "Technology", columns: TECHNOLOGY_COLUMNS, href: "/technology" },
   { label: "Services", columns: SERVICES_COLUMNS, href: "/services" },
   { label: "Resources", columns: RESOURCE_COLUMNS, href: "/resources" },
 ];
@@ -430,7 +486,9 @@ function NavLink({
       href={href}
       className={cn(
         "relative px-3 py-2 text-sm font-medium rounded-lg transition-transform duration-200 group",
-        isActive ? "text-primary" : "text-text-muted hover:text-text",
+        isActive
+          ? "text-primary"
+          : "text-text-muted hover:text-text dark:text-white dark:hover:text-white/80",
       )}
     >
       <span className="relative">
@@ -452,6 +510,13 @@ export function Header() {
   const [hidden, setHidden] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [searchInitial, setSearchInitial] = useState("");
+  const [searchNonce, setSearchNonce] = useState(0);
+  const openSearchModal = useCallback((query?: string) => {
+    setSearchInitial(query ?? "");
+    setSearchNonce((n) => n + 1);
+    setSearchOpen(true);
+  }, []);
   const [mobileDropdown, setMobileDropdown] = useState<string | null>(null);
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const menuCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
@@ -584,25 +649,81 @@ export function Header() {
         )}
       >
         <TopBar />
-        <header
+        <div
           className={cn(
-            "h-[72px] flex items-center justify-between px-6 sm:px-8 lg:px-12 bg-white dark:bg-surface border-b border-gray-200/80 dark:border-border/80",
+            "bg-white dark:bg-surface border-b border-gray-200/80 dark:border-border/80",
             scrolled && "shadow-md shadow-black/5",
           )}
         >
-          {/* Logo */}
-          <Link href={prefixed("/") ?? "/"} className="flex-shrink-0">
-            <AnimatedLogo size={36} showText />
-          </Link>
-          {/* Desktop Nav */}
+          {/* Row 1: Logo | right-aligned Search + Actions */}
+          <div className="h-14 flex items-center justify-between gap-4 px-6 sm:px-8 lg:px-12">
+            {/* Logo */}
+            <Link href={prefixed("/") ?? "/"} className="flex-shrink-0">
+              <AnimatedLogo size={36} showText />
+            </Link>
+            {/* Inline Search (right side, extended) + Actions */}
+            <div className="flex items-center gap-3 ml-auto">
+              <HeaderSearch
+                className="hidden lg:block flex-1 min-w-0"
+                onOpenModal={openSearchModal}
+              />
+              <ColorPicker />
+              <ThemeToggle />
+              <Link
+                href={prefixed("/dashboard") ?? "/dashboard"}
+                className="hidden lg:flex items-center gap-1.5 text-sm font-medium text-text-muted hover:text-text hover:bg-primary/[0.04] transition-transform px-3 py-2 rounded-lg whitespace-nowrap dark:text-white dark:hover:text-white/80"
+              >
+                <User className="w-4 h-4" />
+                Sign In
+              </Link>
+              <Link
+                href={prefixed("/rfq") ?? "/rfq"}
+                className="relative hidden sm:inline-flex items-center gap-1.5 px-5 py-2 text-xs font-bold bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:from-primary-dark hover:to-primary transition-transform duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 group/quote overflow-hidden whitespace-nowrap"
+              >
+                <Sparkles className="w-3 h-3 group-hover/quote:rotate-12 transition-transform duration-300" />
+                Get Quote
+                <span className="absolute inset-0 bg-white/10 translate-y-full group-hover/quote:translate-y-0 transition-transform duration-300" />
+              </Link>
+              {/* Hamburger */}
+              <button
+                onClick={() => setMobileOpen((v) => !v)}
+                className={cn(
+                  "lg:hidden flex flex-col gap-[5px] p-2 rounded-lg transition-transform hover:bg-primary/[0.04]",
+                  mobileOpen && "active",
+                )}
+                aria-label="Toggle menu"
+                aria-expanded={mobileOpen}
+              >
+                <span
+                  className={cn(
+                    "block w-6 h-[2px] bg-text rounded-sm transition-transform duration-300",
+                    mobileOpen && "translate-y-[7px] rotate-45",
+                  )}
+                />
+                <span
+                  className={cn(
+                    "block w-6 h-[2px] bg-text rounded-sm transition-transform duration-300",
+                    mobileOpen && "opacity-0",
+                  )}
+                />
+                <span
+                  className={cn(
+                    "block w-6 h-[2px] bg-text rounded-sm transition-transform duration-300",
+                    mobileOpen && "-translate-y-[7px] -rotate-45",
+                  )}
+                />
+              </button>
+            </div>
+          </div>
+          {/* Row 2: Desktop Nav */}
           <div
             ref={navContainerRef}
-            className="hidden lg:block flex-1 relative"
+            className="hidden lg:block relative border-t border-gray-200/60 dark:border-border/60 dark:text-white"
             onMouseLeave={() => closeMenuWithDelay(250)}
           >
             <nav
               aria-label="Main navigation"
-              className="flex items-center justify-center gap-0.5"
+              className="flex items-center justify-center gap-0.5 h-10"
             >
               <NavLink
                 href={prefixed("/") ?? "/"}
@@ -624,7 +745,7 @@ export function Header() {
                       "relative flex items-center gap-1 px-3 py-2 text-sm font-medium rounded-lg transition-transform duration-200 group",
                       activeMenu === item.label
                         ? "text-primary"
-                        : "text-text-muted hover:text-text",
+                        : "text-text-muted hover:text-text dark:text-white dark:hover:text-white/80",
                     )}
                   >
                     <span className="relative">
@@ -657,7 +778,7 @@ export function Header() {
               ))}
             </nav>
             {/* Mega Menu Dropdown */}
-            {activeMenu && NAV_MEGA.find((m) => m.label === activeMenu) && (
+            {activeMenu && navMega.find((m) => m.label === activeMenu) && (
               <div
                 className="absolute left-0 right-0 top-full mt-0 flex justify-center"
                 onClick={() => setActiveMenu(null)}
@@ -673,7 +794,7 @@ export function Header() {
                   onClick={(e) => e.stopPropagation()}
                 >
                   {(() => {
-                    const item = NAV_MEGA.find((m) => m.label === activeMenu)!;
+                    const item = navMega.find((m) => m.label === activeMenu)!;
                     return (
                       <MegaMenu
                         label={item.label}
@@ -686,65 +807,14 @@ export function Header() {
               </div>
             )}
           </div>
-          {/* Actions */}
-          <div className="flex items-center gap-2.5">
-            <ColorPicker />
-            <ThemeToggle />
-            <button
-              onClick={() => setSearchOpen((v) => !v)}
-              className="text-text-muted hover:text-text hover:bg-primary/[0.04] transition-transform p-2 rounded-lg hidden sm:block"
-              aria-label="Search"
-            >
-              <Search className="w-[18px] h-[18px]" />
-            </button>
-            <Link
-              href={prefixed("/contact") ?? "/contact"}
-              className="hidden lg:flex items-center gap-1.5 text-sm font-medium text-text-muted hover:text-text hover:bg-primary/[0.04] transition-transform px-3 py-2 rounded-lg"
-            >
-              <User className="w-4 h-4" />
-              Sign In
-            </Link>
-            <Link
-              href={prefixed("/rfq") ?? "/rfq"}
-              className="relative hidden sm:inline-flex items-center gap-1.5 px-5 py-2 text-xs font-bold bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:from-primary-dark hover:to-primary transition-transform duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 group/quote overflow-hidden"
-            >
-              <Sparkles className="w-3 h-3 group-hover/quote:rotate-12 transition-transform duration-300" />
-              Get Quote
-              <span className="absolute inset-0 bg-white/10 translate-y-full group-hover/quote:translate-y-0 transition-transform duration-300" />
-            </Link>
-            {/* Hamburger */}
-            <button
-              onClick={() => setMobileOpen((v) => !v)}
-              className={cn(
-                "lg:hidden flex flex-col gap-[5px] p-2 rounded-lg transition-transform hover:bg-primary/[0.04]",
-                mobileOpen && "active",
-              )}
-              aria-label="Toggle menu"
-              aria-expanded={mobileOpen}
-            >
-              <span
-                className={cn(
-                  "block w-6 h-[2px] bg-text rounded-sm transition-transform duration-300",
-                  mobileOpen && "translate-y-[7px] rotate-45",
-                )}
-              />
-              <span
-                className={cn(
-                  "block w-6 h-[2px] bg-text rounded-sm transition-transform duration-300",
-                  mobileOpen && "opacity-0",
-                )}
-              />
-              <span
-                className={cn(
-                  "block w-6 h-[2px] bg-text rounded-sm transition-transform duration-300",
-                  mobileOpen && "-translate-y-[7px] -rotate-45",
-                )}
-              />
-            </button>
-          </div>
-        </header>
+        </div>
       </div>
-      <SearchModal open={searchOpen} onOpenChange={setSearchOpen} />
+      <SearchModal
+        key={`search-${searchNonce}`}
+        open={searchOpen}
+        onOpenChange={setSearchOpen}
+        initialQuery={searchInitial}
+      />
       {/* Mobile overlay */}
       {mobileOpen && (
         <div
@@ -880,14 +950,24 @@ export function Header() {
                   <span className="font-black tracking-tight text-text">
                     SERV<span className="text-primary">CHIP</span>
                   </span>
-                  <span className="text-[8px] font-mono text-text-dim tracking-widest">
+                  <span className="text-[8px] font-mono text-text-dim tracking-widest dark:text-white/60">
                     ENTERPRISE CHIPS
                   </span>
                 </div>
               </Link>
               <button
+                onClick={() => {
+                  setMobileOpen(false);
+                  openSearchModal("");
+                }}
+                className="text-text-muted hover:text-text hover:bg-primary/[0.04] p-2 rounded-lg transition-transform dark:text-white dark:hover:text-white/80"
+                aria-label="Search"
+              >
+                <Search className="w-5 h-5" />
+              </button>
+              <button
                 onClick={() => setMobileOpen(false)}
-                className="text-text-muted hover:text-text hover:bg-primary/[0.04] p-2 rounded-lg transition-transform"
+                className="text-text-muted hover:text-text hover:bg-primary/[0.04] p-2 rounded-lg transition-transform dark:text-white dark:hover:text-white/80"
                 aria-label="Close menu"
               >
                 <X className="w-5 h-5" />
@@ -903,7 +983,7 @@ export function Header() {
                 "flex items-center gap-2 py-3.5 text-base font-medium border-b border-border/50 transition-transform group",
                 pathname === "/" || pathname === prefix
                   ? "text-primary"
-                  : "text-text-muted hover:text-text",
+                  : "text-text-muted hover:text-text dark:text-white dark:hover:text-white/80",
               )}
             >
               <span className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-transform" />
@@ -931,7 +1011,7 @@ export function Header() {
                             mobileDropdown === item.label ? null : item.label,
                           )
                         }
-                        className="flex items-center justify-between w-full py-3.5 text-base font-medium border-b border-border/50 text-text-muted hover:text-text transition-transform group"
+                        className="flex items-center justify-between w-full py-3.5 text-base font-medium border-b border-border/50 text-text-muted hover:text-text transition-transform group dark:text-white dark:hover:text-white/80"
                       >
                         <span className="flex items-center gap-2">
                           <span className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-transform" />
@@ -970,7 +1050,7 @@ export function Header() {
                                     key={link.label}
                                     href={link.href}
                                     onClick={() => setMobileOpen(false)}
-                                    className="flex items-center gap-2 text-sm text-text-muted hover:text-text py-2 px-3 rounded-lg hover:bg-primary/[0.04] transition-transform"
+                                    className="flex items-center gap-2 text-sm text-text-muted hover:text-text py-2 px-3 rounded-lg hover:bg-primary/[0.04] transition-transform dark:text-white/85 dark:hover:text-white"
                                   >
                                     <span className="w-1 h-1 rounded-full bg-primary/20" />
                                     {link.label}
@@ -1004,7 +1084,7 @@ export function Header() {
                         "flex items-center gap-2 py-3.5 text-base font-medium border-b border-border/50 transition-transform group",
                         simple.href && isActive(simple.href)
                           ? "text-primary"
-                          : "text-text-muted hover:text-text",
+                          : "text-text-muted hover:text-text dark:text-white dark:hover:text-white/80",
                       )}
                     >
                       <span className="w-1 h-1 rounded-full bg-primary/40 group-hover:bg-primary transition-transform" />
@@ -1025,16 +1105,16 @@ export function Header() {
                 Get Quote <ExternalLink className="w-3.5 h-3.5" />
               </Link>
               <Link
-                href={prefixed("/contact") ?? "/contact"}
+                href={prefixed("/dashboard") ?? "/dashboard"}
                 onClick={() => setMobileOpen(false)}
-                className="flex items-center justify-center gap-2 w-full py-3.5 text-sm font-medium text-text-muted border border-border rounded-lg hover:text-text hover:border-primary/30 transition-transform"
+                className="flex items-center justify-center gap-2 w-full py-3.5 text-sm font-medium text-text-muted border border-border rounded-lg hover:text-text hover:border-primary/30 transition-transform dark:text-white dark:hover:text-white/80"
               >
                 <User className="w-4 h-4" />
                 Sign In
               </Link>
             </div>
             {/* Contact info */}
-            <div className="mt-6 pt-4 border-t border-border/50 text-sm text-text-muted space-y-2">
+            <div className="mt-6 pt-4 border-t border-border/50 text-sm text-text-muted space-y-2 dark:text-white/85">
               <div className="flex items-center gap-2">
                 <Phone className="w-4 h-4 text-primary/60" />
                 <a
@@ -1046,7 +1126,7 @@ export function Header() {
               </div>
               <div className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-primary/60" />
-                <span className="text-xs text-text-dim">
+                <span className="text-xs text-text-dim dark:text-white/60">
                   Select your location:
                 </span>
                 <CountrySelector />

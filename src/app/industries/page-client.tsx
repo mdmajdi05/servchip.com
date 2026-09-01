@@ -1,20 +1,30 @@
 "use client";
 
 import { AppLink as Link } from "@/components/ui/AppLink";
-import { ArrowRight, Server } from "lucide-react";
+import {
+  ArrowRight,
+  Server,
+  Brain,
+  HeartPulse,
+  BarChart3,
+  Landmark,
+  FlaskConical,
+  Radio,
+  Factory,
+} from "lucide-react";
 import { INDUSTRIES } from "@/data/industries";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 
 const ICON_MAP: Record<string, typeof Server> = {
   Server,
-  Brain: Server,
-  HeartPulse: Server,
-  Landmark: Server,
-  Shield: Server,
-  GraduationCap: Server,
-  Network: Server,
-  Factory: Server,
+  Brain,
+  HeartPulse,
+  BarChart3,
+  Landmark,
+  FlaskConical,
+  Radio,
+  Factory,
 };
 
 export default function IndustriesPage() {

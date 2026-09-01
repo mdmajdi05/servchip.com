@@ -4,7 +4,7 @@ import { SITE } from "@/lib/constants";
 import { CountrySelector } from "./CountrySelector";
 export function TopBar() {
   return (
-    <div className="hidden lg:flex h-8 items-center justify-between px-6 sm:px-8 lg:px-12 bg-white dark:bg-surface border-b border-gray-200/60 dark:border-border/60 text-[11px] text-text-dim relative z-10">
+    <div className="hidden lg:flex h-7 items-center justify-between px-6 sm:px-8 lg:px-12 bg-white dark:bg-surface border-b border-gray-200/60 dark:border-border/60 text-[11px] text-text-dim dark:text-white/85 relative z-10">
       <div className="flex items-center gap-4">
         <a
           href={`tel:${SITE.phoneLink}`}

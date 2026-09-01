@@ -5,10 +5,15 @@ import { AppLink as Link } from "@/components/ui/AppLink";
 const DISMISS_KEY = "servchip-sticky-cta-closed";
 export function StickyBottomCTA() {
   const [visible, setVisible] = useState(false);
-  const [dismissed] = useState(() => {
-    if (typeof window === "undefined") return false;
-    return !!localStorage.getItem(DISMISS_KEY);
-  });
+  const [dismissed, setDismissed] = useState(false);
+
+  useEffect(() => {
+    const id = setTimeout(() => {
+      if (localStorage.getItem(DISMISS_KEY)) setDismissed(true);
+    }, 0);
+    return () => clearTimeout(id);
+  }, []);
+
   useEffect(() => {
     if (dismissed) return;
     const onScroll = () => {
@@ -19,7 +24,7 @@ export function StickyBottomCTA() {
   }, [dismissed]);
   const close = () => {
     localStorage.setItem(DISMISS_KEY, "1");
-    setVisible(false);
+    setDismissed(true);
   };
   if (dismissed) return null;
   return (

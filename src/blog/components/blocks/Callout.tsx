@@ -1,5 +1,6 @@
 "use client";
 
+import type { ReactNode } from "react";
 import { Lightbulb, AlertTriangle, Info } from "lucide-react";
 
 const config = {
@@ -28,7 +29,7 @@ export function BlogCallout({
   text,
 }: {
   variant: "tip" | "warning" | "info";
-  text: string;
+  text: ReactNode;
 }) {
   const c = config[variant];
   const Icon = c.icon;

@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* Use the site's .dark class (not OS media query) for Tailwind dark: variants */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* ============================================================
    LIGHT THEME (default)
    ============================================================ */
@@ -9,14 +12,14 @@
   --surface: #ffffff;
   --surface-2: #f8f9fc;
   --surface-3: #edeef5;
-  --primary: #0071c5;
-  --primary-dark: #005a9e;
-  --primary-glow: rgba(0, 113, 197, 0.4);
-  --primary-subtle: rgba(0, 113, 197, 0.08);
-  --primary-subtle-2: rgba(0, 113, 197, 0.15);
+  --primary: #1a73e8;
+  --primary-dark: #1557b0;
+  --primary-glow: rgba(26, 115, 232, 0.35);
+  --primary-subtle: rgba(26, 115, 232, 0.1);
+  --primary-subtle-2: rgba(26, 115, 232, 0.2);
   --primary-neon: #4da8ff;
-  --secondary: #003d6b;
-  --accent: #7b2fbe;
+  --secondary: #00bcd4;
+  --accent: #ff6f00;
   --text: #16162c;
   --text-muted: #3a3a5c;
   --text-dim: #444468;
@@ -33,13 +36,13 @@
     #f4f5f9 100%
   );
   --gradient-card: linear-gradient(145deg, #ffffff 0%, #f7f8fa 100%);
-  --gradient-cta: linear-gradient(135deg, #0071c5 0%, #003d6b 100%);
-  --hero-primary: #0071c5;
-  --hero-secondary: #4da8ff;
+  --gradient-cta: linear-gradient(135deg, #1a73e8 0%, #00bcd4 100%);
+  --hero-primary: #1a73e8;
+  --hero-secondary: #00bcd4;
 
   /* Grid / circuit pattern */
-  --grid-line: rgba(0, 113, 197, 0.12);
-  --grid-dot: rgba(0, 113, 197, 0.16);
+  --grid-line: rgba(26, 115, 232, 0.12);
+  --grid-dot: rgba(26, 115, 232, 0.16);
   --hero-from: #f5f5f8;
   --hero-to: #d4edc9;
 }
@@ -53,17 +56,17 @@
   --surface: #12121a;
   --surface-2: #1a1a2e;
   --surface-3: #22223a;
-  --primary: #0071c5;
-  --primary-dark: #005a9e;
-  --primary-glow: rgba(0, 113, 197, 0.5);
-  --primary-subtle: rgba(0, 113, 197, 0.1);
-  --primary-subtle-2: rgba(0, 113, 197, 0.18);
+  --primary: #1a73e8;
+  --primary-dark: #1557b0;
+  --primary-glow: rgba(26, 115, 232, 0.35);
+  --primary-subtle: rgba(26, 115, 232, 0.1);
+  --primary-subtle-2: rgba(26, 115, 232, 0.2);
   --primary-neon: #4da8ff;
-  --secondary: #4da8ff;
-  --accent: #aa00ff;
+  --secondary: #00bcd4;
+  --accent: #ff6f00;
   --text: #ffffff;
-  --text-muted: #8888aa;
-  --text-dim: #7777aa;
+  --text-muted: #e0e0f2;
+  --text-dim: #c2c2de;
   --border: #2a2a3e;
   --border-subtle: #1e1e32;
   --success: #00ff88;
@@ -77,13 +80,13 @@
     #080c18 100%
   );
   --gradient-card: linear-gradient(145deg, #12121a 0%, #1a1a2e 100%);
-  --gradient-cta: linear-gradient(135deg, #0071c5 0%, #4da8ff 100%);
-  --hero-primary: #0071c5;
-  --hero-secondary: #4da8ff;
+  --gradient-cta: linear-gradient(135deg, #1a73e8 0%, #00bcd4 100%);
+  --hero-primary: #1a73e8;
+  --hero-secondary: #00bcd4;
 
   /* Grid / circuit pattern */
-  --grid-line: rgba(0, 113, 197, 0.08);
-  --grid-dot: rgba(0, 113, 197, 0.12);
+  --grid-line: rgba(26, 115, 232, 0.08);
+  --grid-dot: rgba(26, 115, 232, 0.12);
   --hero-from: #060a12;
   --hero-to: #0d0d2e;
 }

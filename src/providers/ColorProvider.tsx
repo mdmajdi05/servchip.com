@@ -60,6 +60,18 @@ const colorThemes: ColorTheme[] = [
     chipLabel: "AMD",
   },
   {
+    id: "royal",
+    name: "Royal Red",
+    primary: "#C62828",
+    primaryDark: "#8E1111",
+    primaryGlow: "rgba(198,40,40,0.38)",
+    primarySubtle: "rgba(198,40,40,0.10)",
+    primarySubtle2: "rgba(198,40,40,0.20)",
+    secondary: "#FFC107",
+    accent: "#4A148C",
+    chipLabel: "ROYAL",
+  },
+  {
     id: "gold",
     name: "Premium Gold",
     primary: "#F9A825",
@@ -156,6 +168,11 @@ export function ColorProvider({ children }: { children: React.ReactNode }) {
     root.setProperty(
       "--gradient-cta",
       `linear-gradient(135deg, ${theme.primary} 0%, ${theme.secondary} 100%)`,
+    );
+
+    root.setProperty(
+      "--gradient-hero",
+      `linear-gradient(135deg, color-mix(in srgb, ${theme.primary} 12%, var(--surface)) 0%, var(--surface-2) 55%, var(--surface) 100%)`,
     );
 
     document.documentElement.setAttribute("data-color", colorId);

@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { persistSubmission } from "../_lib/persist";
 
 export async function POST(request: NextRequest) {
   try {
@@ -7,20 +8,30 @@ export async function POST(request: NextRequest) {
 
     if (!email) {
       return NextResponse.json(
-        { success: false, error: { code: "VALIDATION_ERROR", message: "Email is required" } },
-        { status: 400 }
+        {
+          success: false,
+          error: { code: "VALIDATION_ERROR", message: "Email is required" },
+        },
+        { status: 400 },
       );
     }
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(email)) {
       return NextResponse.json(
-        { success: false, error: { code: "VALIDATION_ERROR", message: "Invalid email address" } },
-        { status: 400 }
+        {
+          success: false,
+          error: { code: "VALIDATION_ERROR", message: "Invalid email address" },
+        },
+        { status: 400 },
       );
     }
 
-    console.log("Newsletter subscription:", { email, timestamp: new Date().toISOString() });
+    console.log("Newsletter subscription:", {
+      email,
+      timestamp: new Date().toISOString(),
+    });
+    await persistSubmission("newsletter", { email });
 
     return NextResponse.json({
       success: true,
@@ -29,8 +40,11 @@ export async function POST(request: NextRequest) {
   } catch (error) {
     console.error("Newsletter subscription error:", error);
     return NextResponse.json(
-      { success: false, error: { code: "SERVER_ERROR", message: "Failed to subscribe" } },
-      { status: 500 }
+      {
+        success: false,
+        error: { code: "SERVER_ERROR", message: "Failed to subscribe" },
+      },
+      { status: 500 },
     );
   }
 }

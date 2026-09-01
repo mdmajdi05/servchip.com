@@ -9,7 +9,7 @@ const Hero3D = dynamic(
     loading: () => (
       <section
         className="relative min-h-screen flex items-center justify-center"
-        style={{ backgroundColor: "#070B15" }}
+        style={{ backgroundColor: "var(--bg-body)" }}
       >
         <div className="w-12 h-12 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
       </section>

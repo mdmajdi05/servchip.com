@@ -19,8 +19,13 @@ function readStoredCountry(): string {
 export function CountrySelector() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [stored, setStored] = useState<string>(() => readStoredCountry());
+  const [stored, setStored] = useState("global");
   const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const id = setTimeout(() => setStored(readStoredCountry()), 0);
+    return () => clearTimeout(id);
+  }, []);
 
   const pathMatch = pathname.match(/^\/([a-z]{2})(?:\/|$)/);
   const selected =
@@ -72,7 +77,7 @@ export function CountrySelector() {
 
       {open && (
         <div className="absolute right-0 top-full mt-2 w-56 rounded-xl border border-border bg-surface shadow-lg shadow-black/10 p-2 z-50">
-          <p className="px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-text-dim">
+          <p className="px-2 py-1 text-[10px] font-semibold uppercase tracking-wider text-text-dim dark:text-white/60">
             Select Location
           </p>
           <Link
@@ -82,7 +87,7 @@ export function CountrySelector() {
               "flex items-center justify-between gap-2 px-2 py-2 rounded-lg text-sm transition-transform",
               selected === "global"
                 ? "bg-primary/10 text-primary font-semibold"
-                : "text-text-muted hover:bg-primary/[0.04] hover:text-text",
+                : "text-text-muted hover:bg-primary/[0.04] hover:text-text dark:text-white/85 dark:hover:text-white",
             )}
           >
             <span className="flex items-center gap-2">
@@ -101,7 +106,7 @@ export function CountrySelector() {
                 "flex items-center justify-between gap-2 px-2 py-2 rounded-lg text-sm transition-transform",
                 selected === country.code
                   ? "bg-primary/10 text-primary font-semibold"
-                  : "text-text-muted hover:bg-primary/[0.04] hover:text-text",
+                  : "text-text-muted hover:bg-primary/[0.04] hover:text-text dark:text-white/85 dark:hover:text-white",
               )}
             >
               <span className="flex items-center gap-2">
