@@ -764,76 +764,22 @@ export function Header() {
             "bg-white dark:bg-surface border-b border-gray-200/80 dark:border-border/80",
             scrolled && "shadow-md shadow-black/5",
           )}
+          onMouseLeave={() => closeMenuWithDelay(250)}
         >
-          {/* Row 1: Logo | right-aligned Search + Actions */}
-          <div className="h-14 flex items-center justify-between gap-4 px-6 sm:px-8 lg:px-12">
+          {/* Single Row: Logo | Nav | Search | Actions */}
+          <div
+            ref={navContainerRef}
+            className="h-14 flex items-center justify-between gap-4 px-6 sm:px-8 lg:px-12"
+          >
             {/* Logo */}
             <Link href={prefixed("/") ?? "/"} className="flex-shrink-0">
               <AnimatedLogo size={36} showText />
             </Link>
-            {/* Inline Search (right side, extended) + Actions */}
-            <div className="flex items-center gap-3 ml-auto">
-              <HeaderSearch
-                className="hidden lg:block flex-1 min-w-0"
-                onOpenModal={openSearchModal}
-              />
-              <ColorPicker />
-              <ThemeToggle />
-              <Link
-                href={prefixed("/dashboard") ?? "/dashboard"}
-                className="hidden lg:flex items-center gap-1.5 text-sm font-medium text-text-muted hover:text-text hover:bg-primary/[0.04] transition-transform px-3 py-2 rounded-lg whitespace-nowrap dark:text-white dark:hover:text-white/80"
-              >
-                <User className="w-4 h-4" />
-                Sign In
-              </Link>
-              <Link
-                href={prefixed("/rfq") ?? "/rfq"}
-                className="relative hidden sm:inline-flex items-center gap-1.5 px-5 py-2 text-xs font-bold bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:from-primary-dark hover:to-primary transition-transform duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 group/quote overflow-hidden whitespace-nowrap"
-              >
-                <Sparkles className="w-3 h-3 group-hover/quote:rotate-12 transition-transform duration-300" />
-                Get Quote
-                <span className="absolute inset-0 bg-white/10 translate-y-full group-hover/quote:translate-y-0 transition-transform duration-300" />
-              </Link>
-              {/* Hamburger */}
-              <button
-                onClick={() => setMobileOpen((v) => !v)}
-                className={cn(
-                  "lg:hidden flex flex-col gap-[5px] p-2 rounded-lg transition-transform hover:bg-primary/[0.04]",
-                  mobileOpen && "active",
-                )}
-                aria-label="Toggle menu"
-                aria-expanded={mobileOpen}
-              >
-                <span
-                  className={cn(
-                    "block w-6 h-[2px] bg-text rounded-sm transition-transform duration-300",
-                    mobileOpen && "translate-y-[7px] rotate-45",
-                  )}
-                />
-                <span
-                  className={cn(
-                    "block w-6 h-[2px] bg-text rounded-sm transition-transform duration-300",
-                    mobileOpen && "opacity-0",
-                  )}
-                />
-                <span
-                  className={cn(
-                    "block w-6 h-[2px] bg-text rounded-sm transition-transform duration-300",
-                    mobileOpen && "-translate-y-[7px] -rotate-45",
-                  )}
-                />
-              </button>
-            </div>
-          </div>
-          {/* Row 2: Desktop Nav */}
-          <div
-            ref={navContainerRef}
-            className="hidden lg:block relative border-t border-gray-200/60 dark:border-border/60 dark:text-white"
-            onMouseLeave={() => closeMenuWithDelay(250)}
-          >
+
+            {/* Nav (desktop) */}
             <nav
               aria-label="Main navigation"
-              className="flex items-center justify-center gap-0.5 h-10"
+              className="hidden lg:flex items-center gap-0.5 flex-shrink-0"
             >
               <NavLink
                 href={prefixed("/") ?? "/"}
@@ -887,36 +833,94 @@ export function Header() {
                 />
               ))}
             </nav>
-            {/* Mega Menu Dropdown */}
-            {activeMenu && navMega.find((m) => m.label === activeMenu) && (
-              <div
-                className="absolute left-0 right-0 top-full mt-0 flex justify-center"
-                onClick={() => setActiveMenu(null)}
-                onMouseEnter={() => {
-                  if (menuCloseTimer.current)
-                    clearTimeout(menuCloseTimer.current);
-                }}
+
+            {/* Search (flexible) */}
+            <div className="flex-1 min-w-0 flex justify-end">
+              <HeaderSearch
+                className="hidden lg:block w-full max-w-md min-w-0"
+                onOpenModal={openSearchModal}
+              />
+            </div>
+
+            {/* Actions */}
+            <div className="flex items-center gap-3 flex-shrink-0">
+              <ColorPicker />
+              <ThemeToggle />
+              <Link
+                href={prefixed("/dashboard") ?? "/dashboard"}
+                className="hidden lg:flex items-center gap-1.5 text-sm font-medium text-text-muted hover:text-text hover:bg-primary/[0.04] transition-transform px-3 py-2 rounded-lg whitespace-nowrap dark:text-white dark:hover:text-white/80"
               >
-                <div
-                  role="region"
-                  aria-labelledby={`mega-menu-trigger-${activeMenu?.toLowerCase().replace(/\s+/g, "-")}`}
-                  className="w-[min(1100px,calc(100vw-2rem))]"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {(() => {
-                    const item = navMega.find((m) => m.label === activeMenu)!;
-                    return (
-                      <MegaMenu
-                        label={item.label}
-                        columns={item.columns}
-                        href={item.href}
-                      />
-                    );
-                  })()}
-                </div>
-              </div>
-            )}
+                <User className="w-4 h-4" />
+                Sign In
+              </Link>
+              <Link
+                href={prefixed("/rfq") ?? "/rfq"}
+                className="relative hidden sm:inline-flex items-center gap-1.5 px-5 py-2 text-xs font-bold bg-gradient-to-r from-primary to-primary-dark text-bg-dark rounded-lg hover:from-primary-dark hover:to-primary transition-transform duration-300 hover:shadow-lg hover:shadow-primary/30 hover:-translate-y-0.5 group/quote overflow-hidden whitespace-nowrap"
+              >
+                <Sparkles className="w-3 h-3 group-hover/quote:rotate-12 transition-transform duration-300" />
+                Get Quote
+                <span className="absolute inset-0 bg-white/10 translate-y-full group-hover/quote:translate-y-0 transition-transform duration-300" />
+              </Link>
+              {/* Hamburger */}
+              <button
+                onClick={() => setMobileOpen((v) => !v)}
+                className={cn(
+                  "lg:hidden flex flex-col gap-[5px] p-2 rounded-lg transition-transform hover:bg-primary/[0.04]",
+                  mobileOpen && "active",
+                )}
+                aria-label="Toggle menu"
+                aria-expanded={mobileOpen}
+              >
+                <span
+                  className={cn(
+                    "block w-6 h-[2px] bg-text rounded-sm transition-transform duration-300",
+                    mobileOpen && "translate-y-[7px] rotate-45",
+                  )}
+                />
+                <span
+                  className={cn(
+                    "block w-6 h-[2px] bg-text rounded-sm transition-transform duration-300",
+                    mobileOpen && "opacity-0",
+                  )}
+                />
+                <span
+                  className={cn(
+                    "block w-6 h-[2px] bg-text rounded-sm transition-transform duration-300",
+                    mobileOpen && "-translate-y-[7px] -rotate-45",
+                  )}
+                />
+              </button>
+            </div>
           </div>
+          {/* Mega Menu Dropdown (below single row) */}
+          {activeMenu && navMega.find((m) => m.label === activeMenu) && (
+            <div
+              className="hidden lg:flex absolute left-0 right-0 top-full mt-0 justify-center"
+              onClick={() => setActiveMenu(null)}
+              onMouseEnter={() => {
+                if (menuCloseTimer.current)
+                  clearTimeout(menuCloseTimer.current);
+              }}
+            >
+              <div
+                role="region"
+                aria-labelledby={`mega-menu-trigger-${activeMenu?.toLowerCase().replace(/\s+/g, "-")}`}
+                className="w-[min(1100px,calc(100vw-2rem))]"
+                onClick={(e) => e.stopPropagation()}
+              >
+                {(() => {
+                  const item = navMega.find((m) => m.label === activeMenu)!;
+                  return (
+                    <MegaMenu
+                      label={item.label}
+                      columns={item.columns}
+                      href={item.href}
+                    />
+                  );
+                })()}
+              </div>
+            </div>
+          )}
         </div>
       </div>
       <SearchModal

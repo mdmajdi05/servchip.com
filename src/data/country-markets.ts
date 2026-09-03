@@ -49,22 +49,6 @@ export const COUNTRY_MARKETS: Record<string, CountryMarket> = {
       hours: "Mon–Fri, 9am–6pm CET",
     },
   },
-  in: {
-    code: "in",
-    locale: "en-IN",
-    currency: "INR",
-    currencySymbol: "₹",
-    warehouse: "New Delhi, India",
-    shippingNote:
-      "Delivery across India including New Delhi, Mumbai, Bengaluru, Hyderabad and Chennai.",
-    leadTime: "3-7 business days",
-    contact: {
-      email: "sales@servchip.com",
-      phone: "+91 7982498712",
-      phoneDisplay: "+91 7982498712",
-      hours: "Mon–Fri, 9am–6pm IST",
-    },
-  },
   ae: {
     code: "ae",
     locale: "en-AE",

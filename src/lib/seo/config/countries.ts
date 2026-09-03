@@ -5,7 +5,6 @@ import { getCountrySeo } from "../content";
 import type { Country, CountryMarket } from "@/types";
 
 const SHORT_NAMES: Record<string, string> = {
-  in: "India",
   ae: "UAE",
   us: "USA",
   uk: "UK",

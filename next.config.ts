@@ -71,11 +71,6 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: "/countries/india",
-        destination: "/in",
-        permanent: true,
-      },
-      {
         source: "/countries/uae",
         destination: "/ae",
         permanent: true,

@@ -2,57 +2,6 @@ import type { Country } from "@/types";
 
 export const COUNTRIES: Country[] = [
   {
-    id: "india",
-    name: "India",
-    slug: "india",
-    code: "in",
-    flag: "🇮🇳",
-    region: "South Asia",
-    description:
-      "Enterprise AI chips, GPUs and data center hardware for India's fastest-growing AI infrastructure market.",
-    longDescription:
-      "Servchip supplies enterprise AI accelerators, data center GPUs, server CPUs and networking hardware to enterprises across India. From New Delhi to Bengaluru, we help Indian data centers, research institutions and enterprises deploy world-class AI infrastructure with authentic, fully warrantied hardware.",
-    hero: {
-      label: "India",
-      title: "Enterprise AI Hardware for India",
-      subtitle:
-        "NVIDIA, AMD, Intel & server platforms delivered across India with authentic sourcing, full warranty and dedicated local support.",
-    },
-    faqs: [
-      {
-        question: "Do you deliver AI chips across India?",
-        answer:
-          "Yes. Servchip ships enterprise AI hardware to all major Indian cities including New Delhi, Mumbai, Bengaluru, Hyderabad, Chennai and Pune, with DDP delivery and full warranty support.",
-      },
-      {
-        question: "Are your chips authentic and under warranty?",
-        answer:
-          "Every chip is sourced from manufacturers or authorized distribution partners, with full chain of custody documentation, serial number traceability and manufacturer warranty.",
-      },
-      {
-        question: "Can you help with GST invoicing for Indian enterprises?",
-        answer:
-          "Yes. We provide proper GST-compliant tax invoices for all purchases by Indian enterprises, startups and research institutions.",
-      },
-    ],
-    related: {
-      brandIds: ["nvidia", "amd", "intel", "supermicro", "dell"],
-      categoryIds: [
-        "nvidia-dc-gpus",
-        "amd-instinct",
-        "server-cpus",
-        "ai-servers",
-        "networking",
-      ],
-      useCases: ["ai-training", "ai-inference", "hpc"],
-    },
-    stats: [
-      { value: "150+", label: "Indian enterprises served" },
-      { value: "50+", label: "Cities with delivery" },
-      { value: "24h", label: "Quote turnaround" },
-    ],
-  },
-  {
     id: "uae",
     name: "United Arab Emirates",
     slug: "uae",

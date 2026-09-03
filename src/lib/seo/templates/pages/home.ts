@@ -4,9 +4,9 @@ import type { SeoPageTemplate } from "../types";
 export const home: SeoPageTemplate = {
   path: "/",
   label: "Home",
-  title: `Enterprise AI Hardware & Chip Distributor | Servchip`,
+  title: `AI Chip Distributor in USA, UAE, UK & Germany | Servchip`,
   description:
-    "Buy enterprise AI accelerators, GPUs, and semiconductors. Servchip provides certified global procurement and multi-vendor engineering support.",
+    "Servchip supplies AI chips, GPUs, and accelerators across the USA, UAE, UK, and Germany, with certified procurement and engineering support.",
   keywords: [
     "AI chip company",
     "enterprise GPU distributor",
