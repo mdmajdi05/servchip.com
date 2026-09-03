@@ -87,13 +87,8 @@ const FOOTER_LINKS: {
       { label: "AI Servers", href: "/categories/ai-servers-platforms" },
       { label: "Networking", href: "/categories/networking-interconnects" },
       { label: "Memory & Storage", href: "/categories/ai-memory-hbm" },
-    ],
-  },
-  {
-    title: "Brands",
-    links: [
       { label: "All Brands", href: "/brands", color: getBrandColor("NVIDIA") },
-      ...BRANDS.slice(0, 7).map((m) => ({
+      ...BRANDS.slice(0, 5).map((m) => ({
         label: m.name,
         href: `/brands/${m.slug}`,
         color: getBrandColor(m.name),
@@ -101,19 +96,28 @@ const FOOTER_LINKS: {
     ],
   },
   {
-    title: "Resources",
+    title: "Solutions",
     links: [
-      { label: "Solutions", href: "/solutions" },
+      { label: "AI Training", href: "/solutions/ai-training" },
+      { label: "AI Inference", href: "/solutions/ai-inference" },
+      { label: "HPC", href: "/solutions/hpc" },
+      { label: "AI Infrastructure", href: "/solutions/ai-infrastructure" },
+      { label: "Data Centers", href: "/solutions/data-centers" },
       { label: "Industries", href: "/industries" },
-      { label: "Countries", href: "/countries" },
-      { label: "Technology", href: "/technology" },
-      { label: "Resource Hub", href: "/resources" },
       { label: "Compare GPUs", href: "/comparison" },
-      { label: "Build Your Server", href: "/configurator" },
+      { label: "Server Configurator", href: "/configurator" },
+    ],
+  },
+  {
+    title: "Services",
+    links: [
+      { label: "Hardware Procurement", href: "/services" },
+      { label: "Bulk & Wholesale", href: "/services" },
+      { label: "AI Infrastructure Design", href: "/services" },
+      { label: "Technical Support", href: "/contact" },
+      { label: "Warranty & RMA", href: "/contact" },
       { label: "Submit an RFQ", href: "/rfq" },
-      { label: "Blog", href: "/blog" },
       { label: "Developer Hub", href: "/developer-hub" },
-      { label: "Services", href: "/services" },
     ],
   },
   {
@@ -121,6 +125,7 @@ const FOOTER_LINKS: {
     links: [
       { label: "About", href: "/about" },
       { label: "Contact", href: "/contact" },
+      { label: "Blog", href: "/blog" },
       { label: "FAQ", href: "/faq" },
       { label: "Privacy Policy", href: "/privacy" },
       { label: "Terms of Service", href: "/terms" },

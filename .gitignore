@@ -45,3 +45,6 @@ next-env.d.ts
 *.md
 /scripts/
 /blog-for-import
+
+# runtime logs
+/logs/

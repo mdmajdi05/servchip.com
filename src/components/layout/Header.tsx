@@ -16,9 +16,7 @@ import {
 import { cn } from "@/lib/utils";
 import { SITE } from "@/lib/constants";
 import { BRANDS } from "@/data/brands";
-import { COUNTRIES, getCountryPath } from "@/data/countries";
 import { INDUSTRIES } from "@/data/industries";
-import { SOLUTIONS } from "@/data/solutions";
 import { MegaMenu } from "./MegaMenu";
 import { TopBar } from "./TopBar";
 import { CountrySelector } from "./CountrySelector";
@@ -59,12 +57,12 @@ const PRODUCT_COLUMNS: NavColumn[] = [
       {
         label: "NVIDIA",
         href: "/brands/nvidia",
-        description: "H100, H200, B200, GB200",
+        description: "H100, H200, B200, B300",
       },
       {
         label: "AMD",
         href: "/brands/amd",
-        description: "Instinct MI300X, MI325X, MI350X",
+        description: "MI300X, MI325X, MI350X",
       },
       {
         label: "Intel",
@@ -79,23 +77,28 @@ const PRODUCT_COLUMNS: NavColumn[] = [
       {
         label: "Amazon",
         href: "/brands/amazon",
-        description: "Trainium 2, Inferentia 2",
+        description: "Trainium, Inferentia",
       },
     ],
   },
   {
-    title: "Server CPUs",
+    title: "Server Compute",
     href: "/categories/server-cpus",
     links: [
       {
         label: "AMD EPYC",
         href: "/brands/amd",
-        description: "EPYC 9005 Turin",
+        description: "9005 Turin, 9004 Genoa",
       },
       {
         label: "Intel Xeon",
         href: "/brands/intel",
-        description: "Xeon 6 Granite Rapids",
+        description: "Xeon 6, Xeon 6900",
+      },
+      {
+        label: "NVIDIA Grace",
+        href: "/brands/nvidia",
+        description: "Grace CPU superchip",
       },
       {
         label: "Ampere",
@@ -106,11 +109,6 @@ const PRODUCT_COLUMNS: NavColumn[] = [
         label: "Qualcomm",
         href: "/brands/qualcomm",
         description: "DC server CPUs",
-      },
-      {
-        label: "NVIDIA Grace",
-        href: "/brands/nvidia",
-        description: "ARM superchip",
       },
     ],
   },
@@ -138,11 +136,7 @@ const PRODUCT_COLUMNS: NavColumn[] = [
         href: "/brands/lenovo",
         description: "ThinkSystem SR780A",
       },
-      {
-        label: "Gigabyte",
-        href: "/brands/gigabyte",
-        description: "G593",
-      },
+      { label: "Gigabyte", href: "/brands/gigabyte", description: "G593" },
       { label: "ASUS", href: "/brands/asus", description: "ESC N8" },
       { label: "Inspur", href: "/brands/inspur", description: "NF5688" },
       { label: "Quanta", href: "/brands/quanta" },
@@ -169,6 +163,16 @@ const PRODUCT_COLUMNS: NavColumn[] = [
         href: "/brands/cisco",
         description: "Silicon One",
       },
+      {
+        label: "NVIDIA Networking",
+        href: "/brands/nvidia",
+        description: "Spectrum-X, ConnectX",
+      },
+      {
+        label: "AMD Pensando",
+        href: "/brands/amd",
+        description: "DPU & SmartNIC",
+      },
     ],
   },
   {
@@ -190,12 +194,12 @@ const PRODUCT_COLUMNS: NavColumn[] = [
         href: "/brands/micron",
         description: "HBM3E, DDR5, SSD",
       },
+      { label: "Kioxia", href: "/brands/kioxia", description: "CM7-V3" },
       {
         label: "Solidigm",
         href: "/brands/solidigm",
         description: "D7-P5810",
       },
-      { label: "Kioxia", href: "/brands/kioxia", description: "CM7-V3" },
       {
         label: "Western Digital",
         href: "/brands/western-digital",
@@ -208,35 +212,76 @@ const PRODUCT_COLUMNS: NavColumn[] = [
       },
     ],
   },
-];
-const CATEGORY_COLUMNS = [
   {
-    title: "Computing",
+    title: "Featured Brands",
     links: [
       {
-        label: "NVIDIA Data Center GPUs",
+        label: "NVIDIA",
+        href: "/brands/nvidia",
+      },
+      {
+        label: "AMD",
+        href: "/brands/amd",
+      },
+      {
+        label: "Intel",
+        href: "/brands/intel",
+      },
+      {
+        label: "Dell",
+        href: "/brands/dell-technologies",
+      },
+      {
+        label: "HPE",
+        href: "/brands/hewlett-packard-enterprise",
+      },
+      {
+        label: "Lenovo",
+        href: "/brands/lenovo",
+      },
+      {
+        label: "Broadcom",
+        href: "/brands/broadcom",
+      },
+      {
+        label: "Marvell",
+        href: "/brands/marvell",
+      },
+      {
+        label: "Cisco",
+        href: "/brands/cisco",
+      },
+    ],
+  },
+];
+const CATEGORY_COLUMNS: NavColumn[] = [
+  {
+    title: "Compute",
+    links: [
+      {
+        label: "AI Accelerators",
         href: "/categories/nvidia-data-center-gpus",
-        description: "H100, H200, B200, GB200, L40S",
+        description: "NVIDIA, AMD, Intel, Google, Amazon",
       },
       {
-        label: "AMD Instinct Accelerators",
-        href: "/categories/amd-instinct-accelerators",
-        description: "MI300X, MI325X, MI350X",
+        label: "Server CPUs",
+        href: "/categories/server-cpus",
+        description: "AMD EPYC, Intel Xeon, Ampere",
       },
       {
-        label: "Intel Gaudi AI",
-        href: "/categories/intel-gaudi-ai-accelerators",
-        description: "Gaudi 2, Gaudi 3",
+        label: "AI Servers",
+        href: "/categories/ai-servers-platforms",
+        description: "Dell, HPE, Supermicro, Lenovo",
       },
       {
-        label: "Google TPU",
-        href: "/categories/google-tpu-accelerators",
-        description: "TPU v6, TPU v7",
+        label: "GPU Servers",
+        href: "/categories/nvidia-data-center-gpus",
+        description: "NVIDIA DGX, HGX platforms",
       },
       {
-        label: "Amazon AI Chips",
-        href: "/categories/amazon-ai-chips",
-        description: "Trainium 2, Inferentia 2",
+        label: "HPC Systems",
+        href: "/categories/server-cpus",
+        description: "High-performance computing",
       },
     ],
   },
@@ -244,57 +289,181 @@ const CATEGORY_COLUMNS = [
     title: "Infrastructure",
     links: [
       {
-        label: "Server CPUs",
-        href: "/categories/server-cpus",
-        description: "AMD EPYC, Intel Xeon, Ampere",
-      },
-      {
-        label: "AI Servers & Platforms",
+        label: "Data Center Infrastructure",
         href: "/categories/ai-servers-platforms",
-        description: "Dell, HPE, Supermicro, Lenovo",
+        description: "Full-stack DC solutions",
       },
       {
         label: "Networking",
         href: "/categories/networking-interconnects",
-        description: "Broadcom, Marvell, Cisco",
+        description: "Switches, routers, DPUs",
+      },
+      {
+        label: "Interconnects",
+        href: "/categories/networking-interconnects",
+        description: "InfiniBand, Ethernet fabric",
+      },
+      {
+        label: "GPU Clusters",
+        href: "/categories/nvidia-data-center-gpus",
+        description: "Multi-GPU training setups",
       },
     ],
   },
   {
-    title: "Components",
+    title: "Memory & Storage",
     links: [
       {
         label: "AI Memory & HBM",
         href: "/categories/ai-memory-hbm",
-        description: "HBM3E, DDR5, MRDIMM, CXL",
+        description: "HBM3E, high-bandwidth memory",
+      },
+      {
+        label: "DDR5",
+        href: "/categories/ai-memory-hbm",
+        description: "Server-grade DDR5 DIMMs",
+      },
+      {
+        label: "MRDIMM",
+        href: "/categories/ai-memory-hbm",
+        description: "Multiplexed-rank DIMMs",
+      },
+      {
+        label: "CXL Memory",
+        href: "/categories/ai-memory-hbm",
+        description: "Compute Express Link",
       },
       {
         label: "Enterprise Storage",
         href: "/categories/enterprise-storage",
         description: "NVMe SSDs for data centers",
       },
+      {
+        label: "NVMe SSDs",
+        href: "/categories/enterprise-storage",
+        description: "High-performance flash storage",
+      },
     ],
   },
   {
-    title: "Brands",
+    title: "By Manufacturer",
     links: [
       {
         label: "All Brands",
         href: "/brands",
-        description: "Browse every manufacturer we stock",
+        description: "Browse all 28 manufacturers",
         badge: "28",
       },
       ...BRANDS.map((m) => ({
         label: m.name,
         href: `/brands/${m.slug}`,
-        description: m.description,
       })),
     ],
   },
 ];
-const SERVICES_COLUMNS = [
+const SOLUTION_COLUMNS: NavColumn[] = [
   {
-    title: "Custom Sourcing",
+    title: "AI Workloads",
+    href: "/solutions",
+    links: [
+      {
+        label: "AI Training",
+        href: "/solutions/ai-training",
+        description: "Large-scale model training",
+      },
+      {
+        label: "AI Inference",
+        href: "/solutions/ai-inference",
+        description: "Low-latency model serving",
+      },
+      {
+        label: "HPC",
+        href: "/solutions/hpc",
+        description: "High-performance computing",
+      },
+      {
+        label: "Enterprise AI",
+        href: "/solutions/enterprise-procurement",
+        description: "Enterprise-scale AI deployment",
+      },
+    ],
+  },
+  {
+    title: "Infrastructure",
+    href: "/solutions/ai-infrastructure",
+    links: [
+      {
+        label: "AI Infrastructure",
+        href: "/solutions/ai-infrastructure",
+        description: "End-to-end AI stack",
+      },
+      {
+        label: "GPU Clusters",
+        href: "/solutions/ai-training",
+        description: "Multi-node GPU training",
+      },
+      {
+        label: "Data Center Acceleration",
+        href: "/solutions/data-centers",
+        description: "DC modernization & acceleration",
+      },
+      {
+        label: "AI Networking",
+        href: "/categories/networking-interconnects",
+        description: "High-speed interconnects",
+      },
+    ],
+  },
+  {
+    title: "Platforms & Technology",
+    href: "/technology",
+    links: [
+      {
+        label: "NVIDIA Blackwell",
+        href: "/brands/nvidia",
+        description: "B200, GB200 next-gen platform",
+      },
+      {
+        label: "NVIDIA Hopper",
+        href: "/brands/nvidia",
+        description: "H100, H200 generation",
+      },
+      {
+        label: "NVIDIA Grace",
+        href: "/brands/nvidia",
+        description: "ARM CPU superchip",
+      },
+      {
+        label: "AMD Instinct",
+        href: "/brands/amd",
+        description: "MI300X, MI325X, MI350X",
+      },
+      {
+        label: "Intel Gaudi",
+        href: "/brands/intel",
+        description: "Gaudi 2, Gaudi 3",
+      },
+      {
+        label: "HBM / NVLink",
+        href: "/categories/ai-memory-hbm",
+        description: "Memory & interconnect tech",
+      },
+    ],
+  },
+  {
+    title: "Industries",
+    href: "/industries",
+    links: INDUSTRIES.map((i) => ({
+      label: i.name,
+      href: `/industries/${i.slug}`,
+      description: i.description,
+    })),
+  },
+];
+const SERVICES_COLUMNS: NavColumn[] = [
+  {
+    title: "Procurement",
+    href: "/services",
     links: [
       {
         label: "Hardware Procurement",
@@ -307,6 +476,11 @@ const SERVICES_COLUMNS = [
         description: "Volume pricing for enterprises",
       },
       {
+        label: "Global Sourcing",
+        href: "/services",
+        description: "Worldwide chip procurement",
+      },
+      {
         label: "Hard-to-Find Parts",
         href: "/services",
         description: "Legacy & scarce chip sourcing",
@@ -314,37 +488,28 @@ const SERVICES_COLUMNS = [
     ],
   },
   {
-    title: "Support",
+    title: "Infrastructure Engineering",
+    href: "/services",
     links: [
       {
-        label: "Technical Support",
-        href: "/contact",
-        description: "Expert setup & troubleshooting",
-      },
-      {
-        label: "Warranty & RMA",
-        href: "/contact",
-        description: "Hassle-free returns & replacements",
-      },
-      {
-        label: "Integration Help",
-        href: "/contact",
-        description: "Deployment & infrastructure",
-      },
-    ],
-  },
-  {
-    title: "Consulting",
-    links: [
-      {
-        label: "AI Infrastructure",
+        label: "AI Infrastructure Design",
         href: "/services",
         description: "End-to-end AI stack design",
       },
       {
+        label: "GPU Cluster Design",
+        href: "/services",
+        description: "Multi-node cluster architecture",
+      },
+      {
         label: "Data Center Planning",
         href: "/services",
-        description: "Scalable cluster architecture",
+        description: "Scalable DC architecture",
+      },
+      {
+        label: "AI Server Configuration",
+        href: "/services",
+        description: "Optimized server builds",
       },
       {
         label: "HPC Optimization",
@@ -353,119 +518,64 @@ const SERVICES_COLUMNS = [
       },
     ],
   },
-];
-const TECHNOLOGY_COLUMNS: NavColumn[] = [
   {
-    title: "Architectures",
-    href: "/technology",
+    title: "Integration & Deployment",
+    href: "/contact",
     links: [
       {
-        label: "NVIDIA Blackwell",
-        href: "/technology",
-        description: "B200, GB200 next-gen platform",
+        label: "System Integration",
+        href: "/contact",
+        description: "Full hardware integration",
       },
       {
-        label: "NVIDIA Hopper",
-        href: "/technology",
-        description: "H100, H200 generation",
+        label: "AI Infrastructure Integration",
+        href: "/contact",
+        description: "AI stack deployment",
       },
       {
-        label: "Ada Lovelace",
-        href: "/brands/nvidia",
-        description: "RTX 40 / 50 generation",
+        label: "Deployment Support",
+        href: "/contact",
+        description: "On-site deployment assistance",
       },
       {
-        label: "NVIDIA Grace",
-        href: "/brands/nvidia",
-        description: "ARM CPU superchip",
-      },
-      {
-        label: "AMD CDNA",
-        href: "/brands/amd",
-        description: "Instinct MI300X generation",
+        label: "Performance Optimization",
+        href: "/contact",
+        description: "Workload tuning & benchmarks",
       },
     ],
   },
   {
-    title: "Tools",
-    href: "/technology",
+    title: "Support",
+    href: "/contact",
     links: [
       {
-        label: "Chip Comparison Tool",
-        href: "/comparison",
-        description: "Side-by-side GPU spec comparison",
+        label: "Technical Support",
+        href: "/contact",
+        description: "Expert setup & troubleshooting",
       },
       {
-        label: "Server Configurator",
-        href: "/configurator",
-        description: "Build your AI server",
+        label: "Troubleshooting",
+        href: "/contact",
+        description: "Diagnostic & issue resolution",
       },
       {
-        label: "Developer Hub",
-        href: "/developer-hub",
-        description: "API docs & SDKs",
+        label: "Warranty & RMA",
+        href: "/contact",
+        description: "Hassle-free returns & replacements",
       },
-    ],
-  },
-];
-
-const RESOURCE_COLUMNS = [
-  {
-    title: "Learn",
-    links: [
-      { label: "Blog & Insights", href: "/blog" },
-      { label: "Technical Guides", href: "/blog?category=guides" },
-      { label: "Case Studies", href: "/blog?category=case-studies" },
-    ],
-  },
-  {
-    title: "Company",
-    links: [
-      { label: "About Servchip", href: "/about" },
-      { label: "Contact Us", href: "/contact" },
-      { label: "FAQ", href: "/faq" },
+      {
+        label: "Lifecycle Support",
+        href: "/contact",
+        description: "Ongoing hardware management",
+      },
     ],
   },
 ];
 const NAV_MEGA: MegaNavItem[] = [
   { label: "Products", columns: PRODUCT_COLUMNS, href: "/products" },
   { label: "Categories", columns: CATEGORY_COLUMNS, href: "/categories" },
-  {
-    label: "Solutions",
-    columns: [
-      {
-        title: "Solutions",
-        href: "/solutions",
-        links: SOLUTIONS.slice(0, 6).map((s) => ({
-          label: s.name,
-          href: `/solutions/${s.slug}`,
-          description: s.description,
-        })),
-      },
-      {
-        title: "Industries",
-        href: "/industries",
-        links: INDUSTRIES.slice(0, 8).map((i) => ({
-          label: i.name,
-          href: `/industries/${i.slug}`,
-          description: i.description,
-        })),
-      },
-      {
-        title: "Countries",
-        href: "/countries",
-        links: COUNTRIES.map((c) => ({
-          label: c.name,
-          href: getCountryPath(c),
-          description: c.description,
-        })),
-      },
-    ],
-    href: "/solutions",
-  },
-  { label: "Technology", columns: TECHNOLOGY_COLUMNS, href: "/technology" },
+  { label: "Solutions", columns: SOLUTION_COLUMNS, href: "/solutions" },
   { label: "Services", columns: SERVICES_COLUMNS, href: "/services" },
-  { label: "Resources", columns: RESOURCE_COLUMNS, href: "/resources" },
 ];
 const NAV_SIMPLE: SimpleNavItem[] = [
   { label: "Blog", href: "/blog" },

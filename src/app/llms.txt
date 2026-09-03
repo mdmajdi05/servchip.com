@@ -1,0 +1,10 @@
+# servchip.com llms.txt
+
+- [Enterprise Chip Solutions](https://servchip.com/services): Offers comprehensive enterprise chip sourcing, deployment, and support services globally.
+- [Technology & Platforms](https://servchip.com/solutions): Offers technology overview and resources on AI, HPC, and semiconductor platforms.
+- [Enterprise Chip Comparison](https://servchip.com/comparison): Compare and purchase enterprise server chips from top brands with specifications and suitability guidance.
+- [Cisco Hardware Solutions](https://servchip.com/brands/cisco): Supply Cisco networking hardware and silicon solutions for enterprise and data center infrastructure.
+- [AI Hardware Insights](https://servchip.com/blog): Provides expert guides, comparisons, and market insights on AI hardware and GPU procurement.
+- [Enterprise Semiconductor Procurement](https://servchip.com/faq): Provide enterprise semiconductor procurement, support, and technical consultation for bulk AI chip and hardware purchases.
+- [Supermicro GPU Servers](https://servchip.com/brands/supermicro): Promote and sell Supermicro GPU servers for AI and HPC workloads.
+- [Dell AI Server Solutions](https://servchip.com/brands/dell-technologies): Promote Dell AI server solutions and distribute enterprise hardware for data centers.

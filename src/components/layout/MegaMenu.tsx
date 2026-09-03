@@ -45,6 +45,7 @@ interface MegaMenuProps {
 
 const ICON_MAP: Record<string, typeof Cpu> = {
   Architecture: Cpu,
+  Compute: Server,
   Computing: Server,
   Professional: Microchip,
   Vertical: Layers,
@@ -56,9 +57,19 @@ const ICON_MAP: Record<string, typeof Cpu> = {
   Company: Server,
   "AI Accelerators": Microchip,
   "Server CPUs": Cpu,
+  "Server Compute": Cpu,
   "AI Servers": Server,
   Networking: Layers,
   "Memory & Storage": Cpu,
+  "Featured Brands": Microchip,
+  Infrastructure: Layers,
+  "AI Workloads": Cpu,
+  "Platforms & Technology": Cpu,
+  Industries: Briefcase,
+  Procurement: Truck,
+  "Infrastructure Engineering": Wrench,
+  "Integration & Deployment": Layers,
+  "By Manufacturer": Microchip,
 };
 
 export function MegaMenu({ columns, featured }: MegaMenuProps) {
@@ -67,7 +78,7 @@ export function MegaMenu({ columns, featured }: MegaMenuProps) {
       <div
         className="grid gap-0"
         style={{
-          gridTemplateColumns: `repeat(${Math.min(columns.length, 5)}, 1fr)`,
+          gridTemplateColumns: `repeat(${Math.min(columns.length, 6)}, 1fr)`,
         }}
       >
         {columns.map((col, colIndex) => {
