@@ -27,10 +27,7 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: {
-    template: `%s | ${SITE.name}`,
-    default: SITE.defaultTitle,
-  },
+  title: SITE.defaultTitle,
   description: SITE.defaultDescription,
   keywords: [...SITE.defaultKeywords],
   authors: [{ name: SITE.companyName }],
@@ -110,7 +107,6 @@ export default function RootLayout({
         <link rel="alternate" href={`${SITE.url}/us`} hrefLang="en-us" />
         <link rel="alternate" href={`${SITE.url}/uk`} hrefLang="en-gb" />
         <link rel="alternate" href={`${SITE.url}/de`} hrefLang="de-de" />
-        <link rel="alternate" href={`${SITE.url}/in`} hrefLang="en-in" />
         <link rel="alternate" href={`${SITE.url}/ae`} hrefLang="en-ae" />
         <link rel="alternate" href={SITE.url} hrefLang="en" />
         <link rel="alternate" href={SITE.url} hrefLang="x-default" />

@@ -45,7 +45,7 @@ export function createSeoMetadata(input: SeoMetadataInput): Metadata {
   const { title, description, path } = input;
   const url = `${SITE.url}${path}`;
   const image = input.image ?? DEFAULT_IMAGE;
-  const titleTag = stripServchip(title);
+  const titleTag = `${stripServchip(title)} | ${SITE.name}`.trim();
 
   const metadata: Metadata = {
     title: titleTag,
