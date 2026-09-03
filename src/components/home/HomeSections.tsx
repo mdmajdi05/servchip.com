@@ -2,20 +2,7 @@
 
 import dynamic from "next/dynamic";
 import type { Country, CountryMarket } from "@/types";
-
-const Hero3D = dynamic(
-  () => import("@/components/home/Hero3D").then((m) => m.Hero3D),
-  {
-    loading: () => (
-      <section
-        className="relative min-h-screen flex items-center justify-center"
-        style={{ backgroundColor: "var(--bg-body)" }}
-      >
-        <div className="w-12 h-12 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
-      </section>
-    ),
-  },
-);
+import { Hero3D } from "./Hero3D";
 const TrustBar = dynamic(
   () => import("@/components/home/TrustBar").then((m) => m.TrustBar),
   {
