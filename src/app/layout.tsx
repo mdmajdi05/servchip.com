@@ -150,7 +150,7 @@ export default function RootLayout({
           }}
         />
         {/* Fixed header offset — CSS custom property + inline style on <main> */}
-        <style>{`:root{--header-height:56px}@media(min-width:1024px){:root{--header-height:124px}}`}</style>
+        <style>{`:root{--header-height:56px}@media(min-width:1024px){:root{--header-height:84px}}`}</style>
       </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} font-sans bg-bg-body text-text antialiased`}
