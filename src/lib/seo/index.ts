@@ -17,6 +17,7 @@ export {
   serviceSchema,
   contactPageSchema,
   itemListSchema,
+  placeSchema,
 } from "./schemas";
 export { createSeoMetadata } from "./metadata";
 export type { SeoImage, SeoMetadataInput } from "./metadata";

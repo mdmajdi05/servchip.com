@@ -63,7 +63,7 @@ export function createSeoMetadata(input: SeoMetadataInput): Metadata {
       type: input.type ?? "website",
       url,
       siteName: SITE.name,
-      locale: "en_IN",
+      locale: "en_AE",
       title: input.openGraphTitle ?? title,
       description: input.openGraphDescription ?? description,
       images: [

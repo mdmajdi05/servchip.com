@@ -262,7 +262,7 @@ export function Footer() {
               </div>
               <ul className="space-y-2.5">
                 {col.links.map((link) => (
-                  <li key={link.href}>
+                  <li key={`${link.label}-${link.href}`}>
                     <Link
                       href={link.href}
                       className="group flex items-center gap-1.5 text-sm text-text-muted hover:text-text transition-all duration-200"

@@ -17,10 +17,12 @@ export function organizationSchema() {
     "@type": ["Organization", "LocalBusiness"],
     "@id": ORG_ID,
     name: SITE.companyName,
+    legalName: "ServChip Pvt Ltd",
     url: SITE.url,
     logo: `${SITE.url}/favicon.svg`,
     description: SITE.defaultDescription,
     foundingDate: "2018",
+    isoCertification: "ISO 9001:2015",
     telephone: SITE.phone,
     email: SITE.email,
     priceRange: "$$$",
@@ -35,10 +37,6 @@ export function organizationSchema() {
     areaServed: [
       {
         "@type": "Place",
-        address: { "@type": "PostalAddress", addressCountry: "IN" },
-      },
-      {
-        "@type": "Place",
         address: { "@type": "PostalAddress", addressCountry: "AE" },
       },
       {
@@ -48,6 +46,10 @@ export function organizationSchema() {
       {
         "@type": "Place",
         address: { "@type": "PostalAddress", addressCountry: "SG" },
+      },
+      {
+        "@type": "Place",
+        address: { "@type": "PostalAddress", addressCountry: "GB" },
       },
       {
         "@type": "Place",
@@ -74,7 +76,37 @@ export function organizationSchema() {
 }
 
 export function localBusinessSchema() {
-  return null;
+  return jsonLd({
+    "@type": "WholesaleStore",
+    "@id": `${SITE.url}#location-uae`,
+    name: "Servchip UAE Distribution Hub",
+    image: `${SITE.url}/assets/images/uae-office.jpg`,
+    telephone: SITE.phone,
+    email: SITE.email,
+    priceRange: "$$$$",
+    address: {
+      ...SITE.addresses.uaeStructured,
+      addressRegion: "Sharjah",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: Number(SITE.geo.latitude),
+      longitude: Number(SITE.geo.longitude),
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+      ],
+      opens: "09:00",
+      closes: "18:00",
+    },
+  });
 }
 
 export function websiteSchema() {
@@ -251,6 +283,26 @@ export function contactPageSchema() {
       telephone: SITE.phone,
       email: SITE.email,
       address: SITE.addresses.indiaStructured,
+    },
+  });
+}
+
+export function placeSchema() {
+  const lat = Number(SITE.geo.latitude);
+  const lng = Number(SITE.geo.longitude);
+  return jsonLd({
+    "@type": "Place",
+    "@id": `${SITE.url}#geo-directions`,
+    name: "Servchip UAE Distribution Hub",
+    hasMap: `https://maps.google.com/?q=${lat},${lng}`,
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: lat,
+      longitude: lng,
+    },
+    address: {
+      ...SITE.addresses.uaeStructured,
+      addressRegion: "Sharjah",
     },
   });
 }

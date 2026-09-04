@@ -5,6 +5,8 @@ import {
   createBreadcrumb,
   faqSchema,
   breadcrumbSchema,
+  localBusinessSchema,
+  placeSchema,
 } from "@/lib/seo";
 import { getAuthorizedDistributorFaq } from "@/data/faq";
 
@@ -59,6 +61,14 @@ export default function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={faqSchema(HOME_FAQS)}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={localBusinessSchema()}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={placeSchema()}
       />
       <HomeSections />
     </>

@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   publisher: SITE.companyName,
   openGraph: {
     type: "website",
-    locale: "en_IN",
+    locale: "en_AE",
     url: SITE.url,
     siteName: SITE.name,
     title: `${SITE.name} — Enterprise Chip Distributor for AI, HPC & Data Centers`,

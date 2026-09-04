@@ -25,7 +25,7 @@ export default function Page() {
           url: `${SITE.url}/about`,
           mainEntity: {
             "@type": "Organization",
-            name: "Servchip Inc.",
+            name: "Servchip",
             url: SITE.url,
             foundingDate: "2018",
             description:

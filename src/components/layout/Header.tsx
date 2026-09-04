@@ -631,6 +631,7 @@ export function Header() {
   const [activeMenu, setActiveMenu] = useState<string | null>(null);
   const menuCloseTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const navContainerRef = useRef<HTMLDivElement>(null);
+  const megaMenuRef = useRef<HTMLDivElement>(null);
   const prevScroll = useRef(0);
   const pathname = usePathname();
   const prefix = useCountryPrefix();
@@ -725,10 +726,12 @@ export function Header() {
   useEffect(() => {
     if (!activeMenu) return;
     function onClickOutside(e: MouseEvent) {
-      if (
-        navContainerRef.current &&
-        !navContainerRef.current.contains(e.target as Node)
-      ) {
+      const target = e.target as Node;
+      const insideNav =
+        navContainerRef.current && navContainerRef.current.contains(target);
+      const insideMega =
+        megaMenuRef.current && megaMenuRef.current.contains(target);
+      if (navContainerRef.current && !insideNav && !insideMega) {
         setActiveMenu(null);
       }
     }
@@ -895,6 +898,7 @@ export function Header() {
           {/* Mega Menu Dropdown (below single row) */}
           {activeMenu && navMega.find((m) => m.label === activeMenu) && (
             <div
+              ref={megaMenuRef}
               className="hidden lg:flex absolute left-0 right-0 top-full mt-0 justify-center"
               onClick={() => setActiveMenu(null)}
               onMouseEnter={() => {

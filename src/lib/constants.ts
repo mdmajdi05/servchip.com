@@ -88,11 +88,11 @@ export const SITE = {
     instagram: "https://instagram.com/servchip",
   },
   geo: {
-    region: "IN-DL",
-    placename: "New Delhi, India",
-    position: "28.5245;77.2665",
-    latitude: "28.5245",
-    longitude: "77.2665",
+    region: "AE-SH",
+    placename: "Sharjah, United Arab Emirates",
+    position: "25.3213;55.4789",
+    latitude: "25.3213",
+    longitude: "55.4789",
   },
 } as const;
 
@@ -103,7 +103,7 @@ export const BREAKPOINTS = {
 } as const;
 
 export const SCHEMA = {
-  seller: { "@type": "Organization", name: "Servchip Inc." },
+  seller: { "@type": "Organization", name: "Servchip" },
   currency: "USD",
   returnPolicy: {
     "@type": "MerchantReturnPolicy",
