@@ -11,6 +11,20 @@ const SHORT_NAMES: Record<string, string> = {
   de: "Germany",
 };
 
+const COUNTRY_SUFFIX: Record<string, string> = {
+  ae: " in UAE and Dubai",
+  us: " in USA",
+  uk: " in UK",
+  de: " in Germany",
+  sg: " in Singapore",
+  my: " in Malaysia",
+  cn: " in China",
+  ph: " in Philippines",
+  sa: " in Saudi Arabia",
+  qa: " in Qatar",
+  om: " in Oman",
+};
+
 export interface CountryVars {
   country: string;
   name: string;
@@ -44,7 +58,7 @@ export function countryVars(country: string): CountryVars | null {
     country,
     name: countryObj.name,
     nameShort,
-    countrySuffix: ` in ${nameShort}`,
+    countrySuffix: COUNTRY_SUFFIX[country] ?? ` in ${nameShort}`,
     currency: market.currency,
     warehouse: market.warehouse,
     locale: market.locale,

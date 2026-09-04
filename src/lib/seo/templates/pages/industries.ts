@@ -17,16 +17,16 @@ export const industries: SeoPageTemplate = {
   openGraphTitle: "Industries We Serve | Servchip",
   twitterTitle: "Industries We Serve | Servchip",
   country: {
-    title: "Industries in {{nameShort}} | Enterprise AI Solutions",
+    title: "Industries{{countrySuffix}} | Enterprise AI Solutions",
     description:
-      "Enterprise AI and data center hardware in {{name}} for healthcare, finance, government, research, telecom and manufacturing.",
+      "Enterprise AI and data center hardware{{countrySuffix}} for healthcare, finance, government, research, telecom and manufacturing.",
     keywords: [
-      "enterprise AI by industry {{name}}",
-      "AI infrastructure solutions {{name}}",
-      "data center GPU industry solutions {{name}}",
-      "healthcare AI hardware {{name}}",
+      "enterprise AI by industry{{countrySuffix}}",
+      "AI infrastructure solutions{{countrySuffix}}",
+      "data center GPU industry solutions{{countrySuffix}}",
+      "healthcare AI hardware{{countrySuffix}}",
     ],
-    openGraphTitle: "Industries We Serve in {{name}} | Servchip",
-    twitterTitle: "Industries We Serve in {{name}} | Servchip",
+    openGraphTitle: "Industries We Serve{{countrySuffix}} | Servchip",
+    twitterTitle: "Industries We Serve{{countrySuffix}} | Servchip",
   },
 };

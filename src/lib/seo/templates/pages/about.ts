@@ -10,7 +10,6 @@ export const about: SeoPageTemplate = {
     "about Servchip",
     "enterprise chip distributor",
     "semiconductor procurement company",
-    "NVIDIA authorized distributor India",
     "AI hardware supplier",
     "data center hardware procurement",
     "chip sourcing company",
@@ -19,26 +18,28 @@ export const about: SeoPageTemplate = {
   openGraphTitle:
     "About Servchip — Enterprise Chip Distributor & Semiconductor Procurement Partner",
   openGraphDescription:
-    "ISO 9001 certified enterprise chip distributor. 27+ manufacturer partnerships. Serving 500+ enterprises across 150+ countries from India & UAE.",
+    "ISO 9001 certified enterprise chip distributor. 27+ manufacturer partnerships. Serving 500+ enterprises across 150+ countries.",
   twitterTitle:
     "About Servchip — Enterprise Chip Distributor & Semiconductor Procurement Partner",
   twitterDescription:
-    "ISO 9001 certified enterprise chip distributor. 27+ manufacturer partnerships. Serving 500+ enterprises across 150+ countries from India & UAE.",
+    "ISO 9001 certified enterprise chip distributor. 27+ manufacturer partnerships. Serving 500+ enterprises across 150+ countries.",
   country: {
     title: "About Servchip | Chip Distributor{{countrySuffix}}",
     description:
-      "ISO 9001 certified enterprise chip distributor serving {{nameShort}} with authorized NVIDIA, AMD and Intel distribution and {{currency}} pricing from {{warehouse}}.",
+      "ISO 9001 certified enterprise chip distributor serving{{countrySuffix}} with authorized NVIDIA, AMD and Intel distribution and {{currency}} pricing from {{warehouse}}.",
     keywords: [
-      "about Servchip {{name}}",
-      "enterprise chip distributor {{name}}",
-      "semiconductor procurement {{name}}",
-      "NVIDIA authorized distributor {{name}}",
+      "about Servchip{{countrySuffix}}",
+      "enterprise chip distributor{{countrySuffix}}",
+      "semiconductor procurement{{countrySuffix}}",
+      "NVIDIA authorized distributor{{countrySuffix}}",
     ],
-    openGraphTitle: "About Servchip {{name}} | Enterprise Chip Distributor",
-    twitterTitle: "About Servchip {{name}} | Enterprise Chip Distributor",
+    openGraphTitle:
+      "About Servchip{{countrySuffix}} | Enterprise Chip Distributor",
+    twitterTitle:
+      "About Servchip{{countrySuffix}} | Enterprise Chip Distributor",
     openGraphDescription:
-      "ISO 9001 certified enterprise chip distributor serving {{name}}.",
+      "ISO 9001 certified enterprise chip distributor serving{{countrySuffix}}.",
     twitterDescription:
-      "ISO 9001 certified enterprise chip distributor serving {{name}}.",
+      "ISO 9001 certified enterprise chip distributor serving{{countrySuffix}}.",
   },
 };

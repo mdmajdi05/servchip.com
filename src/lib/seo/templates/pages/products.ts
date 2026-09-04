@@ -25,17 +25,17 @@ export const products: SeoPageTemplate = {
   twitterDescription:
     "Buy authentic enterprise chips — NVIDIA H100, AMD MI300X, Intel Xeon. ISO 9001 certified distributor with global shipping.",
   country: {
-    title: "Buy AI Chips in {{nameShort}} | NVIDIA & AMD",
+    title: "Buy AI Chips{{countrySuffix}} | NVIDIA & AMD",
     description:
-      "Buy authentic NVIDIA H100, AMD MI300X, Intel Xeon and AI accelerators in {{name}}. Priced in {{currency}}, shipped from {{warehouse}}.",
+      "Buy authentic NVIDIA H100, AMD MI300X, Intel Xeon and AI accelerators{{countrySuffix}}. Priced in {{currency}}, shipped from {{warehouse}}.",
     keywords: [
-      "buy AI chips {{name}}",
-      "NVIDIA GPU distributor {{name}}",
-      "data center GPU supplier {{name}}",
-      "GPU server supplier {{name}}",
-      "semiconductor distributor {{name}}",
+      "buy AI chips{{countrySuffix}}",
+      "NVIDIA GPU distributor{{countrySuffix}}",
+      "data center GPU supplier{{countrySuffix}}",
+      "GPU server supplier{{countrySuffix}}",
+      "semiconductor distributor{{countrySuffix}}",
     ],
-    openGraphTitle: "Buy Enterprise AI Chips in {{name}} | Servchip",
-    twitterTitle: "Buy Enterprise AI Chips in {{name}} | Servchip",
+    openGraphTitle: "Buy Enterprise AI Chips{{countrySuffix}} | Servchip",
+    twitterTitle: "Buy Enterprise AI Chips{{countrySuffix}} | Servchip",
   },
 };

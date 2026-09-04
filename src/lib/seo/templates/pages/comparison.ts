@@ -24,20 +24,22 @@ export const comparison: SeoPageTemplate = {
   twitterDescription:
     "Side-by-side enterprise chip comparison — specs, performance & pricing for data center GPU procurement.",
   country: {
-    title: "GPU Comparison in {{nameShort}} | H100 vs MI300X",
+    title: "GPU Comparison{{countrySuffix}} | H100 vs MI300X",
     description:
-      "Compare enterprise AI accelerators in {{name}} — NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3. Specs and procurement guidance.",
+      "Compare enterprise AI accelerators{{countrySuffix}} — NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3. Specs and procurement guidance.",
     keywords: [
-      "NVIDIA H100 vs AMD MI300X {{name}}",
-      "AI chip comparison {{name}}",
-      "enterprise GPU specs {{name}}",
-      "data center accelerator comparison {{name}}",
+      "NVIDIA H100 vs AMD MI300X{{countrySuffix}}",
+      "AI chip comparison{{countrySuffix}}",
+      "enterprise GPU specs{{countrySuffix}}",
+      "data center accelerator comparison{{countrySuffix}}",
     ],
-    openGraphTitle: "AI Chip Comparison {{name}} | H100 vs MI300X vs Gaudi 3",
-    twitterTitle: "AI Chip Comparison {{name}} | H100 vs MI300X vs Gaudi 3",
+    openGraphTitle:
+      "AI Chip Comparison{{countrySuffix}} | H100 vs MI300X vs Gaudi 3",
+    twitterTitle:
+      "AI Chip Comparison{{countrySuffix}} | H100 vs MI300X vs Gaudi 3",
     openGraphDescription:
-      "Side-by-side enterprise chip comparison for buyers in {{name}}.",
+      "Side-by-side enterprise chip comparison for buyers{{countrySuffix}}.",
     twitterDescription:
-      "Side-by-side enterprise chip comparison for buyers in {{name}}.",
+      "Side-by-side enterprise chip comparison for buyers{{countrySuffix}}.",
   },
 };

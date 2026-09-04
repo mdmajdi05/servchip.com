@@ -29,16 +29,16 @@ export const services: SeoPageTemplate = {
     description:
       "End-to-end enterprise chip services{{countrySuffix}} — semiconductor procurement, hardware sourcing and system integration.",
     keywords: [
-      "enterprise chip services {{name}}",
-      "semiconductor procurement services {{name}}",
-      "AI infrastructure consulting {{name}}",
-      "hardware sourcing {{name}}",
+      "enterprise chip services{{countrySuffix}}",
+      "semiconductor procurement services{{countrySuffix}}",
+      "AI infrastructure consulting{{countrySuffix}}",
+      "hardware sourcing{{countrySuffix}}",
     ],
-    openGraphTitle: "Enterprise Chip Services {{name}} | Servchip",
-    twitterTitle: "Enterprise Chip Services {{name}} | Servchip",
+    openGraphTitle: "Enterprise Chip Services{{countrySuffix}} | Servchip",
+    twitterTitle: "Enterprise Chip Services{{countrySuffix}} | Servchip",
     openGraphDescription:
-      "Custom semiconductor procurement and AI infrastructure consulting in {{name}}.",
+      "Custom semiconductor procurement and AI infrastructure consulting{{countrySuffix}}.",
     twitterDescription:
-      "Custom semiconductor procurement and AI infrastructure consulting in {{name}}.",
+      "Custom semiconductor procurement and AI infrastructure consulting{{countrySuffix}}.",
   },
 };

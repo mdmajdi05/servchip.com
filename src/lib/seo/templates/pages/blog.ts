@@ -25,14 +25,14 @@ export const blog: SeoPageTemplate = {
   country: {
     title: "AI Chip Blog for Buyers{{countrySuffix}} | Servchip",
     description:
-      "Enterprise AI hardware guides, chip architecture insights and semiconductor procurement tips for buyers in {{name}}.",
+      "Enterprise AI hardware guides, chip architecture insights and semiconductor procurement tips for buyers{{countrySuffix}}.",
     keywords: [
-      "AI hardware guides {{name}}",
-      "enterprise chip blog {{name}}",
-      "semiconductor procurement {{name}}",
-      "data center infrastructure {{name}}",
+      "AI hardware guides{{countrySuffix}}",
+      "enterprise chip blog{{countrySuffix}}",
+      "semiconductor procurement{{countrySuffix}}",
+      "data center infrastructure{{countrySuffix}}",
     ],
-    openGraphTitle: "AI Hardware Blog — {{name}} | Servchip",
-    twitterTitle: "AI Hardware Blog — {{name}} | Servchip",
+    openGraphTitle: "AI Hardware Blog{{countrySuffix}} | Servchip",
+    twitterTitle: "AI Hardware Blog{{countrySuffix}} | Servchip",
   },
 };

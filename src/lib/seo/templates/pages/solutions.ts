@@ -25,20 +25,20 @@ export const solutions: SeoPageTemplate = {
   twitterDescription:
     "Multi-vendor enterprise solutions for AI training, HPC, and data center workloads featuring NVIDIA, AMD, and Intel hardware.",
   country: {
-    title: "Enterprise AI Solutions in {{nameShort}} | GPUs",
+    title: "Enterprise AI Solutions{{countrySuffix}} | GPUs",
     description:
       "Multi-vendor enterprise solutions for AI training, HPC and data center acceleration{{countrySuffix}} with NVIDIA, AMD and Intel hardware.",
     keywords: [
-      "enterprise AI solutions {{name}}",
-      "HPC solutions {{name}}",
-      "data center infrastructure {{name}}",
-      "AI training solutions {{name}}",
+      "enterprise AI solutions{{countrySuffix}}",
+      "HPC solutions{{countrySuffix}}",
+      "data center infrastructure{{countrySuffix}}",
+      "AI training solutions{{countrySuffix}}",
     ],
-    openGraphTitle: "Enterprise AI & HPC Solutions {{name}} | Servchip",
-    twitterTitle: "Enterprise AI & HPC Solutions {{name}} | Servchip",
+    openGraphTitle: "Enterprise AI & HPC Solutions{{countrySuffix}} | Servchip",
+    twitterTitle: "Enterprise AI & HPC Solutions{{countrySuffix}} | Servchip",
     openGraphDescription:
-      "Multi-vendor enterprise solutions for AI training, HPC and data center workloads in {{name}}.",
+      "Multi-vendor enterprise solutions for AI training, HPC and data center workloads{{countrySuffix}}.",
     twitterDescription:
-      "Multi-vendor enterprise solutions for AI training, HPC and data center workloads in {{name}}.",
+      "Multi-vendor enterprise solutions for AI training, HPC and data center workloads{{countrySuffix}}.",
   },
 };

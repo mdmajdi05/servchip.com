@@ -21,17 +21,17 @@ export const brands: SeoPageTemplate = {
   twitterDescription:
     "Browse every brand we stock — NVIDIA, AMD, Intel, Dell, HPE and 27+ manufacturers.",
   country: {
-    title: "Brand Directory in {{nameShort}} | NVIDIA & AMD",
+    title: "Brand Directory{{countrySuffix}} | NVIDIA & AMD",
     description:
-      "Browse authentic enterprise hardware brands in {{name}} — NVIDIA, AMD, Intel, HPE, Dell and more. Priced in {{currency}}, shipped from {{warehouse}}.",
+      "Browse authentic enterprise hardware brands{{countrySuffix}} — NVIDIA, AMD, Intel, HPE, Dell and more. Priced in {{currency}}, shipped from {{warehouse}}.",
     keywords: [
-      "NVIDIA distributor {{name}}",
-      "AMD distributor {{name}}",
-      "Intel distributor {{name}}",
-      "brands in {{name}}",
-      "enterprise hardware brands {{name}}",
+      "NVIDIA distributor{{countrySuffix}}",
+      "AMD distributor{{countrySuffix}}",
+      "Intel distributor{{countrySuffix}}",
+      "brands{{countrySuffix}}",
+      "enterprise hardware brands{{countrySuffix}}",
     ],
-    openGraphTitle: "Brand Directory in {{name}} | Servchip",
-    twitterTitle: "Brand Directory in {{name}} | Servchip",
+    openGraphTitle: "Brand Directory{{countrySuffix}} | Servchip",
+    twitterTitle: "Brand Directory{{countrySuffix}} | Servchip",
   },
 };

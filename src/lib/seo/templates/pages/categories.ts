@@ -23,17 +23,17 @@ export const categories: SeoPageTemplate = {
   twitterDescription:
     "Browse enterprise chip categories — data center GPUs, AI accelerators, server CPUs & more.",
   country: {
-    title: "Chip Categories in {{nameShort}} | GPUs & AI",
+    title: "Chip Categories{{countrySuffix}} | GPUs & AI",
     description:
-      "Browse enterprise chip categories in {{name}} — NVIDIA data center GPUs, AMD Instinct, Intel Xeon and AI servers.",
+      "Browse enterprise chip categories{{countrySuffix}} — NVIDIA data center GPUs, AMD Instinct, Intel Xeon and AI servers.",
     keywords: [
-      "enterprise chip categories {{name}}",
-      "data center GPUs {{name}}",
-      "AI accelerators {{name}}",
-      "server CPUs {{name}}",
-      "NVIDIA GPU categories {{name}}",
+      "enterprise chip categories{{countrySuffix}}",
+      "data center GPUs{{countrySuffix}}",
+      "AI accelerators{{countrySuffix}}",
+      "server CPUs{{countrySuffix}}",
+      "NVIDIA GPU categories{{countrySuffix}}",
     ],
-    openGraphTitle: "Product Categories in {{name}} | Servchip",
-    twitterTitle: "Product Categories in {{name}} | Servchip",
+    openGraphTitle: "Product Categories{{countrySuffix}} | Servchip",
+    twitterTitle: "Product Categories{{countrySuffix}} | Servchip",
   },
 };
