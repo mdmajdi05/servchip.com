@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import Script from "next/script";
-import { QueryProvider } from "@/providers/QueryProvider";
+import { GoogleTagManager } from "@next/third-parties/google";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { ColorProvider } from "@/providers/ColorProvider";
 import { Header } from "@/components/layout/Header";
@@ -98,11 +97,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="light" suppressHydrationWarning>
       <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-KBHRSP7H');`,
-          }}
-        />
+        <GoogleTagManager gtmId="GTM-KBHRSP7H" />
         <meta
           name="google-site-verification"
           content="fXyQ-7TkmRajJRw1z6CixmK1zspDKkhBgmgUgFJF42k"
@@ -118,21 +113,6 @@ export default function RootLayout({
         {/* Preconnect hints */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        {/* Google Analytics — single gtag.js load, both properties tracked */}
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-W9W5CX2KPN"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-W9W5CX2KPN');
-            gtag('config', 'G-4EKPF1FMTT');
-          `}
-        </Script>
         {/* JSON-LD */}
         <script
           type="application/ld+json"
@@ -174,19 +154,17 @@ export default function RootLayout({
         </a>
         <ThemeProvider>
           <ColorProvider>
-            <QueryProvider>
-              <Header />
-              <main
-                id="main-content"
-                className="min-h-screen"
-                style={{ paddingTop: "var(--header-height)" }}
-              >
-                {children}
-              </main>
-              <Footer />
-              <LeadGenProviders />
-              <GAClient />
-            </QueryProvider>
+            <Header />
+            <main
+              id="main-content"
+              className="min-h-screen"
+              style={{ paddingTop: "var(--header-height)" }}
+            >
+              {children}
+            </main>
+            <Footer />
+            <LeadGenProviders />
+            <GAClient />
           </ColorProvider>
         </ThemeProvider>
       </body>

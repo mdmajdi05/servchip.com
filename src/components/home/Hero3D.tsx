@@ -4,7 +4,6 @@ import { useRef, useEffect, useState, useSyncExternalStore } from "react";
 import { AppLink as Link } from "@/components/ui/AppLink";
 import NextImage from "next/image";
 import { ArrowRight } from "lucide-react";
-import { useTypewriter } from "@/hooks/useTypewriter";
 import { HERO_PHRASES, HERO_STATS } from "@/data/home";
 import type { Country, CountryMarket } from "@/types";
 
@@ -14,13 +13,6 @@ const styles = `
     100% { transform: translateX(-50%); }
   }
 `;
-
-const hexToRgba = (hex: string, alpha: number) => {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-};
 
 const DC_IMAGES = [
   "/images/server-room-1.webp",
@@ -67,6 +59,52 @@ function HeroBgSlider() {
   );
 }
 
+function TypewriterText() {
+  const textRef = useRef<HTMLSpanElement>(null);
+
+  useEffect(() => {
+    let phraseIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    let timer: ReturnType<typeof setTimeout>;
+
+    const tick = () => {
+      const phrase = HERO_PHRASES[phraseIndex];
+      if (!phrase) return;
+      if (!isDeleting && charIndex < phrase.length) {
+        charIndex += 1;
+        if (textRef.current)
+          textRef.current.textContent = phrase.slice(0, charIndex);
+        timer = setTimeout(tick, 40);
+      } else if (!isDeleting && charIndex === phrase.length) {
+        timer = setTimeout(() => {
+          isDeleting = true;
+          tick();
+        }, 2500);
+      } else if (isDeleting && charIndex > 0) {
+        charIndex -= 1;
+        if (textRef.current)
+          textRef.current.textContent = phrase.slice(0, charIndex);
+        timer = setTimeout(tick, 20);
+      } else {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % HERO_PHRASES.length;
+        timer = setTimeout(tick, 60);
+      }
+    };
+
+    timer = setTimeout(tick, 60);
+    return () => clearTimeout(timer);
+  }, []);
+
+  return (
+    <>
+      <span className="text-primary/60 mr-2 font-mono text-sm">&gt;</span>
+      <span ref={textRef} />
+    </>
+  );
+}
+
 function FloatingOrbs() {
   return (
     <>
@@ -74,88 +112,6 @@ function FloatingOrbs() {
       <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-secondary/5 blur-[100px] pointer-events-none" />
       <div className="absolute top-1/3 right-1/3 w-[400px] h-[400px] rounded-full bg-primary/3 blur-[150px] pointer-events-none" />
     </>
-  );
-}
-
-function ParticleField() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext("2d");
-    if (!ctx) return;
-
-    let animId: number;
-    let w = (canvas.width = window.innerWidth);
-    let h = (canvas.height = window.innerHeight);
-
-    const particles: {
-      x: number;
-      y: number;
-      vx: number;
-      vy: number;
-      s: number;
-      a: number;
-    }[] = [];
-    for (let i = 0; i < 50; i++) {
-      particles.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.3,
-        vy: (Math.random() - 0.5) * 0.3,
-        s: 0.5 + Math.random() * 1.5,
-        a: 0.1 + Math.random() * 0.3,
-      });
-    }
-
-    const resize = () => {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-    };
-    window.addEventListener("resize", resize);
-
-    const render = () => {
-      ctx.clearRect(0, 0, w, h);
-      for (const p of particles) {
-        p.x += p.vx;
-        p.y += p.vy;
-        if (p.x < 0 || p.x > w) p.vx *= -1;
-        if (p.y < 0 || p.y > h) p.vy *= -1;
-        ctx.beginPath();
-        ctx.fillStyle = hexToRgba("#00BCD4", p.a);
-        ctx.arc(p.x, p.y, p.s, 0, Math.PI * 2);
-        ctx.fill();
-      }
-      for (let i = 0; i < particles.length; i++) {
-        for (let j = i + 1; j < particles.length; j++) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const dist = Math.sqrt(dx * dx + dy * dy);
-          if (dist < 120) {
-            ctx.beginPath();
-            ctx.strokeStyle = hexToRgba("#00BCD4", (1 - dist / 120) * 0.08);
-            ctx.lineWidth = 0.3;
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-      animId = requestAnimationFrame(render);
-    };
-    render();
-    return () => {
-      window.removeEventListener("resize", resize);
-      cancelAnimationFrame(animId);
-    };
-  }, []);
-
-  return (
-    <canvas
-      ref={canvasRef}
-      className="absolute inset-0 w-full h-full pointer-events-none"
-    />
   );
 }
 
@@ -185,7 +141,6 @@ export function Hero3D({
   country?: Country;
   market?: CountryMarket;
 }) {
-  const displayText = useTypewriter(HERO_PHRASES, 40, 2500);
   const isDesktop = useSyncExternalStore(
     (cb) => {
       const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
@@ -210,7 +165,7 @@ export function Hero3D({
   const heroSubtitle =
     country && market
       ? `${market.shippingNote} ${market.leadTime} delivery. ${market.currency} (${market.currencySymbol}) pricing.`
-      : displayText;
+      : null;
   const heroBadge = country
     ? `AUTHORIZED NVIDIA DISTRIBUTOR — ${country.name.toUpperCase()}`
     : "AUTHORIZED NVIDIA DISTRIBUTOR — DATA CENTER GPUs & AI CHIPS";
@@ -229,7 +184,6 @@ export function Hero3D({
       <div className="absolute inset-0 bg-gradient-to-t from-[#070B15]/40 via-transparent to-transparent" />
 
       <FloatingOrbs />
-      {isDesktop && <ParticleField />}
 
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(5,7,11,0.35)_100%)] pointer-events-none" />
 
@@ -255,11 +209,10 @@ export function Hero3D({
           </h1>
 
           <p
-            className="text-slate-300 text-base sm:text-lg leading-relaxed mb-6 max-w-2xl mx-auto min-h-[3.5rem]"
+            className="text-slate-300 text-base sm:text-lg leading-relaxed mb-6 max-w-2xl mx-auto min-h-[3.5rem] sm:min-h-[5rem]"
             aria-live="polite"
           >
-            <span className="text-primary/60 mr-2 font-mono text-sm">&gt;</span>
-            {heroSubtitle}
+            {heroSubtitle ?? <TypewriterText />}
             {!country && (
               <span
                 className="inline-block w-[6px] h-[14px] ml-1 align-middle animate-pulse"
@@ -299,7 +252,7 @@ export function Hero3D({
             {heroStats.map(({ value, label }, i) => (
               <div
                 key={label}
-                className="group relative text-center px-3 py-4 rounded-xl border bg-white/[0.03] backdrop-blur-sm hover:bg-white/[0.07] hover:-translate-y-1 transition-all duration-300"
+                className="group relative text-center px-3 py-4 rounded-xl border bg-white/[0.03] backdrop-blur-sm hover:bg-white/[0.07] sm:hover:-translate-y-1 transition-all duration-300"
                 style={{
                   borderColor:
                     "color-mix(in srgb, var(--hero-primary) 25%, transparent)",
@@ -358,6 +311,7 @@ export function Hero3D({
             style={{
               animation: "logo-scroll 40s linear infinite",
               width: "fit-content",
+              willChange: "transform",
             }}
           >
             {[...LOGOS, ...LOGOS].map((logo, i) => (
