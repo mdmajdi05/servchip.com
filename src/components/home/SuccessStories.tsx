@@ -43,7 +43,6 @@ export function SuccessStories() {
                     width={40}
                     height={40}
                     loading="lazy"
-                    unoptimized
                     onError={() =>
                       setFailedAvatars((prev) =>
                         new Set(prev).add(t.author.name),

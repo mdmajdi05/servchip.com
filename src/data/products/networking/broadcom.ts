@@ -53,7 +53,7 @@ export const BROADCOM_NETWORKING: NetworkingProduct[] = [
     categoryId: "broadcom-smartnic",
     parentCategoryId: "networking",
     categoryName: "SmartNICs",
-    images: ["/images/server-room-3.jpg"],
+    images: ["/images/server-room-3.webp"],
     description:
       "100GbE SmartNIC with hardware-accelerated network processing and security offload.",
     longDescription:

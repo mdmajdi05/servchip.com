@@ -54,7 +54,7 @@ export const CISCO_NETWORKING: NetworkingProduct[] = [
     categoryId: "cisco-switches",
     parentCategoryId: "networking",
     categoryName: "Data Center Switches",
-    images: ["/images/server-room-4.png"],
+    images: ["/images/server-room-4.webp"],
     description:
       "51.2T modular data center switch for AI/ML fabrics and cloud-scale networking.",
     longDescription:

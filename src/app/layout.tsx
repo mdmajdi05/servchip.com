@@ -118,21 +118,7 @@ export default function RootLayout({
         {/* Preconnect hints */}
         <link rel="preconnect" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        {/* Google tag (gtag.js) - G-4EKPF1FMTT */}
-        <Script
-          async
-          src="https://www.googletagmanager.com/gtag/js?id=G-4EKPF1FMTT"
-          strategy="afterInteractive"
-        />
-        <Script id="google-tag-4EKPF1FMTT" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-4EKPF1FMTT');
-          `}
-        </Script>
-        {/* GA - G-W9W5CX2KPN */}
+        {/* Google Analytics — single gtag.js load, both properties tracked */}
         <Script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-W9W5CX2KPN"
@@ -144,6 +130,7 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'G-W9W5CX2KPN');
+            gtag('config', 'G-4EKPF1FMTT');
           `}
         </Script>
         {/* JSON-LD */}

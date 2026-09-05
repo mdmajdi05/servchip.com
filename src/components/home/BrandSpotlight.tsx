@@ -93,7 +93,6 @@ export function BrandSpotlight() {
                           alt={row.alt}
                           fill
                           sizes="(max-width: 1024px) 100vw, 50vw"
-                          unoptimized
                           onError={() => handleImageError(row.manufacturer)}
                           className="object-cover transition-transform duration-500 group-hover:scale-110"
                         />

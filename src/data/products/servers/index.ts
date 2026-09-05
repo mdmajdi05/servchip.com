@@ -99,7 +99,7 @@ export const DELL_SERVERS: ServerProduct[] = [
     categoryId: "dell-density",
     parentCategoryId: "servers",
     categoryName: "Density Optimized Servers",
-    images: ["/images/server-room-4.png"],
+    images: ["/images/server-room-4.webp"],
     description:
       "1U density-optimized server with Intel Xeon 5th Gen for space-constrained data centers.",
     longDescription:
@@ -190,7 +190,7 @@ export const HPE_SERVERS: ServerProduct[] = [
     categoryId: "hpe-ai-servers",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: ["/images/server-room-3.jpg"],
+    images: ["/images/server-room-3.webp"],
     description:
       "Supercomputing-class AI server with 8x GPU support and liquid cooling readiness.",
     longDescription:
@@ -234,7 +234,7 @@ export const HPE_SERVERS: ServerProduct[] = [
     categoryId: "hpe-proliant",
     parentCategoryId: "servers",
     categoryName: "General Purpose Servers",
-    images: ["/images/server-room-3.jpg"],
+    images: ["/images/server-room-3.webp"],
     description:
       "AMD EPYC-powered 2U rack server optimized for virtualization, database, and cloud workloads.",
     longDescription:
@@ -322,7 +322,7 @@ export const HPE_SERVERS: ServerProduct[] = [
     categoryId: "hpe-proliant",
     parentCategoryId: "ai-servers",
     categoryName: "General Purpose Servers",
-    images: ["/images/server-room-4.png"],
+    images: ["/images/server-room-4.webp"],
     description:
       "Versatile enterprise server with next-gen Intel Xeon and expansive memory capacity.",
     longDescription:
@@ -413,7 +413,7 @@ export const SUPERMICRO_SERVERS: ServerProduct[] = [
     categoryId: "supermicro-general",
     parentCategoryId: "servers",
     categoryName: "General Purpose Servers",
-    images: ["/images/server-room-3.jpg"],
+    images: ["/images/server-room-3.webp"],
     description:
       "1U single-socket server with Intel Xeon for web hosting, CDN, and virtualization.",
     longDescription:
@@ -548,7 +548,7 @@ export const LENOVO_SERVERS: ServerProduct[] = [
     categoryId: "lenovo-general",
     parentCategoryId: "servers",
     categoryName: "General Purpose Servers",
-    images: ["/images/server-room-4.png"],
+    images: ["/images/server-room-4.webp"],
     description:
       "1U general purpose server with Intel Xeon 5th Gen for enterprise and cloud workloads.",
     longDescription:
@@ -592,7 +592,7 @@ export const LENOVO_SERVERS: ServerProduct[] = [
     categoryId: "lenovo-ai",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: ["/images/server-room-3.jpg"],
+    images: ["/images/server-room-3.webp"],
     description:
       "Versatile 4-way GPU server powered by AMD EPYC for AI and accelerated analytics.",
     longDescription:
@@ -639,7 +639,7 @@ export const GIGABYTE_SERVERS: ServerProduct[] = [
     categoryId: "gigabyte-gpu",
     parentCategoryId: "ai-servers",
     categoryName: "GPU Servers",
-    images: ["/images/server-room-4.png"],
+    images: ["/images/server-room-4.webp"],
     description:
       "High-density 4U AI server with 8x GPU support for accelerated computing.",
     longDescription:
@@ -686,7 +686,7 @@ export const ASUS_SERVERS: ServerProduct[] = [
     categoryId: "gigabyte-gpu",
     parentCategoryId: "ai-servers",
     categoryName: "GPU Servers",
-    images: ["/images/server-room-3.jpg"],
+    images: ["/images/server-room-3.webp"],
     description:
       "2U GPU server with 4x GPU support for AI training, HPC, and deep learning workloads.",
     longDescription:
@@ -959,7 +959,7 @@ export const FOXCONN_SERVERS: ServerProduct[] = [
     categoryId: "foxconn-ai",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: ["/images/server-room-3.jpg"],
+    images: ["/images/server-room-3.webp"],
     description:
       "High-performance AI acceleration platform with 8x GPU support.",
     longDescription:
@@ -1006,7 +1006,7 @@ export const WIWYNN_SERVERS: ServerProduct[] = [
     categoryId: "wiwynn-ai",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: ["/images/server-room-4.png"],
+    images: ["/images/server-room-4.webp"],
     description:
       "Cloud-optimized AI server with 8x GPU support for hyperscale workloads.",
     longDescription:

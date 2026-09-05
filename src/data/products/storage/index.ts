@@ -239,7 +239,7 @@ export const SOLIDIGM_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: ["/images/server-room-4.png"],
+    images: ["/images/server-room-4.webp"],
     description:
       "High-capacity PCIe Gen5 NVMe SSD for AI data pipelines and content delivery.",
     longDescription:

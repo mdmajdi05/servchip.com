@@ -99,7 +99,7 @@ const PRODUCTS = [
   },
   {
     name: "NVIDIA DGX Systems",
-    image: "/images/server-room-3.jpg",
+    image: "/images/server-room-3.webp",
     alt: "NVIDIA DGX AI supercomputing system in a data center environment",
     title: "NVIDIA DGX AI Supercomputing System",
     caption:
@@ -516,7 +516,6 @@ export default function ServicesPage() {
                     alt="NVIDIA GPU distributor serving enterprise buyers across the Middle East"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
-                    unoptimized
                     className="object-cover"
                   />
                 </div>
@@ -557,7 +556,6 @@ export default function ServicesPage() {
             alt="GCC-wide NVIDIA GPU distribution coverage across the Middle East"
             fill
             sizes="100vw"
-            unoptimized
             className="object-cover opacity-20"
           />
         </div>
@@ -608,7 +606,6 @@ export default function ServicesPage() {
                     title={product.title}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    unoptimized
                     className="object-cover group-hover:scale-105 transition-transform duration-500"
                   />
                 </div>
@@ -941,7 +938,6 @@ export default function ServicesPage() {
             alt="Enterprise NVIDIA GPU deployment planning for Middle East data centers"
             fill
             sizes="100vw"
-            unoptimized
             className="object-cover opacity-15"
           />
         </div>

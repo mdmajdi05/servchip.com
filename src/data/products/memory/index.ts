@@ -188,7 +188,7 @@ export const SAMSUNG_MEMORY: MemoryProduct[] = [
     categoryId: "memory-ddr5",
     parentCategoryId: "ai-memory",
     categoryName: "DDR5 Memory",
-    images: ["/images/server-room-3.jpg"],
+    images: ["/images/server-room-3.webp"],
     description:
       "Enterprise DDR5 RDIMM for server platforms with up to 5600 Mbps speed.",
     longDescription:
@@ -231,7 +231,7 @@ export const SAMSUNG_MEMORY: MemoryProduct[] = [
     categoryId: "memory-hbm",
     parentCategoryId: "ai-memory",
     categoryName: "AI Memory",
-    images: ["/images/server-room-3.jpg"],
+    images: ["/images/server-room-3.webp"],
     description:
       "Samsung HBM3 memory with 36GB capacity for AI accelerators and HPC platforms.",
     longDescription:
@@ -277,7 +277,7 @@ export const MICRON_MEMORY: MemoryProduct[] = [
     categoryId: "memory-hbm",
     parentCategoryId: "ai-memory",
     categoryName: "AI Memory",
-    images: ["/images/server-room-4.png"],
+    images: ["/images/server-room-4.webp"],
     description:
       "Micron HBM3E with industry-leading 1.2+ TB/s bandwidth for AI and HPC.",
     longDescription:
@@ -362,7 +362,7 @@ export const MICRON_MEMORY: MemoryProduct[] = [
     categoryId: "memory-hbm",
     parentCategoryId: "ai-memory",
     categoryName: "AI Memory",
-    images: ["/images/server-room-4.png"],
+    images: ["/images/server-room-4.webp"],
     description:
       "Micron HBM3 with 24GB capacity and 819 GB/s bandwidth for AI accelerator platforms.",
     longDescription:

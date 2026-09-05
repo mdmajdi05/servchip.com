@@ -38,7 +38,6 @@ export function NetworkingCard({ net, index: _index }: Props) {
                 alt={`${net.name} — ${net.categoryName}`}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                unoptimized
                 className="object-cover"
               />
             ) : (

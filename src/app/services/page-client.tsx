@@ -255,7 +255,6 @@ export default function ServicesPage() {
             alt="NVIDIA GPU distributor serving enterprise buyers across the Middle East"
             fill
             sizes="100vw"
-            unoptimized
             className="object-cover opacity-20"
           />
         </div>
@@ -319,7 +318,6 @@ export default function ServicesPage() {
                         alt={spot.alt}
                         fill
                         sizes="(max-width: 1024px) 100vw, 50vw"
-                        unoptimized
                         className="object-cover"
                       />
                     </div>

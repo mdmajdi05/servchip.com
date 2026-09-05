@@ -34,28 +34,34 @@ function HeroBgSlider() {
   const [current, setCurrent] = useState(0);
 
   useEffect(() => {
-    DC_IMAGES.slice(1).forEach((url) => {
-      const img = new Image();
-      img.src = url;
-    });
-    const interval = setInterval(
+    const timer = setTimeout(
       () => setCurrent((p) => (p + 1) % DC_IMAGES.length),
       5000,
     );
-    return () => clearInterval(interval);
-  }, []);
+    return () => clearTimeout(timer);
+  }, [current]);
+
+  const prev = (current - 1 + DC_IMAGES.length) % DC_IMAGES.length;
+  const slides = current === 0 ? [0] : [prev, current];
 
   return (
     <div className="absolute inset-0">
-      {DC_IMAGES.map((url, i) => (
+      {slides.map((i) => (
         <div
           key={i}
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat transition-opacity duration-1000 ease-in-out"
-          style={{
-            backgroundImage: `url(${url})`,
-            opacity: i === current ? 1 : 0,
-          }}
-        />
+          className="absolute inset-0 transition-opacity duration-1000 ease-in-out"
+          style={{ opacity: i === current ? 1 : 0 }}
+        >
+          <NextImage
+            src={DC_IMAGES[i]}
+            alt=""
+            fill
+            sizes="100vw"
+            priority={i === 0}
+            fetchPriority={i === 0 ? "high" : "auto"}
+            className="object-cover"
+          />
+        </div>
       ))}
     </div>
   );

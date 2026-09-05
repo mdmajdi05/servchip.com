@@ -96,7 +96,7 @@ export const MARVELL_NETWORKING: NetworkingProduct[] = [
     categoryId: "marvell-memory",
     parentCategoryId: "networking",
     categoryName: "Memory Controllers",
-    images: ["/images/server-room-3.jpg"],
+    images: ["/images/server-room-3.webp"],
     description:
       "High-performance DDR5 memory controller for server and AI accelerator platforms.",
     longDescription:

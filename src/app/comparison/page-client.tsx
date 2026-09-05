@@ -740,7 +740,6 @@ export default function ComparisonPage() {
                             alt=""
                             width={32}
                             height={32}
-                            unoptimized
                             className="object-cover w-full h-full"
                           />
                         ) : (
@@ -874,7 +873,6 @@ export default function ComparisonPage() {
                         alt=""
                         width={28}
                         height={28}
-                        unoptimized
                         className="object-cover w-full h-full"
                       />
                     ) : (
@@ -959,7 +957,6 @@ export default function ComparisonPage() {
                               alt={`${chip.name} — ${chip.categoryName}`}
                               width={40}
                               height={40}
-                              unoptimized
                               className="object-cover w-full h-full"
                             />
                           ) : (
@@ -1101,7 +1098,6 @@ export default function ComparisonPage() {
                         alt={`${chip.name} — ${chip.categoryName}`}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                        unoptimized
                         className="object-cover"
                       />
                     ) : (
@@ -1438,7 +1434,6 @@ export default function ComparisonPage() {
                       alt=""
                       width={32}
                       height={32}
-                      unoptimized
                       className="object-cover w-full h-full"
                     />
                   ) : (

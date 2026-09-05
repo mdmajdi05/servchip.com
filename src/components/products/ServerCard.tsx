@@ -38,7 +38,6 @@ export function ServerCard({ server, index: _index }: Props) {
                 alt={`${server.name} — ${server.categoryName}`}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                unoptimized
                 className="object-cover"
               />
             ) : (

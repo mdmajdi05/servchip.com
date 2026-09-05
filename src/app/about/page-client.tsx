@@ -168,7 +168,6 @@ export default function AboutPage() {
                   alt="Enterprise data center server racks stocked for global AI chip distribution"
                   fill
                   sizes="(max-width: 1024px) 100vw, 50vw"
-                  unoptimized
                   className="object-cover"
                 />
               </div>
