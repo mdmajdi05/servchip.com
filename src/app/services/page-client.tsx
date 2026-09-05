@@ -430,7 +430,7 @@ export default function ServicesPage() {
                     size="lg"
                     className="font-semibold shadow-lg shadow-primary/20"
                   >
-                    Talk to an Expert <ArrowRight className="w-4 h-4" />
+                    Speak With Engineering <ArrowRight className="w-4 h-4" />
                   </Button>
                 </Link>
                 <Link href="/rfq">
@@ -439,7 +439,7 @@ export default function ServicesPage() {
                     size="lg"
                     className="border-border text-text-muted hover:text-text"
                   >
-                    Get a Quote
+                    Request Volume Pricing
                   </Button>
                 </Link>
                 <Link href="/resources">

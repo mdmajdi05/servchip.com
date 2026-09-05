@@ -8,6 +8,10 @@ import {
   MessageCircle,
   Clock,
   ArrowRight,
+  ShieldCheck,
+  Truck,
+  Headphones,
+  Globe,
 } from "lucide-react";
 import { SITE } from "@/lib/constants";
 import { AppLink as Link } from "@/components/ui/AppLink";
@@ -36,6 +40,32 @@ const CONTACT_METHODS = [
     href: `https://wa.me/${WHATSAPP_NUMBER}?text=Hi%20Servchip%2C%20I%27m%20interested%20in%20your%20products.`,
     description: "Chat instantly",
     color: "bg-[#25D366]/10 text-[#25D366]",
+  },
+];
+const BENEFITS = [
+  {
+    icon: ShieldCheck,
+    title: "Authentic Products Guaranteed",
+    description:
+      "Every chip sourced directly from manufacturers or authorized partners with full chain of custody documentation.",
+  },
+  {
+    icon: Truck,
+    title: "Global Shipping & Logistics",
+    description:
+      "Secure delivery to 150+ countries with customs clearance, insurance, and real-time tracking included.",
+  },
+  {
+    icon: Headphones,
+    title: "Expert Technical Support",
+    description:
+      "Multi-vendor certified engineers available for pre-sales consultation, architecture reviews, and post-sales support.",
+  },
+  {
+    icon: Globe,
+    title: "Local Presence in Key Markets",
+    description:
+      "Offices in India and UAE with regional expertise for Middle East, Europe, and APAC procurement requirements.",
   },
 ];
 export default function ContactPage() {
@@ -127,6 +157,28 @@ export default function ContactPage() {
                     {SITE.addresses.uae}
                   </p>
                 </div>
+              </div>
+            </div>
+            <div className="bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 rounded-xl p-5">
+              <h3 className="text-sm font-bold text-text mb-2">
+                Why Choose Servchip?
+              </h3>
+              <div className="space-y-3">
+                {BENEFITS.map((benefit) => (
+                  <div key={benefit.title} className="flex items-start gap-3">
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                      <benefit.icon className="w-4 h-4 text-primary" />
+                    </div>
+                    <div>
+                      <p className="text-xs font-semibold text-text">
+                        {benefit.title}
+                      </p>
+                      <p className="text-[10px] text-text-muted">
+                        {benefit.description}
+                      </p>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="bg-gradient-to-br from-primary/5 to-transparent border border-primary/20 rounded-xl p-5">

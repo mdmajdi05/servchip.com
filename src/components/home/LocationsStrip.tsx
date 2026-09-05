@@ -18,8 +18,11 @@ const REGION_GROUPS: {
     title: "NVIDIA Distribution",
     tagline: "H100, H200, B200 & AI chips",
     links: [
-      { label: "NVIDIA distributor in India", href: "/countries/india" },
+      { label: "NVIDIA distributor in USA", href: "/countries/usa" },
       { label: "NVIDIA distributor in UAE", href: "/countries/uae" },
+      { label: "NVIDIA distributor in UK", href: "/countries/uk" },
+      { label: "NVIDIA distributor in Germany", href: "/countries/de" },
+      { label: "NVIDIA distributor in India", href: "/countries/india" },
       { label: "NVIDIA distributor in Dubai", href: "/countries/uae" },
       {
         label: "NVIDIA distributor in Singapore",
@@ -40,6 +43,8 @@ const REGION_GROUPS: {
     links: [
       { label: "AMD authorized distributor in USA", href: "/countries/usa" },
       { label: "AMD distributor in UAE", href: "/countries/uae" },
+      { label: "AMD distributor in UK", href: "/countries/uk" },
+      { label: "AMD distributor in Germany", href: "/countries/de" },
       { label: "AMD authorized distributors", href: "/products" },
     ],
   },
@@ -47,6 +52,10 @@ const REGION_GROUPS: {
     title: "Intel Distribution",
     tagline: "Xeon & Gaudi accelerators",
     links: [
+      { label: "Intel distributor in USA", href: "/countries/usa" },
+      { label: "Intel distributor in UAE", href: "/countries/uae" },
+      { label: "Intel distributor in UK", href: "/countries/uk" },
+      { label: "Intel distributor in Germany", href: "/countries/de" },
       { label: "Intel distributor in Dubai", href: "/countries/uae" },
       { label: "Intel supplier in UAE", href: "/countries/uae" },
       { label: "Intel supplier in Malaysia", href: "/countries/malaysia" },
@@ -57,6 +66,10 @@ const REGION_GROUPS: {
     title: "Global Coverage",
     tagline: "Worldwide enterprise chip shipping",
     links: [
+      { label: "GPU suppliers in USA", href: "/countries/usa" },
+      { label: "GPU suppliers in UAE", href: "/countries/uae" },
+      { label: "GPU suppliers in UK", href: "/countries/uk" },
+      { label: "GPU suppliers in Germany", href: "/countries/de" },
       { label: "GPU suppliers in India", href: "/countries/india" },
       { label: "NVIDIA supplier in UAE", href: "/countries/uae" },
       { label: "Xilinx authorized distributors", href: "/products" },
@@ -71,7 +84,7 @@ export function LocationsStrip() {
         <SectionHeading
           label="Locations We Serve"
           title="Enterprise Chip & GPU Distribution Across Regions"
-          subtitle="Authorized NVIDIA, AMD & Intel distribution with enterprise chip sourcing delivered to India, UAE, USA, Singapore, Malaysia & beyond"
+          subtitle="Authorized NVIDIA, AMD & Intel distribution with enterprise chip sourcing delivered to USA, UAE, UK, Germany, India, Singapore, Malaysia & beyond"
           align="center"
         />
 
