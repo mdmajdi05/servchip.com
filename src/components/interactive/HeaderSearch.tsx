@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect } from "react";
 import { AppLink as Link } from "@/components/ui/AppLink";
 import {
   Search,
@@ -20,7 +20,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { searchProducts, searchBlogPosts } from "@/data/search";
+import { useSiteSearch } from "@/components/interactive/useSiteSearch";
 import type { ProductType } from "@/types";
 const TYPE_ICON: Record<ProductType, typeof Cpu> = {
   chip: Cpu,
@@ -59,14 +59,7 @@ export function HeaderSearch({ onOpenModal, className }: HeaderSearchProps) {
     undefined,
   );
 
-  const { products, blogPosts } = useMemo(() => {
-    if (query.trim().length < 2) return { products: [], blogPosts: [] };
-    const q = query.trim();
-    return {
-      products: searchProducts(q).slice(0, 6),
-      blogPosts: searchBlogPosts(q).slice(0, 3),
-    };
-  }, [query]);
+  const { products, blogPosts } = useSiteSearch(query);
   const totalResults = products.length + blogPosts.length;
   const hasQuery = query.trim().length >= 2;
 

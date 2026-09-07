@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useEffect, useState, useSyncExternalStore } from "react";
+import { useRef, useEffect, useState } from "react";
 import { AppLink as Link } from "@/components/ui/AppLink";
 import NextImage from "next/image";
 import { ArrowRight } from "lucide-react";
@@ -51,6 +51,7 @@ function HeroBgSlider() {
             sizes="100vw"
             priority={i === 0}
             fetchPriority={i === 0 ? "high" : "auto"}
+            quality={70}
             className="object-cover"
           />
         </div>
@@ -141,16 +142,6 @@ export function Hero3D({
   country?: Country;
   market?: CountryMarket;
 }) {
-  const isDesktop = useSyncExternalStore(
-    (cb) => {
-      const mq = window.matchMedia("(hover: hover) and (pointer: fine)");
-      mq.addEventListener("change", cb);
-      return () => mq.removeEventListener("change", cb);
-    },
-    () => window.matchMedia("(hover: hover) and (pointer: fine)").matches,
-    () => false,
-  );
-
   const heroTitle = (
     <>
       AI Chip Distributor —{" "}

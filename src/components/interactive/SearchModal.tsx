@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect } from "react";
 import { AppLink as Link } from "@/components/ui/AppLink";
 import {
   Search,
@@ -15,7 +15,7 @@ import {
   Package,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { searchProducts, searchBlogPosts } from "@/data/search";
+import { useSiteSearch } from "@/components/interactive/useSiteSearch";
 import type { ProductType } from "@/types";
 const TYPE_ICON: Record<ProductType, typeof Cpu> = {
   chip: Cpu,
@@ -50,13 +50,7 @@ export function SearchModal({
     undefined,
   );
 
-  const { products, blogPosts } = useMemo(() => {
-    if (query.length < 2) return { products: [], blogPosts: [] };
-    return {
-      products: searchProducts(query),
-      blogPosts: searchBlogPosts(query),
-    };
-  }, [query]);
+  const { products, blogPosts } = useSiteSearch(query);
 
   const totalResults = products.length + blogPosts.length;
 

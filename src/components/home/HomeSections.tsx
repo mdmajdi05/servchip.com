@@ -3,6 +3,7 @@
 import dynamic from "next/dynamic";
 import type { Country, CountryMarket } from "@/types";
 import { Hero3D } from "./Hero3D";
+import { LazySection } from "@/components/ui/LazySection";
 const TrustBar = dynamic(
   () => import("@/components/home/TrustBar").then((m) => m.TrustBar),
   {
@@ -13,10 +14,11 @@ const TrustBar = dynamic(
     ),
   },
 );
-const BrandSpotlight = dynamic(
+const BrandSpotlightDeferred = dynamic(
   () =>
     import("@/components/home/BrandSpotlight").then((m) => m.BrandSpotlight),
   {
+    ssr: false,
     loading: () => (
       <div className="h-32 flex items-center justify-center">
         <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
@@ -44,10 +46,11 @@ const ClientLogos = dynamic(
     ),
   },
 );
-const CategoriesGrid = dynamic(
+const CategoriesGridDeferred = dynamic(
   () =>
     import("@/components/home/CategoriesGrid").then((m) => m.CategoriesGrid),
   {
+    ssr: false,
     loading: () => (
       <div className="h-32 flex items-center justify-center">
         <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
@@ -55,12 +58,13 @@ const CategoriesGrid = dynamic(
     ),
   },
 );
-const WorkloadSolutions = dynamic(
+const WorkloadSolutionsDeferred = dynamic(
   () =>
     import("@/components/home/WorkloadSolutions").then(
       (m) => m.WorkloadSolutions,
     ),
   {
+    ssr: false,
     loading: () => (
       <div className="h-32 flex items-center justify-center">
         <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
@@ -94,9 +98,10 @@ const ServicesShowcase = dynamic(
     ),
   },
 );
-const FeaturedChips = dynamic(
+const FeaturedChipsDeferred = dynamic(
   () => import("@/components/home/FeaturedChips").then((m) => m.FeaturedChips),
   {
+    ssr: false,
     loading: () => (
       <div className="h-32 flex items-center justify-center">
         <div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
@@ -228,14 +233,22 @@ export function HomeSections({
       {country && market && (
         <CountryMarketStrip country={country} market={market} />
       )}
-      <BrandSpotlight />
+      <LazySection minHeight={720}>
+        <BrandSpotlightDeferred />
+      </LazySection>
       <StatsCounter />
       <ClientLogos />
-      <CategoriesGrid />
-      <WorkloadSolutions />
+      <LazySection minHeight={620}>
+        <CategoriesGridDeferred />
+      </LazySection>
+      <LazySection minHeight={680}>
+        <WorkloadSolutionsDeferred />
+      </LazySection>
       <ConfiguratorPromo />
       <ServicesShowcase />
-      <FeaturedChips />
+      <LazySection minHeight={640}>
+        <FeaturedChipsDeferred />
+      </LazySection>
       <Technology />
       <WhyServchip />
       <ComparisonPreview />
