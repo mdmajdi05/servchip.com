@@ -12,7 +12,7 @@ export const AMPERE_CPUS: ChipProduct[] = [
     categoryId: "ampere-server",
     parentCategoryId: "server-cpus",
     categoryName: "Server CPUs",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "192-core cloud-native Arm server processor with DDR5 and PCIe 5.0 for hyperscale data centers.",
     longDescription:
@@ -65,7 +65,7 @@ export const AMPERE_CPUS: ChipProduct[] = [
     categoryId: "ampere-server",
     parentCategoryId: "server-cpus",
     categoryName: "Server CPUs",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "128-core cloud-native Arm server processor with DDR4 for hyperscale cloud workloads.",
     longDescription:
@@ -118,7 +118,7 @@ export const AMPERE_CPUS: ChipProduct[] = [
     categoryId: "ampere-server",
     parentCategoryId: "server-cpus",
     categoryName: "Server CPUs",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "128-core cloud-native Arm processor with DDR4 and enhanced frequency for cloud and edge workloads.",
     longDescription:

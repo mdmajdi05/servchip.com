@@ -29,7 +29,7 @@ import { Button } from "@/components/ui/Button";
 const PRODUCTS = [
   {
     name: "NVIDIA H100 GPUs",
-    image: "/images/products/nvidia-h100.jpg",
+    image: "/images/products/nvidia-h100.webp",
     alt: "NVIDIA H100 data center GPU installed in an enterprise server rack",
     title: "NVIDIA H100 GPU for AI Training and Inference",
     caption:
@@ -43,7 +43,7 @@ const PRODUCTS = [
   },
   {
     name: "NVIDIA H200 GPUs",
-    image: "/images/products/nvidia-h200.jpg",
+    image: "/images/products/nvidia-h200.webp",
     alt: "NVIDIA H200 GPU with 141GB HBM3e memory for large-model inference",
     title: "NVIDIA H200 GPU Memory Advantage",
     caption:
@@ -57,7 +57,7 @@ const PRODUCTS = [
   },
   {
     name: "NVIDIA B200 GPUs",
-    image: "/images/ai-chip-1.jpg",
+    image: "/images/ai-chip-1.webp",
     alt: "NVIDIA B200 Blackwell architecture GPU server for frontier AI training",
     title: "NVIDIA B200 Blackwell GPU Server",
     caption:
@@ -71,7 +71,7 @@ const PRODUCTS = [
   },
   {
     name: "NVIDIA Blackwell GPUs",
-    image: "/images/ai-chip-2.jpg",
+    image: "/images/ai-chip-2.webp",
     alt: "NVIDIA GB200 NVL72 rack-scale AI system with liquid cooling",
     title: "NVIDIA GB200 NVL72 Rack-Scale AI System",
     caption:
@@ -85,7 +85,7 @@ const PRODUCTS = [
   },
   {
     name: "NVIDIA RTX Professional GPUs",
-    image: "/images/ai-chip-3.jpg",
+    image: "/images/ai-chip-3.webp",
     alt: "NVIDIA RTX PRO professional GPU for visualization and simulation workloads",
     title: "NVIDIA RTX PRO Professional GPU",
     caption:
@@ -512,7 +512,7 @@ export default function ServicesPage() {
               <div className="relative rounded-2xl border border-border bg-surface overflow-hidden">
                 <div className="relative w-full h-72 md:h-96">
                   <Image
-                    src="/images/server-room-1.jpg"
+                    src="/images/server-room-1.webp"
                     alt="NVIDIA GPU distributor serving enterprise buyers across the Middle East"
                     fill
                     sizes="(max-width: 1024px) 100vw, 50vw"
@@ -552,7 +552,7 @@ export default function ServicesPage() {
       <section className="relative py-20 md:py-24 bg-surface overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/server-room-4.jpg"
+            src="/images/server-room-4.webp"
             alt="GCC-wide NVIDIA GPU distribution coverage across the Middle East"
             fill
             sizes="100vw"
@@ -934,7 +934,7 @@ export default function ServicesPage() {
       <section className="relative py-20 md:py-28 bg-surface overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/server-room-5.jpg"
+            src="/images/server-room-5.webp"
             alt="Enterprise NVIDIA GPU deployment planning for Middle East data centers"
             fill
             sizes="100vw"

@@ -8,8 +8,7 @@ export const post: BlogPost = {
   excerpt:
     "AI chip market trends 2026: NVIDIA, AMD, and Intel stock moves, semiconductor market forecasts, and what's next for the industry through 2030.",
   content: "",
-  featuredImage:
-    "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=450&fit=crop",
+  featuredImage: "/images/ai-chip-1.webp",
   category: cat("case-studies"),
   tags: [tag("data-center"), tag("nvidia"), tag("amd"), tag("intel")],
   author: { name: "Servchip Tech Team", avatar: "ST" },

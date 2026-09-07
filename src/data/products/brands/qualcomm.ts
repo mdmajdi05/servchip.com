@@ -12,7 +12,7 @@ export const QUALCOMM_DC: ChipProduct[] = [
     categoryId: "qualcomm-dc",
     parentCategoryId: "server-cpus",
     categoryName: "Server CPUs",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "Qualcomm's emerging data center CPU based on Oryon architecture for cloud workloads.",
     longDescription:
@@ -64,7 +64,7 @@ export const QUALCOMM_DC: ChipProduct[] = [
     categoryId: "qualcomm-ai",
     parentCategoryId: "amazon-ai",
     categoryName: "AI Accelerators",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "Purpose-built cloud AI inference accelerator delivering up to 400 TOPS for data center inference workloads.",
     longDescription:

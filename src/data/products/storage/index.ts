@@ -11,7 +11,7 @@ export const SAMSUNG_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: ["/images/products/samsung-pm1743.jpg"],
+    images: ["/images/products/samsung-pm1743.webp"],
     description:
       "PCIe Gen5 enterprise SSD with 13 GB/s sequential read for data center workloads.",
     longDescription:
@@ -55,7 +55,7 @@ export const SAMSUNG_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: ["/images/products/samsung-pm1743.jpg"],
+    images: ["/images/products/samsung-pm1743.webp"],
     description:
       "PCIe Gen4 enterprise SSD with up to 15.36TB capacity for read-intensive data center workloads.",
     longDescription:
@@ -100,7 +100,7 @@ export const SAMSUNG_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: ["/images/server-room-2.jpg"],
+    images: ["/images/server-room-2.webp"],
     description:
       "PCIe Gen5 mainstream enterprise SSD with balanced performance and power efficiency.",
     longDescription:
@@ -147,7 +147,7 @@ export const MICRON_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: ["/images/products/micron-9550.jpg"],
+    images: ["/images/products/micron-9550.webp"],
     description:
       "PCIe Gen5 data center SSD with up to 14 GB/s read for AI and HPC workloads.",
     longDescription:
@@ -191,7 +191,7 @@ export const MICRON_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: ["/images/products/micron-9550.jpg"],
+    images: ["/images/products/micron-9550.webp"],
     description:
       "PCIe Gen4 enterprise NVMe SSD with 6.4TB capacity and balanced read/write performance.",
     longDescription:
@@ -286,7 +286,7 @@ export const KIOXIA_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: ["/images/server-room-5.jpg"],
+    images: ["/images/server-room-5.webp"],
     description:
       "PCIe Gen5 enterprise NVMe SSD with BiCS FLASH for data center workloads.",
     longDescription:
@@ -333,7 +333,7 @@ export const WD_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: ["/images/server-room-1.jpg"],
+    images: ["/images/server-room-1.webp"],
     description:
       "PCIe Gen4 enterprise NVMe SSD optimized for read-intensive cloud workloads.",
     longDescription:
@@ -377,7 +377,7 @@ export const WD_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: ["/images/server-room-1.jpg"],
+    images: ["/images/server-room-1.webp"],
     description:
       "PCIe Gen4 enterprise NVMe SSD with 15.36TB capacity for read-intensive hyperscale workloads.",
     longDescription:
@@ -425,7 +425,7 @@ export const SEAGATE_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: ["/images/server-room-2.jpg"],
+    images: ["/images/server-room-2.webp"],
     description:
       "PCIe Gen4 NVMe SSD with advanced security for enterprise storage.",
     longDescription:
@@ -469,7 +469,7 @@ export const SEAGATE_STORAGE: StorageProduct[] = [
     categoryId: "storage-nvme",
     parentCategoryId: "enterprise-storage",
     categoryName: "Enterprise NVMe SSDs",
-    images: ["/images/server-room-2.jpg"],
+    images: ["/images/server-room-2.webp"],
     description:
       "PCIe Gen5 consumer and workstation NVMe SSD with 2TB capacity for creative and gaming workloads.",
     longDescription:

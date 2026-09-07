@@ -11,7 +11,7 @@ export const SK_HYNIX_MEMORY: MemoryProduct[] = [
     categoryId: "memory-hbm",
     parentCategoryId: "ai-memory",
     categoryName: "AI Memory",
-    images: ["/images/server-room-1.jpg"],
+    images: ["/images/server-room-1.webp"],
     description:
       "Industry-leading HBM3E memory with 1.18 TB/s bandwidth per stack for AI accelerators.",
     longDescription:
@@ -54,7 +54,7 @@ export const SK_HYNIX_MEMORY: MemoryProduct[] = [
     categoryId: "memory-ddr5",
     parentCategoryId: "ai-memory",
     categoryName: "DDR5 Memory",
-    images: ["/images/server-room-1.jpg"],
+    images: ["/images/server-room-1.webp"],
     description:
       "Enterprise DDR5 RDIMM memory running at 5600MT/s for server and workstation platforms.",
     longDescription:
@@ -98,7 +98,7 @@ export const SK_HYNIX_MEMORY: MemoryProduct[] = [
     categoryId: "memory-hbm",
     parentCategoryId: "ai-memory",
     categoryName: "AI Memory",
-    images: ["/images/server-room-2.jpg"],
+    images: ["/images/server-room-2.webp"],
     description:
       "High-bandwidth HBM3 memory for AI accelerators with 819 GB/s bandwidth per stack.",
     longDescription:
@@ -145,7 +145,7 @@ export const SAMSUNG_MEMORY: MemoryProduct[] = [
     categoryId: "memory-hbm",
     parentCategoryId: "ai-memory",
     categoryName: "AI Memory",
-    images: ["/images/server-room-2.jpg"],
+    images: ["/images/server-room-2.webp"],
     description:
       "Samsung HBM3E with 1.2 TB/s bandwidth for next-generation AI processors.",
     longDescription:
@@ -320,7 +320,7 @@ export const MICRON_MEMORY: MemoryProduct[] = [
     categoryId: "memory-ddr5",
     parentCategoryId: "ai-memory",
     categoryName: "DDR5 Memory",
-    images: ["/images/server-room-5.jpg"],
+    images: ["/images/server-room-5.webp"],
     description: "Enterprise DDR5 RDIMM for next-generation server platforms.",
     longDescription:
       "Micron DDR5 RDIMM provides enterprise-grade memory performance and reliability for data center servers. With speeds up to 5600 MT/s and capacities from 16GB to 128GB, it supports the most demanding virtualization, database, and AI workloads with industry-leading power efficiency.",
@@ -408,7 +408,7 @@ export const MEMORY_MODULES: MemoryProduct[] = [
     categoryId: "memory-ddr5",
     parentCategoryId: "ai-memory",
     categoryName: "DDR5 Memory",
-    images: ["/images/server-room-1.jpg"],
+    images: ["/images/server-room-1.webp"],
     description:
       "Next-generation multiplexed rank DIMM for 8800+ MT/s server memory performance.",
     longDescription:
@@ -451,7 +451,7 @@ export const MEMORY_MODULES: MemoryProduct[] = [
     categoryId: "memory-cxl",
     parentCategoryId: "ai-memory",
     categoryName: "CXL Memory",
-    images: ["/images/server-room-2.jpg"],
+    images: ["/images/server-room-2.webp"],
     description:
       "CXL-attached memory module for memory expansion beyond traditional DIMM slots.",
     longDescription:

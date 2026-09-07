@@ -9,8 +9,7 @@ export const post: BlogPost = {
   excerpt:
     "Calculate exactly how many GPUs you need for LLM training. Free interactive GPU calculator, VRAM formulas, real-world examples for 7B to 175B models, and hardware recommendations for any budget.",
   content: "",
-  featuredImage:
-    "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&h=450&fit=crop",
+  featuredImage: "/images/products/nvidia-h200.webp",
   category: cat("guides"),
   tags: [tag("ai-training"), tag("inference"), tag("data-center")],
   author: { name: "Servchip Tech Team", avatar: "ST" },

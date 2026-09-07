@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SOLUTIONS, getSolutionBySlug } from "@/data/solutions";
 import { getCountryByCode } from "@/data/countries";
+import { SUPPORTED_COUNTRIES } from "@/lib/localized-path";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
 import {
   createEntityMetadata,
@@ -13,7 +14,7 @@ import { getSolutionSeo } from "@/lib/seo/content";
 import PageClient from "@/app/solutions/[slug]/page-client";
 
 export async function generateStaticParams() {
-  const countries = Object.keys(COUNTRY_MARKETS);
+  const countries = SUPPORTED_COUNTRIES;
   return countries.flatMap((country) =>
     SOLUTIONS.map((s) => ({ country, slug: s.slug })),
   );

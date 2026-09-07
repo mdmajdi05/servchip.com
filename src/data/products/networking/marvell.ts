@@ -11,7 +11,7 @@ export const MARVELL_NETWORKING: NetworkingProduct[] = [
     categoryId: "marvell-ethernet",
     parentCategoryId: "networking",
     categoryName: "Ethernet Switches",
-    images: ["/images/server-room-1.jpg"],
+    images: ["/images/server-room-1.webp"],
     description:
       "51.2 Tbps Ethernet switch with industry-leading power efficiency for cloud and AI data centers.",
     longDescription:
@@ -53,7 +53,7 @@ export const MARVELL_NETWORKING: NetworkingProduct[] = [
     categoryId: "marvell-dpu",
     parentCategoryId: "networking",
     categoryName: "Data Processing Units",
-    images: ["/images/server-room-5.jpg"],
+    images: ["/images/server-room-5.webp"],
     description:
       "Arm-based DPU with hardware acceleration for networking, storage, and security offload.",
     longDescription:

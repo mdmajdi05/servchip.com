@@ -22,7 +22,6 @@ const REGION_GROUPS: {
       { label: "NVIDIA distributor in UAE", href: "/countries/uae" },
       { label: "NVIDIA distributor in UK", href: "/countries/uk" },
       { label: "NVIDIA distributor in Germany", href: "/countries/de" },
-      { label: "NVIDIA distributor in India", href: "/countries/india" },
       { label: "NVIDIA distributor in Dubai", href: "/countries/uae" },
       {
         label: "NVIDIA distributor in Singapore",
@@ -70,7 +69,6 @@ const REGION_GROUPS: {
       { label: "GPU suppliers in UAE", href: "/countries/uae" },
       { label: "GPU suppliers in UK", href: "/countries/uk" },
       { label: "GPU suppliers in Germany", href: "/countries/de" },
-      { label: "GPU suppliers in India", href: "/countries/india" },
       { label: "NVIDIA supplier in UAE", href: "/countries/uae" },
       { label: "Xilinx authorized distributors", href: "/products" },
     ],

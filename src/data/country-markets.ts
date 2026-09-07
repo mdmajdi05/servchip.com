@@ -65,6 +65,22 @@ export const COUNTRY_MARKETS: Record<string, CountryMarket> = {
       hours: "Mon–Sat, 9am–6pm GST",
     },
   },
+  in: {
+    code: "in",
+    locale: "en-IN",
+    currency: "INR",
+    currencySymbol: "₹",
+    warehouse: "Mumbai, India",
+    shippingNote:
+      "Delivery across India including Mumbai, New Delhi, Bengaluru, Hyderabad and Chennai.",
+    leadTime: "3-7 business days",
+    contact: {
+      email: "sales@servchip.com",
+      phone: "+91 7982498712",
+      phoneDisplay: "+91 7982498712",
+      hours: "Mon–Sat, 9am–6pm IST",
+    },
+  },
 };
 
 export function getCountryMarket(code: string): CountryMarket | undefined {

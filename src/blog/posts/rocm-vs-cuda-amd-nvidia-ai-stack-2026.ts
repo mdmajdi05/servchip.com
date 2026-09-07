@@ -8,8 +8,7 @@ export const post: BlogPost = {
   excerpt:
     "ROCm vs CUDA in 2026: real benchmarks, cloud pricing, framework compatibility, and a step-by-step migration guide to help you choose the right AI stack.",
   content: "",
-  featuredImage:
-    "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=800&h=450&fit=crop",
+  featuredImage: "/images/products/amd-mi300x.webp",
   category: cat("comparison"),
   tags: [
     tag("nvidia"),

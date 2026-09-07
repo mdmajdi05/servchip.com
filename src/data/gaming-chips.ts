@@ -19,8 +19,7 @@ export const GAMING_CHIPS: GamingChip[] = [
     name: "NVIDIA GeForce RTX 5090",
     manufacturer: "NVIDIA",
     architecture: "Blackwell",
-    image:
-      "https://images.unsplash.com/photo-1555618254-84e2cf498b01?w=400&h=300&fit=crop",
+    image: "/images/ai-chip-1.webp",
     memory: "32GB GDDR7",
     clockSpeed: "2.9 GHz",
     cudaCores: "24576",
@@ -35,8 +34,7 @@ export const GAMING_CHIPS: GamingChip[] = [
     name: "NVIDIA GeForce RTX 5080",
     manufacturer: "NVIDIA",
     architecture: "Blackwell",
-    image:
-      "https://images.unsplash.com/photo-1587202372634-32705e3bf49c?w=400&h=300&fit=crop",
+    image: "/images/ai-chip-2.webp",
     memory: "24GB GDDR7",
     clockSpeed: "2.7 GHz",
     cudaCores: "18432",
@@ -51,8 +49,7 @@ export const GAMING_CHIPS: GamingChip[] = [
     name: "NVIDIA GeForce RTX 5070 Ti",
     manufacturer: "NVIDIA",
     architecture: "Blackwell",
-    image:
-      "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=400&h=300&fit=crop",
+    image: "/images/ai-chip-3.webp",
     memory: "16GB GDDR7",
     clockSpeed: "2.5 GHz",
     cudaCores: "12800",
@@ -66,8 +63,7 @@ export const GAMING_CHIPS: GamingChip[] = [
     name: "AMD Radeon RX 9070 XT",
     manufacturer: "AMD",
     architecture: "RDNA 4",
-    image:
-      "https://images.unsplash.com/photo-1624705002806-5d72df19c3ad?w=400&h=300&fit=crop",
+    image: "/images/ai-chip-4.webp",
     memory: "20GB GDDR7",
     clockSpeed: "3.0 GHz",
     cudaCores: "—",
@@ -81,8 +77,7 @@ export const GAMING_CHIPS: GamingChip[] = [
     name: "AMD Radeon RX 9070",
     manufacturer: "AMD",
     architecture: "RDNA 4",
-    image:
-      "https://images.unsplash.com/photo-1563770660941-20978e870e26?w=400&h=300&fit=crop",
+    image: "/images/ai-chip-5.webp",
     memory: "16GB GDDR7",
     clockSpeed: "2.7 GHz",
     cudaCores: "—",
@@ -97,8 +92,7 @@ export const GAMING_CHIPS: GamingChip[] = [
     name: "Intel Arc B580",
     manufacturer: "Intel",
     architecture: "Battlemage",
-    image:
-      "https://images.unsplash.com/photo-1742459059740-cfbc1bfa141a?w=400&h=300&fit=crop",
+    image: "/images/ai-chip-1.webp",
     memory: "12GB GDDR6",
     clockSpeed: "2.6 GHz",
     cudaCores: "3840",
@@ -112,8 +106,7 @@ export const GAMING_CHIPS: GamingChip[] = [
     name: "Intel Arc B570",
     manufacturer: "Intel",
     architecture: "Battlemage",
-    image:
-      "https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&h=300&fit=crop",
+    image: "/images/ai-chip-2.webp",
     memory: "10GB GDDR6",
     clockSpeed: "2.4 GHz",
     cudaCores: "3072",

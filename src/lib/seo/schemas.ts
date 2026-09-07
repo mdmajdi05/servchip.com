@@ -80,7 +80,7 @@ export function localBusinessSchema() {
     "@type": "WholesaleStore",
     "@id": `${SITE.url}#location-uae`,
     name: "Servchip UAE Distribution Hub",
-    image: `${SITE.url}/assets/images/uae-office.jpg`,
+    image: `${SITE.url}/images/server-room-1.webp`,
     telephone: SITE.phone,
     email: SITE.email,
     priceRange: "$$$$",

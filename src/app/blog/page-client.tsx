@@ -18,8 +18,14 @@ const SORT_OPTIONS = [
   { label: "Relevance", value: "relevance" },
 ] as const;
 
-export default function BlogPage() {
-  const [activeCategory, setActiveCategory] = useState("All");
+export default function BlogPage({
+  initialCategory,
+}: {
+  initialCategory?: string;
+}) {
+  const [activeCategory, setActiveCategory] = useState(
+    initialCategory ?? "All",
+  );
   const [searchQuery, setSearchQuery] = useState("");
   const [debouncedSearch, setDebouncedSearch] = useState("");
   const [sortBy, setSortBy] = useState<string>("newest");

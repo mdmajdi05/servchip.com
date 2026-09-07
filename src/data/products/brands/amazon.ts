@@ -12,7 +12,7 @@ export const AMAZON_AI_CHIPS: ChipProduct[] = [
     categoryId: "amazon-ai",
     parentCategoryId: "amazon-ai",
     categoryName: "AI Accelerators",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "Amazon's 3rd-generation AI training chip for next-gen EC2 Trn3 instances with 3x Trainium 2 performance.",
     longDescription:
@@ -65,7 +65,7 @@ export const AMAZON_AI_CHIPS: ChipProduct[] = [
     categoryId: "amazon-ai",
     parentCategoryId: "amazon-ai",
     categoryName: "Server CPUs",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "AWS's 4th-generation custom Arm processor for EC2 with 30% better compute performance over Graviton3.",
     longDescription:
@@ -118,7 +118,7 @@ export const AMAZON_AI_CHIPS: ChipProduct[] = [
     categoryId: "amazon-ai",
     parentCategoryId: "amazon-ai",
     categoryName: "AI Accelerators",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "Amazon's 2nd-generation AI training chip for EC2 Trn2 instances with ultra-high performance.",
     longDescription:
@@ -170,7 +170,7 @@ export const AMAZON_AI_CHIPS: ChipProduct[] = [
     categoryId: "amazon-ai",
     parentCategoryId: "amazon-ai",
     categoryName: "AI Accelerators",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "AWS's 2nd-generation AI inference chip for cost-effective, low-latency model deployment.",
     longDescription:

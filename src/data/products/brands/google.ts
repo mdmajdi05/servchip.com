@@ -12,7 +12,7 @@ export const GOOGLE_TPU: ChipProduct[] = [
     categoryId: "google-tpu",
     parentCategoryId: "google-tpu",
     categoryName: "AI Accelerators",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "Cost-optimized Google TPU v5e for inference and fine-tuning of medium-sized AI models.",
     longDescription:
@@ -117,7 +117,7 @@ export const GOOGLE_TPU: ChipProduct[] = [
     categoryId: "google-tpu",
     parentCategoryId: "google-tpu",
     categoryName: "AI Accelerators",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "Google's 6th-generation Tensor Processing Unit for AI training and inference in Google Cloud.",
     longDescription:
@@ -169,7 +169,7 @@ export const GOOGLE_TPU: ChipProduct[] = [
     categoryId: "google-tpu",
     parentCategoryId: "google-tpu",
     categoryName: "AI Accelerators",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "Google's 7th-generation TPU with breakthrough AI performance for next-gen models.",
     longDescription:

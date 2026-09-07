@@ -11,7 +11,7 @@ export const BROADCOM_NETWORKING: NetworkingProduct[] = [
     categoryId: "broadcom-ethernet",
     parentCategoryId: "networking",
     categoryName: "Ethernet Switches",
-    images: ["/images/server-room-1.jpg"],
+    images: ["/images/server-room-1.webp"],
     description:
       "World's highest-bandwidth Ethernet switch with 51.2 Tbps switching capacity for AI and HPC data center fabrics.",
     longDescription:
@@ -96,7 +96,7 @@ export const BROADCOM_NETWORKING: NetworkingProduct[] = [
     categoryId: "broadcom-ethernet",
     parentCategoryId: "networking",
     categoryName: "Ethernet Adapters",
-    images: ["/images/server-room-5.jpg"],
+    images: ["/images/server-room-5.webp"],
     description:
       "200GbE Ethernet NIC with RDMA RoCEv2 for high-performance data center connectivity.",
     longDescription:
@@ -139,7 +139,7 @@ export const BROADCOM_NETWORKING: NetworkingProduct[] = [
     categoryId: "broadcom-ethernet",
     parentCategoryId: "networking",
     categoryName: "Ethernet Switches",
-    images: ["/images/server-room-2.jpg"],
+    images: ["/images/server-room-2.webp"],
     description:
       "AI-optimized Ethernet switch with in-network computing for distributed AI training workloads.",
     longDescription:

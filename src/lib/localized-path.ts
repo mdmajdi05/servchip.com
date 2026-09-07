@@ -1,6 +1,9 @@
 import { COUNTRY_MARKETS } from "@/data/country-markets";
+import { getCountryByCode } from "@/data/countries";
 
-export const SUPPORTED_COUNTRIES = Object.keys(COUNTRY_MARKETS).sort();
+export const SUPPORTED_COUNTRIES = Object.keys(COUNTRY_MARKETS)
+  .filter((code) => !!getCountryByCode(code))
+  .sort();
 
 export function getLocalizedPath(country: string, path = "/"): string {
   const code = SUPPORTED_COUNTRIES.includes(country) ? country : "";

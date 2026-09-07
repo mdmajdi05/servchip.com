@@ -8,8 +8,7 @@ export const post: BlogPost = {
   excerpt:
     "A full GPU Total Cost of Ownership analysis comparing cloud vs on-premise infrastructure. CAPEX, OPEX, performance, security, and real-world cost examples for AI teams in 2026.",
   content: "",
-  featuredImage:
-    "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=450&fit=crop",
+  featuredImage: "/images/server-room-3.webp",
   category: cat("guides"),
   tags: [tag("ai-training"), tag("data-center"), tag("deployment")],
   author: { name: "Servchip Tech Team", avatar: "ST" },

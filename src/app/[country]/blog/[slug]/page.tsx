@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { BLOG_POSTS } from "@/blog";
 import { getCountryByCode } from "@/data/countries";
+import { SUPPORTED_COUNTRIES } from "@/lib/localized-path";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
 import {
   createEntityMetadata,
@@ -11,7 +12,7 @@ import {
 import BlogPostPage from "@/app/blog/[slug]/page-client";
 
 export async function generateStaticParams() {
-  const countries = Object.keys(COUNTRY_MARKETS);
+  const countries = SUPPORTED_COUNTRIES;
   return countries.flatMap((country) =>
     BLOG_POSTS.filter((p) => p.isPublished).map((post) => ({
       country,

@@ -11,7 +11,7 @@ export const CISCO_NETWORKING: NetworkingProduct[] = [
     categoryId: "cisco-silicon-one",
     parentCategoryId: "networking",
     categoryName: "Networking Silicon",
-    images: ["/images/server-room-1.jpg"],
+    images: ["/images/server-room-1.webp"],
     description:
       "Unified programmable network processor for routing and switching at 25.6 Tbps.",
     longDescription:
@@ -97,7 +97,7 @@ export const CISCO_NETWORKING: NetworkingProduct[] = [
     categoryId: "cisco-ucs",
     parentCategoryId: "networking",
     categoryName: "Fabric Interconnects",
-    images: ["/images/server-room-2.jpg"],
+    images: ["/images/server-room-2.webp"],
     description:
       "Next-generation fabric interconnect for Cisco UCS and HyperFlex infrastructure management.",
     longDescription:

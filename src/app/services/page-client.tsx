@@ -180,7 +180,7 @@ const SPOTLIGHT_PAGES: SpotlightPage[] = [
       "Servchip supplies genuine NVIDIA H100, H200, B200, Blackwell, RTX PRO, and DGX GPUs to enterprise, government, and research buyers across all six GCC markets — with export documentation, regional logistics, and after-sales support handled end to end.",
     caption:
       "Supply across all six GCC markets — backed by an ISO 9001 certified India-UAE distribution base.",
-    image: "/images/server-room-1.jpg",
+    image: "/images/server-room-1.webp",
     alt: "NVIDIA GPU distributor serving enterprise buyers across the Middle East",
     url: "/nvidia-gpu-distributor-middle-east",
     cta: "Explore NVIDIA GPU Distribution",
@@ -251,7 +251,7 @@ export default function ServicesPage() {
       <section className="relative py-20 md:py-28 bg-surface overflow-hidden">
         <div className="absolute inset-0">
           <Image
-            src="/images/server-room-4.jpg"
+            src="/images/server-room-4.webp"
             alt="NVIDIA GPU distributor serving enterprise buyers across the Middle East"
             fill
             sizes="100vw"

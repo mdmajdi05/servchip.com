@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { COUNTRIES, getCountryBySlug } from "@/data/countries";
+import {
+  COUNTRIES,
+  getCountryBySlug,
+  getCountryByCode,
+} from "@/data/countries";
 import {
   createEntityMetadata,
   createEntityBreadcrumb,
@@ -12,18 +16,23 @@ import { SITE } from "@/lib/constants";
 import PageClient from "./page-client";
 
 export async function generateStaticParams() {
-  return COUNTRIES.map((c) => ({ slug: c.slug }));
+  const bySlug = COUNTRIES.map((c) => ({ slug: c.slug }));
+  const byCode = COUNTRIES.map((c) => ({ slug: c.code }));
+  return [...bySlug, ...byCode];
+}
+
+function resolveCountry(slug: string) {
+  return getCountryBySlug(slug) ?? getCountryByCode(slug);
 }
 
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await props.params;
-  const country = getCountryBySlug(slug);
+  const country = resolveCountry(slug);
   const seo = country ? getCountrySeo(country.id) : undefined;
   if (!country || !seo) return {};
   const hreflangMap: Record<string, string> = {
-    india: "en-IN",
     uae: "en-AE",
     usa: "en-US",
     "saudi-arabia": "en-SA",
@@ -62,7 +71,7 @@ export default async function Page(props: {
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await props.params;
-  const country = getCountryBySlug(slug);
+  const country = resolveCountry(slug);
   if (!country) notFound();
   return (
     <>

@@ -11,7 +11,7 @@ export const NVIDIA_NETWORKING: NetworkingProduct[] = [
     categoryId: "nvidia-networking",
     parentCategoryId: "networking",
     categoryName: "Networking",
-    images: ["/images/server-room-1.jpg"],
+    images: ["/images/server-room-1.webp"],
     description:
       "AI-optimized Ethernet switch platform with 51.2 Tbps for lossless RoCE fabric.",
     longDescription:
@@ -54,7 +54,7 @@ export const NVIDIA_NETWORKING: NetworkingProduct[] = [
     categoryId: "nvidia-networking",
     parentCategoryId: "networking",
     categoryName: "Networking",
-    images: ["/images/server-room-1.jpg"],
+    images: ["/images/server-room-1.webp"],
     description:
       "NDR 400Gb/s InfiniBand switch for ultra-scale AI supercomputing clusters.",
     longDescription:
@@ -96,7 +96,7 @@ export const NVIDIA_NETWORKING: NetworkingProduct[] = [
     categoryId: "nvidia-networking",
     parentCategoryId: "networking",
     categoryName: "Networking",
-    images: ["/images/server-room-1.jpg"],
+    images: ["/images/server-room-1.webp"],
     description:
       "400Gb/s smart NIC with DPU capabilities for AI and cloud workloads.",
     longDescription:
@@ -138,7 +138,7 @@ export const NVIDIA_NETWORKING: NetworkingProduct[] = [
     categoryId: "nvidia-networking",
     parentCategoryId: "networking",
     categoryName: "Networking",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "400GbE SmartNIC with RDMA, GPUDirect, and advanced virtualization offload.",
     longDescription:
@@ -222,7 +222,7 @@ export const NVIDIA_NETWORKING: NetworkingProduct[] = [
     categoryId: "nvidia-networking",
     parentCategoryId: "networking",
     categoryName: "Networking",
-    images: ["/images/server-room-2.jpg"],
+    images: ["/images/server-room-2.webp"],
     description:
       "Third-gen data processing unit with 400GbE networking and programmable Arm cores.",
     longDescription:

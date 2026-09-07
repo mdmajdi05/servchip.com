@@ -12,7 +12,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-blackwell",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "Flagship superchip combining Grace CPU with dual Blackwell GPUs via NVLink 5.0 for trillion-parameter AI workloads.",
     longDescription:
@@ -65,7 +65,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-blackwell",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "Next-generation Blackwell GPU with 288GB HBM3e memory and native FP4 tensor core support for generative AI.",
     longDescription:
@@ -118,7 +118,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-blackwell",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "Flagship Blackwell GPU with 384GB HBM3e memory and 10 TB/s bandwidth for extreme-scale AI.",
     longDescription:
@@ -171,7 +171,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-hopper",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/products/nvidia-h200.jpg"],
+    images: ["/images/products/nvidia-h200.webp"],
     description:
       "Advanced Hopper GPU with 141GB HBM3e memory and 4.8 TB/s bandwidth for large model inference.",
     longDescription:
@@ -224,7 +224,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-hopper",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/products/nvidia-h100.jpg"],
+    images: ["/images/products/nvidia-h100.webp"],
     description:
       "Industry-standard AI training GPU with 80GB HBM3 and 3.35 TB/s bandwidth in SXM5 form factor.",
     longDescription:
@@ -277,7 +277,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-ada",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "Versatile data center GPU with 48GB GDDR6 ECC memory for AI inference, graphics, and video.",
     longDescription:
@@ -335,7 +335,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-ada",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "Energy-efficient data center GPU with 24GB GDDR6 for AI inference, edge computing, and video.",
     longDescription:
@@ -388,7 +388,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-ampere",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "Industry-defining data center GPU with 80GB HBM2e and 3rd-gen Tensor Cores for AI training and HPC.",
     longDescription:
@@ -441,7 +441,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-ampere",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "Mainstream AI training and inference GPU with 24GB HBM2e and MIG for balanced enterprise deployments.",
     longDescription:
@@ -547,7 +547,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-volta",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-5.jpg"],
+    images: ["/images/ai-chip-5.webp"],
     description:
       "Pioneering Tensor Core GPU with 32GB HBM2 memory that revolutionized deep learning training.",
     longDescription:
@@ -600,7 +600,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-turing",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "Energy-efficient inference GPU with 16GB GDDR6 for ML inference, video transcoding, and VDI workloads.",
     longDescription:
@@ -653,7 +653,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-blackwell",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "High-performance Blackwell GPU with 192GB HBM3e memory and FP4 support for efficient AI training.",
     longDescription:
@@ -706,7 +706,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-hopper",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "Hopper-based data center GPU with 80GB HBM3 and reduced interconnect for regulated markets.",
     longDescription:
@@ -812,7 +812,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-ada",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-5.jpg"],
+    images: ["/images/ai-chip-5.webp"],
     description:
       "Professional-grade data center GPU with 48GB GDDR6 for visual computing, AI inference, and graphics.",
     longDescription:
@@ -865,7 +865,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-pro-rtx4500",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Professional RTX",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "Mid-range professional GPU with 24GB GDDR6 for CAD, 3D rendering, and AI-accelerated workflows.",
     longDescription:
@@ -918,7 +918,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-ampere",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "Flagship SXM variant of the A100 with 80GB HBM2e memory and 400W TDP for AI training and HPC.",
     longDescription:
@@ -971,7 +971,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-ampere",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "PCIe variant of the A100 with 80GB HBM2e and 300W TDP for broad server compatibility.",
     longDescription:
@@ -1024,7 +1024,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-pro-rtx4000",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Professional RTX",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "Entry-level professional Ada GPU with 20GB GDDR6 ECC for CAD, rendering, and AI inference.",
     longDescription:
@@ -1077,7 +1077,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-hopper",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "Dual-GPU Hopper accelerator with 188GB HBM3 (2x 94GB) for power-efficient LLM inference and training.",
     longDescription:
@@ -1130,7 +1130,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-hopper",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "PCIe dual-GPU Hopper accelerator with 188GB HBM3 for broad server compatibility and LLM inference.",
     longDescription:
@@ -1183,7 +1183,7 @@ export const NVIDIA_AI_GPUS: ChipProduct[] = [
     categoryId: "nvidia-dc-ada",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Data Center GPUs",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "Data center Ada GPU with 32GB GDDR6 ECC for AI inference, graphics rendering, and virtual workstations.",
     longDescription:
@@ -1292,7 +1292,7 @@ export const NVIDIA_PROFESSIONAL: ChipProduct[] = [
     categoryId: "nvidia-pro-rtx6000",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Professional RTX",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "Flagship professional GPU with 48GB GDDR6 ECC memory for AI, rendering, and scientific visualization.",
     longDescription:
@@ -1403,7 +1403,7 @@ export const NVIDIA_PROFESSIONAL: ChipProduct[] = [
     categoryId: "nvidia-hpc-grace",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "HPC & Grace",
-    images: ["/images/ai-chip-5.jpg"],
+    images: ["/images/ai-chip-5.webp"],
     description:
       "Integrated superchip combining Grace CPU with Hopper GPU via NVLink-C2C for HPC and AI convergence.",
     longDescription:
@@ -1456,7 +1456,7 @@ export const NVIDIA_PROFESSIONAL: ChipProduct[] = [
     categoryId: "nvidia-pro-ws",
     parentCategoryId: "nvidia-pro-ws",
     categoryName: "Professional Graphics",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "Entry-level professional Ada GPU with 20GB GDDR6 ECC for CAD, rendering, and AI inference.",
     longDescription:
@@ -1565,7 +1565,7 @@ export const NVIDIA_WORKSTATION_GPUS: ChipProduct[] = [
     categoryId: "nvidia-professional-rtx",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Professional RTX",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "Flagship professional workstation GPU with 48GB GDDR6 ECC for AI development, rendering, and scientific visualization.",
     longDescription:
@@ -1618,7 +1618,7 @@ export const NVIDIA_WORKSTATION_GPUS: ChipProduct[] = [
     categoryId: "nvidia-professional-rtx",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Professional RTX",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "Professional workstation GPU with 32GB GDDR6 ECC for CAD, 3D rendering, and AI-accelerated workflows.",
     longDescription:
@@ -1676,7 +1676,7 @@ export const NVIDIA_WORKSTATION_GPUS: ChipProduct[] = [
     categoryId: "nvidia-professional-rtx",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Professional RTX",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "Mid-range professional workstation GPU with 20GB GDDR6 ECC for CAD, 3D content creation, and AI inference.",
     longDescription:
@@ -1782,7 +1782,7 @@ export const NVIDIA_WORKSTATION_GPUS: ChipProduct[] = [
     categoryId: "nvidia-professional-rtx",
     parentCategoryId: "nvidia-dc-gpus",
     categoryName: "Professional RTX",
-    images: ["/images/ai-chip-5.jpg"],
+    images: ["/images/ai-chip-5.webp"],
     description:
       "Compact professional workstation GPU with 16GB GDDR6 ECC for 2D/3D CAD, edge AI, and power-constrained workstations.",
     longDescription:
@@ -1837,7 +1837,7 @@ export const NVIDIA_NETWORKING: NetworkingProduct[] = [
     categoryId: "nvidia-networking",
     parentCategoryId: "networking",
     categoryName: "Networking",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "AI-optimized Ethernet switch with 51.2 Tbps throughput and Spectrum-4 ASIC for RoCEv2 workloads.",
     longDescription:
@@ -1880,7 +1880,7 @@ export const NVIDIA_NETWORKING: NetworkingProduct[] = [
     categoryId: "nvidia-networking",
     parentCategoryId: "networking",
     categoryName: "Networking",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "Next-gen InfiniBand switch with 51.2 Tbps and SHARP v5 in-network computing for AI supercomputing.",
     longDescription:
@@ -1923,7 +1923,7 @@ export const NVIDIA_NETWORKING: NetworkingProduct[] = [
     categoryId: "nvidia-networking",
     parentCategoryId: "networking",
     categoryName: "Networking",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "400GbE dual-port SmartNIC with PCIe Gen 6.0 for AI fabric and cloud infrastructure.",
     longDescription:
@@ -2009,7 +2009,7 @@ export const NVIDIA_NETWORKING: NetworkingProduct[] = [
     categoryId: "nvidia-networking",
     parentCategoryId: "networking",
     categoryName: "Networking",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "400GbE SmartNIC with PCIe Gen 5.0 for AI fabrics, cloud data centers, and storage acceleration.",
     longDescription:
@@ -2056,7 +2056,7 @@ export const NVIDIA_GRACE_CPU: ChipProduct[] = [
     categoryId: "nvidia-hpc-grace",
     parentCategoryId: "server-cpus",
     categoryName: "HPC & Grace",
-    images: ["/images/ai-chip-5.jpg"],
+    images: ["/images/ai-chip-5.webp"],
     description:
       "72-core ARM-based server CPU with 480GB LPDDR5X and NVLink-C2C for HPC and AI convergence.",
     longDescription:

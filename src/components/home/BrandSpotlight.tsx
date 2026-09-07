@@ -15,7 +15,7 @@ const ENTERPRISE_ROWS = [
   {
     manufacturer: "NVIDIA",
     chips: ["nvidia-h100", "nvidia-h200", "nvidia-b200", "nvidia-gb200"],
-    image: "/images/ai-chip-5.jpg",
+    image: "/images/ai-chip-5.webp",
     alt: "NVIDIA H100 and H200 data center GPUs for enterprise AI training clusters",
     desc: "Enterprise AI training and inference GPUs powering the world's largest AI clusters.",
     badge: "Data Center GPUs",
@@ -23,7 +23,7 @@ const ENTERPRISE_ROWS = [
   {
     manufacturer: "AMD",
     chips: ["amd-mi300x", "amd-mi325x", "amd-mi350x"],
-    image: "/images/ai-chip-2.jpg",
+    image: "/images/ai-chip-2.webp",
     alt: "AMD Instinct MI300X accelerators for AI training and high-performance computing",
     desc: "High-performance Instinct accelerators for AI training, HPC, and scientific computing.",
     badge: "Instinct Accelerators",
@@ -31,7 +31,7 @@ const ENTERPRISE_ROWS = [
   {
     manufacturer: "Intel",
     chips: ["intel-gaudi-3", "intel-xeon-6980p", "intel-xeon-8490h"],
-    image: "/images/ai-chip-3.jpg",
+    image: "/images/ai-chip-3.webp",
     alt: "Intel Gaudi 3 AI accelerators and Xeon processors for data center workloads",
     desc: "Gaudi AI accelerators and Xeon processors for enterprise AI and data center workloads.",
     badge: "AI & Xeon",

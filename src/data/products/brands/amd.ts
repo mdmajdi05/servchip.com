@@ -12,7 +12,7 @@ export const AMD_INSTINCT_GPUS: ChipProduct[] = [
     categoryId: "amd-instinct-mi350",
     parentCategoryId: "amd-instinct",
     categoryName: "AMD Instinct Accelerators",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "Flagship AI accelerator with 288GB HBM3e memory and CDNA 4 architecture for large-scale training and inference.",
     longDescription:
@@ -64,7 +64,7 @@ export const AMD_INSTINCT_GPUS: ChipProduct[] = [
     categoryId: "amd-instinct-mi325",
     parentCategoryId: "amd-instinct",
     categoryName: "AMD Instinct Accelerators",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "High-capacity AI accelerator with 288GB HBM3 memory for large model training and inference.",
     longDescription:
@@ -116,7 +116,7 @@ export const AMD_INSTINCT_GPUS: ChipProduct[] = [
     categoryId: "amd-instinct-mi300",
     parentCategoryId: "amd-instinct",
     categoryName: "AMD Instinct Accelerators",
-    images: ["/images/products/amd-mi300x.jpg"],
+    images: ["/images/products/amd-mi300x.webp"],
     description:
       "Purpose-built AI accelerator with 192GB HBM3 memory, 5.2 TB/s bandwidth, and 750W TDP for HPC and AI.",
     longDescription:
@@ -220,7 +220,7 @@ export const AMD_INSTINCT_GPUS: ChipProduct[] = [
     categoryId: "amd-instinct-mi210",
     parentCategoryId: "amd-instinct",
     categoryName: "AMD Instinct Accelerators",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "Single-GPU CDNA 2 accelerator with 64GB HBM2e for mainstream HPC and AI inference workloads.",
     longDescription:
@@ -273,7 +273,7 @@ export const AMD_INSTINCT_GPUS: ChipProduct[] = [
     categoryId: "amd-instinct-mi100",
     parentCategoryId: "amd-instinct",
     categoryName: "AMD Instinct Accelerators",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "First-gen CDNA accelerator with 32GB HBM2 memory for HPC and scientific computing.",
     longDescription:
@@ -326,7 +326,7 @@ export const AMD_INSTINCT_GPUS: ChipProduct[] = [
     categoryId: "amd-instinct-mi600",
     parentCategoryId: "amd-instinct",
     categoryName: "AMD Instinct Accelerators",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "Next-gen CDNA 4 accelerator with 256GB HBM4 memory for exascale AI training and inference.",
     longDescription:
@@ -381,7 +381,7 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
     categoryId: "amd-epyc-9005",
     parentCategoryId: "server-cpus",
     categoryName: "AMD EPYC Processors",
-    images: ["/images/ai-chip-5.jpg"],
+    images: ["/images/ai-chip-5.webp"],
     description:
       "128-core flagship server processor with Zen 5 architecture, 500W TDP, and SP5 socket for maximum data center performance.",
     longDescription:
@@ -433,7 +433,7 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
     categoryId: "amd-epyc-9005",
     parentCategoryId: "server-cpus",
     categoryName: "AMD EPYC Processors",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "96-core Zen 5 server processor delivering exceptional throughput for enterprise and cloud workloads.",
     longDescription:
@@ -485,7 +485,7 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
     categoryId: "amd-epyc-9004",
     parentCategoryId: "server-cpus",
     categoryName: "AMD EPYC Processors",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "96-core Zen 4 server processor with 360W TDP for enterprise data centers and cloud infrastructure.",
     longDescription:
@@ -537,7 +537,7 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
     categoryId: "amd-epyc-9004",
     parentCategoryId: "server-cpus",
     categoryName: "AMD EPYC Processors",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "64-core Zen 4 server processor with 360W TDP for balanced enterprise compute.",
     longDescription:
@@ -641,7 +641,7 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
     categoryId: "amd-epyc-9004",
     parentCategoryId: "server-cpus",
     categoryName: "AMD EPYC Processors",
-    images: ["/images/ai-chip-5.jpg"],
+    images: ["/images/ai-chip-5.webp"],
     description:
       "48-core Zen 4 server processor with 290W TDP for efficient enterprise data center deployments.",
     longDescription:
@@ -693,7 +693,7 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
     categoryId: "amd-epyc-7003",
     parentCategoryId: "server-cpus",
     categoryName: "AMD EPYC Processors",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "64-core Zen 3 server processor with 280W TDP for legacy enterprise and HPC deployments.",
     longDescription:
@@ -745,7 +745,7 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
     categoryId: "amd-epyc-9004",
     parentCategoryId: "server-cpus",
     categoryName: "AMD EPYC Processors",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "96-core single-socket optimized Zen 4 server processor with 360W TDP for cost-effective deployments.",
     longDescription:
@@ -797,7 +797,7 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
     categoryId: "amd-epyc-9004",
     parentCategoryId: "server-cpus",
     categoryName: "AMD EPYC Processors",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "128-core Bergamo server processor with Zen 4c architecture for high-density cloud-native workloads.",
     longDescription:
@@ -849,7 +849,7 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
     categoryId: "amd-epyc-9004",
     parentCategoryId: "server-cpus",
     categoryName: "AMD EPYC Processors",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "112-core Bergamo server processor with Zen 4c architecture for efficient cloud-scale computing.",
     longDescription:
@@ -953,7 +953,7 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
     categoryId: "amd-epyc-9005",
     parentCategoryId: "server-cpus",
     categoryName: "AMD EPYC Processors",
-    images: ["/images/ai-chip-5.jpg"],
+    images: ["/images/ai-chip-5.webp"],
     description:
       "64-core frequency-optimized Zen 5 server processor for latency-sensitive and database workloads.",
     longDescription:
@@ -1005,7 +1005,7 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
     categoryId: "amd-epyc-9005",
     parentCategoryId: "server-cpus",
     categoryName: "AMD EPYC Processors",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "48-core frequency-optimized Zen 5 server processor for high-performance database and enterprise applications.",
     longDescription:
@@ -1057,7 +1057,7 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
     categoryId: "amd-epyc-9005",
     parentCategoryId: "server-cpus",
     categoryName: "AMD EPYC Processors",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "32-core frequency-optimized Zen 5 server processor for single-threaded and latency-critical workloads.",
     longDescription:
@@ -1109,7 +1109,7 @@ export const AMD_EPYC_CPUS: ChipProduct[] = [
     categoryId: "amd-epyc-9005",
     parentCategoryId: "server-cpus",
     categoryName: "AMD EPYC Processors",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "16-core frequency-optimized Zen 5 server processor for maximum per-core performance in specialized workloads.",
     longDescription:
@@ -1164,7 +1164,7 @@ export const AMD_RADEON_PRO: ChipProduct[] = [
     categoryId: "amd-pro-w7000",
     parentCategoryId: "amd-radeon-pro",
     categoryName: "Radeon Pro",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "Flagship workstation GPU with 48GB GDDR6 ECC for professional AI, rendering, and visualization.",
     longDescription:
@@ -1222,7 +1222,7 @@ export const AMD_RADEON_PRO: ChipProduct[] = [
     categoryId: "amd-pro-w7000",
     parentCategoryId: "amd-radeon-pro",
     categoryName: "Radeon Pro",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "Mid-range workstation GPU with 32GB GDDR6 for professional visualization and AI inference.",
     longDescription:
@@ -1334,7 +1334,7 @@ export const AMD_WORKSTATION: ChipProduct[] = [
     categoryId: "amd-pro-w7000",
     parentCategoryId: "amd-radeon-pro",
     categoryName: "Radeon Pro",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "Professional workstation GPU with 16GB GDDR6 ECC for mainstream CAD, visualization, and AI inference.",
     longDescription:
@@ -1441,7 +1441,7 @@ export const AMD_PENSANDO: ChipProduct[] = [
     categoryId: "amd-pensando",
     parentCategoryId: "networking",
     categoryName: "AMD Pensando",
-    images: ["/images/ai-chip-5.jpg"],
+    images: ["/images/ai-chip-5.webp"],
     description:
       "P4-programmable data processing unit with 200Gbps throughput for infrastructure acceleration.",
     longDescription:

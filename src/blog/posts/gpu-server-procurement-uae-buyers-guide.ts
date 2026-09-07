@@ -8,8 +8,7 @@ export const post: BlogPost = {
   excerpt:
     "Buying GPU servers in the UAE? A practical guide to export compliance, OEM selection, configuration, logistics, and financing for enterprise AI infrastructure.",
   content: "",
-  featuredImage:
-    "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&h=450&fit=crop",
+  featuredImage: "/images/products/nvidia-h100.webp",
   category: cat("guides"),
   tags: [
     tag("data-center"),

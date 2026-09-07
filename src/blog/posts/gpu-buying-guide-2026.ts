@@ -8,8 +8,7 @@ export const post: BlogPost = {
   excerpt:
     "Buying a GPU for AI in 2026 isn't as simple as picking the card with the biggest number on the box. This guide breaks down exactly how to think about the decision so you don't overspend or under-buy.",
   content: "",
-  featuredImage:
-    "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?w=800&h=450&fit=crop",
+  featuredImage: "/images/products/nvidia-h100.webp",
   category: cat("guides"),
   tags: [
     tag("ai-training"),

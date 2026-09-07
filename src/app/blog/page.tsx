@@ -10,7 +10,12 @@ import PageClient from "./page-client";
 
 export const metadata: Metadata = createMetadata("blog");
 
-export default function Page() {
+export default async function Page({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>;
+}) {
+  const { category } = await searchParams;
   const publishedPosts = BLOG_POSTS.filter((p) => p.isPublished);
   return (
     <>
@@ -31,7 +36,7 @@ export default function Page() {
           )}
         />
       )}
-      <PageClient />
+      <PageClient initialCategory={category} />
     </>
   );
 }

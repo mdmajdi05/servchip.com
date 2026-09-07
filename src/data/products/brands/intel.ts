@@ -12,7 +12,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "Intel Xeon 6900 Series processors deliver up to 128 performance cores with Granite Rapids architecture for the most demanding enterprise workloads.",
     longDescription:
@@ -73,7 +73,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "Intel Xeon 6700 Series processors combine Granite Rapids performance cores with balanced efficiency for scalable enterprise computing.",
     longDescription:
@@ -134,7 +134,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-max",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon Max",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "Intel Xeon Max 9480 integrates 64 GB of HBM2e memory on-package for memory-bandwidth-intensive HPC and AI workloads.",
     longDescription:
@@ -194,7 +194,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "Intel Xeon 6980P is a flagship 128-core Granite Rapids processor designed for ultra-dense data center compute.",
     longDescription:
@@ -255,7 +255,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-4",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 4",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "Intel Xeon 8490H offers 60 Sapphire Rapids cores with built-in AMX AI acceleration for enterprise and cloud workloads.",
     longDescription:
@@ -316,7 +316,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "Intel Xeon 6500 Series with Granite Rapids architecture for scalable enterprise computing.",
     longDescription:
@@ -375,7 +375,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "Intel Xeon 6300 Series with Granite Rapids architecture for entry-level enterprise servers.",
     longDescription:
@@ -434,7 +434,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-w",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon W",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "60-core workstation processor with Sapphire Rapids architecture for professional content creation and AI.",
     longDescription:
@@ -493,7 +493,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "72-core P-core Granite Rapids processor for high-performance enterprise and HPC data center workloads.",
     longDescription:
@@ -553,7 +553,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "60-core P-core Granite Rapids processor for mainstream enterprise compute and virtualization.",
     longDescription:
@@ -613,7 +613,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "48-core P-core Granite Rapids processor for cost-effective enterprise server deployments.",
     longDescription:
@@ -673,7 +673,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "36-core P-core Granite Rapids processor for balanced enterprise compute with strong per-core performance.",
     longDescription:
@@ -733,7 +733,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "24-core P-core Granite Rapids processor for entry-level enterprise servers with strong per-core performance.",
     longDescription:
@@ -793,7 +793,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "64-core E-core Granite Rapids processor optimized for high-throughput cloud-native and scale-out workloads.",
     longDescription:
@@ -853,7 +853,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "48-core E-core Granite Rapids processor for efficient cloud-native and throughput-optimized data center workloads.",
     longDescription:
@@ -913,7 +913,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "32-core E-core Granite Rapids processor for cost-efficient scale-out and cloud-native infrastructure.",
     longDescription:
@@ -973,7 +973,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "12-core E-core Granite Rapids processor for entry-level and edge-optimized data center deployments.",
     longDescription:
@@ -1033,7 +1033,7 @@ export const INTEL_XEON_CPUS: ChipProduct[] = [
     categoryId: "intel-xeon-6",
     parentCategoryId: "server-cpus",
     categoryName: "Intel Xeon 6",
-    images: ["/images/products/intel-xeon.jpg"],
+    images: ["/images/products/intel-xeon.webp"],
     description:
       "32-core efficient Granite Rapids processor for power-optimized enterprise and cloud infrastructure.",
     longDescription:
@@ -1096,7 +1096,7 @@ export const INTEL_GAUDI: ChipProduct[] = [
     categoryId: "intel-gaudi-3",
     parentCategoryId: "intel-gaudi",
     categoryName: "Intel Gaudi 3",
-    images: ["/images/products/intel-gaudi3-accelerator.jpg"],
+    images: ["/images/products/intel-gaudi3-accelerator.webp"],
     description:
       "Intel Gaudi 3 AI accelerator delivers 144 GB HBM2e memory and 600W TDP for large-scale AI training and inference.",
     longDescription:
@@ -1157,7 +1157,7 @@ export const INTEL_GAUDI: ChipProduct[] = [
     categoryId: "intel-gaudi-2",
     parentCategoryId: "intel-gaudi",
     categoryName: "Intel Gaudi 2",
-    images: ["/images/products/intel-gaudi3-pcie.jpg"],
+    images: ["/images/products/intel-gaudi3-pcie.webp"],
     description:
       "Intel Gaudi 2 AI accelerator with 96 GB HBM2e delivers efficient deep-learning training and inference at scale.",
     longDescription:
@@ -1218,7 +1218,7 @@ export const INTEL_GAUDI: ChipProduct[] = [
     categoryId: "intel-gaudi-2",
     parentCategoryId: "intel-gaudi",
     categoryName: "Intel Gaudi 2",
-    images: ["/images/products/intel-gaudi3-pcie.jpg"],
+    images: ["/images/products/intel-gaudi3-pcie.webp"],
     description:
       "Enhanced Gaudi 2 accelerator with 96GB HBM2e memory for cost-effective AI training and inference.",
     longDescription:
@@ -1282,7 +1282,7 @@ export const INTEL_ARC: ChipProduct[] = [
     categoryId: "intel-arc-pro",
     parentCategoryId: "intel-gaudi",
     categoryName: "Intel Arc Pro",
-    images: ["/images/ai-chip-3.jpg"],
+    images: ["/images/ai-chip-3.webp"],
     description:
       "Intel Arc A770 GPU with 16 GB GDDR6 delivers workstation-class graphics and compute for professional visualization and entry-level AI.",
     longDescription:
@@ -1404,7 +1404,7 @@ export const INTEL_ARC: ChipProduct[] = [
     categoryId: "intel-arc-battlemage",
     parentCategoryId: "intel-gaudi",
     categoryName: "Intel Arc Battlemage",
-    images: ["/images/ai-chip-1.jpg"],
+    images: ["/images/ai-chip-1.webp"],
     description:
       "Next-gen Intel Arc B580 GPU with 12GB GDDR6 and Battlemage architecture for gaming and AI workloads.",
     longDescription:
@@ -1464,7 +1464,7 @@ export const INTEL_ARC: ChipProduct[] = [
     categoryId: "intel-flex",
     parentCategoryId: "intel-gaudi",
     categoryName: "Intel Flex",
-    images: ["/images/ai-chip-2.jpg"],
+    images: ["/images/ai-chip-2.webp"],
     description:
       "Data center GPU with 16GB GDDR6 for media transcoding, cloud gaming, and AI inference.",
     longDescription:
@@ -1525,7 +1525,7 @@ export const INTEL_NETWORKING: NetworkingProduct[] = [
     categoryId: "intel-networking",
     parentCategoryId: "networking",
     categoryName: "Intel Networking",
-    images: ["/images/ai-chip-5.jpg"],
+    images: ["/images/ai-chip-5.webp"],
     description:
       "Intel Ethernet E810 network adapter delivers 100 GbE throughput with PCIe 4.0 for high-performance data center and enterprise networking.",
     longDescription:

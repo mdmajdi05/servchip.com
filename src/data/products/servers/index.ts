@@ -11,7 +11,7 @@ export const DELL_SERVERS: ServerProduct[] = [
     categoryId: "dell-ai-servers",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: ["/images/server-room-1.jpg"],
+    images: ["/images/server-room-1.webp"],
     description:
       "Enterprise AI server with 8-way GPU support for large-scale model training and inference.",
     longDescription:
@@ -55,7 +55,7 @@ export const DELL_SERVERS: ServerProduct[] = [
     categoryId: "dell-general",
     parentCategoryId: "servers",
     categoryName: "General Purpose Servers",
-    images: ["/images/server-room-5.jpg"],
+    images: ["/images/server-room-5.webp"],
     description:
       "Versatile 2U general purpose server with Intel Xeon 5th Gen processors for enterprise workloads.",
     longDescription:
@@ -143,7 +143,7 @@ export const DELL_SERVERS: ServerProduct[] = [
     categoryId: "dell-ai-servers",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: ["/images/server-room-2.jpg"],
+    images: ["/images/server-room-2.webp"],
     description:
       "Scalable 4-way GPU server for enterprise AI and accelerated compute workloads.",
     longDescription:
@@ -278,7 +278,7 @@ export const HPE_SERVERS: ServerProduct[] = [
     categoryId: "hpe-edge",
     parentCategoryId: "servers",
     categoryName: "Edge AI Servers",
-    images: ["/images/server-room-2.jpg"],
+    images: ["/images/server-room-2.webp"],
     description:
       "Rugged edge AI server delivering GPU-accelerated inference at the network edge.",
     longDescription:
@@ -369,7 +369,7 @@ export const SUPERMICRO_SERVERS: ServerProduct[] = [
     categoryId: "supermicro-gpu",
     parentCategoryId: "ai-servers",
     categoryName: "GPU Servers",
-    images: ["/images/server-room-5.jpg"],
+    images: ["/images/server-room-5.webp"],
     description:
       "Maximum GPU density server supporting 10 double-width GPUs in a 4U form factor.",
     longDescription:
@@ -457,7 +457,7 @@ export const SUPERMICRO_SERVERS: ServerProduct[] = [
     categoryId: "supermicro-gpu",
     parentCategoryId: "ai-servers",
     categoryName: "GPU Servers",
-    images: ["/images/server-room-1.jpg"],
+    images: ["/images/server-room-1.webp"],
     description:
       "Dense 2U server with 4x GPU support for accelerated AI and compute workloads.",
     longDescription:
@@ -504,7 +504,7 @@ export const LENOVO_SERVERS: ServerProduct[] = [
     categoryId: "lenovo-ai",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: ["/images/server-room-2.jpg"],
+    images: ["/images/server-room-2.webp"],
     description:
       "Flagship 6U AI server with 8x GPU support for enterprise deep learning workloads.",
     longDescription:
@@ -730,7 +730,7 @@ export const ASUS_SERVERS: ServerProduct[] = [
     categoryId: "asus-ai",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: ["/images/server-room-5.jpg"],
+    images: ["/images/server-room-5.webp"],
     description:
       "Purpose-built AI server with 8x GPU support for enterprise deep learning.",
     longDescription:
@@ -777,7 +777,7 @@ export const INSPUR_SERVERS: ServerProduct[] = [
     categoryId: "asus-general",
     parentCategoryId: "servers",
     categoryName: "General Purpose Servers",
-    images: ["/images/server-room-1.jpg"],
+    images: ["/images/server-room-1.webp"],
     description:
       "2U rack server with dual AMD EPYC for database, virtualization, and enterprise workloads.",
     longDescription:
@@ -821,7 +821,7 @@ export const INSPUR_SERVERS: ServerProduct[] = [
     categoryId: "inspur-general",
     parentCategoryId: "servers",
     categoryName: "General Purpose Servers",
-    images: ["/images/server-room-2.jpg"],
+    images: ["/images/server-room-2.webp"],
     description:
       "2U dual-socket server with Intel Xeon 5th Gen for enterprise and cloud deployments.",
     longDescription:
@@ -865,7 +865,7 @@ export const INSPUR_SERVERS: ServerProduct[] = [
     categoryId: "inspur-ai",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: ["/images/server-room-1.jpg"],
+    images: ["/images/server-room-1.webp"],
     description:
       "High-performance AI server with 8x GPU support for large-scale model training.",
     longDescription:
@@ -912,7 +912,7 @@ export const QUANTA_SERVERS: ServerProduct[] = [
     categoryId: "quanta-ai",
     parentCategoryId: "ai-servers",
     categoryName: "AI Servers",
-    images: ["/images/server-room-2.jpg"],
+    images: ["/images/server-room-2.webp"],
     description:
       "Open-standard AI server with 8x GPU support for scalable deep learning.",
     longDescription:
