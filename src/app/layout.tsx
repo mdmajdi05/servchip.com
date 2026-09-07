@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { ThemeProvider } from "@/providers/ThemeProvider";
@@ -164,7 +165,9 @@ export default function RootLayout({
             </main>
             <Footer />
             <LeadGenProviders />
-            <GAClient />
+            <Suspense fallback={null}>
+              <GAClient />
+            </Suspense>
           </ColorProvider>
         </ThemeProvider>
       </body>

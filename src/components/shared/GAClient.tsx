@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname, useSearchParams } from "next/navigation";
-import { Suspense, useEffect } from "react";
+import { useEffect } from "react";
 
 function GATracker() {
   const pathname = usePathname();
@@ -11,16 +11,20 @@ function GATracker() {
     const url =
       pathname +
       (searchParams?.toString() ? "?" + searchParams.toString() : "");
-    window.gtag("config", "G-W9W5CX2KPN", { page_path: url });
+
+    const tryGtag = (retries = 50) => {
+      if (typeof window.gtag === "function") {
+        window.gtag("config", "G-W9W5CX2KPN", { page_path: url });
+      } else if (retries > 0) {
+        setTimeout(() => tryGtag(retries - 1), 100);
+      }
+    };
+    tryGtag();
   }, [pathname, searchParams]);
 
   return null;
 }
 
 export function GAClient() {
-  return (
-    <Suspense>
-      <GATracker />
-    </Suspense>
-  );
+  return <GATracker />;
 }
