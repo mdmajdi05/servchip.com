@@ -114,6 +114,16 @@ const nextConfig: NextConfig = {
         ],
       },
       {
+        source: "/llms.txt",
+        headers: [
+          { key: "Access-Control-Allow-Origin", value: "*" },
+          {
+            key: "Cache-Control",
+            value: "public, max-age=300",
+          },
+        ],
+      },
+      {
         source: "/(.*)",
         headers: [
           { key: "X-Frame-Options", value: "DENY" },
