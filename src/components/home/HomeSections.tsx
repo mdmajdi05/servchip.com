@@ -3,6 +3,11 @@
 import dynamic from "next/dynamic";
 import type { Country, CountryMarket } from "@/types";
 import { Hero3D } from "./Hero3D";
+import { SeoIntroBlock } from "./SeoIntroBlock";
+import { AboutServchip } from "./AboutServchip";
+import { IndustrySolutions } from "./IndustrySolutions";
+import { RegionalDistribution } from "./RegionalDistribution";
+import { ChipBuyingGuide } from "./ChipBuyingGuide";
 import { LazySection } from "@/components/ui/LazySection";
 const TrustBar = dynamic(
   () => import("@/components/home/TrustBar").then((m) => m.TrustBar),
@@ -229,7 +234,9 @@ export function HomeSections({
   return (
     <>
       <Hero3D country={country} market={market} />
+      <AboutServchip />
       <TrustBar />
+      <SeoIntroBlock />
       {country && market && (
         <CountryMarketStrip country={country} market={market} />
       )}
@@ -241,11 +248,14 @@ export function HomeSections({
       <LazySection minHeight={620}>
         <CategoriesGridDeferred />
       </LazySection>
+      <IndustrySolutions />
+      <RegionalDistribution />
       <LazySection minHeight={680}>
         <WorkloadSolutionsDeferred />
       </LazySection>
       <ConfiguratorPromo />
       <ServicesShowcase />
+      <ChipBuyingGuide />
       <LazySection minHeight={640}>
         <FeaturedChipsDeferred />
       </LazySection>
