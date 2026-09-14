@@ -132,7 +132,7 @@ export function FAQAccordion({
         {/* Can't Find Your Answer CTA */}
         <div className="mt-12 relative">
           <div className="absolute inset-0 bg-gradient-to-r from-primary/5 via-primary/[0.02] to-transparent rounded-2xl" />
-          <div className="relative rounded-2xl border border-primary/20 bg-surface/50 backdrop-blur-sm p-8 text-center">
+          <div className="relative rounded-2xl border border-primary/20 bg-surface/50 p-8 text-center">
             <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mx-auto mb-4">
               <MessageSquare className="w-6 h-6 text-primary" />
             </div>

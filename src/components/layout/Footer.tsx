@@ -148,11 +148,6 @@ export function Footer() {
       {/* Top gradient accent */}
       <div className="h-[2px] w-full bg-gradient-to-r from-transparent via-primary/70 to-transparent" />
 
-      {/* Ambient glows */}
-      <div className="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-primary/10 blur-3xl pointer-events-none" />
-      <div className="absolute top-24 right-0 w-80 h-80 rounded-full bg-secondary/10 blur-3xl pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-72 h-72 rounded-full bg-primary/5 blur-3xl pointer-events-none" />
-
       {/* Grid background */}
       <div
         className="absolute inset-0 opacity-[0.03] pointer-events-none"

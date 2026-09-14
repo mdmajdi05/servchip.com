@@ -54,10 +54,9 @@ function DistributionFlow() {
   return (
     <div className="relative">
       {/* Glow behind flow */}
-      <div className="absolute -inset-8 bg-gradient-to-b from-primary/10 to-secondary/10 rounded-[2rem] blur-2xl" />
 
       {/* Main framed panel */}
-      <div className="relative rounded-2xl border border-border/60 bg-surface/40 backdrop-blur-sm overflow-hidden">
+      <div className="relative rounded-2xl border border-border/60 bg-surface/40 overflow-hidden">
         <div className="absolute inset-0 bg-dot-grid opacity-[0.05]" />
 
         <div className="relative p-6 sm:p-8">
@@ -157,8 +156,7 @@ export function SeoIntroBlock() {
     <section className="relative py-16 md:py-24 bg-bg-body overflow-hidden">
       {/* Decorative background */}
       <div className="absolute inset-0 bg-dot-grid opacity-[0.06]" />
-      <div className="absolute top-1/4 left-0 w-[400px] h-[400px] bg-primary/[0.04] rounded-full blur-[120px]" />
-      <div className="absolute bottom-0 right-0 w-[350px] h-[350px] bg-secondary/[0.04] rounded-full blur-[100px]" />
+
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-primary/0 via-primary/15 to-primary/0" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -189,7 +187,7 @@ export function SeoIntroBlock() {
             </p>
 
             {/* Expandable SEO content — text ALWAYS in DOM for crawlers */}
-            <div className="relative rounded-2xl border border-border/60 bg-surface/50 backdrop-blur-sm p-5 sm:p-6">
+            <div className="relative rounded-2xl border border-border/60 bg-surface/50 p-5 sm:p-6">
               <div
                 className={`relative overflow-hidden transition-all duration-500 ease-in-out ${
                   expanded ? "max-h-[900px]" : "max-h-[200px]"
@@ -291,10 +289,6 @@ export function SeoIntroBlock() {
                     to 150+ countries.
                   </p>
                 </div>
-
-                {!expanded && (
-                  <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-surface via-surface/80 to-transparent pointer-events-none" />
-                )}
               </div>
 
               <div className="mt-3 text-center">

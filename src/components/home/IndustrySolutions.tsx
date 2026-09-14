@@ -68,8 +68,6 @@ function IndustryCard({ industry }: { industry: (typeof INDUSTRIES)[number] }) {
           : "border-border bg-surface hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
       }`}
     >
-      <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-primary/5 blur-2xl group-hover:bg-primary/10 transition-transform" />
-
       <div className="relative">
         <div className="flex items-start gap-4 mb-3">
           <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center flex-shrink-0 group-hover:bg-primary/20 transition-transform">
@@ -123,8 +121,6 @@ export function IndustrySolutions() {
   return (
     <section className="relative py-20 bg-bg-dark overflow-hidden">
       <div className="absolute inset-0 bg-dot-grid opacity-[0.06]" />
-      <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-primary/[0.04] rounded-full blur-[120px]" />
-      <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-secondary/[0.04] rounded-full blur-[100px]" />
 
       <div className="max-w-7xl mx-auto px-4 relative z-10">
         <SectionHeading

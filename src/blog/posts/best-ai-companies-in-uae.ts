@@ -9,6 +9,8 @@ export const post: BlogPost = {
     "Compare the UAE's top AI companies for 2026 — from sovereign-scale leaders like G42 and Core42 to fast-growing startups like Derq and Nybl — with a practical, sourced buyer's guide.",
   content: "",
   featuredImage: "/images/ai-chip-2.webp",
+  featuredImageAlt:
+    "Best AI Companies in the UAE: 2026 Buyer's Guide & Procurement Insights",
   category: cat("guides"),
   tags: [tag("data-center"), tag("deployment"), tag("nvidia"), tag("amd")],
   author: { name: "Servchip Tech Team", avatar: "ST" },

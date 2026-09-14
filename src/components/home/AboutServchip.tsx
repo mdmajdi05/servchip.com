@@ -29,8 +29,6 @@ export function AboutServchip() {
       <div className="absolute inset-0 bg-dot-grid opacity-[0.07]" />
       <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-primary/0 via-primary/20 to-primary/0" />
       <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-primary/0 via-primary/20 to-primary/0" />
-      <div className="absolute top-1/3 left-1/4 w-[500px] h-[500px] bg-primary/[0.03] rounded-full blur-[120px]" />
-      <div className="absolute bottom-1/4 right-1/4 w-[400px] h-[400px] bg-secondary/[0.03] rounded-full blur-[100px]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-16">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
@@ -45,10 +43,8 @@ export function AboutServchip() {
                 priority
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-bg-dark via-bg-dark/30 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-r from-bg-dark/40 to-transparent" />
 
-              <div className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full px-4 py-2 bg-black/60 backdrop-blur-md border border-primary/20">
+              <div className="absolute top-4 left-4 inline-flex items-center gap-2 rounded-full px-4 py-2 bg-black/60 border border-primary/20">
                 <Building2 className="w-3.5 h-3.5 text-primary" />
                 <span className="text-[11px] font-mono font-bold text-primary uppercase tracking-wider">
                   Est. 2018
@@ -68,7 +64,7 @@ export function AboutServchip() {
               </div>
             </div>
 
-            <div className="hidden lg:block absolute -bottom-5 -right-5 glass rounded-xl border border-primary/15 px-5 py-3">
+            <div className="hidden lg:block absolute -bottom-5 -right-5 bg-surface rounded-xl border border-primary/15 px-5 py-3">
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                   <span className="text-primary text-lg font-black font-mono">
@@ -218,11 +214,6 @@ export function AboutServchip() {
                     .
                   </p>
                 </div>
-
-                {/* Gradient fade — only when collapsed */}
-                {!expanded && (
-                  <div className="absolute bottom-0 inset-x-0 h-20 bg-gradient-to-t from-bg-dark via-bg-dark/80 to-transparent pointer-events-none" />
-                )}
               </div>
 
               {/* Toggle button */}
@@ -250,7 +241,7 @@ export function AboutServchip() {
               {ABOUT_STATS.map((stat) => (
                 <div
                   key={stat.label}
-                  className="group relative rounded-xl border border-border/60 bg-surface/50 backdrop-blur-sm px-3 py-3 text-center hover:border-primary/30 transition-colors"
+                  className="group relative rounded-xl border border-border/60 bg-surface/50 px-3 py-3 text-center hover:border-primary/30 transition-colors"
                 >
                   <stat.icon className="w-4 h-4 text-primary mx-auto mb-1.5" />
                   <p className="text-text text-sm font-black font-mono">

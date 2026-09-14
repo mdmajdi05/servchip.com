@@ -80,8 +80,6 @@ export function ChipBuyingGuide() {
   return (
     <section className="relative py-20 bg-bg-dark overflow-hidden">
       <div className="absolute inset-0 bg-dot-grid opacity-[0.06]" />
-      <div className="absolute top-1/4 right-0 w-[400px] h-[400px] bg-primary/[0.04] rounded-full blur-[120px]" />
-      <div className="absolute bottom-0 left-0 w-[350px] h-[350px] bg-secondary/[0.04] rounded-full blur-[100px]" />
 
       <div className="max-w-6xl mx-auto px-4 relative z-10">
         <SectionHeading
@@ -110,7 +108,6 @@ export function ChipBuyingGuide() {
 
                 {/* Step card */}
                 <div className="group relative flex-1 rounded-2xl border border-border/60 bg-surface p-6 hover:border-primary/30 transition-colors">
-                  <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-primary/5 blur-2xl group-hover:bg-primary/10 transition-transform" />
                   <div className="relative">
                     <h3 className="text-lg font-bold text-text mb-3">
                       {step.title}

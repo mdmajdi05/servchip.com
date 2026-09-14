@@ -7,11 +7,7 @@ export function Logo3D() {
   const ref = useRef<HTMLAnchorElement>(null);
 
   return (
-    <Link
-      ref={ref}
-      href="/"
-      className="group relative flex items-center gap-3"
-    >
+    <Link ref={ref} href="/" className="group relative flex items-center gap-3">
       {/* 3D Logo Box */}
       <div className="relative perspective-[800px]">
         <div
@@ -23,20 +19,27 @@ export function Logo3D() {
             className="absolute inset-0 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 border border-primary/40 flex items-center justify-center"
             style={{ backfaceVisibility: "hidden" }}
           >
-            <span className="text-primary text-sm font-black tracking-tighter">S</span>
+            <span className="text-primary text-sm font-black tracking-tighter">
+              S
+            </span>
             <div className="absolute inset-0 rounded-xl ring-1 ring-primary/20" />
           </div>
 
           {/* Back face */}
           <div
             className="absolute inset-0 rounded-xl bg-gradient-to-br from-secondary/20 to-secondary/5 border border-secondary/40 flex items-center justify-center"
-            style={{ backfaceVisibility: "hidden", transform: "rotateY(180deg)" }}
+            style={{
+              backfaceVisibility: "hidden",
+              transform: "rotateY(180deg)",
+            }}
           >
-            <span className="text-secondary text-sm font-black tracking-tighter">C</span>
+            <span className="text-secondary text-sm font-black tracking-tighter">
+              C
+            </span>
           </div>
 
           {/* Glow aura */}
-          <div className="absolute -inset-2 rounded-2xl bg-primary/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          <div className="absolute -inset-2 rounded-2xl bg-primary/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>
 
         {/* Pins decoration */}

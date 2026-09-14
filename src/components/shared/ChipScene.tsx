@@ -9,7 +9,9 @@ interface ChipSceneProps {
 
 export function ChipScene({ autoRotate = true, className }: ChipSceneProps) {
   return (
-    <div className={`w-full h-full relative overflow-hidden bg-gradient-to-br from-surface to-bg-dark ${className ?? ""}`}>
+    <div
+      className={`w-full h-full relative overflow-hidden bg-gradient-to-br from-surface to-bg-dark ${className ?? ""}`}
+    >
       {/* Grid */}
       <div
         className="absolute inset-0 opacity-20"
@@ -19,8 +21,10 @@ export function ChipScene({ autoRotate = true, className }: ChipSceneProps) {
             linear-gradient(90deg, var(--primary) 1px, transparent 1px)
           `,
           backgroundSize: "32px 32px",
-          maskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
-          WebkitMaskImage: "radial-gradient(ellipse at center, black 30%, transparent 70%)",
+          maskImage:
+            "radial-gradient(ellipse at center, black 30%, transparent 70%)",
+          WebkitMaskImage:
+            "radial-gradient(ellipse at center, black 30%, transparent 70%)",
         }}
       />
 
@@ -28,7 +32,8 @@ export function ChipScene({ autoRotate = true, className }: ChipSceneProps) {
       <div
         className="absolute"
         style={{
-          left: "50%", top: "50%",
+          left: "50%",
+          top: "50%",
           animation: autoRotate ? "chip-float 6s ease-in-out infinite" : "none",
         }}
       >
@@ -56,9 +61,11 @@ export function ChipScene({ autoRotate = true, className }: ChipSceneProps) {
             <div
               className="absolute animate-ping"
               style={{
-                left: "50%", top: "50%",
+                left: "50%",
+                top: "50%",
                 transform: "translate(-50%, -50%)",
-                width: 12, height: 12,
+                width: 12,
+                height: 12,
                 borderRadius: "50%",
                 backgroundColor: "var(--primary)",
                 opacity: 0.3,
@@ -68,11 +75,14 @@ export function ChipScene({ autoRotate = true, className }: ChipSceneProps) {
             <div
               className="absolute"
               style={{
-                left: "50%", top: "50%",
+                left: "50%",
+                top: "50%",
                 transform: "translate(-50%, -50%)",
-                width: 20, height: 20,
+                width: 20,
+                height: 20,
                 borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(118,255,3,0.12) 0%, transparent 70%)",
+                background:
+                  "radial-gradient(circle, rgba(118,255,3,0.12) 0%, transparent 70%)",
               }}
             />
             {/* Label */}
@@ -152,15 +162,37 @@ export function ChipScene({ autoRotate = true, className }: ChipSceneProps) {
 
       {/* Orbit rings */}
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 200">
-        <circle cx="100" cy="100" r="65" fill="none" stroke="var(--primary)" strokeWidth="0.3" opacity="0.15"
-          style={{ animation: autoRotate ? "orbit-spin 12s linear infinite" : "none" }} />
-        <circle cx="100" cy="100" r="80" fill="none" stroke="var(--secondary)" strokeWidth="0.2" opacity="0.1"
-          style={{ animation: autoRotate ? "orbit-spin 16s linear infinite reverse" : "none" }} />
+        <circle
+          cx="100"
+          cy="100"
+          r="65"
+          fill="none"
+          stroke="var(--primary)"
+          strokeWidth="0.3"
+          opacity="0.15"
+          style={{
+            animation: autoRotate ? "orbit-spin 12s linear infinite" : "none",
+          }}
+        />
+        <circle
+          cx="100"
+          cy="100"
+          r="80"
+          fill="none"
+          stroke="var(--secondary)"
+          strokeWidth="0.2"
+          opacity="0.1"
+          style={{
+            animation: autoRotate
+              ? "orbit-spin 16s linear infinite reverse"
+              : "none",
+          }}
+        />
       </svg>
 
       {/* Hint */}
       {autoRotate && (
-        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 px-3 py-1.5 rounded-full bg-surface/80 backdrop-blur-sm border border-primary/20">
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-3 px-3 py-1.5 rounded-full bg-surface/80 border border-primary/20">
           <Eye className="w-3 h-3 text-primary" />
           <span className="text-[10px] text-text-dim">Interactive view</span>
           <ZoomIn className="w-3 h-3 text-text-dim" />
@@ -169,20 +201,38 @@ export function ChipScene({ autoRotate = true, className }: ChipSceneProps) {
 
       <style jsx>{`
         @keyframes chip-float {
-          0%, 100% { transform: translateY(0); }
-          50% { transform: translateY(-8px); }
+          0%,
+          100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-8px);
+          }
         }
         @keyframes chip-spin {
-          from { transform: translate(-50%, -50%) rotate(0deg); }
-          to { transform: translate(-50%, -50%) rotate(360deg); }
+          from {
+            transform: translate(-50%, -50%) rotate(0deg);
+          }
+          to {
+            transform: translate(-50%, -50%) rotate(360deg);
+          }
         }
         @keyframes chip-pulse {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 0.7; }
+          0%,
+          100% {
+            opacity: 0.3;
+          }
+          50% {
+            opacity: 0.7;
+          }
         }
         @keyframes orbit-spin {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
         }
       `}</style>
     </div>
@@ -208,7 +258,8 @@ export function HeroChipScene() {
       <div
         className="absolute"
         style={{
-          left: "50%", top: "50%",
+          left: "50%",
+          top: "50%",
           transform: "translate(-50%, -50%)",
           animation: "hero-chip-float 8s ease-in-out infinite",
         }}
@@ -228,9 +279,11 @@ export function HeroChipScene() {
             <div
               className="absolute animate-ping opacity-30"
               style={{
-                left: "50%", top: "50%",
+                left: "50%",
+                top: "50%",
                 transform: "translate(-50%, -50%)",
-                width: 16, height: 16,
+                width: 16,
+                height: 16,
                 borderRadius: "50%",
                 backgroundColor: "var(--primary)",
                 animationDuration: "2.5s",
@@ -239,35 +292,54 @@ export function HeroChipScene() {
             <div
               className="absolute"
               style={{
-                left: "50%", top: "50%",
+                left: "50%",
+                top: "50%",
                 transform: "translate(-50%, -50%)",
-                width: 28, height: 28,
+                width: 28,
+                height: 28,
                 borderRadius: "50%",
-                background: "radial-gradient(circle, rgba(118,255,3,0.15) 0%, transparent 70%)",
+                background:
+                  "radial-gradient(circle, rgba(118,255,3,0.15) 0%, transparent 70%)",
               }}
             />
-            <span className="absolute text-[7px] font-bold tracking-[0.15em] text-primary/50" style={{ left: 8, top: 5 }}>SERV</span>
-            <span className="absolute text-[7px] font-bold tracking-[0.15em] text-secondary/50" style={{ right: 8, bottom: 5 }}>CHIP</span>
+            <span
+              className="absolute text-[7px] font-bold tracking-[0.15em] text-primary/50"
+              style={{ left: 8, top: 5 }}
+            >
+              SERV
+            </span>
+            <span
+              className="absolute text-[7px] font-bold tracking-[0.15em] text-secondary/50"
+              style={{ right: 8, bottom: 5 }}
+            >
+              CHIP
+            </span>
           </div>
 
           {/* Pins */}
           {Array.from({ length: 10 }).map((_, i) => (
-            <div key={`hp-${i}`} className="absolute bg-primary/40"
+            <div
+              key={`hp-${i}`}
+              className="absolute bg-primary/40"
               style={{
                 top: -7,
                 left: `${7 + i * 9}%`,
-                width: 3, height: 7,
+                width: 3,
+                height: 7,
                 borderRadius: "0 0 1px 1px",
                 animation: `hero-pulse 2.5s ${i * 0.15}s ease-in-out infinite`,
               }}
             />
           ))}
           {Array.from({ length: 10 }).map((_, i) => (
-            <div key={`hb-${i}`} className="absolute bg-primary/40"
+            <div
+              key={`hb-${i}`}
+              className="absolute bg-primary/40"
               style={{
                 bottom: -7,
                 left: `${7 + i * 9}%`,
-                width: 3, height: 7,
+                width: 3,
+                height: 7,
                 borderRadius: "1px 1px 0 0",
                 animation: `hero-pulse 2.5s ${i * 0.15 + 0.6}s ease-in-out infinite`,
               }}
@@ -278,25 +350,57 @@ export function HeroChipScene() {
 
       {/* Orbital rings */}
       <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 200">
-        <circle cx="100" cy="100" r="60" fill="none" stroke="var(--primary)" strokeWidth="0.3" opacity="0.12"
-          style={{ animation: "hero-orbit 15s linear infinite" }} />
-        <circle cx="100" cy="100" r="75" fill="none" stroke="var(--secondary)" strokeWidth="0.2" opacity="0.08"
-          style={{ animation: "hero-orbit 20s linear infinite reverse" }} />
+        <circle
+          cx="100"
+          cy="100"
+          r="60"
+          fill="none"
+          stroke="var(--primary)"
+          strokeWidth="0.3"
+          opacity="0.12"
+          style={{ animation: "hero-orbit 15s linear infinite" }}
+        />
+        <circle
+          cx="100"
+          cy="100"
+          r="75"
+          fill="none"
+          stroke="var(--secondary)"
+          strokeWidth="0.2"
+          opacity="0.08"
+          style={{ animation: "hero-orbit 20s linear infinite reverse" }}
+        />
       </svg>
 
       <style jsx>{`
         @keyframes hero-chip-float {
-          0%, 100% { transform: translate(-50%, -50%) translateY(0); }
-          33% { transform: translate(-50%, -50%) translateY(-10px); }
-          66% { transform: translate(-50%, -50%) translateY(5px); }
+          0%,
+          100% {
+            transform: translate(-50%, -50%) translateY(0);
+          }
+          33% {
+            transform: translate(-50%, -50%) translateY(-10px);
+          }
+          66% {
+            transform: translate(-50%, -50%) translateY(5px);
+          }
         }
         @keyframes hero-pulse {
-          0%, 100% { opacity: 0.3; }
-          50% { opacity: 0.7; }
+          0%,
+          100% {
+            opacity: 0.3;
+          }
+          50% {
+            opacity: 0.7;
+          }
         }
         @keyframes hero-orbit {
-          from { transform: rotate(0deg); }
-          to { transform: rotate(360deg); }
+          from {
+            transform: rotate(0deg);
+          }
+          to {
+            transform: rotate(360deg);
+          }
         }
       `}</style>
     </div>

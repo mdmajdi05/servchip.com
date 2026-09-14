@@ -187,10 +187,6 @@ export default function ConfiguratorPage() {
         className="py-20 md:py-28 bg-bg-body scroll-mt-20 relative overflow-hidden"
       >
         <div className="absolute inset-0 bg-grid opacity-20 pointer-events-none" />
-        <div
-          className="absolute w-96 h-96 rounded-full bg-primary/10 blur-3xl top-20 right-1/4 pointer-events-none"
-          aria-hidden
-        />
         <div className="container mx-auto px-4 relative z-10">
           <SectionHeading
             label="Chip Configurator"
@@ -226,283 +222,275 @@ export default function ConfiguratorPage() {
                 </div>
               ))}
             </div>
-              {/* Step 1: Use Case */}
-              {step === 1 && (
-                <div
-                  key="step1"
-                >
-                  <h3 className="text-lg font-bold text-text mb-1">
-                    What&apos;s your primary use case?
-                  </h3>
-                  <p className="text-sm text-text-muted mb-6">
-                    Select the workload that best describes your project.
-                  </p>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-                    {USE_CASES.map((uc) => {
-                      const Icon = ICON_MAP[uc.icon] || Circle;
-                      const selected = useCase === uc.id;
-                      return (
-                        <button
-                          key={uc.id}
-                          onClick={() => setUseCase(uc.id)}
+            {/* Step 1: Use Case */}
+            {step === 1 && (
+              <div key="step1">
+                <h3 className="text-lg font-bold text-text mb-1">
+                  What&apos;s your primary use case?
+                </h3>
+                <p className="text-sm text-text-muted mb-6">
+                  Select the workload that best describes your project.
+                </p>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  {USE_CASES.map((uc) => {
+                    const Icon = ICON_MAP[uc.icon] || Circle;
+                    const selected = useCase === uc.id;
+                    return (
+                      <button
+                        key={uc.id}
+                        onClick={() => setUseCase(uc.id)}
+                        className={cn(
+                          "p-4 rounded-xl border text-left transition-transform",
+                          selected
+                            ? "border-primary bg-primary/10"
+                            : "border-border bg-surface hover:border-primary/30",
+                        )}
+                      >
+                        <Icon
                           className={cn(
-                            "p-4 rounded-xl border text-left transition-transform",
-                            selected
-                              ? "border-primary bg-primary/10"
-                              : "border-border bg-surface hover:border-primary/30",
+                            "w-6 h-6 mb-2",
+                            selected ? "text-primary" : "text-text-muted",
+                          )}
+                        />
+                        <p
+                          className={cn(
+                            "text-sm font-bold mb-1",
+                            selected ? "text-primary" : "text-text",
                           )}
                         >
-                          <Icon
-                            className={cn(
-                              "w-6 h-6 mb-2",
-                              selected ? "text-primary" : "text-text-muted",
-                            )}
-                          />
+                          {uc.label}
+                        </p>
+                        <p className="text-[11px] text-text-dim line-clamp-2">
+                          {uc.description}
+                        </p>
+                      </button>
+                    );
+                  })}
+                </div>
+                <div className="flex justify-end mt-6">
+                  <Button onClick={() => setStep(2)} disabled={!useCase}>
+                    Continue <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+            )}
+            {/* Step 2: Parameters */}
+            {step === 2 && (
+              <div key="step2">
+                <h3 className="text-lg font-bold text-text mb-1">
+                  Configure your parameters
+                </h3>
+                <p className="text-sm text-text-muted mb-6">
+                  Set your budget, performance priority, and quantity.
+                </p>
+                <div className="space-y-6">
+                  {/* Budget */}
+                  <div>
+                    <label className="text-sm font-medium text-text mb-2 block">
+                      Budget Tier
+                    </label>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                      {BUDGET_TIERS.map((b) => (
+                        <button
+                          key={b.id}
+                          onClick={() => setBudget(b.id)}
+                          className={cn(
+                            "p-3 rounded-lg border text-left transition-transform",
+                            budget === b.id
+                              ? "border-primary bg-primary/10"
+                              : "border-border hover:border-primary/30",
+                          )}
+                        >
                           <p
                             className={cn(
-                              "text-sm font-bold mb-1",
-                              selected ? "text-primary" : "text-text",
+                              "text-sm font-bold",
+                              budget === b.id ? "text-primary" : "text-text",
                             )}
                           >
-                            {uc.label}
+                            {b.label}
                           </p>
-                          <p className="text-[11px] text-text-dim line-clamp-2">
-                            {uc.description}
+                          <p className="text-[10px] text-text-dim mt-0.5">
+                            {b.description}
                           </p>
                         </button>
-                      );
-                    })}
-                  </div>
-                  <div className="flex justify-end mt-6">
-                    <Button onClick={() => setStep(2)} disabled={!useCase}>
-                      Continue <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </div>
-                </div>
-              )}
-              {/* Step 2: Parameters */}
-              {step === 2 && (
-                <div
-                  key="step2"
-                >
-                  <h3 className="text-lg font-bold text-text mb-1">
-                    Configure your parameters
-                  </h3>
-                  <p className="text-sm text-text-muted mb-6">
-                    Set your budget, performance priority, and quantity.
-                  </p>
-                  <div className="space-y-6">
-                    {/* Budget */}
-                    <div>
-                      <label className="text-sm font-medium text-text mb-2 block">
-                        Budget Tier
-                      </label>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                        {BUDGET_TIERS.map((b) => (
-                          <button
-                            key={b.id}
-                            onClick={() => setBudget(b.id)}
-                            className={cn(
-                              "p-3 rounded-lg border text-left transition-transform",
-                              budget === b.id
-                                ? "border-primary bg-primary/10"
-                                : "border-border hover:border-primary/30",
-                            )}
-                          >
-                            <p
-                              className={cn(
-                                "text-sm font-bold",
-                                budget === b.id ? "text-primary" : "text-text",
-                              )}
-                            >
-                              {b.label}
-                            </p>
-                            <p className="text-[10px] text-text-dim mt-0.5">
-                              {b.description}
-                            </p>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                    {/* Performance Priority */}
-                    <div>
-                      <label className="text-sm font-medium text-text mb-2 block">
-                        Performance Priority
-                      </label>
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-                        {PERFORMANCE_PRIORITIES.map((p) => (
-                          <button
-                            key={p.id}
-                            onClick={() => setPerformance(p.id)}
-                            className={cn(
-                              "p-3 rounded-lg border text-left transition-transform",
-                              performance === p.id
-                                ? "border-primary bg-primary/10"
-                                : "border-border hover:border-primary/30",
-                            )}
-                          >
-                            <p
-                              className={cn(
-                                "text-sm font-bold",
-                                performance === p.id
-                                  ? "text-primary"
-                                  : "text-text",
-                              )}
-                            >
-                              {p.label}
-                            </p>
-                            <p className="text-[10px] text-text-dim mt-0.5">
-                              {p.description}
-                            </p>
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                    {/* Quantity */}
-                    <div>
-                      <label className="text-sm font-medium text-text mb-2 block">
-                        Quantity:{" "}
-                        <span className="text-primary font-mono">
-                          {quantity} units
-                        </span>
-                      </label>
-                      <input
-                        type="range"
-                        min="1"
-                        max="100"
-                        value={quantity}
-                        onChange={(e) => setQuantity(parseInt(e.target.value))}
-                        className="w-full accent-primary"
-                      />
-                      <div className="flex justify-between text-xs text-text-dim mt-1">
-                        <span>1</span>
-                        <span>50</span>
-                        <span>100</span>
-                      </div>
+                      ))}
                     </div>
                   </div>
-                  <div className="flex justify-between mt-6">
-                    <Button variant="outline" onClick={() => setStep(1)}>
-                      <ArrowLeft className="w-4 h-4" /> Back
-                    </Button>
-                    <Button onClick={() => setStep(3)}>
-                      See Results <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </div>
-                </div>
-              )}
-              {/* Step 3: Results */}
-              {step === 3 && (
-                <div
-                  key="step3"
-                >
-                  <div className="flex items-center gap-2 mb-1">
-                    <Sparkles className="w-5 h-5 text-primary" />
-                    <h3 className="text-lg font-bold text-text">
-                      Your Recommended Chips
-                    </h3>
-                  </div>
-                  <p className="text-sm text-text-muted mb-6">
-                    Based on{" "}
-                    <span className="text-primary">
-                      {selectedUseCase?.label}
-                    </span>{" "}
-                    workload,
-                    <span className="text-primary">
-                      {" "}
-                      {BUDGET_TIERS.find((b) => b.id === budget)?.label}
-                    </span>{" "}
-                    budget, and <span className="text-primary">{quantity}</span>{" "}
-                    units needed.
-                  </p>
-                  <div className="space-y-3 max-h-[400px] overflow-y-auto pr-1">
-                    {matchingChips.map(({ chip, match }) => {
-                      const sc =
-                        STATUS_CONFIG[chip.status] || STATUS_CONFIG.in_stock;
-                      return (
-                        <div
-                          key={chip.id}
-                          className="flex items-center gap-4 p-4 rounded-xl border border-border bg-surface"
+                  {/* Performance Priority */}
+                  <div>
+                    <label className="text-sm font-medium text-text mb-2 block">
+                      Performance Priority
+                    </label>
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
+                      {PERFORMANCE_PRIORITIES.map((p) => (
+                        <button
+                          key={p.id}
+                          onClick={() => setPerformance(p.id)}
+                          className={cn(
+                            "p-3 rounded-lg border text-left transition-transform",
+                            performance === p.id
+                              ? "border-primary bg-primary/10"
+                              : "border-border hover:border-primary/30",
+                          )}
                         >
-                          {/* Match circle */}
-                          <div className="relative w-14 h-14 shrink-0">
-                            <svg
-                              className="w-14 h-14 -rotate-90"
-                              viewBox="0 0 56 56"
-                            >
-                              <circle
-                                cx="28"
-                                cy="28"
-                                r="24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="4"
-                                className="text-border"
-                              />
-                              <circle
-                                cx="28"
-                                cy="28"
-                                r="24"
-                                fill="none"
-                                stroke="currentColor"
-                                strokeWidth="4"
-                                strokeDasharray={`${(match / 100) * 150.8} 150.8`}
-                                strokeLinecap="round"
-                                className="text-primary"
-                              />
-                            </svg>
-                            <div className="absolute inset-0 flex items-center justify-center">
-                              <span className="text-sm font-bold text-primary font-mono">
-                                {match}%
-                              </span>
-                            </div>
-                          </div>
-                          {/* Chip info */}
-                          <div className="flex-1 min-w-0">
-                            <p className="text-sm font-bold text-text truncate">
-                              {chip.name}
-                            </p>
-                            <p className="text-xs text-text-muted font-mono">
-                              {chip.specifications.memory} - {chip.architecture}{" "}
-                              - {chip.specifications.tdp}
-                            </p>
-                            <div className="mt-1.5">
-                              <span
-                                className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-xs font-medium ${sc.clr}`}
-                              >
-                                <span
-                                  className={`w-1.5 h-1.5 rounded-full animate-pulse ${sc.dot}`}
-                                />
-                                {sc.label}
-                              </span>
-                            </div>
-                          </div>
-                          <Button
-                            size="sm"
-                            variant="outline"
-                            onClick={() => handleQuote([chip])}
+                          <p
+                            className={cn(
+                              "text-sm font-bold",
+                              performance === p.id
+                                ? "text-primary"
+                                : "text-text",
+                            )}
                           >
-                            <Zap className="w-3.5 h-3.5" />
-                            Quote
-                          </Button>
-                        </div>
-                      );
-                    })}
+                            {p.label}
+                          </p>
+                          <p className="text-[10px] text-text-dim mt-0.5">
+                            {p.description}
+                          </p>
+                        </button>
+                      ))}
+                    </div>
                   </div>
-                  <div className="flex justify-between mt-6">
-                    <Button variant="outline" onClick={() => setStep(2)}>
-                      <ArrowLeft className="w-4 h-4" /> Back
-                    </Button>
-                    <Button
-                      onClick={() => {
-                        handleQuote(matchingChips.map((m) => m.chip));
-                      }}
-                    >
-                      Request Quote for All <ArrowRight className="w-4 h-4" />
-                    </Button>
+                  {/* Quantity */}
+                  <div>
+                    <label className="text-sm font-medium text-text mb-2 block">
+                      Quantity:{" "}
+                      <span className="text-primary font-mono">
+                        {quantity} units
+                      </span>
+                    </label>
+                    <input
+                      type="range"
+                      min="1"
+                      max="100"
+                      value={quantity}
+                      onChange={(e) => setQuantity(parseInt(e.target.value))}
+                      className="w-full accent-primary"
+                    />
+                    <div className="flex justify-between text-xs text-text-dim mt-1">
+                      <span>1</span>
+                      <span>50</span>
+                      <span>100</span>
+                    </div>
                   </div>
                 </div>
-              )}
+                <div className="flex justify-between mt-6">
+                  <Button variant="outline" onClick={() => setStep(1)}>
+                    <ArrowLeft className="w-4 h-4" /> Back
+                  </Button>
+                  <Button onClick={() => setStep(3)}>
+                    See Results <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+            )}
+            {/* Step 3: Results */}
+            {step === 3 && (
+              <div key="step3">
+                <div className="flex items-center gap-2 mb-1">
+                  <Sparkles className="w-5 h-5 text-primary" />
+                  <h3 className="text-lg font-bold text-text">
+                    Your Recommended Chips
+                  </h3>
+                </div>
+                <p className="text-sm text-text-muted mb-6">
+                  Based on{" "}
+                  <span className="text-primary">{selectedUseCase?.label}</span>{" "}
+                  workload,
+                  <span className="text-primary">
+                    {" "}
+                    {BUDGET_TIERS.find((b) => b.id === budget)?.label}
+                  </span>{" "}
+                  budget, and <span className="text-primary">{quantity}</span>{" "}
+                  units needed.
+                </p>
+                <div className="space-y-3 max-h-[400px] overflow-y-auto pr-1">
+                  {matchingChips.map(({ chip, match }) => {
+                    const sc =
+                      STATUS_CONFIG[chip.status] || STATUS_CONFIG.in_stock;
+                    return (
+                      <div
+                        key={chip.id}
+                        className="flex items-center gap-4 p-4 rounded-xl border border-border bg-surface"
+                      >
+                        {/* Match circle */}
+                        <div className="relative w-14 h-14 shrink-0">
+                          <svg
+                            className="w-14 h-14 -rotate-90"
+                            viewBox="0 0 56 56"
+                          >
+                            <circle
+                              cx="28"
+                              cy="28"
+                              r="24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                              className="text-border"
+                            />
+                            <circle
+                              cx="28"
+                              cy="28"
+                              r="24"
+                              fill="none"
+                              stroke="currentColor"
+                              strokeWidth="4"
+                              strokeDasharray={`${(match / 100) * 150.8} 150.8`}
+                              strokeLinecap="round"
+                              className="text-primary"
+                            />
+                          </svg>
+                          <div className="absolute inset-0 flex items-center justify-center">
+                            <span className="text-sm font-bold text-primary font-mono">
+                              {match}%
+                            </span>
+                          </div>
+                        </div>
+                        {/* Chip info */}
+                        <div className="flex-1 min-w-0">
+                          <p className="text-sm font-bold text-text truncate">
+                            {chip.name}
+                          </p>
+                          <p className="text-xs text-text-muted font-mono">
+                            {chip.specifications.memory} - {chip.architecture} -{" "}
+                            {chip.specifications.tdp}
+                          </p>
+                          <div className="mt-1.5">
+                            <span
+                              className={`inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full border text-xs font-medium ${sc.clr}`}
+                            >
+                              <span
+                                className={`w-1.5 h-1.5 rounded-full animate-pulse ${sc.dot}`}
+                              />
+                              {sc.label}
+                            </span>
+                          </div>
+                        </div>
+                        <Button
+                          size="sm"
+                          variant="outline"
+                          onClick={() => handleQuote([chip])}
+                        >
+                          <Zap className="w-3.5 h-3.5" />
+                          Quote
+                        </Button>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="flex justify-between mt-6">
+                  <Button variant="outline" onClick={() => setStep(2)}>
+                    <ArrowLeft className="w-4 h-4" /> Back
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      handleQuote(matchingChips.map((m) => m.chip));
+                    }}
+                  >
+                    Request Quote for All <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+            )}
             {/* Reset button (when not on step 1) */}
             {step > 1 && (
               <button

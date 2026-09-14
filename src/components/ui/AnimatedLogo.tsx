@@ -32,7 +32,7 @@ export function AnimatedLogo({
       >
         {/* Outer Tech Glow Ring */}
         <div
-          className="absolute inset-[-10%] rounded-full bg-cyan-500/10 blur-xl opacity-70 group-hover:opacity-100 transition-opacity duration-700"
+          className="absolute inset-[-10%] rounded-full bg-cyan-500/10 opacity-70 group-hover:opacity-100 transition-opacity duration-700"
           style={{ animation: "processor-pulse 4s ease-in-out infinite" }}
         />
 

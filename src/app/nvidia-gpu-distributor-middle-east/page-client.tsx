@@ -598,7 +598,6 @@ export default function ServicesPage() {
                 key={product.name}
                 className="group relative rounded-2xl border border-border bg-surface p-6 card-hover overflow-hidden flex flex-col"
               >
-                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-transform pointer-events-none" />
                 <div className="relative w-full h-44 rounded-xl border border-border overflow-hidden mb-4">
                   <Image
                     src={product.image}
@@ -798,7 +797,7 @@ export default function ServicesPage() {
       {/* Procurement Services */}
       <section className="relative py-20 md:py-28 bg-bg-dark overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-15 pointer-events-none" />
-        <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-primary/[0.03] blur-3xl pointer-events-none" />
+
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <SectionHeading
             label="How We Work"

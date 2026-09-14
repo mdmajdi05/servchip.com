@@ -614,8 +614,6 @@ export default function ComparisonPage() {
     <div className="min-h-screen bg-bg-dark pb-28 relative overflow-x-hidden">
       {/* Ambient glow background */}
       <div className="absolute inset-x-0 top-0 h-96 bg-gradient-to-b from-primary/[0.07] via-transparent to-transparent pointer-events-none" />
-      <div className="absolute top-40 -right-32 w-96 h-96 rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
-      <div className="absolute top-20 -left-32 w-96 h-96 rounded-full bg-secondary/5 blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 relative">
         <SectionHeading
@@ -1418,7 +1416,7 @@ export default function ComparisonPage() {
 
       {/* Mobile sticky action bar */}
       {selectedChips.length > 0 && (
-        <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-border bg-bg-dark/90 backdrop-blur-xl px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] flex items-center justify-between gap-3">
+        <div className="lg:hidden fixed bottom-0 inset-x-0 z-40 border-t border-border bg-bg-dark/90 px-4 pt-3 pb-[calc(0.75rem+env(safe-area-inset-bottom))] flex items-center justify-between gap-3">
           <div className="flex items-center gap-2 -space-x-2">
             {selectedChips.slice(0, 4).map((chip) => {
               const color = getBrandColor(chip.manufacturer);

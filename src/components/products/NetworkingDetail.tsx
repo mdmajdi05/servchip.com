@@ -84,7 +84,7 @@ export function NetworkingDetail() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <Network className="w-32 h-32 text-primary/20" />
                 </div>
-                <div className="absolute top-4 right-4 px-3 py-1.5 rounded-lg border border-primary/30 bg-surface/90 backdrop-blur-sm">
+                <div className="absolute top-4 right-4 px-3 py-1.5 rounded-lg border border-primary/30 bg-surface/90">
                   <div className="text-[10px] font-mono text-text-dim">
                     TYPE
                   </div>
@@ -92,7 +92,7 @@ export function NetworkingDetail() {
                     {net.specs.type}
                   </div>
                 </div>
-                <div className="absolute bottom-4 left-4 px-3 py-1.5 rounded-lg border border-secondary/30 bg-surface/90 backdrop-blur-sm">
+                <div className="absolute bottom-4 left-4 px-3 py-1.5 rounded-lg border border-secondary/30 bg-surface/90">
                   <div className="text-[10px] font-mono text-text-dim">
                     SERIES
                   </div>

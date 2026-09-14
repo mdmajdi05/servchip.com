@@ -9,6 +9,8 @@ export const post: BlogPost = {
     "Buying GPU servers in the UAE? A practical guide to export compliance, OEM selection, configuration, logistics, and financing for enterprise AI infrastructure.",
   content: "",
   featuredImage: "/images/products/nvidia-h100.webp",
+  featuredImageAlt:
+    "GPU Server Procurement UAE: A Complete Enterprise Buyer's Guide",
   category: cat("guides"),
   tags: [
     tag("data-center"),

@@ -26,6 +26,7 @@ export interface BlogPost {
   excerpt: string;
   content: string;
   featuredImage: string;
+  featuredImageAlt?: string;
   category: BlogCategory;
   tags: BlogTag[];
   author: {

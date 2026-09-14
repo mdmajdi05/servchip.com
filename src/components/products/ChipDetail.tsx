@@ -164,7 +164,7 @@ export function ChipDetail() {
                 <div className="absolute inset-0">
                   <ChipScene />
                 </div>
-                <div className="absolute top-4 right-4 px-3 py-1.5 rounded-lg border border-primary/30 bg-surface/90 backdrop-blur-sm">
+                <div className="absolute top-4 right-4 px-3 py-1.5 rounded-lg border border-primary/30 bg-surface/90">
                   <div className="text-[10px] font-mono text-text-dim">
                     ARCHITECTURE
                   </div>
@@ -172,7 +172,7 @@ export function ChipDetail() {
                     {chip.architecture}
                   </div>
                 </div>
-                <div className="absolute bottom-4 left-4 px-3 py-1.5 rounded-lg border border-secondary/30 bg-surface/90 backdrop-blur-sm">
+                <div className="absolute bottom-4 left-4 px-3 py-1.5 rounded-lg border border-secondary/30 bg-surface/90">
                   <div className="text-[10px] font-mono text-text-dim">
                     SERIES
                   </div>

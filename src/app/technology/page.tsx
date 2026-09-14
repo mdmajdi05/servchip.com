@@ -294,8 +294,6 @@ export default function TechnologyPage({ prefix = "" }: { prefix?: string }) {
         className="relative py-20 md:py-28 bg-bg-dark overflow-hidden scroll-mt-20"
       >
         <div className="absolute inset-0 bg-grid opacity-30" />
-        <div className="glow-blob w-96 h-96 bg-primary top-20 right-0" />
-        <div className="glow-blob w-80 h-80 bg-secondary bottom-20 left-0" />
         <div className="container mx-auto px-4 relative z-10">
           <SectionHeading
             label="The Technology"
@@ -308,7 +306,7 @@ export default function TechnologyPage({ prefix = "" }: { prefix?: string }) {
               <div className="absolute inset-0 bg-dot-grid opacity-20" />
               <MiniScene />
               {/* Floating stat */}
-              <div className="absolute top-4 right-4 px-3 py-1.5 rounded-lg border border-primary/30 bg-surface/90 backdrop-blur-sm">
+              <div className="absolute top-4 right-4 px-3 py-1.5 rounded-lg border border-primary/30 bg-surface/90">
                 <div className="text-[10px] font-mono text-text-dim">
                   MEMORY BANDWIDTH
                 </div>
@@ -316,7 +314,7 @@ export default function TechnologyPage({ prefix = "" }: { prefix?: string }) {
                   8 TB/s
                 </div>
               </div>
-              <div className="absolute bottom-4 left-4 px-3 py-1.5 rounded-lg border border-secondary/30 bg-surface/90 backdrop-blur-sm">
+              <div className="absolute bottom-4 left-4 px-3 py-1.5 rounded-lg border border-secondary/30 bg-surface/90">
                 <div className="text-[10px] font-mono text-text-dim">
                   ARCHITECTURE
                 </div>
@@ -399,10 +397,6 @@ export default function TechnologyPage({ prefix = "" }: { prefix?: string }) {
                 key={arch.name}
                 className="relative rounded-2xl border border-border bg-surface p-6 md:p-8 overflow-hidden"
               >
-                <div
-                  className="absolute -top-16 -right-16 w-48 h-48 rounded-full blur-3xl opacity-25"
-                  style={{ backgroundColor: arch.color }}
-                />
                 <div className="relative grid grid-cols-1 md:grid-cols-[200px_1fr_auto] gap-6 items-start">
                   <div className="flex items-center gap-4">
                     <div
@@ -504,7 +498,6 @@ export default function TechnologyPage({ prefix = "" }: { prefix?: string }) {
                 key={f.title}
                 className="group relative rounded-2xl border border-border bg-surface p-6 md:p-8 card-hover overflow-hidden"
               >
-                <div className="absolute -top-10 -right-10 w-32 h-32 rounded-full bg-primary/5 blur-2xl group-hover:bg-primary/10 transition-transform" />
                 <div className="relative">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-transform">
                     <f.icon className="w-6 h-6 text-primary" />

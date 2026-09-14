@@ -31,7 +31,7 @@ export function StickyBottomCTA() {
     <>
       {visible && (
         <div className="fixed bottom-0 left-0 right-0 z-[9998] md:hidden">
-          <div className="bg-primary/95 backdrop-blur-lg border-t border-primary-dark/30 px-4 py-3 flex items-center justify-between gap-3">
+          <div className="bg-primary/95 border-t border-primary-dark/30 px-4 py-3 flex items-center justify-between gap-3">
             <p className="text-sm font-semibold text-bg-dark leading-tight">
               Need GPU Pricing? Get a Free Quote
             </p>

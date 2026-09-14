@@ -162,7 +162,7 @@ export function ChipGrid({ chips, loading = false }: ChipGridProps) {
         )}
       </div>
       {/* Mobile filters */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-30 p-4 bg-bg-dark/90 backdrop-blur-md border-t border-border">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-30 p-4 bg-bg-dark/90 border-t border-border">
         <details className="group">
           <summary className="flex items-center justify-between text-sm text-primary font-semibold cursor-pointer">
             Filters

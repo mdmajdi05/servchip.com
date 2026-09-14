@@ -108,14 +108,12 @@ export function ExitIntentPopup() {
     <>
       {isOpen && (
         <div
-          className="fixed inset-0 z-[9999] flex items-center justify-center bg-bg-dark/80 backdrop-blur-xl p-4"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-bg-dark/80 p-4"
           onClick={(e) => {
             if (e.target === e.currentTarget) close();
           }}
         >
-          <div
-            className="relative w-full max-w-md bg-surface border border-border rounded-2xl shadow-2xl overflow-hidden"
-          >
+          <div className="relative w-full max-w-md bg-surface border border-border rounded-2xl shadow-2xl overflow-hidden">
             <button
               onClick={close}
               className="absolute top-4 right-4 z-10 w-8 h-8 rounded-lg bg-bg-dark/60 border border-border flex items-center justify-center text-text-muted hover:text-text hover:border-primary/40 transition-transform duration-200"
@@ -144,9 +142,7 @@ export function ExitIntentPopup() {
             </div>
             <div className="px-6 py-4">
               {status === "success" ? (
-                <div
-                  className="text-center py-6"
-                >
+                <div className="text-center py-6">
                   <div className="w-14 h-14 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4">
                     <CheckCircle2 className="w-7 h-7 text-primary" />
                   </div>

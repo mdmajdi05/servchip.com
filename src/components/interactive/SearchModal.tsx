@@ -131,7 +131,7 @@ export function SearchModal({
     <>
       {open && (
         <div
-          className="fixed inset-0 z-[100] flex items-start justify-center pt-[12vh] bg-bg-dark/80 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-start justify-center pt-[12vh] bg-bg-dark/80"
           onClick={handleBackdropClick}
         >
           <div className="w-full max-w-xl mx-4 bg-surface border border-border rounded-2xl shadow-2xl shadow-black/20 overflow-hidden">

@@ -73,7 +73,7 @@ export function Technology() {
         <div className="grid lg:grid-cols-2 gap-12 items-start">
           <div className="relative h-[400px] bg-bg-dark rounded-2xl border border-border overflow-hidden">
             <LIGHTNING_SCENE />
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-1 rounded-full bg-surface/80 backdrop-blur-sm border border-primary/20">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex items-center gap-2 px-3 py-1 rounded-full bg-surface/80 border border-primary/20">
               <Zap className="w-3 h-3 text-primary" />
               <span className="text-text-dim text-[10px] font-mono">
                 Animated Circuit Visualization

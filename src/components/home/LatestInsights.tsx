@@ -49,7 +49,8 @@ export function LatestInsights() {
                   <div className="relative h-48 overflow-hidden">
                     <Image
                       src={post.featuredImage}
-                      alt={post.title}
+                      alt={post.featuredImageAlt || post.title}
+                      title={post.featuredImageAlt || post.title}
                       fill
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       onError={() =>

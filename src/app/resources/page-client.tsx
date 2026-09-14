@@ -128,7 +128,6 @@ export default function ResourcesPage() {
                     key={post.id}
                     className="group relative rounded-2xl border border-border bg-bg-dark p-6 md:p-7 card-hover overflow-hidden flex flex-col"
                   >
-                    <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-transform pointer-events-none" />
                     <div className="relative flex-1 flex flex-col">
                       <div className="flex items-center gap-2 mb-3">
                         <Badge size="sm">{catName}</Badge>
@@ -195,7 +194,6 @@ export default function ResourcesPage() {
                 key={cat.title}
                 className="group relative rounded-2xl border border-border bg-surface p-6 md:p-7 card-hover overflow-hidden flex flex-col"
               >
-                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-transform pointer-events-none" />
                 <div className="relative flex-1 flex flex-col">
                   <div className="flex items-center justify-between mb-4">
                     <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-transform shrink-0">

@@ -936,7 +936,7 @@ export function Header() {
       {/* Mobile overlay */}
       {mobileOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm lg:hidden"
+          className="fixed inset-0 z-40 bg-black/60 lg:hidden"
           onClick={() => setMobileOpen(false)}
         />
       )}
@@ -950,7 +950,7 @@ export function Header() {
       >
         <div className="flex flex-col min-h-screen">
           {/* Header with gradient */}
-          <div className="sticky top-0 z-10 bg-gradient-to-b from-surface via-surface to-surface/95 backdrop-blur-xl border-b border-border/50 p-6">
+          <div className="sticky top-0 z-10 bg-gradient-to-b from-surface via-surface to-surface/95 border-b border-border/50 p-6">
             <div className="flex items-center justify-between">
               <Link
                 href={prefixed("/") ?? "/"}

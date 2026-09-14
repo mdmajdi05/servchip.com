@@ -15,8 +15,6 @@ export function ConfiguratorPromo() {
       <div className="max-w-7xl mx-auto px-4">
         <div className="relative rounded-2xl border border-primary/20 bg-surface overflow-hidden">
           <div className="absolute inset-0">
-            <div className="absolute -top-20 -right-20 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-            <div className="absolute -bottom-24 -left-16 w-72 h-72 bg-secondary/5 rounded-full blur-3xl" />
             <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
           </div>
 

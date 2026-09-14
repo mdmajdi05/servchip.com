@@ -106,33 +106,103 @@ function TypewriterText() {
   );
 }
 
-function FloatingOrbs() {
-  return (
-    <>
-      <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-primary/5 blur-[120px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-secondary/5 blur-[100px] pointer-events-none" />
-      <div className="absolute top-1/3 right-1/3 w-[400px] h-[400px] rounded-full bg-primary/3 blur-[150px] pointer-events-none" />
-    </>
-  );
-}
-
 const LOGOS = [
-  { src: "/images/logos/nvidia.svg", label: "NVIDIA" },
-  { src: "/images/logos/amd.svg", label: "AMD" },
-  { src: "/images/logos/intel.svg", label: "Intel" },
-  { src: "/images/logos/broadcom.svg", label: "Broadcom" },
-  { src: "/images/logos/qualcomm.svg", label: "Qualcomm" },
-  { src: "/images/logos/marvell.svg", label: "Marvell" },
-  { src: "/images/logos/samsung.svg", label: "Samsung" },
-  { src: "/images/logos/micron.svg", label: "Micron" },
-  { src: "/images/logos/sk-hynix.svg", label: "SK hynix" },
-  { src: "/images/logos/kioxia.svg", label: "Kioxia" },
-  { src: "/images/logos/wdc.svg", label: "Western Digital" },
-  { src: "/images/logos/seagate.svg", label: "Seagate" },
-  { src: "/images/logos/dell.svg", label: "Dell" },
-  { src: "/images/logos/hpe.svg", label: "HPE" },
-  { src: "/images/logos/supermicro.svg", label: "Supermicro" },
-  { src: "/images/logos/lenovo.svg", label: "Lenovo" },
+  {
+    src: "/images/logos/nvidia.svg",
+    label: "NVIDIA",
+    alt: "Servchip NVIDIA Authorized AI Chip Partner Logo",
+    title: "NVIDIA Data Center GPUs & AI Hardware Distributor - Servchip",
+  },
+  {
+    src: "/images/logos/amd.svg",
+    label: "AMD",
+    alt: "Servchip AMD Enterprise Instinct & EPYC Partner Logo",
+    title: "AMD Instinct Accelerators & EPYC Processors - Servchip",
+  },
+  {
+    src: "/images/logos/intel.svg",
+    label: "Intel",
+    alt: "Servchip Intel Enterprise AI Accelerators Partner Logo",
+    title: "Intel Gaudi AI Hardware & Xeon Processors - Servchip",
+  },
+  {
+    src: "/images/logos/broadcom.svg",
+    label: "Broadcom",
+    alt: "Servchip Broadcom Networking & PCIe Switches Partner Logo",
+    title: "Broadcom Enterprise Connectivity Hardware - Servchip",
+  },
+  {
+    src: "/images/logos/qualcomm.svg",
+    label: "Qualcomm",
+    alt: "Servchip Qualcomm Enterprise AI & Compute Partner Logo",
+    title: "Qualcomm Enterprise AI Accelerators - Servchip",
+  },
+  {
+    src: "/images/logos/marvell.svg",
+    label: "Marvell",
+    alt: "Servchip Marvell Semiconductor Infrastructure Partner Logo",
+    title: "Marvell Data Center Infrastructure Solutions - Servchip",
+  },
+  {
+    src: "/images/logos/samsung.svg",
+    label: "Samsung",
+    alt: "Servchip Samsung Enterprise Memory & HBM Partner Logo",
+    title: "Samsung High Bandwidth Memory & Enterprise SSDs - Servchip",
+  },
+  {
+    src: "/images/logos/micron.svg",
+    label: "Micron",
+    alt: "Servchip Micron Enterprise HBM3e Memory Partner Logo",
+    title: "Micron High Performance Memory Solutions - Servchip",
+  },
+  {
+    src: "/images/logos/sk-hynix.svg",
+    label: "SK hynix",
+    alt: "Servchip SK hynix HBM3e AI Memory Partner Logo",
+    title: "SK hynix Advanced AI Memory Hardware - Servchip",
+  },
+  {
+    src: "/images/logos/kioxia.svg",
+    label: "Kioxia",
+    alt: "Servchip Kioxia Enterprise Data Center Storage Partner Logo",
+    title: "Kioxia Flash Storage Solutions - Servchip",
+  },
+  {
+    src: "/images/logos/wdc.svg",
+    label: "Western Digital",
+    alt: "Servchip Western Digital Enterprise Storage Partner Logo",
+    title: "Western Digital Data Center Drives - Servchip",
+  },
+  {
+    src: "/images/logos/seagate.svg",
+    label: "Seagate",
+    alt: "Servchip Seagate Enterprise Data Storage Partner Logo",
+    title: "Seagate High Capacity Enterprise Storage - Servchip",
+  },
+  {
+    src: "/images/logos/dell.svg",
+    label: "Dell",
+    alt: "Servchip Dell Technologies Enterprise Servers Partner Logo",
+    title: "Dell PowerEdge GPU Server Hardware - Servchip",
+  },
+  {
+    src: "/images/logos/hpe.svg",
+    label: "HPE",
+    alt: "Servchip HPE ProLiant & Cray Supercomputing Partner Logo",
+    title: "HPE Enterprise AI Server Infrastructure - Servchip",
+  },
+  {
+    src: "/images/logos/supermicro.svg",
+    label: "Supermicro",
+    alt: "Servchip Supermicro GPU Server Solutions Partner Logo",
+    title: "Supermicro Enterprise AI & Rackmount Servers - Servchip",
+  },
+  {
+    src: "/images/logos/lenovo.svg",
+    label: "Lenovo",
+    alt: "Servchip Lenovo ThinkSystem AI Infrastructure Partner Logo",
+    title: "Lenovo Enterprise AI Servers & Workstations - Servchip",
+  },
 ];
 
 export function Hero3D({
@@ -174,14 +244,12 @@ export function Hero3D({
       <div className="absolute inset-0 bg-gradient-to-r from-[#070B15]/30 via-transparent to-[#070B15]/30" />
       <div className="absolute inset-0 bg-gradient-to-t from-[#070B15]/40 via-transparent to-transparent" />
 
-      <FloatingOrbs />
-
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_35%,rgba(5,7,11,0.35)_100%)] pointer-events-none" />
 
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full z-10">
         <div className="text-center">
           <div
-            className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-[11px] font-mono font-bold mb-8 tracking-wide uppercase border bg-black/40 backdrop-blur-md"
+            className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-[11px] font-mono font-bold mb-8 tracking-wide uppercase border bg-black/40"
             style={{
               borderColor:
                 "color-mix(in srgb, var(--hero-primary) 35%, transparent)",
@@ -227,7 +295,7 @@ export function Hero3D({
             </Link>
             <Link href={`/rfq`}>
               <button
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-sm border bg-white/[0.05] backdrop-blur-sm"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-sm border bg-gradient-to-b from-white/[0.22] to-white/[0.08] hover:from-white/[0.30] hover:to-white/[0.14] transition-all duration-300"
                 style={{
                   borderColor:
                     "color-mix(in srgb, var(--hero-primary) 50%, transparent)",
@@ -243,7 +311,7 @@ export function Hero3D({
             {heroStats.map(({ value, label }, i) => (
               <div
                 key={label}
-                className="group relative text-center px-3 py-4 rounded-xl border bg-white/[0.03] backdrop-blur-sm hover:bg-white/[0.07] sm:hover:-translate-y-1 transition-all duration-300"
+                className="group relative text-center px-3 py-4 rounded-xl border bg-gradient-to-b from-white/[0.18] to-white/[0.06] hover:from-white/[0.26] hover:to-white/[0.10] sm:hover:-translate-y-1 transition-all duration-300"
                 style={{
                   borderColor:
                     "color-mix(in srgb, var(--hero-primary) 25%, transparent)",
@@ -312,7 +380,8 @@ export function Hero3D({
               >
                 <NextImage
                   src={logo.src}
-                  alt={`${logo.label} logo`}
+                  alt={logo.alt}
+                  title={logo.title}
                   width={96}
                   height={32}
                   unoptimized

@@ -17,8 +17,6 @@ function ServiceCard({
   return (
     <div className="group relative">
       <div className="relative h-full rounded-2xl border border-border bg-surface p-6 card-hover overflow-hidden">
-        <div className="absolute -top-12 -right-12 w-32 h-32 rounded-full bg-primary/5 blur-2xl group-hover:bg-primary/10 transition-transform" />
-
         <div className="relative">
           <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-transform">
             <Icon className="w-6 h-6 text-primary" />

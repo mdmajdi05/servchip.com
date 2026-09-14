@@ -39,7 +39,7 @@ export function SuccessStories() {
                 {t.author.image && !failedAvatars.has(t.author.name) ? (
                   <Image
                     src={t.author.image}
-                    alt={t.author.name}
+                    alt={`${t.author.name} — ${t.author.role}`}
                     width={40}
                     height={40}
                     loading="lazy"

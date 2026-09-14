@@ -8,7 +8,6 @@ export function FinalCTA() {
   return (
     <section className="py-24 bg-bg-dark relative overflow-hidden">
       <div className="absolute inset-0">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-primary/5 rounded-full blur-[120px]" />
         <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-primary/0 via-primary/30 to-primary/0" />
       </div>
 

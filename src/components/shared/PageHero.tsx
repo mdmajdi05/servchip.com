@@ -35,10 +35,6 @@ export function PageHero({
     >
       <div className="absolute inset-0 bg-grid opacity-25 pointer-events-none" />
       <div className="absolute inset-0 bg-circuit opacity-40 pointer-events-none" />
-      <div
-        className="absolute -top-24 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full bg-primary/10 blur-3xl pointer-events-none"
-        aria-hidden
-      />
 
       <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
         <div

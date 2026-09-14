@@ -251,7 +251,7 @@ export default function DeveloperHubPage() {
         className="relative py-20 md:py-28 bg-bg-body overflow-hidden scroll-mt-20"
       >
         <div className="absolute inset-0 bg-dot-grid opacity-15" />
-        <div className="absolute w-96 h-96 bg-primary/5 rounded-full blur-[100px] top-20 right-0" />
+
         <div className="container mx-auto px-4 relative z-10">
           <SectionHeading
             label="Developer Hub"

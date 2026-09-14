@@ -9,6 +9,8 @@ export const post: BlogPost = {
     "NVIDIA H100 vs AMD MI300X compared on memory, bandwidth, FP16 compute, software ecosystem and price. A neutral spec and use-case comparison to help you choose the right AI accelerator.",
   content: "",
   featuredImage: "/images/products/amd-mi300x.webp",
+  featuredImageAlt:
+    "NVIDIA H100 vs AMD MI300X: Which AI GPU Should You Choose in 2026?",
   category: cat("comparison"),
   tags: [tag("nvidia"), tag("amd"), tag("ai-training"), tag("inference")],
   author: { name: "Servchip Tech Team", avatar: "ST" },

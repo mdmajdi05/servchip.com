@@ -212,7 +212,6 @@ export default function ServicesPage() {
                 key={service.title}
                 className="group relative rounded-2xl border border-border bg-surface p-6 md:p-7 card-hover overflow-hidden flex flex-col"
               >
-                <div className="absolute -top-12 -right-12 w-36 h-36 rounded-full bg-primary/5 blur-3xl group-hover:bg-primary/10 transition-transform pointer-events-none" />
                 <div className="relative flex-1 flex flex-col">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-transform shrink-0">
                     <service.icon className="w-6 h-6 text-primary" />
@@ -321,7 +320,7 @@ export default function ServicesPage() {
                         className="object-cover"
                       />
                     </div>
-                    <div className="absolute inset-x-4 bottom-4 rounded-xl border border-border bg-bg-dark/90 backdrop-blur p-4">
+                    <div className="absolute inset-x-4 bottom-4 rounded-xl border border-border bg-bg-dark/90 p-4">
                       <div className="flex items-center gap-2 text-xs text-text-muted">
                         <Globe className="w-3.5 h-3.5 text-primary" />
                         {spot.caption}
@@ -375,8 +374,7 @@ export default function ServicesPage() {
       {/* Stats */}
       <section className="relative py-20 md:py-28 bg-bg-dark overflow-hidden">
         <div className="absolute inset-0 bg-grid opacity-15 pointer-events-none" />
-        <div className="absolute -top-40 -left-40 w-96 h-96 rounded-full bg-primary/[0.03] blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-40 -right-40 w-96 h-96 rounded-full bg-secondary/[0.02] blur-3xl pointer-events-none" />
+
         <div className="container mx-auto px-4 md:px-6 lg:px-8 relative z-10">
           <SectionHeading
             title="Trusted by Enterprises Worldwide"
