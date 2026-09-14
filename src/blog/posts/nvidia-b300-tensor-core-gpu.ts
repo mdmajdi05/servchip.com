@@ -22,11 +22,11 @@ export const post: BlogPost = {
   author: { name: "Servchip Tech Team", avatar: "ST" },
   readingTime: 15,
   publishedAt: "2026-09-14",
-  isPublished: true,
+  isPublished: false,
   seo: {
     metaTitle: "NVIDIA B300 Tensor Core GPU: Next-Gen AI Performance",
     metaDescription:
-      "Explore the NVIDIA B300 Tensor Core GPU built on the Blackwell Ultra architecture. Discover specs, benchmarks, and how it transforms AI workloads.",
+      "NVIDIA B300 Tensor Core GPU built on Blackwell Ultra architecture: complete specs, performance benchmarks, and its impact on enterprise AI workloads.",
     focusKeyword: "NVIDIA B300 Tensor Core GPU",
     canonicalUrl:
       "https://servchip.com/blog/nvidia-b300-tensor-core-gpu-overview",
