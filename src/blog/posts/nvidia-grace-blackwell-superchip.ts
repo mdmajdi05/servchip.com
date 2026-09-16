@@ -23,7 +23,7 @@ export const post: BlogPost = {
   author: { name: "Servchip Tech Team", avatar: "ST" },
   readingTime: 8,
   publishedAt: "2026-09-16",
-  isPublished: true,
+  isPublished: false,
   seo: {
     metaTitle:
       "NVIDIA Grace Blackwell Superchip (GB200): Architecture, Specs & Use Cases",
