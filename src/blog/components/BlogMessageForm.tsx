@@ -3,14 +3,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import {
-  Send,
-  Mail,
-  User,
-  CheckCircle,
-  MessageSquare,
-  Phone,
-} from "lucide-react";
+import { Send, Mail, User, CheckCircle, Phone } from "lucide-react";
 import { Button } from "@/components/ui/Button";
 import { cn } from "@/lib/utils";
 
@@ -110,65 +103,61 @@ export function BlogMessageForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="rounded-2xl border border-border bg-surface p-5 sm:p-6"
+      className="rounded-2xl border border-border bg-surface p-5"
     >
-      <div className="mb-4">
-        <h3 className="text-base font-bold text-text mb-1 flex items-center gap-2">
-          <MessageSquare className="w-4 h-4 text-primary" />
-          Got Questions About This Article?
-        </h3>
-        <p className="text-text-muted text-xs leading-relaxed">
-          Drop us a quick message — our team replies fast.
-        </p>
-      </div>
-
       <div className="space-y-3">
-        <div className="grid sm:grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-2">
           <div className="relative">
             <User className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-dim pointer-events-none" />
             <input
               type="text"
-              placeholder="Your name"
+              placeholder="Name"
               disabled={formState === "submitting"}
               className={cn(inputClasses, errors.name && "border-error/50")}
               {...register("name")}
             />
             {errors.name && (
-              <p className="text-error text-xs mt-1">{errors.name.message}</p>
+              <p className="text-error text-[10px] mt-1">
+                {errors.name.message}
+              </p>
             )}
           </div>
           <div className="relative">
-            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-dim pointer-events-none" />
+            <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-dim pointer-events-none" />
             <input
-              type="email"
-              placeholder="Your email"
+              type="tel"
+              placeholder="Mobile"
               disabled={formState === "submitting"}
-              className={cn(inputClasses, errors.email && "border-error/50")}
-              {...register("email")}
+              className={cn(inputClasses, errors.phone && "border-error/50")}
+              {...register("phone")}
             />
-            {errors.email && (
-              <p className="text-error text-xs mt-1">{errors.email.message}</p>
+            {errors.phone && (
+              <p className="text-error text-[10px] mt-1">
+                {errors.phone.message}
+              </p>
             )}
           </div>
         </div>
 
         <div className="relative">
-          <Phone className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-dim pointer-events-none" />
+          <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-text-dim pointer-events-none" />
           <input
-            type="tel"
-            placeholder="Your mobile number"
+            type="email"
+            placeholder="Email"
             disabled={formState === "submitting"}
-            className={cn(inputClasses, errors.phone && "border-error/50")}
-            {...register("phone")}
+            className={cn(inputClasses, errors.email && "border-error/50")}
+            {...register("email")}
           />
-          {errors.phone && (
-            <p className="text-error text-xs mt-1">{errors.phone.message}</p>
+          {errors.email && (
+            <p className="text-error text-[10px] mt-1">
+              {errors.email.message}
+            </p>
           )}
         </div>
 
         <div className="relative">
           <textarea
-            rows={3}
+            rows={2}
             placeholder="Your message..."
             disabled={formState === "submitting"}
             className={cn(
@@ -178,7 +167,9 @@ export function BlogMessageForm() {
             {...register("message")}
           />
           {errors.message && (
-            <p className="text-error text-xs mt-1">{errors.message.message}</p>
+            <p className="text-error text-[10px] mt-1">
+              {errors.message.message}
+            </p>
           )}
         </div>
 

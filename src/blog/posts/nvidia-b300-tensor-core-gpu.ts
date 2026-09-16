@@ -41,7 +41,7 @@ export const post: BlogPost = {
         },
         {
           type: "paragraph",
-          text: "To solve this scaling bottleneck, NVIDIA introduced the Blackwell Ultra architecture, headlined by the flagship NVIDIA B300 Tensor Core GPU. Designed to serve as the foundation for modern AI factories, the B300 delivers unprecedented leaps in memory capacity, low-precision floating-point throughput, and multi-node interconnect bandwidth.",
+          text: "To solve this scaling bottleneck, NVIDIA introduced the [Blackwell Ultra architecture](/products/nvidia-b300-tensor-core-gpu), headlined by the flagship NVIDIA B300 Tensor Core GPU. Designed to serve as the foundation for modern AI factories, the B300 delivers unprecedented leaps in memory capacity, low-precision floating-point throughput, and multi-node interconnect bandwidth.",
         },
         {
           type: "paragraph",
@@ -104,7 +104,7 @@ export const post: BlogPost = {
         },
         {
           type: "paragraph",
-          text: "To eliminate inter-GPU communication bottlenecks across multi-node clusters, the B300 leverages NVLink 5 operating at 1.8 TB/s bidirectional bandwidth. For scale-out node communications, systems integrate NVIDIA ConnectX-8 NICs, offering up to 1.6 Tb/s networking speeds to handle rapid gradient synchronization during distributed training.",
+          text: "To eliminate inter-GPU communication bottlenecks across multi-node clusters, the B300 leverages NVLink 5 operating at 1.8 TB/s bidirectional bandwidth. For scale-out node communications, systems integrate [NVIDIA ConnectX-8 NICs](/products/nvidia-connectx-8), offering up to 1.6 Tb/s networking speeds to handle rapid gradient synchronization during distributed training.",
         },
         {
           type: "heading",
@@ -257,7 +257,7 @@ export const post: BlogPost = {
       content: [
         {
           type: "paragraph",
-          text: "The NVIDIA B300 Tensor Core GPU establishes a benchmark for enterprise AI computing. By pairing 288 GB of high-speed HBM3e VRAM with 15 PFLOPS of FP4 compute throughput, it solves the critical memory and bandwidth limitations that previously constrained complex generative models.",
+          text: "The [NVIDIA B300 Tensor Core GPU](/products/nvidia-b300-tensor-core-gpu) establishes a benchmark for enterprise AI computing. By pairing 288 GB of high-speed HBM3e VRAM with 15 PFLOPS of FP4 compute throughput, it solves the critical memory and bandwidth limitations that previously constrained complex generative models.",
         },
         {
           type: "paragraph",

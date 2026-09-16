@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Inter, JetBrains_Mono } from "next/font/google";
+import Script from "next/script";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { ColorProvider } from "@/providers/ColorProvider";
@@ -123,7 +124,9 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={websiteSchema()}
         />
-        <script
+        <Script
+          id="theme-init"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {

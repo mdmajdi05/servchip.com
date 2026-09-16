@@ -6,7 +6,7 @@ export const BLOG_CATEGORIES: BlogCategory[] = [
     name: "Architecture",
     slug: "architecture",
     description: "Deep dives into chip architectures",
-    postCount: 4,
+    postCount: 5,
   },
   {
     id: "comparison",

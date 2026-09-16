@@ -1,6 +1,7 @@
 "use client";
 
 import { useParams } from "next/navigation";
+import Image from "next/image";
 import { AppLink as Link } from "@/components/ui/AppLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Badge } from "@/components/ui/Badge";
@@ -17,6 +18,7 @@ import {
   Mail,
 } from "lucide-react";
 import type {
+  AnyProduct,
   ChipProduct,
   ServerProduct,
   NetworkingProduct,
@@ -24,10 +26,11 @@ import type {
   StorageProduct,
 } from "@/types";
 import { BLOG_POSTS, getRelatedBlogPosts } from "@/blog";
-import { getProductById } from "@/data/products";
+import { getProductById, getProductBySlug } from "@/data/products";
 import { ReadingProgress } from "@/blog/components/ReadingProgress";
 import { PostContent } from "@/blog/components/PostContent";
 import { BlogMessageForm } from "@/blog/components/BlogMessageForm";
+import { GetQuoteModal } from "@/components/lead-gen/GetQuoteModal";
 
 function getProductSpec(
   product:
@@ -51,12 +54,12 @@ const CATEGORY_BADGE: Record<string, "green" | "cyan" | "purple" | "amber"> = {
   "case-studies": "green",
 };
 
-function toAnchor(text: string): string {
-  return text
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/(^-|-$)/g, "");
-}
+const FALLBACK_PRODUCT_SLUGS = [
+  "nvidia-h100-tensor-core-gpu",
+  "nvidia-h200-tensor-core-gpu",
+  "nvidia-b300-tensor-core-gpu",
+  "amd-instinct-mi300x",
+];
 
 function ShareBtn({
   href,
@@ -152,61 +155,12 @@ function LeftSidebar({ title }: { title: string }) {
   );
 }
 
-function TOCSection({ sections }: { sections: { heading: string }[] }) {
-  const [activeId, setActiveId] = useState("");
-  const tocLinks = sections
-    .filter((s) => !s.heading.toLowerCase().includes("frequently asked"))
-    .map((s) => ({ id: toAnchor(s.heading), label: s.heading }));
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        for (const entry of entries) {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        }
-      },
-      { rootMargin: "-80px 0px -60% 0px" },
-    );
-    for (const link of tocLinks) {
-      const el = document.getElementById(link.id);
-      if (el) observer.observe(el);
-    }
-    return () => observer.disconnect();
-  }, [tocLinks]);
-
-  if (tocLinks.length === 0) return null;
-
-  return (
-    <div>
-      <h4 className="text-[11px] font-semibold uppercase tracking-[0.15em] text-text-dim mb-4">
-        On this page
-      </h4>
-      <nav className="space-y-0.5 border-l border-border">
-        {tocLinks.map((link) => (
-          <a
-            key={link.id}
-            href={`#${link.id}`}
-            className={`group flex items-center gap-2.5 text-xs py-1.5 pl-3 -ml-px border-l-2 transition-all duration-200 ${
-              activeId === link.id
-                ? "border-primary text-primary font-medium"
-                : "border-transparent text-text-muted hover:text-text hover:border-border"
-            }`}
-          >
-            <span className="leading-snug">{link.label}</span>
-          </a>
-        ))}
-      </nav>
-    </div>
-  );
-}
-
 function RightSidebar({
-  sections,
+  relatedProducts,
   relatedPosts,
+  onQuote,
 }: {
-  sections: { heading: string }[];
+  relatedProducts: AnyProduct[];
   relatedPosts: {
     id: string;
     title: string;
@@ -214,14 +168,69 @@ function RightSidebar({
     readingTime: number;
     category?: { name: string; slug: string };
   }[];
+  onQuote: (product: AnyProduct) => void;
 }) {
   return (
-    <aside className="hidden xl:block w-[260px] flex-shrink-0">
+    <aside className="hidden xl:block w-[300px] flex-shrink-0">
       <div
         data-sticky-sidebar
-        className="sticky top-[140px] space-y-10 overflow-y-auto scrollbar-none"
+        className="sticky top-[140px] space-y-8 overflow-y-auto scrollbar-none"
       >
-        <TOCSection sections={sections} />
+        <BlogMessageForm />
+
+        {relatedProducts.length > 0 && (
+          <div>
+            <h4 className="text-[11px] font-semibold uppercase tracking-[0.15em] text-text-dim mb-4">
+              Related Products
+            </h4>
+            <div className="max-h-[320px] overflow-y-auto scrollbar-none space-y-2 pr-1">
+              {relatedProducts.slice(0, 6).map((rp) => (
+                <div
+                  key={rp.id}
+                  className="rounded-xl border border-border bg-surface p-2.5 hover:border-primary/40 transition-all duration-300"
+                >
+                  <Link
+                    href={`/products/${rp.slug}`}
+                    className="flex items-center gap-2.5 group"
+                  >
+                    {rp.images && rp.images.length > 0 ? (
+                      <div className="w-11 h-11 rounded-lg overflow-hidden flex-shrink-0 border border-border bg-surface-2">
+                        <Image
+                          src={rp.images[0]}
+                          alt={rp.name}
+                          width={44}
+                          height={44}
+                          className="object-cover w-full h-full"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-11 h-11 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
+                        <Package className="w-5 h-5 text-primary" />
+                      </div>
+                    )}
+                    <h5 className="text-xs font-bold text-text leading-snug line-clamp-2 min-w-0 group-hover:text-primary transition-colors">
+                      {rp.name}
+                    </h5>
+                  </Link>
+                  <div className="flex items-center justify-between mt-2 pt-2 border-t border-border/50">
+                    <Link
+                      href={`/products/${rp.slug}`}
+                      className="text-[11px] font-semibold text-text-muted hover:text-primary transition-colors"
+                    >
+                      View Details →
+                    </Link>
+                    <button
+                      onClick={() => onQuote(rp)}
+                      className="text-[11px] font-semibold text-primary hover:underline"
+                    >
+                      Get Quote →
+                    </button>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
 
         {relatedPosts.length > 0 && (
           <div>
@@ -283,11 +292,12 @@ export default function BlogPostPage() {
   const { slug } = useParams<{ slug: string }>();
   const shareUrl = useShareUrl();
   const post = BLOG_POSTS.find((p) => p.slug === slug);
+  const [quoteProduct, setQuoteProduct] = useState<AnyProduct | null>(null);
 
   const relatedPosts = post ? getRelatedBlogPosts(post.id, 3) : [];
-  const relatedProducts = post?.relatedProductIds
+  const relatedProducts = post?.relatedProductIds?.length
     ? post.relatedProductIds.map((id) => getProductById(id)).filter(Boolean)
-    : [];
+    : FALLBACK_PRODUCT_SLUGS.map((s) => getProductBySlug(s)).filter(Boolean);
 
   if (!post) {
     return (
@@ -404,10 +414,6 @@ export default function BlogPostPage() {
 
               <div>
                 <PostContent sections={post.sections || []} />
-              </div>
-
-              <div className="mt-10 max-w-lg">
-                <BlogMessageForm />
               </div>
 
               <div className="mt-10 pt-6 border-t border-border">
@@ -595,12 +601,23 @@ export default function BlogPostPage() {
             </main>
 
             <RightSidebar
-              sections={post.sections || []}
+              relatedProducts={relatedProducts.filter((p): p is AnyProduct =>
+                Boolean(p),
+              )}
               relatedPosts={relatedPosts}
+              onQuote={(p) => setQuoteProduct(p)}
             />
           </div>
         </div>
       </div>
+
+      {quoteProduct && (
+        <GetQuoteModal
+          product={quoteProduct}
+          blogTitle={post.title}
+          onClose={() => setQuoteProduct(null)}
+        />
+      )}
     </div>
   );
 }
