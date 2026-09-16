@@ -22,7 +22,7 @@ export const post: BlogPost = {
   author: { name: "Servchip Tech Team", avatar: "ST" },
   readingTime: 15,
   publishedAt: "2026-09-14",
-  isPublished: false,
+  isPublished: true,
   seo: {
     metaTitle: "NVIDIA B300 Tensor Core GPU: Next-Gen AI Performance",
     metaDescription:

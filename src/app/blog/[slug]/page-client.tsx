@@ -27,6 +27,7 @@ import { BLOG_POSTS, getRelatedBlogPosts } from "@/blog";
 import { getProductById } from "@/data/products";
 import { ReadingProgress } from "@/blog/components/ReadingProgress";
 import { PostContent } from "@/blog/components/PostContent";
+import { BlogMessageForm } from "@/blog/components/BlogMessageForm";
 
 function getProductSpec(
   product:
@@ -403,6 +404,10 @@ export default function BlogPostPage() {
 
               <div>
                 <PostContent sections={post.sections || []} />
+              </div>
+
+              <div className="mt-10 max-w-lg">
+                <BlogMessageForm />
               </div>
 
               <div className="mt-10 pt-6 border-t border-border">

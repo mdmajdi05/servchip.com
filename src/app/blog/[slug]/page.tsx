@@ -127,7 +127,7 @@ export default async function Page({
         <script
           key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: schema }}
+          dangerouslySetInnerHTML={schema}
         />
       ))}
       <PageClient />
