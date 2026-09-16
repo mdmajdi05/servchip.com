@@ -100,6 +100,11 @@ const nextConfig: NextConfig = {
         destination: "/ae/brands/nvidia",
         permanent: true,
       },
+      {
+        source: "/blog/nvidia-gb200-grace-blackwell-superchip-guide",
+        destination: "/blog",
+        permanent: true,
+      },
     ];
   },
   async headers() {
