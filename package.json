@@ -9,6 +9,8 @@
     "lint": "eslint .",
     "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\"",
     "typecheck": "tsc --noEmit",
+    "check:links": "vitest run src/lib/internal-links.test.ts",
+    "prebuild": "npm run check:links",
     "test": "vitest run",
     "test:watch": "vitest",
     "prepare": "husky"
