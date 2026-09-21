@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import {
   createEntityMetadata,
   createEntityBreadcrumb,
@@ -71,7 +72,7 @@ export default async function Page({
   const post = BLOG_POSTS.find((p) => p.slug === slug);
 
   if (!post) {
-    return <PageClient />;
+    notFound();
   }
 
   const faqSection = post.sections?.find((s) =>

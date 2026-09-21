@@ -62,6 +62,7 @@ export default async function Page(props: {
   const countryObj = getCountryByCode(country);
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!countryObj) notFound();
+  if (!post) notFound();
 
   return (
     <>
