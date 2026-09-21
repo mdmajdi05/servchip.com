@@ -89,7 +89,7 @@ export const post: BlogPost = {
         },
         {
           type: "image",
-          src: "/images/blog/gb200-transformer-engine-throughput.png",
+          src: "/images/blog/gb200-transformer-engine-throughput.webp",
           alt: "GB200 NVL72 versus Hopper cluster inference and training throughput for trillion-parameter models",
           caption:
             "Second-generation Transformer Engine delivers up to 4x faster LLM training and up to 30x faster real-time inference versus Hopper at rack scale",
@@ -126,7 +126,7 @@ export const post: BlogPost = {
         },
         {
           type: "image",
-          src: "/images/blog/gb200-nvlink-bandwidth.png",
+          src: "/images/blog/gb200-nvlink-bandwidth.webp",
           alt: "Fifth-generation NVLink GPU-to-GPU bandwidth comparison showing 1.8 TB/s versus 900 GB/s in prior generation",
           caption:
             "Fifth-generation NVLink raises GPU-to-GPU bandwidth to 1.8 TB/s per GPU, roughly double the prior generation",
