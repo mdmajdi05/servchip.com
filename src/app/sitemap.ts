@@ -162,22 +162,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.7,
   }));
 
-  const countryPages: MetadataRoute.Sitemap = COUNTRIES.map((c) => ({
-    url: `${baseUrl}${getCountryPath(c)}`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.8,
-  }));
-
-  const countryProductListingPages: MetadataRoute.Sitemap = COUNTRIES.filter(
-    (c) => COUNTRY_MARKETS[c.code],
-  ).map((c) => ({
-    url: `${baseUrl}${getCountryPath(c)}/products`,
-    lastModified: new Date(),
-    changeFrequency: "daily" as const,
-    priority: 0.8,
-  }));
-
   const countryProductPages: MetadataRoute.Sitemap = COUNTRIES.filter(
     (c) => COUNTRY_MARKETS[c.code],
   ).flatMap((c) =>
@@ -386,8 +370,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...chipPages,
     ...categoryPages,
     ...blogPages,
-    ...countryPages,
-    ...countryProductListingPages,
     ...countryProductPages,
     ...industryPages,
     ...solutionPages,

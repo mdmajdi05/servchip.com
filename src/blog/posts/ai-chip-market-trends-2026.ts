@@ -20,6 +20,9 @@ export const post: BlogPost = {
     metaTitle: "AI Chip Market Trends 2026: NVIDIA, AMD & Intel | Servchip",
     metaDescription:
       "Explore AI chip market trends 2026: NVIDIA, AMD and Intel stock moves, semiconductor forecasts, and what's next for the industry through 2030.",
+    focusKeyword: "AI chip market trends",
+    canonicalUrl:
+      "https://servchip.com/blog/ai-chip-market-trends-2026-nvidia-amd-intel",
   },
   sections: [
     {

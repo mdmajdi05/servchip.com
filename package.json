@@ -10,7 +10,8 @@
     "format": "prettier --write \"src/**/*.{ts,tsx,css,json}\"",
     "typecheck": "tsc --noEmit",
     "check:links": "vitest run src/lib/internal-links.test.ts",
-    "prebuild": "npm run check:links",
+    "check:seo": "vitest run src/lib/seo-audit.test.ts",
+    "prebuild": "npm run check:links && npm run check:seo",
     "test": "vitest run",
     "test:watch": "vitest",
     "prepare": "husky"
