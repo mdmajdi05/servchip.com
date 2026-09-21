@@ -12,6 +12,8 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Standalone GSC dashboard mini-app (own tooling, share nothing).
+    "gsc-dashboard/**",
   ]),
 ]);
 

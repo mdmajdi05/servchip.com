@@ -73,6 +73,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.7,
     },
+    // /technology and /resources are real routes (linked from the header nav
+    // and homepage) — they belong in the sitemap.
     {
       url: `${baseUrl}/countries`,
       lastModified: new Date(),

@@ -1,0 +1,28 @@
+{
+  "name": "servchip-gsc-dashboard",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Standalone Next.js + Tailwind dashboard for Search Console index coverage. Fully separate from the main servchip.com site.",
+  "scripts": {
+    "dev": "next dev -p 3200",
+    "build": "next build",
+    "start": "next start -p 3200",
+    "typecheck": "tsc --noEmit",
+    "check": "node report.mjs",
+    "check:probe": "node report.mjs --probe-only",
+    "notify": "node notify.mjs"
+  },
+  "dependencies": {
+    "next": "16.2.10",
+    "react": "19.2.4",
+    "react-dom": "19.2.4"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}

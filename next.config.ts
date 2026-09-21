@@ -82,18 +82,6 @@ const nextConfig: NextConfig = {
         destination: "/de",
         permanent: true,
       },
-      // Technology → Solutions migration
-      {
-        source: "/technology",
-        destination: "/solutions",
-        permanent: true,
-      },
-      // Resources → Products migration
-      {
-        source: "/resources",
-        destination: "/products",
-        permanent: true,
-      },
       // NVIDIA GPU distributor page → country-specific brand page
       {
         source: "/nvidia-gpu-distributor-middle-east",
