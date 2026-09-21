@@ -29,6 +29,9 @@ export async function generateMetadata(props: {
   const market = COUNTRY_MARKETS[country];
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!countryObj || !market || !post) return {};
+  if (!post.isPublished) {
+    return { robots: { index: false, follow: false } };
+  }
 
   return (
     createEntityMetadata(

@@ -5,6 +5,14 @@ import { BLOG_POSTS } from "@/blog";
 import { OG_IMAGE } from "@/lib/seo";
 import { SITE } from "@/lib/constants";
 import sitemap from "@/app/sitemap";
+import { ALL_PRODUCTS } from "@/data/products";
+import { BRANDS } from "@/data/brands";
+import { CATEGORIES } from "@/data/categories";
+import { INDUSTRIES } from "@/data/industries";
+import { SOLUTIONS } from "@/data/solutions";
+import { SUPPORTED_COUNTRIES, getLocalizedPath } from "@/lib/localized-path";
+import { COUNTRY_MARKETS } from "@/data/country-markets";
+import { countryLanguageAlternates } from "@/lib/seo/hreflang";
 
 /**
  * Build-time SEO sanity guard (runs via `npm run prebuild`).
@@ -214,6 +222,139 @@ describe("SEO integrity", () => {
         message:
           "draft/unpublished post appears in sitemap — must be excluded.",
       });
+    }
+  }
+
+  /* ---- Sitemap routes must resolve to real pages ----------------- */
+  const productSlugs = new Set(ALL_PRODUCTS.map((p) => p.slug));
+  const brandSlugs = new Set(BRANDS.map((b) => b.slug));
+  const categorySlugs = new Set(CATEGORIES.map((c) => c.slug));
+  const industrySlugs = new Set(INDUSTRIES.map((i) => i.slug));
+  const solutionSlugs = new Set(SOLUTIONS.map((s) => s.slug));
+
+  const toPath = (url: string) => url.replace(`${SITE.url}`, "");
+  for (const url of sitemapUrls) {
+    const p = toPath(url);
+    const stripped = p.replace(/\/$/, "");
+    const countryMatch = stripped.match(/^\/([a-z]{2})\//);
+    if (countryMatch && !SUPPORTED_COUNTRIES.includes(countryMatch[1])) {
+      issues.push({
+        field: "sitemap",
+        value: url,
+        message: `country prefix "/${countryMatch[1]}" has no localized pages (supported: ${SUPPORTED_COUNTRIES.join(", ")}).`,
+      });
+    }
+    const body = countryMatch ? stripped.replace(/^\/[a-z]{2}/, "") : stripped;
+
+    const productMatch = body.match(/^\/products\/([^/]+)$/);
+    if (productMatch && !productSlugs.has(productMatch[1])) {
+      issues.push({
+        field: "sitemap",
+        value: url,
+        message: `product "${productMatch[1]}" does not exist in ALL_PRODUCTS.`,
+      });
+    }
+
+    const brandMatch = body.match(/^\/brands\/([^/]+)(?:\/([^/]+))?$/);
+    if (brandMatch && !brandSlugs.has(brandMatch[1])) {
+      issues.push({
+        field: "sitemap",
+        value: url,
+        message: `brand "${brandMatch[1]}" does not exist in BRANDS (nothing should ever point at a phantom brand).`,
+      });
+    }
+
+    const categoryMatch = body.match(/^\/categories\/([^/]+)$/);
+    if (categoryMatch && !categorySlugs.has(categoryMatch[1])) {
+      issues.push({
+        field: "sitemap",
+        value: url,
+        message: `category "${categoryMatch[1]}" does not exist in CATEGORIES.`,
+      });
+    }
+
+    const industryMatch = body.match(/^\/industries\/([^/]+)$/);
+    if (industryMatch && !industrySlugs.has(industryMatch[1])) {
+      issues.push({
+        field: "sitemap",
+        value: url,
+        message: `industry "${industryMatch[1]}" does not exist in INDUSTRIES.`,
+      });
+    }
+
+    const solutionMatch = body.match(/^\/solutions\/([^/]+)$/);
+    if (solutionMatch && !solutionSlugs.has(solutionMatch[1])) {
+      issues.push({
+        field: "sitemap",
+        value: url,
+        message: `solution "${solutionMatch[1]}" does not exist in SOLUTIONS.`,
+      });
+    }
+  }
+
+  const usedCountryCodes = new Set<string>();
+  for (const url of sitemapUrls) {
+    const m = url.match(/servchip\.com\/([a-z]{2})(?:\/|$)/);
+    if (m && SUPPORTED_COUNTRIES.includes(m[1])) usedCountryCodes.add(m[1]);
+  }
+  for (const code of SUPPORTED_COUNTRIES) {
+    if (!usedCountryCodes.has(code)) {
+      issues.push({
+        field: "sitemap",
+        value: `/${code}`,
+        message: `supported country "${code}" has no routes in the sitemap — its localized pages are orphaned.`,
+      });
+    }
+  }
+
+  /* ---- hreflang groups must be complete and canonical ---------------- */
+  const expectedLanguages = new Set([
+    "x-default",
+    ...SUPPORTED_COUNTRIES.map((code) => COUNTRY_MARKETS[code].locale),
+  ]);
+  const expectedKeys = [...expectedLanguages].sort();
+  const firstPublished = BLOG_POSTS.find((p) => p.isPublished)?.slug;
+  const samplePaths: string[] = [
+    "/",
+    "/about",
+    "/blog",
+    "/products",
+    "/faq",
+    "/comparison",
+    ...(firstPublished ? [`/blog/${firstPublished}`] : []),
+    ...(productSlugs.size ? [`/products/${ALL_PRODUCTS[0].slug}`] : []),
+    ...(brandSlugs.size ? [`/brands/${BRANDS[0].slug}`] : []),
+    ...(categorySlugs.size ? [`/categories/${CATEGORIES[0].slug}`] : []),
+    ...(industrySlugs.size ? [`/industries/${INDUSTRIES[0].slug}`] : []),
+    ...(solutionSlugs.size ? [`/solutions/${SOLUTIONS[0].slug}`] : []),
+  ];
+  for (const p of samplePaths) {
+    const alternates = countryLanguageAlternates(p);
+    const keys = Object.keys(alternates).sort();
+    if (JSON.stringify(keys) !== JSON.stringify(expectedKeys)) {
+      issues.push({
+        field: "hreflang",
+        value: p,
+        message: `must emit languages [${expectedKeys.join(", ")}] for every member of the group, got [${keys.join(", ")}].`,
+      });
+    }
+    if (alternates["x-default"] !== `${SITE.url}${p}`) {
+      issues.push({
+        field: "hreflang",
+        value: p,
+        message: `x-default must point at the main URL ${SITE.url}${p}.`,
+      });
+    }
+    for (const code of SUPPORTED_COUNTRIES) {
+      const locale = COUNTRY_MARKETS[code].locale;
+      const expectedLocalized = `${SITE.url}${getLocalizedPath(code, p)}`;
+      if (alternates[locale] !== expectedLocalized) {
+        issues.push({
+          field: "hreflang",
+          value: p,
+          message: `${locale} must resolve to the real localized page ${expectedLocalized}.`,
+        });
+      }
     }
   }
 

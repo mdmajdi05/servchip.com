@@ -27,6 +27,9 @@ export async function generateMetadata({
   const { slug } = await params;
   const post = BLOG_POSTS.find((p) => p.slug === slug);
   if (!post) return { title: "Article Not Found | Servchip" };
+  if (!post.isPublished) {
+    return { robots: { index: false, follow: false } };
+  }
 
   return (
     createEntityMetadata(

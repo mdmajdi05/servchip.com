@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { SITE } from "@/lib/constants";
 import { getLocalizedPath } from "@/lib/localized-path";
 import { createSeoMetadata, type SeoMetadataInput } from "../metadata";
 import { countryVars } from "../config/countries";
@@ -9,6 +8,11 @@ import type { StaticRoute } from "../templates/pages";
 import type { EntityRoute } from "../templates/entities";
 import type { SeoFields } from "../templates/types";
 import { interpolateFields } from "./interpolateFields";
+import {
+  countryLanguageAlternates,
+  entityRouteHasCountryVariant,
+  staticRouteHasCountryVariant,
+} from "../hreflang";
 
 type EntityExtra = Partial<
   Omit<SeoMetadataInput, "title" | "description" | "path">
@@ -42,6 +46,9 @@ export function createMetadata(
       twitterDescription: def.twitterDescription,
       robots: def.robots,
       noindex: def.noindex,
+      alternates: staticRouteHasCountryVariant(page)
+        ? { languages: countryLanguageAlternates(def.path) }
+        : undefined,
     });
   }
 
@@ -68,10 +75,7 @@ export function createMetadata(
     robots: fields.robots ?? def.robots,
     noindex: fields.noindex ?? def.noindex,
     alternates: {
-      languages: {
-        "x-default": `${SITE.url}${def.path}`,
-        [vars.locale]: `${SITE.url}${path}`,
-      },
+      languages: countryLanguageAlternates(def.path),
     },
   });
 }
@@ -109,12 +113,9 @@ export function createEntityMetadata(
       twitterDescription: fields.twitterDescription,
       robots: fields.robots ?? extra.robots,
       noindex: fields.noindex ?? extra.noindex,
-      alternates: {
-        languages: {
-          "x-default": `${SITE.url}${globalPath}`,
-          [countryV.locale]: `${SITE.url}${path}`,
-        },
-      },
+      alternates: entityRouteHasCountryVariant(page)
+        ? { languages: countryLanguageAlternates(globalPath) }
+        : undefined,
     });
   }
 
@@ -131,5 +132,8 @@ export function createEntityMetadata(
     twitterDescription: fields.twitterDescription,
     robots: fields.robots ?? extra.robots,
     noindex: fields.noindex ?? extra.noindex,
+    alternates: entityRouteHasCountryVariant(page)
+      ? { languages: countryLanguageAlternates(globalPath) }
+      : undefined,
   });
 }
