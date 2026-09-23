@@ -19,7 +19,6 @@ logs
 .dockerignore
 .eslint*
 .lintstagedrc.ts
-vitest.config.ts
 next-env.d.ts
 tsconfig.tsbuildinfo
 Dockerfile
