@@ -79,7 +79,11 @@ function issueOf(u: UrlEntry): string | null {
     if (!lg.coverageState && lg.hreflangCount < 5) return "NO_HREFLANG";
   }
   if (lg.httpStatus === 404) return "NOT_FOUND";
-  return lg.coverageState ? stateKey(lg.coverageState) : null;
+  if (!lg.coverageState) return null;
+  const key = stateKey(lg.coverageState);
+  // Indexed/healthy states attention mein count nahi hote.
+  if (key === "INDEXED_ALLOWED" || key === "INDEXED") return null;
+  return key;
 }
 
 function Tag({ id }: { id: string }) {
@@ -245,7 +249,10 @@ function UrlRow({
 
 export default function Dashboard({ ledger }: { ledger: Ledger }) {
   const entries = useMemo(
-    () => Object.entries(ledger.urls ?? {}),
+    () =>
+      Object.entries(ledger.urls ?? {}).filter(
+        ([, u]) => !u.removed, // sitemap se hata di gayi legacy URLs (intended 404) — stats mein count nahi karte
+      ),
     [ledger.urls],
   );
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
@@ -424,6 +431,19 @@ export default function Dashboard({ ledger }: { ledger: Ledger }) {
           </div>
         ))}
       </div>
+      {(() => {
+        const removed = Object.values(ledger.urls ?? {}).filter(
+          (u) => u.removed,
+        ).length;
+        if (!removed) return null;
+        return (
+          <p className="mt-2 text-[11px] text-neutral-500">
+            ℹ️ {removed} URLs sitemap mein nahi hain (intended 404 — phantom
+            countries hata diye gaye) — stats mein exclude hain, history ke liye
+            sirf ledger mein rakhe gaye.
+          </p>
+        );
+      })()}
 
       {/* Distribution */}
       <section className="mt-6 rounded-xl border border-neutral-800 bg-neutral-900">

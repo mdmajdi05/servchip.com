@@ -17,6 +17,8 @@ export interface UrlEntry {
   lastSeen: string;
   history: Snapshot[];
   latest: Snapshot;
+  /** True when the URL is no longer in the sitemap (e.g. intended-404 legacy pages) and is kept only for history. */
+  removed?: boolean;
   analytics: {
     clicks: number;
     impressions: number;

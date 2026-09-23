@@ -267,6 +267,7 @@ async function run() {
   // country roots that now 404) so their `latest` state stays current instead
   // of going stale and triggering wrong flags like BAD_CANONICAL.
   const legacyUrls = Object.keys(ledger.urls).filter((u) => !probes.has(u));
+  const legacySet = new Set(legacyUrls);
   if (legacyUrls.length > 0) {
     const legacyProbes = await probeAll(legacyUrls);
     for (const [u, p] of legacyProbes) probes.set(u, p);
@@ -304,6 +305,7 @@ async function run() {
       lastSeen: now,
       history: [...(prev.history ?? []).slice(-39), entry],
       latest: entry,
+      removed: legacySet.has(url) ? true : undefined,
       analytics: iMap.get(url) ?? prev.analytics ?? null,
     };
   }
