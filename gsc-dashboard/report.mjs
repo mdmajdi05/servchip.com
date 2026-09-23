@@ -20,13 +20,13 @@
 
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from "node:fs";
 import path from "node:path";
-import { inspectUrl, searchAnalytics, hasCredentials } from "./gsc-api.mjs";
+import { inspectUrl, searchAnalytics, hasCredentials, siteUrlFromEnv } from "./gsc-api.mjs";
 
 const SITE_URL = process.env.SITE_URL ?? "https://servchip.com";
 const DIR = import.meta.dirname;
 const LEDGER_FILE = path.join(DIR, "ledger.json");
 const LEDGER_MD = path.join(DIR, "SEARCH-CONSOLE-LEDGER.md");
-const PROPERTY = process.env.GSC_SITE_URL ?? "sc-domain:servchip.com";
+const PROPERTY = siteUrlFromEnv(); // reads gsc-dashboard/.env (GSC_SITE_URL)
 
 const CONCURRENCY = 6;
 const GSC_PACE_MS = 250;
@@ -146,20 +146,45 @@ function coverageReason(detail) {
   };
 }
 
+// Google's URL Inspection returns human-readable coverageState strings.
+// Normalize them to stable codes everywhere (report + dashboard share the mapping).
+const COVERAGE = {
+  "submitted and indexed": "INDEXED_ALLOWED",
+  "crawled - currently not indexed": "CRAWLED_CURRENTLY_NOT_INDEXED",
+  "crawled but not indexed": "CRAWLED_CURRENTLY_NOT_INDEXED",
+  "not indexed": "CRAWLED_CURRENTLY_NOT_INDEXED",
+  "discovered - currently not indexed": "DISCOVERED_CURRENTLY_NOT_INDEXED",
+  "duplicate, google chose different canonical than user": "DUPLICATE_GOOGLE_SELECTED_CANONICAL",
+  "duplicate, user-selected canonical": "DUPLICATE_USER_SELECTED_CANONICAL",
+  "duplicate without user-selected canonical": "DUPLICATE_INTERNAL",
+  "page with redirect": "PAGE_WITH_REDIRECT",
+  "page with soft 404": "SOFT_404",
+  "url is marked noindex": "NOINDEX",
+  "not found (404)": "PAGE_NOT_FOUND",
+  "url is unknown to google": "PAGE_NOT_FOUND",
+};
+
+function normCoverage(s) {
+  if (!s) return s;
+  return COVERAGE[s.toLowerCase().trim()] ?? s.replace(/[\s.,]+/g, "_").toUpperCase();
+}
+
 const NEEDS_ACTION = new Set([
-  "CRAWLED-CURRENTLY-NOT-INDEXED",
-  "DISCOVERED-CURRENTLY-NOT-INDEXED",
-  "DUPLICATE-USER-SELECTED-CANONICAL",
-  "DUPLICATE-GOOGLE-SELECTED-CANONICAL",
-  "DUPLICATE-INTERNAL",
+  "CRAWLED_CURRENTLY_NOT_INDEXED",
+  "DISCOVERED_CURRENTLY_NOT_INDEXED",
+  "DUPLICATE_USER_SELECTED_CANONICAL",
+  "DUPLICATE_GOOGLE_SELECTED_CANONICAL",
+  "DUPLICATE_INTERNAL",
   "PAGE_NOT_FOUND",
+  "NOINDEX",
+  "SOFT_404",
 ]);
 
 export function isActionNeeded(u) {
   const lg = u?.latest ?? {};
   if (lg.httpStatus === 200 && lg.isSelfCanonical === false) return true;
   if (lg.httpStatus === 200 && lg.coverageState === null && lg.hreflangCount === 0) return true;
-  if (lg.coverageState && NEEDS_ACTION.has(lg.coverageState)) return true;
+  if (lg.coverageState && NEEDS_ACTION.has(normCoverage(lg.coverageState))) return true;
   return false;
 }
 
@@ -169,7 +194,7 @@ export function flagFor(u) {
     if (lg.isSelfCanonical === false) return "BAD_CANONICAL";
     if (lg.coverageState === null && lg.hreflangCount === 0) return "NO_HREFLANG";
   }
-  if (lg.coverageState && NEEDS_ACTION.has(lg.coverageState)) return lg.coverageState;
+  if (lg.coverageState && NEEDS_ACTION.has(normCoverage(lg.coverageState))) return normCoverage(lg.coverageState);
   return null;
 }
 
@@ -233,6 +258,7 @@ async function run() {
   if (existsSync(LEDGER_FILE)) {
     try {
       ledger = JSON.parse(readFileSync(LEDGER_FILE, "utf8"));
+      ledger.property = PROPERTY; // keep in sync when .env/property changes
     } catch {
       /* reset on corrupt */
     }

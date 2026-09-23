@@ -1,16 +1,20 @@
 // GSC API client — zero dependencies (Node 18+ built-in crypto + fetch).
 //
-// Credentials: a Google service account with "Owner" (or at least "Full")
-// permission on the Search Console property. Provide them via a local
-// gsc-dashboard/.env file (ignored by git):
+// Two credential modes (both stored in a local gsc-dashboard/.env, git-ignored):
 //
-//   GSC_SITE_URL=sc-domain:servchip.com          (domain property — recommended)
-//   GSC_SITE_URL=https://servchip.com/            (URL-prefix property)
-//   GSC_SERVICE_ACCOUNT_JSON={"type":"service_account",...}
-//   GSC_SERVICE_ACCOUNT_FILE=C:/path/service-account.json
+//   A) OAuth user mode (RECOMMENDED — no Google Cloud billing needed):
+//        GSC_OAUTH_CLIENT_ID=<OAuth client id (Desktop app)>
+//        GSC_OAUTH_CLIENT_SECRET=<client secret>
+//        GSC_OAUTH_REFRESH_TOKEN=<get via: node gsc-dashboard/gsc-oauth-setup.mjs>
+//      Contact flow: OAuth consent -> refresh token -> access token.
 //
-// Auth flow: RS256 JWT -> OAuth2 token for scope https://www.googleapis.com/auth/webmasters
-// (covers Search Analytics, URL Inspection and Sitemaps read/write).
+//   B) Service account mode (needs a Google Cloud project):
+//        GSC_SERVICE_ACCOUNT_JSON={"type":"service_account",...}
+//        GSC_SERVICE_ACCOUNT_FILE=C:/path/service-account.json
+//      Auth flow: RS256 JWT -> OAuth2 token.
+//
+// Both use scope https://www.googleapis.com/auth/webmasters (Search
+// Analytics, URL Inspection and Sitemaps read/write).
 
 import { createSign } from "node:crypto";
 import { readFileSync, existsSync } from "node:fs";
@@ -19,6 +23,7 @@ import path from "node:path";
 const WEBMASTERS_SCOPE = "https://www.googleapis.com/auth/webmasters";
 const TOKEN_URL = "https://oauth2.googleapis.com/token";
 const API_BASE = "https://www.googleapis.com/webmasters/v3";
+const SC_BASE = "https://searchconsole.googleapis.com/v1"; // URL Inspection API lives here
 
 export class GscError extends Error {
   constructor(message, status) {
@@ -51,7 +56,17 @@ export function hasCredentials(env = loadEnv()) {
   return Boolean(
     env.GSC_SERVICE_ACCOUNT_JSON ||
       env.GSC_SERVICE_ACCOUNT_FILE ||
-      env.GOOGLE_APPLICATION_CREDENTIALS,
+      env.GOOGLE_APPLICATION_CREDENTIALS ||
+      loadOAuthEnv(env),
+  );
+}
+
+/** OAuth user-mode env is considered present when all three parts exist. */
+function loadOAuthEnv(env) {
+  return Boolean(
+    env.GSC_OAUTH_REFRESH_TOKEN &&
+      env.GSC_OAUTH_CLIENT_ID &&
+      env.GSC_OAUTH_CLIENT_SECRET,
   );
 }
 
@@ -110,21 +125,48 @@ async function getAccessToken(account) {
   return data.access_token;
 }
 
+/** OAuth user-mode: exchange the stored refresh token for an access token. */
+async function getOAuthAccessToken(env) {
+  const resp = await fetch(TOKEN_URL, {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: new URLSearchParams({
+      client_id: env.GSC_OAUTH_CLIENT_ID,
+      client_secret: env.GSC_OAUTH_CLIENT_SECRET,
+      refresh_token: env.GSC_OAUTH_REFRESH_TOKEN,
+      grant_type: "refresh_token",
+    }),
+  });
+  const data = await resp.json();
+  if (!resp.ok || !data.access_token) {
+    throw new GscError(
+      `OAuth refresh failed (HTTP ${resp.status}): ${data?.error_description ?? JSON.stringify(data)}`,
+      resp.status,
+    );
+  }
+  return data.access_token;
+}
+
 let cachedToken = null;
 let cachedUntil = 0;
 
 async function token() {
   if (cachedToken && Date.now() < cachedUntil) return cachedToken;
-  const account = loadServiceAccount(loadEnv());
-  const t = await getAccessToken(account);
+  const env = loadEnv();
+  let t;
+  if (loadOAuthEnv(env)) {
+    t = await getOAuthAccessToken(env);
+  } else {
+    t = await getAccessToken(loadServiceAccount(env));
+  }
   cachedToken = t;
   cachedUntil = Date.now() + 50 * 60 * 1000; // refresh before 1h expiry
   return t;
 }
 
-async function api(method, urlPath, body) {
+async function api(method, urlPath, body, base = API_BASE) {
   const bearer = await token();
-  const resp = await fetch(API_BASE + urlPath, {
+  const resp = await fetch(base + urlPath, {
     method,
     headers: {
       Authorization: `Bearer ${bearer}`,
@@ -151,6 +193,11 @@ async function api(method, urlPath, body) {
 export const siteUrlFromEnv = (env = loadEnv()) =>
   env.GSC_SITE_URL ?? "sc-domain:servchip.com";
 
+/** List every site the authenticated account can access (diagnostics). */
+export async function listSites() {
+  return api("GET", "/sites");
+}
+
 /** Recent Search Analytics rows (dimension: page). */
 export async function searchAnalytics({ startDate, endDate, rowLimit = 25000 } = {}) {
   const site = siteUrlFromEnv();
@@ -163,13 +210,16 @@ export async function searchAnalytics({ startDate, endDate, rowLimit = 25000 } =
   });
 }
 
-/** Per-URL index inspection (coverageState, canonical, last crawl...). */
+/** Per-URL index inspection (coverageState, canonical, last crawl...).
+ *  Uses the Search Console v1 endpoint: site goes in the body, not the path. */
 export async function inspectUrl(inspectionUrl) {
   const site = siteUrlFromEnv();
-  return api("POST", `/sites/${encodeURIComponent(site)}/urlInspection/index:inspect`, {
-    inspectionUrl,
-    siteUrl: site,
-  });
+  return api(
+    "POST",
+    "/urlInspection/index:inspect",
+    { inspectionUrl, siteUrl: site },
+    SC_BASE,
+  );
 }
 
 export async function listSitemaps() {

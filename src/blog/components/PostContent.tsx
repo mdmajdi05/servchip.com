@@ -26,7 +26,7 @@ const GpuCalculator = dynamic(
   },
 );
 
-const INLINE_LINK_RE = /\[([^\]]+)\]\((\/[^)]*)\)/g;
+const INLINE_LINK_RE = /\[([^\]]+)\]\((https?:\/\/[^)\s]*|\/[^)]*)\)/g;
 
 function renderRichText(text: string) {
   if (!text.includes("[") || !text.includes("](")) return text;

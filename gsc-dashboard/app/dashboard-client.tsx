@@ -24,6 +24,8 @@ const STATE_UI: Record<string, { label: string; tone: Tone }> = {
   DUPLICATE_INTERNAL: { label: "Duplicate (internal)", tone: "red" },
   PAGE_NOT_FOUND: { label: "Page not found", tone: "red" },
   PAGE_WITH_REDIRECT: { label: "Redirect", tone: "gray" },
+  SOFT_404: { label: "Soft 404", tone: "yellow" },
+  NOINDEX: { label: "Noindex", tone: "gray" },
   BAD_CANONICAL: { label: "Canonical issue", tone: "red" },
   NO_HREFLANG: { label: "Hreflang issue", tone: "yellow" },
   NOT_FOUND: { label: "HTTP 404", tone: "red" },
@@ -43,7 +45,32 @@ const TONE_CLS: Record<Tone, string> = {
 };
 
 const fmtDate = (s?: string | null) => (s ? new Date(s).toLocaleString() : "—");
-const stateKey = (s?: string | null) => (s ? s.replace(/-/g, "_") : null);
+
+// Mirror of report.mjs COVERAGE: Google's human readable coverageState -> codes.
+const COVERAGE_NORM: Record<string, string> = {
+  "submitted and indexed": "INDEXED_ALLOWED",
+  "crawled - currently not indexed": "CRAWLED_CURRENTLY_NOT_INDEXED",
+  "crawled but not indexed": "CRAWLED_CURRENTLY_NOT_INDEXED",
+  "not indexed": "CRAWLED_CURRENTLY_NOT_INDEXED",
+  "discovered - currently not indexed": "DISCOVERED_CURRENTLY_NOT_INDEXED",
+  "duplicate, google chose different canonical than user":
+    "DUPLICATE_GOOGLE_SELECTED_CANONICAL",
+  "duplicate, user-selected canonical": "DUPLICATE_USER_SELECTED_CANONICAL",
+  "duplicate without user-selected canonical": "DUPLICATE_INTERNAL",
+  "page with redirect": "PAGE_WITH_REDIRECT",
+  "page with soft 404": "SOFT_404",
+  "url is marked noindex": "NOINDEX",
+  "not found (404)": "PAGE_NOT_FOUND",
+  "url is unknown to google": "PAGE_NOT_FOUND",
+};
+
+const stateKey = (s?: string | null) => {
+  if (!s) return null;
+  return (
+    COVERAGE_NORM[s.toLowerCase().trim()] ??
+    s.replace(/[\s.,]+/g, "_").toUpperCase()
+  );
+};
 
 function issueOf(u: UrlEntry): string | null {
   const lg = u.latest;
@@ -66,7 +93,7 @@ function Tag({ id }: { id: string }) {
   );
 }
 
-function DetailBox({ u }: { u: UrlEntry }) {
+function DetailBox({ u, colSpan }: { u: UrlEntry; colSpan: number }) {
   const lg = u.latest;
   const grid: Array<{ k: string; v: string }> = [
     { k: "verdict", v: lg.verdict ?? "—" },
@@ -104,7 +131,7 @@ function DetailBox({ u }: { u: UrlEntry }) {
   ));
 
   return (
-    <td colSpan={8} className="bg-neutral-900/60">
+    <td colSpan={colSpan} className="bg-neutral-900/60">
       <div className="p-4 pl-6">
         <div className="grid grid-cols-2 gap-2 md:grid-cols-3 lg:grid-cols-4">
           {grid.map(({ k, v }) => (
@@ -147,11 +174,19 @@ function UrlRow({
   u,
   expanded,
   onToggle,
+  withFix = false,
+  fixingText,
+  onFix,
+  colSpan,
 }: {
   url: string;
   u: UrlEntry;
   expanded: boolean;
   onToggle: () => void;
+  withFix?: boolean;
+  fixingText?: string;
+  onFix?: (url: string) => void;
+  colSpan: number;
 }) {
   const lg = u.latest;
   const issue = issueOf(u);
@@ -181,10 +216,27 @@ function UrlRow({
         <td className="p-2 text-xs text-neutral-500">
           {u.history?.length ?? 1}
         </td>
+        {withFix && onFix && (
+          <td className="p-2">
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                onFix(url);
+              }}
+              className="inline-flex items-center gap-1 rounded-md border border-sky-500/40 bg-sky-500/10 px-2.5 py-1 text-[11px] font-semibold text-sky-300 transition hover:bg-sky-500/25"
+            >
+              {fixingText === url
+                ? "Opening…"
+                : fixingText
+                  ? "✓ opened"
+                  : "Fix"}
+            </button>
+          </td>
+        )}
       </tr>
       {expanded && (
         <tr className="border-b border-neutral-800/70">
-          <DetailBox u={u} />
+          <DetailBox u={u} colSpan={colSpan} />
         </tr>
       )}
     </>
@@ -197,6 +249,7 @@ export default function Dashboard({ ledger }: { ledger: Ledger }) {
     [ledger.urls],
   );
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
+  const [fixing, setFixing] = useState<Record<string, string>>({});
   const [attQuery, setAttQuery] = useState("");
   const [attState, setAttState] = useState("");
   const [allQuery, setAllQuery] = useState("");
@@ -209,6 +262,27 @@ export default function Dashboard({ ledger }: { ledger: Ledger }) {
       else next.add(url);
       return next;
     });
+  };
+
+  const requestFix = async (url: string) => {
+    setFixing((m) => ({ ...m, [url]: "opening" }));
+    try {
+      const res = await fetch("/api/fix", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url }),
+      });
+      const data = await res.json().catch(() => null);
+      if (res.ok && data?.ok) {
+        setFixing((m) => ({ ...m, [url]: "done" }));
+      } else {
+        setFixing((m) => ({ ...m, [url]: "err" }));
+        console.error("fix failed:", data?.error ?? res.status);
+      }
+    } catch (e) {
+      setFixing((m) => ({ ...m, [url]: "err" }));
+      console.error("fix request failed:", e);
+    }
   };
 
   const stats = useMemo(() => {
@@ -260,37 +334,40 @@ export default function Dashboard({ ledger }: { ledger: Ledger }) {
     matches(url, u, allQuery, allState),
   );
 
-  const head = (
+  const headCells = [
+    "URL",
+    "status",
+    "http",
+    "coverage",
+    "canonical",
+    "hreflang",
+    "last crawl",
+    "runs",
+  ];
+
+  const thCls = "p-2 pl-4";
+  const thClsR = "p-2";
+
+  const renderHead = (extra?: string) => (
     <tr className="text-left text-[10px] uppercase tracking-wider text-neutral-500">
-      <th className="p-2 pl-4">URL</th>
-      <th className="p-2">status</th>
-      <th className="p-2">http</th>
-      <th className="p-2">coverage</th>
-      <th className="p-2">canonical</th>
-      <th className="p-2">hreflang</th>
-      <th className="p-2">last crawl</th>
-      <th className="p-2">runs</th>
+      {headCells.map((h, i) => (
+        <th key={h} className={i === 0 ? thCls : thClsR}>
+          {h}
+        </th>
+      ))}
+      {extra && <th className={thClsR}>{extra}</th>}
     </tr>
   );
 
-  const renderRows = (rows: Array<[string, UrlEntry]>) =>
-    rows.length === 0 ? (
-      <tr>
-        <td colSpan={8} className="p-6 text-center text-sm text-neutral-500">
-          Koi matching rows nahi. 🎉
-        </td>
-      </tr>
-    ) : (
-      rows.map(([url, u]) => (
-        <UrlRow
-          key={url}
-          url={url}
-          u={u}
-          expanded={expanded.has(url)}
-          onToggle={() => toggle(url)}
-        />
-      ))
-    );
+  const emptyRow = (cols: number) => (
+    <tr>
+      <td colSpan={cols} className="p-6 text-center text-sm text-neutral-500">
+        Koi matching rows nahi. 🎉
+      </td>
+    </tr>
+  );
+
+  const attentionCols = headCells.length + 1;
 
   const maxDist = Math.max(1, ...stats.dist.values());
 
@@ -304,7 +381,8 @@ export default function Dashboard({ ledger }: { ledger: Ledger }) {
             <span className="text-neutral-500">— Search Console Dashboard</span>
           </h1>
           <p className="mt-1 text-xs text-neutral-500">
-            Local tool ka dashboard — public site ka hissa nahi.
+            Local tool ka dashboard — public site ka hissa nahi
+            (localhost:3200).
           </p>
         </div>
         <div className="text-right text-xs leading-5 text-neutral-500">
@@ -414,10 +492,43 @@ export default function Dashboard({ ledger }: { ledger: Ledger }) {
         </div>
         <div className="max-h-[480px] overflow-auto">
           <table className="w-full text-left">
-            <thead className="sticky top-0 bg-neutral-900/95">{head}</thead>
-            <tbody>{renderRows(attRows)}</tbody>
+            <thead className="sticky top-0 bg-neutral-900/95">
+              {renderHead("fix")}
+            </thead>
+            <tbody>
+              {attRows.length === 0
+                ? emptyRow(attentionCols)
+                : attRows.map(([url, u]) => (
+                    <UrlRow
+                      key={url}
+                      url={url}
+                      u={u}
+                      expanded={expanded.has(url)}
+                      onToggle={() => toggle(url)}
+                      withFix
+                      fixingText={fixing[url]}
+                      onFix={requestFix}
+                      colSpan={attentionCols}
+                    />
+                  ))}
+            </tbody>
           </table>
         </div>
+        <p className="border-t border-neutral-800 px-4 py-3 text-xs leading-5 text-neutral-500">
+          <span className="font-semibold text-sky-400">Fix</span> → local
+          PowerShell window khulti hai,{" "}
+          <code className="rounded bg-neutral-800 px-1.5 py-0.5">
+            frontend/
+          </code>{" "}
+          folder mein{" "}
+          <code className="rounded bg-neutral-800 px-1.5 py-0.5">opencode</code>{" "}
+          <span className="text-neutral-300">Plan mode</span> mein is problem ke
+          brief ke saath start hota hai. Plan approve karne ke liye agent ko
+          plan bana kar batane do, phir{" "}
+          <span className="text-neutral-300">Shift+Tab</span> se Build agent par
+          jao aur fix apply karwao. OpenCode sir isi machine par chalta hai —
+          live site par kabhi nahi.
+        </p>
       </section>
 
       {/* All URLs */}
@@ -449,8 +560,23 @@ export default function Dashboard({ ledger }: { ledger: Ledger }) {
         </div>
         <div className="max-h-[560px] overflow-auto">
           <table className="w-full text-left">
-            <thead className="sticky top-0 bg-neutral-900/95">{head}</thead>
-            <tbody>{renderRows(allRows)}</tbody>
+            <thead className="sticky top-0 bg-neutral-900/95">
+              {renderHead()}
+            </thead>
+            <tbody>
+              {allRows.length === 0
+                ? emptyRow(headCells.length)
+                : allRows.map(([url, u]) => (
+                    <UrlRow
+                      key={url}
+                      url={url}
+                      u={u}
+                      expanded={expanded.has(url)}
+                      onToggle={() => toggle(url)}
+                      colSpan={headCells.length}
+                    />
+                  ))}
+            </tbody>
           </table>
         </div>
       </section>
@@ -473,6 +599,11 @@ export default function Dashboard({ ledger }: { ledger: Ledger }) {
             mein credentials)
           </li>
           <li>Ye page refresh karo — dashboard naya ledger.json dikhayega.</li>
+          <li>
+            Issue fix: problem row ke <span className="text-sky-400">Fix</span>{" "}
+            button par click → opencode Plan mode (frontend folder) → plan
+            approve → Build agent se fix → tests.
+          </li>
           <li>
             Har fix + deploy ke baad{" "}
             <code className="rounded bg-neutral-800 px-1.5 py-0.5 text-neutral-100">
