@@ -103,14 +103,21 @@ export const SCHEMA = {
   returnPolicy: {
     "@type": "MerchantReturnPolicy",
     applicableCountry: "US",
-    returnPolicyCategory: "https://schema.org/MerchantReturnNotPermitted",
+    returnPolicyCategory: "https://schema.org/MerchantReturnFiniteReturnWindow",
+    merchantReturnDays: 30,
+    merchantReturnLink: `${SITE.url}/return-policy`,
+    returnMethod: "https://schema.org/ReturnByMail",
+    returnFees: "https://schema.org/ReturnFeesCustomerResponsibility",
   },
   shipping: {
     "@type": "OfferShippingDetails",
-    shippingDestination: {
-      "@type": "DefinedRegion",
-      addressCountry: "US",
-    },
+    shippingDestination: [
+      { "@type": "DefinedRegion", addressCountry: "US" },
+      { "@type": "DefinedRegion", addressCountry: "AE" },
+      { "@type": "DefinedRegion", addressCountry: "GB" },
+      { "@type": "DefinedRegion", addressCountry: "DE" },
+      { "@type": "DefinedRegion", addressCountry: "IN" },
+    ],
     shippingRate: {
       "@type": "MonetaryAmount",
       value: "0",
@@ -127,7 +134,7 @@ export const SCHEMA = {
       transitTime: {
         "@type": "QuantitativeValue",
         minValue: "3",
-        maxValue: "7",
+        maxValue: "10",
         unitCode: "DAY",
       },
     },

@@ -1,5 +1,6 @@
 import { SITE, SCHEMA } from "../constants";
 import { OG_IMAGE, OG_WIDTH, OG_HEIGHT } from "./constants";
+import { reviewsFor } from "./product-reviews";
 
 export const ORG_ID = `${SITE.url}#organization`;
 
@@ -152,6 +153,8 @@ export function productSchema(product: {
   images?: string[];
   status: string;
 }) {
+  const image = product.images?.[0] || OG_IMAGE;
+  const reviews = reviewsFor(product.manufacturer);
   return jsonLd({
     "@type": "Product",
     "@id": `${SITE.url}/products/${product.slug}#product`,
@@ -163,7 +166,7 @@ export function productSchema(product: {
     manufacturer: { "@type": "Organization", name: product.manufacturer },
     category: product.categoryName,
     url: `${SITE.url}/products/${product.slug}`,
-    image: product.images?.[0] || OG_IMAGE,
+    image: image.startsWith("http") ? image : `${SITE.url}${image}`,
     itemCondition: "https://schema.org/NewCondition",
     offers: {
       "@type": "Offer",
@@ -180,7 +183,35 @@ export function productSchema(product: {
           product.status as keyof typeof SCHEMA.availabilityMap
         ] ?? "https://schema.org/InStock",
       seller: SCHEMA.seller,
+      shippingDetails: SCHEMA.shipping,
+      returnPolicy: SCHEMA.returnPolicy,
     },
+    // Only present when real matching testimonials exist (see reviewsFor).
+    ...(reviews.length > 0
+      ? {
+          aggregateRating: {
+            "@type": "AggregateRating",
+            ratingValue: String(
+              (
+                reviews.reduce((sum, r) => sum + r.rating, 0) / reviews.length
+              ).toFixed(1),
+            ),
+            reviewCount: reviews.length,
+            bestRating: "5",
+            worstRating: "1",
+          },
+          review: reviews.map((r) => ({
+            "@type": "Review",
+            author: { "@type": "Person", name: r.name },
+            reviewRating: {
+              "@type": "Rating",
+              ratingValue: String(r.rating),
+              bestRating: "5",
+            },
+            reviewBody: r.content,
+          })),
+        }
+      : {}),
   });
 }
 
