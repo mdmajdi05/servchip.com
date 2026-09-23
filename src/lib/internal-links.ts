@@ -90,6 +90,7 @@ const STATIC_PAGES = new Set([
   "/solutions",
   "/technology",
   "/terms",
+  "/return-policy",
 ]);
 
 export function buildRouteRegistry(): RouteRegistry {

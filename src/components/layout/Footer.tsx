@@ -128,6 +128,7 @@ const FOOTER_LINKS: {
       { label: "Blog", href: "/blog" },
       { label: "FAQ", href: "/faq" },
       { label: "Privacy Policy", href: "/privacy" },
+      { label: "Return Policy", href: "/return-policy" },
       { label: "Terms of Service", href: "/terms" },
     ],
   },

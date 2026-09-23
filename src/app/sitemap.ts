@@ -118,6 +118,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.2,
     },
     {
+      url: `${baseUrl}/return-policy`,
+      lastModified: new Date(),
+      changeFrequency: "yearly",
+      priority: 0.2,
+    },
+    {
       url: `${baseUrl}/terms`,
       lastModified: new Date(),
       changeFrequency: "yearly",
@@ -293,6 +299,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
         },
         {
           url: `${root}/privacy`,
+          lastModified: new Date(),
+          changeFrequency: "yearly",
+          priority: 0.2,
+        },
+        {
+          url: `${root}/return-policy`,
           lastModified: new Date(),
           changeFrequency: "yearly",
           priority: 0.2,

@@ -44,6 +44,7 @@ const STATIC_ROUTES_WITH_COUNTRY_VARIANT: ReadonlySet<StaticRoute> = new Set([
   "privacy",
   "products",
   "resources",
+  "return-policy",
   "rfq",
   "services",
   "solutions",

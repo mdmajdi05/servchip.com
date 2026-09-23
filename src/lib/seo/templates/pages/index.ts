@@ -15,6 +15,7 @@ import { industries } from "./industries";
 import { privacy } from "./privacy";
 import { products } from "./products";
 import { resources } from "./resources";
+import { returnPolicy } from "./return-policy";
 import { rfq } from "./rfq";
 import { services } from "./services";
 import { solutions } from "./solutions";
@@ -33,6 +34,7 @@ export type StaticRoute =
   | "comparison"
   | "terms"
   | "privacy"
+  | "return-policy"
   | "products"
   | "contact"
   | "rfq"
@@ -56,6 +58,7 @@ export const STATIC_PAGE_TEMPLATES: Record<StaticRoute, SeoPageTemplate> = {
   comparison,
   terms,
   privacy,
+  "return-policy": returnPolicy,
   products,
   contact,
   rfq,
