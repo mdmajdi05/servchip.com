@@ -263,6 +263,15 @@ async function run() {
       /* reset on corrupt */
     }
   }
+  // Re-probe ledger URLs that are no longer in the sitemap (e.g. phantom
+  // country roots that now 404) so their `latest` state stays current instead
+  // of going stale and triggering wrong flags like BAD_CANONICAL.
+  const legacyUrls = Object.keys(ledger.urls).filter((u) => !probes.has(u));
+  if (legacyUrls.length > 0) {
+    const legacyProbes = await probeAll(legacyUrls);
+    for (const [u, p] of legacyProbes) probes.set(u, p);
+  }
+
   const now = new Date().toISOString();
   const iMap = new Map(
     analytics.map((r) => [
