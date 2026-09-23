@@ -249,7 +249,9 @@ export function articleSchema(post: {
       ? {
           image: {
             "@type": "ImageObject",
-            url: post.image,
+            url: post.image.startsWith("http")
+              ? post.image
+              : `${SITE.url}${post.image}`,
             width: OG_WIDTH,
             height: OG_HEIGHT,
           },
