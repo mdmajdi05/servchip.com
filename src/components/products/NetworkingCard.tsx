@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { AppLink as Link } from "@/components/ui/AppLink";
 import Image from "next/image";
@@ -35,7 +35,7 @@ export function NetworkingCard({ net, index: _index }: Props) {
             {net.images && net.images.length > 0 ? (
               <Image
                 src={net.images[0]}
-                alt={`${net.name} — ${net.categoryName}`}
+                alt={`${net.name} - ${net.categoryName}`}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover"

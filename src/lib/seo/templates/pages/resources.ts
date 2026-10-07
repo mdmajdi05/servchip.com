@@ -14,10 +14,10 @@ export const resources: SeoPageTemplate = {
     "data center deployment",
     "HPC best practices",
   ],
-  openGraphTitle: "Resources & Guides | Servchip — Enterprise Chip Distributor",
+  openGraphTitle: "Resources & Guides | Servchip - Enterprise Chip Distributor",
   openGraphDescription:
     "Technical guides, case studies & whitepapers on AI computing, GPU architectures & enterprise chip solutions.",
-  twitterTitle: "Resources & Guides | Servchip — Enterprise Chip Distributor",
+  twitterTitle: "Resources & Guides | Servchip - Enterprise Chip Distributor",
   twitterDescription:
     "Technical guides, case studies & whitepapers on AI computing, GPU architectures & enterprise chip solutions.",
   country: {

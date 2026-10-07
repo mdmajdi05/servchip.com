@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Suspense } from "react";
 import { Inter, JetBrains_Mono } from "next/font/google";
-import Script from "next/script";
 import { GoogleTagManager } from "@next/third-parties/google";
 import { ThemeProvider } from "@/providers/ThemeProvider";
 import { ColorProvider } from "@/providers/ColorProvider";
@@ -39,7 +38,7 @@ export const metadata: Metadata = {
     locale: "en_AE",
     url: SITE.url,
     siteName: SITE.name,
-    title: `${SITE.name} — Enterprise Chip Distributor for AI, HPC & Data Centers`,
+    title: `${SITE.name} - Enterprise Chip Distributor for AI, HPC & Data Centers`,
     description:
       "Servchip: ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3 accelerators to India & UAE.",
     images: [
@@ -48,17 +47,17 @@ export const metadata: Metadata = {
         secureUrl: OG_IMAGE,
         width: OG_WIDTH,
         height: OG_HEIGHT,
-        alt: "Servchip — Enterprise Chip Distributor",
+        alt: "Servchip - Enterprise Chip Distributor",
         type: "image/png",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: `${SITE.name} — Enterprise Chip Distributor for AI, HPC & Data Centers`,
+    title: `${SITE.name} - Enterprise Chip Distributor for AI, HPC & Data Centers`,
     description:
       "Servchip: ISO 9001 certified enterprise chip distributor supplying NVIDIA H100, AMD Instinct MI300X, Intel Xeon & Gaudi 3 accelerators to India & UAE.",
-    images: [{ url: OG_IMAGE, alt: "Servchip — Enterprise Chip Distributor" }],
+    images: [{ url: OG_IMAGE, alt: "Servchip - Enterprise Chip Distributor" }],
     site: "@servchip",
     creator: "@servchip",
   },
@@ -117,22 +116,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={websiteSchema()}
         />
-        <Script
-          id="theme-init"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              (function() {
-                try {
-                  var t = localStorage.getItem('servchip-theme');
-                  if (t === 'dark') document.documentElement.classList.add('dark');
-                  else document.documentElement.classList.remove('dark');
-                } catch(e) {}
-              })();
-            `,
-          }}
-        />
-        {/* Fixed header offset — CSS custom property + inline style on <main> */}
+        {/* Fixed header offset - CSS custom property + inline style on <main> */}
         <style>{`:root{--header-height:56px}@media(min-width:1024px){:root{--header-height:84px}}`}</style>
       </head>
       <body

@@ -1,6 +1,12 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, useCallback, useRef } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useSyncExternalStore,
+} from "react";
 
 type Theme = "light" | "dark";
 
@@ -16,41 +22,77 @@ const ThemeContext = createContext<ThemeContextType>({
   setTheme: () => {},
 });
 
+const THEME_KEY = "servchip-theme";
+const SYSTEM_DARK_QUERY = "(prefers-color-scheme: dark)";
+
+/*
+ * The theme lives in localStorage, i.e. an *external* store that can change
+ * outside React (another browser tab, or the system preference on a first
+ * visit). useSyncExternalStore is the hydration-safe way to read it: the
+ * server and the first client render both use getServerSnapshot(), then
+ * React re-renders with the real value. We therefore get the stored theme as
+ * early as possible without a setState() inside an effect (which forces a
+ * cascading render) and without a flash of the wrong theme.
+ *
+ * There is intentionally no pre-hydration inline script: React 19 rejects
+ * scripts rendered inside components - "Encountered a script tag while
+ * rendering React component".
+ */
+
+const listeners = new Set<() => void>();
+
+function notifyListeners() {
+  for (const listener of listeners) listener();
+}
+
+function readTheme(): Theme {
+  const stored = localStorage.getItem(THEME_KEY);
+  if (stored === "light" || stored === "dark") return stored;
+  return window.matchMedia(SYSTEM_DARK_QUERY).matches ? "dark" : "light";
+}
+
+function subscribe(onStoreChange: () => void): () => void {
+  listeners.add(onStoreChange);
+  // Keep other browser tabs in sync.
+  const onStorage = (event: StorageEvent) => {
+    if (event.key === null || event.key === THEME_KEY) onStoreChange();
+  };
+  window.addEventListener("storage", onStorage);
+  return () => {
+    listeners.delete(onStoreChange);
+    window.removeEventListener("storage", onStorage);
+  };
+}
+
+function getSnapshot(): Theme {
+  return typeof window === "undefined" ? "light" : readTheme();
+}
+
+function getServerSnapshot(): Theme {
+  return "light";
+}
+
+function writeTheme(theme: Theme) {
+  localStorage.setItem(THEME_KEY, theme);
+  notifyListeners();
+}
+
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setThemeState] = useState<Theme>("light");
-  const initialized = useRef(false);
+  const theme = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
 
+  // Toggling the class on <html> is a DOM side effect, so it belongs in an
+  // effect; it re-runs whenever the resolved theme changes.
   useEffect(() => {
-    if (initialized.current) return;
-    initialized.current = true;
-    const t = setTimeout(() => {
-      const stored = localStorage.getItem("servchip-theme") as Theme | null;
-      if (stored === "light" || stored === "dark") {
-        setThemeState(stored);
-      } else {
-        const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-        if (prefersDark) setThemeState("dark");
-      }
-    }, 0);
-    return () => clearTimeout(t);
-  }, []);
-
-  useEffect(() => {
-    const root = document.documentElement;
-    if (theme === "dark") {
-      root.classList.add("dark");
-    } else {
-      root.classList.remove("dark");
-    }
-    localStorage.setItem("servchip-theme", theme);
+    document.documentElement.classList.toggle("dark", theme === "dark");
+    localStorage.setItem(THEME_KEY, theme);
   }, [theme]);
 
   const toggle = useCallback(() => {
-    setThemeState((prev) => (prev === "light" ? "dark" : "light"));
+    writeTheme(getSnapshot() === "dark" ? "light" : "dark");
   }, []);
 
   const setTheme = useCallback((t: Theme) => {
-    setThemeState(t);
+    writeTheme(t);
   }, []);
 
   return (

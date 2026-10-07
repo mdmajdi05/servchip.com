@@ -633,7 +633,7 @@ export default function ComparisonPage() {
               </span>
               <h2 className="text-sm font-bold text-text">Pick chips</h2>
               <span className="text-[11px] text-text-dim hidden sm:inline">
-                Choose up to {MAX_SELECTED} to compare — the table below updates
+                Choose up to {MAX_SELECTED} to compare - the table below updates
                 instantly
               </span>
             </div>
@@ -749,7 +749,7 @@ export default function ComparisonPage() {
                           {chip.name}
                         </span>
                         <span className="block text-[10px] text-text-dim truncate">
-                          {chip.manufacturer} · {chip.architecture}
+                          {chip.manufacturer} | {chip.architecture}
                         </span>
                       </span>
                     </button>
@@ -952,7 +952,7 @@ export default function ComparisonPage() {
                           {chip.images && chip.images[0] ? (
                             <Image
                               src={chip.images[0]}
-                              alt={`${chip.name} — ${chip.categoryName}`}
+                              alt={`${chip.name} - ${chip.categoryName}`}
                               width={40}
                               height={40}
                               className="object-cover w-full h-full"
@@ -1093,7 +1093,7 @@ export default function ComparisonPage() {
                     {chip.images && chip.images[0] ? (
                       <Image
                         src={chip.images[0]}
-                        alt={`${chip.name} — ${chip.categoryName}`}
+                        alt={`${chip.name} - ${chip.categoryName}`}
                         fill
                         sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                         className="object-cover"
@@ -1215,7 +1215,7 @@ export default function ComparisonPage() {
                           {group}
                         </div>
                         <div className="text-sm font-bold text-text leading-tight mt-0.5 truncate">
-                          {chips.map((c) => c.name).join(" · ")}
+                          {chips.map((c) => c.name).join(" | ")}
                         </div>
                         <div className="text-[11px] text-text-dim mt-0.5">
                           Leads on {metric}
@@ -1280,7 +1280,7 @@ export default function ComparisonPage() {
                     <span>
                       You&apos;re comparing different chip types (GPU, CPU, or
                       network). Compute and memory specs aren&apos;t directly
-                      comparable across types — use the table for exact numbers,
+                      comparable across types - use the table for exact numbers,
                       or filter to one chip type.
                     </span>
                   </p>
@@ -1328,7 +1328,7 @@ export default function ComparisonPage() {
                             onHighlight={setHighlightId}
                           />
                           <p className="text-center text-[11px] text-text-dim mt-2">
-                            Each corner is a spec — the bigger the shape, the
+                            Each corner is a spec - the bigger the shape, the
                             more powerful the chip. A shape hugging the center
                             means no data for that spec. Hover a chip to focus
                             its outline.
@@ -1361,7 +1361,7 @@ export default function ComparisonPage() {
                         <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                         <span>
                           <strong className="text-text">Wider shape</strong> =
-                          strong across more specs — a balanced pick.
+                          strong across more specs - a balanced pick.
                         </span>
                       </li>
                       <li className="flex items-start gap-2">
@@ -1384,7 +1384,7 @@ export default function ComparisonPage() {
                     <div className="mt-4 p-3 rounded-lg border border-border/60 bg-bg-dark/60">
                       <p className="text-[11px] text-text-dim leading-relaxed">
                         <strong className="text-text-muted">Tip:</strong> pair
-                        this with the table below to see exact numbers — the
+                        this with the table below to see exact numbers - the
                         visuals show relative strength, the table shows the raw
                         specs.
                       </p>

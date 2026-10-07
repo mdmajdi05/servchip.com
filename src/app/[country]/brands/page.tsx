@@ -35,7 +35,7 @@ export default async function Page(props: {
           createBreadcrumb("brands", country),
         )}
       />
-      <BrandsPage />
+      <BrandsPage country={countryObj} />
     </>
   );
 }

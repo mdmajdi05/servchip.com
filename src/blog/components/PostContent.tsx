@@ -3,6 +3,7 @@
 import type { BlogSection, ContentBlock } from "@/blog/types";
 import dynamic from "next/dynamic";
 import { AppLink as Link } from "@/components/ui/AppLink";
+import { CountryFlag } from "@/components/ui/CountryFlag";
 import { COUNTRIES, getCountryPath } from "@/data/countries";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
 import { BlogTable, BlogCodeBlock, BlogCallout, BlogLinkList } from "./blocks";
@@ -242,7 +243,7 @@ export function PostContent({ sections }: { sections: BlogSection[] }) {
                 }
                 className="inline-flex items-center gap-1.5 rounded-full border border-border bg-bg-body px-3 py-1.5 text-xs text-text-muted hover:border-primary/40 hover:text-primary transition-colors"
               >
-                <span className="text-sm leading-none">{country.flag}</span>
+                <CountryFlag code={country.flag} className="w-5 h-3.5" />
                 {country.name}
               </Link>
             </li>

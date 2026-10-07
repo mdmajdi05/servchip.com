@@ -6,17 +6,17 @@ export const COUNTRIES: Country[] = [
     name: "United Arab Emirates",
     slug: "uae",
     code: "ae",
-    flag: "🇦🇪",
+    flag: "ae",
     region: "Middle East",
     description:
-      "Enterprise chip distribution and AI infrastructure supply across the UAE — Dubai, Abu Dhabi & Sharjah.",
+      "Enterprise chip distribution and AI infrastructure supply across the UAE - Dubai, Abu Dhabi & Sharjah.",
     longDescription:
-      "Servchip is a leading AI chip distributor in the UAE, supplying NVIDIA, AMD and Intel accelerators to data centers, sovereign AI programs and enterprises in Dubai, Abu Dhabi and Sharjah. With our Sharjah free zone operations, we deliver fast across the GCC with full customs clearance.",
+      "Servchip is a leading AI chip distributor in the UAE, supplying NVIDIA GPU servers, AI accelerators and enterprise data center GPUs to data centers, sovereign AI programs and enterprises in Dubai, Abu Dhabi and Sharjah. As an NVIDIA authorized dealer and wholesale AI accelerator supplier with Sharjah free-zone operations, we deliver fast across the GCC with full customs clearance.",
     hero: {
       label: "UAE",
       title: "AI Accelerators Delivered Across the UAE",
       subtitle:
-        "Enterprise GPU and AI chip supply for Dubai, Abu Dhabi & the wider GCC — fast delivery, authentic sourcing.",
+        "Enterprise GPU and AI chip supply for Dubai, Abu Dhabi & the wider GCC - fast delivery, authentic sourcing.",
     },
     faqs: [
       {
@@ -57,7 +57,7 @@ export const COUNTRIES: Country[] = [
     name: "United States",
     slug: "usa",
     code: "us",
-    flag: "🇺🇸",
+    flag: "us",
     region: "North America",
     description:
       "Enterprise AI chip procurement for US data centers, cloud providers and research labs.",
@@ -108,7 +108,7 @@ export const COUNTRIES: Country[] = [
     name: "Saudi Arabia",
     slug: "saudi-arabia",
     code: "sa",
-    flag: "🇸🇦",
+    flag: "sa",
     region: "Middle East",
     description:
       "AI chip supply for Saudi Arabia's Vision 2030 data center and sovereign AI initiatives.",
@@ -159,7 +159,7 @@ export const COUNTRIES: Country[] = [
     name: "Qatar",
     slug: "qatar",
     code: "qa",
-    flag: "🇶🇦",
+    flag: "qa",
     region: "Middle East",
     description:
       "Enterprise AI and HPC hardware supply for Qatar's research and data center ecosystem.",
@@ -210,7 +210,7 @@ export const COUNTRIES: Country[] = [
     name: "Oman",
     slug: "oman",
     code: "om",
-    flag: "🇴🇲",
+    flag: "om",
     region: "Middle East",
     description:
       "Enterprise AI infrastructure supply for Oman's growing technology and data center sector.",
@@ -261,7 +261,7 @@ export const COUNTRIES: Country[] = [
     name: "Singapore",
     slug: "singapore",
     code: "sg",
-    flag: "🇸🇬",
+    flag: "sg",
     region: "Southeast Asia",
     description:
       "Enterprise NVIDIA, AMD & Intel AI chip distribution for Singapore's data center and semiconductor hub.",
@@ -312,7 +312,7 @@ export const COUNTRIES: Country[] = [
     name: "Malaysia",
     slug: "malaysia",
     code: "my",
-    flag: "🇲🇾",
+    flag: "my",
     region: "Southeast Asia",
     description:
       "NVIDIA, AMD & Intel enterprise AI chip supply for Malaysia's data center and semiconductor manufacturing sector.",
@@ -363,7 +363,7 @@ export const COUNTRIES: Country[] = [
     name: "China",
     slug: "china",
     code: "cn",
-    flag: "🇨🇳",
+    flag: "cn",
     region: "East Asia",
     description:
       "Enterprise AI accelerator sourcing for Chinese data centers and sovereign AI initiatives.",
@@ -414,7 +414,7 @@ export const COUNTRIES: Country[] = [
     name: "Philippines",
     slug: "philippines",
     code: "ph",
-    flag: "🇵🇭",
+    flag: "ph",
     region: "Southeast Asia",
     description:
       "NVIDIA, AMD & Intel AI chip distribution for the Philippines' growing data center and enterprise market.",
@@ -465,7 +465,7 @@ export const COUNTRIES: Country[] = [
     name: "United Kingdom",
     slug: "united-kingdom",
     code: "uk",
-    flag: "🇬🇧",
+    flag: "uk",
     region: "Europe",
     description:
       "Enterprise AI accelerators, GPUs and data center hardware for UK data centers, universities and research institutions.",
@@ -516,7 +516,7 @@ export const COUNTRIES: Country[] = [
     name: "Germany",
     slug: "germany",
     code: "de",
-    flag: "🇩🇪",
+    flag: "de",
     region: "Europe",
     description:
       "Enterprise AI and HPC hardware supply for German data centers, automotive and industrial AI programs.",

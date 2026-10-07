@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import {
   createMetadata,
   createBreadcrumb,
@@ -33,7 +33,7 @@ const FAQS = [
   },
   {
     q: "Can Servchip help me choose the right AI chip for my workload?",
-    a: "Absolutely. Our multi-vendor certified engineering team provides free technical consultation to help match the right chip to your workload — whether it's AI training, inference, HPC, or data center operations. We offer architecture reviews, workload benchmarking, and side-by-side comparisons across NVIDIA, AMD, and Intel.",
+    a: "Absolutely. Our multi-vendor certified engineering team provides free technical consultation to help match the right chip to your workload - whether it's AI training, inference, HPC, or data center operations. We offer architecture reviews, workload benchmarking, and side-by-side comparisons across NVIDIA, AMD, and Intel.",
   },
   { q: AUTHORIZED_FAQ.question, a: AUTHORIZED_FAQ.answer },
   {

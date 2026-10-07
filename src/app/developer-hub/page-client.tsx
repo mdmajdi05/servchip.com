@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { AppLink as Link } from "@/components/ui/AppLink";
 import {
@@ -83,7 +83,7 @@ const DEV_FEATURES = [
     icon: Terminal,
     title: "Interactive Playground",
     description:
-      "Test API calls directly in your browser with our interactive playground. No setup required — just bring your API key.",
+      "Test API calls directly in your browser with our interactive playground. No setup required - just bring your API key.",
   },
   {
     icon: Webhook,

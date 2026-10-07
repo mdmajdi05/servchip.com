@@ -5,7 +5,7 @@ export const rfq: SeoPageTemplate = {
   label: "Request a Quote",
   title: "Request a Quote | AI Chip Pricing",
   description:
-    "Request a personalized quote for enterprise chips — NVIDIA H100, AMD MI300X, Intel Xeon and Gaudi 3. Volume discounts and 24-hour response.",
+    "Request a personalized quote for enterprise chips - NVIDIA H100, AMD MI300X, Intel Xeon and Gaudi 3. Volume discounts and 24-hour response.",
   keywords: [
     "enterprise chip pricing",
     "NVIDIA H100 quote",
@@ -14,16 +14,16 @@ export const rfq: SeoPageTemplate = {
     "bulk chip pricing",
     "data center hardware quote",
   ],
-  openGraphTitle: "Request a Quote | Servchip — Enterprise Chip Distributor",
+  openGraphTitle: "Request a Quote | Servchip - Enterprise Chip Distributor",
   openGraphDescription:
     "Get enterprise chip pricing. NVIDIA, AMD, Intel hardware. Volume discounts & 24-hour quotes.",
-  twitterTitle: "Request a Quote | Servchip — Enterprise Chip Distributor",
+  twitterTitle: "Request a Quote | Servchip - Enterprise Chip Distributor",
   twitterDescription:
     "Get enterprise chip pricing. NVIDIA, AMD, Intel hardware. Volume discounts & 24-hour quotes.",
   country: {
     title: "Request a Quote{{countrySuffix}} | AI Chip Pricing",
     description:
-      "Request a personalized quote for enterprise chips{{countrySuffix}} — NVIDIA H100, AMD MI300X, Intel Xeon & Gaudi 3. {{currency}} volume discounts and 24-hour response.",
+      "Request a personalized quote for enterprise chips{{countrySuffix}} - NVIDIA H100, AMD MI300X, Intel Xeon & Gaudi 3. {{currency}} volume discounts and 24-hour response.",
     keywords: [
       "enterprise chip pricing {{name}}",
       "NVIDIA H100 quote {{name}}",

@@ -58,7 +58,7 @@ export function BrandSpotlight() {
         <SectionHeading
           label="Products"
           title="Top Enterprise Products"
-          subtitle="Our most in-demand enterprise chips — handpicked for AI, HPC, and data center workloads"
+          subtitle="Our most in-demand enterprise chips - handpicked for AI, HPC, and data center workloads"
           align="center"
         />
 
@@ -147,8 +147,8 @@ export function BrandSpotlight() {
                               {chip.name}
                             </p>
                             <p className="text-[11px] font-mono text-text-dim mt-0.5">
-                              {chip.specifications.memory} ·{" "}
-                              {chip.specifications.memoryBandwidth} ·{" "}
+                              {chip.specifications.memory} |{" "}
+                              {chip.specifications.memoryBandwidth} |{" "}
                               {chip.specifications.tdp}
                             </p>
                           </div>

@@ -126,7 +126,7 @@ export const post: BlogPost = {
             "Large Language Models (LLMs): Massive memory bandwidth allows seamless execution of 100B+ parameter MoE models with extended context windows (e.g., 128k to 1M tokens).",
             "Agentic AI Systems: Agentic workflows rely on iterative search, chain-of-thought processing, and heavy KV cache management. The B300 prevents memory spilling to system RAM, maintaining rapid latency standards.",
             "Retrieval-Augmented Generation (RAG): High memory capacity keeps massive vector databases and embedding indices directly in VRAM for near-instant retrieval times.",
-            "Multi-Modal AI: Processing text, high-resolution video, audio, and spatial 3D data concurrently demands high FLOPS and bandwidth — a domain where the B300 excels.",
+            "Multi-Modal AI: Processing text, high-resolution video, audio, and spatial 3D data concurrently demands high FLOPS and bandwidth - a domain where the B300 excels.",
           ],
         },
       ],
@@ -208,7 +208,7 @@ export const post: BlogPost = {
       content: [
         {
           type: "paragraph",
-          text: "The transition toward AI Factories — data centers engineered specifically to output tokens rather than compute units — requires rethinking thermal management, power, and memory layout.",
+          text: "The transition toward AI Factories - data centers engineered specifically to output tokens rather than compute units - requires rethinking thermal management, power, and memory layout.",
         },
         {
           type: "paragraph",

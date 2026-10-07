@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { useEffect, useState } from "react";
 
@@ -285,7 +285,7 @@ export function AnimatedLogo({
             fontSize="5"
             letterSpacing="1"
           >
-            POWERING AI • MULTI-THREAD
+            POWERING AI | MULTI-THREAD
           </text>
 
           {/* Glowing Node Indicators (Four Neon Corner Lights) */}

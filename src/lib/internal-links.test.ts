@@ -11,7 +11,7 @@ import {
  * exist on the live site. Runs automatically via `npm run prebuild` (and on
  * `npm test`). When this fails, read the printed list: each entry says which
  * post/file, which section & block, the broken link, and the closest live
- * replacements. Update the link to the current real URL — never ship broken
+ * replacements. Update the link to the current real URL - never ship broken
  * links.
  */
 describe("internal link integrity", () => {
@@ -85,7 +85,7 @@ describe("internal link integrity", () => {
       const r = validateInternalPath(url, registry);
       expect(
         r.ok,
-        `${url} should be valid — ${r.ok ? "" : (r as { reason: string }).reason}`,
+        `${url} should be valid - ${r.ok ? "" : (r as { reason: string }).reason}`,
       ).toBe(true);
     }
 

@@ -16,10 +16,10 @@ export const faq: SeoPageTemplate = {
     "data center hardware FAQ",
     "chip distributor questions",
   ],
-  openGraphTitle: "FAQ | Servchip — Enterprise Chip Distributor",
+  openGraphTitle: "FAQ | Servchip - Enterprise Chip Distributor",
   openGraphDescription:
     "Common questions about buying AI chips, semiconductor procurement, enterprise chip purchasing, shipping, warranty & support.",
-  twitterTitle: "FAQ | Servchip — Enterprise Chip Distributor",
+  twitterTitle: "FAQ | Servchip - Enterprise Chip Distributor",
   twitterDescription:
     "Common questions about buying AI chips, semiconductor procurement, enterprise chip purchasing, shipping, warranty & support.",
   country: {
@@ -32,8 +32,8 @@ export const faq: SeoPageTemplate = {
       "semiconductor procurement {{name}}",
       "NVIDIA H100 buying guide {{name}}",
     ],
-    openGraphTitle: "FAQ {{name}} | Servchip — Enterprise Chip Distributor",
-    twitterTitle: "FAQ {{name}} | Servchip — Enterprise Chip Distributor",
+    openGraphTitle: "FAQ {{name}} | Servchip - Enterprise Chip Distributor",
+    twitterTitle: "FAQ {{name}} | Servchip - Enterprise Chip Distributor",
     openGraphDescription:
       "Common questions about buying AI chips and enterprise hardware{{countrySuffix}}.",
     twitterDescription:

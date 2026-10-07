@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 import { AppLink as Link } from "@/components/ui/AppLink";
 import {
   ArrowRight,
@@ -151,7 +151,7 @@ const INDUSTRY_SOLUTIONS = [
     icon: Car,
     title: "Automotive",
     description:
-      "Develop autonomous driving systems with NVIDIA DRIVE Thor and DRIVE Orin server SoCs — ASIL-D safety, multi-modal AI.",
+      "Develop autonomous driving systems with NVIDIA DRIVE Thor and DRIVE Orin server SoCs - ASIL-D safety, multi-modal AI.",
     points: [
       "ADAS / AD stack",
       "Multi-modal perception",
@@ -237,7 +237,7 @@ export default function SolutionsPage() {
       <PageHero
         label="Solutions"
         title="Industry-Specific AI Computing Solutions"
-        subtitle="From enterprise AI to healthcare, automotive, and government — we architect complete solutions using NVIDIA, AMD, and Intel chips tailored to your industry's unique data center compute, compliance, and scale requirements."
+        subtitle="From enterprise AI to healthcare, automotive, and government - we architect complete solutions using NVIDIA, AMD, and Intel chips tailored to your industry's unique data center compute, compliance, and scale requirements."
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Solutions" }]}
       />
 
@@ -277,7 +277,7 @@ export default function SolutionsPage() {
           <SectionHeading
             label="Solutions"
             title="Industry-Specific AI Computing Solutions"
-            subtitle="From enterprise AI to healthcare and research — we architect complete solutions using NVIDIA, AMD, and Intel chips tailored to your data center needs."
+            subtitle="From enterprise AI to healthcare and research - we architect complete solutions using NVIDIA, AMD, and Intel chips tailored to your data center needs."
           />
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
@@ -348,8 +348,8 @@ export default function SolutionsPage() {
               Solutions by Industry
             </h2>
             <p className="text-base md:text-lg text-text-muted max-w-2xl mx-auto mt-3">
-              Eight specialized verticals — from enterprise AI and HPC to
-              healthcare and defense — each backed by certified NVIDIA, AMD, and
+              Eight specialized verticals - from enterprise AI and HPC to
+              healthcare and defense - each backed by certified NVIDIA, AMD, and
               Intel engineering expertise and proven data center reference
               architectures.
             </p>
@@ -418,7 +418,7 @@ export default function SolutionsPage() {
             </h2>
             <p className="text-base md:text-lg text-text-muted max-w-2xl mx-auto mt-3">
               Real-world enterprise chip deployments from leading Indian
-              enterprises and research institutions — featuring NVIDIA, AMD, and
+              enterprises and research institutions - featuring NVIDIA, AMD, and
               Intel server hardware.
             </p>
           </div>
@@ -480,7 +480,7 @@ export default function SolutionsPage() {
                   <div className="pt-3 border-t border-border">
                     <div className="text-sm font-bold text-text">{t.name}</div>
                     <div className="text-[11px] text-text-dim font-mono">
-                      {t.role} · {t.company}
+                      {t.role} | {t.company}
                     </div>
                   </div>
                 </div>
@@ -502,7 +502,7 @@ export default function SolutionsPage() {
               </h3>
               <p className="text-sm text-text-muted max-w-2xl">
                 Our multi-vendor certified engineers will design a complete
-                reference architecture tailored to your industry and workload —
+                reference architecture tailored to your industry and workload -
                 at no cost.
               </p>
             </div>

@@ -45,8 +45,9 @@ export default async function Page(props: {
 }) {
   const { country, slug } = await props.params;
   const countryObj = getCountryByCode(country);
+  const market = COUNTRY_MARKETS[country];
   const brand = getBrandBySlug(slug);
-  if (!countryObj || !brand) notFound();
+  if (!countryObj || !market || !brand) notFound();
 
   return (
     <>
@@ -59,7 +60,7 @@ export default async function Page(props: {
           ]),
         )}
       />
-      <BrandPage />
+      <BrandPage country={countryObj} market={market} />
     </>
   );
 }

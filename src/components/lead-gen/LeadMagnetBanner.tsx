@@ -88,7 +88,7 @@ export function LeadMagnetBanner() {
             <p className="text-xs text-error">{message}</p>
           )}
           <p className="text-[11px] text-text-dim text-center">
-            Free PDF • No credit card required • Instant access
+            Free PDF | No credit card required | Instant access
           </p>
         </form>
       )}

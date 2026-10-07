@@ -2,10 +2,11 @@
 
 import { useParams } from "next/navigation";
 import { AppLink as Link } from "@/components/ui/AppLink";
+import { CountryFlag } from "@/components/ui/CountryFlag";
 import {
   ArrowRight,
   ChevronDown,
-  HelpCircle,
+  MessageCircle,
   Cpu,
   MapPin,
   Truck,
@@ -68,7 +69,12 @@ export default function CountryPage() {
   return (
     <div className="min-h-screen bg-bg-dark">
       <PageHero
-        label={`${country.flag} ${country.region}`}
+        label={
+          <span className="inline-flex items-center gap-1.5">
+            <CountryFlag code={country.flag} />
+            <span>{country.region}</span>
+          </span>
+        }
         title={country.hero.title}
         subtitle={country.hero.subtitle}
         breadcrumbs={[
@@ -164,7 +170,7 @@ export default function CountryPage() {
         <div className="max-w-4xl mx-auto px-4">
           <SectionHeading
             label="FAQ"
-            title={`Frequently Asked Questions — ${country.name}`}
+            title={`Frequently Asked Questions - ${country.name}`}
             align="center"
           />
           <div className="space-y-3">
@@ -185,7 +191,7 @@ export default function CountryPage() {
                   >
                     <span className="text-sm font-semibold text-text flex items-center gap-3">
                       <span className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <HelpCircle className="w-3.5 h-3.5 text-primary" />
+                        <MessageCircle className="w-3.5 h-3.5 text-primary" />
                       </span>
                       {faq.question}
                     </span>

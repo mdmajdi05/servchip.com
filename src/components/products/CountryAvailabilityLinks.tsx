@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { COUNTRIES, getCountryPath } from "@/data/countries";
+import { CountryFlag } from "@/components/ui/CountryFlag";
 
 export function CountryAvailabilityLinks({
   productName,
@@ -14,7 +15,7 @@ export function CountryAvailabilityLinks({
   return (
     <div className={`border-t border-border/60 pt-5 ${className ?? ""}`}>
       <p className="text-sm font-semibold text-text mb-3">
-        {productName} — available in
+        {productName} - available in
       </p>
       <ul className="flex flex-wrap gap-2">
         {countries.map((country) => (
@@ -23,7 +24,7 @@ export function CountryAvailabilityLinks({
               href={getCountryPath(country)}
               className="inline-flex items-center gap-1.5 rounded-full border border-border bg-surface px-3 py-1.5 text-xs text-text-muted hover:border-primary/40 hover:text-primary transition-colors"
             >
-              <span className="text-sm leading-none">{country.flag}</span>
+              <CountryFlag code={country.flag} className="w-5 h-3.5" />
               {country.name}
             </Link>
           </li>

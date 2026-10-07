@@ -14,7 +14,7 @@ export const COUNTRY_MARKETS: Record<string, CountryMarket> = {
       email: "sales@servchip.com",
       phone: "+91 7982498712",
       phoneDisplay: "+91 7982498712",
-      hours: "Mon–Fri, 9am–6pm ET",
+      hours: "Mon-Fri, 9am-6pm ET",
     },
   },
   uk: {
@@ -30,7 +30,7 @@ export const COUNTRY_MARKETS: Record<string, CountryMarket> = {
       email: "sales@servchip.com",
       phone: "+91 7982498712",
       phoneDisplay: "+91 7982498712",
-      hours: "Mon–Fri, 9am–6pm GMT",
+      hours: "Mon-Fri, 9am-6pm GMT",
     },
   },
   de: {
@@ -46,7 +46,7 @@ export const COUNTRY_MARKETS: Record<string, CountryMarket> = {
       email: "sales@servchip.com",
       phone: "+91 7982498712",
       phoneDisplay: "+91 7982498712",
-      hours: "Mon–Fri, 9am–6pm CET",
+      hours: "Mon-Fri, 9am-6pm CET",
     },
   },
   ae: {
@@ -62,7 +62,7 @@ export const COUNTRY_MARKETS: Record<string, CountryMarket> = {
       email: "sales@servchip.com",
       phone: "+91 7982498712",
       phoneDisplay: "+91 7982498712",
-      hours: "Mon–Sat, 9am–6pm GST",
+      hours: "Mon-Sat, 9am-6pm GST",
     },
   },
   in: {
@@ -78,7 +78,7 @@ export const COUNTRY_MARKETS: Record<string, CountryMarket> = {
       email: "sales@servchip.com",
       phone: "+91 7982498712",
       phoneDisplay: "+91 7982498712",
-      hours: "Mon–Sat, 9am–6pm IST",
+      hours: "Mon-Sat, 9am-6pm IST",
     },
   },
 };

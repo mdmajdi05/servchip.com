@@ -37,7 +37,7 @@ function getUniqueSpecValues(
   const values = new Set<string>();
   CHIPS.forEach((chip) => {
     const val = chip.specifications[key];
-    if (val && val !== "—") values.add(val);
+    if (val && val !== "-") values.add(val);
   });
   return Array.from(values).sort();
 }

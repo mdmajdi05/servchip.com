@@ -14,10 +14,10 @@ export const developerHub: SeoPageTemplate = {
     "enterprise chip integration",
     "GPU SDK documentation",
   ],
-  openGraphTitle: "Developer Hub | Servchip — Enterprise AI Hardware",
+  openGraphTitle: "Developer Hub | Servchip - Enterprise AI Hardware",
   openGraphDescription:
     "SDK docs, API reference & integration guides for NVIDIA CUDA, AMD ROCm, Intel oneAPI across enterprise chip platforms.",
-  twitterTitle: "Developer Hub | Servchip — Enterprise AI Hardware",
+  twitterTitle: "Developer Hub | Servchip - Enterprise AI Hardware",
   twitterDescription:
     "SDK docs, API reference & integration guides for NVIDIA CUDA, AMD ROCm, Intel oneAPI across enterprise chip platforms.",
   country: {

@@ -7,7 +7,7 @@ import { SUPPORTED_COUNTRIES } from "@/lib/localized-path";
  *
  * Only locale codes that have BOTH a market definition and a country record
  * are real pages. Any other code (e.g. /om, /ph, /qa, /sg) previously fell
- * through to soft-404 homepage content — a redirect-free hard 404 is emitted
+ * through to soft-404 homepage content - a redirect-free hard 404 is emitted
  * here so Google never treats a nonexistent locale as a live page.
  */
 export default async function CountryLayout({

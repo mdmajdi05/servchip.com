@@ -25,7 +25,8 @@ import { BRANDS } from "@/data/brands";
 import { CATEGORIES } from "@/data/categories";
 import { ProductCard } from "@/components/products/ProductCard";
 import { ConfiguratorPromo } from "@/components/shared/ConfiguratorPromo";
-import type { ProductType } from "@/types";
+import { CatalogueExtras } from "@/components/products/CatalogueExtras";
+import type { ProductType, Country, CountryMarket } from "@/types";
 type FilterType = ProductType | "all";
 const TYPE_TABS: { type: FilterType; label: string; icon: typeof Cpu }[] = [
   { type: "all", label: "All", icon: Cpu },
@@ -35,7 +36,13 @@ const TYPE_TABS: { type: FilterType; label: string; icon: typeof Cpu }[] = [
   { type: "memory", label: "Memory", icon: MemoryStick },
   { type: "storage", label: "Storage", icon: HardDrive },
 ];
-export default function ProductsPage() {
+export default function ProductsPage({
+  country,
+  market,
+}: {
+  country?: Country;
+  market?: CountryMarket;
+}) {
   const [search, setSearch] = useState("");
   const [typeFilter, setTypeFilter] = useState<FilterType>("all");
   const [manufacturerFilter, setManufacturerFilter] = useState<string>("all");
@@ -257,6 +264,7 @@ export default function ProductsPage() {
           </div>
         )}
       </div>
+      <CatalogueExtras country={country} market={market} />
       <ConfiguratorPromo />
     </div>
   );

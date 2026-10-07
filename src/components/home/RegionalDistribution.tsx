@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { AppLink as Link } from "@/components/ui/AppLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { CountryFlag } from "@/components/ui/CountryFlag";
 import {
   ArrowRight,
   Ship,
@@ -37,7 +38,7 @@ const REGIONS = [
     featured: true,
     highlights: [
       { icon: Timer, label: "Same-week GCC delivery" },
-      { icon: PackageCheck, label: "DDP — customs cleared" },
+      { icon: PackageCheck, label: "DDP - customs cleared" },
     ],
     desc: (
       <>
@@ -61,15 +62,15 @@ const REGIONS = [
         <strong className="text-text">
           Saudi Arabia Vision 2030 sovereign AI programs
         </strong>{" "}
-        in Riyadh, Jeddah and Dammam — with full GCC customs clearance, 400GbE
+        in Riyadh, Jeddah and Dammam - with full GCC customs clearance, 400GbE
         networking and rack-scale integration.
       </>
     ),
     countries: [
-      { name: "United Arab Emirates", flag: "🇦🇪", slug: "uae" },
-      { name: "Saudi Arabia", flag: "🇸🇦", slug: "saudi-arabia" },
-      { name: "Qatar", flag: "🇶🇦", slug: "qatar" },
-      { name: "Oman", flag: "🇴🇲", slug: "oman" },
+      { name: "United Arab Emirates", flag: "ae", slug: "uae" },
+      { name: "Saudi Arabia", flag: "sa", slug: "saudi-arabia" },
+      { name: "Qatar", flag: "qa", slug: "qatar" },
+      { name: "Oman", flag: "om", slug: "oman" },
     ],
   },
   {
@@ -105,7 +106,7 @@ const REGIONS = [
         domestic shipping for H100, MI300X, Xeon and HBM memory orders.
       </>
     ),
-    countries: [{ name: "United States", flag: "🇺🇸", slug: "usa" }],
+    countries: [{ name: "United States", flag: "us", slug: "usa" }],
   },
   {
     icon: Rocket,
@@ -124,17 +125,17 @@ const REGIONS = [
         <strong className="text-text">
           Singapore, Malaysia, the Philippines and China
         </strong>{" "}
-        — from AI training clusters to HPC systems. We serve Singapore&apos;s
+        - from AI training clusters to HPC systems. We serve Singapore&apos;s
         data center hub, Malaysia&apos;s smart-city programs, Philippine cloud
         providers and Chinese enterprises with authentic NVIDIA, AMD and Intel
         chips, secure logistics and full customs support.
       </>
     ),
     countries: [
-      { name: "Singapore", flag: "🇸🇬", slug: "singapore" },
-      { name: "Malaysia", flag: "🇲🇾", slug: "malaysia" },
-      { name: "China", flag: "🇨🇳", slug: "china" },
-      { name: "Philippines", flag: "🇵🇭", slug: "philippines" },
+      { name: "Singapore", flag: "sg", slug: "singapore" },
+      { name: "Malaysia", flag: "my", slug: "malaysia" },
+      { name: "China", flag: "cn", slug: "china" },
+      { name: "Philippines", flag: "ph", slug: "philippines" },
     ],
   },
   {
@@ -166,8 +167,8 @@ const REGIONS = [
       </>
     ),
     countries: [
-      { name: "United Kingdom", flag: "🇬🇧", slug: "united-kingdom" },
-      { name: "Germany", flag: "🇩🇪", slug: "germany" },
+      { name: "United Kingdom", flag: "uk", slug: "united-kingdom" },
+      { name: "Germany", flag: "de", slug: "germany" },
     ],
   },
 ];
@@ -221,7 +222,7 @@ export function RegionalDistribution() {
         <SectionHeading
           label="Regional Distribution"
           title="Enterprise Chip Distribution in the Gulf, Americas, Asia & Europe"
-          subtitle="Authorized NVIDIA, AMD & Intel distribution across the UAE, USA, Singapore, Malaysia, UK, Germany and 150+ countries — with regional hubs and global delivery"
+          subtitle="Authorized NVIDIA, AMD & Intel distribution across the UAE, USA, Singapore, Malaysia, UK, Germany and 150+ countries - with regional hubs and global delivery"
           align="center"
         />
 
@@ -266,7 +267,7 @@ export function RegionalDistribution() {
                       {r.title}
                     </p>
                     <p className="text-[10px] font-mono text-text-dim uppercase tracking-wider">
-                      {r.countries.length} markets ·{" "}
+                      {r.countries.length} markets |{" "}
                       {r.featured ? "Flagship" : "Served"}
                     </p>
                   </div>
@@ -286,7 +287,7 @@ export function RegionalDistribution() {
             </Link>
           </div>
 
-          {/* Detail panel — all regions stay in DOM, revealed via CSS */}
+          {/* Detail panel - all regions stay in DOM, revealed via CSS */}
           <div className="lg:col-span-8 grid">
             {REGIONS.map((r, i) => (
               <div
@@ -358,7 +359,10 @@ export function RegionalDistribution() {
                             href={`/countries/${c.slug}`}
                             className="group/country inline-flex items-center rounded-full border border-border/70 bg-surface px-3 py-1.5 text-[11px] font-medium text-text-dim hover:border-primary/40 hover:text-primary transition-colors"
                           >
-                            <span className="mr-1.5">{c.flag}</span>
+                            <CountryFlag
+                              code={c.flag}
+                              className="mr-1.5 w-5 h-3.5"
+                            />
                             {c.name}
                             <ArrowRight className="w-3 h-3 ml-1.5 opacity-0 group-hover/country:opacity-100 -translate-x-1 group-hover/country:translate-x-0 transition-all" />
                           </Link>

@@ -1,10 +1,10 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { createSeoMetadata, breadcrumbSchema } from "@/lib/seo";
 import PageClient from "./page-client";
 
 export const metadata: Metadata = createSeoMetadata({
   title:
-    "Buy Enterprise Chips — NVIDIA H100, AMD MI300X, Intel Xeon & AI Accelerators | Servchip",
+    "Buy Enterprise Chips - NVIDIA H100, AMD MI300X, Intel Xeon & AI Accelerators | Servchip",
   description:
     "Buy authentic enterprise chips from an ISO 9001 certified distributor. NVIDIA H100, H200, B200, AMD MI300X, Intel Xeon & Gaudi 3. AI accelerators, server CPUs, data center GPUs. Semiconductor procurement with global shipping.",
   path: "/products",
@@ -19,13 +19,13 @@ export const metadata: Metadata = createSeoMetadata({
     "enterprise hardware store",
   ],
   openGraphTitle:
-    "Buy Enterprise Chips | Servchip — NVIDIA, AMD, Intel AI Accelerators",
+    "Buy Enterprise Chips | Servchip - NVIDIA, AMD, Intel AI Accelerators",
   openGraphDescription:
-    "Buy authentic enterprise chips — NVIDIA H100, AMD MI300X, Intel Xeon. ISO 9001 certified distributor with global shipping.",
+    "Buy authentic enterprise chips - NVIDIA H100, AMD MI300X, Intel Xeon. ISO 9001 certified distributor with global shipping.",
   twitterTitle:
-    "Buy Enterprise Chips | Servchip — NVIDIA, AMD, Intel AI Accelerators",
+    "Buy Enterprise Chips | Servchip - NVIDIA, AMD, Intel AI Accelerators",
   twitterDescription:
-    "Buy authentic enterprise chips — NVIDIA H100, AMD MI300X, Intel Xeon. ISO 9001 certified distributor with global shipping.",
+    "Buy authentic enterprise chips - NVIDIA H100, AMD MI300X, Intel Xeon. ISO 9001 certified distributor with global shipping.",
 });
 
 export default function Page() {

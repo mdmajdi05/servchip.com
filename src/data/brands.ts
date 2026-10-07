@@ -6,7 +6,7 @@ export const BRANDS: Brand[] = [
     name: "NVIDIA",
     slug: "nvidia",
     description:
-      "NVIDIA GPU distributor for enterprise AI, HPC and data center infrastructure — including H100, H200, B200, GB200 and RTX 6000 Ada GPUs.",
+      "NVIDIA GPU distributor for enterprise AI, HPC and data center infrastructure - including H100, H200, B200, GB200 and RTX 6000 Ada GPUs.",
     longDescription:
       "NVIDIA is the world's leading provider of AI GPUs, data center accelerators and accelerated computing platforms. From H100 and H200 Hopper GPUs to B200 and GB200 Blackwell accelerators, NVIDIA architecture powers AI training, inference, HPC and professional visualization workloads across every industry. Servchip sources and supplies NVIDIA data center GPUs, professional RTX GPUs, networking hardware and Grace CPU solutions for enterprise deployments worldwide.",
     website: "https://www.nvidia.com",
@@ -157,7 +157,7 @@ export const BRANDS: Brand[] = [
     name: "AMD",
     slug: "amd",
     description:
-      "AMD GPU and CPU distributor for enterprise AI, HPC and data centers — Instinct MI300X, MI325X, MI350X accelerators and EPYC 9005 server CPUs.",
+      "AMD GPU and CPU distributor for enterprise AI, HPC and data centers - Instinct MI300X, MI325X, MI350X accelerators and EPYC 9005 server CPUs.",
     longDescription:
       "AMD delivers high-performance CPUs, GPUs and adaptive computing solutions for AI, HPC, data centers and professional visualization. The AMD Instinct MI300, MI325 and MI350 accelerator series, alongside EPYC 9005 and 9004 server processors, power some of the world's most demanding AI training and inference workloads. Servchip supplies AMD Instinct accelerators, Radeon Pro GPUs and EPYC CPUs for enterprise and hyperscale data centers.",
     website: "https://www.amd.com",
@@ -237,14 +237,14 @@ export const BRANDS: Brand[] = [
             id: "amd-epyc-9005",
             name: "EPYC 9005 Series",
             slug: "epyc-9005-series",
-            description: "Turin — 5th gen EPYC",
+            description: "Turin - 5th gen EPYC",
             chipIds: ["amd-epyc-9755", "amd-epyc-9655"],
           },
           {
             id: "amd-epyc-9004",
             name: "EPYC 9004 Series",
             slug: "epyc-9004-series",
-            description: "Genoa — 4th gen EPYC",
+            description: "Genoa - 4th gen EPYC",
             chipIds: ["amd-epyc-9654"],
           },
         ],
@@ -272,7 +272,7 @@ export const BRANDS: Brand[] = [
     name: "Intel",
     slug: "intel",
     description:
-      "Intel CPU and AI accelerator distributor for enterprise data centers — Xeon 6 processors, Gaudi 3 AI accelerators and Arc Pro GPUs.",
+      "Intel CPU and AI accelerator distributor for enterprise data centers - Xeon 6 processors, Gaudi 3 AI accelerators and Arc Pro GPUs.",
     longDescription:
       "Intel powers the world's data centers, AI workloads and edge computing with Xeon server processors, Gaudi AI training and inference accelerators, Arc GPUs and programmable FPGA solutions. The Xeon 6 and Gaudi 3 platforms deliver enterprise-grade performance for AI, HPC and cloud workloads. Servchip distributes Intel Xeon CPUs, Gaudi AI accelerators, Arc Pro GPUs and Ethernet networking hardware for enterprise infrastructure.",
     website: "https://www.intel.com",
@@ -402,7 +402,7 @@ export const BRANDS: Brand[] = [
     name: "Broadcom",
     slug: "broadcom",
     description:
-      "Broadcom networking silicon distributor for AI and data center networks — Tomahawk 6 and Jericho 3AI Ethernet switch silicon.",
+      "Broadcom networking silicon distributor for AI and data center networks - Tomahawk 6 and Jericho 3AI Ethernet switch silicon.",
     longDescription:
       "Broadcom is a global leader in networking semiconductors, providing high-performance Ethernet switch silicon that powers the world's largest data centers and AI clusters. The Tomahawk 6 platform delivers 51.2 Tbps switching capacity, while Jericho 3AI is purpose-built for AI-optimized Ethernet fabrics. Servchip supplies Broadcom Ethernet switch silicon for hyperscale, enterprise and AI cluster networking deployments.",
     website: "https://www.broadcom.com",
@@ -439,7 +439,7 @@ export const BRANDS: Brand[] = [
     name: "Marvell",
     slug: "marvell",
     description:
-      "Marvell Ethernet switch and networking silicon distributor for cloud and AI data centers — Teralynx 10 switch platform.",
+      "Marvell Ethernet switch and networking silicon distributor for cloud and AI data centers - Teralynx 10 switch platform.",
     longDescription:
       "Marvell delivers data infrastructure technology, including the Teralynx Ethernet switch family, custom ASICs and storage controllers that power cloud, AI and enterprise data centers. Teralynx 10 provides 51.2 Tbps of switching bandwidth for high-density networking. Servchip supplies Marvell Ethernet switch silicon for hyperscale and enterprise data center networking infrastructure.",
     website: "https://www.marvell.com",
@@ -469,7 +469,7 @@ export const BRANDS: Brand[] = [
     name: "Cisco",
     slug: "cisco",
     description:
-      "Cisco networking silicon distributor for routers, switches and AI infrastructure — Silicon One programmable networking platform.",
+      "Cisco networking silicon distributor for routers, switches and AI infrastructure - Silicon One programmable networking platform.",
     longDescription:
       "Cisco is the worldwide leader in networking technology. The Cisco Silicon One family provides unified, programmable silicon architecture used across routers, switches and AI network fabrics, giving operators a single silicon platform for enterprise and hyperscale networks. Servchip supplies Cisco Silicon One networking hardware for enterprise, data center and AI network infrastructure.",
     website: "https://www.cisco.com",
@@ -500,7 +500,7 @@ export const BRANDS: Brand[] = [
     name: "Dell Technologies",
     slug: "dell-technologies",
     description:
-      "Dell PowerEdge AI server distributor for enterprise data centers — XE9680 and XE8640 GPU-accelerated servers.",
+      "Dell PowerEdge AI server distributor for enterprise data centers - XE9680 and XE8640 GPU-accelerated servers.",
     longDescription:
       "Dell Technologies delivers comprehensive AI infrastructure solutions with PowerEdge servers optimized for AI training, inference and HPC workloads. The PowerEdge XE9680 and XE8640 platforms are purpose-built for GPU-dense AI compute at scale. Servchip supplies Dell PowerEdge AI servers backed by global enterprise support for data center and AI infrastructure deployments.",
     website: "https://www.dell.com",
@@ -530,7 +530,7 @@ export const BRANDS: Brand[] = [
     name: "Hewlett Packard Enterprise",
     slug: "hewlett-packard-enterprise",
     description:
-      "HPE AI and HPC server distributor for enterprise data centers — Cray XD670 servers and ProLiant DL enterprise systems.",
+      "HPE AI and HPC server distributor for enterprise data centers - Cray XD670 servers and ProLiant DL enterprise systems.",
     longDescription:
       "Hewlett Packard Enterprise (HPE) delivers AI-optimized servers including the Cray XD family for HPC and AI training, and ProLiant servers for general enterprise workloads. The Cray XD670 platform is engineered for large-scale AI and high-performance computing deployments. Servchip supplies HPE Cray XD and ProLiant servers for enterprise data center and AI infrastructure.",
     website: "https://www.hpe.com",
@@ -576,7 +576,7 @@ export const BRANDS: Brand[] = [
     name: "Supermicro",
     slug: "supermicro",
     description:
-      "Supermicro GPU server distributor for AI, deep learning and HPC workloads — AS-8125GS and SYS-821GE platforms.",
+      "Supermicro GPU server distributor for AI, deep learning and HPC workloads - AS-8125GS and SYS-821GE platforms.",
     longDescription:
       "Supermicro provides a broad portfolio of GPU-accelerated servers optimized for AI, deep learning and HPC workloads, with leadership in liquid-cooled data center solutions. The AS-8125GS and SYS-821GE platforms deliver dense GPU compute for AI training and inference. Servchip supplies Supermicro GPU servers for enterprise and hyperscale AI infrastructure deployments.",
     website: "https://www.supermicro.com",
@@ -606,7 +606,7 @@ export const BRANDS: Brand[] = [
     name: "Lenovo",
     slug: "lenovo",
     description:
-      "Lenovo ThinkSystem AI server distributor for enterprise data centers — SR780A and SR685A AI-optimized servers.",
+      "Lenovo ThinkSystem AI server distributor for enterprise data centers - SR780A and SR685A AI-optimized servers.",
     longDescription:
       "Lenovo delivers AI-optimized server solutions including the ThinkSystem SR series, designed for AI training, inference and high-performance computing workloads across enterprise data centers. The SR780A and SR685A platforms support dense GPU configurations for demanding AI workloads. Servchip supplies Lenovo ThinkSystem AI servers for enterprise and data center infrastructure.",
     website: "https://www.lenovo.com",
@@ -636,7 +636,7 @@ export const BRANDS: Brand[] = [
     name: "Gigabyte",
     slug: "gigabyte",
     description:
-      "Gigabyte GPU server distributor for AI and HPC workloads — G593 GPU-accelerated server platform.",
+      "Gigabyte GPU server distributor for AI and HPC workloads - G593 GPU-accelerated server platform.",
     longDescription:
       "Gigabyte Technology provides high-performance GPU servers and workstations optimized for AI, deep learning and HPC applications with robust thermal and power designs. The G593 platform is engineered for dense GPU compute in AI training and inference workloads. Servchip supplies Gigabyte GPU servers for enterprise and data center AI infrastructure.",
     website: "https://www.gigabyte.com",
@@ -666,7 +666,7 @@ export const BRANDS: Brand[] = [
     name: "ASUS",
     slug: "asus",
     description:
-      "ASUS AI server distributor for enterprise data center workloads — ESC N8 GPU server platform.",
+      "ASUS AI server distributor for enterprise data center workloads - ESC N8 GPU server platform.",
     longDescription:
       "ASUS provides AI-optimized server platforms and GPU workstations, delivering enterprise-grade performance for AI training, inference and data analytics workloads. The ESC N8 platform supports high-density GPU configurations for demanding compute environments. Servchip supplies ASUS ESC AI servers for enterprise data center and AI infrastructure deployments.",
     website: "https://www.asus.com",
@@ -696,7 +696,7 @@ export const BRANDS: Brand[] = [
     name: "Inspur",
     slug: "inspur",
     description:
-      "Inspur AI server distributor for enterprise, HPC and cloud data centers — NF5688 GPU server platform.",
+      "Inspur AI server distributor for enterprise, HPC and cloud data centers - NF5688 GPU server platform.",
     longDescription:
       "Inspur is a leading provider of AI server platforms, delivering high-performance computing solutions for AI training, inference and cloud data centers worldwide. The NF5688 platform is built for large-scale, GPU-dense AI compute environments. Servchip supplies Inspur NF Series AI servers for enterprise and cloud data center infrastructure.",
     website: "https://www.inspur.com",
@@ -816,7 +816,7 @@ export const BRANDS: Brand[] = [
     name: "Samsung",
     slug: "samsung",
     description:
-      "Samsung memory and SSD distributor for AI and enterprise data centers — HBM3E, DDR5 RDIMM, PM1743 and PM9D3 enterprise SSDs.",
+      "Samsung memory and SSD distributor for AI and enterprise data centers - HBM3E, DDR5 RDIMM, PM1743 and PM9D3 enterprise SSDs.",
     longDescription:
       "Samsung is the world leader in memory and storage technology, providing HBM3E high-bandwidth memory, DDR5 RDIMM server memory and enterprise NVMe SSDs for AI, HPC and cloud data centers. The PM1743 and PM9D3 SSD platforms deliver high-throughput enterprise storage performance. Servchip supplies Samsung HBM3E memory, DDR5 RDIMM and enterprise SSDs for AI and data center infrastructure.",
     website: "https://www.samsung.com",
@@ -906,7 +906,7 @@ export const BRANDS: Brand[] = [
     name: "Micron",
     slug: "micron",
     description:
-      "Micron memory and SSD distributor for AI, cloud and enterprise data centers — HBM3E, DDR5 RDIMM and 9550 NVMe SSDs.",
+      "Micron memory and SSD distributor for AI, cloud and enterprise data centers - HBM3E, DDR5 RDIMM and 9550 NVMe SSDs.",
     longDescription:
       "Micron delivers innovative memory and storage solutions including HBM3E high-bandwidth memory, DDR5 RDIMM server memory and 9550 NVMe SSDs for AI, cloud and enterprise data centers worldwide. Servchip supplies Micron HBM3E memory, DDR5 RDIMM and enterprise NVMe SSDs for AI and high-throughput data center infrastructure.",
     website: "https://www.micron.com",
@@ -959,7 +959,7 @@ export const BRANDS: Brand[] = [
     name: "Solidigm",
     slug: "solidigm",
     description:
-      "Solidigm enterprise SSD distributor for AI, cloud and data center storage — D7-P5810 NVMe SSD platform.",
+      "Solidigm enterprise SSD distributor for AI, cloud and data center storage - D7-P5810 NVMe SSD platform.",
     longDescription:
       "Solidigm delivers enterprise-grade NAND flash storage solutions optimized for AI, cloud and data center workloads, building on a legacy of SSD innovation. The D7-P5810 platform is engineered for high-throughput, data-intensive enterprise workloads. Servchip supplies Solidigm D7 Series enterprise SSDs for AI and data center storage infrastructure.",
     website: "https://www.solidigm.com",
@@ -989,7 +989,7 @@ export const BRANDS: Brand[] = [
     name: "Kioxia",
     slug: "kioxia",
     description:
-      "Kioxia enterprise SSD distributor for AI, cloud and data center storage — CM7 V3 NVMe SSD platform.",
+      "Kioxia enterprise SSD distributor for AI, cloud and data center storage - CM7 V3 NVMe SSD platform.",
     longDescription:
       "Kioxia is a global leader in NAND flash memory and enterprise SSDs, delivering high-performance storage solutions for AI, cloud and data center applications. The CM7 V3 platform is built for high-throughput, mission-critical enterprise storage workloads. Servchip supplies Kioxia CM7 Series enterprise SSDs for AI and data center infrastructure.",
     website: "https://www.kioxia.com",
@@ -1019,7 +1019,7 @@ export const BRANDS: Brand[] = [
     name: "Western Digital",
     slug: "western-digital",
     description:
-      "Western Digital enterprise storage distributor for AI, cloud and data centers — Ultrastar DC SN655 NVMe SSDs.",
+      "Western Digital enterprise storage distributor for AI, cloud and data centers - Ultrastar DC SN655 NVMe SSDs.",
     longDescription:
       "Western Digital provides enterprise-grade HDDs and SSDs for AI, cloud and data center storage, including the Ultrastar family of data center drives. The Ultrastar DC SN655 platform delivers high-performance, scalable NVMe storage for data-intensive workloads. Servchip supplies Western Digital Ultrastar enterprise SSDs for AI and data center storage infrastructure.",
     website: "https://www.westerndigital.com",
@@ -1049,7 +1049,7 @@ export const BRANDS: Brand[] = [
     name: "Seagate",
     slug: "seagate",
     description:
-      "Seagate enterprise SSD distributor for AI, cloud and data centers — Nytro 3530 NVMe SSD platform.",
+      "Seagate enterprise SSD distributor for AI, cloud and data centers - Nytro 3530 NVMe SSD platform.",
     longDescription:
       "Seagate delivers enterprise-grade HDDs and NVMe SSDs for AI, cloud and data center storage, including the Nytro family of data center SSDs. The Nytro 3530 platform is engineered for high-performance, demanding enterprise workloads. Servchip supplies Seagate Nytro enterprise SSDs for AI and data center storage infrastructure.",
     website: "https://www.seagate.com",
@@ -1079,7 +1079,7 @@ export const BRANDS: Brand[] = [
     name: "Google",
     slug: "google",
     description:
-      "Google TPU accelerator infrastructure for AI training and inference — TPU v6 and TPU v7 platforms.",
+      "Google TPU accelerator infrastructure for AI training and inference - TPU v6 and TPU v7 platforms.",
     longDescription:
       "Google designs custom Tensor Processing Units (TPUs) to accelerate AI training and inference workloads, powering Google's own services and cloud customers via Google Cloud. The TPU v6 and TPU v7 platforms deliver purpose-built silicon performance for large-scale machine learning. Servchip provides access to Google TPU infrastructure for AI training and inference deployments.",
     website: "https://cloud.google.com/tpu",
@@ -1116,7 +1116,7 @@ export const BRANDS: Brand[] = [
     name: "Amazon",
     slug: "amazon",
     description:
-      "AWS custom AI chip infrastructure for cloud and machine learning workloads — Trainium2 and Inferentia2 accelerators.",
+      "AWS custom AI chip infrastructure for cloud and machine learning workloads - Trainium2 and Inferentia2 accelerators.",
     longDescription:
       "Amazon Web Services (AWS) designs custom silicon including Trainium for AI training and Inferentia for AI inference, delivering cost-effective performance for cloud AI workloads. The Trainium2 and Inferentia2 accelerators are purpose-built for large-scale machine learning pipelines. Servchip provides access to AWS Trainium and Inferentia AI chip infrastructure for cloud AI deployments.",
     website: "https://aws.amazon.com/machine-learning/custom-silicon/",
@@ -1153,7 +1153,7 @@ export const BRANDS: Brand[] = [
     name: "Qualcomm",
     slug: "qualcomm",
     description:
-      "Qualcomm data center CPU distributor for cloud and AI infrastructure — ARM-based server processors.",
+      "Qualcomm data center CPU distributor for cloud and AI infrastructure - ARM-based server processors.",
     longDescription:
       "Qualcomm is expanding into data center computing with custom-designed ARM-based CPUs for cloud and AI workloads, leveraging its industry-leading processor expertise. Servchip supplies Qualcomm data center CPUs for enterprise cloud computing and AI infrastructure deployments.",
     website: "https://www.qualcomm.com",
@@ -1183,7 +1183,7 @@ export const BRANDS: Brand[] = [
     name: "Ampere",
     slug: "ampere",
     description:
-      "Ampere ARM-based server CPU distributor for cloud and edge computing — AmpereOne processor platform.",
+      "Ampere ARM-based server CPU distributor for cloud and edge computing - AmpereOne processor platform.",
     longDescription:
       "Ampere Computing designs high-performance, power-efficient ARM-based server processors for cloud data centers, edge computing and sustainable AI workloads. The AmpereOne platform delivers cloud-native performance with energy-efficient architecture. Servchip supplies Ampere AmpereOne server CPUs for cloud-native and AI-ready data center infrastructure.",
     website: "https://www.amperecomputing.com",
@@ -1213,7 +1213,7 @@ export const BRANDS: Brand[] = [
     name: "Nokia",
     slug: "nokia",
     description:
-      "Nokia networking, communications and semiconductor solutions distributor for service providers and enterprises — FP5 network processors and 5G silicon.",
+      "Nokia networking, communications and semiconductor solutions distributor for service providers and enterprises - FP5 network processors and 5G silicon.",
     longDescription:
       "Nokia is a global leader in networking and communications technology. Its semiconductor portfolio includes network processors, FPGAs and custom ASICs that power the world's most advanced 5G, optical and IP networks. The FP5 network processor and AirScale 5G platforms enable high-performance telecom infrastructure. Servchip supplies Nokia network processors, optical DSPs and 5G semiconductors for telecom and enterprise networking.",
     website: "https://www.nokia.com",

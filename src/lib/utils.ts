@@ -6,7 +6,7 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export function formatSpecs(value: string, unit?: string): string {
-  if (!value) return "—";
+  if (!value) return "-";
   return unit ? `${value} ${unit}` : value;
 }
 

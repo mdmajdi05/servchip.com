@@ -28,8 +28,8 @@ interface AuditIssue {
   message: string;
 }
 
-const MAX_TITLE_LENGTH = 65; // Google soft-truncates beyond ~60–70 chars
-const MAX_DESCRIPTION_LENGTH = 165; // Google soft-truncates around 155–160 chars
+const MAX_TITLE_LENGTH = 65; // Google soft-truncates beyond ~60-70 chars
+const MAX_DESCRIPTION_LENGTH = 165; // Google soft-truncates around 155-160 chars
 
 describe("SEO integrity", () => {
   const issues: AuditIssue[] = [];
@@ -53,7 +53,7 @@ describe("SEO integrity", () => {
       seenSlugs.set(post.slug, post.title);
     }
 
-    // Drafts are exempt from meta checks entirely — title, description and
+    // Drafts are exempt from meta checks entirely - title, description and
     // length polish happens at publication time. Published posts are checked.
     if (post.isPublished) {
       if (!seo.metaTitle) {
@@ -77,7 +77,7 @@ describe("SEO integrity", () => {
             post: post.title,
             field: "metaTitle",
             value: seo.metaTitle,
-            message: `metaTitle is identical to post "${previous}" — duplicate title hurts SERP click-through.`,
+            message: `metaTitle is identical to post "${previous}" - duplicate title hurts SERP click-through.`,
           });
         } else {
           seenTitles.set(seo.metaTitle, post.title);
@@ -139,7 +139,7 @@ describe("SEO integrity", () => {
           post: post.title,
           field: "robots",
           value: seo.robots,
-          message: "published post is noindex — Google will not index it.",
+          message: "published post is noindex - Google will not index it.",
         });
       }
 
@@ -220,7 +220,7 @@ describe("SEO integrity", () => {
         field: "sitemap",
         value: `/blog/${slug}`,
         message:
-          "draft/unpublished post appears in sitemap — must be excluded.",
+          "draft/unpublished post appears in sitemap - must be excluded.",
       });
     }
   }
@@ -302,7 +302,7 @@ describe("SEO integrity", () => {
       issues.push({
         field: "sitemap",
         value: `/${code}`,
-        message: `supported country "${code}" has no routes in the sitemap — its localized pages are orphaned.`,
+        message: `supported country "${code}" has no routes in the sitemap - its localized pages are orphaned.`,
       });
     }
   }
@@ -363,7 +363,7 @@ describe("SEO integrity", () => {
       ? `\n${issues.map((issue, i) => `${i + 1}. ${issue.post ? `[${issue.post}] ` : ""}${issue.field}: ${issue.message}\n      value: ${issue.value}`).join("\n\n")}\n`
       : "";
 
-    expect(summary, `SEO issues found — fix them before deploying.`).toEqual(
+    expect(summary, `SEO issues found - fix them before deploying.`).toEqual(
       "",
     );
   });

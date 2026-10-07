@@ -3,7 +3,7 @@ import type { SeoPageTemplate } from "../types";
 export const dashboard: SeoPageTemplate = {
   path: "/dashboard",
   label: "Dashboard",
-  title: "Account Dashboard — Servchip Enterprise Portal",
+  title: "Account Dashboard - Servchip Enterprise Portal",
   description:
     "Manage your Servchip account, track orders, view quotes, and access your enterprise dashboard for chip procurement across all manufacturers.",
   keywords: [

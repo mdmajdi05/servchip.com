@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { AppLink as Link } from "@/components/ui/AppLink";
 import Image from "next/image";
@@ -35,7 +35,7 @@ export function MemoryCard({ mem, index: _index }: Props) {
             {mem.images && mem.images.length > 0 ? (
               <Image
                 src={mem.images[0]}
-                alt={`${mem.name} — ${mem.categoryName}`}
+                alt={`${mem.name} - ${mem.categoryName}`}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover"

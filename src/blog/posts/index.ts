@@ -10,6 +10,7 @@ import { post as post23 } from "./best-ai-companies-in-uae";
 import { post as post24 } from "./nvidia-b300-tensor-core-gpu";
 import { post as post25 } from "./nvidia-grace-blackwell-superchip";
 import { post as post26 } from "./amd-instinct-mi350x-gpu";
+import { post as post27 } from "./amd-instinct-mi350x-vs-mi355x";
 
 export const BLOG_POSTS: BlogPost[] = [
   post16,
@@ -23,4 +24,5 @@ export const BLOG_POSTS: BlogPost[] = [
   post24,
   post25,
   post26,
+  post27,
 ];

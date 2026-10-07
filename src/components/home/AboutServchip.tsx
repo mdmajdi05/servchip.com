@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Image from "next/image";
 import { AppLink as Link } from "@/components/ui/AppLink";
+import type { Country } from "@/types";
 import {
   ShieldCheck,
   Award,
@@ -20,8 +21,10 @@ const ABOUT_STATS = [
   { icon: Headphones, value: "24/7", label: "Expert Support" },
 ];
 
-export function AboutServchip() {
+export function AboutServchip({ country }: { country?: Country }) {
   const [expanded, setExpanded] = useState(false);
+
+  const countryLabel = country?.hero.label ?? "";
 
   return (
     <section className="relative min-h-[85vh] flex items-center bg-bg-dark overflow-hidden">
@@ -32,12 +35,12 @@ export function AboutServchip() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full relative z-10 py-16">
         <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 items-center">
-          {/* Left — Image + Overlay */}
+          {/* Left - Image + Overlay */}
           <div className="relative">
             <div className="relative h-[320px] sm:h-[380px] lg:h-[420px] rounded-2xl overflow-hidden border border-border/50">
               <Image
                 src="/images/server-room-2.webp"
-                alt="Servchip enterprise data center — ISO certified semiconductor warehouse with verified NVIDIA, AMD and Intel AI chips ready for global distribution"
+                alt="Servchip enterprise data center - ISO certified semiconductor warehouse with verified NVIDIA, AMD and Intel AI chips ready for global distribution"
                 fill
                 sizes="(max-width: 1024px) 100vw, 50vw"
                 priority
@@ -76,14 +79,14 @@ export function AboutServchip() {
                     Manufacturer Partnerships
                   </p>
                   <p className="text-text-dim text-[10px] font-mono">
-                    NVIDIA · AMD · Intel
+                    NVIDIA | AMD | Intel
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Right — Content */}
+          {/* Right - Content */}
           <div className="space-y-5">
             <div className="inline-flex items-center gap-2 rounded-full px-4 py-1.5 bg-primary/10 border border-primary/20">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
@@ -93,11 +96,12 @@ export function AboutServchip() {
             </div>
 
             <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-text leading-tight tracking-tight">
-              Enterprise Chip Distributor{" "}
+              Enterprise Chip Distributor
+              {country ? ` in ${countryLabel}` : ""}{" "}
               <span className="gradient-text">Since 2018</span>
             </h2>
 
-            {/* Expandable SEO content — text ALWAYS in DOM for crawlers */}
+            {/* Expandable SEO content - text ALWAYS in DOM for crawlers */}
             <div className="relative">
               <div
                 className={`relative overflow-hidden transition-all duration-500 ease-in-out ${
@@ -145,6 +149,28 @@ export function AboutServchip() {
                     Dell.
                   </p>
 
+                  {country && (
+                    <p>
+                      As an{" "}
+                      <strong className="text-text">
+                        AI chip distributor
+                        {country.code === "ae"
+                          ? " in Dubai and UAE"
+                          : ` in ${country.name}`}
+                      </strong>
+                      , we deliver authentic NVIDIA GPUs, AI accelerators and
+                      GPU servers to enterprises and data centers
+                      {country.code === "ae"
+                        ? " across Dubai, Abu Dhabi and Sharjah"
+                        : " across the region"}
+                      , backed by warranty, chain-of-custody documentation and
+                      {country.code === "ae"
+                        ? " full customs clearance from our Sharjah free-zone hub"
+                        : " dedicated local logistics support"}
+                      .
+                    </p>
+                  )}
+
                   <p>
                     As an{" "}
                     <strong className="text-text">
@@ -169,7 +195,7 @@ export function AboutServchip() {
                   <p>
                     Our engineering team specializes in matching the right
                     accelerator and memory configuration to your specific
-                    workload — whether you are training large language models on{" "}
+                    workload - whether you are training large language models on{" "}
                     <Link
                       href="/brands/nvidia"
                       className="text-primary hover:underline"

@@ -8,8 +8,10 @@ import {
   createEntityMetadata,
   createEntityBreadcrumb,
   breadcrumbSchema,
+  faqSchema,
 } from "@/lib/seo";
 import { getCategorySeo } from "@/lib/seo/content";
+import { getCategoryArticle } from "@/data/category-content";
 import CategoryDetailPage from "@/app/categories/[slug]/page-client";
 
 export async function generateStaticParams() {
@@ -29,7 +31,7 @@ export async function generateMetadata(props: {
   const seo = category ? getCategorySeo(category.id) : undefined;
   if (!countryObj || !market || !category || !seo) return {};
 
-  return (
+  const metadata =
     createEntityMetadata("category", country, {
       slug: category.slug,
       category: category.name,
@@ -38,8 +40,16 @@ export async function generateMetadata(props: {
       categoryMetaTitle: seo.metaTitle,
       categoryMetaDescription: seo.metaDescription,
       categoryKeywords: seo.keywords ?? [],
-    }) ?? {}
-  );
+    }) ?? {};
+
+  // Per-country meta override (e.g. UAE/Dubai-specific title & description).
+  const override = seo.countryMeta?.[country];
+  if (override) {
+    metadata.title = override.metaTitle;
+    metadata.description = override.metaDescription;
+  }
+
+  return metadata;
 }
 
 export default async function Page(props: {
@@ -49,6 +59,8 @@ export default async function Page(props: {
   const countryObj = getCountryByCode(country);
   const category = CATEGORIES.find((c) => c.slug === slug);
   if (!countryObj || !category) notFound();
+
+  const article = getCategoryArticle(category.slug, country);
 
   return (
     <>
@@ -64,7 +76,15 @@ export default async function Page(props: {
           ]),
         )}
       />
-      <CategoryDetailPage />
+      {article && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={faqSchema(
+            article.faqs.map((f) => ({ question: f.q, answer: f.a })),
+          )}
+        />
+      )}
+      <CategoryDetailPage content={article} />
     </>
   );
 }

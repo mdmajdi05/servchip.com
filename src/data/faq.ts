@@ -3,7 +3,7 @@ import {
   ShoppingCart,
   ShieldCheck,
   Truck,
-  HelpCircle,
+  MessageCircle,
   CreditCard,
 } from "lucide-react";
 
@@ -108,7 +108,7 @@ export const FAQ_CATEGORIES: FAQCategory[] = [
   {
     id: "support",
     title: "Technical Support",
-    icon: HelpCircle,
+    icon: MessageCircle,
     items: [
       {
         question: "Do you provide technical support for chip integration?",

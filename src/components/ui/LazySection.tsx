@@ -26,11 +26,20 @@ export function LazySection({
   placeholder,
 }: LazySectionProps) {
   const ref = useRef<HTMLDivElement>(null);
-  const [visible, setVisible] = useState(
-    () => typeof IntersectionObserver === "undefined",
-  );
+  // Initial state must be identical on server and client or hydration fails.
+  // Server always renders the placeholder (IntersectionObserver exists only in
+  // the browser), so start hidden and let the effect below promote to visible.
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    if (typeof IntersectionObserver === "undefined") {
+      // No IO support - mount children right away. The promotion is deferred
+      // to a callback instead of being called synchronously in the effect
+      // body: React (react-hooks/set-state-in-effect) rejects that because a
+      // synchronous setState during commit cascades into extra renders.
+      const id = window.setTimeout(() => setVisible(true), 0);
+      return () => window.clearTimeout(id);
+    }
     const el = ref.current;
     if (!el || visible) return;
     const obs = new IntersectionObserver(

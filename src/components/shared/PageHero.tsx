@@ -1,4 +1,5 @@
 ﻿"use client";
+import type { ReactNode } from "react";
 import { AppLink as Link } from "@/components/ui/AppLink";
 import { ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -11,7 +12,7 @@ export interface PageHeroBreadcrumb {
 interface PageHeroProps {
   title: string;
   subtitle?: string;
-  label?: string;
+  label?: ReactNode;
   breadcrumbs?: PageHeroBreadcrumb[];
   align?: "center" | "left";
   className?: string;

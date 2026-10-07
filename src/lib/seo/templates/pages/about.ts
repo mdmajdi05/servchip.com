@@ -16,22 +16,27 @@ export const about: SeoPageTemplate = {
     "bulk semiconductor purchasing",
   ],
   openGraphTitle:
-    "About Servchip — Enterprise Chip Distributor & Semiconductor Procurement Partner",
+    "About Servchip - Enterprise Chip Distributor & Semiconductor Procurement Partner",
   openGraphDescription:
     "ISO 9001 certified enterprise chip distributor. 27+ manufacturer partnerships. Serving 500+ enterprises across 150+ countries.",
   twitterTitle:
-    "About Servchip — Enterprise Chip Distributor & Semiconductor Procurement Partner",
+    "About Servchip - Enterprise Chip Distributor & Semiconductor Procurement Partner",
   twitterDescription:
     "ISO 9001 certified enterprise chip distributor. 27+ manufacturer partnerships. Serving 500+ enterprises across 150+ countries.",
   country: {
-    title: "About Servchip | Chip Distributor{{countrySuffix}}",
+    title: "About Servchip | Enterprise Chip Distributor{{countrySuffix}}",
     description:
       "ISO 9001 certified enterprise chip distributor serving{{countrySuffix}} with authorized NVIDIA, AMD and Intel distribution and {{currency}} pricing from {{warehouse}}.",
     keywords: [
       "about Servchip{{countrySuffix}}",
       "enterprise chip distributor{{countrySuffix}}",
+      "AI chip distributor{{countrySuffix}}",
+      "data center GPU supplier{{countrySuffix}}",
+      "NVIDIA GPU distributor{{countrySuffix}}",
+      "GPU server supplier{{countrySuffix}}",
       "semiconductor procurement{{countrySuffix}}",
       "NVIDIA authorized distributor{{countrySuffix}}",
+      "wholesale AI accelerator supplier{{countrySuffix}}",
     ],
     openGraphTitle:
       "About Servchip{{countrySuffix}} | Enterprise Chip Distributor",

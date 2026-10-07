@@ -170,16 +170,16 @@ interface SpotlightPage {
 /**
  * Dedicated landing pages that promote a single distribution focus (brand,
  * region, or both). Add a new entry here to surface a new landing page on
- * this services overview — no other code changes needed.
+ * this services overview - no other code changes needed.
  */
 const SPOTLIGHT_PAGES: SpotlightPage[] = [
   {
     title: "NVIDIA GPU Distributor Middle East",
-    region: "UAE • Saudi Arabia • Qatar • Kuwait • Oman • Bahrain",
+    region: "UAE | Saudi Arabia | Qatar | Kuwait | Oman | Bahrain",
     description:
-      "Servchip supplies genuine NVIDIA H100, H200, B200, Blackwell, RTX PRO, and DGX GPUs to enterprise, government, and research buyers across all six GCC markets — with export documentation, regional logistics, and after-sales support handled end to end.",
+      "Servchip supplies genuine NVIDIA H100, H200, B200, Blackwell, RTX PRO, and DGX GPUs to enterprise, government, and research buyers across all six GCC markets - with export documentation, regional logistics, and after-sales support handled end to end.",
     caption:
-      "Supply across all six GCC markets — backed by an ISO 9001 certified India-UAE distribution base.",
+      "Supply across all six GCC markets - backed by an ISO 9001 certified India-UAE distribution base.",
     image: "/images/server-room-1.webp",
     alt: "NVIDIA GPU distributor serving enterprise buyers across the Middle East",
     url: "/nvidia-gpu-distributor-middle-east",

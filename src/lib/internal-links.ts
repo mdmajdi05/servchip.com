@@ -9,7 +9,7 @@
  * route registry (blog posts, products, categories, brands, solutions,
  * industries, countries, static pages, images). It runs as a vitest spec wired
  * into `npm run prebuild`, so the build FAILS and prints exactly which link is
- * broken, where it lives, and what to do — before anything is ever deployed.
+ * broken, where it lives, and what to do - before anything is ever deployed.
  *
  * RULE: when a URL is renamed or removed, update every link to the current real
  * URL (no redirects). If a post/page truly no longer exists, remove the link.
@@ -197,7 +197,7 @@ export function validateInternalPath(
       if (registry.allPostSlugs.has(slug)) {
         return {
           ok: false,
-          reason: `Blog post "${slug}" exists but is unpublished (draft) — this link would 404 for visitors. Publish the post, update the link to another live post, or remove it.`,
+          reason: `Blog post "${slug}" exists but is unpublished (draft) - this link would 404 for visitors. Publish the post, update the link to another live post, or remove it.`,
         };
       }
       return {
@@ -397,7 +397,7 @@ function collectPostIssues(
 ): LinkIssue[] {
   const issues: LinkIssue[] = [];
   const file = fileBySlug.get(post.slug) ?? "src/blog/posts/?";
-  const title = `${post.title}${post.isPublished ? "" : "  (DRAFT — not live yet)"}`;
+  const title = `${post.title}${post.isPublished ? "" : "  (DRAFT - not live yet)"}`;
 
   const addIssue = (
     section: string,
@@ -564,7 +564,7 @@ function collectPostIssues(
         "SEO metadata",
         "relatedPostIds",
         postId,
-        `related post "${related.slug}" is a draft — visitors cannot see it.`,
+        `related post "${related.slug}" is a draft - visitors cannot see it.`,
       );
     }
   }

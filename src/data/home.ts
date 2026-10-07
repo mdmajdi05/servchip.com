@@ -41,9 +41,9 @@ export const TRUST_BAR_ITEMS: TrustBarItem[] = [
   { icon: "Building2", text: "Lenovo" },
   { icon: "Zap", text: "AI Chip Distributor" },
   { icon: "Zap", text: "Data Center GPU Supplier" },
-  { icon: "Zap", text: "NVIDIA Distributor — UAE & Dubai" },
-  { icon: "Zap", text: "AMD Authorized Distributor — USA" },
-  { icon: "Zap", text: "Intel Distributor — Dubai" },
+  { icon: "Zap", text: "NVIDIA Distributor - UAE & Dubai" },
+  { icon: "Zap", text: "AMD Authorized Distributor - USA" },
+  { icon: "Zap", text: "Intel Distributor - Dubai" },
 ];
 
 export interface Stat {
@@ -94,7 +94,7 @@ export const TECHNOLOGY_FEATURES: TechnologyFeature[] = [
   {
     icon: "Cpu",
     title: "Multi-Architecture Server Support",
-    desc: "NVIDIA Hopper, AMD CDNA 3/4, Intel Granite Rapids — all in one data center platform",
+    desc: "NVIDIA Hopper, AMD CDNA 3/4, Intel Granite Rapids - all in one data center platform",
   },
   {
     icon: "Zap",
@@ -114,7 +114,7 @@ export const TECHNOLOGY_FEATURES: TechnologyFeature[] = [
   {
     icon: "Layers",
     title: "Open Ecosystems",
-    desc: "CUDA, ROCm, oneAPI — choose your semiconductor development platform freely",
+    desc: "CUDA, ROCm, oneAPI - choose your semiconductor development platform freely",
   },
   {
     icon: "ShieldCheck",
@@ -124,7 +124,7 @@ export const TECHNOLOGY_FEATURES: TechnologyFeature[] = [
   {
     icon: "TrendingUp",
     title: "Scalable Architecture",
-    desc: "From edge servers to exascale data centers — single GPU to GPU clusters of any size",
+    desc: "From edge servers to exascale data centers - single GPU to GPU clusters of any size",
   },
 ];
 
@@ -138,7 +138,7 @@ export const WHY_FEATURES: WhyFeature[] = [
   {
     icon: ShieldCheck,
     title: "100% Authentic Chips",
-    desc: "Every chip sourced directly from manufacturers and authorized distribution partners. Zero counterfeit policy with full chain of custody documentation across all enterprise hardware — NVIDIA, AMD, Intel, Broadcom, and more.",
+    desc: "Every chip sourced directly from manufacturers and authorized distribution partners. Zero counterfeit policy with full chain of custody documentation across all enterprise hardware - NVIDIA, AMD, Intel, Broadcom, and more.",
   },
   {
     icon: Award,
@@ -221,7 +221,7 @@ export const HOW_IT_WORKS_STEPS: HowItWorksStep[] = [
     icon: Search,
     number: "1",
     title: "Browse & Select",
-    desc: "Explore our complete multi-vendor enterprise chip catalog — AI accelerators, server CPUs, networking, memory & storage — with detailed specs and expert recommendations.",
+    desc: "Explore our complete multi-vendor enterprise chip catalog - AI accelerators, server CPUs, networking, memory & storage - with detailed specs and expert recommendations.",
   },
   {
     icon: FileText,
@@ -496,11 +496,11 @@ export const TESTIMONIALS: Testimonial[] = [
 ];
 
 export const HERO_PHRASES: string[] = [
-  "Enterprise chip distributor — NVIDIA H100, AMD MI300X, Intel Xeon & more",
-  "Authorized NVIDIA distributor — H100, H200, B200 data center GPUs",
-  "AI chip distributor for Dubai, UAE, India & USA — global shipping",
-  "Data center GPU supplier — AMD Instinct, Intel Gaudi, NVIDIA",
-  "AI accelerator supplier — HPC chips, server CPUs & HBM memory",
+  "Enterprise chip distributor - NVIDIA H100, AMD MI300X, Intel Xeon & more",
+  "Authorized NVIDIA distributor - H100, H200, B200 data center GPUs",
+  "AI chip distributor for Dubai, UAE, India & USA - global shipping",
+  "Data center GPU supplier - AMD Instinct, Intel Gaudi, NVIDIA",
+  "AI accelerator supplier - HPC chips, server CPUs & HBM memory",
 ];
 
 export interface HeroStat {

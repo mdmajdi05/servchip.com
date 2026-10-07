@@ -46,7 +46,7 @@ export const SOLUTIONS: Solution[] = [
       useCases: ["ai-training", "hpc"],
     },
     stats: [
-      { value: "1–1000+", label: "GPU clusters" },
+      { value: "1-1000+", label: "GPU clusters" },
       { value: "NVLink", label: "Full-speed interconnect" },
       { value: "400GbE", label: "InfiniBand networking" },
     ],
@@ -59,7 +59,7 @@ export const SOLUTIONS: Solution[] = [
     description:
       "Optimized inference platforms for real-time AI serving, LLM inference and production deployments.",
     longDescription:
-      "Servchip provides production-ready AI inference infrastructure — from single L40S nodes to large-scale serving clusters. We optimize hardware for LLM inference, computer vision, recommendation systems and real-time AI applications with the right balance of performance, power and cost.",
+      "Servchip provides production-ready AI inference infrastructure - from single L40S nodes to large-scale serving clusters. We optimize hardware for LLM inference, computer vision, recommendation systems and real-time AI applications with the right balance of performance, power and cost.",
     hero: {
       label: "AI Inference",
       title: "Production-Ready AI Inference Platforms",
@@ -155,20 +155,20 @@ export const SOLUTIONS: Solution[] = [
     slug: "ai-infrastructure",
     icon: "Cpu",
     description:
-      "Complete AI infrastructure — accelerators, servers, networking and storage for enterprise AI.",
+      "Complete AI infrastructure - accelerators, servers, networking and storage for enterprise AI.",
     longDescription:
       "Servchip delivers complete AI infrastructure solutions combining accelerators, GPU servers, high-speed networking, HBM memory and storage. From design to deployment, we provide the end-to-end hardware foundation for enterprise AI programs.",
     hero: {
       label: "AI Infrastructure",
       title: "Complete Enterprise AI Infrastructure",
       subtitle:
-        "Accelerators, GPU servers, networking, memory and storage — everything your AI program needs.",
+        "Accelerators, GPU servers, networking, memory and storage - everything your AI program needs.",
     },
     faqs: [
       {
         question: "What does a complete AI infrastructure include?",
         answer:
-          "Accelerators, GPU servers, high-speed networking, HBM memory and storage — fully integrated and ready for AI workloads.",
+          "Accelerators, GPU servers, high-speed networking, HBM memory and storage - fully integrated and ready for AI workloads.",
       },
       {
         question: "Do you provide design support?",
@@ -255,7 +255,7 @@ export const SOLUTIONS: Solution[] = [
     slug: "enterprise-procurement",
     icon: "ShoppingCart",
     description:
-      "Simplified semiconductor procurement — RFQ, bulk sourcing, import/export and supply chain support.",
+      "Simplified semiconductor procurement - RFQ, bulk sourcing, import/export and supply chain support.",
     longDescription:
       "Servchip makes enterprise semiconductor procurement simple. From single-chip RFQs to bulk volume sourcing, we handle authentic sourcing, global shipping, customs and compliance. Our ISO 9001 certified process delivers chain-of-custody documentation on every order.",
     hero: {

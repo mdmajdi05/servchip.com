@@ -31,6 +31,6 @@ describe("formatSpecs", () => {
   });
 
   it("handles empty first arg", () => {
-    expect(formatSpecs("", "HBM3")).toBe("—");
+    expect(formatSpecs("", "HBM3")).toBe("-");
   });
 });

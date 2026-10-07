@@ -7,14 +7,24 @@ interface ChipSpecsProps {
   className?: string;
 }
 
-const SPEC_GROUPS: { label: string; keys: (keyof ChipProduct["specifications"])[] }[] = [
+const SPEC_GROUPS: {
+  label: string;
+  keys: (keyof ChipProduct["specifications"])[];
+}[] = [
   {
     label: "Memory",
     keys: ["memory", "memoryBandwidth"],
   },
   {
     label: "Compute",
-    keys: ["tensorCores", "cudaCores", "fp8TFLOPS", "fp16TFLOPS", "tf32TFLOPS", "fp64TFLOPS"],
+    keys: [
+      "tensorCores",
+      "cudaCores",
+      "fp8TFLOPS",
+      "fp16TFLOPS",
+      "tf32TFLOPS",
+      "fp64TFLOPS",
+    ],
   },
   {
     label: "Connectivity",
@@ -22,7 +32,13 @@ const SPEC_GROUPS: { label: string; keys: (keyof ChipProduct["specifications"])[
   },
   {
     label: "Physical",
-    keys: ["tdp", "formFactor", "cooling", "launchDate", "manufacturingProcess"],
+    keys: [
+      "tdp",
+      "formFactor",
+      "cooling",
+      "launchDate",
+      "manufacturingProcess",
+    ],
   },
 ];
 
@@ -54,11 +70,18 @@ export function ChipSpecs({ specifications, className = "" }: ChipSpecsProps) {
           <div className="space-y-2">
             {group.keys.map((key) => {
               const value = specifications[key];
-              if (!value || value === "—") return null;
+              if (!value || value === "-") return null;
               return (
-                <div key={key} className="flex justify-between py-1.5 border-b border-border/50 last:border-0">
-                  <span className="text-sm text-text-dim">{SPEC_LABELS[key] || key}</span>
-                  <span className="text-sm text-text-muted font-mono">{value}</span>
+                <div
+                  key={key}
+                  className="flex justify-between py-1.5 border-b border-border/50 last:border-0"
+                >
+                  <span className="text-sm text-text-dim">
+                    {SPEC_LABELS[key] || key}
+                  </span>
+                  <span className="text-sm text-text-muted font-mono">
+                    {value}
+                  </span>
                 </div>
               );
             })}

@@ -6,7 +6,7 @@ export const post: BlogPost = {
   title: "Best AI Companies in the UAE: 2026 Buyer's Guide",
   slug: "best-ai-companies-in-uae",
   excerpt:
-    "Compare the UAE's top AI companies for 2026 — from sovereign-scale leaders like G42 and Core42 to fast-growing startups like Derq and Nybl — with a practical, sourced buyer's guide.",
+    "Compare the UAE's top AI companies for 2026 - from sovereign-scale leaders like G42 and Core42 to fast-growing startups like Derq and Nybl - with a practical, sourced buyer's guide.",
   content: "",
   featuredImage: "/images/ai-chip-2.webp",
   featuredImageAlt:
@@ -48,14 +48,14 @@ export const post: BlogPost = {
     {
       heading: "Why the UAE Is Becoming a Global AI Hub",
       paragraphs: [
-        "The UAE's AI position was not accidental. In 2017, it appointed the world's first Minister of State for Artificial Intelligence and launched the National Strategy for Artificial Intelligence 2031 — an unusually specific plan built around delivery dates rather than aspirational language. Nine years on, that strategy has produced a legislative framework, one of the largest AI data-centre campuses outside the United States, a dedicated AI research university, and a sovereign investment vehicle built to fund all of it.",
-        "Adoption is already mainstream. Workplace AI usage in the UAE reached 70.1 percent in Q1 2026 according to the Microsoft AI Economy Institute, roughly four times the global average of 17.8 percent. The government is moving from policy to deployment — the UAE Cabinet approved a framework in 2026 to roll out agentic AI across government ministries in phases.",
+        "The UAE's AI position was not accidental. In 2017, it appointed the world's first Minister of State for Artificial Intelligence and launched the National Strategy for Artificial Intelligence 2031 - an unusually specific plan built around delivery dates rather than aspirational language. Nine years on, that strategy has produced a legislative framework, one of the largest AI data-centre campuses outside the United States, a dedicated AI research university, and a sovereign investment vehicle built to fund all of it.",
+        "Adoption is already mainstream. Workplace AI usage in the UAE reached 70.1 percent in Q1 2026 according to the Microsoft AI Economy Institute, roughly four times the global average of 17.8 percent. The government is moving from policy to deployment - the UAE Cabinet approved a framework in 2026 to roll out agentic AI across government ministries in phases.",
         "Capital is flowing at sovereign scale. Abu Dhabi's flagship AI group, G42, closed a $1.5 billion strategic investment from Microsoft in 2024 and has since expanded AI infrastructure programs into Europe, Kenya, and the United States.",
       ],
       bullets: [
         "Governance is deliberately adoption-friendly: the UAE Charter for the Development and Use of AI, adopted in mid-2024, sets out non-binding principles for transparency, accountability, and equitable access.",
         "Talent programs run on a national scale: the government targets one million residents trained in AI by 2027, alongside Golden Visa categories naming AI and data science as priority fields.",
-        "Market size: one directional estimate puts the UAE AI market at roughly USD 578 million today, growing toward USD 4.2 billion by 2033 at close to 22 percent annual growth — treat as an industry estimate rather than an audited number.",
+        "Market size: one directional estimate puts the UAE AI market at roughly USD 578 million today, growing toward USD 4.2 billion by 2033 at close to 22 percent annual growth - treat as an industry estimate rather than an audited number.",
       ],
     },
     {
@@ -75,7 +75,7 @@ export const post: BlogPost = {
     {
       heading: "Top AI Companies in the UAE",
       paragraphs: [
-        "The list below spans sovereign-scale infrastructure groups, applied-AI specialists, a foundation-model research institute, and venture-backed startups. Company size is described qualitatively — enterprise group, mid-size specialist, or startup — rather than with precise headcounts, since most private UAE AI companies do not publish audited employee figures.",
+        "The list below spans sovereign-scale infrastructure groups, applied-AI specialists, a foundation-model research institute, and venture-backed startups. Company size is described qualitatively - enterprise group, mid-size specialist, or startup - rather than with precise headcounts, since most private UAE AI companies do not publish audited employee figures.",
       ],
       content: [
         {
@@ -187,7 +187,7 @@ export const post: BlogPost = {
         },
         {
           type: "paragraph",
-          text: "Servchip is not an AI developer in the sense of the companies above; it is an ISO 9001 certified enterprise chip distributor supplying the GPU and AI accelerator hardware that UAE AI companies, data centres, and enterprise buyers need to actually run their workloads. It is included here because the AI ecosystem covered in this guide — from Core42's compute layer to individual enterprise buyers — depends on distributors like it to source hardware.",
+          text: "Servchip is not an AI developer in the sense of the companies above; it is an ISO 9001 certified enterprise chip distributor supplying the GPU and AI accelerator hardware that UAE AI companies, data centres, and enterprise buyers need to actually run their workloads. It is included here because the AI ecosystem covered in this guide - from Core42's compute layer to individual enterprise buyers - depends on distributors like it to source hardware.",
         },
         {
           type: "bulletList",
@@ -539,10 +539,10 @@ export const post: BlogPost = {
         "Beyond the sovereign-backed giants, a smaller layer of venture-funded startups is building narrower, faster-moving AI products. These are worth tracking rather than treating as established enterprise vendors; funding stages and product maturity vary widely.",
       ],
       bullets: [
-        "Derq — founded 2021, raised roughly $59.2 million, and already has deployed infrastructure with government transportation authorities rather than pilot-only contracts.",
-        "Nybl — a Dubai-founded industrial AI company with distribution partnerships through Lenovo, positioning it to scale beyond the UAE.",
-        "Qureos — an AI hiring-assistant startup (product: Iris) that raised a $5 million seed round in February 2026, automating job posting, screening, and outreach for UAE and Saudi employers.",
-        "Astra Tech — backed by G42 and generating fintech revenue at scale through Quantix, showing how a UAE AI-adjacent startup can grow from a messaging app into a diversified super-app in under four years.",
+        "Derq - founded 2021, raised roughly $59.2 million, and already has deployed infrastructure with government transportation authorities rather than pilot-only contracts.",
+        "Nybl - a Dubai-founded industrial AI company with distribution partnerships through Lenovo, positioning it to scale beyond the UAE.",
+        "Qureos - an AI hiring-assistant startup (product: Iris) that raised a $5 million seed round in February 2026, automating job posting, screening, and outreach for UAE and Saudi employers.",
+        "Astra Tech - backed by G42 and generating fintech revenue at scale through Quantix, showing how a UAE AI-adjacent startup can grow from a messaging app into a diversified super-app in under four years.",
       ],
       content: [
         {
@@ -559,7 +559,7 @@ export const post: BlogPost = {
       ],
       bullets: [
         "Budget considerations: sovereign-scale providers like Core42 or G42 typically require enterprise or government-level budgets; startups and specialist consultancies are more realistic for single projects.",
-        "Technical expertise match: check whether the team has shipped production systems in your domain — healthcare imaging, traffic prediction, Arabic NLP — not just general ML experience.",
+        "Technical expertise match: check whether the team has shipped production systems in your domain - healthcare imaging, traffic prediction, Arabic NLP - not just general ML experience.",
         "Project complexity: a narrow automation project needs a different partner than a multi-year AI infrastructure buildout.",
         "Industry specialization: vendors with deep vertical experience, such as M42 in healthcare or Derq in transportation, generally outperform generalists.",
         "Security and data-residency: for regulated data, confirm UAE data-residency options; Presight's Connect and Core42's sovereign cloud are built around this.",
@@ -587,7 +587,7 @@ export const post: BlogPost = {
       content: [
         {
           type: "paragraph",
-          text: "Every company profiled above runs on physical infrastructure long before it ships a model or a product. Core42's sovereign cloud, Presight's Enterprise AI Suite, M42's clinical-imaging models, and TII's Falcon training runs all depend on enterprise-grade GPU capacity — and that capacity has to come from somewhere. Behind the AI companies making headlines sits a smaller, less visible layer of enterprise hardware distributors, such as Servchip, that source, supply, and support the NVIDIA, AMD, and other accelerator hardware these AI companies build on.",
+          text: "Every company profiled above runs on physical infrastructure long before it ships a model or a product. Core42's sovereign cloud, Presight's Enterprise AI Suite, M42's clinical-imaging models, and TII's Falcon training runs all depend on enterprise-grade GPU capacity - and that capacity has to come from somewhere. Behind the AI companies making headlines sits a smaller, less visible layer of enterprise hardware distributors, such as Servchip, that source, supply, and support the NVIDIA, AMD, and other accelerator hardware these AI companies build on.",
         },
         {
           type: "paragraph",

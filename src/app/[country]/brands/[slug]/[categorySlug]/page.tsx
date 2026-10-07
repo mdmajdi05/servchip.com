@@ -69,7 +69,7 @@ export default async function Page(props: {
           ]),
         )}
       />
-      <BrandCategoryPage />
+      <BrandCategoryPage country={countryObj} />
     </>
   );
 }

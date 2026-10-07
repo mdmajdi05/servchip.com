@@ -6,8 +6,10 @@ import {
   createEntityBreadcrumb,
   breadcrumbSchema,
   itemListSchema,
+  faqSchema,
 } from "@/lib/seo";
 import { getCategorySeo } from "@/lib/seo/content";
+import { getCategoryArticle } from "@/data/category-content";
 import PageClient from "./page-client";
 
 export async function generateMetadata(props: {
@@ -35,6 +37,7 @@ export default async function Page(props: {
 }) {
   const { slug } = await props.params;
   const cat = CATEGORIES.find((c) => c.slug === slug);
+  const article = cat ? getCategoryArticle(cat.slug) : null;
 
   const categoryProducts = cat
     ? ALL_PRODUCTS.filter(
@@ -66,7 +69,15 @@ export default async function Page(props: {
           )}
         />
       )}
-      <PageClient />
+      {article && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={faqSchema(
+            article.faqs.map((f) => ({ question: f.q, answer: f.a })),
+          )}
+        />
+      )}
+      <PageClient content={article} />
     </>
   );
 }

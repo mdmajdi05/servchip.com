@@ -7,16 +7,26 @@ import { getProductsByBrand } from "@/data/products";
 import { getBrandColor } from "@/data/brand-colors";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/shared/PageHero";
+import type { Country } from "@/types";
 
-export default function BrandsPage() {
+export default function BrandsPage({ country }: { country?: Country }) {
+  const countryLabel = country?.hero.label ?? "";
   const brands = [...BRANDS].sort((a, b) => a.name.localeCompare(b.name));
 
   return (
     <div className="min-h-screen bg-bg-dark">
       <PageHero
         label="Brand Directory"
-        title="Every Manufacturer We Stock"
-        subtitle="Browse authentic enterprise hardware from 28 manufacturers — AI accelerators, server CPUs, networking, memory and storage."
+        title={
+          country
+            ? `Every Manufacturer We Stock in ${countryLabel}`
+            : "Every Manufacturer We Stock"
+        }
+        subtitle={
+          country
+            ? `Browse authentic enterprise hardware from 28 manufacturers for buyers in ${countryLabel} - AI accelerators, server CPUs, networking, memory and storage.`
+            : "Browse authentic enterprise hardware from 28 manufacturers - AI accelerators, server CPUs, networking, memory and storage."
+        }
         breadcrumbs={[{ label: "Home", href: "/" }, { label: "Brands" }]}
       />
 
@@ -24,8 +34,14 @@ export default function BrandsPage() {
         <div className="max-w-7xl mx-auto px-4">
           <SectionHeading
             label="Manufacturers"
-            title="Shop by Brand"
-            subtitle="Find the complete product portfolio for each manufacturer we carry"
+            title={
+              country ? `Shop by Brand in ${countryLabel}` : "Shop by Brand"
+            }
+            subtitle={
+              country
+                ? `Find the complete product portfolio for each manufacturer we distribute in ${countryLabel}`
+                : "Find the complete product portfolio for each manufacturer we carry"
+            }
             align="center"
           />
 
@@ -55,7 +71,7 @@ export default function BrandsPage() {
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-text-dim">
                       {productCount} product
-                      {productCount !== 1 ? "s" : ""} · {categoryCount} line
+                      {productCount !== 1 ? "s" : ""} | {categoryCount} line
                       {categoryCount !== 1 ? "s" : ""}
                     </span>
                     <span className="flex items-center gap-1 text-xs font-medium text-primary">

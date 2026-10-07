@@ -3,7 +3,7 @@ import { useState } from "react";
 import { AppLink as Link } from "@/components/ui/AppLink";
 import {
   ChevronDown,
-  HelpCircle,
+  MessageCircle,
   MessageSquare,
   ArrowRight,
   Phone,
@@ -34,7 +34,7 @@ export function FAQAccordion({
           label="FAQ"
           title={
             isCountryFaqs
-              ? `Frequently Asked Questions — ${countryName}`
+              ? `Frequently Asked Questions - ${countryName}`
               : "Frequently Asked Questions"
           }
           subtitle={
@@ -92,7 +92,7 @@ export function FAQAccordion({
                           isOpen ? "bg-primary/20" : "bg-primary/10"
                         }`}
                       >
-                        <HelpCircle
+                        <MessageCircle
                           className={`w-3.5 h-3.5 transition-transform ${
                             isOpen ? "text-primary" : "text-primary/80"
                           }`}
@@ -160,7 +160,7 @@ export function FAQAccordion({
                 href={`/faq`}
                 className="inline-flex items-center gap-2 border border-border bg-surface text-text px-5 py-2.5 rounded-xl font-semibold text-sm hover:border-primary/30 hover:text-primary transition-transform"
               >
-                <HelpCircle className="w-4 h-4" />
+                <MessageCircle className="w-4 h-4" />
                 View Full FAQ
               </Link>
             </div>

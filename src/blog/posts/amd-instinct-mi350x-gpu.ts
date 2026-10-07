@@ -9,7 +9,7 @@ export const post: BlogPost = {
     "A deep dive into the AMD Instinct MI350X: CDNA 4 architecture, 288 GB HBM3e memory, 8 TB/s bandwidth, native MXFP4 support and ROCm 7.0 for AI training and HPC workloads.",
   content: "",
   featuredImage: "/images/products/amd-mi350x.webp",
-  featuredImageAlt: "AMD Instinct MI350X GPU – Servchip distributor",
+  featuredImageAlt: "AMD Instinct MI350X GPU - Servchip distributor",
   category: cat("architecture"),
   tags: [
     tag("amd"),
@@ -31,7 +31,7 @@ export const post: BlogPost = {
     canonicalUrl: "https://servchip.com/blog/amd-instinct-mi350x-gpu",
   },
   relatedProductIds: ["amd-mi350x", "nvidia-b300", "nvidia-b200"],
-  relatedPostIds: ["20", "22", "16"],
+  relatedPostIds: ["20", "22", "16", "28"],
   sections: [
     {
       heading: "What Is the AMD Instinct MI350X GPU?",
@@ -39,9 +39,9 @@ export const post: BlogPost = {
         {
           type: "image",
           src: "/images/products/amd-mi350x.webp",
-          alt: "AMD Instinct MI350X GPU – Servchip distributor",
+          alt: "AMD Instinct MI350X GPU - Servchip distributor",
           caption:
-            "AMD Instinct MI350X GPU — CDNA 4 accelerator with 288 GB HBM3e memory",
+            "AMD Instinct MI350X GPU - CDNA 4 accelerator with 288 GB HBM3e memory",
         },
         {
           type: "paragraph",
@@ -70,16 +70,16 @@ export const post: BlogPost = {
           rows: [
             [
               "Memory Stacks",
-              "288 GB HBM3e (12-high stacks) — 8 TB/s ultra-high bandwidth",
+              "288 GB HBM3e (12-high stacks) - 8 TB/s ultra-high bandwidth",
             ],
             ["On-Die Cache", "256 MB Infinity Cache (L3)"],
             [
               "Compute Dies",
-              "8x Accelerator Complex Dies (XCDs) on TSMC 3nm — 256 Compute Units (CUs), 16,384 Stream Processors, 1,024 Matrix Cores with native FP4 / MXFP6 / FP8 support",
+              "8x Accelerator Complex Dies (XCDs) on TSMC 3nm - 256 Compute Units (CUs), 16,384 Stream Processors, 1,024 Matrix Cores with native FP4 / MXFP6 / FP8 support",
             ],
             [
               "I/O Dies",
-              "2x I/O Dies (IODs) on TSMC 6nm — 4th-Gen Infinity Fabric Interconnect links and PCIe 5.0 x16 host interface",
+              "2x I/O Dies (IODs) on TSMC 6nm - 4th-Gen Infinity Fabric Interconnect links and PCIe 5.0 x16 host interface",
             ],
           ],
         },
@@ -195,7 +195,7 @@ export const post: BlogPost = {
             [
               "AMD Universal Baseboard (UBB)",
               "Holds up to 8x MI350X OAMs, aggregating 2.3 TB HBM3e VRAM",
-              "—",
+              "-",
             ],
             [
               "Air-Cooled Rack Deployment",
@@ -258,7 +258,7 @@ export const post: BlogPost = {
       content: [
         {
           type: "paragraph",
-          text: "The AMD Instinct MI350X is the strongest direct alternative to NVIDIA in the data center AI segment. With 288 GB of HBM3e memory, 8 TB/s bandwidth, native MXFP4 support and an open ROCm 7.0 software stack, it gives enterprise teams NVIDIA-class performance without vendor lock-in — often at a lower total cost of ownership.",
+          text: "The AMD Instinct MI350X is the strongest direct alternative to NVIDIA in the data center AI segment. With 288 GB of HBM3e memory, 8 TB/s bandwidth, native MXFP4 support and an open ROCm 7.0 software stack, it gives enterprise teams NVIDIA-class performance without vendor lock-in - often at a lower total cost of ownership.",
         },
         {
           type: "paragraph",
@@ -287,7 +287,7 @@ export const post: BlogPost = {
               question:
                 "How does the AMD Instinct MI350X compare directly to the NVIDIA Blackwell B200?",
               answer:
-                "The MI350X features 288 GB of HBM3e VRAM — 96 GB more than NVIDIA's B200 — allowing larger models to run on fewer GPUs. Operating up to a 1,000 W limit, it uses open-source ROCm 7.0 to eliminate vendor lock-in and cut TCO.",
+                "The MI350X features 288 GB of HBM3e VRAM - 96 GB more than NVIDIA's B200 - allowing larger models to run on fewer GPUs. Operating up to a 1,000 W limit, it uses open-source ROCm 7.0 to eliminate vendor lock-in and cut TCO.",
             },
             {
               question:
@@ -299,7 +299,7 @@ export const post: BlogPost = {
               question:
                 "What are the rack power and infrastructure requirements to deploy an 8-GPU MI350X node?",
               answer:
-                "An 8-GPU MI350X UBB node draws 8 kW for accelerators alone, bringing total chassis power to 10–12 kW with CPUs and cooling systems included. Data centers must deploy high-density PDUs and high-airflow or liquid cooling to safely manage this load.",
+                "An 8-GPU MI350X UBB node draws 8 kW for accelerators alone, bringing total chassis power to 10-12 kW with CPUs and cooling systems included. Data centers must deploy high-density PDUs and high-airflow or liquid cooling to safely manage this load.",
             },
           ],
         },

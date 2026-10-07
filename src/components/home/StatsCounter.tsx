@@ -84,7 +84,7 @@ export function StatsCounter() {
           <SectionHeading
             label="Our Impact"
             title="Trusted by Data Center GPU Teams Worldwide"
-            subtitle="Enterprise chip sourcing at scale — data center GPUs, AI accelerators & server processors shipped from Dubai, India & USA"
+            subtitle="Enterprise chip sourcing at scale - data center GPUs, AI accelerators & server processors shipped from Dubai, India & USA"
             align="center"
           />
         </div>

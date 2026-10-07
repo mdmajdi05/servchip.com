@@ -42,7 +42,7 @@ export async function POST(request: NextRequest) {
       country,
     };
 
-    console.log("📩 Contact form submission:", {
+    console.log(" Contact form submission:", {
       ...summary,
       timestamp: new Date().toISOString(),
     });

@@ -16,10 +16,10 @@ export const blog: SeoPageTemplate = {
     "AI chip comparison",
     "enterprise GPU guide",
   ],
-  openGraphTitle: "Blog | Servchip — Enterprise Chip Distributor",
+  openGraphTitle: "Blog | Servchip - Enterprise Chip Distributor",
   openGraphDescription:
     "Expert guides on AI chip architectures, comparisons & enterprise deployment best practices.",
-  twitterTitle: "Blog | Servchip — Enterprise Chip Distributor",
+  twitterTitle: "Blog | Servchip - Enterprise Chip Distributor",
   twitterDescription:
     "Expert guides on AI chip architectures, comparisons & enterprise deployment best practices.",
   country: {

@@ -5,7 +5,7 @@ export const INDUSTRY_SEO: Record<string, SeoEntry> = {
   "data-centers": {
     metaTitle: "Data Center GPU Solutions | NVIDIA, AMD | Servchip",
     metaDescription:
-      "GPU-accelerated data center solutions — NVIDIA H100, H200, B200, GB200, AMD Instinct, networking & storage. Enterprise chip distributor for data centers.",
+      "GPU-accelerated data center solutions - NVIDIA H100, H200, B200, GB200, AMD Instinct, networking & storage. Enterprise chip distributor for data centers.",
     keywords: [
       "data center GPUs",
       "GPU-accelerated data center",
@@ -17,7 +17,7 @@ export const INDUSTRY_SEO: Record<string, SeoEntry> = {
   "ai-infrastructure": {
     metaTitle: "AI Infrastructure Solutions | NVIDIA, AMD | Servchip",
     metaDescription:
-      "End-to-end AI infrastructure — training clusters, inference platforms, GPU-accelerated servers. Enterprise AI hardware for production workloads.",
+      "End-to-end AI infrastructure - training clusters, inference platforms, GPU-accelerated servers. Enterprise AI hardware for production workloads.",
     keywords: [
       "AI infrastructure",
       "AI training cluster",
@@ -29,7 +29,7 @@ export const INDUSTRY_SEO: Record<string, SeoEntry> = {
   healthcare: {
     metaTitle: "Healthcare AI & GPU Solutions | NVIDIA, AMD | Servchip",
     metaDescription:
-      "GPU-accelerated solutions for healthcare — medical imaging AI, drug discovery, genomics. NVIDIA RTX & data center GPUs for hospitals and pharma.",
+      "GPU-accelerated solutions for healthcare - medical imaging AI, drug discovery, genomics. NVIDIA RTX & data center GPUs for hospitals and pharma.",
     keywords: [
       "healthcare AI",
       "medical imaging GPU",
@@ -53,7 +53,7 @@ export const INDUSTRY_SEO: Record<string, SeoEntry> = {
   government: {
     metaTitle: "Government AI & HPC Solutions | NVIDIA, AMD | Servchip",
     metaDescription:
-      "Secure, compliant AI and HPC infrastructure for government and public sector — sovereign AI, national research programs and public institutions.",
+      "Secure, compliant AI and HPC infrastructure for government and public sector - sovereign AI, national research programs and public institutions.",
     keywords: [
       "government AI",
       "sovereign AI infrastructure",

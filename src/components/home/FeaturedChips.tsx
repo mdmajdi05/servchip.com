@@ -25,7 +25,7 @@ export function FeaturedChips() {
         <SectionHeading
           label="Featured Products"
           title="Enterprise Chips Our Clients Actually Buy"
-          subtitle="Handpicked from NVIDIA, AMD & Intel — the AI accelerators and server CPUs companies trust most"
+          subtitle="Handpicked from NVIDIA, AMD & Intel - the AI accelerators and server CPUs companies trust most"
           align="center"
         />
 

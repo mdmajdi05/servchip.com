@@ -19,7 +19,7 @@ const STEPS = [
     title: "Define Your Workload",
     desc: (
       <>
-        AI training demands maximum memory bandwidth and NVLink scalability —{" "}
+        AI training demands maximum memory bandwidth and NVLink scalability -{" "}
         <strong className="text-text">NVIDIA H100 and H200</strong> or{" "}
         <strong className="text-text">AMD MI300X</strong> excel here. AI
         inference favors low latency and per-watt efficiency, where{" "}
@@ -40,7 +40,7 @@ const STEPS = [
         <strong className="text-text">AMD MI300X</strong> offers 192GB HBM3 at
         5.2 TB/s, and <strong className="text-text">Intel Gaudi 3</strong>{" "}
         provides 144GB HBM2e at 3.9 TB/s. Larger memory means bigger models and
-        longer context windows — reducing cluster size and total cost of
+        longer context windows - reducing cluster size and total cost of
         ownership.
       </>
     ),
@@ -51,7 +51,7 @@ const STEPS = [
     desc: (
       <>
         Volume pricing, power and cooling (air vs liquid), and network topology
-        — <strong className="text-text">NVLink, InfiniBand or 400GbE</strong> —
+        - <strong className="text-text">NVLink, InfiniBand or 400GbE</strong> -
         directly drive total cost of ownership. Our engineers model per-GPU TCO
         across clusters from a single unit to 1000+ GPUs, with no minimum order
         quantity.
@@ -65,7 +65,7 @@ const STEPS = [
       <>
         Always buy from an{" "}
         <strong className="text-text">authorized distributor</strong> with
-        chain-of-custody documentation and manufacturer warranty — counterfeit
+        chain-of-custody documentation and manufacturer warranty - counterfeit
         and grey-market GPUs void NVIDIA, AMD and Intel support. Servchip ships{" "}
         <strong className="text-text">
           ISO 9001 certified, warranty-backed hardware
@@ -85,7 +85,7 @@ export function ChipBuyingGuide() {
         <SectionHeading
           label="Buying Guide"
           title="How to Choose the Right AI Chip for Your Workload"
-          subtitle="A practical guide to buying AI accelerators, server CPUs and GPU infrastructure — comparing NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3"
+          subtitle="A practical guide to buying AI accelerators, server CPUs and GPU infrastructure - comparing NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3"
           align="center"
         />
 
@@ -134,7 +134,7 @@ export function ChipBuyingGuide() {
 
             <p className="text-text-muted text-sm leading-relaxed mb-6 max-w-2xl mx-auto">
               Use our AI-powered chip configurator or compare accelerators
-              side-by-side — then get a volume quote within 24 hours.
+              side-by-side - then get a volume quote within 24 hours.
             </p>
 
             <div className="flex flex-col sm:flex-row flex-wrap justify-center gap-3">

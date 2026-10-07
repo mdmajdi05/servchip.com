@@ -17,7 +17,7 @@ export const SOLUTION_SEO: Record<string, SeoEntry> = {
   "ai-inference": {
     metaTitle: "AI Inference Infrastructure | NVIDIA L40S, H200 | Servchip",
     metaDescription:
-      "Production AI inference platforms — NVIDIA L40S, H200, RTX 6000 for LLM serving, computer vision and real-time AI. Enterprise inference hardware.",
+      "Production AI inference platforms - NVIDIA L40S, H200, RTX 6000 for LLM serving, computer vision and real-time AI. Enterprise inference hardware.",
     keywords: [
       "AI inference",
       "LLM inference",
@@ -41,7 +41,7 @@ export const SOLUTION_SEO: Record<string, SeoEntry> = {
   "ai-infrastructure": {
     metaTitle: "Enterprise AI Infrastructure & Data Centers | Servchip",
     metaDescription:
-      "Complete AI infrastructure — NVIDIA & AMD accelerators, GPU servers, networking, HBM memory and storage. Enterprise AI hardware from Servchip.",
+      "Complete AI infrastructure - NVIDIA & AMD accelerators, GPU servers, networking, HBM memory and storage. Enterprise AI hardware from Servchip.",
     keywords: [
       "enterprise AI infrastructure",
       "GPU server",
@@ -65,7 +65,7 @@ export const SOLUTION_SEO: Record<string, SeoEntry> = {
   "enterprise-procurement": {
     metaTitle: "Enterprise Chip Procurement | RFQ & Bulk Sourcing | Servchip",
     metaDescription:
-      "Enterprise semiconductor procurement — RFQ, bulk sourcing, import/export and supply chain support. ISO 9001 certified distributor from Servchip.",
+      "Enterprise semiconductor procurement - RFQ, bulk sourcing, import/export and supply chain support. ISO 9001 certified distributor from Servchip.",
     keywords: [
       "chip procurement",
       "semiconductor sourcing",

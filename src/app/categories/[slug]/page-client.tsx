@@ -15,9 +15,11 @@ import {
 } from "lucide-react";
 import { Badge } from "@/components/ui/Badge";
 import { ProductCard } from "@/components/products/ProductCard";
+import { CategorySeoArticle } from "@/components/categories/CategorySeoArticle";
 import { ALL_PRODUCTS } from "@/data/products";
 import { CATEGORIES } from "@/data/categories";
 import { BRANDS } from "@/data/brands";
+import type { CategoryArticle } from "@/data/category-content";
 import {
   isChipProduct,
   isServerProduct,
@@ -51,7 +53,11 @@ const TYPE_CONFIG: Record<string, { icon: typeof Cpu; label: string }> = {
   storage: { icon: HardDrive, label: "Storage" },
 };
 
-export default function CategoryDetailPage() {
+export default function CategoryDetailPage({
+  content,
+}: {
+  content?: CategoryArticle | null;
+}) {
   const { slug } = useParams<{ slug: string }>();
   const [search, setSearch] = useState("");
   const [activeType, setActiveType] = useState<string | "all">("all");
@@ -280,6 +286,7 @@ export default function CategoryDetailPage() {
           </div>
         )}
       </div>
+      <CategorySeoArticle article={content} />
     </div>
   );
 }

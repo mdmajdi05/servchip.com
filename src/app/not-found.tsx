@@ -5,15 +5,15 @@ import { NotFoundContent } from "@/components/ui/NotFoundContent";
 import { createSeoMetadata, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
-  title: `404 — Page Not Found | ${SITE.name}`,
+  title: `404 - Page Not Found | ${SITE.name}`,
   description:
     "The page you are looking for does not exist or has been moved. Browse enterprise chips, AI accelerators, and semiconductor procurement solutions at Servchip.",
   path: "/404",
   noindex: true,
-  openGraphTitle: `404 — Page Not Found | ${SITE.name}`,
+  openGraphTitle: `404 - Page Not Found | ${SITE.name}`,
   openGraphDescription:
     "The page you are looking for does not exist or has been moved. Browse enterprise chips, AI accelerators, and semiconductor procurement at Servchip.",
-  twitterTitle: `404 — Page Not Found | ${SITE.name}`,
+  twitterTitle: `404 - Page Not Found | ${SITE.name}`,
   twitterDescription:
     "The page you are looking for does not exist or has been moved.",
 });
@@ -25,7 +25,7 @@ export default function NotFound() {
         type="application/ld+json"
         dangerouslySetInnerHTML={breadcrumbSchema([
           { name: "Home", url: "/" },
-          { name: "404 — Page Not Found", url: "/404" },
+          { name: "404 - Page Not Found", url: "/404" },
         ])}
       />
       <NotFoundContent />

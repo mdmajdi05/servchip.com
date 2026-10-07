@@ -215,15 +215,17 @@ function RightSidebar({
                   <div className="flex items-center justify-between mt-2 pt-2 border-t border-border/50">
                     <Link
                       href={`/products/${rp.slug}`}
-                      className="text-[11px] font-semibold text-text-muted hover:text-primary transition-colors"
+                      className="text-[11px] font-semibold text-text-muted hover:text-primary transition-colors inline-flex items-center gap-1"
                     >
-                      View Details →
+                      View Details
+                      <ArrowRight className="w-3 h-3" />
                     </Link>
                     <button
                       onClick={() => onQuote(rp)}
-                      className="text-[11px] font-semibold text-primary hover:underline"
+                      className="text-[11px] font-semibold text-primary hover:underline inline-flex items-center gap-1"
                     >
-                      Get Quote →
+                      Get Quote
+                      <ArrowRight className="w-3 h-3" />
                     </button>
                   </div>
                 </div>
@@ -532,8 +534,9 @@ export default function BlogPostPage() {
                         <p className="text-text-muted text-xs line-clamp-2">
                           {getProductSpec(product!)}
                         </p>
-                        <span className="text-xs text-primary font-medium mt-2 inline-block">
-                          View Product →
+                        <span className="text-xs text-primary font-medium mt-2 inline-flex items-center gap-1">
+                          View Product
+                          <ArrowRight className="w-3 h-3" />
                         </span>
                       </Link>
                     ))}

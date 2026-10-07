@@ -5,7 +5,7 @@ export const brands: SeoPageTemplate = {
   label: "Brands",
   title: "All Brands | NVIDIA, AMD, Intel & More",
   description:
-    "Browse every brand we stock — NVIDIA, AMD, Intel, Dell, HPE, Supermicro, Broadcom, Micron and 27+ more, with global shipping.",
+    "Browse every brand we stock - NVIDIA, AMD, Intel, Dell, HPE, Supermicro, Broadcom, Micron and 27+ more, with global shipping.",
   keywords: [
     "NVIDIA distributor",
     "AMD enterprise distributor",
@@ -14,21 +14,23 @@ export const brands: SeoPageTemplate = {
     "AI hardware manufacturer",
     "semiconductor brand directory",
   ],
-  openGraphTitle: "All Brands | Servchip — Enterprise Chip Distributor",
+  openGraphTitle: "All Brands | Servchip - Enterprise Chip Distributor",
   openGraphDescription:
-    "Browse every brand we stock — NVIDIA, AMD, Intel, Dell, HPE and 27+ manufacturers.",
-  twitterTitle: "All Brands | Servchip — Enterprise Chip Distributor",
+    "Browse every brand we stock - NVIDIA, AMD, Intel, Dell, HPE and 27+ manufacturers.",
+  twitterTitle: "All Brands | Servchip - Enterprise Chip Distributor",
   twitterDescription:
-    "Browse every brand we stock — NVIDIA, AMD, Intel, Dell, HPE and 27+ manufacturers.",
+    "Browse every brand we stock - NVIDIA, AMD, Intel, Dell, HPE and 27+ manufacturers.",
   country: {
-    title: "Brand Directory{{countrySuffix}} | NVIDIA & AMD",
+    title: "AI Chip & Hardware Brands{{countrySuffix}} | NVIDIA, AMD",
     description:
-      "Browse authentic enterprise hardware brands{{countrySuffix}} — NVIDIA, AMD, Intel, HPE, Dell and more. Priced in {{currency}}, shipped from {{warehouse}}.",
+      "Browse authentic enterprise hardware brands{{countrySuffix}} - NVIDIA, AMD, Intel, HPE, Dell and more. Priced in {{currency}}, shipped from {{warehouse}}.",
     keywords: [
       "NVIDIA distributor{{countrySuffix}}",
       "AMD distributor{{countrySuffix}}",
       "Intel distributor{{countrySuffix}}",
-      "brands{{countrySuffix}}",
+      "AI chip brands{{countrySuffix}}",
+      "AI chip distributor{{countrySuffix}}",
+      "hardware brands{{countrySuffix}}",
       "enterprise hardware brands{{countrySuffix}}",
     ],
     openGraphTitle: "Brand Directory{{countrySuffix}} | Servchip",

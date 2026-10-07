@@ -126,7 +126,7 @@ export function IndustrySolutions() {
         <SectionHeading
           label="Industry Solutions"
           title="AI Hardware for Every Industry"
-          subtitle="From AI research labs to global financial markets — GPU accelerators, server CPUs and data center infrastructure for every enterprise workload"
+          subtitle="From AI research labs to global financial markets - GPU accelerators, server CPUs and data center infrastructure for every enterprise workload"
           align="center"
         />
 

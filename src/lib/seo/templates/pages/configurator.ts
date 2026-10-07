@@ -15,10 +15,10 @@ export const configurator: SeoPageTemplate = {
   ],
   robots: { index: false, follow: true },
   openGraphTitle:
-    "Chip Configurator | Servchip — Find the Right AI Accelerator",
+    "Chip Configurator | Servchip - Find the Right AI Accelerator",
   openGraphDescription:
     "Configure your ideal AI chip setup. NVIDIA, AMD, Intel. Matched to your workload.",
-  twitterTitle: "Chip Configurator | Servchip — Find the Right AI Accelerator",
+  twitterTitle: "Chip Configurator | Servchip - Find the Right AI Accelerator",
   twitterDescription:
     "Configure your ideal AI chip setup. NVIDIA, AMD, Intel. Matched to your workload.",
   country: {

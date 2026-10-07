@@ -35,7 +35,7 @@ export default async function Page(props: {
           createBreadcrumb("about", country),
         )}
       />
-      <PageClient />
+      <PageClient country={countryObj} />
     </>
   );
 }

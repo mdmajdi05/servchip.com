@@ -176,7 +176,7 @@ export function productSchema(product: {
       priceCurrency: "USD",
       priceSpecification: {
         "@type": "CompoundPriceSpecification",
-        description: "Contact us for pricing — Request a Quote",
+        description: "Contact us for pricing - Request a Quote",
       },
       availability:
         SCHEMA.availabilityMap[
@@ -290,7 +290,7 @@ export function serviceSchema(
     "@type": "ItemList",
     name: "Servchip Enterprise Hardware Services",
     description:
-      "End-to-end enterprise chip services — semiconductor procurement, custom hardware sourcing, system integration, AI infrastructure consulting, and enterprise support.",
+      "End-to-end enterprise chip services - semiconductor procurement, custom hardware sourcing, system integration, AI infrastructure consulting, and enterprise support.",
     itemListElement: services.map((s, i) => ({
       "@type": "ListItem",
       position: i + 1,
@@ -308,7 +308,7 @@ export function serviceSchema(
 export function contactPageSchema() {
   return jsonLd({
     "@type": "ContactPage",
-    name: "Contact Servchip — Enterprise Chip Distributor",
+    name: "Contact Servchip - Enterprise Chip Distributor",
     url: `${SITE.url}/contact`,
     mainEntity: {
       "@type": "Organization",

@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { AppLink as Link } from "@/components/ui/AppLink";
 import { ArrowRight, Trophy, Sparkles, Flame } from "lucide-react";
@@ -26,7 +26,7 @@ export function ComparisonPreview() {
       <div className="max-w-7xl mx-auto px-4">
         <SectionHeading
           label="Compare Chips"
-          title="NVIDIA vs AMD vs Intel — See the Difference"
+          title="NVIDIA vs AMD vs Intel - See the Difference"
           align="center"
         />
 

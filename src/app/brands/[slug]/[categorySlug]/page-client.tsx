@@ -7,14 +7,16 @@ import { BRANDS } from "@/data/brands";
 import { getProductsByBrand } from "@/data/products";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { ProductCard } from "@/components/products/ProductCard";
+import type { Country } from "@/types";
 
-export default function BrandCategoryPage() {
+export default function BrandCategoryPage({ country }: { country?: Country }) {
   const params = useParams();
   const slug = params.slug as string;
   const categorySlug = params.categorySlug as string;
 
   const brand = BRANDS.find((b) => b.slug === slug);
   const category = brand?.categories.find((c) => c.slug === categorySlug);
+  const countryLabel = country?.hero.label ?? "";
 
   if (!brand || !category) {
     return (
@@ -68,9 +70,15 @@ export default function BrandCategoryPage() {
             <span className="text-text">{category.name}</span>
           </nav>
           <SectionHeading
-            label={`${brand.name} • ${category.name}`}
-            title={`${brand.name} ${category.name}`}
-            subtitle={category.description}
+            label={`${brand.name} | ${category.name}`}
+            title={`${brand.name} ${category.name}${
+              country ? ` in ${countryLabel}` : ""
+            }`}
+            subtitle={
+              country
+                ? `${category.description} Available in ${countryLabel} with authentic, warrantied hardware and local support.`
+                : category.description
+            }
             align="left"
           />
         </div>

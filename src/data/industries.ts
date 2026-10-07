@@ -57,7 +57,7 @@ export const INDUSTRIES: Industry[] = [
     slug: "ai-infrastructure",
     icon: "Brain",
     description:
-      "End-to-end AI infrastructure — training clusters, inference platforms and GPU-accelerated software stacks.",
+      "End-to-end AI infrastructure - training clusters, inference platforms and GPU-accelerated software stacks.",
     longDescription:
       "From single-node AI workstations to thousand-GPU training clusters, Servchip delivers complete AI infrastructure. We pair NVIDIA, AMD and Intel accelerators with high-bandwidth networking and memory to build production-ready AI systems for enterprises and research labs.",
     hero: {
@@ -70,7 +70,7 @@ export const INDUSTRIES: Industry[] = [
       {
         question: "What is included in your AI infrastructure solutions?",
         answer:
-          "We provide accelerators, GPU servers, high-speed networking, HBM memory and storage — everything needed to build production AI infrastructure.",
+          "We provide accelerators, GPU servers, high-speed networking, HBM memory and storage - everything needed to build production AI infrastructure.",
       },
       {
         question: "Do you support both training and inference?",
@@ -96,7 +96,7 @@ export const INDUSTRIES: Industry[] = [
       useCases: ["ai-training", "ai-inference", "hpc"],
     },
     stats: [
-      { value: "1–1000+", label: "GPU cluster scale" },
+      { value: "1-1000+", label: "GPU cluster scale" },
       { value: "NVLink", label: "High-speed interconnect" },
       { value: "Full stack", label: "Hardware + networking" },
     ],
@@ -277,7 +277,7 @@ export const INDUSTRIES: Industry[] = [
       {
         question: "Can you help design research clusters?",
         answer:
-          "Yes. Our team helps design HPC and GPU clusters matched to your research field — from genomics to climate modeling.",
+          "Yes. Our team helps design HPC and GPU clusters matched to your research field - from genomics to climate modeling.",
       },
     ],
     related: {

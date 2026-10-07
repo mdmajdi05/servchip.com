@@ -17,11 +17,11 @@ export const contact: SeoPageTemplate = {
     "bulk chip ordering",
   ],
   openGraphTitle:
-    "Contact Servchip — Enterprise Chip Distributor | Buy AI Chips & Get Pricing",
+    "Contact Servchip - Enterprise Chip Distributor | Buy AI Chips & Get Pricing",
   openGraphDescription:
     "Get enterprise chip pricing & semiconductor procurement quotes. 24-hour response time. Buy AI accelerators with global shipping.",
   twitterTitle:
-    "Contact Servchip — Enterprise Chip Distributor | Buy AI Chips & Get Pricing",
+    "Contact Servchip - Enterprise Chip Distributor | Buy AI Chips & Get Pricing",
   twitterDescription:
     "Get enterprise chip pricing & semiconductor procurement quotes. 24-hour response time. Buy AI accelerators with global shipping.",
   country: {

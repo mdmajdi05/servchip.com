@@ -5,7 +5,7 @@ export const CATEGORY_SEO: Record<string, SeoEntry> = {
   "nvidia-dc-gpus": {
     metaTitle: "NVIDIA Data Center GPUs | H100, H200, B200 | Servchip",
     metaDescription:
-      "NVIDIA data center GPUs — H100, H200, B200, B300, GB200, L40S and L4 for AI training, inference and HPC. Authentic, warrantied enterprise supply.",
+      "NVIDIA data center GPUs - H100, H200, B200, B300, GB200, L40S and L4 for AI training, inference and HPC. Authentic, warrantied enterprise supply.",
     keywords: [
       "NVIDIA H100 distributor",
       "NVIDIA H200 supplier",
@@ -65,7 +65,7 @@ export const CATEGORY_SEO: Record<string, SeoEntry> = {
   "server-cpus": {
     metaTitle: "Server CPUs | AMD EPYC, Intel Xeon & Gaudi | Servchip",
     metaDescription:
-      "Server CPUs — AMD EPYC 9005/9004, Intel Xeon 6/4th Gen, AmpereOne, NVIDIA Grace and Qualcomm. Enterprise processors with global procurement support.",
+      "Server CPUs - AMD EPYC 9005/9004, Intel Xeon 6/4th Gen, AmpereOne, NVIDIA Grace and Qualcomm. Enterprise processors with global procurement support.",
     keywords: [
       "AMD EPYC server CPU",
       "Intel Xeon 6 supplier",
@@ -75,7 +75,7 @@ export const CATEGORY_SEO: Record<string, SeoEntry> = {
     ],
   },
   "ai-servers": {
-    metaTitle: "AI Servers — Dell, HPE, Supermicro, Lenovo | Servchip",
+    metaTitle: "AI Servers - Dell, HPE, Supermicro, Lenovo | Servchip",
     metaDescription:
       "AI GPU servers from Dell PowerEdge, HPE Cray, Supermicro, Lenovo, Gigabyte and ASUS. Production-ready enterprise AI server platforms for training.",
     keywords: [
@@ -85,6 +85,14 @@ export const CATEGORY_SEO: Record<string, SeoEntry> = {
       "HPE Cray XD670",
       "enterprise GPU server",
     ],
+    countryMeta: {
+      ae: {
+        metaTitle:
+          "AI Server Authorized Reseller in UAE | AI Server Reseller Dubai",
+        metaDescription:
+          "Looking for a certified AI server distributor in UAE? Get enterprise GPU servers & custom cluster configurations from a trusted Dubai AI server reseller.",
+      },
+    },
   },
   networking: {
     metaTitle: "Networking & Interconnects | Ethernet, InfiniBand | Servchip",

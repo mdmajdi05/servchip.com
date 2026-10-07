@@ -189,7 +189,7 @@ export function GetQuoteModal({
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="Your requirement — specs, timeline, use case... *"
+              placeholder="Your requirement - specs, timeline, use case... *"
               required
               rows={3}
               className="w-full px-4 py-2.5 bg-bg-dark border border-border rounded-xl text-sm text-text placeholder:text-text-dim focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-transform duration-200 resize-none"

@@ -6,6 +6,7 @@ import { AppLink as Link } from "@/components/ui/AppLink";
 import { SectionHeading } from "@/components/ui/SectionHeading";
 import { Button } from "@/components/ui/Button";
 import { Card } from "@/components/ui/Card";
+import type { Country } from "@/types";
 import {
   ShieldCheck,
   Award,
@@ -72,7 +73,9 @@ const TEAM = [
   },
 ];
 
-export default function AboutPage() {
+export default function AboutPage({ country }: { country?: Country }) {
+  const countryLabel = country?.hero.label ?? "";
+
   return (
     <div className="min-h-screen bg-bg-dark">
       {/* About intro section */}
@@ -82,18 +85,21 @@ export default function AboutPage() {
           <div>
             <div className="inline-flex items-center gap-2 bg-primary/10 border border-primary/20 rounded-full px-5 py-1.5 text-xs font-semibold text-primary mb-6">
               <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
-              Enterprise Chip Distributor — Est. 2018
+              Enterprise Chip Distributor{country ? ` in ${countryLabel}` : ""}{" "}
+              - Est. 2018
             </div>
             <h1 className="text-4xl md:text-5xl font-black text-text mb-4 tracking-tight">
               The Team Behind{" "}
               <span className="gradient-text">
                 Your Enterprise Chip Distributor
+                {country ? ` in ${countryLabel}` : ""}
               </span>
             </h1>
             <p className="text-text-muted text-base md:text-lg max-w-2xl mx-auto">
-              We help companies buy AI chips, server hardware, and data center
-              equipment from the brands they trust — NVIDIA, AMD, Intel and
-              more. ISO 9001 certified. 500+ clients. 150+ countries.
+              We help companies{country ? ` in ${countryLabel}` : ""} buy AI
+              chips, server hardware, and data center equipment from the brands
+              they trust - NVIDIA, AMD, Intel and more. ISO 9001 certified. 500+
+              clients. 150+ countries.
             </p>
           </div>
         </div>
@@ -128,14 +134,33 @@ export default function AboutPage() {
               />
               <p className="text-text-muted text-sm leading-relaxed mb-4">
                 We started Servchip in 2018 because buying enterprise chips was
-                painful — too many middlemen, counterfeit risk, and way too much
+                painful - too many middlemen, counterfeit risk, and way too much
                 paperwork. We thought there had to be a better way for companies
                 to source AI accelerators and data center hardware.
               </p>
+              {country && (
+                <p className="text-text-muted text-sm leading-relaxed mb-6">
+                  {country.code === "ae" ? (
+                    <>
+                      For buyers in the UAE, our Sharjah free-zone hub delivers
+                      NVIDIA GPUs, AI accelerators and GPU servers to Dubai, Abu
+                      Dhabi and across the Emirates - fast, customs-cleared, and
+                      backed by wholesale AI accelerator supply and enterprise
+                      chip distribution support.
+                    </>
+                  ) : (
+                    <>
+                      For buyers in {country.name}, we combine global sourcing
+                      with local delivery, customs support and dedicated account
+                      management.
+                    </>
+                  )}
+                </p>
+              )}
               <p className="text-text-muted text-sm leading-relaxed mb-6">
                 Today, over 500 companies across 150+ countries trust us for
                 semiconductor procurement. From a single NVIDIA H100 to an
-                entire AMD MI300X cluster build-out — we handle everything with
+                entire AMD MI300X cluster build-out - we handle everything with
                 full traceability and manufacturer-direct sourcing. Our{" "}
                 <Link
                   href="/technology"
@@ -257,7 +282,7 @@ export default function AboutPage() {
           </h2>
           <p className="text-text-muted text-sm mb-8 max-w-xl mx-auto">
             Whether you need a single NVIDIA H100, a batch of AMD MI300Xs, or a
-            full data center deployment — let&apos;s talk. Get a quote within 24
+            full data center deployment - let&apos;s talk. Get a quote within 24
             hours.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">

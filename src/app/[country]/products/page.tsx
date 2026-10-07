@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { getCountryByCode } from "@/data/countries";
+import { COUNTRY_MARKETS } from "@/data/country-markets";
 import {
   createMetadata,
   createBreadcrumb,
@@ -25,7 +26,8 @@ export default async function Page(props: {
 }) {
   const { country } = await props.params;
   const countryObj = getCountryByCode(country);
-  if (!countryObj) notFound();
+  const market = COUNTRY_MARKETS[country];
+  if (!countryObj || !market) notFound();
 
   return (
     <>
@@ -35,7 +37,7 @@ export default async function Page(props: {
           createBreadcrumb("products", country),
         )}
       />
-      <ProductsPage />
+      <ProductsPage country={countryObj} market={market} />
     </>
   );
 }

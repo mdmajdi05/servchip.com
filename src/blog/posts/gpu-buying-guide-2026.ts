@@ -25,7 +25,7 @@ export const post: BlogPost = {
   seo: {
     metaTitle: "GPU Buying Guide 2026 | Choose an AI Accelerator",
     metaDescription:
-      "How to choose the right GPU for AI in 2026 — pick the right accelerator, avoid overspending, and understand VRAM, memory bandwidth and TDP.",
+      "How to choose the right GPU for AI in 2026 - pick the right accelerator, avoid overspending, and understand VRAM, memory bandwidth and TDP.",
     focusKeyword: "GPU buying guide 2026",
     canonicalUrl: "https://servchip.com/blog/gpu-buying-guide-2026",
   },

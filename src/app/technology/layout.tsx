@@ -3,9 +3,9 @@ import { createSeoMetadata, breadcrumbSchema } from "@/lib/seo";
 
 export const metadata: Metadata = createSeoMetadata({
   title:
-    "Technology — Multi-Vendor AI Chip Architecture, GPU Interconnects & Enterprise Solutions",
+    "Technology - Multi-Vendor AI Chip Architecture, GPU Interconnects & Enterprise Solutions",
   description:
-    "Explore enterprise chip technology — NVIDIA Blackwell, Hopper, AMD CDNA 3, Intel Granite Rapids. AI acceleration, HBM3E memory, NVLink interconnects & more for data center deployments. Semiconductor procurement expertise.",
+    "Explore enterprise chip technology - NVIDIA Blackwell, Hopper, AMD CDNA 3, Intel Granite Rapids. AI acceleration, HBM3E memory, NVLink interconnects & more for data center deployments. Semiconductor procurement expertise.",
   path: "/technology",
   keywords: [
     "AI chip architecture",
@@ -18,11 +18,11 @@ export const metadata: Metadata = createSeoMetadata({
     "semiconductor procurement",
   ],
   openGraphTitle:
-    "Technology Portfolio | Servchip — Enterprise AI Hardware Distributor",
+    "Technology Portfolio | Servchip - Enterprise AI Hardware Distributor",
   openGraphDescription:
     "Multi-vendor chip architecture expertise across NVIDIA, AMD, Intel for enterprise AI, HPC & data center workloads.",
   twitterTitle:
-    "Technology Portfolio | Servchip — Enterprise AI Hardware Distributor",
+    "Technology Portfolio | Servchip - Enterprise AI Hardware Distributor",
   twitterDescription:
     "Multi-vendor chip architecture expertise across NVIDIA, AMD, Intel for enterprise AI, HPC & data center workloads.",
 });

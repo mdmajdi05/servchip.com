@@ -470,7 +470,7 @@ export const MEMORY_MODULES: MemoryProduct[] = [
       capacity: "256GB / 512GB",
       speed: "CXL 2.0 32GT/s",
       formFactor: "E3.S / EDSFF",
-      voltage: "—",
+      voltage: "-",
       bandwidth: "64 GB/s per module",
     },
     status: "on_order",

@@ -12,7 +12,7 @@ const SHORT_NAMES: Record<string, string> = {
 };
 
 const COUNTRY_SUFFIX: Record<string, string> = {
-  ae: " in UAE and Dubai",
+  ae: " in Dubai and UAE",
   us: " in USA",
   uk: " in UK",
   de: " in Germany",

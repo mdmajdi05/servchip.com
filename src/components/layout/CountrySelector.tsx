@@ -5,6 +5,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Globe, ChevronDown, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { CountryFlag } from "@/components/ui/CountryFlag";
 import { COUNTRIES, getCountryPath } from "@/data/countries";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
 
@@ -62,10 +63,15 @@ export function CountrySelector() {
         className="flex items-center gap-1.5 hover:text-text cursor-pointer transition-transform"
       >
         <Globe className="w-3 h-3 text-primary/60" />
-        <span>
-          {selected === "global"
-            ? "Global"
-            : `${current?.flag ?? ""} ${current?.name ?? "Global"}`}
+        <span className="inline-flex items-center gap-1.5">
+          {selected === "global" ? (
+            "Global"
+          ) : (
+            <>
+              <CountryFlag code={current?.flag ?? ""} />
+              <span>{current?.name ?? "Global"}</span>
+            </>
+          )}
         </span>
         <ChevronDown
           className={cn(
@@ -110,7 +116,7 @@ export function CountrySelector() {
               )}
             >
               <span className="flex items-center gap-2">
-                <span className="text-sm leading-none">{country.flag}</span>
+                <CountryFlag code={country.flag} className="w-5 h-3.5" />
                 {country.name}
               </span>
               {selected === country.code && <Check className="w-3.5 h-3.5" />}

@@ -10,8 +10,8 @@ import type { EntityRoute } from "./templates/entities";
  * group's URLs via identical hreflang `alternate` links, otherwise the group
  * is ignored and the variants fight each other (duplicate content →
  * "not indexed" in Search Console). This helper builds that exact, complete
- * group for a route — the main (x-default) URL plus every supported-country
- * variant — so every page, main or country, emits the same 5-entry map.
+ * group for a route - the main (x-default) URL plus every supported-country
+ * variant - so every page, main or country, emits the same 5-entry map.
  */
 export function countryLanguageAlternates(
   mainPath: string,

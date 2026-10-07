@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { AppLink as Link } from "@/components/ui/AppLink";
 import Image from "next/image";
+import { CountryFlag } from "@/components/ui/CountryFlag";
 import {
   ArrowRight,
   Building2,
@@ -13,7 +14,7 @@ import {
   GraduationCap,
   Headphones,
   HeartPulse,
-  HelpCircle,
+  MessageCircle,
   Layers,
   Landmark,
   Package,
@@ -321,37 +322,37 @@ const PROCUREMENT_STEPS = [
 const COUNTRIES = [
   {
     name: "UAE",
-    flag: "🇦🇪",
+    flag: "ae",
     description:
       "The UAE was reclassified in July 2026 to US Export Administration Regulations Country Group A:5, removing the licensing requirement that previously slowed advanced computing imports. Combined with the Stargate UAE cluster's buildout and Microsoft's USD 15.2 billion investment program with G42 (including USD 7.9 billion in new data center capacity through 2029), the UAE remains the region's most active market for enterprise NVIDIA GPU procurement, with live data center capacity that surpassed 376 megawatts in 2025.",
   },
   {
     name: "Saudi Arabia",
-    flag: "🇸🇦",
+    flag: "sa",
     description:
       "Saudi Arabia's chip access runs on a different model than the UAE's country-wide reclassification. Access is deal-based and entity-specific, centered on HUMAIN, the PIF-backed AI champion that placed an 18,000-GPU NVIDIA GB300 order in 2026. AWS and HUMAIN are separately investing over USD 5 billion in a dedicated AI Zone in the Kingdom, and Vision 2030's national AI strategy continues to drive both government and enterprise GPU demand.",
   },
   {
     name: "Qatar",
-    flag: "🇶🇦",
+    flag: "qa",
     description:
       "Qatar's National AI Strategy and National Digital Agenda 2030 have pushed AI infrastructure spending well beyond early estimates, including a USD 20 billion AI infrastructure joint venture between the Qatar Investment Authority's Qai and Brookfield. Ooredoo's data center arm, Syntys, already operates a sovereign AI cloud built on NVIDIA Hopper GPUs, with capacity expanding past 120 megawatts, giving Qatar a genuine head start on GPU-backed AI services relative to some of its GCC neighbors.",
   },
   {
     name: "Kuwait",
-    flag: "🇰🇼",
+    flag: "kw",
     description:
       "Kuwait's AI data center market, valued at roughly USD 180 million, is being driven by expansions from Gulf Data Hub and Khazna alongside the arrival of hyperscale providers including Google Cloud and Microsoft Azure. A separately announced 1-gigawatt data center project signals Kuwait's ambitions to scale its AI compute capacity considerably beyond current levels over the coming years.",
   },
   {
     name: "Oman",
-    flag: "🇴🇲",
+    flag: "om",
     description:
       "Oman has deliberately chosen a different path from its neighbors, prioritizing a role in the semiconductor supply chain rather than racing to build gigawatt-scale compute capacity. Muscat, the country's main data center hub, is seeing steady growth through partnerships like the Equinix-Omantel SN1 facility in Salalah, supported by Oman's 95% internet penetration rate and growing digital transformation initiatives.",
   },
   {
     name: "Bahrain",
-    flag: "🇧🇭",
+    flag: "bh",
     description:
       "Bahrain hosts the region's most established hyperscale cloud presence, with AWS operating a three-availability-zone cloud region in Manama since 2019, the first of its kind in the Middle East. Beyon's sovereign cloud partnership with Oracle and Batelco's edge facility with Qareeb Data Centers continue to build out Bahrain's AI-ready infrastructure, with the local data center market on track to grow from roughly USD 226 million toward USD 393 million by 2031.",
   },
@@ -680,7 +681,7 @@ export default function ServicesPage() {
           <SectionHeading
             label="Who We Serve"
             title="Industries We Serve"
-            subtitle="From national AI champions to regional banks, energy companies, and research institutions — the buyers driving GPU demand across the Middle East."
+            subtitle="From national AI champions to regional banks, energy companies, and research institutions - the buyers driving GPU demand across the Middle East."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
             {INDUSTRIES.map((industry) => (
@@ -710,7 +711,7 @@ export default function ServicesPage() {
           <SectionHeading
             label="Trust &amp; Reliability"
             title="Why Choose Us as Your NVIDIA GPU Supplier"
-            subtitle="What separates an established distributor from a middleman — and why enterprises across the GCC buy through Servchip."
+            subtitle="What separates an established distributor from a middleman - and why enterprises across the GCC buy through Servchip."
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
             {WHY_CHOOSE_US.map((item) => (
@@ -844,9 +845,11 @@ export default function ServicesPage() {
                 className="rounded-2xl border border-border bg-bg-dark p-6 card-hover flex flex-col"
               >
                 <div className="flex items-center gap-3 mb-4">
-                  <span className="text-3xl" aria-hidden>
-                    {country.flag}
-                  </span>
+                  <CountryFlag
+                    code={country.flag}
+                    alt={`${country.name} flag`}
+                    className="w-10 h-7"
+                  />
                   <h3 className="text-lg font-bold text-text">
                     {country.name}
                   </h3>
@@ -892,7 +895,7 @@ export default function ServicesPage() {
                           isOpen ? "bg-primary/20" : "bg-primary/10"
                         }`}
                       >
-                        <HelpCircle
+                        <MessageCircle
                           className={`w-3.5 h-3.5 transition-transform ${
                             isOpen ? "text-primary" : "text-primary/80"
                           }`}

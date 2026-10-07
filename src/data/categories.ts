@@ -7,7 +7,7 @@ export const CATEGORIES: ChipCategory[] = [
     name: "NVIDIA Data Center GPUs",
     slug: "nvidia-data-center-gpus",
     description:
-      "Enterprise AI training and inference GPUs — H100, H200, B200, B300, GB200, L40S, L4.",
+      "Enterprise AI training and inference GPUs - H100, H200, B200, B300, GB200, L40S, L4.",
     icon: "Server",
     sortOrder: 1,
     productCount: 0,
@@ -18,7 +18,7 @@ export const CATEGORIES: ChipCategory[] = [
     name: "AMD Instinct Accelerators",
     slug: "amd-instinct-accelerators",
     description:
-      "AMD Instinct AI accelerators — MI300X, MI325X, MI350X for AI training and HPC.",
+      "AMD Instinct AI accelerators - MI300X, MI325X, MI350X for AI training and HPC.",
     icon: "Server",
     sortOrder: 2,
     productCount: 0,
@@ -29,7 +29,7 @@ export const CATEGORIES: ChipCategory[] = [
     name: "Intel Gaudi AI Accelerators",
     slug: "intel-gaudi-ai-accelerators",
     description:
-      "Intel Gaudi AI accelerators for training and inference — Gaudi 2, Gaudi 3.",
+      "Intel Gaudi AI accelerators for training and inference - Gaudi 2, Gaudi 3.",
     icon: "Brain",
     sortOrder: 3,
     productCount: 0,
@@ -40,7 +40,7 @@ export const CATEGORIES: ChipCategory[] = [
     name: "Google TPU Accelerators",
     slug: "google-tpu-accelerators",
     description:
-      "Google TPU v6 and v7 — custom AI accelerators for Google Cloud.",
+      "Google TPU v6 and v7 - custom AI accelerators for Google Cloud.",
     icon: "Cloud",
     sortOrder: 4,
     productCount: 0,
@@ -51,7 +51,7 @@ export const CATEGORIES: ChipCategory[] = [
     name: "Amazon AI Chips",
     slug: "amazon-ai-chips",
     description:
-      "Amazon Trainium 2 and Inferentia 2 — custom AI chips for AWS.",
+      "Amazon Trainium 2 and Inferentia 2 - custom AI chips for AWS.",
     icon: "Cloud",
     sortOrder: 5,
     productCount: 0,
@@ -95,7 +95,7 @@ export const CATEGORIES: ChipCategory[] = [
     name: "AI Memory & HBM",
     slug: "ai-memory-hbm",
     description:
-      "High-bandwidth memory — HBM3E from SK hynix, Samsung, Micron. DDR5 RDIMM, MRDIMM, CXL modules.",
+      "High-bandwidth memory - HBM3E from SK hynix, Samsung, Micron. DDR5 RDIMM, MRDIMM, CXL modules.",
     icon: "MemoryStick",
     sortOrder: 9,
     productCount: 0,

@@ -35,18 +35,18 @@ const FLOW_STEPS = [
   {
     icon: Factory,
     title: "27+ Manufacturers",
-    desc: "NVIDIA · AMD · Intel · Broadcom · Marvell",
+    desc: "NVIDIA | AMD | Intel | Broadcom | Marvell",
   },
   {
     icon: ShieldCheck,
     title: "Servchip Verified",
-    desc: "ISO 9001:2015 · Chain of custody · Zero counterfeit",
+    desc: "ISO 9001:2015 | Chain of custody | Zero counterfeit",
     highlight: true,
   },
   {
     icon: Building2,
     title: "Your Enterprise",
-    desc: "AI clusters · HPC · Data centers · 150+ countries",
+    desc: "AI clusters | HPC | Data centers | 150+ countries",
   },
 ];
 
@@ -142,7 +142,7 @@ function DistributionFlow() {
       {/* Floating mini-badge */}
       <div className="absolute -top-3 -right-3 glass rounded-full border border-primary/20 px-4 py-1.5">
         <span className="text-[10px] font-mono font-bold text-primary uppercase tracking-widest">
-          Gen-AI Ready · 2026
+          Gen-AI Ready | 2026
         </span>
       </div>
     </div>
@@ -161,12 +161,12 @@ export function SeoIntroBlock() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-          {/* LEFT — Visual flow diagram */}
+          {/* LEFT - Visual flow diagram */}
           <div className="order-2 lg:order-1">
             <DistributionFlow />
           </div>
 
-          {/* RIGHT — SEO content */}
+          {/* RIGHT - SEO content */}
           <div className="order-1 lg:order-2">
             <div className="inline-flex items-center gap-2 text-primary text-sm font-semibold uppercase tracking-wider mb-3">
               <span className="w-6 h-px bg-primary" />
@@ -181,12 +181,12 @@ export function SeoIntroBlock() {
             </h2>
 
             <p className="text-text-muted text-base leading-relaxed mb-8 max-w-xl">
-              A complete guide to enterprise semiconductor distribution — how AI
+              A complete guide to enterprise semiconductor distribution - how AI
               accelerators, server CPUs, and data center GPUs reach your
               infrastructure.
             </p>
 
-            {/* Expandable SEO content — text ALWAYS in DOM for crawlers */}
+            {/* Expandable SEO content - text ALWAYS in DOM for crawlers */}
             <div className="relative rounded-2xl border border-border/60 bg-surface/50 p-5 sm:p-6">
               <div
                 className={`relative overflow-hidden transition-all duration-500 ease-in-out ${
@@ -199,9 +199,9 @@ export function SeoIntroBlock() {
                       An AI chip distributor
                     </strong>{" "}
                     is a specialized enterprise supplier that sources, procures,
-                    and delivers semiconductor hardware — including AI
+                    and delivers semiconductor hardware - including AI
                     accelerators, server processors, high-bandwidth memory, and
-                    data center GPUs — directly from manufacturers to businesses
+                    data center GPUs - directly from manufacturers to businesses
                     building compute-intensive infrastructure. Unlike general IT
                     resellers, an{" "}
                     <strong className="text-text">
@@ -285,7 +285,7 @@ export function SeoIntroBlock() {
                     </strong>{" "}
                     with dedicated engineering support to help you select,
                     procure, and deploy the exact semiconductor hardware your
-                    workload demands — with global shipping from India and UAE
+                    workload demands - with global shipping from India and UAE
                     to 150+ countries.
                   </p>
                 </div>

@@ -5,6 +5,7 @@ import { ArrowRight } from "lucide-react";
 import { COUNTRIES, getCountryPath } from "@/data/countries";
 import { PageHero } from "@/components/shared/PageHero";
 import { SectionHeading } from "@/components/ui/SectionHeading";
+import { CountryFlag } from "@/components/ui/CountryFlag";
 
 export default function CountriesPage() {
   return (
@@ -30,8 +31,8 @@ export default function CountriesPage() {
                 href={getCountryPath(country)}
                 className="group rounded-2xl border border-border bg-surface p-6 card-hover h-full"
               >
-                <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-transform text-2xl">
-                  {country.flag}
+                <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/20 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-transform">
+                  <CountryFlag code={country.flag} className="w-9 h-6" />
                 </div>
                 <h3 className="text-lg font-bold text-text mb-2 group-hover:text-primary transition-transform">
                   {country.name}

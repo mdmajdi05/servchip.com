@@ -5,7 +5,7 @@ export const products: SeoPageTemplate = {
   label: "Products",
   title: "Buy AI Chips | NVIDIA, AMD & Intel GPUs",
   description:
-    "Buy authentic enterprise chips — NVIDIA H100, H200, B200, AMD MI300X, Intel Xeon and Gaudi 3. AI accelerators and data center GPUs.",
+    "Buy authentic enterprise chips - NVIDIA H100, H200, B200, AMD MI300X, Intel Xeon and Gaudi 3. AI accelerators and data center GPUs.",
   keywords: [
     "buy AI chips",
     "enterprise chip distributor",
@@ -17,13 +17,13 @@ export const products: SeoPageTemplate = {
     "enterprise hardware store",
   ],
   openGraphTitle:
-    "Buy Enterprise Chips | Servchip — NVIDIA, AMD, Intel AI Accelerators",
+    "Buy Enterprise Chips | Servchip - NVIDIA, AMD, Intel AI Accelerators",
   openGraphDescription:
-    "Buy authentic enterprise chips — NVIDIA H100, AMD MI300X, Intel Xeon. ISO 9001 certified distributor with global shipping.",
+    "Buy authentic enterprise chips - NVIDIA H100, AMD MI300X, Intel Xeon. ISO 9001 certified distributor with global shipping.",
   twitterTitle:
-    "Buy Enterprise Chips | Servchip — NVIDIA, AMD, Intel AI Accelerators",
+    "Buy Enterprise Chips | Servchip - NVIDIA, AMD, Intel AI Accelerators",
   twitterDescription:
-    "Buy authentic enterprise chips — NVIDIA H100, AMD MI300X, Intel Xeon. ISO 9001 certified distributor with global shipping.",
+    "Buy authentic enterprise chips - NVIDIA H100, AMD MI300X, Intel Xeon. ISO 9001 certified distributor with global shipping.",
   country: {
     title: "Buy AI Chips{{countrySuffix}} | NVIDIA & AMD",
     description:

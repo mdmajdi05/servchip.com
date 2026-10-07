@@ -5,7 +5,7 @@ export const services: SeoPageTemplate = {
   label: "Services",
   title: "Chip Services | Procurement & Integration",
   description:
-    "End-to-end enterprise chip services — semiconductor procurement, hardware sourcing, system integration and AI infrastructure consulting.",
+    "End-to-end enterprise chip services - semiconductor procurement, hardware sourcing, system integration and AI infrastructure consulting.",
   keywords: [
     "enterprise chip services",
     "semiconductor procurement services",
@@ -17,17 +17,17 @@ export const services: SeoPageTemplate = {
     "bulk chip procurement",
   ],
   openGraphTitle:
-    "Enterprise Chip Services | Servchip — Semiconductor Procurement & Integration",
+    "Enterprise Chip Services | Servchip - Semiconductor Procurement & Integration",
   openGraphDescription:
     "Custom semiconductor procurement, system integration, AI infrastructure consulting, and enterprise hardware support from an ISO 9001 certified chip distributor.",
   twitterTitle:
-    "Enterprise Chip Services | Servchip — Semiconductor Procurement & Integration",
+    "Enterprise Chip Services | Servchip - Semiconductor Procurement & Integration",
   twitterDescription:
     "Custom semiconductor procurement, system integration, AI infrastructure consulting, and enterprise hardware support from an ISO 9001 certified chip distributor.",
   country: {
     title: "Chip Services{{countrySuffix}} | Procurement",
     description:
-      "End-to-end enterprise chip services{{countrySuffix}} — semiconductor procurement, hardware sourcing and system integration.",
+      "End-to-end enterprise chip services{{countrySuffix}} - semiconductor procurement, hardware sourcing and system integration.",
     keywords: [
       "enterprise chip services{{countrySuffix}}",
       "semiconductor procurement services{{countrySuffix}}",

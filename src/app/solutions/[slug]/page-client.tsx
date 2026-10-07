@@ -5,7 +5,7 @@ import { AppLink as Link } from "@/components/ui/AppLink";
 import {
   ArrowRight,
   ChevronDown,
-  HelpCircle,
+  MessageCircle,
   Rocket,
   Truck,
   Zap,
@@ -99,7 +99,7 @@ export default function SolutionPage() {
 
           <SectionHeading
             label={solution.name}
-            title={`${solution.name} — Enterprise Deployment`}
+            title={`${solution.name} - Enterprise Deployment`}
             subtitle={solution.longDescription}
             align="center"
           />
@@ -164,7 +164,7 @@ export default function SolutionPage() {
         <div className="max-w-4xl mx-auto px-4">
           <SectionHeading
             label="FAQ"
-            title={`Frequently Asked Questions — ${solution.name}`}
+            title={`Frequently Asked Questions - ${solution.name}`}
             align="center"
           />
           <div className="space-y-3">
@@ -185,7 +185,7 @@ export default function SolutionPage() {
                   >
                     <span className="text-sm font-semibold text-text flex items-center gap-3">
                       <span className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
-                        <HelpCircle className="w-3.5 h-3.5 text-primary" />
+                        <MessageCircle className="w-3.5 h-3.5 text-primary" />
                       </span>
                       {faq.question}
                     </span>

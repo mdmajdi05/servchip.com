@@ -5,7 +5,7 @@ export const comparison: SeoPageTemplate = {
   label: "Comparison",
   title: "GPU Comparison | H100 vs MI300X vs Gaudi",
   description:
-    "Compare NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3 — memory, bandwidth, TFLOPS, TDP and architecture specs.",
+    "Compare NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3 - memory, bandwidth, TFLOPS, TDP and architecture specs.",
   keywords: [
     "NVIDIA H100 vs AMD MI300X",
     "AI chip comparison",
@@ -18,15 +18,15 @@ export const comparison: SeoPageTemplate = {
   openGraphTitle:
     "AI Chip Comparison | NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3",
   openGraphDescription:
-    "Side-by-side enterprise chip comparison — specs, performance & pricing for data center GPU procurement.",
+    "Side-by-side enterprise chip comparison - specs, performance & pricing for data center GPU procurement.",
   twitterTitle:
     "AI Chip Comparison | NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3",
   twitterDescription:
-    "Side-by-side enterprise chip comparison — specs, performance & pricing for data center GPU procurement.",
+    "Side-by-side enterprise chip comparison - specs, performance & pricing for data center GPU procurement.",
   country: {
     title: "GPU Comparison{{countrySuffix}} | H100 vs MI300X",
     description:
-      "Compare enterprise AI accelerators{{countrySuffix}} — NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3. Specs and procurement guidance.",
+      "Compare enterprise AI accelerators{{countrySuffix}} - NVIDIA H100 vs AMD MI300X vs Intel Gaudi 3. Specs and procurement guidance.",
     keywords: [
       "NVIDIA H100 vs AMD MI300X{{countrySuffix}}",
       "AI chip comparison{{countrySuffix}}",

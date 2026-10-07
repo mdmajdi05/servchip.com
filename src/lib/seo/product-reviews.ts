@@ -11,7 +11,7 @@ export interface ProductReview {
 /**
  * Real customer testimonials that mention the product's brand.
  * Only matching testimonials are surfaced on the product page and marked up in
- * the Product schema — so reviews and ratings are honest and visible on-page
+ * the Product schema - so reviews and ratings are honest and visible on-page
  * (Google policy: ratings must reflect the product on the same page).
  * Products whose brand has no matching testimonials simply get no rating block.
  */

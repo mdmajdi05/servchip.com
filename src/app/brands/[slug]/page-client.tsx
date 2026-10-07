@@ -20,6 +20,7 @@ import { SectionHeading } from "@/components/ui/SectionHeading";
 import { PageHero } from "@/components/shared/PageHero";
 import { ProductCard } from "@/components/products/ProductCard";
 import { Button } from "@/components/ui/Button";
+import type { Country, CountryMarket } from "@/types";
 
 const TYPE_ICON: Record<string, typeof Cpu> = {
   chip: Cpu,
@@ -29,12 +30,19 @@ const TYPE_ICON: Record<string, typeof Cpu> = {
   storage: HardDrive,
 };
 
-export default function BrandPage() {
+export default function BrandPage({
+  country,
+  market,
+}: {
+  country?: Country;
+  market?: CountryMarket;
+}) {
   const params = useParams();
   const slug = params.slug as string;
   const brand = getBrandBySlug(slug);
   const products = getProductsByBrand(brand?.id ?? "");
   const color = brand ? getBrandColor(brand.name) : undefined;
+  const countryLabel = country?.hero.label ?? "";
 
   const grouped = products.reduce<Record<string, typeof products>>((acc, p) => {
     const type =
@@ -69,8 +77,18 @@ export default function BrandPage() {
     <div className="min-h-screen bg-bg-dark">
       <PageHero
         label={brand.name}
-        title={`${brand.name} — Enterprise Hardware Solutions`}
-        subtitle={brand.description}
+        title={
+          country
+            ? `${brand.name} Distributor in ${countryLabel}`
+            : `${brand.name} - Enterprise Hardware Solutions`
+        }
+        subtitle={
+          country
+            ? `${brand.description} Available${country ? ` in ${countryLabel}` : ""} with ${
+                market?.currency ?? "local"
+              } pricing, ${market?.leadTime ?? "fast"} delivery and full manufacturer warranty.`
+            : brand.description
+        }
         breadcrumbs={[
           { label: "Home", href: "/" },
           { label: "Products", href: "/products" },
@@ -124,13 +142,24 @@ export default function BrandPage() {
           <SectionHeading
             label="About"
             title={`About ${brand.name}`}
-            subtitle="Distributor overview and product coverage"
+            subtitle={`Distributor overview and product coverage${
+              country ? ` in ${countryLabel}` : ""
+            }`}
             align="center"
           />
-          <div className="max-w-3xl mx-auto mt-8">
+          <div className="max-w-3xl mx-auto mt-8 space-y-5">
             <p className="text-base md:text-lg text-text-muted leading-relaxed text-center">
               {brand.longDescription}
             </p>
+            {country && market && (
+              <p className="text-base text-text-muted leading-relaxed text-center">
+                Servchip is an authorized {brand.name} distributor in{" "}
+                {countryLabel}, supplying enterprises and data centers with{" "}
+                {market.currency} ({market.currencySymbol}) pricing,{" "}
+                {market.leadTime} delivery from {market.warehouse}, and full
+                warranty with chain-of-custody documentation.
+              </p>
+            )}
           </div>
         </div>
       </section>
@@ -140,8 +169,12 @@ export default function BrandPage() {
         <div className="max-w-7xl mx-auto px-4">
           <SectionHeading
             label="Categories"
-            title={`${brand.name} Product Lines`}
-            subtitle={`Browse our complete ${brand.name} portfolio by category`}
+            title={`${brand.name} Product Lines${
+              country ? ` in ${countryLabel}` : ""
+            }`}
+            subtitle={`Browse our complete ${brand.name} portfolio by category${
+              country ? `, available in ${countryLabel}` : ""
+            }`}
             align="center"
           />
 

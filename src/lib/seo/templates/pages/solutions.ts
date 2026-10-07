@@ -17,11 +17,11 @@ export const solutions: SeoPageTemplate = {
     "semiconductor procurement",
   ],
   openGraphTitle:
-    "Enterprise AI & HPC Solutions | Servchip — Data Center GPU Distributor",
+    "Enterprise AI & HPC Solutions | Servchip - Data Center GPU Distributor",
   openGraphDescription:
     "Multi-vendor enterprise solutions for AI training, HPC, and data center workloads featuring NVIDIA, AMD, and Intel hardware.",
   twitterTitle:
-    "Enterprise AI & HPC Solutions | Servchip — Data Center GPU Distributor",
+    "Enterprise AI & HPC Solutions | Servchip - Data Center GPU Distributor",
   twitterDescription:
     "Multi-vendor enterprise solutions for AI training, HPC, and data center workloads featuring NVIDIA, AMD, and Intel hardware.",
   country: {

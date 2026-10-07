@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import {
   createMetadata,
   createBreadcrumb,
@@ -21,7 +21,7 @@ export default function Page() {
         type="application/ld+json"
         dangerouslySetInnerHTML={jsonLd({
           "@type": "AboutPage",
-          name: "About Servchip — Enterprise Chip Distributor",
+          name: "About Servchip - Enterprise Chip Distributor",
           url: `${SITE.url}/about`,
           mainEntity: {
             "@type": "Organization",

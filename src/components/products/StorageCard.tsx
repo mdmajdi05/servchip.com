@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { AppLink as Link } from "@/components/ui/AppLink";
 import Image from "next/image";
@@ -35,7 +35,7 @@ export function StorageCard({ st, index: _index }: Props) {
             {st.images && st.images.length > 0 ? (
               <Image
                 src={st.images[0]}
-                alt={`${st.name} — ${st.categoryName}`}
+                alt={`${st.name} - ${st.categoryName}`}
                 fill
                 sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 className="object-cover"

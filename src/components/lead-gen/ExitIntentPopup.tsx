@@ -60,7 +60,7 @@ export function ExitIntentPopup() {
       if (res.ok) {
         setStatus("success");
         const subject = encodeURIComponent(
-          `[Servchip Inquiry] ${formData.subject || "Product Inquiry"} — ${formData.name}`,
+          `[Servchip Inquiry] ${formData.subject || "Product Inquiry"} - ${formData.name}`,
         );
         const body = encodeURIComponent(
           [
@@ -136,7 +136,7 @@ export function ExitIntentPopup() {
                 Let&apos;s Connect With Our Sales Executive
               </h2>
               <p className="text-sm text-text-muted mt-1 leading-relaxed">
-                Whether it&apos;s pricing, availability, or technical specs —
+                Whether it&apos;s pricing, availability, or technical specs -
                 our team is ready to help you find the right solution.
               </p>
             </div>
@@ -213,7 +213,7 @@ export function ExitIntentPopup() {
                     name="message"
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Tell us what you need — product name, quantity, specs... *"
+                    placeholder="Tell us what you need - product name, quantity, specs... *"
                     required
                     rows={3}
                     className="w-full px-4 py-2.5 bg-bg-dark border border-border rounded-xl text-sm text-text placeholder:text-text-dim focus:outline-none focus:border-primary/50 focus:ring-1 focus:ring-primary/20 transition-transform duration-200 resize-none"

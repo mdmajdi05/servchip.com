@@ -5,7 +5,7 @@ export const categories: SeoPageTemplate = {
   label: "Categories",
   title: "Chip Categories | GPUs, AI Accelerators & CPUs",
   description:
-    "Browse enterprise chip categories — NVIDIA data center GPUs, AMD Instinct, Intel Xeon, AI servers, networking, memory and storage.",
+    "Browse enterprise chip categories - NVIDIA data center GPUs, AMD Instinct, Intel Xeon, AI servers, networking, memory and storage.",
   keywords: [
     "enterprise chip categories",
     "data center GPUs",
@@ -16,16 +16,16 @@ export const categories: SeoPageTemplate = {
     "AMD Instinct",
     "Intel Xeon",
   ],
-  openGraphTitle: "Product Categories | Servchip — Enterprise Chip Distributor",
+  openGraphTitle: "Product Categories | Servchip - Enterprise Chip Distributor",
   openGraphDescription:
-    "Browse enterprise chip categories — data center GPUs, AI accelerators, server CPUs & more.",
-  twitterTitle: "Product Categories | Servchip — Enterprise Chip Distributor",
+    "Browse enterprise chip categories - data center GPUs, AI accelerators, server CPUs & more.",
+  twitterTitle: "Product Categories | Servchip - Enterprise Chip Distributor",
   twitterDescription:
-    "Browse enterprise chip categories — data center GPUs, AI accelerators, server CPUs & more.",
+    "Browse enterprise chip categories - data center GPUs, AI accelerators, server CPUs & more.",
   country: {
     title: "Chip Categories{{countrySuffix}} | GPUs & AI",
     description:
-      "Browse enterprise chip categories{{countrySuffix}} — NVIDIA data center GPUs, AMD Instinct, Intel Xeon and AI servers.",
+      "Browse enterprise chip categories{{countrySuffix}} - NVIDIA data center GPUs, AMD Instinct, Intel Xeon and AI servers.",
     keywords: [
       "enterprise chip categories{{countrySuffix}}",
       "data center GPUs{{countrySuffix}}",

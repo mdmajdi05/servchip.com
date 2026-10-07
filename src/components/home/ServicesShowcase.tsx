@@ -1,4 +1,4 @@
-﻿"use client";
+"use client";
 
 import { ArrowRight } from "lucide-react";
 import { AppLink as Link } from "@/components/ui/AppLink";
@@ -61,7 +61,7 @@ export function ServicesShowcase() {
         <SectionHeading
           label="Our Services"
           title="Beyond just selling chips"
-          subtitle="Enterprise semiconductor distribution, sourcing, integration, consulting and support — everything you need to deploy NVIDIA, AMD & Intel data center hardware"
+          subtitle="Enterprise semiconductor distribution, sourcing, integration, consulting and support - everything you need to deploy NVIDIA, AMD & Intel data center hardware"
           align="center"
         />
 

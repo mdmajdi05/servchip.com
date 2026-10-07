@@ -214,7 +214,7 @@ export function Hero3D({
 }) {
   const heroTitle = (
     <>
-      AI Chip Distributor —{" "}
+      AI Chip Distributor -{" "}
       <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00BCD4] to-[#00E5FF]">
         Data Center GPUs
       </span>{" "}
@@ -228,8 +228,8 @@ export function Hero3D({
       ? `${market.shippingNote} ${market.leadTime} delivery. ${market.currency} (${market.currencySymbol}) pricing.`
       : null;
   const heroBadge = country
-    ? `AUTHORIZED NVIDIA DISTRIBUTOR — ${country.name.toUpperCase()}`
-    : "AUTHORIZED NVIDIA DISTRIBUTOR — DATA CENTER GPUs & AI CHIPS";
+    ? `AUTHORIZED NVIDIA DISTRIBUTOR - ${country.name.toUpperCase()}`
+    : "AUTHORIZED NVIDIA DISTRIBUTOR - DATA CENTER GPUs & AI CHIPS";
   const heroStats = country?.stats ?? HERO_STATS;
 
   return (
@@ -249,15 +249,18 @@ export function Hero3D({
       <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 w-full z-10">
         <div className="text-center">
           <div
-            className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-[11px] font-mono font-bold mb-8 tracking-wide uppercase border bg-black/40"
+            className="inline-flex items-center gap-2.5 rounded-full px-5 sm:px-6 py-2.5 text-xs sm:text-[13px] font-mono font-bold mb-8 tracking-[0.08em] uppercase border backdrop-blur-md"
             style={{
+              backgroundColor: "rgba(7, 11, 21, 0.75)",
               borderColor:
-                "color-mix(in srgb, var(--hero-primary) 35%, transparent)",
-              color: "var(--hero-primary)",
+                "color-mix(in srgb, var(--hero-secondary) 50%, transparent)",
+              color: "color-mix(in srgb, var(--hero-secondary) 80%, white)",
+              boxShadow:
+                "0 0 24px color-mix(in srgb, var(--hero-primary) 30%, transparent), inset 0 1px 0 rgba(255,255,255,0.08)",
             }}
           >
             <span
-              className="w-1.5 h-1.5 rounded-full inline-block animate-ping"
+              className="w-2 h-2 rounded-full inline-block animate-ping"
               style={{ backgroundColor: "var(--hero-secondary)" }}
             />
             {heroBadge}
@@ -295,11 +298,14 @@ export function Hero3D({
             </Link>
             <Link href={`/rfq`}>
               <button
-                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-semibold text-sm border bg-gradient-to-b from-white/[0.22] to-white/[0.08] hover:from-white/[0.30] hover:to-white/[0.14] transition-all duration-300"
+                className="inline-flex items-center gap-2 px-8 py-4 rounded-xl font-bold text-sm border backdrop-blur-md bg-gradient-to-b from-white/[0.30] via-white/[0.12] to-white/[0.05] hover:from-white/[0.38] hover:via-white/[0.16] hover:to-white/[0.09] hover:-translate-y-0.5 transition-all duration-300"
                 style={{
                   borderColor:
-                    "color-mix(in srgb, var(--hero-primary) 50%, transparent)",
-                  color: "color-mix(in srgb, var(--hero-primary) 90%, white)",
+                    "color-mix(in srgb, var(--hero-primary) 60%, transparent)",
+                  color: "#ffffff",
+                  boxShadow:
+                    "inset 0 1px 0 rgba(255,255,255,0.30), 0 0 20px color-mix(in srgb, var(--hero-primary) 20%, transparent)",
+                  textShadow: "0 1px 2px rgba(0,0,0,0.35)",
                 }}
               >
                 Request Quotation
@@ -311,10 +317,12 @@ export function Hero3D({
             {heroStats.map(({ value, label }, i) => (
               <div
                 key={label}
-                className="group relative text-center px-3 py-4 rounded-xl border bg-gradient-to-b from-white/[0.18] to-white/[0.06] hover:from-white/[0.26] hover:to-white/[0.10] sm:hover:-translate-y-1 transition-all duration-300"
+                className="group relative text-center px-3 py-4 rounded-xl border backdrop-blur-md bg-gradient-to-b from-white/[0.32] via-white/[0.14] to-white/[0.05] hover:from-white/[0.40] hover:via-white/[0.18] hover:to-white/[0.08] sm:hover:-translate-y-1 transition-all duration-300"
                 style={{
                   borderColor:
-                    "color-mix(in srgb, var(--hero-primary) 25%, transparent)",
+                    "color-mix(in srgb, var(--hero-primary) 40%, transparent)",
+                  boxShadow:
+                    "inset 0 1px 0 rgba(255,255,255,0.35), inset 0 -1px 0 rgba(255,255,255,0.08), 0 0 24px color-mix(in srgb, var(--hero-primary) 15%, transparent)",
                 }}
               >
                 {/* Corner brackets */}
@@ -331,16 +339,20 @@ export function Hero3D({
                 <span className="absolute inset-x-3 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
 
                 <span
-                  className="text-xl sm:text-2xl lg:text-[1.75rem] font-black text-white font-mono tracking-tight block"
+                  className="text-2xl sm:text-3xl lg:text-[2rem] font-black text-white font-mono tracking-tight block"
                   style={{
-                    textShadow: `0 0 24px color-mix(in srgb, var(--hero-primary) 60%, transparent)`,
+                    textShadow:
+                      "0 0 28px color-mix(in srgb, var(--hero-primary) 70%, transparent), 0 1px 2px rgba(0,0,0,0.6)",
                   }}
                 >
                   {value}
                 </span>
                 <span
-                  className="block text-[9px] font-mono mt-2 uppercase tracking-[0.18em] font-semibold leading-snug"
-                  style={{ color: "var(--hero-secondary)" }}
+                  className="block text-[10px] sm:text-[11px] font-mono mt-2 uppercase tracking-[0.16em] font-semibold leading-snug"
+                  style={{
+                    color:
+                      "color-mix(in srgb, var(--hero-secondary) 70%, white)",
+                  }}
                 >
                   {label}
                 </span>

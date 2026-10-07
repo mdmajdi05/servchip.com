@@ -234,7 +234,7 @@ export function HomeSections({
   return (
     <>
       <Hero3D country={country} market={market} />
-      <AboutServchip />
+      <AboutServchip country={country} />
       <TrustBar />
       <SeoIntroBlock />
       {country && market && (

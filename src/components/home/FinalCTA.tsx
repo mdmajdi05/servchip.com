@@ -22,7 +22,7 @@ export function FinalCTA() {
           </h2>
           <p className="text-text-muted text-sm md:text-base mb-8 max-w-2xl mx-auto">
             Whether you need a single NVIDIA H100 or a full rack of AMD MI300Xs
-            — we&apos;ve got you covered. No minimums. Real people answering
+            - we&apos;ve got you covered. No minimums. Real people answering
             within 24 hours. Let&apos;s figure out what you need.
           </p>
 

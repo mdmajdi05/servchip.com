@@ -7,7 +7,7 @@ import {
   Award,
   FileJson,
   Calendar,
-  HelpCircle,
+  MessageCircle,
   ChevronRight,
   Clock,
   Mail,
@@ -67,7 +67,7 @@ const RESOURCE_CATEGORIES = [
     color: "green" as const,
   },
   {
-    icon: HelpCircle,
+    icon: MessageCircle,
     title: "FAQ",
     description:
       "Answers to commonly asked questions about chip specifications, compatibility, procurement processes, warranty policies, and technical support.",
@@ -296,7 +296,7 @@ export default function ResourcesPage() {
                 className="flex items-center gap-3 rounded-2xl border border-border bg-surface p-5 card-hover group"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center group-hover:bg-primary/20 transition-transform shrink-0">
-                  <HelpCircle className="w-5 h-5 text-primary" />
+                  <MessageCircle className="w-5 h-5 text-primary" />
                 </div>
                 <div className="flex-1 min-w-0">
                   <div className="text-sm font-semibold text-text">FAQ</div>
