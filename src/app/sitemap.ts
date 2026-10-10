@@ -1,5 +1,4 @@
 import { MetadataRoute } from "next";
-import { CHIPS } from "@/data/chips";
 import { BLOG_POSTS } from "@/blog";
 import { CATEGORIES } from "@/data/categories";
 import { BRANDS } from "@/data/brands";
@@ -7,6 +6,7 @@ import { COUNTRIES, getCountryPath } from "@/data/countries";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
 import { INDUSTRIES } from "@/data/industries";
 import { SOLUTIONS } from "@/data/solutions";
+import { ALL_PRODUCTS } from "@/data/products";
 import { SITE } from "@/lib/constants";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -147,8 +147,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })),
   );
 
-  const chipPages: MetadataRoute.Sitemap = CHIPS.map((chip) => ({
-    url: `${baseUrl}/products/${chip.slug}`,
+  // Every indexable product page: chips + AI servers + networking + memory
+  // + storage. Slugs are deduped defensively so no URL appears twice.
+  const productSlugs = Array.from(
+    new Map(ALL_PRODUCTS.map((p) => [p.slug, p])).keys(),
+  );
+
+  const chipPages: MetadataRoute.Sitemap = productSlugs.map((slug) => ({
+    url: `${baseUrl}/products/${slug}`,
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.8,
@@ -173,13 +179,23 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const countryProductPages: MetadataRoute.Sitemap = COUNTRIES.filter(
     (c) => COUNTRY_MARKETS[c.code],
   ).flatMap((c) =>
-    CHIPS.map((chip) => ({
-      url: `${baseUrl}${getCountryPath(c)}/products/${chip.slug}`,
+    productSlugs.map((slug) => ({
+      url: `${baseUrl}${getCountryPath(c)}/products/${slug}`,
       lastModified: new Date(),
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
   );
+
+  // Country detail pages (/countries/[slug]) - the canonical slug variants.
+  // Code-based aliases (e.g. /countries/ae) canonical to these, so only the
+  // slug URLs belong in the sitemap.
+  const countryDetailPages: MetadataRoute.Sitemap = COUNTRIES.map((c) => ({
+    url: `${baseUrl}/countries/${c.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly" as const,
+    priority: 0.7,
+  }));
 
   const industryPages: MetadataRoute.Sitemap = INDUSTRIES.map((i) => ({
     url: `${baseUrl}/industries/${i.slug}`,
@@ -385,6 +401,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...categoryPages,
     ...blogPages,
     ...countryProductPages,
+    ...countryDetailPages,
     ...industryPages,
     ...solutionPages,
     ...countrySubpages,

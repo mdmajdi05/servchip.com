@@ -10,7 +10,34 @@ export interface CategoryArticleList {
   desc: string;
 }
 
+export interface CategoryArticleSection {
+  heading: string;
+  /** Visual layout for this chapter. Defaults to "default". */
+  layout?: "default" | "split" | "cards" | "grid" | "steps";
+  /** Paragraphs rendered before any lists. Supports [link](/path) and **bold**. */
+  intro?: string[];
+  /** Bullet items. Supports [link](/path) and **bold**. */
+  bullets?: string[];
+  /** Numbered steps. Supports [link](/path) and **bold**. */
+  numbered?: string[];
+  /** Paragraphs rendered after any lists. Supports [link](/path) and **bold**. */
+  outro?: string[];
+  /** Side card (split layout): heading above the checklist. */
+  sideTitle?: string;
+  /** Side card (split layout): checklist items. */
+  sideItems?: string[];
+  /** Side card (split layout): closing line below the checklist. */
+  sideFooter?: string;
+  ctaLabel?: string;
+  ctaHref?: string;
+}
+
 export interface CategoryArticle {
+  /** H1 override for the category header. Falls back to the category name. */
+  h1?: string;
+  /** H2 + note rendered directly above the product grid. Supports [link](/path). */
+  catalogTitle?: string;
+  catalogNote?: string;
   introTitle: string;
   intro: string[];
   featuresTitle: string;
@@ -18,6 +45,8 @@ export interface CategoryArticle {
   advantagesTitle: string;
   advantagesIntro?: string;
   advantages: { title: string; desc: string }[];
+  /** Free-form editorial H2 sections rendered between the intro and FAQ blocks. */
+  sections?: CategoryArticleSection[];
   faqTitle: string;
   faqSubtitle?: string;
   faqs: { q: string; a: string }[];
@@ -149,71 +178,112 @@ export const CATEGORY_ARTICLES: Record<string, CategoryArticleEntry> = {
         "Ready to scale your high-performance computing infrastructure? Connect with an AI server reseller in {country} today. Get expert hardware guidance, custom configurations, and quick localized pricing.",
     },
     uae: {
-      introTitle:
-        "Enterprise Solutions from a Leading AI Server Reseller Dubai",
+      h1: "AI Servers & Platforms: AI Server Reseller and Distributor in UAE",
+      catalogTitle: "AI Servers We Supply in UAE",
+      catalogNote:
+        "Every platform below can be quoted with your preferred GPU count, memory and storage layout. Not sure which fits? Try the [configurator](/configurator).",
+      introTitle: "AI Server Reseller and Distributor in UAE",
       intro: [
-        "Building a scalable data center requires reliable, certified hardware. As a dedicated AI server reseller dubai, we supply top-tier compute systems from global OEMs including Dell PowerEdge, HPE ProLiant & Cray, Supermicro, Lenovo ThinkSystem, GIGABYTE, and ASUS.",
+        "Servchip is an AI server reseller and distributor in the UAE, supplying GPU-accelerated systems from ten manufacturers to companies in Dubai, Abu Dhabi and across the Emirates. Browse the range above, ask for a price on any model, and we handle sourcing, delivery and set-up.",
       ],
-      featuresTitle: "What's Inside Our Dubai AI Server Platforms",
-      features: [
+      featuresTitle: "",
+      features: [],
+      advantagesTitle: "",
+      advantages: [],
+      sections: [
         {
-          title: "Accelerated GPU Compute",
-          desc: "Equipped with NVIDIA, AMD, and Intel AI enterprise accelerators for training, inference and HPC workloads.",
+          heading: "Why Work With a Dubai AI Reseller",
+          layout: "split",
+          intro: [
+            "Importing accelerated hardware yourself means customs clearance, VAT paperwork, freight insurance and weeks of uncertainty. A Dubai-based AI reseller absorbs that load. Servchip checks stock with the manufacturer, confirms the exact build, and gives you one point of contact from first enquiry until the rack is powered on.",
+            "We also size the hardware to your site, not just your wish list. Before quoting, we look at the number of GPUs your workload needs, rack power draw, cooling capacity and network fabric, so the system you receive actually fits the room it is going into.",
+          ],
+          sideTitle: "Absorbed by your Dubai reseller",
+          sideItems: [
+            "Customs clearance",
+            "VAT paperwork",
+            "Freight insurance",
+            "Stock & exact-build confirmation",
+          ],
+          sideFooter:
+            "One point of contact — from first enquiry until the rack is powered on.",
         },
         {
-          title: "High-Bandwidth Networking",
-          desc: "InfiniBand and high-speed Ethernet for low-latency node communications in multi-GPU clusters.",
+          heading: "AI Server Distributor in UAE: Ten Brands, One Source",
+          layout: "cards",
+          intro: [
+            "As an AI server distributor in UAE, Servchip gives buyers access to Dell Technologies, Hewlett Packard Enterprise, Supermicro, Lenovo, Gigabyte, ASUS, Inspur, Quanta, Foxconn and Wiwynn platforms through a single quotation. That means you can compare an 8-GPU HGX system from one vendor against another without chasing separate sales teams.",
+            "Typical configurations include:",
+          ],
+          bullets: [
+            "**Large-model training:** 8-GPU HGX baseboards with H100, H200 or B200 accelerators and high-speed InfiniBand or Ethernet fabrics.",
+            "**Inference and fine-tuning:** denser 2U and 4U builds with 4 to 8 accelerators and lower power envelopes.",
+            "**General enterprise AI:** dual-socket Intel Xeon or AMD EPYC servers with one to four GPUs for analytics and retrieval workloads.",
+          ],
+          outro: [
+            "Availability changes quickly, so we confirm stock and lead time on every quote. Want to compare accelerators first? Use our [GPU comparison tool](/comparison).",
+          ],
         },
         {
-          title: "Ultra-Fast Memory & Storage",
-          desc: "Enterprise NVMe drives and high-capacity RAM modules for heavy data throughput.",
+          heading: "AI Server Reseller in Dubai: Warranty & Support",
+          layout: "grid",
+          intro: [
+            "Servchip supplies AI servers in Dubai from Dell, HPE, Supermicro, Lenovo, Gigabyte, ASUS, Inspur, Quanta, Foxconn and Wiwynn. Systems arrive with genuine manufacturer warranty, and registration is completed in your company's name. Our operations run under ISO 9001:2015 certified quality management.",
+            "What that gives you:",
+          ],
+          bullets: [
+            "**Original factory builds** with serial numbers you can verify on the manufacturer's support portal.",
+            "**Pre-delivery checks:** firmware updates, BIOS settings, operating system and GPU driver installation, plus a burn-in test.",
+            "**Warranty coordination:** we raise and follow up claims with the vendor on your behalf.",
+            "**Supply documentation:** invoices, chain-of-custody records and manufacturer warranty details available on request.",
+          ],
+        },
+        {
+          heading: "How to Order an AI Server in Dubai",
+          layout: "steps",
+          intro: [
+            "Ordering from an AI server reseller in Dubai takes four steps:",
+          ],
+          numbered: [
+            "**Tell us the workload.** Training, inference or HPC, model size, and how many GPUs you want.",
+            "**Review a shortlist.** We suggest two or three platforms with their trade-offs in price, power and lead time.",
+            "**Receive your quote.** Within 24 to 48 hours, with itemised pricing, validity period and delivery terms.",
+            "**Delivery and set-up.** Shipment to your facility in the UAE, followed by installation support and handover.",
+          ],
+          ctaLabel: "Request a quote",
+          ctaHref: "/rfq",
         },
       ],
-      advantagesTitle: "Key Advantages of Choosing a Dubai AI Server Reseller",
-      advantagesIntro:
-        "Direct sourcing and localized technical support ensure your infrastructure runs with zero downtime.",
-      advantages: [
-        {
-          title: "100% Genuine Certified Hardware",
-          desc: "Direct access to authentic enterprise platforms backed by full manufacturer warranties.",
-        },
-        {
-          title: "Customized Server Configurations",
-          desc: "Custom builds tuned specifically for your AI models and workload demands.",
-        },
-        {
-          title: "Fast UAE Delivery & Support",
-          desc: "Quick deployment across Dubai and all Emirates with localized logistics and customs handling.",
-        },
-      ],
-      faqTitle: "FAQ",
-      faqSubtitle: "Frequently Asked Questions - Enterprise AI Infrastructure",
+      faqTitle: "AI Server Reseller FAQs",
       faqs: [
         {
-          q: "What services are provided by an AI server distributor in UAE?",
-          a: "As a leading AI server distributor in UAE, we provide end-to-end B2B infrastructure solutions. Our services include bulk hardware procurement, AI cluster architecture planning, custom topology design, on-site hardware installation, technical support, and full warranty management.",
+          q: "Who is the best AI server reseller in the UAE?",
+          a: "The right reseller is one that can document where its hardware comes from, confirm stock, and support you after delivery. Servchip is an ISO 9001:2015 certified distributor supplying ten server brands, offers multi-vendor comparisons in one quote, and provides installation and warranty help to customers across the Emirates.",
         },
         {
-          q: "How can I order custom configurations from an AI server authorized reseller in UAE?",
-          a: "Working with an AI server authorized reseller in UAE allows you to customize your server architecture. You can choose your required GPU density, form factor, enterprise CPU, memory capacity, and storage options directly through our catalog page or by reaching out to our technical team for a personalized quotation.",
+          q: "Do you deliver AI servers across Dubai, Abu Dhabi and Sharjah?",
+          a: "Yes. We deliver to data centres and offices throughout the UAE, including Dubai, Abu Dhabi, Sharjah and the free zones. Delivery timing and any import or free-zone documentation are confirmed in your quotation, so there are no surprises when the shipment lands.",
         },
         {
-          q: "Why should I buy hardware through an established AI server reseller dubai?",
-          a: "Sourcing your high-performance compute nodes from a recognized AI server reseller dubai ensures 100% genuine hardware directly from top OEMs like Dell, HPE, Supermicro, Lenovo, ASUS, and Gigabyte. You also get localized UAE delivery, local customs handling, and active manufacturer warranty protection.",
+          q: "Which NVIDIA GPUs can I get: H100, H200 or B200?",
+          a: "Our platforms support NVIDIA H100, H200 and B200 accelerators, depending on the server model. Which one suits you depends on memory needs and budget. For a closer look at the newer architecture, see our [Grace Blackwell platform](/products/nvidia-gb200-grace-blackwell-superchip), then send your workload details and we will recommend a configuration and confirm what is currently available.",
         },
         {
-          q: "What brands and GPU platforms are available via a Dubai AI server reseller?",
-          a: "As a specialized Dubai AI server reseller, we offer full catalog coverage for enterprise platforms including Dell PowerEdge, HPE Cray & ProLiant, Supermicro GPU systems, Lenovo ThinkSystem, Gigabyte G-series, and ASUS acceleration platforms. These systems support enterprise AI accelerators from NVIDIA, AMD, and Intel.",
+          q: "Do you provide warranty and installation support?",
+          a: "Yes. Every server carries the manufacturer's warranty, and we help with firmware, operating system and driver installation before handover. If a fault occurs, our team coordinates the claim with the vendor so you do not have to deal with overseas support queues alone.",
         },
         {
-          q: "How quickly can an AI server authorized reseller dubai deliver custom server nodes?",
-          a: "Partnering with an AI server authorized reseller dubai guarantees fast local dispatch and streamlined logistics across Dubai and all other Emirates. Custom build lead times depend on hardware specs, but local stock and dedicated supply channels significantly reduce system delivery timelines.",
+          q: "How do I get a quote for an AI server in Dubai?",
+          a: "Use the Request price button on any product, or open the [quote form](/rfq) and describe your project. Tell us the GPU count, workload type and delivery location. We reply with an itemised quotation, normally within 24 to 48 hours.",
+        },
+        {
+          q: "Are you a distributor, or only a reseller?",
+          a: "Both. Servchip works as a distributor and reseller across the brands listed above. [Contact us](/contact) for the sourcing details of a specific manufacturer and we will share the supporting documents.",
         },
       ],
-      ctaTitle:
-        "Request Your Quote from an AI Server Authorized Reseller Dubai",
+      ctaTitle: "Request a Quote for an AI Server in Dubai",
       ctaText:
-        "Ready to scale your high-performance computing infrastructure? Connect with an AI server authorized reseller dubai today. Get expert hardware guidance, custom configurations, and quick localized pricing.",
+        "Tell us the GPU count, workload type and delivery location. We reply with an itemised quotation, normally within 24 to 48 hours.",
     },
   },
 

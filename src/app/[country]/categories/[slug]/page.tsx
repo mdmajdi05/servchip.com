@@ -14,6 +14,13 @@ import { getCategorySeo } from "@/lib/seo/content";
 import { getCategoryArticle } from "@/data/category-content";
 import CategoryDetailPage from "@/app/categories/[slug]/page-client";
 
+/** Strip [label](url) links and **bold** markers for plain-text schema output. */
+function stripMarkdown(text: string): string {
+  return text
+    .replace(/\[([^\]]+)\]\([^)]*\)/g, "$1")
+    .replace(/\*\*([^*]+)\*\*/g, "$1");
+}
+
 export async function generateStaticParams() {
   const countries = SUPPORTED_COUNTRIES;
   return countries.flatMap((country) =>
@@ -49,6 +56,38 @@ export async function generateMetadata(props: {
     metadata.description = override.metaDescription;
   }
 
+  // Full head-tag override for the AE AI-servers landing page.
+  if (country === "ae" && slug === "ai-servers-platforms") {
+    const pageUrl = "https://servchip.com/ae/categories/ai-servers-platforms";
+    const ogImage = "https://servchip.com/images/og/ai-servers-uae.jpg";
+    const ogTitle = "AI Server Reseller in UAE & Dubai | Servchip";
+    metadata.openGraph = {
+      ...(typeof metadata.openGraph === "object" ? metadata.openGraph : null),
+      type: "website",
+      url: pageUrl,
+      title: ogTitle,
+      description:
+        "Authorized AI server reseller and distributor in UAE. Dell, HPE, Supermicro, Lenovo, Gigabyte, ASUS, Inspur, Quanta, Foxconn and Wiwynn GPU platforms.",
+      images: [
+        {
+          url: ogImage,
+          secureUrl: ogImage,
+          width: 1200,
+          height: 630,
+          alt: ogTitle,
+        },
+      ],
+    };
+    metadata.twitter = {
+      ...(typeof metadata.twitter === "object" ? metadata.twitter : null),
+      card: "summary_large_image",
+      title: ogTitle,
+      description:
+        "Authorized AI server reseller in UAE. Request a quote on NVIDIA GPU servers.",
+      images: [ogImage],
+    };
+  }
+
   return metadata;
 }
 
@@ -80,7 +119,10 @@ export default async function Page(props: {
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={faqSchema(
-            article.faqs.map((f) => ({ question: f.q, answer: f.a })),
+            article.faqs.map((f) => ({
+              question: stripMarkdown(f.q),
+              answer: stripMarkdown(f.a),
+            })),
           )}
         />
       )}

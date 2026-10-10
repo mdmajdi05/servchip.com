@@ -16,6 +16,7 @@ import {
 import { Badge } from "@/components/ui/Badge";
 import { ProductCard } from "@/components/products/ProductCard";
 import { CategorySeoArticle } from "@/components/categories/CategorySeoArticle";
+import { renderRichText } from "@/components/ui/rich-text";
 import { ALL_PRODUCTS } from "@/data/products";
 import { CATEGORIES } from "@/data/categories";
 import { BRANDS } from "@/data/brands";
@@ -149,7 +150,7 @@ export default function CategoryDetailPage({
             </span>
             <div>
               <h1 className="text-2xl lg:text-3xl font-black text-text">
-                {category.name}
+                {content?.h1 ?? category.name}
               </h1>
               <p className="text-sm text-text-muted">{category.description}</p>
             </div>
@@ -245,6 +246,18 @@ export default function CategoryDetailPage({
         </div>
 
         {/* Product grid */}
+        {content?.catalogTitle && (
+          <div className="mb-6">
+            <h2 className="text-lg font-bold text-text mb-1">
+              {content.catalogTitle}
+            </h2>
+            {content.catalogNote && (
+              <p className="text-sm text-text-muted leading-relaxed">
+                {renderRichText(content.catalogNote)}
+              </p>
+            )}
+          </div>
+        )}
         {filtered.length > 0 ? (
           activeType === "all" ? (
             Object.entries(grouped)

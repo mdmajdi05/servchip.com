@@ -87,10 +87,9 @@ export const CATEGORY_SEO: Record<string, SeoEntry> = {
     ],
     countryMeta: {
       ae: {
-        metaTitle:
-          "AI Server Authorized Reseller in UAE | AI Server Reseller Dubai",
+        metaTitle: "AI Server Reseller in UAE & Dubai | Servchip",
         metaDescription:
-          "Looking for a certified AI server distributor in UAE? Get enterprise GPU servers & custom cluster configurations from a trusted Dubai AI server reseller.",
+          "Servchip is an authorized AI server reseller in Dubai and UAE. Quotes on Dell, HPE, Supermicro, Lenovo & more NVIDIA H100/H200/B200 GPU servers.",
       },
     },
   },
