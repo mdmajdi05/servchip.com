@@ -17,16 +17,20 @@ import {
 } from "lucide-react";
 
 const KEYWORD_TAGS = [
-  { label: "AI Accelerators", href: "/categories/ai-accelerators", icon: Cpu },
+  {
+    label: "AI Accelerators",
+    href: "/categories/nvidia-data-center-gpus",
+    icon: Cpu,
+  },
   { label: "Server CPUs", href: "/categories/server-cpus", icon: Server },
   {
     label: "HBM Memory",
-    href: "/categories/memory-storage",
+    href: "/categories/ai-memory-hbm",
     icon: HardDrive,
   },
   {
     label: "Data Center GPUs",
-    href: "/categories/ai-accelerators",
+    href: "/categories/amd-instinct-accelerators",
     icon: Network,
   },
 ];
@@ -265,7 +269,7 @@ export function SeoIntroBlock() {
                     </Link>
                     , and{" "}
                     <Link
-                      href="/categories/memory-storage"
+                      href="/categories/ai-memory-hbm"
                       className="text-primary hover:underline"
                     >
                       SK hynix HBM3E memory

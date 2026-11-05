@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { ALL_PRODUCTS } from "@/data/products";
 import { getCountryByCode } from "@/data/countries";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
+import { SUPPORTED_COUNTRIES } from "@/lib/localized-path";
 import { CATEGORIES } from "@/data/categories";
 import {
   createEntityMetadata,
@@ -11,6 +12,12 @@ import {
   breadcrumbSchema,
 } from "@/lib/seo";
 import ProductDetailPage from "@/app/products/[slug]/page-client";
+
+export function generateStaticParams() {
+  return SUPPORTED_COUNTRIES.flatMap((country) =>
+    ALL_PRODUCTS.map((product) => ({ country, slug: product.slug })),
+  );
+}
 
 export async function generateMetadata(props: {
   params: Promise<{ country: string; slug: string }>;

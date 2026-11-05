@@ -13,6 +13,8 @@ import { SOLUTIONS } from "@/data/solutions";
 import { SUPPORTED_COUNTRIES, getLocalizedPath } from "@/lib/localized-path";
 import { COUNTRY_MARKETS } from "@/data/country-markets";
 import { countryLanguageAlternates } from "@/lib/seo/hreflang";
+import { generateStaticParams as globalProductParams } from "@/app/products/[slug]/page";
+import { generateStaticParams as countryProductParams } from "@/app/[country]/products/[slug]/page";
 
 /**
  * Build-time SEO sanity guard (runs via `npm run prebuild`).
@@ -366,5 +368,29 @@ describe("SEO integrity", () => {
     expect(summary, `SEO issues found - fix them before deploying.`).toEqual(
       "",
     );
+  });
+
+  it("statically generates every product URL advertised in the sitemap", () => {
+    const globalSlugs = new Set(globalProductParams().map(({ slug }) => slug));
+    const countryProductKeys = new Set(
+      countryProductParams().map(({ country, slug }) => `${country}/${slug}`),
+    );
+
+    for (const url of sitemapUrls) {
+      const path = toPath(url);
+      const globalMatch = path.match(/^\/products\/([^/]+)$/);
+      if (globalMatch) {
+        expect(globalSlugs.has(globalMatch[1]), url).toBe(true);
+        continue;
+      }
+
+      const countryMatch = path.match(/^\/([a-z]{2})\/products\/([^/]+)$/);
+      if (countryMatch) {
+        expect(
+          countryProductKeys.has(`${countryMatch[1]}/${countryMatch[2]}`),
+          url,
+        ).toBe(true);
+      }
+    }
   });
 });

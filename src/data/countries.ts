@@ -2,6 +2,57 @@ import type { Country } from "@/types";
 
 export const COUNTRIES: Country[] = [
   {
+    id: "india",
+    name: "India",
+    slug: "india",
+    code: "in",
+    flag: "in",
+    region: "South Asia",
+    description:
+      "Enterprise AI chip distribution across India - Mumbai, New Delhi, Bengaluru, Hyderabad & Chennai.",
+    longDescription:
+      "Servchip is a leading enterprise AI chip distributor in India, supplying NVIDIA GPU servers, AI accelerators and data center hardware to enterprises, cloud providers and research institutions across Mumbai, New Delhi, Bengaluru, Hyderabad and Chennai. With our Mumbai warehouse and New Delhi headquarters, we deliver authentic, warrantied hardware across India with fast dispatch and full GST invoicing.",
+    hero: {
+      label: "India",
+      title: "Enterprise AI Hardware Delivered Across India",
+      subtitle:
+        "NVIDIA, AMD & Intel accelerators for Indian data centers, enterprises and research institutions - fast dispatch, authentic sourcing.",
+    },
+    faqs: [
+      {
+        question: "Do you supply AI chips across India?",
+        answer:
+          "Yes. We deliver NVIDIA, AMD and Intel enterprise hardware to Mumbai, New Delhi, Bengaluru, Hyderabad, Chennai and across India, usually within 3-7 days from our Mumbai warehouse.",
+      },
+      {
+        question: "Do you provide GST invoicing for Indian enterprises?",
+        answer:
+          "Yes. All Indian orders ship with proper GST invoicing and complete documentation for enterprise procurement and compliance teams.",
+      },
+      {
+        question: "Are products authentic and under warranty?",
+        answer:
+          "Yes. Every chip is authentic, factory-sealed and covered by manufacturer warranty with serial number traceability and chain of custody documentation.",
+      },
+    ],
+    related: {
+      brandIds: ["nvidia", "amd", "intel", "supermicro", "dell"],
+      categoryIds: [
+        "nvidia-dc-gpus",
+        "amd-instinct",
+        "server-cpus",
+        "ai-servers",
+        "networking",
+      ],
+      useCases: ["ai-training", "ai-inference", "hpc"],
+    },
+    stats: [
+      { value: "5+", label: "Metro cities served" },
+      { value: "3-7 days", label: "Pan-India delivery" },
+      { value: "GST", label: "Compliant invoicing" },
+    ],
+  },
+  {
     id: "uae",
     name: "United Arab Emirates",
     slug: "uae",

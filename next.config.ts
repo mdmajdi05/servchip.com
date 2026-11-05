@@ -93,6 +93,50 @@ const nextConfig: NextConfig = {
         destination: "/blog",
         permanent: true,
       },
+      // Renamed category hubs: old slugs never existed as categories, but were
+      // linked from the homepage and may carry bookmarks/backlinks. Point them
+      // at the closest live category (global + every country variant).
+      {
+        source: "/categories/ai-accelerators",
+        destination: "/categories/nvidia-data-center-gpus",
+        permanent: true,
+      },
+      {
+        source: "/:country/categories/ai-accelerators",
+        destination: "/:country/categories/nvidia-data-center-gpus",
+        permanent: true,
+      },
+      {
+        source: "/categories/memory-storage",
+        destination: "/categories/ai-memory-hbm",
+        permanent: true,
+      },
+      {
+        source: "/:country/categories/memory-storage",
+        destination: "/:country/categories/ai-memory-hbm",
+        permanent: true,
+      },
+      // Renamed blog posts: old slugs changed, redirect to the live successor.
+      {
+        source: "/blog/h100-vs-mi300x-vs-gaudi3-comparison",
+        destination: "/blog/nvidia-h100-vs-amd-mi300x",
+        permanent: true,
+      },
+      {
+        source: "/:country/blog/h100-vs-mi300x-vs-gaudi3-comparison",
+        destination: "/:country/blog/nvidia-h100-vs-amd-mi300x",
+        permanent: true,
+      },
+      {
+        source: "/blog/mi300x-vs-h100-buyer-guide",
+        destination: "/blog/nvidia-h100-vs-amd-mi300x",
+        permanent: true,
+      },
+      {
+        source: "/:country/blog/mi300x-vs-h100-buyer-guide",
+        destination: "/:country/blog/nvidia-h100-vs-amd-mi300x",
+        permanent: true,
+      },
     ];
   },
   async headers() {

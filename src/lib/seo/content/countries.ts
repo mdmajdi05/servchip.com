@@ -2,6 +2,19 @@ import type { SeoEntry } from "./types";
 
 // Country page SEO. Key = country id (src/data/countries.ts).
 export const COUNTRY_SEO: Record<string, SeoEntry> = {
+  india: {
+    metaTitle: "AI Chip Distributor India | NVIDIA, AMD, Intel | Servchip",
+    metaDescription:
+      "Buy NVIDIA H100, H200, B200, AMD Instinct MI300X & Intel Xeon AI chips in India. Enterprise GPU distributor with Mumbai warehouse and pan-India delivery.",
+    keywords: [
+      "AI chip distributor India",
+      "NVIDIA GPU distributor India",
+      "buy AI GPUs India",
+      "data center GPU supplier Mumbai",
+      "GPU distributor Bangalore",
+      "semiconductor distributor India",
+    ],
+  },
   uae: {
     metaTitle: "AI Chip Distributor UAE & Dubai | Data Center GPUs | Servchip",
     metaDescription:

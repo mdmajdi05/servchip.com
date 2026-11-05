@@ -11,6 +11,10 @@ import {
 } from "@/lib/seo";
 import PageClient from "./page-client";
 
+export function generateStaticParams() {
+  return ALL_PRODUCTS.map((product) => ({ slug: product.slug }));
+}
+
 export async function generateMetadata(props: {
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {

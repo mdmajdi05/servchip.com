@@ -8,8 +8,9 @@ import { cn } from "@/lib/utils";
  * every OS/browser - including Windows, where flag emoji are unsupported and
  * used to render as boxes or broken "?" marks.
  */
-const ISO_FILE_MAP: Record<string, string> = {
-  uk: "gb",
+const FLAG_ASSETS: Record<string, string> = {
+  uk: "/flags/gb.png",
+  in: "/flags/in.svg",
 };
 
 interface CountryFlagProps {
@@ -22,7 +23,7 @@ interface CountryFlagProps {
 export function CountryFlag({ code, className, alt = "" }: CountryFlagProps) {
   const iso = code?.toLowerCase();
   if (!iso) return null;
-  const file = ISO_FILE_MAP[iso] ?? iso;
+  const src = FLAG_ASSETS[iso] ?? `/flags/${iso}.png`;
   return (
     <span
       className={cn(
@@ -30,13 +31,7 @@ export function CountryFlag({ code, className, alt = "" }: CountryFlagProps) {
         className,
       )}
     >
-      <Image
-        src={`/flags/${file}.png`}
-        alt={alt}
-        fill
-        sizes="32px"
-        className="object-cover"
-      />
+      <Image src={src} alt={alt} fill sizes="32px" className="object-cover" />
     </span>
   );
 }

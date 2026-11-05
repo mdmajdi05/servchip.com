@@ -33,6 +33,7 @@ export async function generateMetadata(props: {
   const seo = country ? getCountrySeo(country.id) : undefined;
   if (!country || !seo) return {};
   const hreflangMap: Record<string, string> = {
+    india: "en-IN",
     uae: "en-AE",
     usa: "en-US",
     "saudi-arabia": "en-SA",
