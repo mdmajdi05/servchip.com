@@ -8,7 +8,7 @@ export const post: BlogPost = {
   excerpt:
     "A comprehensive guide to the NVIDIA L40S GPU: architecture specs, performance for AI and graphics, use cases, pricing, and how it compares to H100 and A100.",
   content: "",
-  featuredImage: "/images/products/nvidia-l40s.webp",
+  featuredImage: "/images/products/nvidia-h100.webp",
   featuredImageAlt: "NVIDIA L40S GPU specifications and use cases",
   category: cat("guides"),
   tags: [
