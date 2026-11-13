@@ -23,10 +23,9 @@ export const post: BlogPost = {
   author: { name: "Servchip Tech Team", avatar: "ST" },
   readingTime: 8,
   publishedAt: "2026-09-16",
-  isPublished: false,
+  isPublished: true,
   seo: {
-    metaTitle:
-      "NVIDIA Grace Blackwell Superchip (GB200): Architecture, Specs & Use Cases",
+    metaTitle: "NVIDIA GB200 Grace Blackwell Superchip: Specs & Use Cases",
     metaDescription:
       "A technical look at the NVIDIA GB200 Grace Blackwell Superchip: Transformer Engine, confidential computing, NVLink, and decompression engine. Sourced by Servchip.",
     focusKeyword: "NVIDIA Grace Blackwell Superchip",

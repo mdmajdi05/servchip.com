@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import { SITE } from "@/lib/constants";
 import { NotFoundContent } from "@/components/ui/NotFoundContent";
 import { createSeoMetadata, breadcrumbSchema } from "@/lib/seo";
+import { ALL_PRODUCTS } from "@/data/products";
+import { BRANDS } from "@/data/brands";
+import { CATEGORIES } from "@/data/categories";
 
 export const metadata: Metadata = createSeoMetadata({
   title: `404 - Page Not Found | ${SITE.name}`,
@@ -19,6 +21,34 @@ export const metadata: Metadata = createSeoMetadata({
 });
 
 export default function NotFound() {
+  // Keep the payload small: only the fields the 404 page actually renders.
+  const featuredProducts = ALL_PRODUCTS.filter(
+    (p) => p.isFeatured || p.isPopular,
+  )
+    .slice(0, 6)
+    .map((p) => ({
+      id: p.id,
+      name: p.name,
+      slug: p.slug,
+      manufacturer: p.manufacturer,
+      series: p.series,
+      categoryName: p.categoryName,
+      image: p.images?.[0],
+    }));
+
+  const brands = BRANDS.slice(0, 8).map((b) => ({
+    slug: b.slug,
+    name: b.name,
+  }));
+
+  const categories = CATEGORIES.filter((c) => c.isActive)
+    .slice(0, 6)
+    .map((c) => ({
+      slug: c.slug,
+      name: c.name,
+      description: c.description,
+    }));
+
   return (
     <>
       <script
@@ -28,21 +58,11 @@ export default function NotFound() {
           { name: "404 - Page Not Found", url: "/404" },
         ])}
       />
-      <NotFoundContent />
-      <div className="mt-8 flex flex-wrap gap-3 justify-center">
-        <Link href="/products" className="text-sm text-primary hover:underline">
-          Browse Products
-        </Link>
-        <Link
-          href="/categories"
-          className="text-sm text-primary hover:underline"
-        >
-          Browse Categories
-        </Link>
-        <Link href="/contact" className="text-sm text-primary hover:underline">
-          Contact Support
-        </Link>
-      </div>
+      <NotFoundContent
+        featuredProducts={featuredProducts}
+        brands={brands}
+        categories={categories}
+      />
     </>
   );
 }

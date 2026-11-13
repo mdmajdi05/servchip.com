@@ -71,6 +71,7 @@ describe("internal link integrity", () => {
       "/",
       "/blog",
       "/blog/amd-instinct-mi350x-gpu",
+      "/blog/nvidia-grace-blackwell-superchip",
       "/products/amd-instinct-mi350x",
       "/categories/amd-instinct-accelerators",
       "/brands/nvidia",
@@ -97,7 +98,6 @@ describe("internal link integrity", () => {
       "/blog/someone-else-entirely",
       "/images/products/missing-file.webp",
       "/totally/unknown/page",
-      "/blog/nvidia-grace-blackwell-superchip", // draft, not published
     ];
     for (const url of invalid) {
       const r = validateInternalPath(url, registry);

@@ -13,10 +13,10 @@ export const post: BlogPost = {
   category: cat("guides"),
   tags: [
     tag("nvidia"),
-    tag("ai"),
+    tag("ai-training"),
     tag("inference"),
-    tag("gpu"),
-    tag("rendering"),
+    tag("data-center"),
+    tag("memory"),
   ],
   author: { name: "Servchip Tech Team", avatar: "ST" },
   readingTime: 25,
