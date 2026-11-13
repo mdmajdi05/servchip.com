@@ -2,7 +2,7 @@ import type { BlogPost } from "@/blog/types";
 import { cat, tag } from "../config";
 
 export const post: BlogPost = {
-  id: "23",
+  id: "29",
   title: "What Is the NVIDIA L40S GPU? Specs, Price and Use Cases",
   slug: "nvidia-l40s-gpu",
   excerpt:
